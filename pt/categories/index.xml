@@ -6,9 +6,19 @@
     <description>Recent content in Categories on Hugo Future Imperfect Slim em português</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt</language>
+    <lastBuildDate>Sun, 28 Sep 2014 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://example.com/pt/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://example.com/pt/categories/hugo/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/pt/categories/hugo/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

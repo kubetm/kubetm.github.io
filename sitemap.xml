@@ -11,20 +11,28 @@
 	<sitemap>
 	   	<loc>https://example.com/de/sitemap.xml</loc>
 		
+	   	<lastmod>2014-09-28T00:00:00+00:00</lastmod>
+		
 	</sitemap>
 	
 	<sitemap>
 	   	<loc>https://example.com/fr/sitemap.xml</loc>
+		
+	   	<lastmod>2014-09-28T00:00:00+00:00</lastmod>
 		
 	</sitemap>
 	
 	<sitemap>
 	   	<loc>https://example.com/pl/sitemap.xml</loc>
 		
+	   	<lastmod>2014-09-28T00:00:00+00:00</lastmod>
+		
 	</sitemap>
 	
 	<sitemap>
 	   	<loc>https://example.com/pt/sitemap.xml</loc>
+		
+	   	<lastmod>2014-09-28T00:00:00+00:00</lastmod>
 		
 	</sitemap>
 	
