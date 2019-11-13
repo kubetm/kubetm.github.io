@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>paste on Hugo Future Imperfect Slim</title>
+    <link>https://example.com/tags/paste/</link>
+    <description>Recent content in paste on Hugo Future Imperfect Slim</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 07 Nov 2019 08:26:28 -0400</lastBuildDate>
+    
+	<atom:link href="https://example.com/tags/paste/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>쿠버네티스 명령어 복사&amp;붙여놓기 1</title>
+      <link>https://example.com/copy-paste/2019-11-06-cp-title2/</link>
+      <pubDate>Thu, 07 Nov 2019 08:26:28 -0400</pubDate>
+      
+      <guid>https://example.com/copy-paste/2019-11-06-cp-title2/</guid>
+      <description>쿠버네티스 명령어 복사&amp;amp;붙여놓기 1 테스트 중인 페이지 입니다.</description>
+    </item>
+    
+    <item>
+      <title>쿠버네티스 명령어 복사&amp;붙여놓기2</title>
+      <link>https://example.com/copy-paste/2019-11-06-cp-title1/</link>
+      <pubDate>Thu, 07 Nov 2019 08:26:28 -0400</pubDate>
+      
+      <guid>https://example.com/copy-paste/2019-11-06-cp-title1/</guid>
+      <description>쿠버네티스 명령어 복사&amp;amp;붙여놓기 1 테스트 중인 페이지 입니다.</description>
+    </item>
+    
+  </channel>
+</rss>
