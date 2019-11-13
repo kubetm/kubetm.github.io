@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on KubeTM Blog</title>
-    <link>https://example.com/tags/</link>
+    <link>https://kubetm.github.io/tags/</link>
     <description>Recent content in Tags on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 07 Nov 2019 08:26:28 -0400</lastBuildDate>
     
-	<atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kubetm.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>copy</title>
-      <link>https://example.com/tags/copy/</link>
+      <link>https://kubetm.github.io/tags/copy/</link>
       <pubDate>Thu, 07 Nov 2019 08:26:28 -0400</pubDate>
       
-      <guid>https://example.com/tags/copy/</guid>
+      <guid>https://kubetm.github.io/tags/copy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>direction</title>
-      <link>https://example.com/tags/direction/</link>
+      <link>https://kubetm.github.io/tags/direction/</link>
       <pubDate>Thu, 07 Nov 2019 08:26:28 -0400</pubDate>
       
-      <guid>https://example.com/tags/direction/</guid>
+      <guid>https://kubetm.github.io/tags/direction/</guid>
       <description></description>
     </item>
     
     <item>
       <title>inflean</title>
-      <link>https://example.com/tags/inflean/</link>
+      <link>https://kubetm.github.io/tags/inflean/</link>
       <pubDate>Thu, 07 Nov 2019 08:26:28 -0400</pubDate>
       
-      <guid>https://example.com/tags/inflean/</guid>
+      <guid>https://kubetm.github.io/tags/inflean/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kubernetes</title>
-      <link>https://example.com/tags/kubernetes/</link>
+      <link>https://kubetm.github.io/tags/kubernetes/</link>
       <pubDate>Thu, 07 Nov 2019 08:26:28 -0400</pubDate>
       
-      <guid>https://example.com/tags/kubernetes/</guid>
+      <guid>https://kubetm.github.io/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>parenting</title>
-      <link>https://example.com/tags/parenting/</link>
+      <link>https://kubetm.github.io/tags/parenting/</link>
       <pubDate>Thu, 07 Nov 2019 08:26:28 -0400</pubDate>
       
-      <guid>https://example.com/tags/parenting/</guid>
+      <guid>https://kubetm.github.io/tags/parenting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>paste</title>
-      <link>https://example.com/tags/paste/</link>
+      <link>https://kubetm.github.io/tags/paste/</link>
       <pubDate>Thu, 07 Nov 2019 08:26:28 -0400</pubDate>
       
-      <guid>https://example.com/tags/paste/</guid>
+      <guid>https://kubetm.github.io/tags/paste/</guid>
       <description></description>
     </item>
     

@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lecture on KubeTM Blog</title>
-    <link>https://example.com/lecture/</link>
+    <link>https://kubetm.github.io/lecture/</link>
     <description>Recent content in Lecture on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 07 Nov 2019 08:26:28 -0400</lastBuildDate>
     
-	<atom:link href="https://example.com/lecture/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kubetm.github.io/lecture/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>초급편 강의</title>
-      <link>https://example.com/lecture/2019-11-07-lecture-beginner-title2/</link>
+      <link>https://kubetm.github.io/lecture/2019-11-07-lecture-beginner-title2/</link>
       <pubDate>Thu, 07 Nov 2019 08:26:28 -0400</pubDate>
       
-      <guid>https://example.com/lecture/2019-11-07-lecture-beginner-title2/</guid>
+      <guid>https://kubetm.github.io/lecture/2019-11-07-lecture-beginner-title2/</guid>
       <description>초급편 강의 테스트 중인 페이지 입니다.</description>
     </item>
     
     <item>
       <title>초급편 강의2</title>
-      <link>https://example.com/lecture/2019-11-07-lecture-beginner-title1/</link>
+      <link>https://kubetm.github.io/lecture/2019-11-07-lecture-beginner-title1/</link>
       <pubDate>Thu, 07 Nov 2019 08:26:28 -0400</pubDate>
       
-      <guid>https://example.com/lecture/2019-11-07-lecture-beginner-title1/</guid>
+      <guid>https://kubetm.github.io/lecture/2019-11-07-lecture-beginner-title1/</guid>
       <description>초급편 강의 테스트 중인 페이지 입니다.</description>
     </item>
     
