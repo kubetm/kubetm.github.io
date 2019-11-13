@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>KubeTM Blog</title>
-    <link>https://kubetm.github.io/</link>
-    <description>Recent content on KubeTM Blog</description>
+    <title>lecture_beginner on KubeTM Blog</title>
+    <link>https://kubetm.github.io/categories/lecture_beginner/</link>
+    <description>Recent content in lecture_beginner on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 13 Nov 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://kubetm.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kubetm.github.io/categories/lecture_beginner/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,24 +20,6 @@
       <description>바로가기 : https://www.inflearn.com/course/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B8%B0%EC%B4%88#
 3. Getting-started Kubernetes (Practice) Linux hello.js var http = require(&#39;http&#39;); var content = function(req, resp) { resp.end(&amp;quot;Hello Kubernetes!&amp;quot; + &amp;quot;\n&amp;quot;); resp.writeHead(200); } var w = http.createServer(content); w.listen(8000);  node hello.js  Docker Dockerfile FROM node:slim EXPOSE 8000 COPY hello.js . CMD node hello.js  Docker Hub Site https://hub.docker.com/
 Docker Container Run docker build -t tmkube/hello . -t : 레파지토리/이미지명:버전 docker images docker run -d -p 8100:8000 tmkube/hello -d : 백그라운드 모드 -p : 포트변경 docker ps docker exec -it c403442e8a59 /bin/bash  Docker Image Push docker login docker push tmkube/hello  Kubernetes Pod apiVersion: v1 kind: Pod metadata: name: hello-pod labels: app: hello spec: containers: - name: hello-container image: tmkube/hello ports: - containerPort: 8000  Service apiVersion: v1 kind: Service metadata: name: hello-svc spec: selector: app: hello ports: - port: 8200 targetPort: 8000 externalIPs: - 192.</description>
-    </item>
-    
-    <item>
-      <title>쿠버네티스 명령어 복사&amp;붙여놓기 1</title>
-      <link>https://kubetm.github.io/copy-paste/2019-11-06-cp-title2/</link>
-      <pubDate>Thu, 07 Nov 2019 08:26:28 -0400</pubDate>
-      
-      <guid>https://kubetm.github.io/copy-paste/2019-11-06-cp-title2/</guid>
-      <description>쿠버네티스 명령어 복사&amp;amp;붙여놓기 1 테스트 중인 페이지 입니다.</description>
-    </item>
-    
-    <item>
-      <title>쿠버네티스 명령어 복사&amp;붙여놓기2</title>
-      <link>https://kubetm.github.io/copy-paste/2019-11-06-cp-title1/</link>
-      <pubDate>Thu, 07 Nov 2019 08:26:28 -0400</pubDate>
-      
-      <guid>https://kubetm.github.io/copy-paste/2019-11-06-cp-title1/</guid>
-      <description>쿠버네티스 명령어 복사&amp;amp;붙여놓기 1 테스트 중인 페이지 입니다.</description>
     </item>
     
   </channel>

@@ -3,8 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://kubetm.github.io/lecture/beginner/3-gettingstarted-kubernetes-practice/</loc>
+    <lastmod>2019-11-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kubetm.github.io/categories/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
+    <lastmod>2019-11-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/</loc>
+    <lastmod>2019-11-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/lecture/</loc>
+    <lastmod>2019-11-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/categories/lecture_beginner/</loc>
+    <lastmod>2019-11-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -23,77 +43,12 @@
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/tags/direction/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/tags/inflean/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/tags/kubernetes/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/lecture/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/categories/lecture/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/life/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/categories/life/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/tags/parenting/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://kubetm.github.io/tags/paste/</loc>
     <lastmod>2019-11-07T08:26:28-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://kubetm.github.io/tags/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/life/2019-11-07-life-parenting-title1/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/life/2019-11-07-life-parenting-title2/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/lecture/2019-11-07-lecture-beginner-title2/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/lecture/2019-11-07-lecture-beginner-title1/</loc>
     <lastmod>2019-11-07T08:26:28-04:00</lastmod>
   </url>
   
@@ -108,121 +63,8 @@
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/blog/</loc>
-    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/categories/markdown/</loc>
-    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/examples/</loc>
-    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/creating-a-new-theme/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/creating-a-new-theme.pt/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/creating-a-new-theme.fr/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/creating-a-new-theme.de/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/categories/hugo/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/creating-a-new-theme.pl/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://kubetm.github.io/about/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/about/_index.fr/</loc>
-    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/goisforlovers.fr/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/goisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/goisforlovers.pl/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/hugoisforlovers.fr/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/hugoisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/hugoisforlovers.pl/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/categories/go/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/categories/jekyll/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/migrate-from-jekyll.fr/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/migrate-from-jekyll/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/migrate-from-jekyll.pl/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/contact/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/contact/_index.de/</loc>
   </url>
   
 </urlset>
