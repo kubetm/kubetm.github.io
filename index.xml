@@ -12,14 +12,12 @@
     
     
     <item>
-      <title>인프런 강의 초급편 강좌</title>
-      <link>https://kubetm.github.io/lecture/beginner/3-gettingstarted-kubernetes-practice/</link>
+      <title>5-1. Object-Pod</title>
+      <link>https://kubetm.github.io/lecture/beginner/5-1-object-pod-practice/</link>
       <pubDate>Wed, 13 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/lecture/beginner/3-gettingstarted-kubernetes-practice/</guid>
-      <description>바로가기 : https://www.inflearn.com/course/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B8%B0%EC%B4%88#
-3. Getting-started Kubernetes (Practice) Linux hello.js var http = require(&#39;http&#39;); var content = function(req, resp) { resp.end(&amp;quot;Hello Kubernetes!&amp;quot; + &amp;quot;\n&amp;quot;); resp.writeHead(200); } var w = http.createServer(content); w.listen(8000);  node hello.js  Docker Dockerfile FROM node:slim EXPOSE 8000 COPY hello.js . CMD node hello.js  Docker Hub Site https://hub.docker.com/
-Docker Container Run docker build -t tmkube/hello . -t : 레파지토리/이미지명:버전 docker images docker run -d -p 8100:8000 tmkube/hello -d : 백그라운드 모드 -p : 포트변경 docker ps docker exec -it c403442e8a59 /bin/bash  Docker Image Push docker login docker push tmkube/hello  Kubernetes Pod apiVersion: v1 kind: Pod metadata: name: hello-pod labels: app: hello spec: containers: - name: hello-container image: tmkube/hello ports: - containerPort: 8000  Service apiVersion: v1 kind: Service metadata: name: hello-svc spec: selector: app: hello ports: - port: 8200 targetPort: 8000 externalIPs: - 192.</description>
+      <guid>https://kubetm.github.io/lecture/beginner/5-1-object-pod-practice/</guid>
+      <description>1) Container Pod apiVersion: v1 kind: Pod metadata: name: pod-1 spec: containers: - name: container1 image: tmkube/p8000 ports: - containerPort: 8000 - name: container2 image: tmkube/p8080 ports: - containerPort: 8080  ReplicationController apiVersion: v1 kind: ReplicationController metadata: name: replication-1 spec: replicas: 1 selector: app: rc template: metadata: name: pod-1 labels: app: rc spec: containers: - name: container image: tmkube/init  2) Label Pod apiVersion: v1 kind: Pod metadata: name: pod-2 labels: type: web lo: dev spec: containers: - name: container image: tmkube/init  Service apiVersion: v1 kind: Service metadata: name: svc-1 spec: selector: type: web ports: - port: 8080  3) Node Schedule Pod apiVersion: v1 kind: Pod metadata: name: pod-3 spec: nodeSelector: kubernetes.</description>
     </item>
     
     <item>
@@ -38,6 +36,219 @@ Docker Container Run docker build -t tmkube/hello . -t : 레파지토리/이미�
       
       <guid>https://kubetm.github.io/copy-paste/2019-11-06-cp-title1/</guid>
       <description>쿠버네티스 명령어 복사&amp;amp;붙여놓기 1 테스트 중인 페이지 입니다.</description>
+    </item>
+    
+    <item>
+      <title>3. Getting-started Kubernetes</title>
+      <link>https://kubetm.github.io/lecture/beginner/3-gettingstarted-kubernetes-practice/</link>
+      <pubDate>Sun, 13 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/lecture/beginner/3-gettingstarted-kubernetes-practice/</guid>
+      <description>Linux hello.js var http = require(&#39;http&#39;); var content = function(req, resp) { resp.end(&amp;quot;Hello Kubernetes!&amp;quot; + &amp;quot;\n&amp;quot;); resp.writeHead(200); } var w = http.createServer(content); w.listen(8000);  node hello.js  Docker Dockerfile FROM node:slim EXPOSE 8000 COPY hello.js . CMD node hello.js  Docker Hub Site https://hub.docker.com/
+Docker Container Run docker build -t tmkube/hello . -t : 레파지토리/이미지명:버전 docker images docker run -d -p 8100:8000 tmkube/hello -d : 백그라운드 모드 -p : 포트변경 docker ps docker exec -it c403442e8a59 /bin/bash  Docker Image Push docker login docker push tmkube/hello  Kubernetes Pod apiVersion: v1 kind: Pod metadata: name: hello-pod labels: app: hello spec: containers: - name: hello-container image: tmkube/hello ports: - containerPort: 8000  Service apiVersion: v1 kind: Service metadata: name: hello-svc spec: selector: app: hello ports: - port: 8200 targetPort: 8000 externalIPs: - 192.</description>
+    </item>
+    
+    <item>
+      <title>Markdown and Shortcodes</title>
+      <link>https://kubetm.github.io/blog/examples/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/examples/</guid>
+      <description>Thanks! Special thanks to Markdown Cheatsheet.
+H1 H2 H3 H4 H5 H6 Alt-H1 Alt-H2 # H1 ## H2 ### H3 #### H4 ##### H5 ###### H6 Alt-H1 ====== Alt-H2 ------  Emphasis, aka italics, with asterisks or underscores.
+Strong emphasis, aka bold, with asterisks or underscores.
+Combined emphasis with asterisks and underscores.
+Strikethrough uses two tildes. Scratch this.
+Emphasis, aka italics, with *asterisks* or _underscores_. Strong emphasis, aka bold, with **asterisks** or __underscores__.</description>
+    </item>
+    
+    <item>
+      <title>Creating a New Theme</title>
+      <link>https://kubetm.github.io/blog/creating-a-new-theme/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/creating-a-new-theme/</guid>
+      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
+We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
+    </item>
+    
+    <item>
+      <title>Criando um novo tema</title>
+      <link>https://kubetm.github.io/blog/creating-a-new-theme.pt/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/creating-a-new-theme.pt/</guid>
+      <description>Introdução Neste tutorial irei mostrar como criar um simples tema para o Hugo. Assumo que você esteja familiarizado com HTML, linha de comando bash e sinta-se confortável usando Markdown para formatar o conteúdo. Eu vou explicar como o Hugo utiliza templates e como você pode organizar seus templates para criar um tema. Não irei abordar como utilizar CSS para estilizar o seu tema.
+Iniciaremos com a criação de um novo site com um template básico.</description>
+    </item>
+    
+    <item>
+      <title>Créer un nouveau thème</title>
+      <link>https://kubetm.github.io/blog/creating-a-new-theme.fr/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/creating-a-new-theme.fr/</guid>
+      <description>Introduction Ce tutoriel va vous montrer comment créer un thème simple dans Hugo. Je suppose que vous connaissez le langage HTML, la ligne de commande bash, et que vous maîtrisez l&amp;rsquo;utilisation de Markdown pour formater le contenu. Je vais expliquer comment Hugo utilise des modèles et comment vous pouvez organiser vos modèles pour créer un thème. Je ne couvrirai pas l&amp;rsquo;utilisation de CSS pour styliser votre thème.
+Nous allons commencer par créer un nouveau site avec un modèle très basique.</description>
+    </item>
+    
+    <item>
+      <title>Ein neues Thema erstellen</title>
+      <link>https://kubetm.github.io/blog/creating-a-new-theme.de/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/creating-a-new-theme.de/</guid>
+      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
+We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
+    </item>
+    
+    <item>
+      <title>Ein neues Thema erstellen</title>
+      <link>https://kubetm.github.io/recommend/creating-a-new-theme.de/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/recommend/creating-a-new-theme.de/</guid>
+      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
+We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
+    </item>
+    
+    <item>
+      <title>Tworzenie nowego motywu</title>
+      <link>https://kubetm.github.io/blog/creating-a-new-theme.pl/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/creating-a-new-theme.pl/</guid>
+      <description>Wprowadzenie Ten samouczek pokaże Ci, jak stworzyć prosty motyw w Hugo. Zakładam, że jesteś zaznajomiony z HTML, wierszem poleceń basha i że dobrze jest używać Markdown do formatowania treści. Wyjaśnię, w jaki sposób Hugo używa szablonów i jak możesz porządkować szablony, aby utworzyć motyw. Nie będę zajmował się używaniem CSS do stylizacji Twojego motywu.
+Zaczniemy od utworzenia nowej witryny z bardzo podstawowym szablonem. Następnie dodamy kilka stron i postów. Dzięki niewielkim zmianom możesz tworzyć wiele różnych typów stron internetowych.</description>
+    </item>
+    
+    <item>
+      <title>(Hu)go Template Primer</title>
+      <link>https://kubetm.github.io/blog/goisforlovers.fr/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/goisforlovers.fr/</guid>
+      <description>Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
+This document is a brief primer on using go templates.</description>
+    </item>
+    
+    <item>
+      <title>(Hu)go Template Primer</title>
+      <link>https://kubetm.github.io/blog/goisforlovers/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/goisforlovers/</guid>
+      <description>Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
+This document is a brief primer on using go templates.</description>
+    </item>
+    
+    <item>
+      <title>(Hu)go Template Primer</title>
+      <link>https://kubetm.github.io/blog/goisforlovers.pl/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/goisforlovers.pl/</guid>
+      <description>Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
+This document is a brief primer on using go templates.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Hugo</title>
+      <link>https://kubetm.github.io/blog/hugoisforlovers.fr/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/hugoisforlovers.fr/</guid>
+      <description>&lt;h2 id=&#34;step-1-install-hugo&#34;&gt;Step 1. Install Hugo&lt;/h2&gt;
+
+&lt;p&gt;Go to &lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;hugo releases&lt;/a&gt; and download the
+appropriate version for your os and architecture.&lt;/p&gt;
+
+&lt;p&gt;Save it somewhere specific as we will be using it in the next step.&lt;/p&gt;
+
+&lt;p&gt;More complete instructions are available at &lt;a href=&#34;https://kubetm.github.io/overview/installing/&#34;&gt;installing hugo&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Hugo</title>
+      <link>https://kubetm.github.io/blog/hugoisforlovers/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/hugoisforlovers/</guid>
+      <description>&lt;h2 id=&#34;step-1-install-hugo&#34;&gt;Step 1. Install Hugo&lt;/h2&gt;
+
+&lt;p&gt;Go to &lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;hugo releases&lt;/a&gt; and download the
+appropriate version for your os and architecture.&lt;/p&gt;
+
+&lt;p&gt;Save it somewhere specific as we will be using it in the next step.&lt;/p&gt;
+
+&lt;p&gt;More complete instructions are available at &lt;a href=&#34;https://kubetm.github.io/overview/installing/&#34;&gt;installing hugo&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Hugo</title>
+      <link>https://kubetm.github.io/blog/hugoisforlovers.pl/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/hugoisforlovers.pl/</guid>
+      <description>&lt;h2 id=&#34;step-1-install-hugo&#34;&gt;Step 1. Install Hugo&lt;/h2&gt;
+
+&lt;p&gt;Go to &lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;hugo releases&lt;/a&gt; and download the
+appropriate version for your os and architecture.&lt;/p&gt;
+
+&lt;p&gt;Save it somewhere specific as we will be using it in the next step.&lt;/p&gt;
+
+&lt;p&gt;More complete instructions are available at &lt;a href=&#34;https://kubetm.github.io/overview/installing/&#34;&gt;installing hugo&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Migrate to Hugo from Jekyll</title>
+      <link>https://kubetm.github.io/blog/migrate-from-jekyll.fr/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/migrate-from-jekyll.fr/</guid>
+      <description>&lt;h2 id=&#34;move-static-content-to-static&#34;&gt;Move static content to &lt;code&gt;static&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Jekyll has a rule that any directory not starting with &lt;code&gt;_&lt;/code&gt; will be copied as-is to the &lt;code&gt;_site&lt;/code&gt; output. Hugo keeps all static content under &lt;code&gt;static&lt;/code&gt;. You should therefore move it all there.
+With Jekyll, something that looked like&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;▾ &amp;lt;root&amp;gt;/
+    ▾ images/
+        logo.png
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Migrate to Hugo from Jekyll</title>
+      <link>https://kubetm.github.io/blog/migrate-from-jekyll/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/migrate-from-jekyll/</guid>
+      <description>&lt;h2 id=&#34;move-static-content-to-static&#34;&gt;Move static content to &lt;code&gt;static&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Jekyll has a rule that any directory not starting with &lt;code&gt;_&lt;/code&gt; will be copied as-is to the &lt;code&gt;_site&lt;/code&gt; output. Hugo keeps all static content under &lt;code&gt;static&lt;/code&gt;. You should therefore move it all there.
+With Jekyll, something that looked like&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;▾ &amp;lt;root&amp;gt;/
+    ▾ images/
+        logo.png
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Migrate to Hugo from Jekyll</title>
+      <link>https://kubetm.github.io/blog/migrate-from-jekyll.pl/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/blog/migrate-from-jekyll.pl/</guid>
+      <description>&lt;h2 id=&#34;move-static-content-to-static&#34;&gt;Move static content to &lt;code&gt;static&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Jekyll has a rule that any directory not starting with &lt;code&gt;_&lt;/code&gt; will be copied as-is to the &lt;code&gt;_site&lt;/code&gt; output. Hugo keeps all static content under &lt;code&gt;static&lt;/code&gt;. You should therefore move it all there.
+With Jekyll, something that looked like&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;▾ &amp;lt;root&amp;gt;/
+    ▾ images/
+        logo.png
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
   </channel>
