@@ -29,7 +29,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://kubetm.github.io/lecture/" />
 
-<meta property="og:updated_time" content="2019-11-13T00:00:00+00:00" />
+<meta property="og:updated_time" content="2019-11-12T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Lecture"/>
@@ -163,7 +163,7 @@
 
 
 
-<li><a href="//facebook.com/example" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+<li><a href="//facebook.com/https://www.facebook.com/kim.taemin.3517563" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
 
 
 <li><a href="//youtube.com/https://www.youtube.com/channel/UCt6EAJeuLBQehe8uVqrtV7g" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
@@ -199,15 +199,17 @@
   <header>
   <div class="title">
     
-        <h2><a href="/blog/hugoisforlovers.fr/">Getting Started with Hugo</a></h2>
+        <h2><a href="/lecture/beginner/5-5-object-namespace-resourcequota-limitrange-practice/">5-5. Object-Namespace, ResourceQuota, LimitRange</a></h2>
     
+    
+        <p>인프런 초급편 강의자료</p>
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2014-04-02 00:00:00 &#43;0000 UTC">
-      April 2, 2014
+    <time class="published" datetime="0001-01-01 00:00:00 &#43;0000 UTC">
+      January 1, 0001
     </time>
-    <span class="author">Hugo author</span>
+    <span class="author">KubeTM</span>
     
       <p>2 minutes read</p>
     
@@ -215,16 +217,49 @@
 </header>
 
   
-  <a href="/blog/hugoisforlovers.fr/" class="image featured">
-    <img src="/img/2014/04/pic01.jpg" alt="Pic 1">
-  </a>
-
 
   
-  <p>Go to <a href="https://github.com/spf13/hugo/releases">hugo releases</a> and download the
-appropriate version for your os and architecture.</p>
+  <pre><code class="language-yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: nm-1
+</code></pre>
+
+<h3 id="pod">Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+  namespace: nm-1
+  labels:
+    app: pod
+spec:
+  containers:
+  - name: container
+    image: tmkube/app
+    ports:
+    - containerPort: 8080
+</code></pre>
+
+<h3 id="service">Service</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: svc-1
+  namespace: nm-1
+spec:
+  selector:
+    app: pod
+  ports:
+  - port: 9000
+    targetPort: 8080
+</code></pre>
+
+<p>pod ip :</p>
   <footer>
-    <a href="/blog/hugoisforlovers.fr/" class="button big">Read more</a>
+    <a href="/lecture/beginner/5-5-object-namespace-resourcequota-limitrange-practice/" class="button big">Read more</a>
     <ul class="stats">
   
     
@@ -233,7 +268,7 @@ appropriate version for your os and architecture.</p>
         <ul>
           
             
-            <li><a class="article-category-link" href="https://kubetm.github.io/categories/hugo">Hugo</a></li>
+            <li><a class="article-category-link" href="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%B4%88%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C">인프런 초급편 강의자료</a></li>
           
         </ul>
       </li>
@@ -256,32 +291,29 @@ appropriate version for your os and architecture.</p>
   <header>
   <div class="title">
     
-        <h2><a href="/blog/hugoisforlovers/">Getting Started with Hugo</a></h2>
+        <h2><a href="/lecture/beginner/5-1-object-pod-practice/">5. Getting-started Kubernetes</a></h2>
     
+    
+        <p>인프런 초급편 강의자료</p>
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2014-04-02 00:00:00 &#43;0000 UTC">
-      April 2, 2014
+    <time class="published" datetime="0001-01-01 00:00:00 &#43;0000 UTC">
+      January 1, 0001
     </time>
-    <span class="author">Hugo author</span>
+    <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>1 minute read</p>
     
   </div>
 </header>
 
   
-  <a href="/blog/hugoisforlovers/" class="image featured">
-    <img src="/img/2014/04/pic01.jpg" alt="Pic 1">
-  </a>
-
 
   
-  <p>Go to <a href="https://github.com/spf13/hugo/releases">hugo releases</a> and download the
-appropriate version for your os and architecture.</p>
+  
   <footer>
-    <a href="/blog/hugoisforlovers/" class="button big">Read more</a>
+    <a href="/lecture/beginner/5-1-object-pod-practice/" class="button big">Read more</a>
     <ul class="stats">
   
     
@@ -290,7 +322,7 @@ appropriate version for your os and architecture.</p>
         <ul>
           
             
-            <li><a class="article-category-link" href="https://kubetm.github.io/categories/hugo">Hugo</a></li>
+            <li><a class="article-category-link" href="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%B4%88%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C">인프런 초급편 강의자료</a></li>
           
         </ul>
       </li>
@@ -313,32 +345,61 @@ appropriate version for your os and architecture.</p>
   <header>
   <div class="title">
     
-        <h2><a href="/blog/hugoisforlovers.pl/">Getting Started with Hugo</a></h2>
+        <h2><a href="/lecture/beginner/6-1-controller-replication-controller-replicaset-practice/">6-1. Controller-Replication Controller, ReplicaSet</a></h2>
     
+    
+        <p>인프런 초급편 강의자료</p>
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2014-04-02 00:00:00 &#43;0000 UTC">
-      April 2, 2014
+    <time class="published" datetime="0001-01-01 00:00:00 &#43;0000 UTC">
+      January 1, 0001
     </time>
-    <span class="author">Hugo author</span>
+    <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>1 minute read</p>
     
   </div>
 </header>
 
   
-  <a href="/blog/hugoisforlovers.pl/" class="image featured">
-    <img src="/img/2014/04/pic01.jpg" alt="Pic 1">
-  </a>
-
 
   
-  <p>Go to <a href="https://github.com/spf13/hugo/releases">hugo releases</a> and download the
-appropriate version for your os and architecture.</p>
+  <pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+  labels:
+    type: web
+spec:
+  containers:
+  - name: container
+    image: tmkube/app:v1
+  terminationGracePeriodSeconds: 0
+</code></pre>
+
+<h3 id="replicaset">ReplicaSet</h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replica1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: web
+  template:
+    metadata:
+      name: pod1
+      labels:
+        type: web
+    spec:
+      containers:
+      - name: container
+        image: tmkube/app:v1&hellip;</code></pre>
   <footer>
-    <a href="/blog/hugoisforlovers.pl/" class="button big">Read more</a>
+    <a href="/lecture/beginner/6-1-controller-replication-controller-replicaset-practice/" class="button big">Read more</a>
     <ul class="stats">
   
     
@@ -347,7 +408,7 @@ appropriate version for your os and architecture.</p>
         <ul>
           
             
-            <li><a class="article-category-link" href="https://kubetm.github.io/categories/hugo">Hugo</a></li>
+            <li><a class="article-category-link" href="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%B4%88%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C">인프런 초급편 강의자료</a></li>
           
         </ul>
       </li>
@@ -387,41 +448,45 @@ appropriate version for your os and architecture.</p>
       <article class="mini-post">
         <section>
           
-  <a href="/lecture/beginner/5-1-object-pod-practice/" class="image featured">
-    <img src="/img/pic01.jpg" alt="">
+  <a href="/lecture/beginner/7-1-appendix-installation-case3/" class="image featured">
+    <img src="/img/lecture/beginner/install-case3.jpg" alt="">
   </a>
 
 
         </section>
         <header>
-          <h1><a href="/lecture/beginner/5-1-object-pod-practice/">5-1. Object-Pod</a></h1>
-          <time class="published" datetime="">November 13, 2019</time>
+          <h1><a href="/lecture/beginner/7-1-appendix-installation-case3/">7-1. Appendix. Kubernetes Installation - Case 3</a></h1>
+          <time class="published" datetime="">November 12, 2019</time>
         </header>
       </article>
       
       <article class="mini-post">
         <section>
           
-  <a href="/lecture/beginner/3-gettingstarted-kubernetes-practice/" class="image featured">
-    <img src="/img/pic03.jpg" alt="">
+  <a href="/lecture/beginner/7-1-appendix-installation-case2/" class="image featured">
+    <img src="/img/lecture/beginner/install-case2.jpg" alt="">
   </a>
 
 
         </section>
         <header>
-          <h1><a href="/lecture/beginner/3-gettingstarted-kubernetes-practice/">3. Getting-started Kubernetes</a></h1>
-          <time class="published" datetime="">October 13, 2019</time>
+          <h1><a href="/lecture/beginner/7-1-appendix-installation-case2/">7-1. Appendix. Kubernetes Installation - Case 2</a></h1>
+          <time class="published" datetime="">November 11, 2019</time>
         </header>
       </article>
       
       <article class="mini-post">
         <section>
           
+  <a href="/lecture/beginner/7-1-appendix-installation-case1/" class="image featured">
+    <img src="/img/lecture/beginner/install-case1.jpg" alt="">
+  </a>
+
 
         </section>
         <header>
-          <h1><a href="/blog/examples/">Markdown and Shortcodes</a></h1>
-          <time class="published" datetime="">January 1, 2019</time>
+          <h1><a href="/lecture/beginner/7-1-appendix-installation-case1/">7-1. Appendix. Kubernetes Installation - Case1</a></h1>
+          <time class="published" datetime="">November 10, 2019</time>
         </header>
       </article>
       
@@ -443,14 +508,14 @@ appropriate version for your os and architecture.</p>
       <article class="mini-post">
         <section>
           
-  <a href="/blog/creating-a-new-theme.pt/" class="image featured">
-    <img src="/img/2014/09/pic03.jpg" alt="Pic 3">
+  <a href="/recommend/creating-a-new-theme.de/" class="image featured">
+    <img src="/img/pic03.jpg" alt="Pic 3">
   </a>
 
 
         </section>
         <header>
-          <h1><a href="/blog/creating-a-new-theme.pt/">Criando um novo tema</a></h1>
+          <h1><a href="/recommend/creating-a-new-theme.de/">Ein neues Thema erstellen</a></h1>
           <time class="published" datetime="">September 28, 2014</time>
         </header>
       </article>
@@ -474,17 +539,12 @@ appropriate version for your os and architecture.</p>
           
           <li>
             
-              <a href="/categories/hugo/">hugo<span class="count">12</span></a>
+              <a href="/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%B4%88%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/">인프런-초급편-강의자료<span class="count">12</span></a>
             
           
           <li>
             
-              <a href="/categories/go/">go<span class="count">3</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/jekyll/">jekyll<span class="count">3</span></a>
+              <a href="/categories/hugo/">hugo<span class="count">4</span></a>
             
           
           <li>
@@ -494,12 +554,12 @@ appropriate version for your os and architecture.</p>
           
           <li>
             
-              <a href="/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%B4%88%EA%B8%89%ED%8E%B8-%EC%9E%90%EB%A3%8C%EC%8B%A4/">인프런-초급편-자료실<span class="count">2</span></a>
+              <a href="/categories/go/">go<span class="count">1</span></a>
             
           
           <li>
             
-              <a href="/categories/markdown/">markdown<span class="count">1</span></a>
+              <a href="/categories/jekyll/">jekyll<span class="count">1</span></a>
             
           
           </li>
@@ -540,7 +600,7 @@ appropriate version for your os and architecture.</p>
 
 
 
-<li><a href="//facebook.com/example" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+<li><a href="//facebook.com/https://www.facebook.com/kim.taemin.3517563" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
 
 
 <li><a href="//youtube.com/https://www.youtube.com/channel/UCt6EAJeuLBQehe8uVqrtV7g" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
