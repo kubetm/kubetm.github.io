@@ -3,22 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kubetm.github.io/lecture/beginner/7-1-appendix-installation-case3/</loc>
-    <lastmod>2019-11-12T00:00:00+00:00</lastmod>
+    <loc>https://kubetm.github.io/categories/</loc>
+    <lastmod>2019-11-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/categories/</loc>
-    <lastmod>2019-11-12T00:00:00+00:00</lastmod>
+    <loc>https://kubetm.github.io/inflearn/</loc>
+    <lastmod>2019-11-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://kubetm.github.io/</loc>
-    <lastmod>2019-11-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-11-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/lecture/</loc>
+    <loc>https://kubetm.github.io/inflearn/intermediate/2-1-service/</loc>
+    <lastmod>2019-11-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/</loc>
+    <lastmod>2019-11-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/inflearn/beginner/appendix-installation_case3/</loc>
     <lastmod>2019-11-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -28,73 +38,68 @@
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/lecture/beginner/7-1-appendix-installation-case2/</loc>
+    <loc>https://kubetm.github.io/inflearn/beginner/appendix-installation_case2/</loc>
     <lastmod>2019-11-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/lecture/beginner/7-1-appendix-installation-case1/</loc>
+    <loc>https://kubetm.github.io/inflearn/beginner/appendix-installation_case1/</loc>
     <lastmod>2019-11-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/tags/copy/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
+    <loc>https://kubetm.github.io/inflearn/beginner/controller-daemonset_job_cronjob/</loc>
+    <lastmod>2019-11-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/copy-paste/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
+    <loc>https://kubetm.github.io/inflearn/beginner/controller-deployment/</loc>
+    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/categories/copy-paste/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
+    <loc>https://kubetm.github.io/inflearn/beginner/controller-replicationcontroller_replicaset/</loc>
+    <lastmod>2019-11-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/tags/paste/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
+    <loc>https://kubetm.github.io/inflearn/beginner/object-namespace_resourcequota_limitrange/</loc>
+    <lastmod>2019-11-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/tags/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
+    <loc>https://kubetm.github.io/inflearn/beginner/object-configmap_secret/</loc>
+    <lastmod>2019-11-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/copy-paste/2019-11-06-cp-title2/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
+    <loc>https://kubetm.github.io/inflearn/beginner/object-volume/</loc>
+    <lastmod>2019-11-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/copy-paste/2019-11-06-cp-title1/</loc>
-    <lastmod>2019-11-07T08:26:28-04:00</lastmod>
+    <loc>https://kubetm.github.io/inflearn/beginner/object-service/</loc>
+    <lastmod>2019-11-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/blog/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+    <loc>https://kubetm.github.io/inflearn/beginner/object-pod/</loc>
+    <lastmod>2019-11-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/blog/creating-a-new-theme/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+    <loc>https://kubetm.github.io/inflearn/beginner/gettingstarted-kubernetes/</loc>
+    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/recommend/creating-a-new-theme.de/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+    <loc>https://kubetm.github.io/categories/markdown/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/categories/hugo/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/recommend/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+    <loc>https://kubetm.github.io/inflearn/beginner/examples/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -103,73 +108,11 @@
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/about/_index.fr/</loc>
-    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/goisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/hugoisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/categories/go/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/categories/jekyll/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/blog/migrate-from-jekyll/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/lecture/beginner/3-gettingstarted-kubernetes-practice/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/lecture/beginner/5-2-object-service-practice/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/lecture/beginner/5-3-object-volume-practice/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/lecture/beginner/5-4-object-comfigmap-secret-practice/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/lecture/beginner/5-5-object-namespace-resourcequota-limitrange-practice/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/lecture/beginner/5-1-object-pod-practice/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/lecture/beginner/6-1-controller-replication-controller-replicaset-practice/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/lecture/beginner/6-2-controller-deployment/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/lecture/beginner/6-3-controller-daemonset-job-cronjob/</loc>
-  </url>
-  
-  <url>
     <loc>https://kubetm.github.io/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/tags/</loc>
   </url>
   
 </urlset>

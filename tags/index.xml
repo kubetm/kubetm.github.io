@@ -6,28 +6,9 @@
     <description>Recent content in Tags on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 07 Nov 2019 08:26:28 -0400</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>copy</title>
-      <link>https://kubetm.github.io/tags/copy/</link>
-      <pubDate>Thu, 07 Nov 2019 08:26:28 -0400</pubDate>
-      
-      <guid>https://kubetm.github.io/tags/copy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>paste</title>
-      <link>https://kubetm.github.io/tags/paste/</link>
-      <pubDate>Thu, 07 Nov 2019 08:26:28 -0400</pubDate>
-      
-      <guid>https://kubetm.github.io/tags/paste/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>

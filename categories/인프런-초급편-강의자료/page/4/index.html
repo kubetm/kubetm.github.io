@@ -38,7 +38,7 @@
   
 
   <link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
   
     
       <link rel="stylesheet" href="/css/normalize.css">
@@ -48,7 +48,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
       
       
-      <link rel="stylesheet" href="/css/main.min.def756f4cd28354005a37cedc94c36d695bb1b0271e40edf1acf67d865b9ff70.css" integrity="sha256-3vdW9M0oNUAFo3ztyUw21pW7GwJx5A7fGs9n2GW5/3A=">
+      <link rel="stylesheet" href="/css/main.min.fa84523cf3d1f0ab0776d8831b2e064c2fda54ac9b75be477c874dcab1185cf2.css" integrity="sha256-&#43;oRSPPPR8KsHdtiDGy4GTC/aVKybdb5HfIdNyrEYXPI=">
       <link rel="stylesheet" href="/css/add-on.css">
     
   
@@ -200,15 +200,16 @@
   <header>
   <div class="title">
     
-        <h2><a href="/lecture/beginner/6-1-controller-replication-controller-replicaset-practice/">6-1. Controller-Replication Controller, ReplicaSet</a></h2>
+        <p>[2. 기본 오브젝트]</p>
+      
     
-    
-        <p>인프런 초급편 강의자료</p>
+        <h2>Service</h2>
     
 </div>
+
   <div class="meta">
-    <time class="published" datetime="0001-01-01 00:00:00 &#43;0000 UTC">
-      January 1, 0001
+    <time class="published" datetime="2019-11-03 00:00:00 &#43;0000 UTC">
+      November 3, 2019
     </time>
     <span class="author">KubeTM</span>
     
@@ -220,41 +221,9 @@
   
 
   
-  <pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod1
-  labels:
-    type: web
-spec:
-  containers:
-  - name: container
-    image: tmkube/app:v1
-  terminationGracePeriodSeconds: 0
-</code></pre>
-
-<h3 id="replicaset">ReplicaSet</h3>
-
-<pre><code class="language-yaml">apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-  name: replica1
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      type: web
-  template:
-    metadata:
-      name: pod1
-      labels:
-        type: web
-    spec:
-      containers:
-      - name: container
-        image: tmkube/app:v1&hellip;</code></pre>
+  
   <footer>
-    <a href="/lecture/beginner/6-1-controller-replication-controller-replicaset-practice/" class="button big">Read more</a>
+    <a href="/inflearn/beginner/object-service/" class="button big" style="background-color: #3371e3">내용 더보기</a>
     <ul class="stats">
   
     
@@ -286,15 +255,16 @@ spec:
   <header>
   <div class="title">
     
-        <h2><a href="/lecture/beginner/6-2-controller-deployment/">6-2. Deployment</a></h2>
+        <p>[2. 기본 오브젝트]</p>
+      
     
-    
-        <p>인프런 초급편 강의자료</p>
+        <h2>Pod</h2>
     
 </div>
+
   <div class="meta">
-    <time class="published" datetime="0001-01-01 00:00:00 &#43;0000 UTC">
-      January 1, 0001
+    <time class="published" datetime="2019-11-02 00:00:00 &#43;0000 UTC">
+      November 2, 2019
     </time>
     <span class="author">KubeTM</span>
     
@@ -308,7 +278,7 @@ spec:
   
   
   <footer>
-    <a href="/lecture/beginner/6-2-controller-deployment/" class="button big">Read more</a>
+    <a href="/inflearn/beginner/object-pod/" class="button big" style="background-color: #3371e3">내용 더보기</a>
     <ul class="stats">
   
     
@@ -340,19 +310,20 @@ spec:
   <header>
   <div class="title">
     
-        <h2><a href="/lecture/beginner/6-3-controller-daemonset-job-cronjob/">6-3. DaemonSet, Job, CronJob</a></h2>
+        <p>[1. 기초다지기]</p>
+      
     
-    
-        <p>인프런 초급편 강의자료</p>
+        <h2>Getting-started Kubernetes</h2>
     
 </div>
+
   <div class="meta">
-    <time class="published" datetime="0001-01-01 00:00:00 &#43;0000 UTC">
-      January 1, 0001
+    <time class="published" datetime="2019-11-01 00:00:00 &#43;0000 UTC">
+      November 1, 2019
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>1 minute read</p>
     
   </div>
 </header>
@@ -360,44 +331,33 @@ spec:
   
 
   
-  <pre><code class="language-yaml">apiVersion: apps/v1
-kind: DaemonSet
-metadata:
-  name: daemonset-1
-spec:
-  selector:
-    matchLabels:
-      type: app
-  template:
-    metadata:
-      labels:
-        type: app
-    spec:
-      containers:
-      - name: container
-        image: tmkube/app
-        ports:
-        - containerPort: 8080
-          hostPort: 18080
+  <pre><code class="language-javascript">var http = require('http');
+var content = function(req, resp) {
+ resp.end(&quot;Hello Kubernetes!&quot; + &quot;\n&quot;);
+ resp.writeHead(200);
+}
+var w = http.createServer(content);
+w.listen(8000);
 </code></pre>
 
-<h3 id="command">Command</h3>
-
-<pre><code class="language-sh">curl 192.168.0.31:18080/hostname
+<pre><code class="language-sh">node hello.js
 </code></pre>
 
-<h2 id="1-2-daemonset-nodeselector">1-2) DaemonSet - NodeSelector</h2>
+<h2 id="docker">Docker</h2>
 
-<h3 id="daemonset-1">DaemonSet</h3>
+<h3 id="dockerfile">Dockerfile</h3>
 
-<pre><code class="language-yaml">apiVersion: apps/v1
-kind: DaemonSet
-metadata:
-  name: daemonset-2
-spec:
-  selector:&hellip;</code></pre>
+<pre><code class="language-sh">FROM node:slim
+EXPOSE 8000
+COPY hello.js .
+CMD node hello.js
+</code></pre>
+
+<h3 id="docker-hub-site">Docker Hub Site</h3>
+
+<p><a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
   <footer>
-    <a href="/lecture/beginner/6-3-controller-daemonset-job-cronjob/" class="button big">Read more</a>
+    <a href="/inflearn/beginner/gettingstarted-kubernetes/" class="button big" style="background-color: #3371e3">내용 더보기</a>
     <ul class="stats">
   
     
@@ -446,14 +406,25 @@ spec:
       <article class="mini-post">
         <section>
           
-  <a href="/lecture/beginner/7-1-appendix-installation-case3/" class="image featured">
-    <img src="/img/lecture/beginner/install-case3.jpg" alt="">
+
+        </section>
+        <header>
+          <h1><a href="/inflearn/intermediate/2-1-service/">Service</a></h1>
+          <time class="published" datetime="">November 16, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/inflearn/beginner/appendix-installation_case3/" class="image featured">
+    <img src="/img/inflearn/beginner/install-case3.jpg" alt="">
   </a>
 
 
         </section>
         <header>
-          <h1><a href="/lecture/beginner/7-1-appendix-installation-case3/">7-1. Appendix. Kubernetes Installation - Case 3</a></h1>
+          <h1><a href="/inflearn/beginner/appendix-installation_case3/">Kubernetes 설치 - Case 3</a></h1>
           <time class="published" datetime="">November 12, 2019</time>
         </header>
       </article>
@@ -461,14 +432,14 @@ spec:
       <article class="mini-post">
         <section>
           
-  <a href="/lecture/beginner/7-1-appendix-installation-case2/" class="image featured">
-    <img src="/img/lecture/beginner/install-case2.jpg" alt="">
+  <a href="/inflearn/beginner/appendix-installation_case2/" class="image featured">
+    <img src="/img/inflearn/beginner/install-case2.jpg" alt="">
   </a>
 
 
         </section>
         <header>
-          <h1><a href="/lecture/beginner/7-1-appendix-installation-case2/">7-1. Appendix. Kubernetes Installation - Case 2</a></h1>
+          <h1><a href="/inflearn/beginner/appendix-installation_case2/">Kubernetes 설치 - Case 2</a></h1>
           <time class="published" datetime="">November 11, 2019</time>
         </header>
       </article>
@@ -476,14 +447,14 @@ spec:
       <article class="mini-post">
         <section>
           
-  <a href="/lecture/beginner/7-1-appendix-installation-case1/" class="image featured">
-    <img src="/img/lecture/beginner/install-case1.jpg" alt="">
+  <a href="/inflearn/beginner/appendix-installation_case1/" class="image featured">
+    <img src="/img/inflearn/beginner/install-case1.jpg" alt="">
   </a>
 
 
         </section>
         <header>
-          <h1><a href="/lecture/beginner/7-1-appendix-installation-case1/">7-1. Appendix. Kubernetes Installation - Case1</a></h1>
+          <h1><a href="/inflearn/beginner/appendix-installation_case1/">Kubernetes 설치 - Case1</a></h1>
           <time class="published" datetime="">November 10, 2019</time>
         </header>
       </article>
@@ -491,35 +462,16 @@ spec:
       <article class="mini-post">
         <section>
           
-  <a href="/blog/creating-a-new-theme/" class="image featured">
-    <img src="/img/2014/09/pic03.jpg" alt="Pic 3">
-  </a>
-
 
         </section>
         <header>
-          <h1><a href="/blog/creating-a-new-theme/">Creating a New Theme</a></h1>
-          <time class="published" datetime="">September 28, 2014</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-  <a href="/recommend/creating-a-new-theme.de/" class="image featured">
-    <img src="/img/pic03.jpg" alt="Pic 3">
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/recommend/creating-a-new-theme.de/">Ein neues Thema erstellen</a></h1>
-          <time class="published" datetime="">September 28, 2014</time>
+          <h1><a href="/inflearn/beginner/controller-daemonset_job_cronjob/">DaemonSet, Job, CronJob</a></h1>
+          <time class="published" datetime="">November 9, 2019</time>
         </header>
       </article>
       
       
-        <a href="/blog/" class="button">See more</a>
+        <a href="/blog/" class="button">더보기</a>
       
     </section>
   
@@ -542,22 +494,12 @@ spec:
           
           <li>
             
-              <a href="/categories/hugo/">hugo<span class="count">4</span></a>
+              <a href="/categories/markdown/">markdown<span class="count">1</span></a>
             
           
           <li>
             
-              <a href="/categories/copy-paste/">copy-paste<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/go/">go<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/jekyll/">jekyll<span class="count">1</span></a>
+              <a href="/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/">인프런-중급편-강의자료<span class="count">1</span></a>
             
           
           </li>
@@ -638,7 +580,7 @@ spec:
 
       
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/html.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/css.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/js.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/toml.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/yaml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/yaml.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/groovy.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 
 

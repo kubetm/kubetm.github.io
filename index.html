@@ -29,7 +29,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://kubetm.github.io/" />
 
-<meta property="og:updated_time" content="2019-11-12T00:00:00+00:00" />
+<meta property="og:updated_time" content="2019-11-16T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="KubeTM Blog"/>
@@ -38,7 +38,7 @@
   
 
   <link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
   
     
       <link rel="stylesheet" href="/css/normalize.css">
@@ -48,7 +48,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
       
       
-      <link rel="stylesheet" href="/css/main.min.def756f4cd28354005a37cedc94c36d695bb1b0271e40edf1acf67d865b9ff70.css" integrity="sha256-3vdW9M0oNUAFo3ztyUw21pW7GwJx5A7fGs9n2GW5/3A=">
+      <link rel="stylesheet" href="/css/main.min.fa84523cf3d1f0ab0776d8831b2e064c2fda54ac9b75be477c874dcab1185cf2.css" integrity="sha256-&#43;oRSPPPR8KsHdtiDGy4GTC/aVKybdb5HfIdNyrEYXPI=">
       <link rel="stylesheet" href="/css/add-on.css">
     
   
@@ -197,12 +197,109 @@
   <header>
   <div class="title">
     
-        <h2><a href="/lecture/beginner/7-1-appendix-installation-case3/">7-1. Appendix. Kubernetes Installation - Case 3</a></h2>
+        <p>[5. 기본 오브젝트 상세]</p>
+      
     
-    
-        <p>인프런 초급편 강의자료</p>
+        <h2>Service</h2>
     
 </div>
+
+  <div class="meta">
+    <time class="published" datetime="2019-11-16 00:00:00 &#43;0000 UTC">
+      November 16, 2019
+    </time>
+    <span class="author">KubeTM</span>
+    
+      <p>2 minutes read</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  <pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: clusterip1
+spec:
+  selector:
+    svc: clusterip
+  ports:
+  - port: 80
+    targetPort: 8080
+</code></pre>
+
+<h3 id="pod">Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+  labels:
+    svc: clusterip
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+</code></pre>
+
+<h3 id="request-pod">Request Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: request-pod
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+</code></pre>
+
+<pre><code class="language-sh">kubectl exec request-pod -it /bin/bash
+</code></pre>
+
+<p>nslookup</p>
+  <footer>
+    <a href="/inflearn/intermediate/2-1-service/" class="button big" style="background-color: #3371e3">내용 더보기</a>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C">인프런 중급편 강의자료</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+        
+          <article class="post">
+  <header>
+  <div class="title">
+    
+        <p>[4. 부록]</p>
+      
+    
+        <h2>Kubernetes 설치 - Case 3</h2>
+    
+</div>
+
   <div class="meta">
     <time class="published" datetime="2019-11-12 00:00:00 &#43;0000 UTC">
       November 12, 2019
@@ -215,8 +312,8 @@
 </header>
 
   
-  <a href="/lecture/beginner/7-1-appendix-installation-case3/" class="image featured">
-    <img src="/img/lecture/beginner/install-case3.jpg" alt="">
+  <a href="/inflearn/beginner/appendix-installation_case3/" class="image featured">
+    <img src="/img/inflearn/beginner/install-case3.jpg" alt="">
   </a>
 
 
@@ -227,7 +324,7 @@
 <br/>
 <br/></p>
   <footer>
-    <a href="/lecture/beginner/7-1-appendix-installation-case3/" class="button big">Read more</a>
+    <a href="/inflearn/beginner/appendix-installation_case3/" class="button big" style="background-color: #3371e3">내용 더보기</a>
     <ul class="stats">
   
     
@@ -259,12 +356,13 @@
   <header>
   <div class="title">
     
-        <h2><a href="/lecture/beginner/7-1-appendix-installation-case2/">7-1. Appendix. Kubernetes Installation - Case 2</a></h2>
+        <p>[4. 부록]</p>
+      
     
-    
-        <p>인프런 초급편 강의자료</p>
+        <h2>Kubernetes 설치 - Case 2</h2>
     
 </div>
+
   <div class="meta">
     <time class="published" datetime="2019-11-11 00:00:00 &#43;0000 UTC">
       November 11, 2019
@@ -277,8 +375,8 @@
 </header>
 
   
-  <a href="/lecture/beginner/7-1-appendix-installation-case2/" class="image featured">
-    <img src="/img/lecture/beginner/install-case2.jpg" alt="">
+  <a href="/inflearn/beginner/appendix-installation_case2/" class="image featured">
+    <img src="/img/inflearn/beginner/install-case2.jpg" alt="">
   </a>
 
 
@@ -289,69 +387,7 @@
 <br/>
 <br/></p>
   <footer>
-    <a href="/lecture/beginner/7-1-appendix-installation-case2/" class="button big">Read more</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%B4%88%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C">인프런 초급편 강의자료</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-    <li class="tags">
-      <ul>
-        <li>None</li>
-      </ul>
-    </li>
-  
-</ul>
-
-  </footer>
-</article>
-
-        
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2><a href="/lecture/beginner/7-1-appendix-installation-case1/">7-1. Appendix. Kubernetes Installation - Case1</a></h2>
-    
-    
-        <p>인프런 초급편 강의자료</p>
-    
-</div>
-  <div class="meta">
-    <time class="published" datetime="2019-11-10 00:00:00 &#43;0000 UTC">
-      November 10, 2019
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>8 minutes read</p>
-    
-  </div>
-</header>
-
-  
-  <a href="/lecture/beginner/7-1-appendix-installation-case1/" class="image featured">
-    <img src="/img/lecture/beginner/install-case1.jpg" alt="">
-  </a>
-
-
-  
-  <p><br/>
-남는 Server나 Netebook이 1대 있고, 그 서버 자체를 처음부터 구성하는 경우 그 서버의 CentOS 설치부터 가이드 시작..
-<br/>
-<br/>
-<br/></p>
-  <footer>
-    <a href="/lecture/beginner/7-1-appendix-installation-case1/" class="button big">Read more</a>
+    <a href="/inflearn/beginner/appendix-installation_case2/" class="button big" style="background-color: #3371e3">내용 더보기</a>
     <ul class="stats">
   
     
@@ -400,14 +436,25 @@
       <article class="mini-post">
         <section>
           
-  <a href="/lecture/beginner/7-1-appendix-installation-case3/" class="image featured">
-    <img src="/img/lecture/beginner/install-case3.jpg" alt="">
+
+        </section>
+        <header>
+          <h1><a href="/inflearn/intermediate/2-1-service/">Service</a></h1>
+          <time class="published" datetime="">November 16, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/inflearn/beginner/appendix-installation_case3/" class="image featured">
+    <img src="/img/inflearn/beginner/install-case3.jpg" alt="">
   </a>
 
 
         </section>
         <header>
-          <h1><a href="/lecture/beginner/7-1-appendix-installation-case3/">7-1. Appendix. Kubernetes Installation - Case 3</a></h1>
+          <h1><a href="/inflearn/beginner/appendix-installation_case3/">Kubernetes 설치 - Case 3</a></h1>
           <time class="published" datetime="">November 12, 2019</time>
         </header>
       </article>
@@ -415,14 +462,14 @@
       <article class="mini-post">
         <section>
           
-  <a href="/lecture/beginner/7-1-appendix-installation-case2/" class="image featured">
-    <img src="/img/lecture/beginner/install-case2.jpg" alt="">
+  <a href="/inflearn/beginner/appendix-installation_case2/" class="image featured">
+    <img src="/img/inflearn/beginner/install-case2.jpg" alt="">
   </a>
 
 
         </section>
         <header>
-          <h1><a href="/lecture/beginner/7-1-appendix-installation-case2/">7-1. Appendix. Kubernetes Installation - Case 2</a></h1>
+          <h1><a href="/inflearn/beginner/appendix-installation_case2/">Kubernetes 설치 - Case 2</a></h1>
           <time class="published" datetime="">November 11, 2019</time>
         </header>
       </article>
@@ -430,14 +477,14 @@
       <article class="mini-post">
         <section>
           
-  <a href="/lecture/beginner/7-1-appendix-installation-case1/" class="image featured">
-    <img src="/img/lecture/beginner/install-case1.jpg" alt="">
+  <a href="/inflearn/beginner/appendix-installation_case1/" class="image featured">
+    <img src="/img/inflearn/beginner/install-case1.jpg" alt="">
   </a>
 
 
         </section>
         <header>
-          <h1><a href="/lecture/beginner/7-1-appendix-installation-case1/">7-1. Appendix. Kubernetes Installation - Case1</a></h1>
+          <h1><a href="/inflearn/beginner/appendix-installation_case1/">Kubernetes 설치 - Case1</a></h1>
           <time class="published" datetime="">November 10, 2019</time>
         </header>
       </article>
@@ -445,35 +492,16 @@
       <article class="mini-post">
         <section>
           
-  <a href="/blog/creating-a-new-theme/" class="image featured">
-    <img src="/img/2014/09/pic03.jpg" alt="Pic 3">
-  </a>
-
 
         </section>
         <header>
-          <h1><a href="/blog/creating-a-new-theme/">Creating a New Theme</a></h1>
-          <time class="published" datetime="">September 28, 2014</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-  <a href="/recommend/creating-a-new-theme.de/" class="image featured">
-    <img src="/img/pic03.jpg" alt="Pic 3">
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/recommend/creating-a-new-theme.de/">Ein neues Thema erstellen</a></h1>
-          <time class="published" datetime="">September 28, 2014</time>
+          <h1><a href="/inflearn/beginner/controller-daemonset_job_cronjob/">DaemonSet, Job, CronJob</a></h1>
+          <time class="published" datetime="">November 9, 2019</time>
         </header>
       </article>
       
       
-        <a href="/blog/" class="button">See more</a>
+        <a href="/blog/" class="button">더보기</a>
       
     </section>
   
@@ -496,22 +524,12 @@
           
           <li>
             
-              <a href="/categories/hugo/">hugo<span class="count">4</span></a>
+              <a href="/categories/markdown/">markdown<span class="count">1</span></a>
             
           
           <li>
             
-              <a href="/categories/copy-paste/">copy-paste<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/go/">go<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/jekyll/">jekyll<span class="count">1</span></a>
+              <a href="/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/">인프런-중급편-강의자료<span class="count">1</span></a>
             
           
           </li>
@@ -592,7 +610,7 @@
 
       
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/html.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/css.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/js.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/toml.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/yaml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/yaml.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/groovy.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 
 
