@@ -4,31 +4,36 @@
   
   <url>
     <loc>https://kubetm.github.io/categories/</loc>
-    <lastmod>2019-11-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/inflearn/</loc>
-    <lastmod>2019-11-16T00:00:00+00:00</lastmod>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://kubetm.github.io/</loc>
-    <lastmod>2019-11-16T00:00:00+00:00</lastmod>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/inflearn/intermediate/2-1-service/</loc>
-    <lastmod>2019-11-16T00:00:00+00:00</lastmod>
+    <loc>https://kubetm.github.io/inflearn/intermediate/object-volume/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/inflearn/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/inflearn/intermediate/object-service/</loc>
     <lastmod>2019-11-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/inflearn/beginner/appendix-installation_case3/</loc>
+    <loc>https://kubetm.github.io/inflearn/appendix/installation_case3/</loc>
     <lastmod>2019-11-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -38,12 +43,12 @@
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/inflearn/beginner/appendix-installation_case2/</loc>
+    <loc>https://kubetm.github.io/inflearn/appendix/installation_case2/</loc>
     <lastmod>2019-11-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/inflearn/beginner/appendix-installation_case1/</loc>
+    <loc>https://kubetm.github.io/inflearn/appendix/installation_case1/</loc>
     <lastmod>2019-11-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -100,15 +105,6 @@
   <url>
     <loc>https://kubetm.github.io/inflearn/beginner/examples/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/about/</loc>
-    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/contact/</loc>
   </url>
   
   <url>

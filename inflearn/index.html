@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Inflearn - KubeTM Blog</title>
+<title>자료실 목차 - KubeTM Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -20,19 +20,19 @@
 
 
   <meta name="generator" content="Hugo 0.59.1" />
-  <meta itemprop="name" content="Inflearn">
+  <meta itemprop="name" content="자료실 목차">
 <meta itemprop="description" content="">
 
 
-  <meta property="og:title" content="Inflearn" />
+  <meta property="og:title" content="자료실 목차" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://kubetm.github.io/inflearn/" />
 
-<meta property="og:updated_time" content="2019-11-16T00:00:00+00:00" />
+<meta property="og:updated_time" content="2019-11-21T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Inflearn"/>
+<meta name="twitter:title" content="자료실 목차"/>
 <meta name="twitter:description" content=""/>
 
   
@@ -48,7 +48,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
       
       
-      <link rel="stylesheet" href="/css/main.min.fa84523cf3d1f0ab0776d8831b2e064c2fda54ac9b75be477c874dcab1185cf2.css" integrity="sha256-&#43;oRSPPPR8KsHdtiDGy4GTC/aVKybdb5HfIdNyrEYXPI=">
+      <link rel="stylesheet" href="/css/main.min.6ae34c903d0093839ba024c11e854e4b6650a808f1ad21e27c3626d28a980add.css" integrity="sha256-auNMkD0Ak4OboCTBHoVOS2ZQqAjxrSHifDYm0oqYCt0=">
       <link rel="stylesheet" href="/css/add-on.css">
     
   
@@ -65,10 +65,9 @@
   <nav id="site-nav">
     <h1 class="nav-title">
       <a href="/">
+      	<img src="/img/main/kubernetes-logo.png"  style="max-width: 26px; height: auto;" alt="KubeTM Blog"/>
         
-          
-            inflearn
-          
+          KubeTM Blog
         
       </a>
     </h1>
@@ -84,52 +83,21 @@
         
           
           
-            <a href="/about/" class="link"><i class='far fa-id-card'></i> About</a>
+            <a href="/inflearn/" class="link"><i class='far fa-newspaper'></i> 쿠버네티스 강좌 자료실</a>
           
         
       
-        
-          
-          
-            <a href="/blog/" class="link"><i class='far fa-newspaper'></i> Blog</a>
-          
-        
       
-        
-          
-          
-            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
-          
-        
-      
-        
-          
-          
-            <a href="/contact/" class="link"><i class='far fa-envelope'></i> Contact</a>
-          
-        
-      
-      <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
       
 
     </menu>
     
 
-    <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    
     
     <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
   </nav>
   
-  
-    <menu id="share-menu" class="flyout-menu">
-      <h1>Share Post</h1>
-      
-
-
-
-
-
-    </menu>
   
 </header>
 
@@ -193,418 +161,93 @@
 </section>
 
       <main id="site-main">
-        
-        
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <p>[5. 기본 오브젝트 상세]</p>
-      
-    
-        <h2>Service</h2>
-    
-</div>
-
-  <div class="meta">
-    <time class="published" datetime="2019-11-16 00:00:00 &#43;0000 UTC">
-      November 16, 2019
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>2 minutes read</p>
-    
-  </div>
-</header>
-
-  
-  <a href="/inflearn/intermediate/2-1-service/" class="image featured">
-    <img src="/img/inflearn/intermediate/service-head.jpg" alt="">
-  </a>
-
-
-  
-  <pre><code class="language-yaml">apiVersion: v1
-kind: Service
-metadata:
-  name: clusterip1
-spec:
-  selector:
-    svc: clusterip
-  ports:
-  - port: 80
-    targetPort: 8080
-</code></pre>
-
-<h3 id="pod">Pod</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod1
-  labels:
-    svc: clusterip
-spec:
-  containers:
-  - name: container
-    image: kubetm/app
-</code></pre>
-
-<h3 id="request-pod">Request Pod</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: request-pod
-spec:
-  containers:
-  - name: container
-    image: kubetm/init
-</code></pre>
-
-<pre><code class="language-sh">kubectl exec request-pod -it /bin/bash
-</code></pre>
-
-<p>nslookup</p>
-  <footer>
-    <a href="/inflearn/intermediate/2-1-service/" class="button big" style="background-color: #3371e3">내용 더보기</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
+        <article class="post">
+          <header>
+            <div class="title">
+              
+                <h2><a href="/inflearn/">자료실 목차</a></h2>
+              
+              
+            </div>
+          </header>
+          <div id="content">
             
-            <li><a class="article-category-link" href="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C">인프런 중급편 강의자료</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-    <li class="tags">
-      <ul>
-        <li>None</li>
-      </ul>
-    </li>
-  
-</ul>
 
-  </footer>
-</article>
-
-        
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <p>[4. 부록]</p>
-      
-    
-        <h2>Kubernetes 설치 - Case 3</h2>
-    
-</div>
-
-  <div class="meta">
-    <time class="published" datetime="2019-11-12 00:00:00 &#43;0000 UTC">
-      November 12, 2019
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>2 minutes read</p>
-    
-  </div>
-</header>
-
-  
-  <a href="/inflearn/beginner/appendix-installation_case3/" class="image featured">
-    <img src="/img/inflearn/beginner/install-case3.jpg" alt="">
-  </a>
-
-
-  
-  <p><br/>
-구글 클라우드 플랫폼을 이용해서 VM을 만드는 경우
-<br/>
+<p><br/>
 <br/>
 <br/></p>
-  <footer>
-    <a href="/inflearn/beginner/appendix-installation_case3/" class="button big" style="background-color: #3371e3">내용 더보기</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%B4%88%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C">인프런 초급편 강의자료</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-    <li class="tags">
-      <ul>
-        <li>None</li>
-      </ul>
-    </li>
-  
+
+<h3 id="초급편-기초-다지기">초급편 - 기초 다지기</h3>
+
+<hr />
+
+<ul>
+<li><a href="https://kubetm.github.io/inflearn/beginner/gettingstarted-kubernetes">Hello Kubernetes!</a></li>
 </ul>
 
-  </footer>
-</article>
-
-        
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <p>[4. 부록]</p>
-      
-    
-        <h2>Kubernetes 설치 - Case 2</h2>
-    
-</div>
-
-  <div class="meta">
-    <time class="published" datetime="2019-11-11 00:00:00 &#43;0000 UTC">
-      November 11, 2019
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>6 minutes read</p>
-    
-  </div>
-</header>
-
-  
-  <a href="/inflearn/beginner/appendix-installation_case2/" class="image featured">
-    <img src="/img/inflearn/beginner/install-case2.jpg" alt="">
-  </a>
-
-
-  
-  <p><br/>
-윈도우나 맥이 설치되어 있는 Desktop가 1대 있고, 그위에 VirtualBox와 같은 도구를 이용해서 VM을 만드는 경우
-<br/>
-<br/>
+<p><br/>
 <br/></p>
-  <footer>
-    <a href="/inflearn/beginner/appendix-installation_case2/" class="button big" style="background-color: #3371e3">내용 더보기</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%B4%88%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C">인프런 초급편 강의자료</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-    <li class="tags">
-      <ul>
-        <li>None</li>
-      </ul>
-    </li>
-  
+
+<h3 id="초급편-기본-오브젝트">초급편 - 기본 오브젝트</h3>
+
+<hr />
+
+<ul>
+<li><a href="https://kubetm.github.io/inflearn/beginner/object-pod">Pod</a></li>
+<li><a href="https://kubetm.github.io/inflearn/beginner/object-service">Service</a></li>
+<li><a href="https://kubetm.github.io/inflearn/beginner/object-volume">Volume</a></li>
+<li><a href="https://kubetm.github.io/inflearn/beginner/object-configmap_secret">ConfigMap, Secret</a></li>
+<li><a href="https://kubetm.github.io/inflearn/beginner/object-namespace_resourcequota_limitrange">Namespace, ResourceQuota, LimitRange</a></li>
 </ul>
 
-  </footer>
-</article>
+<p><br/>
+<br/></p>
 
-        
-        
-<div class="pagination">
-  
-    <a href="#" class="disabled button big previous"><i class="fas fa-angle-left"></i></a>
-  
-  
-    <a href="/inflearn/page/2/" class="button big next"><i class="fas fa-angle-right"></i></a>
-  
-</div>
+<h3 id="초급편-컨트롤러">초급편 - 컨트롤러</h3>
 
+<hr />
+
+<ul>
+<li><a href="https://kubetm.github.io/inflearn/beginner/controller-replicationcontroller_replicaset">ReplicaSet, Replication Controller</a></li>
+<li><a href="https://kubetm.github.io/inflearn/beginner/controller-deployment">Deployment</a></li>
+<li><a href="https://kubetm.github.io/inflearn/beginner/controller-daemonset_job_cronjob">DaemonSet, Job, CronJob</a></li>
+</ul>
+
+<p><br/>
+<br/></p>
+
+<h3 id="부록">부록</h3>
+
+<hr />
+
+<ul>
+<li><a href="https://kubetm.github.io/inflearn/appendix/installation_case1">Case1 - 서버전용</a></li>
+<li><a href="https://kubetm.github.io/inflearn/appendix/installation_case2">Case2 - 내PC + VirtualBox</a></li>
+<li><a href="https://kubetm.github.io/inflearn/appendix/installation_case3">Case3 - 구글 클라우드 플랫폼</a></li>
+</ul>
+
+<p><br/>
+<br/></p>
+
+<h3 id="중급편">중급편</h3>
+
+<hr />
+
+<ul>
+<li><a href="https://kubetm.github.io/inflearn/intermediate/controller-deployment">Service</a></li>
+<li><a href="https://kubetm.github.io/inflearn/intermediate/controller-deployment">Volume</a></li>
+</ul>
+
+          </div>
+        </article>
       </main>
       <section id="site-sidebar">
-  
-    <section id="recent-posts">
-      <header>
-        <h1>Recent posts</h1>
-      </header>
-      
-      <article class="mini-post">
-        <section>
-          
-  <a href="/inflearn/intermediate/2-1-service/" class="image featured">
-    <img src="/img/inflearn/intermediate/service-head.jpg" alt="">
-  </a>
 
-
-        </section>
-        <header>
-          <h1><a href="/inflearn/intermediate/2-1-service/">Service</a></h1>
-          <time class="published" datetime="">November 16, 2019</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-  <a href="/inflearn/beginner/appendix-installation_case3/" class="image featured">
-    <img src="/img/inflearn/beginner/install-case3.jpg" alt="">
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/inflearn/beginner/appendix-installation_case3/">Kubernetes 설치 - Case 3</a></h1>
-          <time class="published" datetime="">November 12, 2019</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-  <a href="/inflearn/beginner/appendix-installation_case2/" class="image featured">
-    <img src="/img/inflearn/beginner/install-case2.jpg" alt="">
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/inflearn/beginner/appendix-installation_case2/">Kubernetes 설치 - Case 2</a></h1>
-          <time class="published" datetime="">November 11, 2019</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-  <a href="/inflearn/beginner/appendix-installation_case1/" class="image featured">
-    <img src="/img/inflearn/beginner/install-case1.jpg" alt="">
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/inflearn/beginner/appendix-installation_case1/">Kubernetes 설치 - Case1</a></h1>
-          <time class="published" datetime="">November 10, 2019</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h1><a href="/inflearn/beginner/controller-daemonset_job_cronjob/">DaemonSet, Job, CronJob</a></h1>
-          <time class="published" datetime="">November 9, 2019</time>
-        </header>
-      </article>
-      
-      
-        <a href="/blog/" class="button">더보기</a>
-      
-    </section>
-  
 
   
-    
-      <section id="categories">
-        <header>
-          <h1><a href="/categories">Categories</a></h1>
-        </header>
-        <ul>
-          
-            
-          
-          
-          <li>
-            
-              <a href="/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%B4%88%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/">인프런-초급편-강의자료<span class="count">12</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/markdown/">markdown<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/">인프런-중급편-강의자료<span class="count">1</span></a>
-            
-          
-          </li>
-        </ul>
-      </section>
-    
-  
-
-  <section id="mini-bio">
-    <header>
-      <h1>About</h1>
-    </header>
-    <p>test</p>
-    <footer>
-      <a href="/about" class="button">Learn More</a>
-    </footer>
-  </section>
 </section>
 
       <footer id="site-footer">
-  
-      <ul class="socnet-icons">
-        
-        
-
-
-
-
-
-
-
-
-
-
-
-<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
-
-
-
-
-<li><a href="//facebook.com/https://www.facebook.com/kim.taemin.3517563" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
-
-
-<li><a href="//youtube.com/https://www.youtube.com/channel/UCt6EAJeuLBQehe8uVqrtV7g" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<li><a href="mailto:kube.taemin@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
-
-      </ul>
   
   <p class="copyright">
     
@@ -613,7 +256,7 @@ spec:
         KubeTM Blog
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.59.1' target='_blank' rel='noopener'>Hugo</a>
+    Copyright 2019. Kimtaemin all rights reserved.
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

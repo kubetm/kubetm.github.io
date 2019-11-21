@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Volume - KubeTM Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png?v=1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png?v=1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png?v=1">
+  <link rel="manifest" href="/favicon/site.webmanifest?v=1">
+  
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg?v=1" color="#ffffff">
+    <link rel="shortcut icon" href="/favicon/favicon.ico?v=1">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml?v=1">
+  
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
+
+  <meta name="generator" content="Hugo 0.59.1" />
+  <meta itemprop="name" content="Volume">
+<meta itemprop="description" content="[5. 기본 오브젝트 상세]">
+
+
+<meta itemprop="datePublished" content="2019-11-21T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-11-21T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="510">
+
+
+
+<meta itemprop="keywords" content="" />
+
+  <meta property="og:title" content="Volume" />
+<meta property="og:description" content="[5. 기본 오브젝트 상세]" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kubetm.github.io/inflearn/intermediate/object-volume/" />
+<meta property="article:published_time" content="2019-11-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-11-21T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Volume"/>
+<meta name="twitter:description" content="[5. 기본 오브젝트 상세]"/>
+
+  
+
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+  
+    
+      <link rel="stylesheet" href="/css/normalize.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+      
+      
+      <link rel="stylesheet" href="/css/main.min.6ae34c903d0093839ba024c11e854e4b6650a808f1ad21e27c3626d28a980add.css" integrity="sha256-auNMkD0Ak4OboCTBHoVOS2ZQqAjxrSHifDYm0oqYCt0=">
+      <link rel="stylesheet" href="/css/add-on.css">
+    
+  
+  
+  
+  
+    
+  
+</head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+      	<img src="/img/main/kubernetes-logo.png"  style="max-width: 26px; height: auto;" alt="KubeTM Blog"/>
+        
+          KubeTM Blog
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/inflearn/" class="link"><i class='far fa-newspaper'></i> 쿠버네티스 강좌 자료실</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="140" alt="KubeTM Blog" /></a>
+  <header>
+    <h1>오늘도 화이팅!</h1>
+  </header>
+  <main>
+    <p>안녕하세요. 김태민입니다. ^^ <br/> 쿠버네티스 기술 블로그에 오신걸 환영합니다.</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/https://www.facebook.com/kim.taemin.3517563" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/https://www.youtube.com/channel/UCt6EAJeuLBQehe8uVqrtV7g" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:kube.taemin@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+        <p>[5. 기본 오브젝트 상세]</p>
+      
+    
+        <h2>Volume</h2>
+    
+</div>
+
+  <div class="meta">
+    <time class="published" datetime="2019-11-21 00:00:00 &#43;0000 UTC">
+      November 21, 2019
+    </time>
+    <span class="author">KubeTM</span>
+    
+      <p>3 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
+  
+  <a href="/inflearn/intermediate/object-volume/" class="image featured">
+    <img src="/img/inflearn/intermediate/header-volume.jpg" alt="">
+  </a>
+
+
+  <div class="content">
+    
+
+<h2 id="1-1-storageos-설치-및-storageclass-생성">1-1) StorageOS 설치 및 StorageClass 생성</h2>
+
+<hr />
+
+<h3 id="1-1-1-storageos-리소스-설치">1-1-1) StorageOS 리소스 설치</h3>
+
+<pre><code class="language-sh">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml
+</code></pre>
+
+<p>설치 확인</p>
+
+<pre><code class="language-sh">kubectl -n storageos-operator get pod
+</code></pre>
+
+<h3 id="1-1-2-storageos-계정을-위한-secret-생성">1-1-2) StorageOS 계정을 위한 Secret 생성</h3>
+
+<p>username 및 password을 Base64문자로 만들기</p>
+
+<pre><code class="language-sh">echo -n &quot;username&quot; | base64
+echo -n &quot;password&quot; | base64
+</code></pre>
+
+<p>아래 yaml 파일 안에  <code>apiUsername</code> 및 <code>apiPassword</code> 부분에 Base64인코딩된 username과 password 넣기</p>
+
+<pre><code class="language-yaml">kubectl create -f - &lt;&lt;END
+apiVersion: v1
+kind: Secret
+metadata:
+  name: &quot;storageos-api&quot;
+  namespace: &quot;storageos-operator&quot;
+  labels:
+    app: &quot;storageos&quot;
+type: &quot;kubernetes.io/storageos&quot;
+data:
+  apiUsername: dXNlcm5hbWU=
+  apiPassword: cGFzc3dvcmQ=
+END
+</code></pre>
+
+<h3 id="1-1-3-storageos-트리거-생성">1-1-3) StorageOS 트리거 생성</h3>
+
+<pre><code class="language-sh">kubectl create -f - &lt;&lt;END
+apiVersion: &quot;storageos.com/v1&quot;
+kind: StorageOSCluster
+metadata:
+  name: &quot;example-storageos&quot;
+  namespace: &quot;storageos-operator&quot;
+spec:
+  secretRefName: &quot;storageos-api&quot; # Reference the Secret created in the previous step
+  secretRefNamespace: &quot;storageos-operator&quot;  # Namespace of the Secret
+  k8sDistro: &quot;kubernetes&quot;
+  images:
+    nodeContainer: &quot;storageos/node:1.5.0&quot; # StorageOS version
+  resources:
+    requests:
+    memory: &quot;512Mi&quot;
+END
+</code></pre>
+
+<h3 id="1-1-4-설치-확인">1-1-4) 설치 확인</h3>
+
+<pre><code class="language-sh">kubectl -n storageos get pods
+</code></pre>
+
+<p>모든 Pod가 아래와 같이 Running 중인지 확인</p>
+
+<pre><code class="language-sh">NAME                                 READY   STATUS            RESTARTS   AGE
+storageos-daemonset-rlvml            0/1     Running           0          137s
+storageos-daemonset-z4fdw            0/1     Running           0          137s
+storageos-scheduler-f7566b58-kw49s   1/1     Running           0          137s
+</code></pre>
+
+<h3 id="1-1-5-storageclass-만들기">1-1-5) StorageClass 만들기</h3>
+
+<ul>
+<li><p>storageos Default용</p>
+
+<pre><code class="language-sh">kubectl create -f - &lt;&lt;END
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+name: fast
+provisioner: kubernetes.io/storageos
+parameters:
+pool: default
+description: Kubernetes volume
+fsType: ext4
+adminSecretNamespace: default
+adminSecretName: storageos-secret
+END
+</code></pre></li>
+
+<li><p>Local 용</p>
+
+<pre><code class="language-sh">kubectl create -f - &lt;&lt;END
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+END
+</code></pre></li>
+</ul>
+
+<hr />
+
+<h2 id="1-2-storageos-설치-및-storageclass-생성">1-2) StorageOS 설치 및 StorageClass 생성</h2>
+
+<hr />
+
+<h3 id="persistentvolumeclaim">PersistentVolumeClaim</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-storageos
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1G
+  storageClassName: &quot;fast&quot;
+</code></pre>
+
+<h3 id="pod">Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+    volumeMounts:
+    - name: storageos
+      mountPath: /mnt
+  volumes:
+  - name : storageos
+    persistentVolumeClaim:
+      claimName: pvc-storageos
+</code></pre>
+
+<h3 id="request-pod">Request Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: request-pod
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+</code></pre>
+
+<pre><code class="language-sh">echo -n &quot;siouser&quot; | base64
+</code></pre>
+
+<p>nslookup</p>
+
+<pre><code class="language-sh">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml
+</code></pre>
+
+<p>curl</p>
+
+<pre><code class="language-sh">curl clusterip1/hostname
+curl clusterip1.default.svc.cluster.local/hostname
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="2-1-status">2-1) Status</h2>
+
+<hr />
+
+<hr />
+
+<h2 id="2-2-policy">2-2) Policy</h2>
+
+<hr />
+
+<h3 id="service">Service</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: headless1
+spec:
+  selector:
+    svc: headless
+  ports:
+    - port: 80
+      targetPort: 8080    
+  clusterIP: None
+</code></pre>
+
+<h3 id="pod-1">Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod4
+  labels:
+    svc: headless
+spec:
+  hostname: pod-a
+  subdomain: headless1
+  containers:
+  - name: container
+    image: kubetm/app
+</code></pre>
+
+<p>Nslookup</p>
+
+<pre><code class="language-sh">nslookup headless1
+nslookup pod-a.headless1
+nslookup pod-b.headless1
+
+</code></pre>
+
+<p>Curl</p>
+
+<pre><code class="language-sh">curl pod-a.headless1:8080/hostname
+curl pod-b.headless1:8080/hostname
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="2-1-endpoint1">2-1) Endpoint1</h2>
+
+<hr />
+
+<h3 id="service-1">Service</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: endpoint1
+spec:
+  selector:
+    svc: endpoint
+  ports:
+  - port: 8080
+</code></pre>
+
+<h3 id="pod-2">Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod7
+  labels:
+    svc: endpoint
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+</code></pre>
+
+<pre><code class="language-sh">kubectl describe endpoints endpoint1
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="2-2-endpoint2">2-2) Endpoint2</h2>
+
+<hr />
+
+<h3 id="service-2">Service</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: endpoint2
+spec:
+  ports:
+  - port: 8080
+</code></pre>
+
+<h3 id="pod-3">Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod9
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+</code></pre>
+
+<h3 id="endpoint">Endpoint</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Endpoints
+metadata:
+  name: endpoint2
+subsets:
+ - addresses:
+   - ip: 20.111.156.74
+   ports:
+   - port: 8080
+</code></pre>
+
+<pre><code class="language-sh">curl endpoint2:8080/hostname
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="2-3-endpoint3">2-3) Endpoint3</h2>
+
+<hr />
+
+<h3 id="service-3">Service</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: endpoint3
+spec:
+  ports:
+  - port: 80
+</code></pre>
+
+<p>Github의 Ip Address 확인</p>
+
+<pre><code class="language-sh">nslookup https://www.github.com
+curl -O 185.199.110.153:80/taemin77/k8s-examples/blob/master/beginners/5-1-Object-Pod-Practice.md
+</code></pre>
+
+<h3 id="endpoint-1">Endpoint</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Endpoints
+metadata:
+  name: endpoint3
+subsets:
+ - addresses:
+   - ip: 185.199.110.153
+   ports:
+   - port: 80
+</code></pre>
+
+<pre><code class="language-sh">curl -O endpoint3/taemin77/k8s-examples/blob/master/beginners/5-1-Object-Pod-Practice.md
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="3-externalname">3) ExternalName</h2>
+
+<hr />
+
+<h3 id="service-4">Service</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+ name: externalname1
+spec:
+ type: ExternalName
+ externalName: github.github.io
+</code></pre>
+
+<pre><code class="language-sh">curl -O externalname2/taemin77/k8s-examples/blob/master/beginners/5-1-Object-Pod-Practice.md
+</code></pre>
+
+  </div>
+  <footer>
+    
+
+  </footer>
+</article>
+
+
+<div class="pagination">
+  
+    <a href="/inflearn/intermediate/object-service/" class="button"><div class="previous"><div>Service</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+  <p class="copyright">
+    
+      &copy; 2019
+      
+        KubeTM Blog
+      
+    . <br>
+    Copyright 2019. Kimtaemin all rights reserved.
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/yaml.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/groovy.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  <script src=/js/util.js></script>
+  <script src=/js/main.js></script>
+  <script src=/js/add-on.js></script>
+  
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-151245038-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+    </div>
+  </body>
+</html>

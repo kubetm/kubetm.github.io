@@ -6,17 +6,29 @@
     <description>Recent content in 인프런 중급편 강의자료 on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 16 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Volume</title>
+      <link>https://kubetm.github.io/inflearn/intermediate/object-volume/</link>
+      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/inflearn/intermediate/object-volume/</guid>
+      <description>1-1) StorageOS 설치 및 StorageClass 생성 1-1-1) StorageOS 리소스 설치 kubectl create -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml  설치 확인
+kubectl -n storageos-operator get pod  1-1-2) StorageOS 계정을 위한 Secret 생성 username 및 password을 Base64문자로 만들기
+echo -n &amp;quot;username&amp;quot; | base64 echo -n &amp;quot;password&amp;quot; | base64  아래 yaml 파일 안에 apiUsername 및 apiPassword 부분에 Base64인코딩된 username과 password 넣기
+kubectl create -f - &amp;lt;&amp;lt;END apiVersion: v1 kind: Secret metadata: name: &amp;quot;storageos-api&amp;quot; namespace: &amp;quot;storageos-operator&amp;quot; labels: app: &amp;quot;storageos&amp;quot; type: &amp;quot;kubernetes.</description>
+    </item>
+    
+    <item>
       <title>Service</title>
-      <link>https://kubetm.github.io/inflearn/intermediate/2-1-service/</link>
+      <link>https://kubetm.github.io/inflearn/intermediate/object-service/</link>
       <pubDate>Sat, 16 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/intermediate/2-1-service/</guid>
+      <guid>https://kubetm.github.io/inflearn/intermediate/object-service/</guid>
       <description>1-1) ClusterIp Service apiVersion: v1 kind: Service metadata: name: clusterip1 spec: selector: svc: clusterip ports: - port: 80 targetPort: 8080  Pod apiVersion: v1 kind: Pod metadata: name: pod1 labels: svc: clusterip spec: containers: - name: container image: kubetm/app  Request Pod apiVersion: v1 kind: Pod metadata: name: request-pod spec: containers: - name: container image: kubetm/init  kubectl exec request-pod -it /bin/bash  nslookup
 nslookup clusterip1 nslookup clusterip1.default.svc.cluster.local  curl</description>
     </item>
