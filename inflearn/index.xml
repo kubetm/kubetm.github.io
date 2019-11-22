@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>자료실 목차 on KubeTM Blog</title>
+    <title>[인프런] 쿠버네티스 강좌 자료실 on KubeTM Blog</title>
     <link>https://kubetm.github.io/inflearn/</link>
-    <description>Recent content in 자료실 목차 on KubeTM Blog</description>
+    <description>Recent content in [인프런] 쿠버네티스 강좌 자료실 on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 21 Nov 2019 00:00:00 +0000</lastBuildDate>
