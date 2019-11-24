@@ -26,7 +26,7 @@
 
 <meta itemprop="datePublished" content="2019-11-21T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="510">
+<meta itemprop="wordCount" content="289">
 
 
 
@@ -56,7 +56,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
       
       
-      <link rel="stylesheet" href="/css/main.min.0b6e8acecef63e758f95fa2b9888f14fc9ebdd0c3a025699e0a133623d90b050.css" integrity="sha256-C26Kzs72PnWPlformIjxT8nr3Qw6AlaZ4KEzYj2QsFA=">
+      <link rel="stylesheet" href="/css/main.min.15c3034b3d7fe883057bff60e80b3d7471ce7176efc13f6c395e8c0cd2d97758.css" integrity="sha256-FcMDSz1/6IMFe/9g6As9dHHOcXbvwT9sOV6MDNLZd1g=">
       <link rel="stylesheet" href="/css/add-on.css">
     
   
@@ -186,7 +186,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>3 minutes read</p>
+      <p>2 minutes read</p>
     
   </div>
 </header>
@@ -217,20 +217,26 @@
 <pre><code class="language-sh">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml
 </code></pre>
 
-<p>설치 확인</p>
+<ul>
+<li><p>Pod 상태 Running 확인</p>
 
 <pre><code class="language-sh">kubectl -n storageos-operator get pod
 </code></pre>
 
+<pre><code class="language-sh">NAME                                          READY   STATUS    RESTARTS   AGE
+storageos-cluster-operator-76f59454b6-4glpx   1/1     Running   0          43s
+</code></pre></li>
+</ul>
+
 <h3 id="1-1-2-storageos-계정을-위한-secret-생성">1-1-2) StorageOS 계정을 위한 Secret 생성</h3>
 
-<p>username 및 password을 Base64문자로 만들기</p>
+<p>username 및 password을 Base64문자로 만들기 - <code>username</code>과 <code>password</code>는 각자 설정</p>
 
 <pre><code class="language-sh">echo -n &quot;username&quot; | base64
 echo -n &quot;password&quot; | base64
 </code></pre>
 
-<p>아래 yaml 파일 안에  <code>apiUsername</code> 및 <code>apiPassword</code> 부분에 Base64인코딩된 username과 password 넣기</p>
+<p>아래 yaml 파일 안에  <code>apiUsername</code> 및 <code>apiPassword</code> 부분에 위 결과로 나온 Base64인코딩된 username <code>dXNlcm5hbWU=</code>과 password <code>cGFzc3dvcmQ=</code>넣기</p>
 
 <pre><code class="language-yaml">kubectl create -f - &lt;&lt;END
 apiVersion: v1
@@ -272,44 +278,13 @@ END
 <pre><code class="language-sh">kubectl -n storageos get pods
 </code></pre>
 
-<p>모든 Pod가 아래와 같이 Running 중인지 확인</p>
+<ul>
+<li><p>Pod 상태 Running 확인</p>
 
 <pre><code class="language-sh">NAME                                 READY   STATUS            RESTARTS   AGE
 storageos-daemonset-rlvml            0/1     Running           0          137s
 storageos-daemonset-z4fdw            0/1     Running           0          137s
 storageos-scheduler-f7566b58-kw49s   1/1     Running           0          137s
-</code></pre>
-
-<h3 id="1-1-5-storageclass-만들기">1-1-5) StorageClass 만들기</h3>
-
-<ul>
-<li><p>storageos Default용</p>
-
-<pre><code class="language-sh">kubectl create -f - &lt;&lt;END
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-name: fast
-provisioner: kubernetes.io/storageos
-parameters:
-pool: default
-description: Kubernetes volume
-fsType: ext4
-adminSecretNamespace: default
-adminSecretName: storageos-secret
-END
-</code></pre></li>
-
-<li><p>Local 용</p>
-
-<pre><code class="language-sh">kubectl create -f - &lt;&lt;END
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-name: local-storage
-provisioner: kubernetes.io/no-provisioner
-volumeBindingMode: WaitForFirstConsumer
-END
 </code></pre></li>
 </ul>
 
@@ -333,6 +308,20 @@ spec:
       storage: 1G
   storageClassName: &quot;fast&quot;
 </code></pre>
+
+<ul>
+<li><p>Local 용</p>
+
+<pre><code class="language-sh">kubectl create -f - &lt;&lt;END
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+END
+</code></pre></li>
+</ul>
 
 <h3 id="pod">Pod</h3>
 
@@ -393,203 +382,6 @@ curl clusterip1.default.svc.cluster.local/hostname
 <h2 id="2-2-policy">2-2) Policy</h2>
 
 <hr />
-
-<h3 id="service">Service</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Service
-metadata:
-  name: headless1
-spec:
-  selector:
-    svc: headless
-  ports:
-    - port: 80
-      targetPort: 8080    
-  clusterIP: None
-</code></pre>
-
-<h3 id="pod-1">Pod</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod4
-  labels:
-    svc: headless
-spec:
-  hostname: pod-a
-  subdomain: headless1
-  containers:
-  - name: container
-    image: kubetm/app
-</code></pre>
-
-<p>Nslookup</p>
-
-<pre><code class="language-sh">nslookup headless1
-nslookup pod-a.headless1
-nslookup pod-b.headless1
-
-</code></pre>
-
-<p>Curl</p>
-
-<pre><code class="language-sh">curl pod-a.headless1:8080/hostname
-curl pod-b.headless1:8080/hostname
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="2-1-endpoint1">2-1) Endpoint1</h2>
-
-<hr />
-
-<h3 id="service-1">Service</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Service
-metadata:
-  name: endpoint1
-spec:
-  selector:
-    svc: endpoint
-  ports:
-  - port: 8080
-</code></pre>
-
-<h3 id="pod-2">Pod</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod7
-  labels:
-    svc: endpoint
-spec:
-  containers:
-  - name: container
-    image: kubetm/app
-</code></pre>
-
-<pre><code class="language-sh">kubectl describe endpoints endpoint1
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="2-2-endpoint2">2-2) Endpoint2</h2>
-
-<hr />
-
-<h3 id="service-2">Service</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Service
-metadata:
-  name: endpoint2
-spec:
-  ports:
-  - port: 8080
-</code></pre>
-
-<h3 id="pod-3">Pod</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod9
-spec:
-  containers:
-  - name: container
-    image: kubetm/app
-</code></pre>
-
-<h3 id="endpoint">Endpoint</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Endpoints
-metadata:
-  name: endpoint2
-subsets:
- - addresses:
-   - ip: 20.111.156.74
-   ports:
-   - port: 8080
-</code></pre>
-
-<pre><code class="language-sh">curl endpoint2:8080/hostname
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="2-3-endpoint3">2-3) Endpoint3</h2>
-
-<hr />
-
-<h3 id="service-3">Service</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Service
-metadata:
-  name: endpoint3
-spec:
-  ports:
-  - port: 80
-</code></pre>
-
-<p>Github의 Ip Address 확인</p>
-
-<pre><code class="language-sh">nslookup https://www.github.com
-curl -O 185.199.110.153:80/taemin77/k8s-examples/blob/master/beginners/5-1-Object-Pod-Practice.md
-</code></pre>
-
-<h3 id="endpoint-1">Endpoint</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Endpoints
-metadata:
-  name: endpoint3
-subsets:
- - addresses:
-   - ip: 185.199.110.153
-   ports:
-   - port: 80
-</code></pre>
-
-<pre><code class="language-sh">curl -O endpoint3/taemin77/k8s-examples/blob/master/beginners/5-1-Object-Pod-Practice.md
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="3-externalname">3) ExternalName</h2>
-
-<hr />
-
-<h3 id="service-4">Service</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Service
-metadata:
- name: externalname1
-spec:
- type: ExternalName
- externalName: github.github.io
-</code></pre>
-
-<pre><code class="language-sh">curl -O externalname2/taemin77/k8s-examples/blob/master/beginners/5-1-Object-Pod-Practice.md
-</code></pre>
 
   </div>
   <footer>
