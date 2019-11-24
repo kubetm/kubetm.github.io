@@ -208,9 +208,40 @@
   <div class="content">
     
 
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="1-1-clusterip">1-1) ClusterIp</h2>
 
 <hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+    
+
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/inflearn/intermediate/service-headless1.jpg" alt="">
+        </span>
+    
+
+
 
 <h3 id="service">Service</h3>
 
@@ -276,6 +307,32 @@ curl clusterip1.default.svc.cluster.local/hostname
 
 <hr />
 
+
+
+
+    
+    
+        
+        
+        
+        
+    
+
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/inflearn/intermediate/service-headless2.jpg" alt="">
+        </span>
+    
+
+
+
 <h3 id="service-1">Service</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
@@ -330,6 +387,32 @@ curl pod-b.headless1:8080/hostname
 
 <hr />
 
+
+
+
+    
+    
+        
+        
+        
+        
+    
+
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/inflearn/intermediate/service-endpoint1.jpg" alt="">
+        </span>
+    
+
+
+
 <h3 id="service-2">Service</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
@@ -368,6 +451,32 @@ spec:
 <h2 id="2-2-endpoint2">2-2) Endpoint2</h2>
 
 <hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+    
+
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/inflearn/intermediate/service-endpoint2.jpg" alt="">
+        </span>
+    
+
+
 
 <h3 id="service-3">Service</h3>
 
@@ -417,6 +526,32 @@ subsets:
 
 <hr />
 
+
+
+
+    
+    
+        
+        
+        
+        
+    
+
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/inflearn/intermediate/service-endpoint3.jpg" alt="">
+        </span>
+    
+
+
+
 <h3 id="service-4">Service</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
@@ -428,7 +563,7 @@ spec:
   - port: 80
 </code></pre>
 
-<p>Github의 Ip Address 확인</p>
+<p>Github - Ip Address</p>
 
 <pre><code class="language-sh">nslookup https://www.github.com
 curl -O 185.199.110.153:80/taemin77/k8s-examples/blob/master/beginners/5-1-Object-Pod-Practice.md
@@ -458,6 +593,32 @@ subsets:
 <h2 id="3-externalname">3) ExternalName</h2>
 
 <hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+    
+
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/inflearn/intermediate/service-external_name1.jpg" alt="">
+        </span>
+    
+
+
 
 <h3 id="service-5">Service</h3>
 

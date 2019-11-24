@@ -28,8 +28,8 @@ echo -n &amp;quot;username&amp;quot; | base64 echo -n &amp;quot;password&amp;quo
       <pubDate>Sat, 16 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/inflearn/intermediate/object-service/</guid>
-      <description>1-1) ClusterIp Service apiVersion: v1 kind: Service metadata: name: clusterip1 spec: selector: svc: clusterip ports: - port: 80 targetPort: 8080  Pod apiVersion: v1 kind: Pod metadata: name: pod1 labels: svc: clusterip spec: containers: - name: container image: kubetm/app  Request Pod apiVersion: v1 kind: Pod metadata: name: request-pod spec: containers: - name: container image: kubetm/init  kubectl exec request-pod -it /bin/bash  nslookup
-nslookup clusterip1 nslookup clusterip1.default.svc.cluster.local  curl</description>
+      <description>1-1) ClusterIp  Service apiVersion: v1 kind: Service metadata: name: clusterip1 spec: selector: svc: clusterip ports: - port: 80 targetPort: 8080  Pod apiVersion: v1 kind: Pod metadata: name: pod1 labels: svc: clusterip spec: containers: - name: container image: kubetm/app  Request Pod apiVersion: v1 kind: Pod metadata: name: request-pod spec: containers: - name: container image: kubetm/init  kubectl exec request-pod -it /bin/bash  nslookup
+nslookup clusterip1 nslookup clusterip1.</description>
     </item>
     
     <item>

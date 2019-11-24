@@ -234,48 +234,8 @@
 
 
   
-  <pre><code class="language-yaml">apiVersion: v1
-kind: Service
-metadata:
-  name: clusterip1
-spec:
-  selector:
-    svc: clusterip
-  ports:
-  - port: 80
-    targetPort: 8080
-</code></pre>
-
-<h3 id="pod">Pod</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod1
-  labels:
-    svc: clusterip
-spec:
-  containers:
-  - name: container
-    image: kubetm/app
-</code></pre>
-
-<h3 id="request-pod">Request Pod</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: request-pod
-spec:
-  containers:
-  - name: container
-    image: kubetm/init
-</code></pre>
-
-<pre><code class="language-sh">kubectl exec request-pod -it /bin/bash
-</code></pre>
-
-<p>nslookup</p>
+  <p><br/>
+<br/></p>
   <footer>
     <a href="/inflearn/intermediate/object-service/" class="button big">본문 보기</a>
     
