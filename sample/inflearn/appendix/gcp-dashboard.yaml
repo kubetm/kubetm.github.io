@@ -113,6 +113,7 @@ spec:
         ports:
         - containerPort: 8443
           protocol: TCP
+        args: ["--auto-generate-certificates", "--enable-skip-login"]
         volumeMounts:
         - name: kubernetes-dashboard-certs
           mountPath: /certs
