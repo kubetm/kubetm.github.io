@@ -26,7 +26,7 @@
 
 <meta itemprop="datePublished" content="2019-11-21T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="289">
+<meta itemprop="wordCount" content="342">
 
 
 
@@ -56,7 +56,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
       
       
-      <link rel="stylesheet" href="/css/main.min.15c3034b3d7fe883057bff60e80b3d7471ce7176efc13f6c395e8c0cd2d97758.css" integrity="sha256-FcMDSz1/6IMFe/9g6As9dHHOcXbvwT9sOV6MDNLZd1g=">
+      <link rel="stylesheet" href="/css/main.min.0b6e8acecef63e758f95fa2b9888f14fc9ebdd0c3a025699e0a133623d90b050.css" integrity="sha256-C26Kzs72PnWPlformIjxT8nr3Qw6AlaZ4KEzYj2QsFA=">
       <link rel="stylesheet" href="/css/add-on.css">
     
   
@@ -208,27 +208,30 @@
   <div class="content">
     
 
-<h2 id="1-1-storageos-설치-및-storageclass-생성">1-1) StorageOS 설치 및 StorageClass 생성</h2>
+<p><br/>
+<br/></p>
+
+<h2 id="사전-구성-storageos-설치-및-storageclass-생성">사전 구성 - StorageOS 설치 및 StorageClass 생성</h2>
 
 <hr />
 
-<h3 id="1-1-1-storageos-리소스-설치">1-1-1) StorageOS 리소스 설치</h3>
+<h3 id="1-1-storageos-리소스-설치">1-1) StorageOS 리소스 설치</h3>
 
 <pre><code class="language-sh">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml
 </code></pre>
 
-<ul>
-<li><p>Pod 상태 Running 확인</p>
+<p>Pod 상태 Running 확인</p>
 
 <pre><code class="language-sh">kubectl -n storageos-operator get pod
 </code></pre>
 
 <pre><code class="language-sh">NAME                                          READY   STATUS    RESTARTS   AGE
 storageos-cluster-operator-76f59454b6-4glpx   1/1     Running   0          43s
-</code></pre></li>
-</ul>
+</code></pre>
 
-<h3 id="1-1-2-storageos-계정을-위한-secret-생성">1-1-2) StorageOS 계정을 위한 Secret 생성</h3>
+<p><br/></p>
+
+<h3 id="1-2-storageos-계정을-위한-secret-생성">1-2) StorageOS 계정을 위한 Secret 생성</h3>
 
 <p>username 및 password을 Base64문자로 만들기 - <code>username</code>과 <code>password</code>는 각자 설정</p>
 
@@ -253,7 +256,9 @@ data:
 END
 </code></pre>
 
-<h3 id="1-1-3-storageos-트리거-생성">1-1-3) StorageOS 트리거 생성</h3>
+<p><br/></p>
+
+<h3 id="1-3-storageos-트리거-생성">1-3) StorageOS 트리거 생성</h3>
 
 <pre><code class="language-sh">kubectl create -f - &lt;&lt;END
 apiVersion: &quot;storageos.com/v1&quot;
@@ -273,33 +278,136 @@ spec:
 END
 </code></pre>
 
-<h3 id="1-1-4-설치-확인">1-1-4) 설치 확인</h3>
+<p><br/></p>
+
+<h3 id="1-4-설치-확인">1-4) 설치 확인</h3>
+
+<p>Pod 상태 Running 확인</p>
 
 <pre><code class="language-sh">kubectl -n storageos get pods
 </code></pre>
-
-<ul>
-<li><p>Pod 상태 Running 확인</p>
 
 <pre><code class="language-sh">NAME                                 READY   STATUS            RESTARTS   AGE
 storageos-daemonset-rlvml            0/1     Running           0          137s
 storageos-daemonset-z4fdw            0/1     Running           0          137s
 storageos-scheduler-f7566b58-kw49s   1/1     Running           0          137s
-</code></pre></li>
-</ul>
+</code></pre>
+
+<p>StorageClass 확인</p>
+
+<pre><code class="language-sh">kubectl get storageclasses.storage.k8s.io
+</code></pre>
+
+<pre><code class="language-sh">NAME            PROVISIONER                    AGE
+fast            kubernetes.io/storageos        4d17h
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="1-5-slow-storageclass-추가">1-5) slow StorageClass 추가</h3>
+
+<pre><code class="language-sh">apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: slow
+provisioner: kubernetes.io/storageos
+parameters:
+  adminSecretName: storageos-api
+  adminSecretNamespace: storageos-operator
+  fsType: ext4
+  pool: default
+END
+</code></pre>
 
 <hr />
 
-<h2 id="1-2-storageos-설치-및-storageclass-생성">1-2) StorageOS 설치 및 StorageClass 생성</h2>
+<hr />
+
+<h2 id="dynamic-provisioning">Dynamic Provisioning</h2>
 
 <hr />
 
-<h3 id="persistentvolumeclaim">PersistentVolumeClaim</h3>
+
+
+
+    
+    
+        
+        
+        
+        
+    
+
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/inflearn/intermediate/service-headless1.jpg" alt="">
+        </span>
+    
+
+
+
+<h3 id="2-1-persistentvolumeclaim">2-1) PersistentVolumeClaim</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-storageos
+  name: pvc-local1
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1G
+  storageClassName: &quot;local-storage&quot;
+</code></pre>
+
+<h3 id="2-2-pod">2-2) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+ name: pod-3
+spec:
+ nodeSelector:
+  hostname: node1
+ containers:
+ - name: container
+   image: tmkube/init
+
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-node1
+  containers:
+  - name: container
+    image: kubetm/init
+    volumeMounts:
+    - name: storageos
+      mountPath: /mount1
+  volumes:
+  - name : storageos
+    persistentVolumeClaim:
+      claimName: pvc-local1
+</code></pre>
+
+<h3 id="2-3-persistentvolumeclaim">2-3) PersistentVolumeClaim</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-storageos1
 spec:
   accessModes:
   - ReadWriteOnce
@@ -309,63 +417,23 @@ spec:
   storageClassName: &quot;fast&quot;
 </code></pre>
 
-<ul>
-<li><p>Local 용</p>
-
-<pre><code class="language-sh">kubectl create -f - &lt;&lt;END
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-name: local-storage
-provisioner: kubernetes.io/no-provisioner
-volumeBindingMode: WaitForFirstConsumer
-END
-</code></pre></li>
-</ul>
-
-<h3 id="pod">Pod</h3>
+<h3 id="2-4-pod">2-4) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-1
+  name: pod2
 spec:
   containers:
   - name: container
     image: kubetm/init
     volumeMounts:
     - name: storageos
-      mountPath: /mnt
+      mountPath: /mount1
   volumes:
   - name : storageos
     persistentVolumeClaim:
-      claimName: pvc-storageos
-</code></pre>
-
-<h3 id="request-pod">Request Pod</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: request-pod
-spec:
-  containers:
-  - name: container
-    image: kubetm/init
-</code></pre>
-
-<pre><code class="language-sh">echo -n &quot;siouser&quot; | base64
-</code></pre>
-
-<p>nslookup</p>
-
-<pre><code class="language-sh">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml
-</code></pre>
-
-<p>curl</p>
-
-<pre><code class="language-sh">curl clusterip1/hostname
-curl clusterip1.default.svc.cluster.local/hostname
+      claimName: pvc-storageos1
 </code></pre>
 
 <p><br/>
