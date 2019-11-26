@@ -26,7 +26,7 @@
 
 <meta itemprop="datePublished" content="2019-11-10T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-10T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1564">
+<meta itemprop="wordCount" content="1511">
 
 
 
@@ -900,47 +900,16 @@ kubectl apply -f calico.yaml
 <br/>
 &gt;<a href="https://github.com/kubernetes/dashboard">https://github.com/kubernetes/dashboard</a></p>
 
-<pre><code class="language-sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
+<pre><code class="language-sh">kubectl apply -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/sample/inflearn/appendix/gcp-kubernetes-dashboard.yaml
 </code></pre>
 
 <h3 id="6-2-2-권한-해지-설정">6-2-2) 권한 해지 설정</h3>
 
-<p>접속시 인증 Skip 설정
-<br/>
-아래 명령을 통해 수정 모드로 들어가서</p>
+<p>접속시 인증 Skip 설정</p>
 
-<pre><code class="language-sh">kubectl -n kube-system edit deployments.apps kubernetes-dashboard
-</code></pre>
+<p><br/></p>
 
-<p>아래 내용 찾아서 <code>--enable-skip-login</code> 추가</p>
-
-<pre><code class="language-sh">-------------------------------
-    spec:
-      containers:
-      - args:
-        - --auto-generate-certificates
-        - --enable-skip-login
--------------------------------
-</code></pre>
-
-<p>Dashboard의 Admin권한 부여</p>
-
-<pre><code class="language-sh">cat &lt;&lt;EOF | kubectl create -f -
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRoleBinding
-metadata:
-  name: kubernetes-dashboard
-  labels:
-    k8s-app: kubernetes-dashboard
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: kubernetes-dashboard
-  namespace: kube-system
-EOF
+<pre><code class="language-sh">&lt;updated&gt; 위 gcp-kubernetes-dashboard.yaml에 해당 내용 포함되어 있습니다. 별도로 안하셔도 되세요.
 </code></pre>
 
 <h3 id="6-2-3-백그라운드로-proxy-띄우기">6-2-3) 백그라운드로 proxy 띄우기</h3>
