@@ -26,7 +26,7 @@
 
 <meta itemprop="datePublished" content="2019-11-21T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="342">
+<meta itemprop="wordCount" content="570">
 
 
 
@@ -186,7 +186,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
@@ -211,22 +211,47 @@
 <p><br/>
 <br/></p>
 
-<h2 id="사전-구성-storageos-설치-및-storageclass-생성">사전 구성 - StorageOS 설치 및 StorageClass 생성</h2>
+<h2 id="1-사전-구성-storageos-설치-및-storageclass-생성">1. 사전 구성 - StorageOS 설치 및 StorageClass 생성</h2>
 
 <hr />
 
-<h3 id="1-1-storageos-리소스-설치">1-1) StorageOS 리소스 설치</h3>
+<h3 id="1-1-storageos-설치">1-1) StorageOS 설치</h3>
 
-<pre><code class="language-sh">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml
+<p>설치</p>
+
+<pre><code class="language-sh">kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml
 </code></pre>
 
-<p>Pod 상태 Running 확인</p>
+<p>Depolyment 수정</p>
 
-<pre><code class="language-sh">kubectl -n storageos-operator get pod
+<pre><code class="language-sh">kubectl edit deployments.apps storageos-cluster-operator -n storageos-operator
 </code></pre>
 
-<pre><code class="language-sh">NAME                                          READY   STATUS    RESTARTS   AGE
-storageos-cluster-operator-76f59454b6-4glpx   1/1     Running   0          43s
+<p>spec.containers.env의 <code>DISABLE_SCHEDULER_WEBHOOK</code>의 Value를 <code>true</code>로 설정</p>
+
+<pre><code class="language-yaml">spec:
+  containers:
+  - command:
+    - cluster-operator
+    env:
+    - name: DISABLE_SCHEDULER_WEBHOOK
+      value: &quot;false&quot;    # true 로 변경
+    image: storageos/cluster-operator:1.5.0
+    imagePullPolicy: IfNotPresent
+</code></pre>
+
+<p>Service 수정</p>
+
+<pre><code class="language-sh">kubectl edit service storageos -n storageos
+</code></pre>
+
+<p>spec에  <code>externalIPs</code>와 Master IP 추가</p>
+
+<pre><code class="language-yaml">spec:
+  clusterIP: 10.109.77.121
+  externalIPs:     # 추가
+  - 192.168.0.30   # Master IP 추가
+  ports:
 </code></pre>
 
 <p><br/></p>
@@ -260,7 +285,7 @@ END
 
 <h3 id="1-3-storageos-트리거-생성">1-3) StorageOS 트리거 생성</h3>
 
-<pre><code class="language-sh">kubectl create -f - &lt;&lt;END
+<pre><code class="language-sh">kubectl apply -f - &lt;&lt;END
 apiVersion: &quot;storageos.com/v1&quot;
 kind: StorageOSCluster
 metadata:
@@ -288,28 +313,22 @@ END
 </code></pre>
 
 <pre><code class="language-sh">NAME                                 READY   STATUS            RESTARTS   AGE
-storageos-daemonset-rlvml            0/1     Running           0          137s
-storageos-daemonset-z4fdw            0/1     Running           0          137s
+storageos-daemonset-rlvml            1/1     Running           0          137s
+storageos-daemonset-z4fdw            1/1     Running           0          137s
 storageos-scheduler-f7566b58-kw49s   1/1     Running           0          137s
-</code></pre>
-
-<p>StorageClass 확인</p>
-
-<pre><code class="language-sh">kubectl get storageclasses.storage.k8s.io
-</code></pre>
-
-<pre><code class="language-sh">NAME            PROVISIONER                    AGE
-fast            kubernetes.io/storageos        4d17h
 </code></pre>
 
 <p><br/></p>
 
-<h3 id="1-5-slow-storageclass-추가">1-5) slow StorageClass 추가</h3>
+<h3 id="1-5-default-storageclass-추가">1-5) Default StorageClass 추가</h3>
 
-<pre><code class="language-sh">apiVersion: storage.k8s.io/v1
+<pre><code class="language-sh">kubectl create -f - &lt;&lt;END
+apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: slow
+  name: default
+  annotations: 
+    storageclass.kubernetes.io/is-default-class: &quot;true&quot;
 provisioner: kubernetes.io/storageos
 parameters:
   adminSecretName: storageos-api
@@ -319,11 +338,22 @@ parameters:
 END
 </code></pre>
 
-<hr />
+<p>StorageClass 확인</p>
+
+<pre><code class="language-sh">kubectl get storageclasses.storage.k8s.io
+</code></pre>
+
+<pre><code class="language-sh">NAME                PROVISIONER               AGE
+default (default)   kubernetes.io/storageos   3s
+fast                kubernetes.io/storageos   59s
+</code></pre>
+
+<p><br/>
+<br/></p>
 
 <hr />
 
-<h2 id="dynamic-provisioning">Dynamic Provisioning</h2>
+<h2 id="2-dynamic-provisioning">2. Dynamic Provisioning</h2>
 
 <hr />
 
@@ -347,59 +377,41 @@ END
 
     
         <span class="image left">
-            <img src="/img/inflearn/intermediate/service-headless1.jpg" alt="">
+            <img src="/img/inflearn/intermediate/volume-dynamic1.jpg" alt="">
         </span>
     
 
 
 
-<h3 id="2-1-persistentvolumeclaim">2-1) PersistentVolumeClaim</h3>
+<h3 id="2-1-persistentvolume">2-1) PersistentVolume</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-hostpath1
+spec:
+  capacity:
+    storage: 1G
+  accessModes:
+  - ReadWriteOnce
+  hostPath:
+    path: /mnt/hostpath
+    type: DirectoryOrCreate
+</code></pre>
+
+<h3 id="2-2-persistentvolumeclaim">2-2) PersistentVolumeClaim</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-local1
+  name: pvc-hostpath1
 spec:
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
       storage: 1G
-  storageClassName: &quot;local-storage&quot;
-</code></pre>
-
-<h3 id="2-2-pod">2-2) Pod</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
- name: pod-3
-spec:
- nodeSelector:
-  hostname: node1
- containers:
- - name: container
-   image: tmkube/init
-
-
-
-apiVersion: v1
-kind: Pod
-metadata:
-  name: pod1
-spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-node1
-  containers:
-  - name: container
-    image: kubetm/init
-    volumeMounts:
-    - name: storageos
-      mountPath: /mount1
-  volumes:
-  - name : storageos
-    persistentVolumeClaim:
-      claimName: pvc-local1
+  storageClassName: &quot;&quot;
 </code></pre>
 
 <h3 id="2-3-persistentvolumeclaim">2-3) PersistentVolumeClaim</h3>
@@ -407,7 +419,7 @@ spec:
 <pre><code class="language-yaml">apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-storageos1
+  name: pvc-fast1
 spec:
   accessModes:
   - ReadWriteOnce
@@ -417,23 +429,18 @@ spec:
   storageClassName: &quot;fast&quot;
 </code></pre>
 
-<h3 id="2-4-pod">2-4) Pod</h3>
+<h3 id="2-4-persistentvolumeclaim">2-4) PersistentVolumeClaim</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
-kind: Pod
+kind: PersistentVolumeClaim
 metadata:
-  name: pod2
+  name: pvc-default1
 spec:
-  containers:
-  - name: container
-    image: kubetm/init
-    volumeMounts:
-    - name: storageos
-      mountPath: /mount1
-  volumes:
-  - name : storageos
-    persistentVolumeClaim:
-      claimName: pvc-storageos1
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2G
 </code></pre>
 
 <p><br/>
@@ -441,15 +448,225 @@ spec:
 
 <hr />
 
-<h2 id="2-1-status">2-1) Status</h2>
+<h2 id="3-pv-status-reclaimpolicy">3. PV Status, ReclaimPolicy</h2>
 
 <hr />
 
+
+
+
+    
+    
+        
+        
+        
+        
+    
+
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/inflearn/intermediate/volume-status1.jpg" alt="">
+        </span>
+    
+
+
+
+<h3 id="3-1-pod">3-1) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-hostpath1
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-node1
+  terminationGracePeriodSeconds: 0
+  containers:
+  - name: container
+    image: kubetm/init
+    volumeMounts:
+    - name: hostpath
+      mountPath: /mount1
+  volumes:
+  - name : hostpath
+    persistentVolumeClaim:
+      claimName: pvc-hostpath1
+</code></pre>
+
+<pre><code class="language-sh">cd /mount1
+touch file.txt
+</code></pre>
+
+<p>StorageOS Dashboard</p>
+
+<pre><code>http://192.168.0.30:5705/
+</code></pre>
+
+<p><br/></p>
+
+
+
+
+    
+    
+        
+        
+        
+        
+    
+
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/inflearn/intermediate/volume-status2.jpg" alt="">
+        </span>
+    
+
+
+
+<h3 id="3-2-persistentvolume">3-2) PersistentVolume</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-recycle1
+spec:
+  persistentVolumeReclaimPolicy: Recycle
+  capacity:
+    storage: 3G
+  accessModes:
+  - ReadWriteOnce
+  hostPath:
+    path: /tmp/recycle
+    type: DirectoryOrCreate
+</code></pre>
+
+<h3 id="3-3-persistentvolumeclaim">3-3) PersistentVolumeClaim</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-recycle1
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3G
+  storageClassName: &quot;&quot;
+</code></pre>
+
+<h3 id="3-4-pod">3-4) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-recycle1
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-node1
+  terminationGracePeriodSeconds: 0
+  containers:
+  - name: container
+    image: kubetm/init
+    volumeMounts:
+    - name: hostpath
+      mountPath: /mount1
+  volumes:
+  - name : hostpath
+    persistentVolumeClaim:
+      claimName: pvc-recycle1
+</code></pre>
+
+<pre><code class="language-sh">cd /mount1
+touch file.txt
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="yaml">yaml</h2>
+
 <hr />
 
-<h2 id="2-2-policy">2-2) Policy</h2>
+<h3 id="storageclass">* <strong>StorageClass</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: default
+  annotations:
+    # Default StorageClass로 선택 
+    storageclass.kubernetes.io/is-default-class: &quot;true&quot; 
+# 동적으로 PV생성시 PersistentVolumeReclaimPolicy 선택 (Default:Delete)
+reclaimPolicy: Retain, Delete, Recycle
+provisioner: kubernetes.io/storageos
+# provisioner 종류에 따라 parameters의 하위 내용 다름 
+parameters:                                             
+
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="kubectl">kubectl</h2>
 
 <hr />
+
+<h3 id="force-deletion">* <strong>Force Deletion</strong></h3>
+
+<pre><code class="language-sh">kubectl delete persistentvolumeclaims pvc-fast1 --namespace=default --grace-period 0 --force
+kubectl delete persistentvolume pvc-b53fd802-3919-4fb0-8c1f-02221a3e4bc0 --grace-period 0 --force
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="tips">Tips</h2>
+
+<hr />
+
+<h3 id="hostpath">* <strong>hostPath</strong></h3>
+
+<ul>
+<li>Recycle 정책은 /tmp/로 시작하는 Path에서만 됨</li>
+</ul>
+
+<p><br/>
+<br/></p>
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>StorageClass</strong> : <a href="https://kubernetes.io/docs/concepts/storage/storage-classes">https://kubernetes.io/docs/concepts/storage/storage-classes</a></li>
+<li><strong>Dynamic Volume Provisioning</strong> : <a href="https://kubernetes.io/docs/concepts/storage/dynamic-provisioning">https://kubernetes.io/docs/concepts/storage/dynamic-provisioning</a></li>
+</ul>
+
+<h3 id="others">* <strong>Others</strong></h3>
+
+<ul>
+<li><strong>StorageOS</strong> : <a href="https://docs.storageos.com/docs/platforms/kubernetes/install/1.15">https://docs.storageos.com/docs/platforms/kubernetes/install/1.15</a></li>
+<li><strong>Ceph</strong> : <a href="https://docs.ceph.com/docs/master/">https://docs.ceph.com/docs/master/</a></li>
+<li><strong>Glusterfs</strong> : <a href="https://github.com/gluster/gluster-kubernetes">https://github.com/gluster/gluster-kubernetes</a></li>
+<li><strong>Persistent Storage Strategies</strong> : <a href="https://www.xenonstack.com/blog/persistent-storage">https://www.xenonstack.com/blog/persistent-storage</a></li>
+</ul>
 
   </div>
   <footer>

@@ -17,10 +17,11 @@
       <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/inflearn/intermediate/object-volume/</guid>
-      <description>사전 구성 - StorageOS 설치 및 StorageClass 생성 1-1) StorageOS 리소스 설치 kubectl create -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml  Pod 상태 Running 확인
-kubectl -n storageos-operator get pod  NAME READY STATUS RESTARTS AGE storageos-cluster-operator-76f59454b6-4glpx 1/1 Running 0 43s  
-1-2) StorageOS 계정을 위한 Secret 생성 username 및 password을 Base64문자로 만들기 - username과 password는 각자 설정
-echo -n &amp;quot;username&amp;quot; | base64 echo -n &amp;quot;password&amp;quot; | base64  아래 yaml 파일 안에 apiUsername 및 apiPassword 부분에 위 결과로 나온 Base64인코딩된 username dXNlcm5hbWU=과 password cGFzc3dvcmQ=넣기</description>
+      <description>1. 사전 구성 - StorageOS 설치 및 StorageClass 생성 1-1) StorageOS 설치 설치
+kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml  Depolyment 수정
+kubectl edit deployments.apps storageos-cluster-operator -n storageos-operator  spec.containers.env의 DISABLE_SCHEDULER_WEBHOOK의 Value를 true로 설정
+spec: containers: - command: - cluster-operator env: - name: DISABLE_SCHEDULER_WEBHOOK value: &amp;quot;false&amp;quot; # true 로 변경 image: storageos/cluster-operator:1.5.0 imagePullPolicy: IfNotPresent  Service 수정
+kubectl edit service storageos -n storageos  spec에 externalIPs와 Master IP 추가</description>
     </item>
     
     <item>

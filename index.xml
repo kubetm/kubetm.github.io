@@ -17,10 +17,11 @@
       <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/inflearn/intermediate/object-volume/</guid>
-      <description>사전 구성 - StorageOS 설치 및 StorageClass 생성 1-1) StorageOS 리소스 설치 kubectl create -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml  Pod 상태 Running 확인
-kubectl -n storageos-operator get pod  NAME READY STATUS RESTARTS AGE storageos-cluster-operator-76f59454b6-4glpx 1/1 Running 0 43s  
-1-2) StorageOS 계정을 위한 Secret 생성 username 및 password을 Base64문자로 만들기 - username과 password는 각자 설정
-echo -n &amp;quot;username&amp;quot; | base64 echo -n &amp;quot;password&amp;quot; | base64  아래 yaml 파일 안에 apiUsername 및 apiPassword 부분에 위 결과로 나온 Base64인코딩된 username dXNlcm5hbWU=과 password cGFzc3dvcmQ=넣기</description>
+      <description>1. 사전 구성 - StorageOS 설치 및 StorageClass 생성 1-1) StorageOS 설치 설치
+kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml  Depolyment 수정
+kubectl edit deployments.apps storageos-cluster-operator -n storageos-operator  spec.containers.env의 DISABLE_SCHEDULER_WEBHOOK의 Value를 true로 설정
+spec: containers: - command: - cluster-operator env: - name: DISABLE_SCHEDULER_WEBHOOK value: &amp;quot;false&amp;quot; # true 로 변경 image: storageos/cluster-operator:1.5.0 imagePullPolicy: IfNotPresent  Service 수정
+kubectl edit service storageos -n storageos  spec에 externalIPs와 Master IP 추가</description>
     </item>
     
     <item>
@@ -38,12 +39,10 @@ echo -n &amp;quot;username&amp;quot; | base64 echo -n &amp;quot;password&amp;quo
       <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/inflearn/appendix/installation_case3/</guid>
-      <description>구글 클라우드 플랫폼을 이용해서 VM을 만드는 경우   
+      <description>구글 클라우드 플랫폼을 이용해서 VM을 만드는 경우   * 주의사항 : 실습 강의와 환경이 다르기 때문에 실습 내용과 차이가 있을 수 있습니다   
  1-1) Join GCP 1-1-1) Join 아래 사이트에 들어가서 상단에 [무료로 시작하기] 버튼 클릭  &amp;gt;https://cloud.google.com/
 
-1) Country : South Korea 2) Terms of Service : 체크 후 [CONTINUE] 3) 이름 및 주소 확인 후 Payment method 입력  자신의 신용카드 번호를 입력하지만 크레딧을 다 소모하거나 12개월이 지나도 자동으로 결재가 되진 않습니다.
- 
- 2-1) Create Cluster 2-1-1) Cluster 생성 Kubernetes Engine &amp;gt; Clusters &amp;gt; [CREATE CLUSTER] 클릭</description>
+1) Country : South Korea 2) Terms of Service : 체크 후 [CONTINUE] 3) 이름 및 주소 확인 후 Payment method 입력  자신의 신용카드 번호를 입력하지만 크레딧을 다 소모하거나 12개월이 지나도 자동으로 결재가 되진 않습니다.</description>
     </item>
     
     <item>
