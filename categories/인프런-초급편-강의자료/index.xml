@@ -13,22 +13,24 @@
     
     <item>
       <title>Kubernetes 설치 - Case 3</title>
-      <link>https://kubetm.github.io/inflearn/appendix/installation_case3/</link>
+      <link>https://kubetm.github.io/practice/appendix/installation_case3/</link>
       <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/appendix/installation_case3/</guid>
-      <description>구글 클라우드 플랫폼을 이용해서 VM을 만드는 경우   * 주의사항 : 실습 강의와 환경이 다르기 때문에 실습 내용과 차이가 있을 수 있습니다   
+      <guid>https://kubetm.github.io/practice/appendix/installation_case3/</guid>
+      <description>구글 클라우드 플랫폼을 이용해서 VM을 만드는 경우   
  1-1) Join GCP 1-1-1) Join 아래 사이트에 들어가서 상단에 [무료로 시작하기] 버튼 클릭  &amp;gt;https://cloud.google.com/
 
-1) Country : South Korea 2) Terms of Service : 체크 후 [CONTINUE] 3) 이름 및 주소 확인 후 Payment method 입력  자신의 신용카드 번호를 입력하지만 크레딧을 다 소모하거나 12개월이 지나도 자동으로 결재가 되진 않습니다.</description>
+1) Country : South Korea 2) Terms of Service : 체크 후 [CONTINUE] 3) 이름 및 주소 확인 후 Payment method 입력  자신의 신용카드 번호를 입력하지만 크레딧을 다 소모하거나 12개월이 지나도 자동으로 결재가 되진 않습니다.
+ 
+ 2-1) Create Cluster 2-1-1) Cluster 생성 Kubernetes Engine &amp;gt; Clusters &amp;gt; [CREATE CLUSTER] 클릭</description>
     </item>
     
     <item>
       <title>Kubernetes 설치 - Case 2</title>
-      <link>https://kubetm.github.io/inflearn/appendix/installation_case2/</link>
+      <link>https://kubetm.github.io/practice/appendix/installation_case2/</link>
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/appendix/installation_case2/</guid>
+      <guid>https://kubetm.github.io/practice/appendix/installation_case2/</guid>
       <description>윈도우나 맥이 설치되어 있는 Desktop가 1대 있고, 그위에 VirtualBox와 같은 도구를 이용해서 VM을 만드는 경우   
  1-1) Install Virtualbox 1-1-1) virtualbox 다운로드 및 설치 [윈도우10 버전으로 진행] 아래 경로에서 [Windows hosts] 클릭 하여 다운로드 후 설치 (별다른 변경없이 Next만 함)  &amp;gt;https://www.virtualbox.org/wiki/Downloads
 
@@ -41,10 +43,10 @@ Mac 사용자 참고 URL  &amp;gt;https://www.virtualbox.org/wiki/Mac%20OS%20X%2
     
     <item>
       <title>Kubernetes 설치 - Case1</title>
-      <link>https://kubetm.github.io/inflearn/appendix/installation_case1/</link>
+      <link>https://kubetm.github.io/practice/appendix/installation_case1/</link>
       <pubDate>Sun, 10 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/appendix/installation_case1/</guid>
+      <guid>https://kubetm.github.io/practice/appendix/installation_case1/</guid>
       <description>남는 Server나 Netebook이 1대 있고, 그 서버 자체를 처음부터 구성하는 경우 그 서버의 CentOS 설치부터 가이드 시작..   
  1-1) Install CentOS 1-1-1) CentOS 다운로드 아래 경로로 들어가서 원하는 경로에서 파일 다운로드  &amp;gt;http://isoredirect.centos.org/centos/7/isos/x86_64/
 1-1-2) Booting USB 만들기 아래 경로로 들어가면 중간 정도에 다운로드 버튼 있어요.  &amp;gt;https://rufus.ie/ko_KR.html  다운로드 후 실행
@@ -53,38 +55,38 @@ Mac 사용자 참고 URL  &amp;gt;https://www.virtualbox.org/wiki/Mac%20OS%20X%2
     
     <item>
       <title>DaemonSet, Job, CronJob</title>
-      <link>https://kubetm.github.io/inflearn/beginner/controller-daemonset_job_cronjob/</link>
+      <link>https://kubetm.github.io/practice/beginner/controller-daemonset_job_cronjob/</link>
       <pubDate>Sat, 09 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/beginner/controller-daemonset_job_cronjob/</guid>
+      <guid>https://kubetm.github.io/practice/beginner/controller-daemonset_job_cronjob/</guid>
       <description>1-1) DaemonSet - HostPort DaemonSet apiVersion: apps/v1 kind: DaemonSet metadata: name: daemonset-1 spec: selector: matchLabels: type: app template: metadata: labels: type: app spec: containers: - name: container image: kubetm/app ports: - containerPort: 8080 hostPort: 18080  Command curl 192.168.0.31:18080/hostname  1-2) DaemonSet - NodeSelector DaemonSet apiVersion: apps/v1 kind: DaemonSet metadata: name: daemonset-2 spec: selector: matchLabels: type: app template: metadata: labels: type: app spec: nodeSelector: os: centos containers: - name: container image: kubetm/app ports: - containerPort: 8080  Kubectl Label Add</description>
     </item>
     
     <item>
       <title>Deployment</title>
-      <link>https://kubetm.github.io/inflearn/beginner/controller-deployment/</link>
+      <link>https://kubetm.github.io/practice/beginner/controller-deployment/</link>
       <pubDate>Fri, 08 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/beginner/controller-deployment/</guid>
+      <guid>https://kubetm.github.io/practice/beginner/controller-deployment/</guid>
       <description>1) ReCreate Deployment apiVersion: apps/v1 kind: Deployment metadata: name: deployment-1 spec: selector: matchLabels: type: app replicas: 2 strategy: type: Recreate revisionHistoryLimit: 1 template: metadata: labels: type: app spec: containers: - name: container image: kubetm/app:v1 terminationGracePeriodSeconds: 10  Service apiVersion: v1 kind: Service metadata: name: svc-1 spec: selector: type: app ports: - port: 8080 protocol: TCP targetPort: 8080  Command while true; do curl 10.99.5.3:8080/version; sleep 1; done  Kubectl kubectl rollout undo deployment deployment-1 --to-revision=2 kubectl rollout history deployment deployment-1  2) RollingUpdate Deployment apiVersion: apps/v1 kind: Deployment metadata: name: deployment-2 spec: selector: matchLabels: type: app2 replicas: 2 strategy: type: RollingUpdate minReadySeconds: 10 template: metadata: labels: type: app2 spec: containers: - name: container image: kubetm/app:v1 terminationGracePeriodSeconds: 0  Service apiVersion: v1 kind: Service metadata: name: svc-2 spec: selector: type: app2 ports: - port: 8080 protocol: TCP targetPort: 8080  Command while true; do curl 10.</description>
     </item>
     
     <item>
       <title>Replication Controller, ReplicaSet</title>
-      <link>https://kubetm.github.io/inflearn/beginner/controller-replicationcontroller_replicaset/</link>
+      <link>https://kubetm.github.io/practice/beginner/controller-replicationcontroller_replicaset/</link>
       <pubDate>Thu, 07 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/beginner/controller-replicationcontroller_replicaset/</guid>
+      <guid>https://kubetm.github.io/practice/beginner/controller-replicationcontroller_replicaset/</guid>
       <description> 1) Template, Replicas Pod apiVersion: v1 kind: Pod metadata: name: pod1 labels: type: web spec: containers: - name: container image: kubetm/app:v1 terminationGracePeriodSeconds: 0  ReplicaSet apiVersion: apps/v1 kind: ReplicaSet metadata: name: replica1 spec: replicas: 1 selector: matchLabels: type: web template: metadata: name: pod1 labels: type: web spec: containers: - name: container image: kubetm/app:v1 terminationGracePeriodSeconds: 0  2) Updating Controller ReplicationController -&amp;gt; ReplicaSet
 ReplicationController apiVersion: v1 kind: ReplicationController metadata: name: replication1 spec: replicas: 2 selector: cascade: &amp;quot;false&amp;quot; template: metadata: labels: cascade: &amp;quot;false&amp;quot; spec: containers: - name: container image: kubetm/app:v1  kubectl kubectl delete replicationcontrollers replication1 --cascade=false  ReplicaSet apiVersion: apps/v1 kind: ReplicaSet metadata: name: replica2 spec: replicas: 2 selector: matchLabels: cascade: &amp;quot;false&amp;quot; template: metadata: labels: cascade: &amp;quot;false&amp;quot; spec: containers: - name: container image: kubetm/app:v1  3) Selector ReplicaSet apiVersion: apps/v1 kind: ReplicaSet metadata: name: replica1 spec: replicas: 1 selector: matchLabels: type: web ver: v1 matchExpressions: - {key: type, operator: In, values: [web]} - {key: ver, operator: Exists} template: metadata: labels: type: web ver: v1 location: dev spec: containers: - name: container image: kubetm/app:v1 terminationGracePeriodSeconds: 0  Pod apiVersion: v1 kind: Pod metadata: name: pod-node-affinity1 spec: affinity: nodeAffinity: requiredDuringSchedulingIngnoredDuringExecution: nodeSelectorTerms: - matchExpressions: - {key: AZ-01, operator: Exists} containers: - name: container image: kubetm/init  </description>
     </item>
     
     <item>
       <title>Namespace, ResourceQuota, LimitRange</title>
-      <link>https://kubetm.github.io/inflearn/beginner/object-namespace_resourcequota_limitrange/</link>
+      <link>https://kubetm.github.io/practice/beginner/object-namespace_resourcequota_limitrange/</link>
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/beginner/object-namespace_resourcequota_limitrange/</guid>
+      <guid>https://kubetm.github.io/practice/beginner/object-namespace_resourcequota_limitrange/</guid>
       <description>1) Namespace Namespace apiVersion: v1 kind: Namespace metadata: name: nm-1  Pod apiVersion: v1 kind: Pod metadata: name: pod-1 namespace: nm-1 labels: app: pod spec: containers: - name: container image: kubetm/app ports: - containerPort: 8080  Service apiVersion: v1 kind: Service metadata: name: svc-1 namespace: nm-1 spec: selector: app: pod ports: - port: 9000 targetPort: 8080  pod ip :
 curl 10.16.36.115:8080/hostname  service ip :
 curl 10.96.92.97:9000/hostname  Service apiVersion: v1 kind: Service metadata: name: svc-2 spec: ports: - port: 9000 targetPort: 8080 nodePort: 30000 type: NodePort  Pod apiVersion: v1 kind: Pod metadata: name: pod-2 spec: nodeSelector: kubernetes.</description>
@@ -92,46 +94,46 @@ curl 10.96.92.97:9000/hostname  Service apiVersion: v1 kind: Service metadata: n
     
     <item>
       <title>ConfigMap, Secret</title>
-      <link>https://kubetm.github.io/inflearn/beginner/object-configmap_secret/</link>
+      <link>https://kubetm.github.io/practice/beginner/object-configmap_secret/</link>
       <pubDate>Tue, 05 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/beginner/object-configmap_secret/</guid>
+      <guid>https://kubetm.github.io/practice/beginner/object-configmap_secret/</guid>
       <description>1) Env (Literal) ConfigMap apiVersion: v1 kind: ConfigMap metadata: name: cm-dev data: SSH: ‘false’ User: dev  Secret apiVersion: v1 kind: Secret metadata: name: sec-dev data: Key: MTIzNA==  Pod apiVersion: v1 kind: Pod metadata: name: pod-1 spec: containers: - name: container image: kubetm/init envFrom: - configMapRef: name: cm-dev - secretRef: name: sec-dev  2) Env (File) echo &amp;quot;Content&amp;quot; &amp;gt;&amp;gt; file-c.txt kubectl create configmap cm-file --from-file=./file-c.txt echo &amp;quot;Content&amp;quot; &amp;gt;&amp;gt; file-s.</description>
     </item>
     
     <item>
       <title>Volume</title>
-      <link>https://kubetm.github.io/inflearn/beginner/object-volume/</link>
+      <link>https://kubetm.github.io/practice/beginner/object-volume/</link>
       <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/beginner/object-volume/</guid>
+      <guid>https://kubetm.github.io/practice/beginner/object-volume/</guid>
       <description>1) emptyDir Pod apiVersion: v1 kind: Pod metadata: name: pod-volume-1 spec: containers: - name: container1 image: kubetm/init volumeMounts: - name: empty-dir mountPath: /mount1 - name: container2 image: kubetm/init volumeMounts: - name: empty-dir mountPath: /mount2 volumes: - name : empty-dir emptyDir: {}  mount | grep mount1 echo &amp;quot;file context&amp;quot; &amp;gt;&amp;gt; file.txt  2) hostPath Pod apiVersion: v1 kind: Pod metadata: name: pod-volume-3 spec: nodeSelector: kubernetes.io/hostname: k8s-node1 containers: - name: container image: kubetm/init volumeMounts: - name: host-path mountPath: /mount1 volumes: - name : host-path hostPath: path: /node-v type: DirectoryOrCreate  3) PVC / PV PersistentVolume apiVersion: v1 kind: PersistentVolume metadata: name: pv-03 spec: capacity: storage: 2G accessModes: - ReadWriteOnce local: path: /node-v nodeAffinity: required: nodeSelectorTerms: - matchExpressions: - {key: kubernetes.</description>
     </item>
     
     <item>
       <title>Service</title>
-      <link>https://kubetm.github.io/inflearn/beginner/object-service/</link>
+      <link>https://kubetm.github.io/practice/beginner/object-service/</link>
       <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/beginner/object-service/</guid>
+      <guid>https://kubetm.github.io/practice/beginner/object-service/</guid>
       <description> 1) ClusterIP Pod apiVersion: v1 kind: Pod metadata: name: pod-1 labels: app: pod spec: nodeSelector: kubernetes.io/hostname: k8s-node1 containers: - name: container image: kubetm/app ports: - containerPort: 8080  Service apiVersion: v1 kind: Service metadata: name: svc-1 spec: selector: app: pod ports: - port: 9000 targetPort: 8080  curl 10.104.103.107:9000/hostname  2) NodePort Service apiVersion: v1 kind: Service metadata: name: svc-2 spec: selector: app: pod ports: - port: 9000 targetPort: 8080 nodePort: 30000 type: NodePort externalTrafficPolicy: Local  3) Load Balancer Service apiVersion: v1 kind: Service metadata: name: svc-3 spec: selector: app: pod ports: - port: 9000 targetPort: 8080 type: LoadBalancer  kubectl get service svc-3  </description>
     </item>
     
     <item>
       <title>Pod</title>
-      <link>https://kubetm.github.io/inflearn/beginner/object-pod/</link>
+      <link>https://kubetm.github.io/practice/beginner/object-pod/</link>
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/beginner/object-pod/</guid>
+      <guid>https://kubetm.github.io/practice/beginner/object-pod/</guid>
       <description>1) Container Pod apiVersion: v1 kind: Pod metadata: name: pod-1 spec: containers: - name: container1 image: kubetm/p8000 ports: - containerPort: 8000 - name: container2 image: kubetm/p8080 ports: - containerPort: 8080  ReplicationController apiVersion: v1 kind: ReplicationController metadata: name: replication-1 spec: replicas: 1 selector: app: rc template: metadata: name: pod-1 labels: app: rc spec: containers: - name: container image: kubetm/init  2) Label Pod apiVersion: v1 kind: Pod metadata: name: pod-2 labels: type: web lo: dev spec: containers: - name: container image: kubetm/init  Service apiVersion: v1 kind: Service metadata: name: svc-1 spec: selector: type: web ports: - port: 8080  3) Node Schedule Pod apiVersion: v1 kind: Pod metadata: name: pod-3 spec: nodeSelector: kubernetes.</description>
     </item>
     
     <item>
       <title>Getting-started Kubernetes</title>
-      <link>https://kubetm.github.io/inflearn/beginner/gettingstarted-kubernetes/</link>
+      <link>https://kubetm.github.io/practice/beginner/gettingstarted-kubernetes/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/beginner/gettingstarted-kubernetes/</guid>
+      <guid>https://kubetm.github.io/practice/beginner/gettingstarted-kubernetes/</guid>
       <description>Linux hello.js var http = require(&#39;http&#39;); var content = function(req, resp) { resp.end(&amp;quot;Hello Kubernetes!&amp;quot; + &amp;quot;\n&amp;quot;); resp.writeHead(200); } var w = http.createServer(content); w.listen(8000);  node hello.js  Docker Dockerfile FROM node:slim EXPOSE 8000 COPY hello.js . CMD node hello.js  Docker Hub Site https://hub.docker.com/
 Docker Container Run docker build -t kubetm/hello . -t : 레파지토리/이미지명:버전 docker images docker run -d -p 8100:8000 kubetm/hello -d : 백그라운드 모드 -p : 포트변경 docker ps docker exec -it c403442e8a59 /bin/bash  Docker Image Push docker login docker push kubetm/hello  Kubernetes Pod apiVersion: v1 kind: Pod metadata: name: hello-pod labels: app: hello spec: containers: - name: hello-container image: kubetm/hello ports: - containerPort: 8000  Service apiVersion: v1 kind: Service metadata: name: hello-svc spec: selector: app: hello ports: - port: 8200 targetPort: 8000 externalIPs: - 192.</description>
     </item>

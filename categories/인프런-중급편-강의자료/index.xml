@@ -13,10 +13,10 @@
     
     <item>
       <title>Volume</title>
-      <link>https://kubetm.github.io/inflearn/intermediate/object-volume/</link>
+      <link>https://kubetm.github.io/practice/intermediate/object-volume/</link>
       <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/intermediate/object-volume/</guid>
+      <guid>https://kubetm.github.io/practice/intermediate/object-volume/</guid>
       <description>1. 사전 구성 - StorageOS 설치 및 StorageClass 생성 1-1) StorageOS 설치 설치
 kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml  Depolyment 수정
 kubectl edit deployments.apps storageos-cluster-operator -n storageos-operator  spec.containers.env의 DISABLE_SCHEDULER_WEBHOOK의 Value를 true로 설정
@@ -26,10 +26,10 @@ kubectl edit service storageos -n storageos  spec에 externalIPs와 Master IP �
     
     <item>
       <title>Service</title>
-      <link>https://kubetm.github.io/inflearn/intermediate/object-service/</link>
+      <link>https://kubetm.github.io/practice/intermediate/object-service/</link>
       <pubDate>Sat, 16 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/inflearn/intermediate/object-service/</guid>
+      <guid>https://kubetm.github.io/practice/intermediate/object-service/</guid>
       <description>Headless  1-1) Service apiVersion: v1 kind: Service metadata: name: clusterip1 spec: selector: svc: clusterip ports: - port: 80 targetPort: 8080  1-2) Pod apiVersion: v1 kind: Pod metadata: name: pod1 labels: svc: clusterip spec: containers: - name: container image: kubetm/app  1-3) Request Pod apiVersion: v1 kind: Pod metadata: name: request-pod spec: containers: - name: container image: kubetm/init  kubectl exec request-pod -it /bin/bash  nslookup</description>
     </item>
     
