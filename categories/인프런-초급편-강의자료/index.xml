@@ -125,7 +125,8 @@ curl 10.96.92.97:9000/hostname  Service apiVersion: v1 kind: Service metadata: n
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/beginner/object-pod/</guid>
-      <description>1) Container Pod apiVersion: v1 kind: Pod metadata: name: pod-1 spec: containers: - name: container1 image: kubetm/p8000 ports: - containerPort: 8000 - name: container2 image: kubetm/p8080 ports: - containerPort: 8080  ReplicationController apiVersion: v1 kind: ReplicationController metadata: name: replication-1 spec: replicas: 1 selector: app: rc template: metadata: name: pod-1 labels: app: rc spec: containers: - name: container image: kubetm/init  2) Label Pod apiVersion: v1 kind: Pod metadata: name: pod-2 labels: type: web lo: dev spec: containers: - name: container image: kubetm/init  Service apiVersion: v1 kind: Service metadata: name: svc-1 spec: selector: type: web ports: - port: 8080  3) Node Schedule Pod apiVersion: v1 kind: Pod metadata: name: pod-3 spec: nodeSelector: kubernetes.</description>
+      <description>1. Container  1-1) Pod apiVersion: v1 kind: Pod metadata: name: pod-1 spec: containers: - name: container1 image: kubetm/p8000 ports: - containerPort: 8000 - name: container2 image: kubetm/p8080 ports: - containerPort: 8080  1-2) ReplicationController apiVersion: v1 kind: ReplicationController metadata: name: replication-1 spec: replicas: 1 selector: app: rc template: metadata: name: pod-1 labels: app: rc spec: containers: - name: container image: kubetm/init   
+2. Label  2-1) Pod apiVersion: v1 kind: Pod metadata: name: pod-2 labels: type: web lo: dev spec: containers: - name: container image: kubetm/init  2-2) Service apiVersion: v1 kind: Service metadata: name: svc-1 spec: selector: type: web ports: - port: 8080</description>
     </item>
     
     <item>

@@ -232,9 +232,46 @@
 </header>
 
   
+  <a href="/practice/beginner/object-pod/" class="image featured">
+    <img src="/img/practice/beginner/pod.jpg" alt="">
+  </a>
+
 
   
-  
+  <pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+spec:
+  containers:
+  - name: container1
+    image: kubetm/p8000
+    ports:
+    - containerPort: 8000
+  - name: container2
+    image: kubetm/p8080
+    ports:
+    - containerPort: 8080
+</code></pre>
+
+<h3 id="1-2-replicationcontroller">1-2) ReplicationController</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: replication-1
+spec:
+  replicas: 1
+  selector:
+    app: rc
+  template:
+    metadata:
+      name: pod-1
+      labels:
+        app: rc
+    spec:
+      containers:
+      - name:&hellip;</code></pre>
   <footer>
     <a href="/practice/beginner/object-pod/" class="button big">본문 보기</a>
     

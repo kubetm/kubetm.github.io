@@ -26,7 +26,7 @@
 
 <meta itemprop="datePublished" content="2019-11-02T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-02T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="139">
+<meta itemprop="wordCount" content="166">
 
 
 
@@ -207,13 +207,45 @@
 
   </section>
   
+  <a href="/practice/beginner/object-pod/" class="image featured">
+    <img src="/img/practice/beginner/pod.jpg" alt="">
+  </a>
+
 
   <div class="content">
     
 
-<h2 id="1-container">1) Container</h2>
+<h2 id="1-container">1. Container</h2>
 
-<h3 id="pod">Pod</h3>
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+    
+
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/practice/beginner/pod-1.jpg" alt="">
+        </span>
+    
+
+
+
+<h3 id="1-1-pod">1-1) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -231,7 +263,7 @@ spec:
     - containerPort: 8080
 </code></pre>
 
-<h3 id="replicationcontroller">ReplicationController</h3>
+<h3 id="1-2-replicationcontroller">1-2) ReplicationController</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: ReplicationController
@@ -252,9 +284,40 @@ spec:
         image: kubetm/init
 </code></pre>
 
-<h2 id="2-label">2) Label</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="pod-1">Pod</h3>
+<h2 id="2-label">2. Label</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+    
+
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/practice/beginner/pod-2.jpg" alt="">
+        </span>
+    
+
+
+
+<h3 id="2-1-pod">2-1) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -269,7 +332,7 @@ spec:
     image: kubetm/init
 </code></pre>
 
-<h3 id="service">Service</h3>
+<h3 id="2-2-service">2-2) Service</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Service
@@ -282,9 +345,40 @@ spec:
   - port: 8080
 </code></pre>
 
-<h2 id="3-node-schedule">3) Node Schedule</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="pod-2">Pod</h3>
+<h2 id="3-node-schedule">3. Node Schedule</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+    
+
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/practice/beginner/pod-3.jpg" alt="">
+        </span>
+    
+
+
+
+<h3 id="3-1-pod">3-1) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -299,7 +393,7 @@ spec:
 
 </code></pre>
 
-<h3 id="pod-3">Pod</h3>
+<h3 id="3-2-pod">3-2) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -315,6 +409,38 @@ spec:
       limits:
         memory: 3Gi
 </code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="yaml">yaml</h2>
+
+<hr />
+
+<h3 id="pod">* <strong>Pod</strong></h3>
+
+<pre><code class="language-yaml">
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>Pod Overview</strong> : <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/">https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/</a></li>
+<li><strong>Labels and Selectors</strong> : <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/</a></li>
+<li><strong>Assigning Pods to Nodes</strong> : <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/">https://kubernetes.io/docs/concepts/configuration/assign-pod-node/</a>
+
+
+
+
+<br /></li>
+</ul>
 
   </div>
   <footer>
