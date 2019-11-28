@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>강좌 계획 on KubeTM Blog</title>
+    <link>https://kubetm.github.io/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/</link>
+    <description>Recent content in 강좌 계획 on KubeTM Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kubetm.github.io/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>11월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2019_11/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2019_11/</guid>
+      <description>-28일- [중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy PPT 100% Blog 100% Recording 20%
+ 이론 강의 멘트 정리  Blog 강의 히스토리 항목 추가  히스토리 내용 정리 (11월)  
+-27일- [중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy PPT 100% Blog 100% Recording 0%
+ Blog에 실습 자료 정리   
+Blog [강좌 Plan] 항목 추가  인프런에서 강좌 History를 Blog로 옮김</description>
+    </item>
+    
+    <item>
+      <title>10월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2019_10/</link>
+      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2019_10/</guid>
+      <description>-31일- [부록 (설치)] Case2 [내PC+VirtualBox] 실습 PPT 100% Test 100% Recording 0%
+ 강의자료 정리 및 테스트 완료  [부록 (설치)] Case2 [내PC+VirtualBox] PPT 100% Recording 100%
+ 강의 자료준비 및 영상제작완료  [부록 (설치)] Case1 [서버전용] 실습 PPT 100% Test 100% Recording 100%
+ Dahsboard 설치 부분 재녹음  
+-30일- [부록 (설치)] Kubernetes 설치 개요 PPT 100% Recording 100%
+ 영상제작 완료  [부록 (설치)] Case1 [서버전용] 실습 PPT 100% Recording 100%</description>
+    </item>
+    
+    <item>
+      <title>9월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2019_09/</link>
+      <pubDate>Sun, 01 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2019_09/</guid>
+      <description>-30일- [중급편] Pod - Lifecycle PPT 100% Recording 20%
+ 강의할 PPT 자료 및 내용 정리 완료 녹음 준비   
+-27일- [중급편] Pod - Lifecycle PPT 80% Recording 0%
+ 강의할 PPT 자료 및 내용 정리   
+-25일- [부록] Kubernetes 설치 개요 PPT 120% Github 100% Test 100% Recording 100%
+ 실습영상 편집 후 업로드  
+-24일- [부록] Kubernetes 설치 개요 PPT 120% Github 100% Test 100% Recording 80%</description>
+    </item>
+    
+  </channel>
+</rss>

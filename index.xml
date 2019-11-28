@@ -152,15 +152,15 @@ curl 10.96.92.97:9000/hostname  Service apiVersion: v1 kind: Service metadata: n
     
     <item>
       <title>11월 진행사항</title>
-      <link>https://kubetm.github.io/history/2019_11/</link>
+      <link>https://kubetm.github.io/plan/2019_11/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/history/2019_11/</guid>
-      <description>-20일- 부록 (설치) &amp;gt; 설치 - Case1 [서버전용] 실습  인코딩시 Media Offline라고 잘못 표시되는 문구 삭제  
--6일- 부록 (설치) &amp;gt; 설치 - Case3 [구글 클라우드 플랫폼] 실습 PPT 100% Test 100% Recording 100%
- 테스트 및 실습영상 제작 완료  
--6일- 부록 (설치) &amp;gt; 설치 - Case3 [구글 클라우드 플랫폼] 실습 PPT 100% Test 70% Recording 0%
- 테스트 자료 정리 및 테스트 중</description>
+      <guid>https://kubetm.github.io/plan/2019_11/</guid>
+      <description>-28일- [중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy PPT 100% Blog 100% Recording 20%
+ 이론 강의 멘트 정리  Blog 강의 히스토리 항목 추가  히스토리 내용 정리 (11월)  
+-27일- [중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy PPT 100% Blog 100% Recording 0%
+ Blog에 실습 자료 정리   
+Blog [강좌 Plan] 항목 추가  인프런에서 강좌 History를 Blog로 옮김</description>
     </item>
     
     <item>
@@ -175,31 +175,31 @@ Docker Container Run docker build -t kubetm/hello . -t : 레파지토리/이미�
     
     <item>
       <title>10월 진행사항</title>
-      <link>https://kubetm.github.io/history/2019_10/</link>
+      <link>https://kubetm.github.io/plan/2019_10/</link>
       <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/history/2019_10/</guid>
-      <description>-31일- 부록 (설치) &amp;gt; 설치 - Case2 [내PC+VirtualBox] 실습 PPT 100% Test 100% Recording 0%
- 강의자료 정리 및 테스트 완료  
--31일- 부록 (설치) &amp;gt; 설치 - Case2 [내PC+VirtualBox] PPT 100% Recording 100%
- 강의 자료준비 및 영상제작완료  
--31일- 부록 (설치) &amp;gt; 설치 - Case1 [서버전용] 실습 PPT 100% Test 100% Recording 100%
+      <guid>https://kubetm.github.io/plan/2019_10/</guid>
+      <description>-31일- [부록 (설치)] Case2 [내PC+VirtualBox] 실습 PPT 100% Test 100% Recording 0%
+ 강의자료 정리 및 테스트 완료  [부록 (설치)] Case2 [내PC+VirtualBox] PPT 100% Recording 100%
+ 강의 자료준비 및 영상제작완료  [부록 (설치)] Case1 [서버전용] 실습 PPT 100% Test 100% Recording 100%
  Dahsboard 설치 부분 재녹음  
--30일- 부록 (설치) &amp;gt; Kubernetes 설치 개요 PPT 100% Recording 100%</description>
+-30일- [부록 (설치)] Kubernetes 설치 개요 PPT 100% Recording 100%
+ 영상제작 완료  [부록 (설치)] Case1 [서버전용] 실습 PPT 100% Recording 100%</description>
     </item>
     
     <item>
       <title>9월 진행사항</title>
-      <link>https://kubetm.github.io/history/2019_09/</link>
+      <link>https://kubetm.github.io/plan/2019_09/</link>
       <pubDate>Sun, 01 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/history/2019_09/</guid>
-      <description>-30일- [중급편] 기본 오브젝트 상세 &amp;gt; Pod - Lifecycle PPT 100% Recording 20%
+      <guid>https://kubetm.github.io/plan/2019_09/</guid>
+      <description>-30일- [중급편] Pod - Lifecycle PPT 100% Recording 20%
  강의할 PPT 자료 및 내용 정리 완료 녹음 준비   
--27일- [중급편] 기본 오브젝트 상세 &amp;gt; Pod - Lifecycle PPT 80% Recording 0%
+-27일- [중급편] Pod - Lifecycle PPT 80% Recording 0%
  강의할 PPT 자료 및 내용 정리   
--25일- 부록 &amp;gt; Kubernetes 설치 개요 PPT 120% Github 100% Test 100% Recording 100%
- 실습영상 편집 후 업로드</description>
+-25일- [부록] Kubernetes 설치 개요 PPT 120% Github 100% Test 100% Recording 100%
+ 실습영상 편집 후 업로드  
+-24일- [부록] Kubernetes 설치 개요 PPT 120% Github 100% Test 100% Recording 80%</description>
     </item>
     
     <item>
