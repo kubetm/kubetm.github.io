@@ -17,7 +17,7 @@
       <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/intermediate/object-volume/</guid>
-      <description>1. 사전 구성 - StorageOS 설치 및 StorageClass 생성 1-1) StorageOS 설치 설치
+      <description>1. 사전 구성 - StorageOS 설치 및 StorageClass 생성  1-1) StorageOS 설치 설치
 kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml  Depolyment 수정
 kubectl edit deployments.apps storageos-cluster-operator -n storageos-operator  spec.containers.env의 DISABLE_SCHEDULER_WEBHOOK의 Value를 true로 설정
 spec: containers: - command: - cluster-operator env: - name: DISABLE_SCHEDULER_WEBHOOK value: &amp;quot;false&amp;quot; # true 로 변경 image: storageos/cluster-operator:1.5.0 imagePullPolicy: IfNotPresent  Service 수정
@@ -157,11 +157,11 @@ curl 10.96.92.97:9000/hostname  Service apiVersion: v1 kind: Service metadata: n
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2019_11/</guid>
-      <description>-28일- [중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy PPT 100% Blog 100% Recording 20%
- 이론 강의 멘트 정리  Blog 강의 히스토리 항목 추가  히스토리 내용 정리 (11월)  
--27일- [중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy PPT 100% Blog 100% Recording 0%
- Blog에 실습 자료 정리   
-Blog [강좌 Plan] 항목 추가  인프런에서 강좌 History를 Blog로 옮김</description>
+      <description>-29일- [중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy PPT 100% Blog 100% Recording 50%
+ 이론강의 제작 및 Inflearn 업로드   [초급편] Blog 실습자료 내용 보강  Pod Service  
+-28일- [중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy PPT 100% Blog 100% Recording 20%
+ 이론 강의 스크립트 정리  Blog 강의 히스토리 항목 추가  히스토리 내용 정리 (11월)  
+-27일- [중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy PPT 100% Blog 100% Recording 0%</description>
     </item>
     
     <item>
@@ -201,20 +201,6 @@ Docker Container Run docker build -t kubetm/hello . -t : 레파지토리/이미�
 -25일- [부록] Kubernetes 설치 개요 PPT 120% Github 100% Test 100% Recording 100%
  실습영상 편집 후 업로드  
 -24일- [부록] Kubernetes 설치 개요 PPT 120% Github 100% Test 100% Recording 80%</description>
-    </item>
-    
-    <item>
-      <title>Markdown and Shortcodes</title>
-      <link>https://kubetm.github.io/practice/beginner/examples/</link>
-      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kubetm.github.io/practice/beginner/examples/</guid>
-      <description>Thanks! Special thanks to Markdown Cheatsheet.
-H1 H2 H3 H4 H5 H6 Alt-H1 Alt-H2 # H1 ## H2 ### H3 #### H4 ##### H5 ###### H6 Alt-H1 ====== Alt-H2 ------  Emphasis, aka italics, with asterisks or underscores.
-Strong emphasis, aka bold, with asterisks or underscores.
-Combined emphasis with asterisks and underscores.
-Strikethrough uses two tildes. Scratch this.
-Emphasis, aka italics, with *asterisks* or _underscores_. Strong emphasis, aka bold, with **asterisks** or __underscores__.</description>
     </item>
     
   </channel>

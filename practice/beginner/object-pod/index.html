@@ -26,7 +26,7 @@
 
 <meta itemprop="datePublished" content="2019-11-02T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-02T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="166">
+<meta itemprop="wordCount" content="420">
 
 
 
@@ -193,7 +193,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>1 minute read</p>
+      <p>2 minutes read</p>
     
   </div>
 </header>
@@ -413,14 +413,128 @@ spec:
 <p><br/>
 <br/></p>
 
-<h2 id="yaml">yaml</h2>
+<h2 id="sample-yaml">Sample Yaml</h2>
 
 <hr />
 
 <h3 id="pod">* <strong>Pod</strong></h3>
 
-<pre><code class="language-yaml">
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-4                           # Pod 이름
+  labels:                               # Label 
+    type: web                           
+    lo: dev  
+spec:
+  nodeSelector:                         # Node 직접 지정시
+    kubernetes.io/hostname: k8s-node1   
+  containers:
+  - name: container                     # Container 이름
+    image: kubetm/init                  # 이미지 선택
+    ports:
+    - containerPort: 8080               
+    resources:                          # 자원 사용량 설정
+      requests:
+        memory: 1Gi
+      limits:
+        memory: 1Gi
 </code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="kubectl">kubectl</h2>
+
+<hr />
+
+<h3 id="create">* <strong>Create</strong></h3>
+
+<pre><code class="language-sh"># 파일이 있을 경우
+kubectl create -f ./pod.yaml
+
+# 내용과 함께 바로 작성
+kubectl create -f - &lt;&lt;END
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+END
+</code></pre>
+
+<h3 id="apply">* <strong>Apply</strong></h3>
+
+<pre><code class="language-sh">kubectl apply -f ./pod.yaml
+</code></pre>
+
+<h3 id="get">* <strong>Get</strong></h3>
+
+<pre><code class="language-sh"># 기본 Pod 리스트 조회 (Namepsace 포함)
+kubectl get pods -n defalut
+
+# 좀더 많은 내용 출력
+kubectl get pods -o wide
+
+# Pod 이름 지정
+kubectl get pod pod1
+
+# Json 형태로 출력
+kubectl get pod pod1 -o json
+</code></pre>
+
+<h3 id="describe">* <strong>Describe</strong></h3>
+
+<pre><code class="language-sh"># 상세 출력
+kubectl describe pod pod1
+</code></pre>
+
+<h3 id="delete">* <strong>Delete</strong></h3>
+
+<pre><code class="language-sh"># 파일이 있을 경우 생성한 방법 그대로 삭제
+kubectl delete -f ./pod.yaml
+
+# 내용과 함께 바로 작성한 경우 생성한 방법 그대로 삭제
+kubectl delete -f - &lt;&lt;END
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+END
+
+# Pod 이름 지정
+kubectl delete pod pod1
+</code></pre>
+
+<h3 id="exec">* <strong>Exec</strong></h3>
+
+<pre><code class="language-sh"># Pod이름이 pod1인 Container로 들어가기 (나올땐 exit)
+kubectl exec pod1 -it /bin/bash
+
+# Container가 두개 이상 있을때 Container이름이 con1인 Container로 들어가기 
+kubectl exec pod1 -c con1 -it /bin/bash
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="tips">Tips</h2>
+
+<hr />
+
+<h3 id="apply와-create의-차이">* <strong>Apply와 Create의 차이</strong></h3>
+
+<ul>
+<li>둘다 자원을 생성할때 사용할 수 있지만, <strong>Create</strong>는 기존에 같은 이름의 Pod가 존재하면 생성이 안되고, <strong>Apply</strong>는 기존에 같은 이름의 Pod가 존재하면 업데이트됨
+<br /></li>
+</ul>
 
 <p><br/>
 <br/></p>

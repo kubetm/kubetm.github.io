@@ -17,7 +17,7 @@
       <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/intermediate/object-volume/</guid>
-      <description>1. 사전 구성 - StorageOS 설치 및 StorageClass 생성 1-1) StorageOS 설치 설치
+      <description>1. 사전 구성 - StorageOS 설치 및 StorageClass 생성  1-1) StorageOS 설치 설치
 kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml  Depolyment 수정
 kubectl edit deployments.apps storageos-cluster-operator -n storageos-operator  spec.containers.env의 DISABLE_SCHEDULER_WEBHOOK의 Value를 true로 설정
 spec: containers: - command: - cluster-operator env: - name: DISABLE_SCHEDULER_WEBHOOK value: &amp;quot;false&amp;quot; # true 로 변경 image: storageos/cluster-operator:1.5.0 imagePullPolicy: IfNotPresent  Service 수정
