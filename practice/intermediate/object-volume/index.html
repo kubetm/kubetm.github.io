@@ -26,7 +26,7 @@
 
 <meta itemprop="datePublished" content="2019-11-21T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="568">
+<meta itemprop="wordCount" content="561">
 
 
 
@@ -56,7 +56,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
       
       
-      <link rel="stylesheet" href="/css/main.min.27b618377603ce5859ee8c77a8f18977d019e93b79d4f1864f18fe5c06b8903a.css" integrity="sha256-J7YYN3YDzlhZ7ox3qPGJd9AZ6Tt51PGGTxj&#43;XAa4kDo=">
+      <link rel="stylesheet" href="/css/main.min.eb65ee0dac548aa7f699f2286e6c4195cce40c7bebc7a41d40df6795594ea13a.css" integrity="sha256-62XuDaxUiqf2mfIobmxBlczkDHvrx6QdQN9nlVlOoTo=">
       <link rel="stylesheet" href="/css/add-on.css">
     
   
@@ -282,11 +282,16 @@
 
 
 
-<h3 id="1-1-storageos-설치">1-1) StorageOS 설치</h3>
+<h3 id="1-1-storageos-operator-설치">1-1) StorageOS Operator 설치</h3>
 
 <p>설치</p>
 
 <pre><code class="language-sh">kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml
+</code></pre>
+
+<p>설치 확인</p>
+
+<pre><code class="language-sh">kubectl get all -n storageos-operator
 </code></pre>
 
 <p>Depolyment 수정</p>
@@ -307,31 +312,13 @@
     imagePullPolicy: IfNotPresent
 </code></pre>
 
-<p>Service 수정</p>
+<p>관리 계정을 위한 Secret 생성 (username 및 password를 Base64문자로 만들기)</p>
 
-<pre><code class="language-sh">kubectl edit service storageos -n storageos
+<pre><code class="language-sh">echo -n &quot;admin&quot; | base64
+echo -n &quot;1234&quot; | base64
 </code></pre>
 
-<p>spec에  <code>externalIPs</code>와 Master IP 추가</p>
-
-<pre><code class="language-yaml">spec:
-  clusterIP: 10.109.77.121
-  externalIPs:     # 추가
-  - 192.168.0.30   # Master IP 추가
-  ports:
-</code></pre>
-
-<p><br/></p>
-
-<h3 id="1-2-storageos-계정을-위한-secret-생성">1-2) StorageOS 계정을 위한 Secret 생성</h3>
-
-<p>username 및 password을 Base64문자로 만들기 - <code>username</code>과 <code>password</code>는 각자 설정</p>
-
-<pre><code class="language-sh">echo -n &quot;username&quot; | base64
-echo -n &quot;password&quot; | base64
-</code></pre>
-
-<p>아래 yaml 파일 안에  <code>apiUsername</code> 및 <code>apiPassword</code> 부분에 위 결과로 나온 Base64인코딩된 username <code>dXNlcm5hbWU=</code>과 password <code>cGFzc3dvcmQ=</code>넣기</p>
+<p><code>apiUsername</code> 및 <code>apiPassword</code> 부분에 위 결과로 나온 문자 넣기</p>
 
 <pre><code class="language-yaml">kubectl create -f - &lt;&lt;END
 apiVersion: v1
@@ -343,14 +330,16 @@ metadata:
     app: &quot;storageos&quot;
 type: &quot;kubernetes.io/storageos&quot;
 data:
-  apiUsername: dXNlcm5hbWU=
-  apiPassword: cGFzc3dvcmQ=
+  apiUsername: YWRtaW4=  # admin
+  apiPassword: MTIzNA==  # 1234
 END
 </code></pre>
 
 <p><br/></p>
 
-<h3 id="1-3-storageos-트리거-생성">1-3) StorageOS 트리거 생성</h3>
+<h3 id="1-2-storageos-설치">1-2) StorageOS 설치</h3>
+
+<p>StorageOS 설치 트리거 생성</p>
 
 <pre><code class="language-sh">kubectl apply -f - &lt;&lt;END
 apiVersion: &quot;storageos.com/v1&quot;
@@ -370,26 +359,35 @@ spec:
 END
 </code></pre>
 
-<p><br/></p>
+<p>설치 확인</p>
 
-<h3 id="1-4-설치-확인">1-4) 설치 확인</h3>
-
-<p>Pod 상태 Running 확인</p>
-
-<pre><code class="language-sh">kubectl -n storageos get pods
+<pre><code class="language-sh">kubectl get all -n storageos
 </code></pre>
 
-<pre><code class="language-sh">NAME                                 READY   STATUS            RESTARTS   AGE
-storageos-daemonset-rlvml            1/1     Running           0          137s
-storageos-daemonset-z4fdw            1/1     Running           0          137s
-storageos-scheduler-f7566b58-kw49s   1/1     Running           0          137s
+<p>Dashboard 접속을 위한 Service 수정</p>
+
+<pre><code class="language-sh">kubectl edit service storageos -n storageos
+</code></pre>
+
+<p>spec에  <code>externalIPs</code>와 Master IP 추가</p>
+
+<pre><code class="language-yaml">spec:
+  clusterIP: 10.109.77.121
+  externalIPs:     # 추가
+  - 192.168.0.30   # Master IP 추가
+  ports:
+</code></pre>
+
+<p>접속</p>
+
+<pre><code>http://192.168.0.30:5705/
 </code></pre>
 
 <p><br/></p>
 
-<h3 id="1-5-default-storageclass-추가">1-5) Default StorageClass 추가</h3>
+<h3 id="1-3-default-storageclass-추가">1-3) Default StorageClass 추가</h3>
 
-<pre><code class="language-sh">kubectl create -f - &lt;&lt;END
+<pre><code class="language-sh">kubectl apply -f - &lt;&lt;END
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
@@ -692,6 +690,11 @@ parameters:
 <h2 id="kubectl">kubectl</h2>
 
 <hr />
+
+<h3 id="get-all-objects-in-namespaces">* <strong>Get All Objects in Namespaces</strong></h3>
+
+<pre><code class="language-sh">kubectl get all -n storageos-operator
+</code></pre>
 
 <h3 id="force-deletion">* <strong>Force Deletion</strong></h3>
 
