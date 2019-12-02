@@ -29,7 +29,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://kubetm.github.io/plan/" />
 
-<meta property="og:updated_time" content="2019-11-01T00:00:00+00:00" />
+<meta property="og:updated_time" content="2019-12-01T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[인프런] 강좌 Plan"/>
@@ -197,6 +197,7 @@
 <hr />
 
 <ul>
+<li><a href="./2019_12">2019. 12</a></li>
 <li><a href="./2019_11">2019. 11</a></li>
 <li><a href="./2019_10">2019. 10</a></li>
 <li><a href="./2019_09">2019. 9</a></li>
@@ -210,8 +211,8 @@
  <section id="visitors">
   	<header>
   		<div>
-	       	<div style="text-align: left;width:50%;float: left;"> <i class="far fa-clipboard" style="color:green"></i> Total : <i id="kubetm-total">"----"</i>명 </div>
-	        <div style="text-align: left;width:50%;float: left;"><i class="far fa-user" style="color:green"></i> Today :  <i id="kubetm-today">"----"</i>명</div>
+	       	<div style="text-align: left;width:50%;float: left;"> <i class="far fa-clipboard" style="color:green"></i> Total : <i id="kubetm-total">---</i>명 </div>
+	        <div style="text-align: left;width:50%;float: left;"><i class="far fa-user" style="color:green"></i> Today :  <i id="kubetm-today">---</i>명</div>
         </div>
     </header>
  </section>
@@ -347,8 +348,9 @@ function queryCoreReportingApi(profileId) {
     'metrics': 'ga:pageviews'
   })
   .then(function(response) {
-	  document.getElementById('kubetm-total').innerHTML = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
-    
+	  var totalArr = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
+	  var total = totalArr.split('"');
+	  document.getElementById('kubetm-total').innerHTML  = total[1];
   })
   .then(null, function(err) {
       
@@ -362,7 +364,10 @@ function queryCoreReportingApi(profileId) {
 	    'metrics': 'ga:pageviews'
 	  })
 	  .then(function(response) {
-		  document.getElementById('kubetm-today').innerHTML = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
+		  var todayArr = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
+		  var today = todayArr.split('"');
+		  document.getElementById('kubetm-today').innerHTML  = today[1];
+		  
 	   
 	  })
 	  .then(null, function(err) {

@@ -29,7 +29,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://kubetm.github.io/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/" />
 
-<meta property="og:updated_time" content="2019-11-01T00:00:00+00:00" />
+<meta property="og:updated_time" content="2019-12-01T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="강좌 계획"/>
@@ -176,6 +176,41 @@
   <header>
   <div class="title">
     
+        <h2>12월 진행사항</h2>
+    
+    
+        <p>[강좌 계획]</p>
+      
+</div>
+
+  <div class="meta">
+    <time class="published" datetime="2019-12-01 00:00:00 &#43;0000 UTC">
+      December 1, 2019
+    </time>
+    <span class="author">KubeTM</span>
+    
+      <p>1 minute read</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  <p><br/>
+<br/></p>
+  <footer>
+    <a href="/plan/2019_12/" class="button big">본문 보기</a>
+    
+
+  </footer>
+</article>
+
+        
+            <article class="post">
+  <header>
+  <div class="title">
+    
         <h2>11월 진행사항</h2>
     
     
@@ -242,48 +277,13 @@
 </article>
 
         
-            <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2>9월 진행사항</h2>
-    
-    
-        <p>[강좌 계획]</p>
-      
-</div>
-
-  <div class="meta">
-    <time class="published" datetime="2019-09-01 00:00:00 &#43;0000 UTC">
-      September 1, 2019
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>2 minutes read</p>
-    
-  </div>
-</header>
-
-  
-
-  
-  <p><br/>
-<br/></p>
-  <footer>
-    <a href="/plan/2019_09/" class="button big">본문 보기</a>
-    
-
-  </footer>
-</article>
-
-        
         
 <div class="pagination">
   
     <a href="#" class="disabled button big previous"><i class="fas fa-angle-left"></i></a>
   
   
-    <a href="#" class="disabled button big next"><i class="fas fa-angle-right"></i></a>
+    <a href="/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/page/2/" class="button big next"><i class="fas fa-angle-right"></i></a>
   
 </div>
 
@@ -293,8 +293,8 @@
  <section id="visitors">
   	<header>
   		<div>
-	       	<div style="text-align: left;width:50%;float: left;"> <i class="far fa-clipboard" style="color:green"></i> Total : <i id="kubetm-total">"----"</i>명 </div>
-	        <div style="text-align: left;width:50%;float: left;"><i class="far fa-user" style="color:green"></i> Today :  <i id="kubetm-today">"----"</i>명</div>
+	       	<div style="text-align: left;width:50%;float: left;"> <i class="far fa-clipboard" style="color:green"></i> Total : <i id="kubetm-total">---</i>명 </div>
+	        <div style="text-align: left;width:50%;float: left;"><i class="far fa-user" style="color:green"></i> Today :  <i id="kubetm-today">---</i>명</div>
         </div>
     </header>
  </section>
@@ -430,8 +430,9 @@ function queryCoreReportingApi(profileId) {
     'metrics': 'ga:pageviews'
   })
   .then(function(response) {
-	  document.getElementById('kubetm-total').innerHTML = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
-    
+	  var totalArr = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
+	  var total = totalArr.split('"');
+	  document.getElementById('kubetm-total').innerHTML  = total[1];
   })
   .then(null, function(err) {
       
@@ -445,7 +446,10 @@ function queryCoreReportingApi(profileId) {
 	    'metrics': 'ga:pageviews'
 	  })
 	  .then(function(response) {
-		  document.getElementById('kubetm-today').innerHTML = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
+		  var todayArr = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
+		  var today = todayArr.split('"');
+		  document.getElementById('kubetm-today').innerHTML  = today[1];
+		  
 	   
 	  })
 	  .then(null, function(err) {

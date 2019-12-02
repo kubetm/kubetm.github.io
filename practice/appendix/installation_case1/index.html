@@ -963,8 +963,8 @@ kubectl apply -f calico.yaml
  <section id="visitors">
   	<header>
   		<div>
-	       	<div style="text-align: left;width:50%;float: left;"> <i class="far fa-clipboard" style="color:green"></i> Total : <i id="kubetm-total">"----"</i>명 </div>
-	        <div style="text-align: left;width:50%;float: left;"><i class="far fa-user" style="color:green"></i> Today :  <i id="kubetm-today">"----"</i>명</div>
+	       	<div style="text-align: left;width:50%;float: left;"> <i class="far fa-clipboard" style="color:green"></i> Total : <i id="kubetm-total">---</i>명 </div>
+	        <div style="text-align: left;width:50%;float: left;"><i class="far fa-user" style="color:green"></i> Today :  <i id="kubetm-today">---</i>명</div>
         </div>
     </header>
  </section>
@@ -1100,8 +1100,9 @@ function queryCoreReportingApi(profileId) {
     'metrics': 'ga:pageviews'
   })
   .then(function(response) {
-	  document.getElementById('kubetm-total').innerHTML = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
-    
+	  var totalArr = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
+	  var total = totalArr.split('"');
+	  document.getElementById('kubetm-total').innerHTML  = total[1];
   })
   .then(null, function(err) {
       
@@ -1115,7 +1116,10 @@ function queryCoreReportingApi(profileId) {
 	    'metrics': 'ga:pageviews'
 	  })
 	  .then(function(response) {
-		  document.getElementById('kubetm-today').innerHTML = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
+		  var todayArr = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
+		  var today = todayArr.split('"');
+		  document.getElementById('kubetm-today').innerHTML  = today[1];
+		  
 	   
 	  })
 	  .then(null, function(err) {

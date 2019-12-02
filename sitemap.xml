@@ -3,17 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kubetm.github.io/practice/</loc>
-    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+    <loc>https://kubetm.github.io/plan/2019_12/</loc>
+    <lastmod>2019-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/plan/</loc>
+    <lastmod>2019-12-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://kubetm.github.io/categories/</loc>
-    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+    <lastmod>2019-12-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://kubetm.github.io/</loc>
+    <lastmod>2019-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/</loc>
+    <lastmod>2019-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/practice/</loc>
     <lastmod>2019-11-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -98,17 +113,7 @@
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/plan/</loc>
-    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://kubetm.github.io/practice/beginner/gettingstarted-kubernetes/</loc>
-    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url>
   

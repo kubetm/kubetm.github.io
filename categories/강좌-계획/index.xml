@@ -6,10 +6,20 @@
     <description>Recent content in 강좌 계획 on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 01 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 01 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>12월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2019_12/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2019_12/</guid>
+      <description>-2일- [중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy PPT 100% Blog 100% Recording 70%
+ 실습 강의 스크립트 정리  Blog 방문자수 기능 추가</description>
+    </item>
     
     <item>
       <title>11월 진행사항</title>
