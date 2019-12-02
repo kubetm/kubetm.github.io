@@ -479,8 +479,10 @@ GCP &gt; Kubernetes Engine &gt; Clusters &gt; k8s-cluster 리스트에 [Connect]
 
  <section id="visitors">
   	<header>
-        <p style="text-align: right"> <i class="far fa-clipboard" style="color:green"></i> Total  <i id="kubetm-total"></i>명</p>
-        <p style="text-align: right"> <i class="far fa-clipboard" style="color:green"></i> Today  <i id="kubetm-today"></i>명</p>
+  		<div>
+	       	<div style="text-align: left;width:50%;float: left;"> <i class="far fa-clipboard" style="color:green"></i> Total : <i id="kubetm-total">"----"</i>명 </div>
+	        <div style="text-align: left;width:50%;float: left;"><i class="far fa-user" style="color:green"></i> Today :  <i id="kubetm-today">"----"</i>명</div>
+        </div>
     </header>
  </section>
 
@@ -489,7 +491,8 @@ GCP &gt; Kubernetes Engine &gt; Clusters &gt; k8s-cluster 리스트에 [Connect]
 </section>
 
 
-<script>
+ <button id="auth-button" hidden>Authorize</button>
+  <script>
 
   
   var CLIENT_ID = '584661860268-6jel06dr30jsq0ng0lo0p61nq82ht8nr.apps.googleusercontent.com';
@@ -614,8 +617,8 @@ function queryCoreReportingApi(profileId) {
     'metrics': 'ga:pageviews'
   })
   .then(function(response) {
-    var formattedJson = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
-    document.getElementById('kubetm-total').innerHTML  = formattedJson;
+	  document.getElementById('kubetm-total').innerHTML = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
+    
   })
   .then(null, function(err) {
       
@@ -629,8 +632,8 @@ function queryCoreReportingApi(profileId) {
 	    'metrics': 'ga:pageviews'
 	  })
 	  .then(function(response) {
-	    var formattedJson = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
-	    document.getElementById('kubetm-today').innerHTML  = formattedJson;
+		  document.getElementById('kubetm-today').innerHTML = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
+	   
 	  })
 	  .then(null, function(err) {
 	      
@@ -639,9 +642,9 @@ function queryCoreReportingApi(profileId) {
 }
 
   
-  document.getElementById('kubetm_total').addEventListener('click', authorize);
+  document.getElementById('auth-button').addEventListener('click', authorize);
 </script>
-<button id="auth-button" hidden>Authorize</button>
+
 
 <script src="https://apis.google.com/js/client.js?onload=authorize"></script>
 
