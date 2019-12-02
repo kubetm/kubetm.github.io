@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hello Analytics - A quickstart guide for JavaScript</title>
+</head>
+<body>
+
+<button id="auth-button" hidden>Authorize</button>
+
+<h1>Hello Analytics</h1>
+
+<textarea cols="80" rows="20" id="query-output"></textarea>
+
+<script>
+
+  
+  var CLIENT_ID = '584661860268-6jel06dr30jsq0ng0lo0p61nq82ht8nr.apps.googleusercontent.com';
+
+  
+  var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
+
+
+  function authorize(event) {
+    
+    
+    var useImmdiate = event ? false : true;
+    var authData = {
+      client_id: CLIENT_ID,
+      scope: SCOPES,
+      immediate: useImmdiate
+    };
+
+    gapi.auth.authorize(authData, function(response) {
+      var authButton = document.getElementById('auth-button');
+      if (response.error) {
+        authButton.hidden = false;
+      }
+      else {
+        authButton.hidden = true;
+        queryAccounts();
+      }
+    });
+  }
+
+
+function queryAccounts() {
+  
+  gapi.client.load('analytics', 'v3').then(function() {
+
+    
+    gapi.client.analytics.management.accounts.list().then(handleAccounts);
+  });
+}
+
+
+function handleAccounts(response) {
+  
+  if (response.result.items && response.result.items.length) {
+    
+    var firstAccountId = response.result.items[0].id;
+
+    
+    queryProperties(firstAccountId);
+  } else {
+    console.log('No accounts found for this user.');
+  }
+}
+
+
+function queryProperties(accountId) {
+  
+  gapi.client.analytics.management.webproperties.list(
+      {'accountId': accountId})
+    .then(handleProperties)
+    .then(null, function(err) {
+      
+      console.log(err);
+  });
+}
+
+
+function handleProperties(response) {
+  
+  if (response.result.items && response.result.items.length) {
+
+    
+    var firstAccountId = response.result.items[0].accountId;
+
+    
+    var firstPropertyId = response.result.items[0].id;
+
+    
+    queryProfiles(firstAccountId, firstPropertyId);
+  } else {
+    console.log('No properties found for this user.');
+  }
+}
+
+
+function queryProfiles(accountId, propertyId) {
+  
+  
+  gapi.client.analytics.management.profiles.list({
+      'accountId': accountId,
+      'webPropertyId': propertyId
+  })
+  .then(handleProfiles)
+  .then(null, function(err) {
+      
+      console.log(err);
+  });
+}
+
+
+function handleProfiles(response) {
+  
+  if (response.result.items && response.result.items.length) {
+    
+    var firstProfileId = response.result.items[0].id;
+
+    
+    queryCoreReportingApi(firstProfileId);
+  } else {
+    console.log('No views (profiles) found for this user.');
+  }
+}
+
+
+function queryCoreReportingApi(profileId) {
+  
+  
+  gapi.client.analytics.data.ga.get({
+    'ids': 'ga:' + profileId,
+    'start-date': '7daysAgo',
+    'end-date': 'today',
+    'metrics': 'ga:sessions'
+  })
+  .then(function(response) {
+    var formattedJson = JSON.stringify(response.result, null, 2);
+    document.getElementById('query-output').value = formattedJson;
+  })
+  .then(null, function(err) {
+      
+      console.log(err);
+  });
+}
+
+  
+  document.getElementById('auth-button').addEventListener('click', authorize);
+</script>
+
+<script src="https://apis.google.com/js/client.js?onload=authorize"></script>
+
+</body>
+</html>
