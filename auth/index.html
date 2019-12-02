@@ -132,12 +132,12 @@ function queryCoreReportingApi(profileId) {
   
   gapi.client.analytics.data.ga.get({
     'ids': 'ga:' + profileId,
-    'start-date': '7daysAgo',
+    'start-date': '2019-11-01',
     'end-date': 'today',
-    'metrics': 'ga:sessions'
+    'metrics': 'ga:pageviews'
   })
   .then(function(response) {
-    var formattedJson = JSON.stringify(response.result, null, 2);
+    var formattedJson = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
     document.getElementById('query-output').value = formattedJson;
   })
   .then(null, function(err) {

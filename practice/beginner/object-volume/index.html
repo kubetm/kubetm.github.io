@@ -342,9 +342,175 @@ spec:
       </main>
       <section id="site-sidebar">
 
+ <section id="visitors">
+  	<header>
+        <p style="text-align: right"> <i class="far fa-clipboard" style="color:green"></i> Total  <i id="kubetm-total"></i>명</p>
+        <p style="text-align: right"> <i class="far fa-clipboard" style="color:green"></i> Today  <i id="kubetm-today"></i>명</p>
+    </header>
+ </section>
+
 
   
 </section>
+
+
+<script>
+
+  
+  var CLIENT_ID = '584661860268-6jel06dr30jsq0ng0lo0p61nq82ht8nr.apps.googleusercontent.com';
+
+  
+  var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
+
+
+  function authorize(event) {
+    
+    
+    var useImmdiate = event ? false : true;
+    var authData = {
+      client_id: CLIENT_ID,
+      scope: SCOPES,
+      immediate: useImmdiate
+    };
+
+    gapi.auth.authorize(authData, function(response) {
+      var authButton = document.getElementById('auth-button');
+      if (response.error) {
+        authButton.hidden = false;
+      }
+      else {
+        authButton.hidden = true;
+        queryAccounts();
+      }
+    });
+  }
+
+
+function queryAccounts() {
+  
+  gapi.client.load('analytics', 'v3').then(function() {
+
+    
+    gapi.client.analytics.management.accounts.list().then(handleAccounts);
+  });
+}
+
+
+function handleAccounts(response) {
+  
+  if (response.result.items && response.result.items.length) {
+    
+    var firstAccountId = response.result.items[0].id;
+
+    
+    queryProperties(firstAccountId);
+  } else {
+    console.log('No accounts found for this user.');
+  }
+}
+
+
+function queryProperties(accountId) {
+  
+  gapi.client.analytics.management.webproperties.list(
+      {'accountId': accountId})
+    .then(handleProperties)
+    .then(null, function(err) {
+      
+      console.log(err);
+  });
+}
+
+
+function handleProperties(response) {
+  
+  if (response.result.items && response.result.items.length) {
+
+    
+    var firstAccountId = response.result.items[0].accountId;
+
+    
+    var firstPropertyId = response.result.items[0].id;
+
+    
+    queryProfiles(firstAccountId, firstPropertyId);
+  } else {
+    console.log('No properties found for this user.');
+  }
+}
+
+
+function queryProfiles(accountId, propertyId) {
+  
+  
+  gapi.client.analytics.management.profiles.list({
+      'accountId': accountId,
+      'webPropertyId': propertyId
+  })
+  .then(handleProfiles)
+  .then(null, function(err) {
+      
+      console.log(err);
+  });
+}
+
+
+function handleProfiles(response) {
+  
+  if (response.result.items && response.result.items.length) {
+    
+    var firstProfileId = response.result.items[0].id;
+
+    
+    queryCoreReportingApi(firstProfileId);
+  } else {
+    console.log('No views (profiles) found for this user.');
+  }
+}
+
+
+function queryCoreReportingApi(profileId) {
+  
+  
+  gapi.client.analytics.data.ga.get({
+    'ids': 'ga:' + profileId,
+    'start-date': '2019-11-01',
+    'end-date': 'today',
+    'metrics': 'ga:pageviews'
+  })
+  .then(function(response) {
+    var formattedJson = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
+    document.getElementById('kubetm-total').innerHTML  = formattedJson;
+  })
+  .then(null, function(err) {
+      
+      console.log(err);
+  });
+  
+  gapi.client.analytics.data.ga.get({
+	    'ids': 'ga:' + profileId,
+	    'start-date': 'today',
+	    'end-date': 'today',
+	    'metrics': 'ga:pageviews'
+	  })
+	  .then(function(response) {
+	    var formattedJson = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
+	    document.getElementById('kubetm-today').innerHTML  = formattedJson;
+	  })
+	  .then(null, function(err) {
+	      
+	      console.log(err);
+	  });
+}
+
+  
+  document.getElementById('kubetm_total').addEventListener('click', authorize);
+</script>
+<button id="auth-button" hidden>Authorize</button>
+
+<script src="https://apis.google.com/js/client.js?onload=authorize"></script>
+
+
 
       <footer id="site-footer">
   
