@@ -26,7 +26,7 @@
 
 <meta itemprop="datePublished" content="2019-12-01T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-12-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="23">
+<meta itemprop="wordCount" content="64">
 
 
 
@@ -215,11 +215,37 @@
 <p><br/>
 <br/></p>
 
-<h3 id="2일">-2일-</h3>
+<h3 id="3일">-3일-</h3>
 
 <hr />
 
 <h4 id="중급편-volume-dynamic-provisioning-storageclass-status-reclaimpolicy">[중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy</h4>
+
+<p><strong><code>PPT</code></strong> 100%  <strong><code>Blog</code></strong> 100%   <strong><code>Recording</code></strong> 90%</p>
+
+<ul>
+<li>실습 강의 녹음</li>
+</ul>
+
+<h4 id="blog-방문자수-기능-추가-수정">Blog 방문자수 기능 추가 (수정)</h4>
+
+<ul>
+<li><a href="https://analytics.google.com/">Google Analytics</a> 에서 데이터를 가져와서 직접 표시 (속도느림) -&gt; 내부에 저장 후 표시</li>
+</ul>
+
+<h4 id="중급편-service-blog-내용-보충">[중급편] Service Blog 내용 보충</h4>
+
+<ul>
+<li></li>
+</ul>
+
+<p><br/></p>
+
+<h3 id="2일">-2일-</h3>
+
+<hr />
+
+<h4 id="중급편-volume-dynamic-provisioning-storageclass-status-reclaimpolicy-1">[중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy</h4>
 
 <p><strong><code>PPT</code></strong> 100%  <strong><code>Blog</code></strong> 100%   <strong><code>Recording</code></strong> 70%</p>
 
@@ -290,166 +316,7 @@
 </section>
 
 
- <button id="auth-button" hidden>Authorize</button>
-  <script>
-
-  
-  var CLIENT_ID = '584661860268-6jel06dr30jsq0ng0lo0p61nq82ht8nr.apps.googleusercontent.com';
-
-  
-  var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
-
-
-  function authorize(event) {
-    
-    
-    var useImmdiate = event ? false : true;
-    var authData = {
-      client_id: CLIENT_ID,
-      scope: SCOPES,
-      immediate: useImmdiate
-    };
-
-    gapi.auth.authorize(authData, function(response) {
-      var authButton = document.getElementById('auth-button');
-      if (response.error) {
-        authButton.hidden = false;
-      }
-      else {
-        authButton.hidden = true;
-        queryAccounts();
-      }
-    });
-  }
-
-
-function queryAccounts() {
-  
-  gapi.client.load('analytics', 'v3').then(function() {
-
-    
-    gapi.client.analytics.management.accounts.list().then(handleAccounts);
-  });
-}
-
-
-function handleAccounts(response) {
-  
-  if (response.result.items && response.result.items.length) {
-    
-    var firstAccountId = response.result.items[0].id;
-
-    
-    queryProperties(firstAccountId);
-  } else {
-    console.log('No accounts found for this user.');
-  }
-}
-
-
-function queryProperties(accountId) {
-  
-  gapi.client.analytics.management.webproperties.list(
-      {'accountId': accountId})
-    .then(handleProperties)
-    .then(null, function(err) {
-      
-      console.log(err);
-  });
-}
-
-
-function handleProperties(response) {
-  
-  if (response.result.items && response.result.items.length) {
-
-    
-    var firstAccountId = response.result.items[0].accountId;
-
-    
-    var firstPropertyId = response.result.items[0].id;
-
-    
-    queryProfiles(firstAccountId, firstPropertyId);
-  } else {
-    console.log('No properties found for this user.');
-  }
-}
-
-
-function queryProfiles(accountId, propertyId) {
-  
-  
-  gapi.client.analytics.management.profiles.list({
-      'accountId': accountId,
-      'webPropertyId': propertyId
-  })
-  .then(handleProfiles)
-  .then(null, function(err) {
-      
-      console.log(err);
-  });
-}
-
-
-function handleProfiles(response) {
-  
-  if (response.result.items && response.result.items.length) {
-    
-    var firstProfileId = response.result.items[0].id;
-
-    
-    queryCoreReportingApi(firstProfileId);
-  } else {
-    console.log('No views (profiles) found for this user.');
-  }
-}
-
-
-function queryCoreReportingApi(profileId) {
-  
-  
-  gapi.client.analytics.data.ga.get({
-    'ids': 'ga:' + profileId,
-    'start-date': '2019-11-01',
-    'end-date': 'today',
-    'metrics': 'ga:pageviews'
-  })
-  .then(function(response) {
-	  var totalArr = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
-	  var total = totalArr.split('"');
-	  document.getElementById('kubetm-total').innerHTML  = total[1];
-  })
-  .then(null, function(err) {
-      
-      console.log(err);
-  });
-  
-  gapi.client.analytics.data.ga.get({
-	    'ids': 'ga:' + profileId,
-	    'start-date': 'today',
-	    'end-date': 'today',
-	    'metrics': 'ga:pageviews'
-	  })
-	  .then(function(response) {
-		  var todayArr = JSON.stringify(response.result.totalsForAllResults['ga:pageviews'], null, 2);
-		  var today = todayArr.split('"');
-		  document.getElementById('kubetm-today').innerHTML  = today[1];
-		  
-	   
-	  })
-	  .then(null, function(err) {
-	      
-	      console.log(err);
-	  });
-}
-
-  
-  document.getElementById('auth-button').addEventListener('click', authorize);
-</script>
-
-
-<script src="https://apis.google.com/js/client.js?onload=authorize"></script>
+ 
 
 
 
