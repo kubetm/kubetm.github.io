@@ -12,20 +12,65 @@
     
     
     <item>
-      <title>categories</title>
-      <link>https://kubetm.github.io/tags/categories/</link>
+      <title>container</title>
+      <link>https://kubetm.github.io/tags/container/</link>
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/tags/categories/</guid>
+      <guid>https://kubetm.github.io/tags/container/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>tags</title>
-      <link>https://kubetm.github.io/tags/tags/</link>
+      <title>docker</title>
+      <link>https://kubetm.github.io/tags/docker/</link>
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/tags/tags/</guid>
+      <guid>https://kubetm.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://kubetm.github.io/tags/kubernetes/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubetm</title>
+      <link>https://kubetm.github.io/tags/kubetm/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/tags/kubetm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>도커</title>
+      <link>https://kubetm.github.io/tags/%EB%8F%84%EC%BB%A4/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/tags/%EB%8F%84%EC%BB%A4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>컨테이너</title>
+      <link>https://kubetm.github.io/tags/%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/tags/%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>쿠버네티스</title>
+      <link>https://kubetm.github.io/tags/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/tags/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/</guid>
       <description></description>
     </item>
     
