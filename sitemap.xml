@@ -18,7 +18,22 @@
   </url>
   
   <url>
+    <loc>https://kubetm.github.io/tags/categories/</loc>
+    <lastmod>2019-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kubetm.github.io/</loc>
+    <lastmod>2019-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/tags/</loc>
+    <lastmod>2019-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/tags/tags/</loc>
     <lastmod>2019-12-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -125,10 +140,6 @@
   <url>
     <loc>https://kubetm.github.io/plan/2019_09/</loc>
     <lastmod>2019-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/tags/</loc>
   </url>
   
   <url>
