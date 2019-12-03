@@ -328,18 +328,47 @@ spec:
  <section id="visitors">
   	<header>
   		<div>
-	       	<div style="text-align: left;width:50%;float: left;"> <i class="far fa-clipboard" style="color:green"></i> Total : <i id="kubetm-total">---</i>명 </div>
-	        <div style="text-align: left;width:50%;float: left;"><i class="far fa-user" style="color:green"></i> Today :  <i id="kubetm-today">---</i>명</div>
+	       	<div style="text-align: left;width:50%;float: left;"> <i class="far fa-clipboard" style="color:green"></i> Total : <i id="kubetm-total"></i>명 </div>
+	        <div style="text-align: left;width:50%;float: left;"><i class="far fa-user" style="color:green"></i> Today :  <i id="kubetm-today"></i>명</div>
         </div>
+        <button id="auth-button1" >Test</button>
     </header>
  </section>
+<script src="/js/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+
+		$.getJSON("/data/data.json", function(result){
+			var ids = result.ids;
+			var access_token = result.access_token;
+		  	var url = "https://www.googleapis.com/analytics/v3/data/ga";
+			var start_date = "2019-11-01";
+			var end_date = "today";
+			var metrics = "pageviews";
+		
+			$.getJSON(url+"?ids=ga%"+ids+"&start-date="+start_date+"&end-date="+end_date+"&metrics=ga%3A"+metrics+"&max-results=10&access_token="+access_token, function(result){
+				  var resultArr = JSON.stringify(result.totalsForAllResults['ga:pageviews'], null, 2);
+				  var count = resultArr.split('"');
+				  $('#kubetm-total').append(count[1]);
+			});
+			
+			start_date = "today";
+			$.getJSON(url+"?ids=ga%"+ids+"&start-date="+start_date+"&end-date="+end_date+"&metrics=ga%3A"+metrics+"&max-results=10&access_token="+access_token, function(result){
+				  var resultArr = JSON.stringify(result.totalsForAllResults['ga:pageviews'], null, 2);
+				  var count = resultArr.split('"');
+				  $('#kubetm-today').append(count[1]);
+			});
+		});
+
+		
+</script>
+  
+  
 
 
   
 </section>
 
 
- 
 
 
 
