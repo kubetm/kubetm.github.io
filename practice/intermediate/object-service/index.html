@@ -26,7 +26,7 @@
 
 <meta itemprop="datePublished" content="2019-11-16T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-16T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="285">
+<meta itemprop="wordCount" content="477">
 
 
 
@@ -206,7 +206,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
@@ -606,7 +606,7 @@ metadata:
   name: endpoint2
 subsets:
  - addresses:
-   - ip: 20.111.156.74
+   - ip: 20.109.5.12
    ports:
    - port: 8080
 </code></pre>
@@ -724,6 +724,113 @@ spec:
 
 <pre><code class="language-sh">curl -O externalname2/kubetm/kubetm.github.io/blob/master/sample/practice/intermediate/service-sample.md
 </code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="yaml">yaml</h2>
+
+<hr />
+
+<h3 id="service">* <strong>Service</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: headless1
+spec:
+  selector:             # 생략시 Endpoints 직접 생성해서 사용
+    svc: headless
+  ports:
+    - port: 80
+      targetPort: 8080    
+  clusterIP: None       # headless 서비스  
+  type: ExternalName    # ExternalName Service 설정시 사용
+  externalName: github.github.io  # ExternalName사용시 연결 Domain지정
+</code></pre>
+
+<h3 id="endpoints">* <strong>Endpoints</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Endpoints
+metadata:
+  name: headless1       # Service의 이름과 동일하게 지정
+subsets:
+ - addresses:
+   - ip: 20.109.5.12    # Pod의 ClusterIp
+   ports:
+   - port: 8080         # Pod의 Container Port
+</code></pre>
+
+<h3 id="pod">* <strong>Pod</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod4
+  labels:
+    svc: headless
+spec:
+  hostname: pod-a       # 호스트네임 설정, 생략시 Pod Name이 적용됨
+  subdomain: headless1  # headless 서비스 사용시 Service의 이름으로 지정
+  containers:
+  - name: container
+    image: kubetm/app
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="kubectl">kubectl</h2>
+
+<hr />
+
+<h3 id="exec">* <strong>Exec</strong></h3>
+
+<pre><code class="language-sh"># Pod이름이 request-pod인 Container로 들어가기 (나올땐 exit)
+kubectl exec request-pod -it /bin/bash
+</code></pre>
+
+<h3 id="describe">* <strong>Describe</strong></h3>
+
+<pre><code class="language-sh"># Endpoints 상세보기
+kubectl describe endpoints endpoint1
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="tips">Tips</h2>
+
+<hr />
+
+<h3 id="dns-1">* <strong>Dns</strong></h3>
+
+<ul>
+<li>Kubernetes 버전 1.11 이전의 Kubernetes DNS 서비스는 kube-dns를 기반</li>
+<li>버전 1.11은 kube-dns의 일부 보안 및 안정성 문제를 해결하기 위해 CoreDNS 를 도입</li>
+</ul>
+
+<p><br/>
+<br/></p>
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>DNS for Services and Pods</strong> : <a href="https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/">https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/</a></li>
+<li><strong>Customizing DNS Service</strong> : <a href="https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/">https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/</a></li>
+</ul>
+
+<h3 id="others">* <strong>Others</strong></h3>
+
+<ul>
+<li><strong>Kubernetes DNS-Based Service Discovery</strong> : <a href="https://github.com/kubernetes/dns/blob/master/docs/specification.md">https://github.com/kubernetes/dns/blob/master/docs/specification.md</a></li>
+<li><strong>Kubernetes best practices: mapping external services</strong> : <a href="https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-mapping-external-services">https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-mapping-external-services</a></li>
+</ul>
 
   </div>
   <footer>
