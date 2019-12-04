@@ -6,7 +6,7 @@
     <description>Recent content in [인프런] 강좌 Plan on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 01 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/plan/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,13 +14,14 @@
     <item>
       <title>12월 진행사항</title>
       <link>https://kubetm.github.io/plan/2019_12/</link>
-      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2019_12/</guid>
-      <description>-3일- [중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy PPT 100% Blog 100% Recording 90%
- 실습 강의 녹음  [중급편] Service  Blog 내용 보충  
--2일- [중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy PPT 100% Blog 100% Recording 70%
- 실습 강의 스크립트 정리</description>
+      <description>-4일- [중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy PPT 100% Blog 100% Recording 100%
+ 실습 강의 편집 및 업로드   Blog CEO 최적화 작업  sitemap, alt, title, description  [초급편] Service  Blog 내용 보충  
+-3일- [중급편] Volume - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy PPT 100% Blog 100% Recording 90%
+ 실습 강의 녹음  
+[중급편] Service  Blog 내용 보충</description>
     </item>
     
     <item>
