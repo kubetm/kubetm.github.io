@@ -53,6 +53,7 @@
       <link rel="stylesheet" href="/css/googleapis.css">
       <link rel="stylesheet" href="/css/academicons.css">
       <link rel="stylesheet" href="/css/fancybox.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
       
       
       <link rel="stylesheet" href="/css/main.min.27b618377603ce5859ee8c77a8f18977d019e93b79d4f1864f18fe5c06b8903a.css" integrity="sha256-J7YYN3YDzlhZ7ox3qPGJd9AZ6Tt51PGGTxj&#43;XAa4kDo=">
@@ -76,20 +77,9 @@
 	  gtag('js', new Date());
 	  gtag('config', 'UA-151245038-1');
   </script>
-  
-  <script>
-	  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-PWDJZXR');
-  </script>
-
 </head>
 
   <body>
-     
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWDJZXR"height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>  
     
 <header id="site-header">
   <nav id="site-nav">
@@ -230,7 +220,7 @@
   </section>
   
   <a href="/practice/appendix/installation_case1/" class="image featured">
-    <img src="/img/practice/appendix/install-case1.jpg" alt="">
+    <img src="/img/practice/appendix/Baremetal%20Installation%20with%20KVM%20for%20Kubernetes.jpg" alt="Baremetal Installation with KVM for Kubernetes">
   </a>
 
 
@@ -251,8 +241,6 @@
         
         
         
-        
-        
     
 
     
@@ -265,7 +253,7 @@
 
     
         <span class="image left">
-            <img src="/img/practice/appendix/install-1.jpg" alt="kubernetes 쿠버네티스" title="kubernetes 쿠버네티스">
+            <img src="/img/practice/appendix/Setting%20Physical%20Server%20for%20Kubernetes.jpg" alt="Setting Physical Server for Kubernetes" title="Setting Physical Server for Kubernetes">
         </span>
     
 
@@ -398,8 +386,6 @@ USB를 설치할 서버에 꼽고 부팅하면 CentOS 설치단계로 가져요
         
         
         
-        
-        
     
 
     
@@ -412,7 +398,7 @@ USB를 설치할 서버에 꼽고 부팅하면 CentOS 설치단계로 가져요
 
     
         <span class="image left">
-            <img src="/img/practice/appendix/install-2.jpg" alt="kubernetes 쿠버네티스" title="kubernetes 쿠버네티스">
+            <img src="/img/practice/appendix/Create%20VM%20for%20Kubernetes.jpg" alt="Create VM for Kubernetes" title="Create VM for Kubernetes">
         </span>
     
 
@@ -498,8 +484,6 @@ USB를 설치할 서버에 꼽고 부팅하면 CentOS 설치단계로 가져요
         
         
         
-        
-        
     
 
     
@@ -512,11 +496,13 @@ USB를 설치할 서버에 꼽고 부팅하면 CentOS 설치단계로 가져요
 
     
         <span class="image left">
-            <img src="/img/practice/appendix/install-3.jpg" alt="kubernetes 쿠버네티스" title="kubernetes 쿠버네티스">
+            <img src="/img/practice/appendix/Docker,%20Kubernetes%20Installation.jpg" alt="Docker, Kubernetes Installation" title="Docker, Kubernetes Installation">
         </span>
     
 
 
+
+<hr />
 
 <h2 id="3-1-pre-setting">3-1) Pre-Setting</h2>
 
@@ -669,8 +655,6 @@ mkdir -p /etc/systemd/system/docker.service.d
         
         
         
-        
-        
     
 
     
@@ -683,11 +667,13 @@ mkdir -p /etc/systemd/system/docker.service.d
 
     
         <span class="image left">
-            <img src="/img/practice/appendix/install-4.jpg" alt="kubernetes 쿠버네티스" title="kubernetes 쿠버네티스">
+            <img src="/img/practice/appendix/Clone%20VM%20on%20Node%20For%20Kubernetes.jpg" alt="Clone VM on Node For Kubernetes" title="Clone VM on Node For Kubernetes">
         </span>
     
 
 
+
+<hr />
 
 <h2 id="4-1-clone-vm">4-1) Clone VM</h2>
 
@@ -759,8 +745,6 @@ IPADDR=&quot;192.168.0.31&quot;
         
         
         
-        
-        
     
 
     
@@ -773,7 +757,7 @@ IPADDR=&quot;192.168.0.31&quot;
 
     
         <span class="image left">
-            <img src="/img/practice/appendix/install-5.jpg" alt="kubernetes 쿠버네티스" title="kubernetes 쿠버네티스">
+            <img src="/img/practice/appendix/Initialize%20Master%20and%20Join%20Node%20for%20Kubernetes.jpg" alt="Initialize Master and Join Node for Kubernetes" title="Initialize Master and Join Node for Kubernetes">
         </span>
     
 
@@ -889,8 +873,6 @@ echo &quot;source &lt;(kubectl completion bash)&quot; &gt;&gt; ~/.bashrc
         
         
         
-        
-        
     
 
     
@@ -902,12 +884,14 @@ echo &quot;source &lt;(kubectl completion bash)&quot; &gt;&gt; ~/.bashrc
     
 
     
-        <span class="image left">
-            <img src="/img/practice/appendix/install-6.jpg" alt="kubernetes 쿠버네티스" title="kubernetes 쿠버네티스">
-        </span>
+        <p><span class="image center">
+            <img src="/img/practice/appendix/Add%20Networking%20and%20Dashboard%20Plugin%20for%20Kubernetes.jpg" alt="Add Networking and Dashboard Plugin for Kubernetes"title="Add Networking and Dashboard Plugin for Kubernetes">
+        </span></p>
     
 
 
+
+<hr />
 
 <h2 id="6-1-networking">6-1) Networking</h2>
 
