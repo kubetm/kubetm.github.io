@@ -26,7 +26,7 @@
 
 <meta itemprop="datePublished" content="2019-11-04T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-04T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="167">
+<meta itemprop="wordCount" content="205">
 
 
 
@@ -219,13 +219,50 @@
 
   </section>
   
+  <a href="/practice/beginner/object-volume/" class="image featured">
+    <img src="/img/practice/beginner/Volume%20with%20emptyDir,%20hostPath,%20PV,%20PVC,%20for%20Kubernetes.jpg" alt="Volume with emptyDir, hostPath, PV, PVC for Kubernetes">
+  </a>
+
 
   <div class="content">
     
 
-<h2 id="1-emptydir">1) emptyDir</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="pod">Pod</h3>
+<hr />
+
+<h2 id="1-emptydir">1. emptyDir</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+    
+
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/practice/beginner/Volume%20with%20emptyDir%20for%20Kubernetes.jpg" alt="Volume with emptyDir for Kubernetes" title="Volume with emptyDir for Kubernetes"  >
+        </span>
+    
+
+
+
+<h3 id="1-1-pod">1-1) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -252,9 +289,42 @@ spec:
 echo &quot;file context&quot; &gt;&gt; file.txt
 </code></pre>
 
-<h2 id="2-hostpath">2) hostPath</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="pod-1">Pod</h3>
+<hr />
+
+<h2 id="2-hostpath">2. hostPath</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+    
+
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/practice/beginner/Volume%20with%20hostPath%20for%20Kubernetes.jpg" alt="Volume with hostPath for Kubernetes" title="Volume with hostPath for Kubernetes"  >
+        </span>
+    
+
+
+
+<h3 id="2-1-pod">2-1) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -276,9 +346,42 @@ spec:
       type: DirectoryOrCreate
 </code></pre>
 
-<h2 id="3-pvc-pv">3) PVC / PV</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="persistentvolume">PersistentVolume</h3>
+<hr />
+
+<h2 id="3-pvc-pv">3. PVC / PV</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+    
+
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/practice/beginner/Volume%20with%20PersistentVolume%20PersistentVolumeClaim%20for%20Kubernetes.jpg" alt="Volume with PersistentVolume PersistentVolumeClaim for Kubernetes" title="Volume with PersistentVolume PersistentVolumeClaim for Kubernetes"  >
+        </span>
+    
+
+
+
+<h3 id="3-1-persistentvolume">3-1) PersistentVolume</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: PersistentVolume
@@ -298,7 +401,7 @@ spec:
         - {key: kubernetes.io/hostname, operator: In, values: [k8s-node1]}
 </code></pre>
 
-<h3 id="persistentvolumeclaim">PersistentVolumeClaim</h3>
+<h3 id="3-2-persistentvolumeclaim">3-2) PersistentVolumeClaim</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: PersistentVolumeClaim
@@ -313,7 +416,7 @@ spec:
   storageClassName: &quot;&quot;
 </code></pre>
 
-<h3 id="pod-2">Pod</h3>
+<h3 id="3-3-pod">3-3) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -331,6 +434,35 @@ spec:
     persistentVolumeClaim:
       claimName: pvc-01
 </code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="tips">Tips</h2>
+
+<hr />
+
+<h3 id="hostpath-type">* <strong>hostPath Type</strong></h3>
+
+<ul>
+<li>DirectoryOrCreate : 실제 경로가 없다면 생성</li>
+<li>Directory : 실제 경로가 있어야됨</li>
+<li>FileOrCreate : 실제 경로에 파일이 없다면 생성</li>
+<li>File : 실제 파일이 었어야함</li>
+</ul>
+
+<p><br/>
+<br/></p>
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>Volumes</strong> : <a href="https://kubernetes.io/docs/concepts/storage/volumes/">https://kubernetes.io/docs/concepts/storage/volumes/</a></li>
+</ul>
 
   </div>
   <footer>

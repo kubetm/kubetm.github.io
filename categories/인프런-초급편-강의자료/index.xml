@@ -108,7 +108,8 @@ curl 10.96.92.97:9000/hostname  Service apiVersion: v1 kind: Service metadata: n
       <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/beginner/object-volume/</guid>
-      <description>1) emptyDir Pod apiVersion: v1 kind: Pod metadata: name: pod-volume-1 spec: containers: - name: container1 image: kubetm/init volumeMounts: - name: empty-dir mountPath: /mount1 - name: container2 image: kubetm/init volumeMounts: - name: empty-dir mountPath: /mount2 volumes: - name : empty-dir emptyDir: {}  mount | grep mount1 echo &amp;quot;file context&amp;quot; &amp;gt;&amp;gt; file.txt  2) hostPath Pod apiVersion: v1 kind: Pod metadata: name: pod-volume-3 spec: nodeSelector: kubernetes.io/hostname: k8s-node1 containers: - name: container image: kubetm/init volumeMounts: - name: host-path mountPath: /mount1 volumes: - name : host-path hostPath: path: /node-v type: DirectoryOrCreate  3) PVC / PV PersistentVolume apiVersion: v1 kind: PersistentVolume metadata: name: pv-03 spec: capacity: storage: 2G accessModes: - ReadWriteOnce local: path: /node-v nodeAffinity: required: nodeSelectorTerms: - matchExpressions: - {key: kubernetes.</description>
+      <description>1. emptyDir  1-1) Pod apiVersion: v1 kind: Pod metadata: name: pod-volume-1 spec: containers: - name: container1 image: kubetm/init volumeMounts: - name: empty-dir mountPath: /mount1 - name: container2 image: kubetm/init volumeMounts: - name: empty-dir mountPath: /mount2 volumes: - name : empty-dir emptyDir: {}  mount | grep mount1 echo &amp;quot;file context&amp;quot; &amp;gt;&amp;gt; file.txt   
+2. hostPath  2-1) Pod apiVersion: v1 kind: Pod metadata: name: pod-volume-3 spec: nodeSelector: kubernetes.</description>
     </item>
     
     <item>
