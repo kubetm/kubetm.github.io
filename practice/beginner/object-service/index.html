@@ -26,7 +26,7 @@
 
 <meta itemprop="datePublished" content="2019-11-03T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-03T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="100">
+<meta itemprop="wordCount" content="191">
 
 
 
@@ -227,9 +227,42 @@
   <div class="content">
     
 
-<h2 id="1-clusterip">1) ClusterIP</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="pod">Pod</h3>
+<hr />
+
+<h2 id="1-clusterip">1. ClusterIP</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+    
+
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/practice/beginner/Service%20with%20ClusterIP%20for%20Kubernetes.jpg" alt="Service with ClusterIP for Kubernetes" title="Service with ClusterIP for Kubernetes"  >
+        </span>
+    
+
+
+
+<h3 id="1-1-pod">1-1) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -247,7 +280,7 @@ spec:
     - containerPort: 8080
 </code></pre>
 
-<h3 id="service">Service</h3>
+<h3 id="1-2-service">1-2) Service</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Service
@@ -264,9 +297,42 @@ spec:
 <pre><code class="language-sh">curl 10.104.103.107:9000/hostname
 </code></pre>
 
-<h2 id="2-nodeport">2) NodePort</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="service-1">Service</h3>
+<hr />
+
+<h2 id="2-nodeport">2. NodePort</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+    
+
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/practice/beginner/Service%20with%20NodePort%20for%20Kubernetes.jpg" alt="Service with NodePort for Kubernetes" title="Service with NodePort for Kubernetes"  >
+        </span>
+    
+
+
+
+<h3 id="service">Service</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Service
@@ -283,9 +349,39 @@ spec:
   externalTrafficPolicy: Local
 </code></pre>
 
-<h2 id="3-load-balancer">3) Load Balancer</h2>
+<hr />
 
-<h3 id="service-2">Service</h3>
+<h2 id="3-load-balancer">3. Load Balancer</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+    
+
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/practice/beginner/Service%20with%20LoadBalancer%20for%20Kubernetes.jpg" alt="Service with LoadBalancer for Kubernetes" title="Service with LoadBalancer for Kubernetes"  >
+        </span>
+    
+
+
+
+<h3 id="service-1">Service</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Service
@@ -302,6 +398,85 @@ spec:
 
 <pre><code class="language-sh">kubectl get service svc-3
 </code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="sample-yaml">Sample Yaml</h2>
+
+<hr />
+
+<h3 id="service-2">* <strong>Service</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: svc-3
+spec:
+  selector:             # Pod의 Label과 매칭
+    app: pod
+  ports:
+  - port: 9000          # Service 자체 Port
+    targetPort: 8080    # Pod의 Container Port
+  type: ClusterIP, NodePort, LoadBalancer  # 생략시 ClusterIP
+  externalTrafficPolicy: Local, Cluster    # 트래픽 분배 역할
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="kubectl">kubectl</h2>
+
+<hr />
+
+<h3 id="get">* <strong>Get</strong></h3>
+
+<p>``` sh</p>
+
+<h1 id="defalut-이름의-namespace에서-svc-3-이름의-service-조회">defalut 이름의 Namespace에서 svc-3 이름의 Service 조회</h1>
+
+<p>kubectl get service svc-3 -n defalut</p>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="tips">Tips</h2>
+
+<hr />
+
+<h3 id="nodeport">* <strong>NodePort</strong></h3>
+
+<ul>
+<li>Node Port의 범위 : 30000~32767
+<br /></li>
+</ul>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>Service</strong> : <a href="https://kubernetes.io/docs/concepts/services-networking/service/">https://kubernetes.io/docs/concepts/services-networking/service/</a></li>
+</ul>
+
+<h3 id="others">* <strong>Others</strong></h3>
+
+<ul>
+<li><strong>Kubernetes NodePort vs LoadBalancer vs Ingress?</strong> : <a href="https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0">https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0</a></li>
+</ul>
 
   </div>
   <footer>
