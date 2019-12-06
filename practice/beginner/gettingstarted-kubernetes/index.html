@@ -26,7 +26,7 @@
 
 <meta itemprop="datePublished" content="2019-11-01T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="126">
+<meta itemprop="wordCount" content="136">
 
 
 
@@ -219,13 +219,50 @@
 
   </section>
   
+  <a href="/practice/beginner/gettingstarted-kubernetes/" class="image featured">
+    <img src="/img/practice/beginner/Getting%20started%20Kubernetes.jpg" alt="Getting started Kubernetes">
+  </a>
+
 
   <div class="content">
     
 
-<h2 id="linux">Linux</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="hello-js">hello.js</h3>
+<hr />
+
+<h2 id="1-linux">1. Linux</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+    
+
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/practice/beginner/Getting%20started%20Hello%20World%20on%20Linux.jpg" alt="Getting started Hello World on Linux" title="Getting started Hello World on Linux"  >
+        </span>
+    
+
+
+
+<h3 id="1-1-hello-js">1-1) hello.js</h3>
 
 <pre><code class="language-javascript">var http = require('http');
 var content = function(req, resp) {
@@ -239,9 +276,42 @@ w.listen(8000);
 <pre><code class="language-sh">node hello.js
 </code></pre>
 
-<h2 id="docker">Docker</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="dockerfile">Dockerfile</h3>
+<hr />
+
+<h2 id="2-docker">2. Docker</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+    
+
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/practice/beginner/Getting%20started%20Hello%20World%20on%20Docker.jpg" alt="Getting started Hello World on Docker" title="Getting started Hello World on Docker"  >
+        </span>
+    
+
+
+
+<h3 id="2-1-dockerfile">2-1) Dockerfile</h3>
 
 <pre><code class="language-sh">FROM node:slim
 EXPOSE 8000
@@ -249,11 +319,11 @@ COPY hello.js .
 CMD node hello.js
 </code></pre>
 
-<h3 id="docker-hub-site">Docker Hub Site</h3>
+<h3 id="2-2-docker-hub-site">2-2) Docker Hub Site</h3>
 
 <p><a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
 
-<h3 id="docker-container-run">Docker Container Run</h3>
+<h3 id="2-3-docker-container-run">2-3) Docker Container Run</h3>
 
 <pre><code class="language-sh">docker build -t kubetm/hello .
 -t : 레파지토리/이미지명:버전
@@ -267,15 +337,48 @@ docker ps
 docker exec -it c403442e8a59 /bin/bash
 </code></pre>
 
-<h3 id="docker-image-push">Docker Image Push</h3>
+<h3 id="2-4-docker-image-push">2-4) Docker Image Push</h3>
 
 <pre><code class="language-sh">docker login
 docker push kubetm/hello
 </code></pre>
 
-<h2 id="kubernetes">Kubernetes</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="pod">Pod</h3>
+<hr />
+
+<h2 id="3-kubernetes">3. Kubernetes</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+    
+
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+            <img src="/img/practice/beginner/Getting%20started%20Hello%20World%20on%20Kubernetes.jpg" alt="Getting started Hello World on Kubernetes" title="Getting started Hello World on Kubernetes"  >
+        </span>
+    
+
+
+
+<h3 id="3-1-pod">3-1) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -291,7 +394,7 @@ spec:
     - containerPort: 8000
 </code></pre>
 
-<h3 id="service">Service</h3>
+<h3 id="3-2-service">3-2) Service</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Service
