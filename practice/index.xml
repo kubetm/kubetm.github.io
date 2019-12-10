@@ -131,7 +131,8 @@ curl 10.96.92.97:9000/hostname  Service apiVersion: v1 kind: Service metadata: n
       <pubDate>Tue, 05 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/beginner/object-configmap_secret/</guid>
-      <description>1) Env (Literal) ConfigMap apiVersion: v1 kind: ConfigMap metadata: name: cm-dev data: SSH: ‘false’ User: dev  Secret apiVersion: v1 kind: Secret metadata: name: sec-dev data: Key: MTIzNA==  Pod apiVersion: v1 kind: Pod metadata: name: pod-1 spec: containers: - name: container image: kubetm/init envFrom: - configMapRef: name: cm-dev - secretRef: name: sec-dev  2) Env (File) echo &amp;quot;Content&amp;quot; &amp;gt;&amp;gt; file-c.txt kubectl create configmap cm-file --from-file=./file-c.txt echo &amp;quot;Content&amp;quot; &amp;gt;&amp;gt; file-s.</description>
+      <description>1. Env (Literal)  1-1) ConfigMap apiVersion: v1 kind: ConfigMap metadata: name: cm-dev data: SSH: &#39;false&#39; User: dev  1-2) Secret apiVersion: v1 kind: Secret metadata: name: sec-dev data: Key: MTIzNA==  1-3) Pod apiVersion: v1 kind: Pod metadata: name: pod-1 spec: containers: - name: container image: kubetm/init envFrom: - configMapRef: name: cm-dev - secretRef: name: sec-dev   
+2. Env (File)  2-1) Configmap echo &amp;quot;Content&amp;quot; &amp;gt;&amp;gt; file-c.</description>
     </item>
     
     <item>

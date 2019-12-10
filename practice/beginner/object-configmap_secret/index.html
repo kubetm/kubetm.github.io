@@ -21,19 +21,19 @@
 
   <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="ConfigMap, Secret">
-<meta itemprop="description" content="[2. 기본 오브젝트]">
+<meta itemprop="description" content="[Env(Literal, File), Mount(File)]">
 
 
 <meta itemprop="datePublished" content="2019-11-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="139">
+<meta itemprop="wordCount" content="254">
 
 
 
 <meta itemprop="keywords" content="" />
 
   <meta property="og:title" content="ConfigMap, Secret" />
-<meta property="og:description" content="[2. 기본 오브젝트]" />
+<meta property="og:description" content="[Env(Literal, File), Mount(File)]" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kubetm.github.io/practice/beginner/object-configmap_secret/" />
 <meta property="article:published_time" content="2019-11-05T00:00:00+00:00" />
@@ -41,7 +41,7 @@
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ConfigMap, Secret"/>
-<meta name="twitter:description" content="[2. 기본 오브젝트]"/>
+<meta name="twitter:description" content="[Env(Literal, File), Mount(File)]"/>
 
   
 
@@ -195,7 +195,7 @@
         <h2>ConfigMap, Secret</h2>
     
     
-        <p>[2. 기본 오브젝트]</p>
+        <p>[Env(Literal, File), Mount(File)]</p>
       
 </div>
 
@@ -205,7 +205,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>1 minute read</p>
+      <p>2 minutes read</p>
     
   </div>
 </header>
@@ -219,24 +219,67 @@
 
   </section>
   
+  <a href="/practice/beginner/object-configmap_secret/" class="image featured">
+    <img src="/img/practice/beginner/ConfigMap,%20Secret%20with%20Literal,%20File%20on%20Env,%20Mount%20for%20Kubernetes.jpg" alt="ConfigMap, Secret with Literal, File on Env, Mount for Kubernetes">
+  </a>
+
 
   <div class="content">
     
 
-<h2 id="1-env-literal">1) Env (Literal)</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="configmap">ConfigMap</h3>
+<hr />
+
+<h2 id="1-env-literal">1. Env (Literal)</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/ConfigMap,%20Secret%20with%20Literal%20for%20Kubernetes.jpg" alt="ConfigMap, Secret with Literal for Kubernetes" title="ConfigMap, Secret with Literal for Kubernetes" >
+           	
+        </span>
+    
+
+
+
+<h3 id="1-1-configmap">1-1) ConfigMap</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cm-dev
 data:
-  SSH: ‘false’
+  SSH: 'false'
   User: dev
 </code></pre>
 
-<h3 id="secret">Secret</h3>
+<h3 id="1-2-secret">1-2) Secret</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Secret
@@ -246,7 +289,7 @@ data:
   Key: MTIzNA==
 </code></pre>
 
-<h3 id="pod">Pod</h3>
+<h3 id="1-3-pod">1-3) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -263,15 +306,60 @@ spec:
         name: sec-dev
 </code></pre>
 
-<h2 id="2-env-file">2) Env (File)</h2>
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="2-env-file">2. Env (File)</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/ConfigMap,%20Secret%20with%20File%20for%20Kubernetes.jpg" alt="ConfigMap, Secret with File for Kubernetes" title="ConfigMap, Secret with File for Kubernetes" >
+           	
+        </span>
+    
+
+
+
+<h3 id="2-1-configmap">2-1) Configmap</h3>
 
 <pre><code class="language-sh">echo &quot;Content&quot; &gt;&gt; file-c.txt
 kubectl create configmap cm-file --from-file=./file-c.txt
-echo &quot;Content&quot; &gt;&gt; file-s.txt
+</code></pre>
+
+<h3 id="2-2-secret">2-2) Secret</h3>
+
+<pre><code class="language-sh">echo &quot;Content&quot; &gt;&gt; file-s.txt
 kubectl create secret generic sec-file --from-file=./file-s.txt
 </code></pre>
 
-<h3 id="pod-1">Pod</h3>
+<h3 id="2-3-pod">2-3) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -294,9 +382,48 @@ spec:
           key: file-s.txt
 </code></pre>
 
-<h2 id="3-volume-mount-file">3) Volume Mount (File)</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="pod-2">Pod</h3>
+<hr />
+
+<h2 id="3-volume-mount-file">3. Volume Mount (File)</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/ConfigMap,%20Secret%20with%20Mount%20for%20Kubernetes.jpg" alt="ConfigMap, Secret with Mount for Kubernetes" title="ConfigMap, Secret with Mount for Kubernetes" >
+           	
+        </span>
+    
+
+
+
+<h3 id="3-1-pod">3-1) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -314,6 +441,66 @@ spec:
     configMap:
       name: cm-file
 </code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="kubectl">kubectl</h2>
+
+<hr />
+
+<h3 id="configmap">* <strong>ConfigMap</strong></h3>
+
+<pre><code class="language-sh"># file-c.txt 라는 파일로 cm-file라는 이름의 ConfigMap 생성
+kubectl create configmap cm-file --from-file=./file-c.txt
+# key1:value1 라는 상수로 cm-file라는 이름의 ConfigMap 생성
+kubectl create configmap cm-file --from-literal=key1=value1
+# 여러 key:value로 cm-file라는 이름의 ConfigMap 생성 
+kubectl create configmap cm-file --from-literal=key1=value1 --from-literal=key2=value2
+</code></pre>
+
+<h3 id="secret-generic">* <strong>Secret Generic</strong></h3>
+
+<pre><code class="language-sh"># file-s.txt 라는 파일로 sec-file라는 이름의 Secret 생성
+kubectl create secret generic sec-file --from-file=./file-s.txt
+# key1:value1 라는 상수로 sec-file라는 이름의 Secret 생성
+kubectl create secret generic sec-file --from-literal=key1=value1
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="tips">Tips</h2>
+
+<hr />
+
+<h3 id="secret">* <strong>Secret</strong></h3>
+
+<ul>
+<li>데이터가 메모리에 저장되기 때문에 보안에 유리</li>
+<li>한 Secret당 최대 1M까지만 저장됨
+<br /></li>
+</ul>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>Configure a Pod to Use a ConfigMap</strong> : <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/">https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/</a></li>
+<li><strong>Distribute Credentials Securely Using Secrets</strong> : <a href="https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/">https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/</a></li>
+</ul>
 
   </div>
   <footer>
