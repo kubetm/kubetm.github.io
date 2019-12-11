@@ -3,8 +3,8 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kubetm.github.io/practice/</loc>
-    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
+    <loc>https://kubetm.github.io/info/</loc>
+    <lastmod>2019-12-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -40,6 +40,11 @@
   <url>
     <loc>https://kubetm.github.io/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/</loc>
     <lastmod>2019-12-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/plan/intermediate/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -123,6 +128,11 @@
   </url>
   
   <url>
+    <loc>https://kubetm.github.io/practice/</loc>
+    <lastmod>2019-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kubetm.github.io/plan/2019_10/</loc>
     <lastmod>2019-10-01T00:00:00+00:00</lastmod>
   </url>
@@ -138,10 +148,6 @@
   
   <url>
     <loc>https://kubetm.github.io/auth/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/news/</loc>
   </url>
   
 </urlset>
