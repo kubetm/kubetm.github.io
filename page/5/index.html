@@ -193,6 +193,78 @@
   <header>
   <div class="title">
     
+        <h2>Namespace, ResourceQuota, LimitRange</h2>
+    
+    
+        <p>[2. 기본 오브젝트]</p>
+      
+</div>
+
+  <div class="meta">
+    <time class="published" datetime="2019-11-06 00:00:00 &#43;0000 UTC">
+      November 6, 2019
+    </time>
+    <span class="author">KubeTM</span>
+    
+      <p>2 minutes read</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  <pre><code class="language-yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: nm-1
+</code></pre>
+
+<h3 id="pod">Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+  namespace: nm-1
+  labels:
+    app: pod
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+    ports:
+    - containerPort: 8080
+</code></pre>
+
+<h3 id="service">Service</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: svc-1
+  namespace: nm-1
+spec:
+  selector:
+    app: pod
+  ports:
+  - port: 9000
+    targetPort: 8080
+</code></pre>
+
+<p>pod ip :</p>
+  <footer>
+    <a href="/practice/beginner/object-namespace_resourcequota_limitrange/" class="button big">본문 보기</a>
+    
+
+  </footer>
+</article>
+
+        
+          <article class="post">
+  <header>
+  <div class="title">
+    
         <h2>ConfigMap, Secret</h2>
     
     
@@ -261,45 +333,6 @@
 <br/></p>
   <footer>
     <a href="/practice/beginner/object-volume/" class="button big">본문 보기</a>
-    
-
-  </footer>
-</article>
-
-        
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2>Service</h2>
-    
-    
-        <p>[ClusterIP, NodePort, LoadBalancer]</p>
-      
-</div>
-
-  <div class="meta">
-    <time class="published" datetime="2019-11-03 00:00:00 &#43;0000 UTC">
-      November 3, 2019
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>1 minute read</p>
-    
-  </div>
-</header>
-
-  
-  <a href="/practice/beginner/object-service/" class="image featured">
-    <img src="/img/practice/beginner/Service%20with%20ClusterIP,%20NodePort,%20LoadBalancer.jpg" alt="Service with ClusterIP, NodePort, LoadBalancer">
-  </a>
-
-
-  
-  <p><br/>
-<br/></p>
-  <footer>
-    <a href="/practice/beginner/object-service/" class="button big">본문 보기</a>
     
 
   </footer>

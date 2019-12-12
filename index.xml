@@ -26,12 +26,21 @@
       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2019_12/</guid>
-      <description>-10일- [중급편] Pod - ReadinessProbe, LivenessProbe PPT 80% Blog 20% Recording 0%
- 상세 설명 정리    Blog Plan 중급편 게획 업로드,  Getting-Started Kubernetes Service  
--10일- [중급편] Pod - ReadinessProbe, LivenessProbe PPT 50% Blog 0% Recording 0%
- 기본 개념 정리    인프런 업데이트  인프런 실습강좌에 자료실 링크 버튼추가    
--7일~9일- 감기 ㅠㅜ 
--6일- [초급편] Blog 내용 보충  Getting-Started Kubernetes Service Volume 실습 자료실 index</description>
+      <description>-12일- [KubeTM Blog]  유용한 정보 &amp;gt; 유튜브 &amp;gt; Open Infrastructure &amp;amp; Cloud Native Days Korea 2019 업데이트   
+-11일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 80% Blog 20% Recording 0%
+ 상세 설명 정리    [KubeTM Blog]  Plan 중급편 계획 업로드 ConfigMap, Sercret - Env, Mount  
+-10일- [중급편] Pod - ReadinessProbe, LivenessProbe PPT 50% Blog 0% Recording 0%</description>
+    </item>
+    
+    <item>
+      <title>Open Infrastructure &amp; Cloud Native Days Korea 2019</title>
+      <link>https://kubetm.github.io/info/youtube-openinfra-2019/</link>
+      <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/youtube-openinfra-2019/</guid>
+      <description>Openinfradays Site URL : https://openinfradays.kr/ OpenStack Korea Group Youtube URL : https://www.youtube.com/channel/UCVQ1ILIOsGH-YX9FkEmkjRQ   
+카카오 T 택시 사례를 통해 살펴보는 카카오 클라우드의 Kubernetes as a Service    Kubernetes를 도입하면 뭐가 좋아지나요? 카카오 T택시 시스템 구조 Canary 배포 멀티 클러스터 인증 통합, 사용자 ACL 자동화된 클러스터 라이프사이클 물리 인프라 자원 통합   
+MSA, K8S를 이용한 대륙의 서비스 개발 사례 - 이랜드 차이나    왜 Docker를 선택했나?</description>
     </item>
     
     <item>
