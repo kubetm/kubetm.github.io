@@ -6,10 +6,21 @@
     <description>Recent content on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Open Infrastructure &amp; Cloud Native Days Korea 2019</title>
+      <link>https://kubetm.github.io/info/youtube-openinfra-2019/</link>
+      <pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/youtube-openinfra-2019/</guid>
+      <description>Openinfradays Site URL : https://openinfradays.kr/ OpenStack Korea Group Youtube URL : https://www.youtube.com/channel/UCVQ1ILIOsGH-YX9FkEmkjRQ   
+카카오 T 택시 사례를 통해 살펴보는 카카오 클라우드의 Kubernetes as a Service    Kubernetes를 도입하면 뭐가 좋아지나요? 카카오 T택시 시스템 구조 Canary 배포 멀티 클러스터 인증 통합, 사용자 ACL 자동화된 클러스터 라이프사이클 물리 인프라 자원 통합   
+MSA, K8S를 이용한 대륙의 서비스 개발 사례 - 이랜드 차이나    왜 Docker를 선택했나?</description>
+    </item>
     
     <item>
       <title>Pod</title>
@@ -17,7 +28,7 @@
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/intermediate/object-pod_prove/</guid>
-      <description></description>
+      <description>1. ReadinessProve 1-1) Service apiVersion: v1 kind: Service metadata: name: svc-readiness spec: selector: app: readiness ports: - port: 8080 targetPort: 8080  1-2) Pod apiVersion: v1 kind: Pod metadata: name: pod1 labels: app: readiness spec: containers: - name: container image: kubetm/app ports: - containerPort: 8080	terminationGracePeriodSeconds: 0  1-3) Pod apiVersion: v1 kind: Pod metadata: name: pod-readiness-exec1 labels: app: readiness spec: containers: - name: readiness image: kubetm/app ports: - containerPort: 8080	readinessProbe: exec: command: [&amp;quot;cat&amp;quot;, &amp;quot;/readiness/ready.</description>
     </item>
     
     <item>
@@ -26,21 +37,10 @@
       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2019_12/</guid>
-      <description>-12일- [KubeTM Blog]  유용한 정보 &amp;gt; 유튜브 &amp;gt; Open Infrastructure &amp;amp; Cloud Native Days Korea 2019 업데이트   
+      <description>-12일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 40% Recording 0%
+ 상세 설명 정리    [KubeTM Blog]  유용한 정보 &amp;gt; 유튜브 &amp;gt; Open Infrastructure &amp;amp; Cloud Native Days Korea 2019 업데이트   
 -11일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 80% Blog 20% Recording 0%
- 상세 설명 정리    [KubeTM Blog]  Plan 중급편 계획 업로드 ConfigMap, Sercret - Env, Mount  
--10일- [중급편] Pod - ReadinessProbe, LivenessProbe PPT 50% Blog 0% Recording 0%</description>
-    </item>
-    
-    <item>
-      <title>Open Infrastructure &amp; Cloud Native Days Korea 2019</title>
-      <link>https://kubetm.github.io/info/youtube-openinfra-2019/</link>
-      <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kubetm.github.io/info/youtube-openinfra-2019/</guid>
-      <description>Openinfradays Site URL : https://openinfradays.kr/ OpenStack Korea Group Youtube URL : https://www.youtube.com/channel/UCVQ1ILIOsGH-YX9FkEmkjRQ   
-카카오 T 택시 사례를 통해 살펴보는 카카오 클라우드의 Kubernetes as a Service    Kubernetes를 도입하면 뭐가 좋아지나요? 카카오 T택시 시스템 구조 Canary 배포 멀티 클러스터 인증 통합, 사용자 ACL 자동화된 클러스터 라이프사이클 물리 인프라 자원 통합   
-MSA, K8S를 이용한 대륙의 서비스 개발 사례 - 이랜드 차이나    왜 Docker를 선택했나?</description>
+ 상세 설명 정리    [KubeTM Blog]  Plan 중급편 계획 업로드 ConfigMap, Sercret - Env, Mount</description>
     </item>
     
     <item>
