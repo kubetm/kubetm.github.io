@@ -4,12 +4,22 @@
   
   <url>
     <loc>https://kubetm.github.io/categories/</loc>
-    <lastmod>2019-12-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-12-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://kubetm.github.io/</loc>
-    <lastmod>2019-12-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-12-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/practice/intermediate/pod-probe/</loc>
+    <lastmod>2019-12-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/</loc>
+    <lastmod>2019-12-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -25,16 +35,6 @@
   <url>
     <loc>https://kubetm.github.io/info/</loc>
     <lastmod>2019-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/practice/intermediate/object-pod_prove/</loc>
-    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/</loc>
-    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>

@@ -13,11 +13,11 @@
     
     <item>
       <title>Pod</title>
-      <link>https://kubetm.github.io/practice/intermediate/object-pod_prove/</link>
-      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      <link>https://kubetm.github.io/practice/intermediate/pod-probe/</link>
+      <pubDate>Mon, 16 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/practice/intermediate/object-pod_prove/</guid>
-      <description>1. ReadinessProve 1-1) Service apiVersion: v1 kind: Service metadata: name: svc-readiness spec: selector: app: readiness ports: - port: 8080 targetPort: 8080  1-2) Pod apiVersion: v1 kind: Pod metadata: name: pod1 labels: app: readiness spec: containers: - name: container image: kubetm/app ports: - containerPort: 8080	terminationGracePeriodSeconds: 0  1-3) Pod apiVersion: v1 kind: Pod metadata: name: pod-readiness-exec1 labels: app: readiness spec: containers: - name: readiness image: kubetm/app ports: - containerPort: 8080	readinessProbe: exec: command: [&amp;quot;cat&amp;quot;, &amp;quot;/readiness/ready.</description>
+      <guid>https://kubetm.github.io/practice/intermediate/pod-probe/</guid>
+      <description>1. ReadinessProbe  1-1) Service apiVersion: v1 kind: Service metadata: name: svc-readiness spec: selector: app: readiness ports: - port: 8080 targetPort: 8080  1-2) Pod apiVersion: v1 kind: Pod metadata: name: pod1 labels: app: readiness spec: containers: - name: container image: kubetm/app ports: - containerPort: 8080	terminationGracePeriodSeconds: 0  while true; do date &amp;amp;&amp;amp; curl 10.97.190.80:8080/hostname; sleep 1; done  1-3) Pod apiVersion: v1 kind: Pod metadata: name: pod-readiness-exec1 labels: app: readiness spec: containers: - name: readiness image: kubetm/app ports: - containerPort: 8080	readinessProbe: exec: command: [&amp;quot;cat&amp;quot;, &amp;quot;/readiness/ready.</description>
     </item>
     
     <item>
