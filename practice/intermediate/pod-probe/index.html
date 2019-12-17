@@ -26,7 +26,7 @@
 
 <meta itemprop="datePublished" content="2019-12-16T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-12-16T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="323">
+<meta itemprop="wordCount" content="388">
 
 
 
@@ -468,18 +468,18 @@ spec:
     ports:
     - containerPort: 8080	
     readinessProbe:
-      exec:
-        command: [&quot;cat&quot;, &quot;/readiness/ready.txt&quot;]
+      exec:                   # command 내용으로 점검
+        command: [&quot;cat&quot;, &quot;/readiness/ready.txt&quot;]   
       initialDelaySeconds: 10
       periodSeconds: 5
-      successThreshold: 3
+      successThreshold: 3     # 3번 성공시 Service와 연결됨
     livenessProbe:
-      httpGet:
-        path: /health
-        port: 8080
-      initialDelaySeconds: 10
-      periodSeconds: 5
-      failueThreshold: 3
+      httpGet:                # HttpGet 메소드로 점검
+        path: /health         # 체크할 경로
+        port: 8080            # 체크할 Port
+      initialDelaySeconds: 5  # 최초 5초 후에 LivenessProbe 체크를 시작함
+      periodSeconds: 10       # 10초마다 LivenessProbe 체크
+      failueThreshold: 3      # 3번 실패시 Pod Restart
 </code></pre>
 
 <p><br/>
@@ -493,9 +493,9 @@ spec:
 
 <h3 id="watch">* <strong>Watch</strong></h3>
 
-<pre><code class="language-sh"># 내용
+<pre><code class="language-sh"># Object들의 모든 Event 정보를 지속적으로 조회해서 | 그중에 pod-readiness-exec1라는 단어와 매칭되는 내용만 출력
 kubectl get events -w | grep pod-readiness-exec1
-# 내용
+# pod-readiness-exec1이름의 Pod 상세 내용중에 | Events와 매칭되는 단어에서 20번째 줄까지 지속적으로 출력
 watch &quot;kubectl describe pod pod-readiness-exec1 | grep -A20 Events&quot;
 </code></pre>
 
@@ -508,10 +508,10 @@ watch &quot;kubectl describe pod pod-readiness-exec1 | grep -A20 Events&quot;
 
 <hr />
 
-<h3 id="ㅇ">* <strong>ㅇ</strong></h3>
+<h3 id="http-status">* <strong>HTTP Status</strong></h3>
 
 <ul>
-<li>ㅇ
+<li>200 ~ 400까지는 성공 그외의 상태코드는 실패
 <br /></li>
 </ul>
 
