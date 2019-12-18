@@ -213,47 +213,14 @@
 </header>
 
   
+  <a href="/practice/beginner/object-namespace_resourcequota_limitrange/" class="image featured">
+    <img src="/img/practice/beginner/Namespace,%20ResourceQuota,%20LimitRange%20for%20Kubernetes.jpg" alt="Namespace, ResourceQuota, LimitRange for Kubernetes">
+  </a>
+
 
   
-  <pre><code class="language-yaml">apiVersion: v1
-kind: Namespace
-metadata:
-  name: nm-1
-</code></pre>
-
-<h3 id="pod">Pod</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod-1
-  namespace: nm-1
-  labels:
-    app: pod
-spec:
-  containers:
-  - name: container
-    image: kubetm/app
-    ports:
-    - containerPort: 8080
-</code></pre>
-
-<h3 id="service">Service</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Service
-metadata:
-  name: svc-1
-  namespace: nm-1
-spec:
-  selector:
-    app: pod
-  ports:
-  - port: 9000
-    targetPort: 8080
-</code></pre>
-
-<p>pod ip :</p>
+  <p><br/>
+<br/></p>
   <footer>
     <a href="/practice/beginner/object-namespace_resourcequota_limitrange/" class="button big">본문 보기</a>
     

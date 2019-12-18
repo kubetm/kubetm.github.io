@@ -26,7 +26,7 @@
 
 <meta itemprop="datePublished" content="2019-11-06T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-06T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="320">
+<meta itemprop="wordCount" content="398">
 
 
 
@@ -226,13 +226,56 @@
 
   </section>
   
+  <a href="/practice/beginner/object-namespace_resourcequota_limitrange/" class="image featured">
+    <img src="/img/practice/beginner/Namespace,%20ResourceQuota,%20LimitRange%20for%20Kubernetes.jpg" alt="Namespace, ResourceQuota, LimitRange for Kubernetes">
+  </a>
+
 
   <div class="content">
     
 
-<h2 id="1-namespace">1) Namespace</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="namespace">Namespace</h3>
+<hr />
+
+<h2 id="1-namespace">1.  Namespace</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/How%20to%20use%20Namespace%20for%20Kubernetes.jpg" alt="How to use Namespace for Kubernetes" title="How to use Namespace for Kubernetes" >
+           	
+        </span>
+    
+
+
+
+<h3 id="1-1-namespace">1-1) Namespace</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Namespace
@@ -240,7 +283,7 @@ metadata:
   name: nm-1
 </code></pre>
 
-<h3 id="pod">Pod</h3>
+<h3 id="1-2-pod">1-2) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -257,7 +300,7 @@ spec:
     - containerPort: 8080
 </code></pre>
 
-<h3 id="service">Service</h3>
+<h3 id="1-3-service">1-3) Service</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Service
@@ -282,7 +325,13 @@ spec:
 <pre><code class="language-sh">curl 10.96.92.97:9000/hostname
 </code></pre>
 
-<h3 id="service-1">Service</h3>
+<p><br/></p>
+
+<hr />
+
+<h2 id="namespace-exception">Namespace Exception</h2>
+
+<h3 id="e-1-service">e-1) Service</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Service
@@ -296,7 +345,7 @@ spec:
   type: NodePort
 </code></pre>
 
-<h3 id="pod-1">Pod</h3>
+<h3 id="e-2-pod">e-2) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -321,9 +370,48 @@ spec:
 <pre><code class="language-sh">echo &quot;hello&quot; &gt;&gt; hello.txt
 </code></pre>
 
-<h2 id="2-resourcequota">2) ResourceQuota</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="namespace-1">Namespace</h3>
+<hr />
+
+<h3 id="2-resourcequota">2. ResourceQuota</h3>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/How%20to%20use%20ResourceQuota%20for%20Kubernetes.jpg" alt="How to use ResourceQuota for Kubernetes" title="How to use ResourceQuota for Kubernetes" >
+           	
+        </span>
+    
+
+
+
+<h3 id="2-1-namespace">2-1) Namespace</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Namespace
@@ -331,7 +419,7 @@ metadata:
   name: nm-3
 </code></pre>
 
-<h3 id="resourcequota">ResourceQuota</h3>
+<h3 id="2-2-resourcequota">2-2) ResourceQuota</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: ResourceQuota
@@ -349,7 +437,20 @@ spec:
 <pre><code class="language-sh">kubectl describe resourcequotas --namespace=nm-3
 </code></pre>
 
-<h3 id="pod-2">Pod</h3>
+<h3 id="2-3-pod">2-3) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-2
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+
+</code></pre>
+
+<h3 id="2-4-pod">2-4) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -366,9 +467,48 @@ spec:
         memory: 0.5Gi
 </code></pre>
 
-<h2 id="3-limitrange">3) LimitRange</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="namespace-2">Namespace</h3>
+<hr />
+
+<h2 id="3-limitrange">3. LimitRange</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/How%20to%20use%20LimitRange1%20for%20Kubernetes.jpg" alt="How to use LimitRange1 for Kubernetes" title="How to use LimitRange1 for Kubernetes" >
+           	
+        </span>
+    
+
+
+
+<h3 id="3-1-namespace">3-1) Namespace</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Namespace
@@ -376,7 +516,7 @@ metadata:
   name: nm-5
 </code></pre>
 
-<h3 id="limitrange">LimitRange</h3>
+<h3 id="3-2-limitrange">3-2) LimitRange</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: LimitRange
@@ -402,7 +542,7 @@ spec:
 <pre><code class="language-sh">kubectl describe limitranges --namespace=nm-5
 </code></pre>
 
-<h3 id="pod-3">Pod</h3>
+<h3 id="3-3-pod">3-3) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -419,7 +559,13 @@ spec:
         memory: 0.5Gi
 </code></pre>
 
-<h3 id="namespace-3">Namespace</h3>
+<p><br/></p>
+
+<hr />
+
+<h3 id="limitrange-exception">LimitRange Exception</h3>
+
+<h3 id="e-1-namespace">e-1) Namespace</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Namespace
@@ -427,7 +573,7 @@ metadata:
   name: nm-6
 </code></pre>
 
-<h3 id="limitrange-1">LimitRange</h3>
+<h3 id="e-2-limitrange">e-2) LimitRange</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: LimitRange
@@ -448,7 +594,7 @@ spec:
       memory: 0.5Gi
 </code></pre>
 
-<h3 id="limitrange-2">LimitRange</h3>
+<h3 id="e-3-limitrange">e-3) LimitRange</h3>
 
 <pre><code class="language-yaml">kind: LimitRange
 metadata:
@@ -468,7 +614,7 @@ spec:
       memory: 0.3Gi
 </code></pre>
 
-<h3 id="pod-4">Pod</h3>
+<h3 id="e-4-pod">e-4) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -479,6 +625,40 @@ spec:
   - name: container
     image: kubetm/app
 </code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="kubectl">kubectl</h2>
+
+<hr />
+
+<h3 id="describe">* <strong>Describe</strong></h3>
+
+<pre><code class="language-sh"># nm-3의 Namespace에 있는 ResourceQuota들의 상세 조회
+kubectl describe resourcequotas --namespace=nm-3
+# nm-5의 Namespace에 있는 LimitRange들의 상세 조회
+kubectl describe limitranges --namespace=nm-5
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>Share a Cluster with Namespaces</strong> : <a href="https://kubernetes.io/docs/tasks/administer-cluster/namespaces/">https://kubernetes.io/docs/tasks/administer-cluster/namespaces/</a></li>
+<li><strong>Resource Quotas</strong> : <a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/">https://kubernetes.io/docs/concepts/policy/resource-quotas/</a></li>
+<li><strong>Limit Ranges</strong> : <a href="https://kubernetes.io/docs/concepts/policy/limit-range/">https://kubernetes.io/docs/concepts/policy/limit-range/</a></li>
+</ul>
 
   </div>
   <footer>

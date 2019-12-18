@@ -120,9 +120,8 @@ ReplicationController apiVersion: v1 kind: ReplicationController metadata: name:
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/beginner/object-namespace_resourcequota_limitrange/</guid>
-      <description>1) Namespace Namespace apiVersion: v1 kind: Namespace metadata: name: nm-1  Pod apiVersion: v1 kind: Pod metadata: name: pod-1 namespace: nm-1 labels: app: pod spec: containers: - name: container image: kubetm/app ports: - containerPort: 8080  Service apiVersion: v1 kind: Service metadata: name: svc-1 namespace: nm-1 spec: selector: app: pod ports: - port: 9000 targetPort: 8080  pod ip :
-curl 10.16.36.115:8080/hostname  service ip :
-curl 10.96.92.97:9000/hostname  Service apiVersion: v1 kind: Service metadata: name: svc-2 spec: ports: - port: 9000 targetPort: 8080 nodePort: 30000 type: NodePort  Pod apiVersion: v1 kind: Pod metadata: name: pod-2 spec: nodeSelector: kubernetes.</description>
+      <description>1. Namespace  1-1) Namespace apiVersion: v1 kind: Namespace metadata: name: nm-1  1-2) Pod apiVersion: v1 kind: Pod metadata: name: pod-1 namespace: nm-1 labels: app: pod spec: containers: - name: container image: kubetm/app ports: - containerPort: 8080  1-3) Service apiVersion: v1 kind: Service metadata: name: svc-1 namespace: nm-1 spec: selector: app: pod ports: - port: 9000 targetPort: 8080  pod ip :
+curl 10.16.36.115:8080/hostname  service ip :</description>
     </item>
     
     <item>
