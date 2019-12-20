@@ -37,11 +37,12 @@ MSA, K8S를 이용한 대륙의 서비스 개발 사례 - 이랜드 차이나   
       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2019_12/</guid>
-      <description>-18일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 100% Recording 50%
- 이론강의 편집 및 업로드   [KubeTM Blog]  [초급편 자료 업데이트] Namespace, ResourceQuota, LimitRange  
--17일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 100% Recording 40%
- Blog 실습 자료내용 정리 이론내용 스크립트 작성 이론 강의 녹음  
--16일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 80% Recording 10%</description>
+      <description>-20일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 100% Recording 100%
+ 실습 동영상 녹음 및 업로드   
+-19일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 100% Recording 70%
+ 실습 강의 스크립트 작성  
+-18일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 100% Recording 50%
+ 이론강의 편집 및 업로드   [KubeTM Blog]  [초급편 자료 업데이트] Namespace, ResourceQuota, LimitRange</description>
     </item>
     
     <item>
