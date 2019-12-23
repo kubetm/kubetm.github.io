@@ -6,10 +6,22 @@
     <description>Recent content on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GoogleCloud Summit Seoul 2019</title>
+      <link>https://kubetm.github.io/info/youtube-googlecloud-2019/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/youtube-googlecloud-2019/</guid>
+      <description>GoogleCloud Summit Site URL : https://inthecloud.withgoogle.com/summit-sel-19/home.html GoogleCloud Youtube URL : https://www.youtube.com/watch?v=ZkKgyXDc1lQ&amp;amp;list=PLBgogxgQVM9tS7Yhzjc3Wt56jc5j-z_4C   
+한 번 빌드해 Anthos로 클라우드와 온프레미스에서 구동하기    Kubernetes, MicroService, Istio Knative Anthos SKAFFOLD   
+Cloud, Journey to Right Things.    Cloud, 기업의 대표적인 고민, 왜 사용해야 할까요?, Why Google Cloud? Why Google Cloud? 도입을 위한 지침서   
+Google Cloud Platform에서의 Istio    Istio</description>
+    </item>
     
     <item>
       <title>Pod</title>
@@ -37,12 +49,13 @@ MSA, K8S를 이용한 대륙의 서비스 개발 사례 - 이랜드 차이나   
       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2019_12/</guid>
-      <description>-20일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 100% Recording 100%
+      <description>-23일- [중급편 연재] StatefulSet PPT 10% Blog 0% Recording 0%
+[KubeTM Blog]  [유용한 정보] Google Cloud Summit 19 유튜브 영상  
+-20일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 100% Recording 100%
  실습 동영상 녹음 및 업로드   
 -19일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 100% Recording 70%
  실습 강의 스크립트 작성  
--18일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 100% Recording 50%
- 이론강의 편집 및 업로드   [KubeTM Blog]  [초급편 자료 업데이트] Namespace, ResourceQuota, LimitRange</description>
+-18일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 100% Recording 50%</description>
     </item>
     
     <item>

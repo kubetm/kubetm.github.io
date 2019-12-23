@@ -6,10 +6,22 @@
     <description>Recent content in 유용한 정보 on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 12 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EC%A0%95%EB%B3%B4/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GoogleCloud Summit Seoul 2019</title>
+      <link>https://kubetm.github.io/info/youtube-googlecloud-2019/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/youtube-googlecloud-2019/</guid>
+      <description>GoogleCloud Summit Site URL : https://inthecloud.withgoogle.com/summit-sel-19/home.html GoogleCloud Youtube URL : https://www.youtube.com/watch?v=ZkKgyXDc1lQ&amp;amp;list=PLBgogxgQVM9tS7Yhzjc3Wt56jc5j-z_4C   
+한 번 빌드해 Anthos로 클라우드와 온프레미스에서 구동하기    Kubernetes, MicroService, Istio Knative Anthos SKAFFOLD   
+Cloud, Journey to Right Things.    Cloud, 기업의 대표적인 고민, 왜 사용해야 할까요?, Why Google Cloud? Why Google Cloud? 도입을 위한 지침서   
+Google Cloud Platform에서의 Istio    Istio</description>
+    </item>
     
     <item>
       <title>Open Infrastructure &amp; Cloud Native Days Korea 2019</title>
