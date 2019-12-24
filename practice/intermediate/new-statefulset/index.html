@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2019-12-24T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-12-24T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="388">
+<meta itemprop="wordCount" content="64">
 
 
 
@@ -221,7 +221,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>1 minute read</p>
     
   </div>
 </header>
@@ -246,9 +246,41 @@
 <p><br/>
 <br/></p>
 
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/StatefulSet%20with%20Stateless,%20Stateful%20Application%20for%20Kubernetes.jpg" alt="StatefulSet with Stateless, Stateful Application for Kubernetes" title="StatefulSet with Stateless, Stateful Application for Kubernetes" >
+           	
+        </span>
+    
+
+
+
 <hr />
 
-<h2 id="1-readinessprobe">1. ReadinessProbe</h2>
+<h2 id="1-pod">1. Pod</h2>
 
 <hr />
 
@@ -277,268 +309,66 @@
     
         <span class="image left">
         	
-            	<img src="/img/practice/intermediate/Pod%20Probe%20with%20ReadinessProbe%20for%20Kubernetes.jpg" alt="Pod Probe with ReadinessProbe for Kubernetes" title="Pod Probe with ReadinessProbe for Kubernetes" >
+            	<img src="/img/practice/intermediate/StatefulSet%20with%20Pod%20for%20Kubernetes.jpg" alt="StatefulSet with Pod for Kubernetes" title="StatefulSet with Pod for Kubernetes" >
            	
         </span>
     
 
 
 
-<h3 id="1-1-service">1-1) Service</h3>
+<h3 id="1-1-replicaset">1-1) ReplicaSet</h3>
 
-<pre><code class="language-yaml">apiVersion: v1
-kind: Service
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: ReplicaSet
 metadata:
-  name: svc-readiness
+  name: replicaset-pod
 spec:
+  replicas: 1
   selector:
-    app: readiness
-  ports:
-  - port: 8080
-    targetPort: 8080
+    matchLabels:
+      type: web
+  template:
+    metadata:
+      labels:
+        type: web
+    spec:
+      containers:
+      - name: container
+        image: kubetm/init
+      terminationGracePeriodSeconds: 10
 </code></pre>
 
-<h3 id="1-2-pod">1-2) Pod</h3>
+<h3 id="1-2-statefulset">1-2) StatefulSet</h3>
 
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: StatefulSet
 metadata:
-  name: pod1
-  labels:
-    app: readiness  
+  name: statefulset-pod
 spec:
-  containers:
-  - name: container
-    image: kubetm/app
-    ports:
-    - containerPort: 8080	
-  terminationGracePeriodSeconds: 0
-</code></pre>
-
-<pre><code class="language-sh">while true; do date &amp;&amp; curl 10.97.190.80:8080/hostname; sleep 1; done
-</code></pre>
-
-<h3 id="1-3-pod">1-3) Pod</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod-readiness-exec1
-  labels:
-    app: readiness  
-spec:
-  containers:
-  - name: readiness
-    image: kubetm/app
-    ports:
-    - containerPort: 8080	
-    readinessProbe:
-      exec:
-        command: [&quot;cat&quot;, &quot;/readiness/ready.txt&quot;]
-      initialDelaySeconds: 5
-      periodSeconds: 10
-      successThreshold: 3
-    volumeMounts:
-    - name: host-path
-      mountPath: /readiness
-  volumes:
-  - name : host-path
-    hostPath:
-      path: /tmp/readiness
-      type: DirectoryOrCreate
-  terminationGracePeriodSeconds: 0
-</code></pre>
-
-<pre><code class="language-sh">kubectl get events -w | grep pod-readiness-exec1
-kubectl describe pod pod-readiness-exec1 | grep -A5 Conditions
-kubectl describe endpoints svc-readiness
-touch ready.txt
-</code></pre>
-
-<hr />
-
-<h2 id="2-livenessprove">2. LivenessProve</h2>
-
-<hr />
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-    
-    
-    
-    
-
-        
-    
-
-    
-        <span class="image left">
-        	
-            	<img src="/img/practice/intermediate/Pod%20Probe%20with%20LivenessProbe%20for%20Kubernetes.jpg" alt="Pod Probe with LivenessProbe for Kubernetes" title="Pod Probe with LivenessProbe for Kubernetes" >
-           	
-        </span>
-    
-
-
-
-<h3 id="2-1-service">2-1) Service</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Service
-metadata:
-  name: svc-liveness
-spec:
+  replicas: 1
   selector:
-    app: liveness
-  ports:
-  - port: 8080
-    targetPort: 8080
+    matchLabels:
+      app: stateful
+  template:
+    metadata:
+      labels:
+        app: stateful
+    spec:
+      containers:
+      - name: container
+        image: tmkube/init
+      terminationGracePeriodSeconds: 10
 </code></pre>
 
-<h3 id="2-2-pod">2-2) Pod</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod2
-  labels:
-    app: liveness
-spec:
-  containers:
-  - name: container
-    image: kubetm/app
-    ports:
-    - containerPort: 8080
-  terminationGracePeriodSeconds: 0
-</code></pre>
-
-<h3 id="2-3-pod">2-3) Pod</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod-liveness-httpget1
-  labels:
-    app: liveness
-spec:
-  containers:
-  - name: liveness
-    image: kubetm/app
-    ports:
-    - containerPort: 8080
-    livenessProbe:
-      httpGet:
-        path: /health
-        port: 8080
-      initialDelaySeconds: 5
-      periodSeconds: 10
-      failueThreshold: 3
-  terminationGracePeriodSeconds: 0
-</code></pre>
-
-<pre><code class="language-sh">while true; do date &amp;&amp; curl 10.103.160.58:8080/health; sleep 1; done
-watch &quot;kubectl describe pod pod-liveness-httpget1 | grep -A10 Events&quot;
-curl 20.109.131.43:8080/status500
-</code></pre>
-
-<p><br/>
-<br/></p>
+<p><br/></p>
 
 <hr />
 
-<h2 id="sample-yaml">Sample Yaml</h2>
+<h2 id="2-persistentvolumeclaim">2. PersistentVolumeClaim</h2>
 
 <hr />
 
-<h3 id="pod">* <strong>Pod</strong></h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod-probe
-  labels:
-    app: probe
-spec:
-  containers:
-  - name: probe
-    image: kubetm/app
-    ports:
-    - containerPort: 8080	
-    readinessProbe:
-      exec:                   # command 내용으로 점검
-        command: [&quot;cat&quot;, &quot;/readiness/ready.txt&quot;]   
-      initialDelaySeconds: 10
-      periodSeconds: 5
-      successThreshold: 3     # 3번 성공시 Service와 연결됨
-    livenessProbe:
-      httpGet:                # HttpGet 메소드로 점검
-        path: /health         # 체크할 경로
-        port: 8080            # 체크할 Port
-      initialDelaySeconds: 5  # 최초 5초 후에 LivenessProbe 체크를 시작함
-      periodSeconds: 10       # 10초마다 LivenessProbe 체크
-      failueThreshold: 3      # 3번 실패시 Pod Restart
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="kubectl">kubectl</h2>
-
-<hr />
-
-<h3 id="watch">* <strong>Watch</strong></h3>
-
-<pre><code class="language-sh"># Object들의 모든 Event 정보를 지속적으로 조회해서 | 그중에 pod-readiness-exec1라는 단어와 매칭되는 내용만 출력
-kubectl get events -w | grep pod-readiness-exec1
-# pod-readiness-exec1이름의 Pod 상세 내용중에 | Events와 매칭되는 단어에서 20번째 줄까지 지속적으로 출력
-watch &quot;kubectl describe pod pod-readiness-exec1 | grep -A20 Events&quot;
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="tips">Tips</h2>
-
-<hr />
-
-<h3 id="http-status">* <strong>HTTP Status</strong></h3>
-
-<ul>
-<li>200 ~ 400까지는 성공 그외의 상태코드는 실패
-<br /></li>
-</ul>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="referenece">Referenece</h2>
-
-<hr />
-
-<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
-
-<ul>
-<li><strong>Configure Liveness, Readiness and Startup Probes</strong> : <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/</a></li>
-<li><strong>Pod Lifecycle</strong> : <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/">https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/</a></li>
-</ul>
+<p><br/></p>
 
   </div>
   <footer>
