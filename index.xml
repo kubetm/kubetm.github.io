@@ -6,10 +6,19 @@
     <description>Recent content on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 23 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>StatefulSet</title>
+      <link>https://kubetm.github.io/practice/intermediate/new-statefulset/</link>
+      <pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/intermediate/new-statefulset/</guid>
+      <description>1. ReadinessProbe  1-1) Service apiVersion: v1 kind: Service metadata: name: svc-readiness spec: selector: app: readiness ports: - port: 8080 targetPort: 8080  1-2) Pod apiVersion: v1 kind: Pod metadata: name: pod1 labels: app: readiness spec: containers: - name: container image: kubetm/app ports: - containerPort: 8080	terminationGracePeriodSeconds: 0  while true; do date &amp;amp;&amp;amp; curl 10.97.190.80:8080/hostname; sleep 1; done  1-3) Pod apiVersion: v1 kind: Pod metadata: name: pod-readiness-exec1 labels: app: readiness spec: containers: - name: readiness image: kubetm/app ports: - containerPort: 8080	readinessProbe: exec: command: [&amp;quot;cat&amp;quot;, &amp;quot;/readiness/ready.</description>
+    </item>
     
     <item>
       <title>GoogleCloud Summit Seoul 2019</title>
@@ -49,13 +58,13 @@ MSA, K8S를 이용한 대륙의 서비스 개발 사례 - 이랜드 차이나   
       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2019_12/</guid>
-      <description>-23일- [중급편 연재] StatefulSet PPT 10% Blog 0% Recording 0%
+      <description>-24일- [중급편 연재] StatefulSet PPT 80% Blog 20% Recording 0%
+
+-23일- [중급편 연재] StatefulSet PPT 10% Blog 0% Recording 0%
 [KubeTM Blog]  [유용한 정보] Google Cloud Summit 19 유튜브 영상  
 -20일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 100% Recording 100%
  실습 동영상 녹음 및 업로드   
--19일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 100% Recording 70%
- 실습 강의 스크립트 작성  
--18일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 100% Recording 50%</description>
+-19일- [중급편 연재] Pod - ReadinessProbe, LivenessProbe PPT 100% Blog 100% Recording 70%</description>
     </item>
     
     <item>
