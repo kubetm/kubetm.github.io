@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2019-12-24T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-12-24T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="64">
+<meta itemprop="wordCount" content="290">
 
 
 
@@ -221,7 +221,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>1 minute read</p>
+      <p>2 minutes read</p>
     
   </div>
 </header>
@@ -321,7 +321,7 @@
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: replicaset-pod
+  name: web
 spec:
   replicas: 1
   selector:
@@ -334,7 +334,7 @@ spec:
     spec:
       containers:
       - name: container
-        image: kubetm/init
+        image: kubetm/app
       terminationGracePeriodSeconds: 10
 </code></pre>
 
@@ -343,20 +343,20 @@ spec:
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: statefulset-pod
+  name: db
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: stateful
+      type: db
   template:
     metadata:
       labels:
-        app: stateful
+        type: db
     spec:
       containers:
       - name: container
-        image: tmkube/init
+        image: kubetm/app
       terminationGracePeriodSeconds: 10
 </code></pre>
 
@@ -368,7 +368,199 @@ spec:
 
 <hr />
 
-<p><br/></p>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/StatefulSet%20with%20PersistentVolumeClaims%20for%20Kubernetes.jpg" alt="StatefulSet with PersistentVolumeClaims for Kubernetes" title="StatefulSet with PersistentVolumeClaims for Kubernetes" >
+           	
+        </span>
+    
+
+
+
+<h3 id="2-1-persistentvolumeclaim">2-1) PersistentVolumeClaim</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: web-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1G
+  storageClassName: &quot;fast&quot;
+</code></pre>
+
+<h3 id="2-2-replicaset">2-2) ReplicaSet</h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: web-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: web2
+  template:
+    metadata:
+      labels:
+        type: web2
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-node1
+      containers:
+      - name: container
+        image: kubetm/init
+        volumeMounts:
+        - name: storageos
+          mountPath: /applog
+      volumes:
+      - name: storageos
+        persistentVolumeClaim:
+          claimName: web-pvc
+      terminationGracePeriodSeconds: 10
+</code></pre>
+
+<pre><code class="language-sh">touch /applog/server.log
+</code></pre>
+
+<h3 id="2-3-statefulset">2-3) StatefulSet</h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: db2
+  serviceName: &quot;headless-svc&quot;
+  template: 
+    metadata:
+      labels:
+        type: db2
+    spec:
+      containers:
+      - name: container
+        image: kubetm/app
+        volumeMounts:
+        - name: statefulset-pvc1
+          mountPath: /applog
+      terminationGracePeriodSeconds: 10
+  volumeClaimTemplates:
+  - metadata:
+      name: statefulset-pvc1
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1G
+      storageClassName: &quot;fast&quot;
+</code></pre>
+
+<h3 id="2-4-service-headless">2-4) Service (Headless)</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: headless-svc
+spec:
+  selector:
+    type: db2
+  ports:
+    - port: 80
+      targetPort: 8080    
+  clusterIP: None
+</code></pre>
+
+<pre><code class="language-sh">nslookup headless-svc
+nslookup db-pod-0.headless-svc
+curl db-pod-0.headless-svc:8080/hostname
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="yaml">yaml</h2>
+
+<hr />
+
+<h3 id="statefulset">* <strong>StatefulSet</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: db2
+  serviceName: &quot;headless-svc&quot;  # Headless Service의 이름과 미칭
+  template: 
+    metadata:
+      labels:
+        type: db2
+    spec:
+      containers:
+      - name: container
+        image: kubetm/app
+        volumeMounts:
+        - name: statefulset-pvc1          # volumeClaimTemplates의 Name과 매칭
+          mountPath: /applog
+      terminationGracePeriodSeconds: 10
+  volumeClaimTemplates:                   # Pod별로 만들 PVC 템플릿
+  - metadata:
+      name: statefulset-pvc1
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1G
+      storageClassName: &quot;fast&quot;
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>StatefulSets</strong> : <a href="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset">https://kubernetes.io/docs/concepts/workloads/controllers/statefulset</a></li>
+<li><strong>StatefulSet Basics</strong> : <a href="https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set">https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set</a></li>
+</ul>
 
   </div>
   <footer>
