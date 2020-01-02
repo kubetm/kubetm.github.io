@@ -321,7 +321,7 @@
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: web
+  name: replica-web
 spec:
   replicas: 1
   selector:
@@ -343,7 +343,7 @@ spec:
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: db
+  name: stateful-db
 spec:
   replicas: 1
   selector:
@@ -405,7 +405,7 @@ spec:
 <pre><code class="language-yaml">apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: web-pvc
+  name: replica-pvc1
 spec:
   accessModes:
   - ReadWriteOnce
@@ -420,7 +420,7 @@ spec:
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: web-pod
+  name: replica-pvc
 spec:
   replicas: 1
   selector:
@@ -442,7 +442,7 @@ spec:
       volumes:
       - name: storageos
         persistentVolumeClaim:
-          claimName: web-pvc
+          claimName: replica-pvc1
       terminationGracePeriodSeconds: 10
 </code></pre>
 
@@ -454,13 +454,13 @@ spec:
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: db-pod
+  name: stateful-pvc
 spec:
   replicas: 1
   selector:
     matchLabels:
       type: db2
-  serviceName: &quot;headless-svc&quot;
+  serviceName: &quot;stateful-headless&quot;
   template: 
     metadata:
       labels:
@@ -470,12 +470,12 @@ spec:
       - name: container
         image: kubetm/app
         volumeMounts:
-        - name: statefulset-pvc1
+        - name: volume
           mountPath: /applog
       terminationGracePeriodSeconds: 10
   volumeClaimTemplates:
   - metadata:
-      name: statefulset-pvc1
+      name: volume
     spec:
       accessModes:
       - ReadWriteOnce
@@ -490,7 +490,7 @@ spec:
 <pre><code class="language-yaml">apiVersion: v1
 kind: Service
 metadata:
-  name: headless-svc
+  name: stateful-headless
 spec:
   selector:
     type: db2
