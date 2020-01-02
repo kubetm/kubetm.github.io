@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2019-12-24T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-12-24T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="290">
+<meta itemprop="wordCount" content="309">
 
 
 
@@ -485,7 +485,47 @@ spec:
       storageClassName: &quot;fast&quot;
 </code></pre>
 
-<h3 id="2-4-service-headless">2-4) Service (Headless)</h3>
+<p><br/></p>
+
+<hr />
+
+<h2 id="3-headless-service">3. Headless Service</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/StatefulSet%20with%20Headless%20Service%20for%20Kubernetes.jpg" alt="StatefulSet with Headless Service for Kubernetes" title="StatefulSet with Headless Service for Kubernetes" >
+           	
+        </span>
+    
+
+
+
+<h3 id="3-1-service-headless">3-1) Service (Headless)</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Service
@@ -498,6 +538,18 @@ spec:
     - port: 80
       targetPort: 8080    
   clusterIP: None
+</code></pre>
+
+<h3 id="3-2-pod">3-2) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: request-pod
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
 </code></pre>
 
 <pre><code class="language-sh">nslookup headless-svc
