@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2019-12-24T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-12-24T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="308">
+<meta itemprop="wordCount" content="239">
 
 
 
@@ -280,7 +280,7 @@
 
 <hr />
 
-<h2 id="1-statefulset-controller">1. StatefulSet Controller</h2>
+<h2 id="1-pod">1. Pod</h2>
 
 <hr />
 
@@ -553,50 +553,7 @@ spec:
 </code></pre>
 
 <pre><code class="language-sh">nslookup stateful-headless
-curl stateful-pvc-0.headless-svc/hostname
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<h2 id="yaml">yaml</h2>
-
-<hr />
-
-<h3 id="statefulset">* <strong>StatefulSet</strong></h3>
-
-<pre><code class="language-yaml">apiVersion: apps/v1
-kind: StatefulSet
-metadata:
-  name: db-pod
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      type: db2
-  serviceName: &quot;headless-svc&quot;  # Headless Service의 이름과 미칭
-  template: 
-    metadata:
-      labels:
-        type: db2
-    spec:
-      containers:
-      - name: container
-        image: kubetm/app
-        volumeMounts:
-        - name: statefulset-pvc1          # volumeClaimTemplates의 Name과 매칭
-          mountPath: /applog
-      terminationGracePeriodSeconds: 10
-  volumeClaimTemplates:                   # Pod별로 만들 PVC 템플릿
-  - metadata:
-      name: statefulset-pvc1
-    spec:
-      accessModes:
-      - ReadWriteOnce
-      resources:
-        requests:
-          storage: 1G
-      storageClassName: &quot;fast&quot;
+curl stateful-pvc-0.stateful-headless:8080/hostname
 </code></pre>
 
 <p><br/>
