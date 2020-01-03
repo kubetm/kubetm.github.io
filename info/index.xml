@@ -12,6 +12,31 @@
     
     
     <item>
+      <title>Kubernetes 관련 블로그들</title>
+      <link>https://kubetm.github.io/info/blog/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/blog/</guid>
+      <description>저도 쿠버네티스를 처음 공부할때 여러 블로그들을 통해서 개념을 쉽게 이해할 수 있었습니다. 아래 블로그들이 그동안 즐겨찾기를 해놨던 블로그들인데 특정개념에 대해서 이해가 안되는게 있다면, 아래 여러 블로그들을 통해 본인에게 맞는 설명을 찾아보면 좋을 듯 싶어요.
+
+조대협의 블로그    
+alice_k106    
+아리수    
+Small talks with something</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes 관련 커뮤티니티들</title>
+      <link>https://kubetm.github.io/info/community/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/community/</guid>
+      <description>Kubernetes Korea Group    &amp;lt;안승규&amp;gt; 님께서 관리하고 계시는 쿠버네티스 커뮤니티로 쿠버네티스 관련 많은 전문가들께서 활동하고 계시고 각종 행사나 이슈들이 공유되고 있습니다 대한민국 넘버원 커뮤니티라고 생각되네요  
+참고
+ 글로벌 커뮤니티1 : https://www.facebook.com/groups/kubernetes.users 글로벌 커뮤니티2 : https://www.facebook.com/kubernetesio/</description>
+    </item>
+    
+    <item>
       <title>GoogleCloud Summit Seoul 2019</title>
       <link>https://kubetm.github.io/info/youtube-googlecloud-2019/</link>
       <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
