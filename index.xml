@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Kubernetes 관련 블로그들</title>
+      <title>Kubernetes 관련 블로그</title>
       <link>https://kubetm.github.io/info/blog/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
@@ -26,7 +26,7 @@ Small talks with something</description>
     </item>
     
     <item>
-      <title>Kubernetes 관련 커뮤티니티들</title>
+      <title>Kubernetes 관련 커뮤티니티</title>
       <link>https://kubetm.github.io/info/community/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
