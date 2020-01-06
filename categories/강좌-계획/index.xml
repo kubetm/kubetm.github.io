@@ -6,10 +6,22 @@
     <description>Recent content in 강좌 계획 on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>1월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2020_01/</link>
+      <pubDate>Sat, 04 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2020_01/</guid>
+      <description>-6일- [중급편 연재] StatefulSet PPT 100% Blog 100% Recording 100%
+ 편집 후 업로드   
+-3일- [중급편 연재] StatefulSet PPT 100% Blog 100% Recording 80%
+ Blog 내용 수정, 실습 스크립트 및 녹음</description>
+    </item>
     
     <item>
       <title>12월 진행사항</title>
