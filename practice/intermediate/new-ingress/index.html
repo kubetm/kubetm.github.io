@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>StatefulSet - KubeTM Blog with Kubernetes</title>
+<title>Ingress - KubeTM Blog with Kubernetes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -27,28 +27,28 @@
 
 
   <meta name="generator" content="Hugo 0.59.1" />
-  <meta itemprop="name" content="StatefulSet">
-<meta itemprop="description" content="[Pod, PersistentVolume, Headless Service]">
+  <meta itemprop="name" content="Ingress">
+<meta itemprop="description" content="[Service Loadbalancing, Canary Upgrade]">
 
 
-<meta itemprop="datePublished" content="2019-12-24T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-24T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="239">
+<meta itemprop="datePublished" content="2020-01-20T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-01-20T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="360">
 
 
 
 <meta itemprop="keywords" content="" />
 
-  <meta property="og:title" content="StatefulSet" />
-<meta property="og:description" content="[Pod, PersistentVolume, Headless Service]" />
+  <meta property="og:title" content="Ingress" />
+<meta property="og:description" content="[Service Loadbalancing, Canary Upgrade]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/new-statefulset/" />
-<meta property="article:published_time" content="2019-12-24T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-12-24T00:00:00+00:00" />
+<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/new-ingress/" />
+<meta property="article:published_time" content="2020-01-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-20T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="StatefulSet"/>
-<meta name="twitter:description" content="[Pod, PersistentVolume, Headless Service]"/>
+<meta name="twitter:title" content="Ingress"/>
+<meta name="twitter:description" content="[Service Loadbalancing, Canary Upgrade]"/>
 
   
 
@@ -208,16 +208,16 @@
   <header>
   <div class="title">
     
-        <h2>StatefulSet</h2>
+        <h2>Ingress</h2>
     
     
-        <p>[Pod, PersistentVolume, Headless Service]</p>
+        <p>[Service Loadbalancing, Canary Upgrade]</p>
       
 </div>
 
   <div class="meta">
-    <time class="published" datetime="2019-12-24 00:00:00 &#43;0000 UTC">
-      December 24, 2019
+    <time class="published" datetime="2020-01-20 00:00:00 &#43;0000 UTC">
+      January 20, 2020
     </time>
     <span class="author">KubeTM</span>
     
@@ -235,8 +235,8 @@
 
   </section>
   
-  <a href="/practice/intermediate/new-statefulset/" class="image featured">
-    <img src="/img/practice/intermediate/StatefulSet%20with%20satefull%20application%20for%20Kubernetes.jpg" alt="StatefulSet with satefull application for Kubernetes">
+  <a href="/practice/intermediate/new-ingress/" class="image featured">
+    <img src="/img/practice/intermediate/Ingress%20with%20Service%20Loadbalancing%20and%20Canary%20for%20Kubernetes.jpg" alt="Ingress with Service Loadbalancing and Canary for Kubernetes">
   </a>
 
 
@@ -271,7 +271,7 @@
     
         <span class="image left">
         	
-            	<img src="/img/practice/intermediate/StatefulSet%20with%20Stateless,%20Stateful%20Application%20for%20Kubernetes.jpg" alt="StatefulSet with Stateless, Stateful Application for Kubernetes" title="StatefulSet with Stateless, Stateful Application for Kubernetes" >
+            	<img src="/img/practice/intermediate/Ingress%20with%20Loadbalancing%20and%20Canary%20Concept%20for%20Kubernetes.jpg" alt="Ingress with Loadbalancing and Canary Concept for Kubernetes" title="Ingress with Loadbalancing and Canary Concept for Kubernetes" >
            	
         </span>
     
@@ -280,280 +280,249 @@
 
 <hr />
 
-<h2 id="1-pod">1. Pod</h2>
+<h2 id="1-nginx-설치">1. nginx 설치</h2>
 
 <hr />
 
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-    
-    
-    
-    
-
-        
-    
-
-    
-        <span class="image left">
-        	
-            	<img src="/img/practice/intermediate/StatefulSet%20with%20Pod%20for%20Kubernetes.jpg" alt="StatefulSet with Pod for Kubernetes" title="StatefulSet with Pod for Kubernetes" >
-           	
-        </span>
-    
-
-
-
-<h3 id="1-1-replicaset">1-1) ReplicaSet</h3>
-
-<pre><code class="language-yaml">apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-  name: replica-web
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      type: web
-  template:
-    metadata:
-      labels:
-        type: web
-    spec:
-      containers:
-      - name: container
-        image: kubetm/app
-      terminationGracePeriodSeconds: 10
+<pre><code class="language-sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/mandatory.yaml
 </code></pre>
 
-<h3 id="1-2-statefulset">1-2) StatefulSet</h3>
-
-<pre><code class="language-yaml">apiVersion: apps/v1
-kind: StatefulSet
-metadata:
-  name: stateful-db
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      type: db
-  template:
-    metadata:
-      labels:
-        type: db
-    spec:
-      containers:
-      - name: container
-        image: kubetm/app
-      terminationGracePeriodSeconds: 10
+<pre><code class="language-sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/provider/baremetal/service-nodeport.yaml
 </code></pre>
 
 <p><br/></p>
 
 <hr />
 
-<h2 id="2-persistentvolumeclaim">2. PersistentVolumeClaim</h2>
+<h2 id="2-service-loadbalancing">2. Service Loadbalancing</h2>
 
 <hr />
 
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-    
-    
-    
-    
-
-        
-    
-
-    
-        <span class="image left">
-        	
-            	<img src="/img/practice/intermediate/StatefulSet%20with%20PersistentVolumeClaims%20for%20Kubernetes.jpg" alt="StatefulSet with PersistentVolumeClaims for Kubernetes" title="StatefulSet with PersistentVolumeClaims for Kubernetes" >
-           	
-        </span>
-    
-
-
-
-<h3 id="2-1-persistentvolumeclaim">2-1) PersistentVolumeClaim</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: replica-pvc1
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1G
-  storageClassName: &quot;fast&quot;
-</code></pre>
-
-<h3 id="2-2-replicaset">2-2) ReplicaSet</h3>
-
-<pre><code class="language-yaml">apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-  name: replica-pvc
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      type: web2
-  template:
-    metadata:
-      labels:
-        type: web2
-    spec:
-      nodeSelector:
-        kubernetes.io/hostname: k8s-node1
-      containers:
-      - name: container
-        image: kubetm/init
-        volumeMounts:
-        - name: storageos
-          mountPath: /applog
-      volumes:
-      - name: storageos
-        persistentVolumeClaim:
-          claimName: replica-pvc1
-      terminationGracePeriodSeconds: 10
-</code></pre>
-
-<pre><code class="language-sh">touch /applog/server.log
-</code></pre>
-
-<h3 id="2-3-statefulset">2-3) StatefulSet</h3>
-
-<pre><code class="language-yaml">apiVersion: apps/v1
-kind: StatefulSet
-metadata:
-  name: stateful-pvc
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      type: db2
-  serviceName: &quot;stateful-headless&quot;
-  template: 
-    metadata:
-      labels:
-        type: db2
-    spec:
-      containers:
-      - name: container
-        image: kubetm/app
-        volumeMounts:
-        - name: volume
-          mountPath: /applog
-      terminationGracePeriodSeconds: 10
-  volumeClaimTemplates:
-  - metadata:
-      name: volume
-    spec:
-      accessModes:
-      - ReadWriteOnce
-      resources:
-        requests:
-          storage: 1G
-      storageClassName: &quot;fast&quot;
-</code></pre>
-
-<p><br/></p>
-
-<hr />
-
-<h2 id="3-headless-service">3. Headless Service</h2>
-
-<hr />
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-    
-    
-    
-    
-
-        
-    
-
-    
-        <span class="image left">
-        	
-            	<img src="/img/practice/intermediate/StatefulSet%20with%20Headless%20Service%20for%20Kubernetes.jpg" alt="StatefulSet with Headless Service for Kubernetes" title="StatefulSet with Headless Service for Kubernetes" >
-           	
-        </span>
-    
-
-
-
-<h3 id="3-1-service-headless">3-1) Service (Headless)</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Service
-metadata:
-  name: stateful-headless
-spec:
-  selector:
-    type: db2
-  ports:
-    - port: 80
-      targetPort: 8080    
-  clusterIP: None
-</code></pre>
-
-<h3 id="3-2-pod">3-2) Pod</h3>
+<h3 id="2-1-shopping-page">2-1) Shopping Page</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
 metadata:
-  name: request-pod
+  name: pod-shopping
+  labels:
+    category: shopping
 spec:
   containers:
   - name: container
-    image: kubetm/init
+    image: kubetm/shopping
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-shopping
+spec:
+  selector:
+    category: shopping
+  ports:
+  - port: 8080
 </code></pre>
 
-<pre><code class="language-sh">nslookup stateful-headless
-curl stateful-pvc-0.stateful-headless:8080/hostname
+<h3 id="2-2-customer-center">2-2) Customer Center</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-customer
+  labels:
+    category: customer
+spec:
+  containers:
+  - name: container
+    image: kubetm/customer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-customer
+spec:
+  selector:
+    category: customer
+  ports:
+  - port: 8080
+</code></pre>
+
+<h3 id="2-3-order-service">2-3) Order Service</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-order
+  labels:
+    category: order
+spec:
+  containers:
+  - name: container
+    image: kubetm/order
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-order
+spec:
+  selector:
+    category: order
+  ports:
+  - port: 8080
+</code></pre>
+
+<h3 id="2-4-ingress">2-4) Ingress</h3>
+
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: service-loadbalancing
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /
+          backend:
+            serviceName: svc-shopping
+            servicePort: 8080
+        - path: /customer
+          backend:
+            serviceName: svc-customer
+            servicePort: 8080
+        - path: /order
+          backend:
+            serviceName: svc-order
+            servicePort: 8080
+</code></pre>
+
+<pre><code class="language-sh">curl 192.168.0.30:30431/
+curl 192.168.0.30:30431/order
+curl 192.168.0.30:30431/customer
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="3-canary-upgrade">3. Canary Upgrade</h2>
+
+<hr />
+
+<h3 id="3-1-app-v1">3-1) App V1</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-v1
+  labels:
+    app: v1
+spec:
+  containers:
+  - name: container
+    image: kubetm/app:v1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-v1
+spec:
+  selector:
+    app: v1
+  ports:
+  - port: 8080
+</code></pre>
+
+<h3 id="3-2-app-v2">3-2) App V2</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-v2
+  labels:
+    app: v2
+spec:
+  containers:
+  - name: container
+    image: kubetm/app:v2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-v2
+spec:
+  selector:
+    app: v2
+  ports:
+  - port: 8080
+</code></pre>
+
+<h3 id="3-3-ingress-default">3-3) Ingress - default</h3>
+
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: canary-v1
+spec:
+  rules:
+  - host: www.canary.com
+    http:
+      paths:
+      - backend:
+          serviceName: svc-v1
+          servicePort: 80
+</code></pre>
+
+<pre><code class="language-sh">vi /etc/hosts
+192.168.0.30 www.canary.com
+
+curl www.canary.com:30431/version
+</code></pre>
+
+<h3 id="3-4-ingress-weight">3-4) Ingress - weight</h3>
+
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: canary-v2
+  annotations:
+    nginx.ingress.kubernetes.io/canary: &quot;true&quot;
+    nginx.ingress.kubernetes.io/canary-weight: &quot;10&quot;
+spec:
+  rules:
+  - host: www.canary.com
+    http:
+      paths:
+      - backend:
+          serviceName: svc-v2
+          servicePort: 8080
+</code></pre>
+
+<pre><code class="language-sh">while true; do curl www.canary.com:30431/version; sleep 1; done
+</code></pre>
+
+<h3 id="3-5-ingress-header">3-5) Ingress - header</h3>
+
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: canary-kr
+  annotations:
+    nginx.ingress.kubernetes.io/canary: &quot;true&quot;
+    nginx.ingress.kubernetes.io/canary-by-header: &quot;Accept-Language&quot;
+    nginx.ingress.kubernetes.io/canary-by-header-value: &quot;kr&quot;
+spec:
+  rules:
+  - host: www.canary.com
+    http:
+      paths:
+      - backend:
+          serviceName: svc-v2
+          servicePort: 8080
+</code></pre>
+
+<pre><code class="language-sh">curl -H &quot;Accept-Language: kr&quot; www.canary.com:30431/version
 </code></pre>
 
 <p><br/>
@@ -566,8 +535,15 @@ curl stateful-pvc-0.stateful-headless:8080/hostname
 <h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
 
 <ul>
-<li><strong>StatefulSets</strong> : <a href="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset">https://kubernetes.io/docs/concepts/workloads/controllers/statefulset</a></li>
-<li><strong>StatefulSet Basics</strong> : <a href="https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set">https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set</a></li>
+<li><strong>Ingress</strong> : <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/">https://kubernetes.io/docs/concepts/services-networking/ingress/</a></li>
+</ul>
+
+<p><br/></p>
+
+<h3 id="others">* <strong>Others</strong></h3>
+
+<ul>
+<li><strong>Nginx Installation Guide</strong> : <a href="https://kubernetes.github.io/ingress-nginx/deploy/#prerequisite-generic-deployment-command">https://kubernetes.github.io/ingress-nginx/deploy/#prerequisite-generic-deployment-command</a></li>
 </ul>
 
   </div>
@@ -580,10 +556,8 @@ curl stateful-pvc-0.stateful-headless:8080/hostname
 
 <div class="pagination">
   
-    <a href="/practice/intermediate/pod-probe/" class="button"><div class="previous"><div>Pod</div></div></a>
+    <a href="/practice/intermediate/new-statefulset/" class="button"><div class="previous"><div>StatefulSet</div></div></a>
   
-  
-    <a href="/practice/intermediate/new-ingress/" class="button"><div class="next"><div>Ingress</div></div></a>
   
 </div>
 
