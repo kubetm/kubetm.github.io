@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-01-20T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-01-20T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="360">
+<meta itemprop="wordCount" content="520">
 
 
 
@@ -221,7 +221,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
@@ -284,8 +284,12 @@
 
 <hr />
 
+<h3 id="1-1-install-nginx-controller">1-1) Install Nginx Controller</h3>
+
 <pre><code class="language-sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/mandatory.yaml
 </code></pre>
+
+<h3 id="1-2-add-nodeport-service">1-2) Add NodePort Service</h3>
 
 <pre><code class="language-sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/provider/baremetal/service-nodeport.yaml
 </code></pre>
@@ -294,7 +298,7 @@
 
 <hr />
 
-<h2 id="2-service-loadbalancing">2. Service Loadbalancing</h2>
+<h2 id="2">2.</h2>
 
 <hr />
 
@@ -372,12 +376,10 @@ spec:
 
 <h3 id="2-4-ingress">2-4) Ingress</h3>
 
-<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: service-loadbalancing
-  annotations:
-    ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
@@ -460,29 +462,30 @@ spec:
 
 <h3 id="3-3-ingress-default">3-3) Ingress - default</h3>
 
-<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: canary-v1
+  name: app-v1
 spec:
   rules:
-  - host: www.canary.com
+  - host: www.app.com
     http:
       paths:
       - backend:
           serviceName: svc-v1
-          servicePort: 80
+          servicePort: 8080
 </code></pre>
 
-<pre><code class="language-sh">vi /etc/hosts
-192.168.0.30 www.canary.com
+<pre><code class="language-sh">cat &lt;&lt; EOF &gt;&gt; /etc/hosts
+192.168.0.30 www.app.com
+EOF
 
-curl www.canary.com:30431/version
+curl www.app.com:30431/version
 </code></pre>
 
 <h3 id="3-4-ingress-weight">3-4) Ingress - weight</h3>
 
-<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: canary-v2
@@ -491,7 +494,7 @@ metadata:
     nginx.ingress.kubernetes.io/canary-weight: &quot;10&quot;
 spec:
   rules:
-  - host: www.canary.com
+  - host: www.app.com
     http:
       paths:
       - backend:
@@ -499,12 +502,12 @@ spec:
           servicePort: 8080
 </code></pre>
 
-<pre><code class="language-sh">while true; do curl www.canary.com:30431/version; sleep 1; done
+<pre><code class="language-sh">while true; do curl www.app.com:30431/version; sleep 1; done
 </code></pre>
 
 <h3 id="3-5-ingress-header">3-5) Ingress - header</h3>
 
-<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: canary-kr
@@ -514,7 +517,7 @@ metadata:
     nginx.ingress.kubernetes.io/canary-by-header-value: &quot;kr&quot;
 spec:
   rules:
-  - host: www.canary.com
+  - host: www.app.com
     http:
       paths:
       - backend:
@@ -522,7 +525,104 @@ spec:
           servicePort: 8080
 </code></pre>
 
-<pre><code class="language-sh">curl -H &quot;Accept-Language: kr&quot; www.canary.com:30431/version
+<pre><code class="language-sh">curl -H &quot;Accept-Language: kr&quot; www.app.com:30431/version
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="4-ssl">4. SSL</h2>
+
+<hr />
+
+<h3 id="4-1-app-v1">4-1) App V1</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-ssl
+  labels:
+    app: ssl
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-ssl
+spec:
+  selector:
+    app: ssl
+  ports:
+  - port: 8080
+</code></pre>
+
+<h3 id="4-2-ingress-ssl">4-2) Ingress - ssl</h3>
+
+<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-ssl
+spec:
+  tls:
+  - hosts:
+    - www.ssl.com
+    secretName: secret-ssl
+  rules:
+    - host: www.ssl.com
+      http:
+        paths:
+        - backend:
+            serviceName: svc-ssl
+            servicePort: 8080
+</code></pre>
+
+<h3 id="4-3-ingress-ssl">4-3) Ingress - ssl</h3>
+
+<pre><code class="language-sh">openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj &quot;/CN=www.ssl.com/O=www.ssl.com&quot;
+kubectl create secret tls secret-ssl --key tls.key --cert tls.crt
+
+
+cat &lt;&lt; EOF &gt;&gt; /etc/hosts
+192.168.0.30 www.ssl.com
+EOF
+
+
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="yaml">yaml</h2>
+
+<hr />
+
+<h3 id="ingress">* <strong>Ingress</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: canary-kr
+  annotations:
+    nginx.ingress.kubernetes.io/default-ssl-certificate: &quot;default/secret-ssl&quot;  # 인증서
+    nginx.ingress.kubernetes.io/ssl-passthrough: &quot;true&quot;                        # ssl 사용
+    nginx.ingress.kubernetes.io/force-ssl-redirect: &quot;true&quot;                     # http로 접속했을 때 강제로 https로 Redirect
+spec:
+  tls:
+  - hosts:
+    - www.ssl.com
+    secretName: secret-ssl
+  rules:
+  - host: www.ssl.com
+    http:
+      paths:
+      - backend:
+          serviceName: svc-ssl
+          servicePort: 8080
 </code></pre>
 
 <p><br/>
