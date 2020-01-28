@@ -564,7 +564,7 @@ spec:
 <pre><code class="language-yaml">apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: app-v1
+  name: app
 spec:
   rules:
   - host: www.app.com
@@ -674,9 +674,9 @@ spec:
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-ssl
+  name: pod-https
   labels:
-    app: ssl
+    app: https
 spec:
   containers:
   - name: container
@@ -685,10 +685,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-ssl
+  name: svc-https
 spec:
   selector:
-    app: ssl
+    app: https
   ports:
   - port: 8080
 </code></pre>
@@ -698,18 +698,18 @@ spec:
 <pre><code class="language-yaml">apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: ingress-ssl
+  name: https
 spec:
   tls:
   - hosts:
     - www.https.com
-    secretName: secret-ssl
+    secretName: secret-https
   rules:
     - host: www.https.com
       http:
         paths:
         - backend:
-            serviceName: svc-ssl
+            serviceName: svc-https
             servicePort: 8080
 </code></pre>
 
@@ -719,7 +719,7 @@ spec:
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj &quot;/CN=www.https.com/O=www.https.com&quot;
 
 #Secret 생성
-kubectl create secret tls secret-ssl --key tls.key --cert tls.crt
+kubectl create secret tls secret-https --key tls.key --cert tls.crt
 
 #HostName 등록
 cat &lt;&lt; EOF &gt;&gt; /etc/hosts

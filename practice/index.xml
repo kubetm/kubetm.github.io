@@ -27,7 +27,7 @@
       <pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/intermediate/new-statefulset/</guid>
-      <description>1. Pod  1-1) ReplicaSet apiVersion: apps/v1 kind: ReplicaSet metadata: name: replica-web spec: replicas: 1 selector: matchLabels: type: web template: metadata: labels: type: web spec: containers: - name: container image: kubetm/app terminationGracePeriodSeconds: 10  1-2) StatefulSet apiVersion: apps/v1 kind: StatefulSet metadata: name: stateful-db spec: replicas: 1 selector: matchLabels: type: db template: metadata: labels: type: db spec: containers: - name: container image: kubetm/app terminationGracePeriodSeconds: 10</description>
+      <description>1. StatefulSet Controller  1-1) ReplicaSet apiVersion: apps/v1 kind: ReplicaSet metadata: name: replica-web spec: replicas: 1 selector: matchLabels: type: web template: metadata: labels: type: web spec: containers: - name: container image: kubetm/app terminationGracePeriodSeconds: 10  1-2) StatefulSet apiVersion: apps/v1 kind: StatefulSet metadata: name: stateful-db spec: replicas: 1 selector: matchLabels: type: db template: metadata: labels: type: db spec: containers: - name: container image: kubetm/app terminationGracePeriodSeconds: 10</description>
     </item>
     
     <item>
