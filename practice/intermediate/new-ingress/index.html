@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-01-20T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-01-20T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="520">
+<meta itemprop="wordCount" content="531">
 
 
 
@@ -278,18 +278,53 @@
 
 
 
+<p><br/>
+<br/></p>
+
 <hr />
 
-<h2 id="1-nginx-설치">1. nginx 설치</h2>
+<h2 id="1-nginx-controller">1. Nginx Controller</h2>
 
 <hr />
 
-<h3 id="1-1-install-nginx-controller">1-1) Install Nginx Controller</h3>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Ingress%20with%20Install%20Nginx%20Controller%20for%20Kubernetes.jpg" alt="Ingress with Install Nginx Controller for Kubernetes" title="Ingress with Install Nginx Controller for Kubernetes" >
+           	
+        </span>
+    
+
+
+
+<h3 id="1-1-nginx-설치">1-1) Nginx 설치</h3>
 
 <pre><code class="language-sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/mandatory.yaml
 </code></pre>
 
-<h3 id="1-2-add-nodeport-service">1-2) Add NodePort Service</h3>
+<h3 id="1-2-nodeport-service-생성">1-2) NodePort Service 생성</h3>
 
 <pre><code class="language-sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/provider/baremetal/service-nodeport.yaml
 </code></pre>
@@ -298,9 +333,41 @@
 
 <hr />
 
-<h2 id="2">2.</h2>
+<h2 id="2-service-loadbalancing">2. Service Loadbalancing</h2>
 
 <hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Ingress%20with%20Service%20Loadbalancing%20for%20Kubernetes.jpg" alt="Ingress with Service Loadbalancing for Kubernetes" title="Ingress with Service Loadbalancing for Kubernetes" >
+           	
+        </span>
+    
+
+
 
 <h3 id="2-1-shopping-page">2-1) Shopping Page</h3>
 
@@ -412,6 +479,38 @@ curl 192.168.0.30:30431/customer
 
 <hr />
 
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Ingress%20with%20Canary%20Upgrade%20for%20Kubernetes.jpg" alt="Ingress with Canary Upgrade for Kubernetes" title="Ingress with Canary Upgrade for Kubernetes" >
+           	
+        </span>
+    
+
+
+
 <h3 id="3-1-app-v1">3-1) App V1</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
@@ -476,7 +575,8 @@ spec:
           servicePort: 8080
 </code></pre>
 
-<pre><code class="language-sh">cat &lt;&lt; EOF &gt;&gt; /etc/hosts
+<pre><code class="language-sh">#HostName 등록
+cat &lt;&lt; EOF &gt;&gt; /etc/hosts
 192.168.0.30 www.app.com
 EOF
 
@@ -537,6 +637,38 @@ spec:
 
 <hr />
 
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Ingress%20with%20SSL%20for%20Kubernetes.jpg" alt="Ingress with SSL for Kubernetes" title="Ingress with SSL for Kubernetes" >
+           	
+        </span>
+    
+
+
+
 <h3 id="4-1-app-v1">4-1) App V1</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
@@ -570,10 +702,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - www.ssl.com
+    - www.https.com
     secretName: secret-ssl
   rules:
-    - host: www.ssl.com
+    - host: www.https.com
       http:
         paths:
         - backend:
@@ -581,17 +713,18 @@ spec:
             servicePort: 8080
 </code></pre>
 
-<h3 id="4-3-ingress-ssl">4-3) Ingress - ssl</h3>
+<h3 id="4-3-secret">4-3) Secret</h3>
 
-<pre><code class="language-sh">openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj &quot;/CN=www.ssl.com/O=www.ssl.com&quot;
+<pre><code class="language-sh">#인증서 생성
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj &quot;/CN=www.https.com/O=www.https.com&quot;
+
+#Secret 생성
 kubectl create secret tls secret-ssl --key tls.key --cert tls.crt
 
-
+#HostName 등록
 cat &lt;&lt; EOF &gt;&gt; /etc/hosts
-192.168.0.30 www.ssl.com
+192.168.0.30 www.https.com
 EOF
-
-
 </code></pre>
 
 <p><br/>
@@ -636,6 +769,8 @@ spec:
 
 <ul>
 <li><strong>Ingress</strong> : <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/">https://kubernetes.io/docs/concepts/services-networking/ingress/</a></li>
+<li><strong>Ingress Controllers</strong> : <a href="https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/">https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/</a>
+<br /></li>
 </ul>
 
 <p><br/></p>
