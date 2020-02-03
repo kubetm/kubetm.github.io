@@ -6,10 +6,20 @@
     <description>Recent content in 강좌 계획 on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2020_02/</link>
+      <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2020_02/</guid>
+      <description>-1일- [중급편 연재] Ingress PPT 100% Blog 100% Recording 100%
+ 실습 편집 및 업로드 자료실 업데이트</description>
+    </item>
     
     <item>
       <title>1월 진행사항</title>
@@ -17,14 +27,15 @@
       <pubDate>Sat, 04 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2020_01/</guid>
-      <description>-28일- [중급편 연재] Ingress PPT 100% Blog 90% Recording 40%
+      <description>-31일- [중급편 연재] Ingress PPT 100% Blog 90% Recording 90%
+ 실습 녹음  
+-30일- [중급편 연재] Ingress PPT 100% Blog 90% Recording 70%
+ 실습 스크립트 작성  
+-29일- [중급편 연재] Ingress PPT 100% Blog 90% Recording 50%
+ 편집 및 업로드   
+-28일- [중급편 연재] Ingress PPT 100% Blog 90% Recording 40%
  이론 스크립팅 및 녹음  
--24 ~ 27일-  설 연휴  
--23일- [중급편 연재] Ingress PPT 100% Blog 90% Recording 0%
- Blog 실습 소스 정리  
--22일- [중급편 연재] Ingress PPT 100% Blog 60% Recording 0%
- PPT 업데이트   
--21일- [중급편 연재] Ingress PPT 50% Blog 60% Recording 0%</description>
+-24 ~ 27일-  설 연휴</description>
     </item>
     
     <item>

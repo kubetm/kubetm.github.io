@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-01-20T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-01-20T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="531">
+<meta itemprop="wordCount" content="486">
 
 
 
@@ -575,7 +575,7 @@ spec:
           servicePort: 8080
 </code></pre>
 
-<pre><code class="language-sh">#HostName 등록
+<pre><code class="language-sh"># Centos HostName 등록
 cat &lt;&lt; EOF &gt;&gt; /etc/hosts
 192.168.0.30 www.app.com
 EOF
@@ -715,47 +715,15 @@ spec:
 
 <h3 id="4-3-secret">4-3) Secret</h3>
 
-<pre><code class="language-sh">#인증서 생성
+<pre><code class="language-sh"># 인증서 생성
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj &quot;/CN=www.https.com/O=www.https.com&quot;
 
-#Secret 생성
+# Secret 생성
 kubectl create secret tls secret-https --key tls.key --cert tls.crt
 
-#HostName 등록
-cat &lt;&lt; EOF &gt;&gt; /etc/hosts
+# Windows HostName 등록
+파일 위치 : C:\Windows\System32\drivers\etc\hosts
 192.168.0.30 www.https.com
-EOF
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<h2 id="yaml">yaml</h2>
-
-<hr />
-
-<h3 id="ingress">* <strong>Ingress</strong></h3>
-
-<pre><code class="language-yaml">apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: canary-kr
-  annotations:
-    nginx.ingress.kubernetes.io/default-ssl-certificate: &quot;default/secret-ssl&quot;  # 인증서
-    nginx.ingress.kubernetes.io/ssl-passthrough: &quot;true&quot;                        # ssl 사용
-    nginx.ingress.kubernetes.io/force-ssl-redirect: &quot;true&quot;                     # http로 접속했을 때 강제로 https로 Redirect
-spec:
-  tls:
-  - hosts:
-    - www.ssl.com
-    secretName: secret-ssl
-  rules:
-  - host: www.ssl.com
-    http:
-      paths:
-      - backend:
-          serviceName: svc-ssl
-          servicePort: 8080
 </code></pre>
 
 <p><br/>
