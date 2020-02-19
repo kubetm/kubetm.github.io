@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Ingress - KubeTM Blog with Kubernetes</title>
+<title>Pod - Node Scheduling - KubeTM Blog with Kubernetes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -27,28 +27,28 @@
 
 
   <meta name="generator" content="Hugo 0.59.1" />
-  <meta itemprop="name" content="Ingress">
-<meta itemprop="description" content="[Service Loadbalancing, Canary Upgrade]">
+  <meta itemprop="name" content="Pod - Node Scheduling">
+<meta itemprop="description" content="[Node Affinity, Pod Affinity/Anti-Affinity, Toleration/Taint]">
 
 
-<meta itemprop="datePublished" content="2020-01-20T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-01-20T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="486">
+<meta itemprop="datePublished" content="2020-02-19T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-02-19T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="295">
 
 
 
 <meta itemprop="keywords" content="" />
 
-  <meta property="og:title" content="Ingress" />
-<meta property="og:description" content="[Service Loadbalancing, Canary Upgrade]" />
+  <meta property="og:title" content="Pod - Node Scheduling" />
+<meta property="og:description" content="[Node Affinity, Pod Affinity/Anti-Affinity, Toleration/Taint]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/new-ingress/" />
-<meta property="article:published_time" content="2020-01-20T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-01-20T00:00:00+00:00" />
+<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/pod-node_scheduling/" />
+<meta property="article:published_time" content="2020-02-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-02-19T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Ingress"/>
-<meta name="twitter:description" content="[Service Loadbalancing, Canary Upgrade]"/>
+<meta name="twitter:title" content="Pod - Node Scheduling"/>
+<meta name="twitter:description" content="[Node Affinity, Pod Affinity/Anti-Affinity, Toleration/Taint]"/>
 
   
 
@@ -208,20 +208,20 @@
   <header>
   <div class="title">
     
-        <h2>Ingress</h2>
+        <h2>Pod - Node Scheduling</h2>
     
     
-        <p>[Service Loadbalancing, Canary Upgrade]</p>
+        <p>[Node Affinity, Pod Affinity/Anti-Affinity, Toleration/Taint]</p>
       
 </div>
 
   <div class="meta">
-    <time class="published" datetime="2020-01-20 00:00:00 &#43;0000 UTC">
-      January 20, 2020
+    <time class="published" datetime="2020-02-19 00:00:00 &#43;0000 UTC">
+      February 19, 2020
     </time>
     <span class="author">KubeTM</span>
     
-      <p>3 minutes read</p>
+      <p>2 minutes read</p>
     
   </div>
 </header>
@@ -235,16 +235,15 @@
 
   </section>
   
-  <a href="/practice/intermediate/new-ingress/" class="image featured">
-    <img src="/img/practice/intermediate/Ingress%20with%20Service%20Loadbalancing%20and%20Canary%20for%20Kubernetes.jpg" alt="Ingress with Service Loadbalancing and Canary for Kubernetes">
+  <a href="/practice/intermediate/pod-node_scheduling/" class="image featured">
+    <img src="/img/practice/intermediate/Scheduling%20with%20Affinity%20and%20Toleration%20Taint%20for%20Kubernetes.jpg" alt="Scheduling with Affinity and Toleration Taint for Kubernetes">
   </a>
 
 
   <div class="content">
     
 
-<p><br/>
-<br/></p>
+<p><br/></p>
 
 
 
@@ -271,19 +270,85 @@
     
         <span class="image left">
         	
-            	<img src="/img/practice/intermediate/Ingress%20with%20Loadbalancing%20and%20Canary%20Concept%20for%20Kubernetes.jpg" alt="Ingress with Loadbalancing and Canary Concept for Kubernetes" title="Ingress with Loadbalancing and Canary Concept for Kubernetes" >
+            	<img src="/img/practice/intermediate/Scheduling%20Concept%20with%20Affinity%20and%20Toleration%20Taint%20for%20Kubernetes.jpg" alt="Scheduling Concept with Affinity and Toleration Taint for Kubernetes" title="Scheduling Concept with Affinity and Toleration Taint for Kubernetes" >
            	
         </span>
     
 
 
 
-<p><br/>
-<br/></p>
+<p><br/></p>
 
 <hr />
 
-<h2 id="1-nginx-controller">1. Nginx Controller</h2>
+<h2 id="1-node-affinity">1. Node Affinity</h2>
+
+<hr />
+
+<h3 id="background">Background</h3>
+
+<p>
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Scheduling%20of%20Node%20Affinity%20Concept%20for%20Kubernetes.jpg" alt="Scheduling of Node Affinity Concept for Kubernetes" title="Scheduling of Node Affinity Concept for Kubernetes" >
+           	
+        </span>
+    
+
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Scheduling%20MatchExpressions%20for%20Kubernetes.jpg" alt="Scheduling MatchExpressions for Kubernetes" title="Scheduling MatchExpressions for Kubernetes" >
+           	
+        </span>
+    
+
+</p>
 
 <hr />
 
@@ -312,28 +377,78 @@
     
         <span class="image left">
         	
-            	<img src="/img/practice/intermediate/Ingress%20with%20Install%20Nginx%20Controller%20for%20Kubernetes.jpg" alt="Ingress with Install Nginx Controller for Kubernetes" title="Ingress with Install Nginx Controller for Kubernetes" >
+            	<img src="/img/practice/intermediate/Scheduling%20of%20Node%20Affinity%20for%20Kubernetes.jpg" alt="Scheduling of Node Affinity for Kubernetes" title="Scheduling of Node Affinity for Kubernetes" >
            	
         </span>
     
 
 
 
-<h3 id="1-1-nginx-설치">1-1) Nginx 설치</h3>
+<h3 id="1-1-node-labeling">1-1) Node Labeling</h3>
 
-<pre><code class="language-sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/mandatory.yaml
+<pre><code class="language-sh">kubectl label nodes k8s-node1 kr=az-1
+kubectl label nodes k8s-node2 kr=us-1
 </code></pre>
 
-<h3 id="1-2-nodeport-service-생성">1-2) NodePort Service 생성</h3>
+<h3 id="1-2-matchexpressions">1-2) MatchExpressions</h3>
 
-<pre><code class="language-sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/provider/baremetal/service-nodeport.yaml
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+ name: pod-match-expressions1
+spec:
+ affinity:
+  nodeAffinity:
+   requiredDuringSchedulingIngnoredDuringExecution:
+    nodeSelectorTerms:
+    - matchExpressions:
+      -  {key: kr, operator: Exists}
+ containers:
+ - name: container
+   image: tmkube/app
+</code></pre>
+
+<h3 id="1-3-required">1-3) Required</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+ name: pod-required
+spec:
+ affinity:
+  nodeAffinity:
+   requiredDuringSchedulingIngnoredDuringExecution:
+    nodeSelectorTerms:
+    - matchExpressions:
+      -  {key: ch, operator: Exists}
+ containers:
+ - name: container
+   image: tmkube/app
+</code></pre>
+
+<h3 id="1-4-preferred">1-4) Preferred</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+ name: pod-preferred
+spec:
+ affinity:
+  nodeAffinity:
+   preferredDuringSchedulingIngnoredDuringExecution:
+    nodeSelectorTerms:
+    - matchExpressions:
+      -  {key: ch, operator: Exists}
+ containers:
+ - name: container
+   image: tmkube/app
 </code></pre>
 
 <p><br/></p>
 
 <hr />
 
-<h2 id="2-service-loadbalancing">2. Service Loadbalancing</h2>
+<h2 id="2-pod-affinity-anti-affinity">2. Pod Affinity / Anti-Affinity</h2>
 
 <hr />
 
@@ -362,392 +477,201 @@
     
         <span class="image left">
         	
-            	<img src="/img/practice/intermediate/Ingress%20with%20Service%20Loadbalancing%20for%20Kubernetes.jpg" alt="Ingress with Service Loadbalancing for Kubernetes" title="Ingress with Service Loadbalancing for Kubernetes" >
+            	<img src="/img/practice/intermediate/Scheduling%20of%20Pod%20Affinity%20for%20Kubernetes.jpg" alt="Scheduling of Pod Affinity for Kubernetes" title="Scheduling of Pod Affinity for Kubernetes" >
            	
         </span>
     
 
 
 
-<h3 id="2-1-shopping-page">2-1) Shopping Page</h3>
+<h3 id="2-1-node-labeling">2-1) Node Labeling</h3>
+
+<pre><code class="language-sh">kubectl label nodes k8s-node1 a-team=1
+kubectl label nodes k8s-node2 a-team=2
+</code></pre>
+
+<h3 id="2-2-web1-pod">2-2) Web1 Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-shopping
+  name: web1
   labels:
-    category: shopping
+     type: web1
 spec:
-  containers:
-  - name: container
-    image: kubetm/shopping
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: svc-shopping
-spec:
-  selector:
-    category: shopping
-  ports:
-  - port: 8080
-</code></pre>
-
-<h3 id="2-2-customer-center">2-2) Customer Center</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod-customer
-  labels:
-    category: customer
-spec:
-  containers:
-  - name: container
-    image: kubetm/customer
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: svc-customer
-spec:
-  selector:
-    category: customer
-  ports:
-  - port: 8080
-</code></pre>
-
-<h3 id="2-3-order-service">2-3) Order Service</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod-order
-  labels:
-    category: order
-spec:
-  containers:
-  - name: container
-    image: kubetm/order
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: svc-order
-spec:
-  selector:
-    category: order
-  ports:
-  - port: 8080
-</code></pre>
-
-<h3 id="2-4-ingress">2-4) Ingress</h3>
-
-<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: service-loadbalancing
-spec:
-  rules:
-  - http:
-      paths:
-        - path: /
-          backend:
-            serviceName: svc-shopping
-            servicePort: 8080
-        - path: /customer
-          backend:
-            serviceName: svc-customer
-            servicePort: 8080
-        - path: /order
-          backend:
-            serviceName: svc-order
-            servicePort: 8080
-</code></pre>
-
-<pre><code class="language-sh">curl 192.168.0.30:30431/
-curl 192.168.0.30:30431/order
-curl 192.168.0.30:30431/customer
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="3-canary-upgrade">3. Canary Upgrade</h2>
-
-<hr />
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-    
-    
-    
-    
-
-        
-    
-
-    
-        <span class="image left">
-        	
-            	<img src="/img/practice/intermediate/Ingress%20with%20Canary%20Upgrade%20for%20Kubernetes.jpg" alt="Ingress with Canary Upgrade for Kubernetes" title="Ingress with Canary Upgrade for Kubernetes" >
-           	
-        </span>
-    
-
-
-
-<h3 id="3-1-app-v1">3-1) App V1</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod-v1
-  labels:
-    app: v1
-spec:
-  containers:
-  - name: container
-    image: kubetm/app:v1
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: svc-v1
-spec:
-  selector:
-    app: v1
-  ports:
-  - port: 8080
-</code></pre>
-
-<h3 id="3-2-app-v2">3-2) App V2</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod-v2
-  labels:
-    app: v2
-spec:
-  containers:
-  - name: container
-    image: kubetm/app:v2
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: svc-v2
-spec:
-  selector:
-    app: v2
-  ports:
-  - port: 8080
-</code></pre>
-
-<h3 id="3-3-ingress-default">3-3) Ingress - default</h3>
-
-<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: app
-spec:
-  rules:
-  - host: www.app.com
-    http:
-      paths:
-      - backend:
-          serviceName: svc-v1
-          servicePort: 8080
-</code></pre>
-
-<pre><code class="language-sh"># Centos HostName 등록
-cat &lt;&lt; EOF &gt;&gt; /etc/hosts
-192.168.0.30 www.app.com
-EOF
-
-curl www.app.com:30431/version
-</code></pre>
-
-<h3 id="3-4-ingress-weight">3-4) Ingress - weight</h3>
-
-<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: canary-v2
-  annotations:
-    nginx.ingress.kubernetes.io/canary: &quot;true&quot;
-    nginx.ingress.kubernetes.io/canary-weight: &quot;10&quot;
-spec:
-  rules:
-  - host: www.app.com
-    http:
-      paths:
-      - backend:
-          serviceName: svc-v2
-          servicePort: 8080
-</code></pre>
-
-<pre><code class="language-sh">while true; do curl www.app.com:30431/version; sleep 1; done
-</code></pre>
-
-<h3 id="3-5-ingress-header">3-5) Ingress - header</h3>
-
-<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: canary-kr
-  annotations:
-    nginx.ingress.kubernetes.io/canary: &quot;true&quot;
-    nginx.ingress.kubernetes.io/canary-by-header: &quot;Accept-Language&quot;
-    nginx.ingress.kubernetes.io/canary-by-header-value: &quot;kr&quot;
-spec:
-  rules:
-  - host: www.app.com
-    http:
-      paths:
-      - backend:
-          serviceName: svc-v2
-          servicePort: 8080
-</code></pre>
-
-<pre><code class="language-sh">curl -H &quot;Accept-Language: kr&quot; www.app.com:30431/version
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="4-ssl">4. SSL</h2>
-
-<hr />
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-    
-    
-    
-    
-
-        
-    
-
-    
-        <span class="image left">
-        	
-            	<img src="/img/practice/intermediate/Ingress%20with%20SSL%20for%20Kubernetes.jpg" alt="Ingress with SSL for Kubernetes" title="Ingress with SSL for Kubernetes" >
-           	
-        </span>
-    
-
-
-
-<h3 id="4-1-app-v1">4-1) App V1</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod-https
-  labels:
-    app: https
-spec:
+  nodeSelector:
+    a-team: 1
   containers:
   - name: container
     image: kubetm/app
----
-apiVersion: v1
-kind: Service
+</code></pre>
+
+<h3 id="2-3-web1-affinity-pod">2-3) Web1 Affinity Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
 metadata:
-  name: svc-https
+ name: server1
 spec:
-  selector:
-    app: https
-  ports:
-  - port: 8080
+ affinity:
+  podAffinity:
+   requiredDuringSchedulingIngnoredDuringExecution:
+   - topologyKey: a-team
+     labelSelector:
+      matchExpressions:
+      -  {key: type, operator: In, values: [web1]}
+ containers:
+ - name: container
+   image: tmkube/app
 </code></pre>
 
-<h3 id="4-2-ingress-ssl">4-2) Ingress - ssl</h3>
+<h3 id="2-4-web2-affinity-pod">2-4) Web2 Affinity Pod</h3>
 
-<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
 metadata:
-  name: https
+ name: server2
 spec:
-  tls:
-  - hosts:
-    - www.https.com
-    secretName: secret-https
-  rules:
-    - host: www.https.com
-      http:
-        paths:
-        - backend:
-            serviceName: svc-https
-            servicePort: 8080
+ affinity:
+  podAffinity:
+   requiredDuringSchedulingIngnoredDuringExecution:
+   - topologyKey: a-team
+     labelSelector:
+      matchExpressions:
+      -  {key: type, operator: In, values: [web2]}
+ containers:
+ - name: container
+   image: tmkube/app
+
 </code></pre>
 
-<h3 id="4-3-secret">4-3) Secret</h3>
+<h3 id="2-5-web2-pod">2-5) Web2 Pod</h3>
 
-<pre><code class="language-sh"># 인증서 생성
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj &quot;/CN=www.https.com/O=www.https.com&quot;
-
-# Secret 생성
-kubectl create secret tls secret-https --key tls.key --cert tls.crt
-
-# Windows HostName 등록
-파일 위치 : C:\Windows\System32\drivers\etc\hosts
-192.168.0.30 www.https.com
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: web2
+  labels:
+     type: web2
+spec:
+  nodeSelector:
+    a-team: 2
+  containers:
+  - name: container
+    image: kubetm/app
 </code></pre>
+
+<p><br/></p>
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Scheduling%20of%20Pod%20Anti-Affinity%20for%20Kubernetes.jpg" alt="Scheduling of Pod Anti-Affinity for Kubernetes" title="Scheduling of Pod Anti-Affinity for Kubernetes" >
+           	
+        </span>
+    
+
+
+
+<h3 id="2-6-master-pod">2-6) Master Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: web1
+  labels:
+     type: web1
+spec:
+  nodeSelector:
+    a-team: 1
+  containers:
+  - name: container
+    image: kubetm/app
+</code></pre>
+
+<h3 id="2-7-master-anti-affinity-pod">2-7) Master Anti-Affinity Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+ name: server1
+spec:
+ affinity:
+  podAffinity:
+   requiredDuringSchedulingIngnoredDuringExecution:
+   - topologyKey: a-team
+     labelSelector:
+      matchExpressions:
+      -  {key: type, operator: In, values: [web1]}
+ containers:
+ - name: container
+   image: tmkube/app
+</code></pre>
+
+<p><br/></p>
+
+<hr />
+
+<h2 id="3-taint-toleration">3. Taint / Toleration</h2>
+
+<hr />
 
 <p><br/>
 <br/></p>
+
+<hr />
+
+<h2 id="sample-yaml">Sample Yaml</h2>
+
+<hr />
+
+<hr />
+
+<h2 id="kubectl">kubectl</h2>
+
+<hr />
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="tips">Tips</h2>
+
+<hr />
+
+<p><br/>
+<br/></p>
+
+<hr />
 
 <h2 id="referenece">Referenece</h2>
 
 <hr />
 
 <h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
-
-<ul>
-<li><strong>Ingress</strong> : <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/">https://kubernetes.io/docs/concepts/services-networking/ingress/</a></li>
-<li><strong>Ingress Controllers</strong> : <a href="https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/">https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/</a>
-<br /></li>
-</ul>
-
-<p><br/></p>
-
-<h3 id="others">* <strong>Others</strong></h3>
-
-<ul>
-<li><strong>Nginx Installation Guide</strong> : <a href="https://kubernetes.github.io/ingress-nginx/deploy/#prerequisite-generic-deployment-command">https://kubernetes.github.io/ingress-nginx/deploy/#prerequisite-generic-deployment-command</a></li>
-</ul>
 
   </div>
   <footer>
@@ -759,10 +683,8 @@ kubectl create secret tls secret-https --key tls.key --cert tls.crt
 
 <div class="pagination">
   
-    <a href="/practice/intermediate/new-statefulset/" class="button"><div class="previous"><div>StatefulSet</div></div></a>
+    <a href="/practice/intermediate/new-ingress/" class="button"><div class="previous"><div>Ingress</div></div></a>
   
-  
-    <a href="/practice/intermediate/pod-node_scheduling/" class="button"><div class="next"><div>Pod - Node Scheduling</div></div></a>
   
 </div>
 

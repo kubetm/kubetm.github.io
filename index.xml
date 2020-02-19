@@ -6,10 +6,19 @@
     <description>Recent content on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 03 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Pod - Node Scheduling</title>
+      <link>https://kubetm.github.io/practice/intermediate/pod-node_scheduling/</link>
+      <pubDate>Wed, 19 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/intermediate/pod-node_scheduling/</guid>
+      <description>1. Node Affinity Background     1-1) Node Labeling kubectl label nodes k8s-node1 kr=az-1 kubectl label nodes k8s-node2 kr=us-1  1-2) MatchExpressions apiVersion: v1 kind: Pod metadata: name: pod-match-expressions1 spec: affinity: nodeAffinity: requiredDuringSchedulingIngnoredDuringExecution: nodeSelectorTerms: - matchExpressions: - {key: kr, operator: Exists} containers: - name: container image: tmkube/app  1-3) Required apiVersion: v1 kind: Pod metadata: name: pod-required spec: affinity: nodeAffinity: requiredDuringSchedulingIngnoredDuringExecution: nodeSelectorTerms: - matchExpressions: - {key: ch, operator: Exists} containers: - name: container image: tmkube/app  1-4) Preferred apiVersion: v1 kind: Pod metadata: name: pod-preferred spec: affinity: nodeAffinity: preferredDuringSchedulingIngnoredDuringExecution: nodeSelectorTerms: - matchExpressions: - {key: ch, operator: Exists} containers: - name: container image: tmkube/app</description>
+    </item>
     
     <item>
       <title>2월 진행사항</title>
