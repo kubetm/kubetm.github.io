@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-02-19T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-02-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="295">
+<meta itemprop="wordCount" content="419">
 
 
 
@@ -595,14 +595,16 @@ spec:
 
 
 
+<p><br/></p>
+
 <h3 id="2-6-master-pod">2-6) Master Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
 metadata:
-  name: web1
+  name: master
   labels:
-     type: web1
+     type: master
 spec:
   nodeSelector:
     a-team: 1
@@ -616,15 +618,15 @@ spec:
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
 metadata:
- name: server1
+ name: slave
 spec:
  affinity:
-  podAffinity:
+  podAntiAffinity:
    requiredDuringSchedulingIngnoredDuringExecution:
    - topologyKey: a-team
      labelSelector:
       matchExpressions:
-      -  {key: type, operator: In, values: [web1]}
+      -  {key: type, operator: In, values: [master]}
  containers:
  - name: container
    image: tmkube/app
@@ -637,6 +639,115 @@ spec:
 <h2 id="3-taint-toleration">3. Taint / Toleration</h2>
 
 <hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Scheduling%20of%20Taint%20and%20Toleration%20for%20Kubernetes.jpg" alt="Scheduling of Taint and Toleration for Kubernetes" title="Scheduling of Taint and Toleration for Kubernetes" >
+           	
+        </span>
+    
+
+
+
+<h3 id="3-1-node-labeling">3-1) Node Labeling</h3>
+
+<pre><code class="language-sh">kubectl label nodes k8s-node1 gpu=no1
+</code></pre>
+
+<h3 id="3-2-node1-taint">3-2) Node1 - Taint</h3>
+
+<pre><code class="language-yaml">kubectl taint nodes k8s-node1 hw=gpu:NoSchedule
+</code></pre>
+
+<h3 id="3-3-pod-with-toleration">3-3) Pod with Toleration</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+ name: pod-with-toleration
+spec:
+ nodeSelector:
+  gpu: no1
+ tolerations:
+ - effect: NoSchedule
+   key: hw
+   operator: Equal
+   value: gpu
+ containers:
+ - name: container
+   image: tmkube/app
+</code></pre>
+
+<h3 id="3-4-pod-without-toleration">3-4) Pod without Toleration</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+ name: pod-without-toleration
+spec:
+ nodeSelector:
+  gpu: no1
+ containers:
+ - name: container
+   image: tmkube/app
+</code></pre>
+
+<h3 id="3-5-pod1-with-noexecute">3-5) Pod1 with NoExecute</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+ name: pod1-with-no-execute
+spec:
+ tolerations:
+ - effect: NoExecute
+   key: out-of-disk
+   operator: Exists
+   tolerationSeconds: 30
+ containers:
+ - name: container
+   image: tmkube/app
+</code></pre>
+
+<h3 id="3-6-pod2-with-noexecute">3-6) Pod2 with NoExecute</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+ name: pod2-without-no-execute
+spec:
+ containers:
+ - name: container
+   image: tmkube/app
+</code></pre>
+
+<h3 id="3-7-node2-taint">3-7) Node2 - Taint</h3>
+
+<pre><code class="language-yaml">kubectl taint nodes k8s-node2 out-of-disk=True:NoExecute
+</code></pre>
 
 <p><br/>
 <br/></p>
