@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-02-19T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-02-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="419">
+<meta itemprop="wordCount" content="492">
 
 
 
@@ -221,7 +221,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
@@ -245,110 +245,9 @@
 
 <p><br/></p>
 
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-    
-    
-    
-    
-
-        
-    
-
-    
-        <span class="image left">
-        	
-            	<img src="/img/practice/intermediate/Scheduling%20Concept%20with%20Affinity%20and%20Toleration%20Taint%20for%20Kubernetes.jpg" alt="Scheduling Concept with Affinity and Toleration Taint for Kubernetes" title="Scheduling Concept with Affinity and Toleration Taint for Kubernetes" >
-           	
-        </span>
-    
-
-
-
-<p><br/></p>
-
 <hr />
 
 <h2 id="1-node-affinity">1. Node Affinity</h2>
-
-<hr />
-
-<h3 id="background">Background</h3>
-
-<p>
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-    
-    
-    
-    
-
-        
-    
-
-    
-        <span class="image left">
-        	
-            	<img src="/img/practice/intermediate/Scheduling%20of%20Node%20Affinity%20Concept%20for%20Kubernetes.jpg" alt="Scheduling of Node Affinity Concept for Kubernetes" title="Scheduling of Node Affinity Concept for Kubernetes" >
-           	
-        </span>
-    
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-    
-    
-    
-    
-
-        
-    
-
-    
-        <span class="image left">
-        	
-            	<img src="/img/practice/intermediate/Scheduling%20MatchExpressions%20for%20Kubernetes.jpg" alt="Scheduling MatchExpressions for Kubernetes" title="Scheduling MatchExpressions for Kubernetes" >
-           	
-        </span>
-    
-
-</p>
 
 <hr />
 
@@ -387,7 +286,7 @@
 <h3 id="1-1-node-labeling">1-1) Node Labeling</h3>
 
 <pre><code class="language-sh">kubectl label nodes k8s-node1 kr=az-1
-kubectl label nodes k8s-node2 kr=us-1
+kubectl label nodes k8s-node2 us=az-1
 </code></pre>
 
 <h3 id="1-2-matchexpressions">1-2) MatchExpressions</h3>
@@ -399,7 +298,7 @@ metadata:
 spec:
  affinity:
   nodeAffinity:
-   requiredDuringSchedulingIngnoredDuringExecution:
+   requiredDuringSchedulingIgnoredDuringExecution:   
     nodeSelectorTerms:
     - matchExpressions:
       -  {key: kr, operator: Exists}
@@ -417,10 +316,10 @@ metadata:
 spec:
  affinity:
   nodeAffinity:
-   requiredDuringSchedulingIngnoredDuringExecution:
+   requiredDuringSchedulingIgnoredDuringExecution:
     nodeSelectorTerms:
     - matchExpressions:
-      -  {key: ch, operator: Exists}
+      - {key: ch, operator: Exists}
  containers:
  - name: container
    image: tmkube/app
@@ -435,10 +334,11 @@ metadata:
 spec:
  affinity:
   nodeAffinity:
-   preferredDuringSchedulingIngnoredDuringExecution:
-    nodeSelectorTerms:
-    - matchExpressions:
-      -  {key: ch, operator: Exists}
+   preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 1
+      preference:
+      matchExpressions:
+      - {key: ch, operator: Exists}
  containers:
  - name: container
    image: tmkube/app
@@ -495,15 +395,15 @@ kubectl label nodes k8s-node2 a-team=2
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
 metadata:
-  name: web1
-  labels:
-     type: web1
+ name: web1
+ labels:
+  type: web1
 spec:
-  nodeSelector:
-    a-team: 1
-  containers:
-  - name: container
-    image: kubetm/app
+ nodeSelector:
+  a-team: '1'
+ containers:
+ - name: container
+   image: kubetm/app
 </code></pre>
 
 <h3 id="2-3-web1-affinity-pod">2-3) Web1 Affinity Pod</h3>
@@ -515,7 +415,7 @@ metadata:
 spec:
  affinity:
   podAffinity:
-   requiredDuringSchedulingIngnoredDuringExecution:
+   requiredDuringSchedulingIgnoredDuringExecution:   
    - topologyKey: a-team
      labelSelector:
       matchExpressions:
@@ -534,7 +434,7 @@ metadata:
 spec:
  affinity:
   podAffinity:
-   requiredDuringSchedulingIngnoredDuringExecution:
+   requiredDuringSchedulingIgnoredDuringExecution:   
    - topologyKey: a-team
      labelSelector:
       matchExpressions:
@@ -542,7 +442,6 @@ spec:
  containers:
  - name: container
    image: tmkube/app
-
 </code></pre>
 
 <h3 id="2-5-web2-pod">2-5) Web2 Pod</h3>
@@ -555,7 +454,7 @@ metadata:
      type: web2
 spec:
   nodeSelector:
-    a-team: 2
+    a-team: '2'
   containers:
   - name: container
     image: kubetm/app
@@ -607,7 +506,7 @@ metadata:
      type: master
 spec:
   nodeSelector:
-    a-team: 1
+    a-team: '1'
   containers:
   - name: container
     image: kubetm/app
@@ -622,7 +521,7 @@ metadata:
 spec:
  affinity:
   podAntiAffinity:
-   requiredDuringSchedulingIngnoredDuringExecution:
+   requiredDuringSchedulingIgnoredDuringExecution:   
    - topologyKey: a-team
      labelSelector:
       matchExpressions:
@@ -708,8 +607,6 @@ kind: Pod
 metadata:
  name: pod-without-toleration
 spec:
- nodeSelector:
-  gpu: no1
  containers:
  - name: container
    image: tmkube/app
@@ -746,7 +643,8 @@ spec:
 
 <h3 id="3-7-node2-taint">3-7) Node2 - Taint</h3>
 
-<pre><code class="language-yaml">kubectl taint nodes k8s-node2 out-of-disk=True:NoExecute
+<pre><code class="language-yaml">kubectl taint nodes k8s-node1 hw=gpu:NoSchedule-
+kubectl taint nodes k8s-node2 out-of-disk=True:NoExecute
 </code></pre>
 
 <p><br/>
@@ -758,11 +656,50 @@ spec:
 
 <hr />
 
+<h3 id="nodename">* <strong>NodeName</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+ name: node-name
+spec:
+ nodeName: k8s-node1
+ containers:
+ - name: container
+   image: tmkube/app
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="nodeselector">* <strong>NodeSelector</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+ name: node-selector
+spec:
+ nodeSelector: 
+  key1:value1
+ containers:
+ - name: container
+   image: tmkube/app
+</code></pre>
+
+<p><br/></p>
+
 <hr />
 
 <h2 id="kubectl">kubectl</h2>
 
 <hr />
+
+<h3 id="label">* <strong>Label</strong></h3>
+
+<pre><code class="language-sh"># Node에 라벨 추가
+kubectl label nodes k8s-node1 key1=value1
+# Node에 라벨 삭제
+kubectl label nodes k8s-node1 key1=value1-
+</code></pre>
 
 <p><br/>
 <br/></p>
@@ -770,6 +707,42 @@ spec:
 <hr />
 
 <h2 id="tips">Tips</h2>
+
+<hr />
+
+<h3 id="nodeaffinity-matchexpressions-operator">NodeAffinity MatchExpressions Operator</h3>
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Scheduling%20MatchExpressions%20for%20Kubernetes.jpg" alt="Scheduling MatchExpressions for Kubernetes" title="Scheduling MatchExpressions for Kubernetes" >
+           	
+        </span>
+    
+
+
 
 <hr />
 
@@ -783,6 +756,11 @@ spec:
 <hr />
 
 <h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>Assigning Pods to Nodes</strong> : <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node">https://kubernetes.io/docs/concepts/configuration/assign-pod-node</a></li>
+<li><strong>Taints and Tolerations</strong> : <a href="https://kubernetes.io/docs/concepts/configuration/taint-and-toleration">https://kubernetes.io/docs/concepts/configuration/taint-and-toleration</a></li>
+</ul>
 
   </div>
   <footer>

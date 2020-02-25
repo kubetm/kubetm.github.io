@@ -6,10 +6,22 @@
     <description>Recent content in 유용한 정보 on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 06 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EC%A0%95%EB%B3%B4/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kubernetes 관련 즐겨찾기</title>
+      <link>https://kubetm.github.io/info/kubernetes/</link>
+      <pubDate>Sat, 22 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/kubernetes/</guid>
+      <description>Kubernetes  Kubernetes : https://kubernetes.io/ Kubectl Reference : https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands Github for Java Client : https://github.com/kubernetes-client/java API Doc for 1.15 : http://kubernetes.io/docs/reference/generated/kubernetes-api/v1.15/    
+Plugins  
+Helm  Helm : https://helm.sh/ Helm Hub : https://hub.helm.sh/   
+Docker</description>
+    </item>
     
     <item>
       <title>Kubernetes 관련 도서</title>
