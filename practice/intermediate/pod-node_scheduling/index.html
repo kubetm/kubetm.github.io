@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-02-19T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-02-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="518">
+<meta itemprop="wordCount" content="521">
 
 
 
@@ -617,6 +617,8 @@ kind: Pod
 metadata:
  name: pod-without-toleration
 spec:
+ nodeSelector:
+  gpu: no1
  containers:
  - name: container
    image: tmkube/app
