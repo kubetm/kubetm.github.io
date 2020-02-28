@@ -337,8 +337,8 @@ spec:
    preferredDuringSchedulingIgnoredDuringExecution:
     - weight: 1
       preference:
-      matchExpressions:
-      - {key: ch, operator: Exists}
+       matchExpressions:
+       - {key: ch, operator: Exists}
  containers:
  - name: container
    image: tmkube/app
