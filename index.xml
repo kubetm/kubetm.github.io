@@ -6,10 +6,22 @@
     <description>Recent content on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 22 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>3월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2020_03/</link>
+      <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2020_03/</guid>
+      <description>-3일- [중급편 연재] Controller - HPA PPT 10% Blog 0% Recording 0%
+ 이론 내용 정리  
+-1일- [중급편 연재] Pod - Node Scheduling PPT 120% Blog 100% Recording 100%
+ 실습편 녹음 및 업로드</description>
+    </item>
     
     <item>
       <title>Kubernetes 관련 즐겨찾기</title>
@@ -38,11 +50,13 @@ Docker</description>
       <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2020_02/</guid>
-      <description>-27일- [중급편 연재] Pod - Node Scheduling PPT 120% Blog 100% Recording 50%
- 이론강좌 편집 및 업로드   -26일- [중급편 연재] Pod - Node Scheduling PPT 120% Blog 100% Recording 40%
- 이론강좌 녹음  -25일- [중급편 연재] Pod - Node Scheduling PPT 120% Blog 100% Recording 30%
- 이론강좌 스크립팅
-2월은 개인적인 업무가 너무 바빠서 Node Scheduling 강의 준비가 길어지고 있네요. 늦어지더라도 저 스스로도 만족할 만한 강의를 만들려고 오래 걸리고 있는 점 양해바랍니다.</description>
+      <description>-28일- [중급편 연재] Pod - Node Scheduling PPT 120% Blog 100% Recording 70%
+ 실습편 내용 스크립팅  
+-27일- [중급편 연재] Pod - Node Scheduling PPT 120% Blog 100% Recording 50%
+ 이론강좌 편집 및 업로드   
+-26일- [중급편 연재] Pod - Node Scheduling PPT 120% Blog 100% Recording 40%
+ 이론강좌 녹음  
+-25일- [중급편 연재] Pod - Node Scheduling PPT 120% Blog 100% Recording 30%</description>
     </item>
     
     <item>
