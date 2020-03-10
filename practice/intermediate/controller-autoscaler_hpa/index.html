@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Categories - KubeTM Blog with Kubernetes</title>
+<title>AutoScaler - HPA - KubeTM Blog with Kubernetes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -27,20 +27,28 @@
 
 
   <meta name="generator" content="Hugo 0.59.1" />
-  <meta itemprop="name" content="Categories">
-<meta itemprop="description" content="">
+  <meta itemprop="name" content="AutoScaler - HPA">
+<meta itemprop="description" content="[HPA, VPA, CA]">
 
 
-  <meta property="og:title" content="Categories" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://kubetm.github.io/categories/" />
+<meta itemprop="datePublished" content="2020-03-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-03-10T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="298">
 
-<meta property="og:updated_time" content="2020-03-10T00:00:00+00:00" />
+
+
+<meta itemprop="keywords" content="" />
+
+  <meta property="og:title" content="AutoScaler - HPA" />
+<meta property="og:description" content="[HPA, VPA, CA]" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/controller-autoscaler_hpa/" />
+<meta property="article:published_time" content="2020-03-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-03-10T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Categories"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="AutoScaler - HPA"/>
+<meta name="twitter:description" content="[HPA, VPA, CA]"/>
 
   
 
@@ -148,8 +156,6 @@
     <footer>
       <ul class="socnet-icons">
         
-    <li><a href="/categories/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fas fa-rss"></a></li>
-
 
         
 
@@ -198,58 +204,266 @@
 </section>
 
       <main id="site-main">
-        
-          
-        
-        <ul class="posts">
-          <header>
-            <h1>Categories</h1>
-          </header>
-          
-          
-            <li>
-              <article>
-                <header>
-                  
-                    <a href="/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D">강좌-계획<span style="float:right;">8</span></a>
-                  
-                </header>
-              </article>
-            </li>
-          
-            <li>
-              <article>
-                <header>
-                  
-                    <a href="/categories/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EC%A0%95%EB%B3%B4">유용한-정보<span style="float:right;">6</span></a>
-                  
-                </header>
-              </article>
-            </li>
-          
-            <li>
-              <article>
-                <header>
-                  
-                    <a href="/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C">인프런-중급편-강의자료<span style="float:right;">7</span></a>
-                  
-                </header>
-              </article>
-            </li>
-          
-            <li>
-              <article>
-                <header>
-                  
-                    <a href="/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%B4%88%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C">인프런-초급편-강의자료<span style="float:right;">12</span></a>
-                  
-                </header>
-              </article>
-            </li>
-          
-        </ul>
+        <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2>AutoScaler - HPA</h2>
+    
+    
+        <p>[HPA, VPA, CA]</p>
+    
+    
+</div>
+
+  <div class="meta">
+    <time class="published" datetime="2020-03-10 00:00:00 &#43;0000 UTC">
+      March 10, 2020
+    </time>
+    <span class="author">KubeTM</span>
+    
+      <p>2 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
+  
+  <a href="/practice/intermediate/controller-autoscaler_hpa/" class="image featured">
+    <img src="/img/practice/intermediate/Autoscaler%20with%20Horizontal%20Pod%20Autoscaler%20for%20Kubernetes.jpg" alt="Autoscaler with Horizontal Pod Autoscaler for Kubernetes">
+  </a>
+
+
+  
+    
+  
+  <div class="content">
+  
+  
+    
+
+<p><br/></p>
+
+<hr />
+
+<h2 id="1-metrics-server-설치">1. Metrics Server 설치</h2>
+
+<hr />
+
+<h3 id="1-1-metrics-server-다운-및-설치">1-1) Metrics Server 다운 및 설치</h3>
+
+<p>설치</p>
+
+<pre><code class="language-sh">git clone https://github.com/kubernetes-sigs/metrics-server.git
+cd metrics-server
+kubectl apply -f deploy/kubernetes/
+</code></pre>
+
+<p><br/>
+Metrics Deployment 수정 (args 에 <code>kubelet-insecure-tls</code> 와 <code>kubelet-preferred-address-types=InternalIP</code> 추가)</p>
+
+<pre><code class="language-sh">kubectl edit deployment metrics-server -n kube-system
+
+------------------------
+spec:
+   containers:
+   - args:
+     - --cert-dir=/tmp
+     - --secure-port=4443
+     - --kubelet-insecure-tls
+     - --kubelet-preferred-address-types=InternalIP
+     image: k8s.gcr.io/metrics-server-amd64:v0.3.6
+     imagePullPolicy: IfNotPresent
+     name: metrics-server
+     ------------------------
+</code></pre>
+
+<p><br/>
+설치 확인 (True값 확인)</p>
+
+<pre><code class="language-sh">kubectl get apiservices |egrep metrics
+
+------------------------
+v1beta1.metrics.k8s.io                     kube-system/metrics-server   True        28m
+------------------------
+</code></pre>
+
+<p><br/>
+메트릭 값 확인 (1~2분 후)</p>
+
+<pre><code class="language-sh">kubectl top node
+
+------------------------
+NAME             CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+k8s-master-185   485m         9%     4852Mi          32%       
+k8s-node1-186    413m         8%     4929Mi          33%       
+k8s-node2-187    554m         11%    4672Mi          31%       
+k8s-node3-188    365m         7%     4386Mi          29%
+------------------------
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="2-hpa-horizontal-pod-autoscaler">2. HPA (Horizontal Pod Autoscaler)</h2>
+
+<hr />
+
+<h3 id="2-1-target-deployment-service">2-1) Target Deployment / Service</h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: stateless-app1
+spec:
+ selector:
+   matchLabels:
+      stateless: app
+ replicas: 2
+ template:
+   metadata:
+     labels:
+       stateless: app
+   spec:
+     containers:
+     - name: container
+       image: tmkube/app:v1
+       resources:
+         requests:
+           cpu: 200m
+         limits:
+           cpu: 500m
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: stateless-svc1
+spec:
+ selector:
+    stateless: app
+ ports:
+   - port: 8080
+     targetPort: 8080
+     nodePort: 30001
+ type: NodePort
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="2-2-hpa-resource">2-2) HPA - Resource</h3>
+
+<pre><code class="language-yaml">apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-resource
+spec:
+  maxReplicas: 10
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: stateless-app1
+  metrics:
+  - type: Resource 
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+</code></pre>
+
+<h3 id="2-3-hpa-pods">2-3) HPA - Pods</h3>
+
+<pre><code class="language-yaml">apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-pods
+spec:
+  maxReplicas: 10
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: stateless-app1
+  metrics:
+  - type: Pods
+    pods:
+      metric:
+        name: packets-per-second
+      target:
+        type: AverageValue
+        averageValue: 0.1k
+</code></pre>
+
+<h3 id="2-4-hpa-object">2-4) HPA - Object</h3>
+
+<pre><code class="language-yaml">apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-object
+spec:
+  maxReplicas: 10
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: stateless-app1
+  metrics:
+  - type: Object
+    object:
+      metric:
+        name: requests-per-second
+      target:
+        type: Value
+        value: 0.1k
+      describedObject:
+        apiVersion: networking.k8s.io/v1beta1
+        kind: Ingress
+        name: ingress-hpa
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>Horizontal Pod Autoscaler</strong> : <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/">https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/</a></li>
+<li><strong>Horizontal Pod Autoscaler Walkthrough</strong> : <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/">https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/</a></li>
+</ul>
+
+  </div>
+  <footer>
+    
+
+  </footer>
+</article>
+
+
+<div class="pagination">		
+  
+    <a href="/practice/intermediate/pod-node_scheduling/" class="button"><div class="previous"><div>Pod - Node Scheduling</div></div></a>
+  
+  
+</div>
+
+
       </main>
-      
       <section id="site-sidebar">
 
 

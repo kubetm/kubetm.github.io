@@ -6,10 +6,22 @@
     <description>Recent content on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 03 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AutoScaler - HPA</title>
+      <link>https://kubetm.github.io/practice/intermediate/controller-autoscaler_hpa/</link>
+      <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/intermediate/controller-autoscaler_hpa/</guid>
+      <description>1. Metrics Server 설치 1-1) Metrics Server 다운 및 설치 설치
+git clone https://github.com/kubernetes-sigs/metrics-server.git cd metrics-server kubectl apply -f deploy/kubernetes/   Metrics Deployment 수정 (args 에 kubelet-insecure-tls 와 kubelet-preferred-address-types=InternalIP 추가)
+kubectl edit deployment metrics-server -n kube-system ------------------------ spec: containers: - args: - --cert-dir=/tmp - --secure-port=4443 - --kubelet-insecure-tls - --kubelet-preferred-address-types=InternalIP image: k8s.gcr.io/metrics-server-amd64:v0.3.6 imagePullPolicy: IfNotPresent name: metrics-server ------------------------   설치 확인 (True값 확인)
+kubectl get apiservices |egrep metrics ------------------------ v1beta1.</description>
+    </item>
     
     <item>
       <title>3월 진행사항</title>
@@ -17,13 +29,13 @@
       <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2020_03/</guid>
-      <description>-6일- [중급편 연재] Controller - Autoscaler(HPA) PPT 50% Blog 0% Recording 0%
+      <description>-10일- [중급편 연재] Controller - Autoscaler(HPA) PPT 80% Blog 50% Recording 0%
+ 실습 자료실 업데이트  
+-9일- [중급편 연재] Controller - Autoscaler(HPA) PPT 70% Blog 0% Recording 0%
  이론 내용 정리   
--5일- [중급편 연재] Controller - Autoscaler(HPA) PPT 30% Blog 0% Recording 0%
+-6일- [중급편 연재] Controller - Autoscaler(HPA) PPT 50% Blog 0% Recording 0%
  이론 내용 정리   
--3일- [중급편 연재] Controller - Autoscaler(HPA) PPT 10% Blog 0% Recording 0%
- 이론 내용 정리  
--1일- [중급편 연재] Pod - Node Scheduling PPT 120% Blog 100% Recording 100%</description>
+-5일- [중급편 연재] Controller - Autoscaler(HPA) PPT 30% Blog 0% Recording 0%</description>
     </item>
     
     <item>

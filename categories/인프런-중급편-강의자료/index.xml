@@ -6,10 +6,22 @@
     <description>Recent content in 인프런 중급편 강의자료 on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 19 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AutoScaler - HPA</title>
+      <link>https://kubetm.github.io/practice/intermediate/controller-autoscaler_hpa/</link>
+      <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/intermediate/controller-autoscaler_hpa/</guid>
+      <description>1. Metrics Server 설치 1-1) Metrics Server 다운 및 설치 설치
+git clone https://github.com/kubernetes-sigs/metrics-server.git cd metrics-server kubectl apply -f deploy/kubernetes/   Metrics Deployment 수정 (args 에 kubelet-insecure-tls 와 kubelet-preferred-address-types=InternalIP 추가)
+kubectl edit deployment metrics-server -n kube-system ------------------------ spec: containers: - args: - --cert-dir=/tmp - --secure-port=4443 - --kubelet-insecure-tls - --kubelet-preferred-address-types=InternalIP image: k8s.gcr.io/metrics-server-amd64:v0.3.6 imagePullPolicy: IfNotPresent name: metrics-server ------------------------   설치 확인 (True값 확인)
+kubectl get apiservices |egrep metrics ------------------------ v1beta1.</description>
+    </item>
     
     <item>
       <title>Pod - Node Scheduling</title>
