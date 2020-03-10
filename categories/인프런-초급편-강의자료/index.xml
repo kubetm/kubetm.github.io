@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Kubernetes 설치 - Case 3</title>
+      <title>Case 3. 구글 클라우드 플랫폼</title>
       <link>https://kubetm.github.io/practice/appendix/installation_case3/</link>
       <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
       
@@ -27,7 +27,7 @@
     </item>
     
     <item>
-      <title>Kubernetes 설치 - Case 2</title>
+      <title>Case 2. 내PC &#43; VirtualBox</title>
       <link>https://kubetm.github.io/practice/appendix/installation_case2/</link>
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
       
@@ -43,7 +43,7 @@ Mac 사용자 참고 URL  &amp;gt;https://www.virtualbox.org/wiki/Mac%20OS%20X%2
     </item>
     
     <item>
-      <title>Kubernetes 설치 - Case1</title>
+      <title>Case 1. 서버전용</title>
       <link>https://kubetm.github.io/practice/appendix/installation_case1/</link>
       <pubDate>Sun, 10 Nov 2019 00:00:00 +0000</pubDate>
       
