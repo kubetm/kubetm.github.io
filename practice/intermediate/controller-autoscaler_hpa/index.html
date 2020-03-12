@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-03-10T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-03-10T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="298">
+<meta itemprop="wordCount" content="346">
 
 
 
@@ -302,10 +302,9 @@ v1beta1.metrics.k8s.io                     kube-system/metrics-server   True    
 
 ------------------------
 NAME             CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
-k8s-master-185   485m         9%     4852Mi          32%       
-k8s-node1-186    413m         8%     4929Mi          33%       
-k8s-node2-187    554m         11%    4672Mi          31%       
-k8s-node3-188    365m         7%     4386Mi          29%
+k8s-master       485m         9%     4852Mi          32%       
+k8s-node1        413m         8%     4929Mi          33%       
+k8s-node2        554m         11%    4672Mi          31%       
 ------------------------
 </code></pre>
 
@@ -359,7 +358,7 @@ spec:
 
 <p><br/></p>
 
-<h3 id="2-2-hpa-resource">2-2) HPA - Resource</h3>
+<h3 id="2-2-hpa-resource-utilization">2-2) HPA - Resource (Utilization)</h3>
 
 <pre><code class="language-yaml">apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
@@ -381,7 +380,47 @@ spec:
         averageUtilization: 50
 </code></pre>
 
-<h3 id="2-3-hpa-pods">2-3) HPA - Pods</h3>
+<pre><code class="language-sh">kubectl get hpa -w
+</code></pre>
+
+<pre><code class="language-sh">while true;do curl 192.168.0.30:30001/hostname; done
+</code></pre>
+
+<pre><code class="language-sh">kubectl delete horizontalpodautoscalers.autoscaling hpa-resource
+</code></pre>
+
+<h3 id="2-3-hpa-resource-averagevalue">2-3) HPA - Resource (AverageValue)</h3>
+
+<pre><code class="language-yaml">apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-resource
+spec:
+  maxReplicas: 10
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: stateless-app1
+  metrics:
+  - type: Resource 
+    resource:
+      name: cpu
+      target:
+        type: AverageValue
+        averageValue: 100m
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="sample-yaml">Sample yaml</h2>
+
+<hr />
+
+<h3 id="hpa-for-pods">* <strong>HPA for - Pods</strong></h3>
 
 <pre><code class="language-yaml">apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
@@ -401,10 +440,10 @@ spec:
         name: packets-per-second
       target:
         type: AverageValue
-        averageValue: 0.1k
+        averageValue: 10
 </code></pre>
 
-<h3 id="2-4-hpa-object">2-4) HPA - Object</h3>
+<h3 id="hpa-object">* <strong>HPA - Object</strong></h3>
 
 <pre><code class="language-yaml">apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
@@ -424,7 +463,7 @@ spec:
         name: requests-per-second
       target:
         type: Value
-        value: 0.1k
+        value: 10
       describedObject:
         apiVersion: networking.k8s.io/v1beta1
         kind: Ingress
