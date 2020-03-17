@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-03-10T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-03-10T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="346">
+<meta itemprop="wordCount" content="455">
 
 
 
@@ -214,6 +214,9 @@
         <p>[HPA, VPA, CA]</p>
     
     
+    	</br>
+  		</button><a href="/documents/intermediate/Autoscaler.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
+    
 </div>
 
   <div class="meta">
@@ -222,7 +225,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
@@ -317,30 +320,62 @@ k8s-node2        554m         11%    4672Mi          31%
 
 <hr />
 
-<h3 id="2-1-target-deployment-service">2-1) Target Deployment / Service</h3>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Autoscaler%20with%20Horizontal%20Pod%20Autoscaler%20CPU%20for%20Kubernetes.jpg" alt="Autoscaler with Horizontal Pod Autoscaler CPU for Kubernetes" title="Autoscaler with Horizontal Pod Autoscaler CPU for Kubernetes" >
+           	
+        </span>
+    
+
+
+
+<h3 id="2-1-target-deployment-cpu-service">2-1) Target Deployment (CPU) / Service</h3>
 
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: stateless-app1
+ name: deployment-cpu1
 spec:
  selector:
    matchLabels:
-      stateless: app
+      resource: cpu
  replicas: 2
  template:
    metadata:
      labels:
-       stateless: app
+       resource: cpu
    spec:
      containers:
      - name: container
        image: tmkube/app:v1
        resources:
          requests:
-           cpu: 200m
+           cpu: 10m
          limits:
-           cpu: 500m
+           cpu: 20m
 ---
 apiVersion: v1
 kind: Service
@@ -348,7 +383,7 @@ metadata:
  name: stateless-svc1
 spec:
  selector:
-    stateless: app
+    resource: cpu
  ports:
    - port: 8080
      targetPort: 8080
@@ -363,14 +398,14 @@ spec:
 <pre><code class="language-yaml">apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: hpa-resource
+  name: hpa-resource-cpu
 spec:
   maxReplicas: 10
   minReplicas: 2
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: stateless-app1
+    name: deployment-cpu1
   metrics:
   - type: Resource 
     resource:
@@ -383,18 +418,94 @@ spec:
 <pre><code class="language-sh">kubectl get hpa -w
 </code></pre>
 
-<pre><code class="language-sh">while true;do curl 192.168.0.30:30001/hostname; done
+<pre><code class="language-sh">while true;do curl 192.168.0.30:30001/hostname; sleep 0.01; done
 </code></pre>
 
-<pre><code class="language-sh">kubectl delete horizontalpodautoscalers.autoscaling hpa-resource
+<pre><code class="language-sh">kubectl delete horizontalpodautoscalers.autoscaling hpa-resource-cpu
 </code></pre>
 
-<h3 id="2-3-hpa-resource-averagevalue">2-3) HPA - Resource (AverageValue)</h3>
+<p><br/>
+<br/></p>
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Autoscaler%20with%20Horizontal%20Pod%20Autoscaler%20Memory%20for%20Kubernetes.jpg" alt="Autoscaler with Horizontal Pod Autoscaler Memory for Kubernetes" title="Autoscaler with Horizontal Pod Autoscaler Memory for Kubernetes" >
+           	
+        </span>
+    
+
+
+
+<h3 id="2-3-target-deployment-memory-service">2-3) Target Deployment (Memory) / Service</h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: stateless-memory1
+spec:
+ selector:
+   matchLabels:
+      resource: memory
+ replicas: 2
+ template:
+   metadata:
+     labels:
+       resource: memory
+   spec:
+     containers:
+     - name: container
+       image: tmkube/app:v1
+       resources:
+         requests:
+           memory: 10Mi
+         limits:
+           memory: 20Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: stateless-svc2
+spec:
+ selector:
+    resource: memory
+ ports:
+   - port: 8080
+     targetPort: 8080
+     nodePort: 30002
+ type: NodePort
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="2-4-hpa-resource-averagevalue">2-4) HPA - Resource (AverageValue)</h3>
 
 <pre><code class="language-yaml">apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: hpa-resource
+  name: hpa-resource-memory
 spec:
   maxReplicas: 10
   minReplicas: 2
@@ -405,10 +516,16 @@ spec:
   metrics:
   - type: Resource 
     resource:
-      name: cpu
+      name: memory
       target:
         type: AverageValue
-        averageValue: 100m
+        averageValue: 5Mi
+</code></pre>
+
+<pre><code class="language-sh">while true;do curl 192.168.0.30:30002/hostname; sleep 0.01; done
+</code></pre>
+
+<pre><code class="language-sh">kubectl delete horizontalpodautoscalers.autoscaling hpa-resource-memory
 </code></pre>
 
 <p><br/>
@@ -484,6 +601,14 @@ spec:
 <ul>
 <li><strong>Horizontal Pod Autoscaler</strong> : <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/">https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/</a></li>
 <li><strong>Horizontal Pod Autoscaler Walkthrough</strong> : <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/">https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/</a></li>
+</ul>
+
+<h3 id="others">* <strong>Others</strong></h3>
+
+<ul>
+<li><strong>Best Practices for Cluster Autoscaler, HPA and VPA</strong> : <a href="https://www.replex.io/blog/kubernetes-in-production-best-practices-for-cluster-autoscaler-hpa-and-vpa">https://www.replex.io/blog/kubernetes-in-production-best-practices-for-cluster-autoscaler-hpa-and-vpa</a></li>
+<li><strong>Cluster Autoscaler, Horizontal Pod Autoscaler, and Vertical Pod Autoscaler</strong> : <a href="https://levelup.gitconnected.com/kubernetes-autoscaling-101-cluster-autoscaler-horizontal-pod-autoscaler-and-vertical-pod-2a441d9ad231">https://levelup.gitconnected.com/kubernetes-autoscaling-101-cluster-autoscaler-horizontal-pod-autoscaler-and-vertical-pod-2a441d9ad231</a></li>
+<li><strong>How to autoscale apps on Kubernetes with custom metrics</strong> : <a href="https://learnk8s.io/autoscaling-apps-kubernetes">https://learnk8s.io/autoscaling-apps-kubernetes</a></li>
 </ul>
 
   </div>
