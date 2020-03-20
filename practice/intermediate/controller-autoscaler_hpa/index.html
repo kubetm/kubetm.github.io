@@ -357,7 +357,7 @@ k8s-node2        554m         11%    4672Mi          31%
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: deployment-cpu1
+ name: stateless-cpu1
 spec:
  selector:
    matchLabels:
@@ -405,7 +405,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: deployment-cpu1
+    name: stateless-cpu1
   metrics:
   - type: Resource 
     resource:
@@ -512,7 +512,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: stateless-app1
+    name: stateless-memory1
   metrics:
   - type: Resource 
     resource:

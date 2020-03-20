@@ -29,13 +29,13 @@ kubectl get apiservices |egrep metrics ------------------------ v1beta1.</descri
       <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2020_03/</guid>
-      <description>-17일- [중급편 연재] Controller - Autoscaler(HPA) PPT 100% Blog 100% Recording 60%
+      <description>-19일- [중급편 연재] Controller - Autoscaler(HPA) PPT 100% Blog 100% Recording 100%
+ 실습 편집 및 업로드   
+-18일- [중급편 연재] Controller - Autoscaler(HPA) PPT 100% Blog 100% Recording 80%
+ 실습 스크립트 작성 및 녹음  
+-17일- [중급편 연재] Controller - Autoscaler(HPA) PPT 100% Blog 100% Recording 60%
  블로그 실습자료 내용 정리 실습 스크립트 작성  
--15일- [중급편 연재] Controller - Autoscaler(HPA) PPT 100% Blog 90% Recording 50%
- 이론 강의 편집 및 업로드   
--14일- [중급편 연재] Controller - Autoscaler(HPA) PPT 100% Blog 90% Recording 40%
- 이론 강의 녹음  
--13일- [중급편 연재] Controller - Autoscaler(HPA) PPT 100% Blog 90% Recording 30%</description>
+-15일- [중급편 연재] Controller - Autoscaler(HPA) PPT 100% Blog 90% Recording 50%</description>
     </item>
     
     <item>

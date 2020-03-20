@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2019-11-11T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-11T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1192">
+<meta itemprop="wordCount" content="1204">
 
 
 
@@ -928,6 +928,10 @@ kubectl apply -f calico.yaml
 
 <pre><code class="language-sh">nohup kubectl proxy --port=8001 --address=192.168.0.30 --accept-hosts='^*$' &gt;/dev/null 2&gt;&amp;1 &amp;
 </code></pre>
+
+<ul>
+<li>만약 Master 노드가 Restart 됐을 경우 이 부분은 다시 실행해 줘야 합니다.</li>
+</ul>
 
 <h3 id="6-2-4-접속-url">6-2-4) 접속 URL</h3>
 
