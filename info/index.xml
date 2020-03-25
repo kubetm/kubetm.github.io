@@ -12,6 +12,19 @@
     
     
     <item>
+      <title>Kubernetes Forum Seoul 2019</title>
+      <link>https://kubetm.github.io/info/youtube-kubernetes_forum_seoul1-2019/</link>
+      <pubDate>Tue, 24 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/youtube-kubernetes_forum_seoul1-2019/</guid>
+      <description>Site URL : https://events19.linuxfoundation.org/events/kubernetes-forum-seoul-2019/ Youtube URL : https://www.youtube.com/playlist?list=PLj6h78yzYM2OxLtNu5THSdKUj5vC_Thco/   
+The Secret Recipe of etcd    Raft Consensus Algorithm failures and tuning   
+Improving Monitoring Systems Interoperability with Prometheus, OpenMetrics    Interoperability with OpenMetrics Prometheus OpenMetrics   
+Re-architecting Data Platform with Spark    Data Platform Deployment-helm Analytics-spark, jupyterhub, superset Access Control   
+Running gRPC Services for Serving Legacy RESTful API    why gRPC How to Support both gRPC/REST-envoy Deploying service using transcoding</description>
+    </item>
+    
+    <item>
       <title>Kubernetes 관련 즐겨찾기</title>
       <link>https://kubetm.github.io/info/kubernetes/</link>
       <pubDate>Sat, 22 Feb 2020 00:00:00 +0000</pubDate>
@@ -65,10 +78,11 @@ Kubernetes Korea Group    쿠버네티스 관련 많은 전문가들께서 활�
       <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/info/youtube-googlecloud-2019/</guid>
-      <description>GoogleCloud Summit Site URL : https://inthecloud.withgoogle.com/summit-sel-19/home.html GoogleCloud Youtube URL : https://www.youtube.com/watch?v=ZkKgyXDc1lQ&amp;amp;list=PLBgogxgQVM9tS7Yhzjc3Wt56jc5j-z_4C   
+      <description>Site URL : https://inthecloud.withgoogle.com/summit-sel-19/home.html Youtube URL : https://www.youtube.com/watch?v=ZkKgyXDc1lQ&amp;amp;list=PLBgogxgQVM9tS7Yhzjc3Wt56jc5j-z_4C   
 한 번 빌드해 Anthos로 클라우드와 온프레미스에서 구동하기    Kubernetes, MicroService, Istio Knative Anthos SKAFFOLD   
 Cloud, Journey to Right Things.    Cloud, 기업의 대표적인 고민, 왜 사용해야 할까요? Why Google Cloud? 도입을 위한 지침서   
-Google Cloud Platform에서의 Istio    Istio</description>
+Google Cloud Platform에서의 Istio    Istio   
+마이크로서비스, 그리고 서비스 메시    서비스 메시 과정 데모</description>
     </item>
     
     <item>
@@ -77,7 +91,7 @@ Google Cloud Platform에서의 Istio    Istio</description>
       <pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/info/youtube-openinfra-2019/</guid>
-      <description>Openinfradays Site URL : https://openinfradays.kr/ OpenStack Korea Group Youtube URL : https://www.youtube.com/channel/UCVQ1ILIOsGH-YX9FkEmkjRQ   
+      <description>Site URL : https://openinfradays.kr/ Youtube URL : https://www.youtube.com/channel/UCVQ1ILIOsGH-YX9FkEmkjRQ   
 카카오 T 택시 사례를 통해 살펴보는 카카오 클라우드의 Kubernetes as a Service    Kubernetes를 도입하면 뭐가 좋아지나요? 카카오 T택시 시스템 구조 Canary 배포 멀티 클러스터 인증 통합, 사용자 ACL 자동화된 클러스터 라이프사이클 물리 인프라 자원 통합   
 MSA, K8S를 이용한 대륙의 서비스 개발 사례 - 이랜드 차이나    왜 Docker를 선택했나?</description>
     </item>

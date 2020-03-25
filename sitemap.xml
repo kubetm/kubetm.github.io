@@ -3,17 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kubetm.github.io/practice/intermediate/controller-autoscaler_hpa/</loc>
-    <lastmod>2020-03-10T00:00:00+00:00</lastmod>
+    <loc>https://kubetm.github.io/categories/</loc>
+    <lastmod>2020-03-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/categories/</loc>
-    <lastmod>2020-03-10T00:00:00+00:00</lastmod>
+    <loc>https://kubetm.github.io/info/youtube-kubernetes_forum_seoul1-2019/</loc>
+    <lastmod>2020-03-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://kubetm.github.io/</loc>
+    <lastmod>2020-03-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/categories/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EC%A0%95%EB%B3%B4/</loc>
+    <lastmod>2020-03-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/practice/intermediate/controller-autoscaler_hpa/</loc>
     <lastmod>2020-03-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -39,11 +49,6 @@
   
   <url>
     <loc>https://kubetm.github.io/info/kubernetes/</loc>
-    <lastmod>2020-02-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/categories/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EC%A0%95%EB%B3%B4/</loc>
     <lastmod>2020-02-22T00:00:00+00:00</lastmod>
   </url>
   
