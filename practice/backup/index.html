@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>[인프런] 강의 자료실 - KubeTM Blog with Kubernetes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png?v=1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png?v=1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png?v=1">
+  <link rel="manifest" href="/favicon/site.webmanifest?v=1">
+  
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg?v=1" color="#ffffff">
+    <link rel="shortcut icon" href="/favicon/favicon.ico?v=1">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml?v=1">
+  
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Kubernetes Blog for Inflearn Pratice">
+  <link rel="canonical" href="https://kubetm.github.io/">
+  <meta property="og:image" content="https://kubetm.github.io/img/main/KubeTM%20Blog%20with%20Kubernetes%20and%20Inflearn.jpg">
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="">
+  <meta property="og:description" content="Kubernetes Blog for Inflearn Pratice">
+  <meta property="og:url" content="https://kubetm.github.io/">
+
+
+  <meta name="generator" content="Hugo 0.59.1" />
+  <meta itemprop="name" content="[인프런] 강의 자료실">
+<meta itemprop="description" content="">
+
+
+  <meta property="og:title" content="[인프런] 강의 자료실" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://kubetm.github.io/practice/backup/" />
+
+<meta property="og:updated_time" content="2019-10-21T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[인프런] 강의 자료실"/>
+<meta name="twitter:description" content=""/>
+
+  
+
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+  
+    
+      <link rel="stylesheet" href="/css/normalize.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+      
+      
+      <link rel="stylesheet" href="/css/main.min.c9f131140789708d39fafc5be756eccfbb24549b1dc778c716d74f7dfd1fb81c.css" integrity="sha256-yfExFAeJcI05&#43;vxb51bsz7skVJsdx3jHFtdPff0fuBw=">
+      <link rel="stylesheet" href="/css/add-on.css">
+    
+  
+  
+  
+  
+    
+  
+  <script data-ad-client="ca-pub-4901365465538759" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+	 
+  </script>
+	  
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151245038-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'UA-151245038-1');
+  </script>
+  <meta name="naver-site-verification" content="9588451d5bdf44018208298d2d6b5d3c5fc35e18"/>
+</head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+      	<img src="/img/main/kubernetes-logo.png"  style="max-width: 26px; height: auto;" alt="KubeTM Blog"/>
+        
+          KubeTM Blog
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/practice/" class="link"><i class='far fa-clipboard' style='color:green'></i> 강의 자료실</a>
+          
+        
+      
+        
+          
+          
+            <a href="/plan/" class="link"><i class='fas fa-map-signs' style='color:green'></i> 강좌 계획</a>
+          
+        
+      
+        
+          
+          
+            <a href="/info/" class="link"><i class='fa fa-thumbs-up' style='color:green'></i> 유용한 정보</a>
+          
+        
+      
+        
+          
+          
+            <a href="https://www.inflearn.com/course/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B8%B0%EC%B4%88/dashboard" class="link"><i class='fa fa-leaf' style='color:green'></i> 인프런가기</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro">
+  <a href="/"><img src="/img/main/KubeTM%20Blog%20with%20Kubernetes%20and%20Inflearn.jpg" class="diamond" width="250" alt="KubeTM Blog with Kubernetes and Inflearn" /></a>
+  <header>
+    <h1>Welcome to My Kubernetes Blog</h1>
+  </header>
+  <main>
+    <p>안녕하세요. 김태민입니다. ^^ <br/> 쿠버네티스 기술 블로그에 오신걸 환영합니다.</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+    <li><a href="/practice/backup/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fas fa-rss"></a></li>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/https://www.facebook.com/kim.taemin.3517563" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/https://www.youtube.com/channel/UCt6EAJeuLBQehe8uVqrtV7g" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:kube.taemin@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+          <header>
+            <div class="title">
+              
+                <h2><a href="/practice/backup/">[인프런] 강의 자료실</a></h2>
+              
+              
+            </div>
+          </header>
+          <div id="content">
+            
+
+<p><br/>
+<br/>
+<br/></p>
+
+<h3 id="초급편-기초-다지기">초급편 - 기초 다지기</h3>
+
+<hr />
+
+<ul>
+<li><a href="./beginner/gettingstarted-kubernetes"><strong>Getting-Started Kubernetes!</strong></a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./beginner/gettingstarted-kubernetes">
+        	
+            	<img src="/img/practice/beginner/Getting%20started%20Kubernetes.jpg" alt="Getting started Kubernetes" title="Getting started Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+</li>
+</ul>
+
+<p><br/></p>
+
+<h3 id="초급편-쿠버네티스-설치">초급편 - 쿠버네티스 설치</h3>
+
+<hr />
+
+<ul>
+<li><a href="./appendix/installation_case1"><strong>설치 - Case1</strong> - 서버전용</a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./appendix/installation_case1">
+        	
+            	<img src="/img/practice/appendix/Baremetal%20Installation%20with%20KVM%20for%20Kubernetes.jpg" alt="Baremetal Installation with KVM for Kubernetes" title="Baremetal Installation with KVM for Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+
+<br/><br/></li>
+<li><a href="./appendix/installation_case2"><strong>설치 - Case2</strong> - 내PC + VirtualBox</a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./appendix/installation_case2">
+        	
+            	<img src="/img/practice/appendix/VirtualBox%20Installation%20for%20Kubernetes.jpg" alt="VirtualBox Installation for Kubernetes" title="VirtualBox Installation for Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+
+<br/><br/></li>
+<li><a href="./appendix/installation_case3"><strong>설치 - Case3</strong> - 구글 클라우드 플랫폼</a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./appendix/installation_case3">
+        	
+            	<img src="/img/practice/appendix/Google%20Cloud%20Platform%20Installation%20for%20Kubernetes.jpg" alt="Google Cloud Platform Installation for Kubernetes" title="Google Cloud Platform Installation for Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+</li>
+</ul>
+
+<p><br/></p>
+
+<h3 id="초급편-기본-오브젝트">초급편 - 기본 오브젝트</h3>
+
+<hr />
+
+<ul>
+<li><a href="./beginner/object-pod"><strong>Pod</strong> - Container, Label, NodeSchedule</a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./beginner/object-pod">
+        	
+            	<img src="/img/practice/beginner/Pod%20with%20Container,%20Label,%20Node%20Schedule%20for%20Kubernetes.jpg" alt="Pod with Container, Label, Node Schedule for Kubernetes" title="Pod with Container, Label, Node Schedule for Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+
+<br/><br/></li>
+<li><a href="./beginner/object-service"><strong>Service</strong> - ClusterIP, NodePort, LoadBalancer</a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./beginner/object-service">
+        	
+            	<img src="/img/practice/beginner/Service%20with%20ClusterIP,%20NodePort,%20LoadBalancer.jpg" alt="Service with ClusterIP, NodePort, LoadBalancer" title="Service with ClusterIP, NodePort, LoadBalancer"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+
+<br/><br/></li>
+<li><a href="./beginner/object-volume"><strong>Volume</strong> - emptyDir, hostPath, PV/PVC</a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./beginner/object-volume">
+        	
+            	<img src="/img/practice/beginner/Volume%20with%20emptyDir,%20hostPath,%20PV,%20PVC,%20for%20Kubernetes.jpg" alt="Volume with emptyDir, hostPath, PV, PVC, for Kubernetes" title="Volume with emptyDir, hostPath, PV, PVC, for Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+
+<br/><br/></li>
+<li><a href="./beginner/object-configmap_secret"><strong>ConfigMap, Sercret</strong> - Env, Mount</a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./beginner/object-configmap_secret">
+        	
+            	<img src="/img/practice/beginner/ConfigMap,%20Secret%20with%20Literal,%20File%20on%20Env,%20Mount%20for%20Kubernetes.jpg" alt="ConfigMap, Secret with Literal, File on Env, Mount for Kubernetes" title="ConfigMap, Secret with Literal, File on Env, Mount for Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+
+<br/><br/></li>
+<li><a href="./beginner/object-namespace_resourcequota_limitrange"><strong>Namespace, ResourceQuota, LimitRange</strong></a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./beginner/object-namespace_resourcequota_limitrange">
+        	
+            	<img src="/img/practice/beginner/Namespace,%20ResourceQuota,%20LimitRange%20for%20Kubernetes.jpg" alt="Namespace, ResourceQuota, LimitRange for Kubernetes" title="Namespace, ResourceQuota, LimitRange for Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+</li>
+</ul>
+
+<p><br/></p>
+
+<h3 id="초급편-컨트롤러">초급편 - 컨트롤러</h3>
+
+<hr />
+
+<ul>
+<li><a href="./beginner/controller-replicationcontroller_replicaset"><strong>Replication Controller, ReplicaSet</strong> - Template, Replicas, Selector</a></li>
+<li><a href="./beginner/controller-deployment"><strong>Deployment</strong> - Recreate, RollingUpdate</a></li>
+<li><a href="./beginner/controller-daemonset_job_cronjob"><strong>DaemonSet, Job, CronJob</strong></a></li>
+</ul>
+
+<p><br/>
+<br/></p>
+
+<h3 id="중급편">중급편</h3>
+
+<hr />
+
+<ul>
+<li><a href="./intermediate/object-service"><strong>Service</strong> - Headless, Endpoint, ExternalName</a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./intermediate/object-service">
+        	
+            	<img src="/img/practice/intermediate/Service%20with%20Headless,%20Endpoint,%20ExternalName%20for%20Kubernetes.jpg" alt="Service with Headless, Endpoint, ExternalName for Kubernetes" title="Service with Headless, Endpoint, ExternalName for Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+
+<br/><br/></li>
+<li><a href="./intermediate/object-volume"><strong>Volume</strong> - Dynamic Provisioning, StorageClass, Status, ReclaimPolicy </a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./intermediate/object-volume">
+        	
+            	<img src="/img/practice/intermediate/Volume%20with%20Dynamic%20Provisioning,%20Status,%20Policy%20for%20Kubernetes.jpg" alt="Volume with Dynamic Provisioning, Status, Policy for Kubernetes" title="Volume with Dynamic Provisioning, Status, Policy for Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+
+<br/><br/></li>
+<li><a href="./intermediate/pod-probe"><strong>Pod</strong> - ReadinessProbe, LivenessProbe</a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./intermediate/pod-probe">
+        	
+            	<img src="/img/practice/intermediate/Pod%20Probe%20with%20ReadinessProbe,%20LivenessProbe%20for%20Kubernetes.jpg" alt="Pod Probe with ReadinessProbe, LivenessProbe for Kubernetes" title="Pod Probe with ReadinessProbe, LivenessProbe for Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+
+<br/><br/></li>
+<li><a href="./intermediate/new-statefulset"><strong>StatefulSet</strong> - Pod, PersistentVolumeClaim, Headless Service</a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./intermediate/new-statefulset">
+        	
+            	<img src="/img/practice/intermediate/StatefulSet%20with%20satefull%20application%20for%20Kubernetes.jpg" alt="StatefulSet with satefull application for Kubernetes" title="StatefulSet with satefull application for Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+
+<br/><br/></li>
+<li><a href="./intermediate/new-ingress"><strong>Ingress</strong> - Service Loadbalancing, Canary Upgrade</a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./intermediate/new-ingress">
+        	
+            	<img src="/img/practice/intermediate/Ingress%20with%20Service%20Loadbalancing%20and%20Canary%20for%20Kubernetes.jpg" alt="Ingress with Service Loadbalancing and Canary for Kubernetes" title="Ingress with Service Loadbalancing and Canary for Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+
+<br/><br/></li>
+<li><a href="./intermediate/pod-node_scheduling"><strong>Node Scheduling</strong> - Node Affinity, Pod Affinity/Anti-Affinity, Toleration/Taint</a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./intermediate/pod-node_scheduling">
+        	
+            	<img src="/img/practice/intermediate/Scheduling%20with%20Affinity%20and%20Toleration%20Taint%20for%20Kubernetes.jpg" alt="Scheduling with Affinity and Toleration Taint for Kubernetes" title="Scheduling with Affinity and Toleration Taint for Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+
+<br/><br/></li>
+<li><a href="./intermediate/controller-autoscaler_hpa"><strong>Autoscaler</strong> - HPA, VPA, CA</a>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+        		<a href="./intermediate/controller-autoscaler_hpa">
+        	
+            	<img src="/img/practice/intermediate/Autoscaler%20with%20Horizontal%20Pod%20Autoscaler%20for%20Kubernetes.jpg" alt="Autoscaler with Horizontal Pod Autoscaler for Kubernetes" title="Autoscaler with Horizontal Pod Autoscaler for Kubernetes"  >
+           	
+           	</a>
+           	
+        </span>
+    
+
+</li>
+</ul>
+
+          </div>
+        </article>
+      </main>
+      <section id="site-sidebar">
+
+
+<script type="text/javascript">
+
+
+
+		
+
+
+		
+</script>
+  
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4901365465538759"
+     data-ad-slot="1691182311"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+  
+</section>
+
+
+
+
+
+      <footer id="site-footer">
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        KubeTM Blog with Kubernetes
+      
+    . <br>
+    Copyright 2019. Kimtaemin all rights reserved.
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/yaml.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/groovy.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  <script src=/js/util.js></script>
+  <script src=/js/main.js></script>
+  <script src=/js/add-on.js></script>
+  
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-151245038-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+    </div>
+  </body>
+</html>

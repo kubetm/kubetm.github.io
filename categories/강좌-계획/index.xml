@@ -6,10 +6,20 @@
     <description>Recent content in 강좌 계획 on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 03 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>4월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2020_04/</link>
+      <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2020_04/</guid>
+      <description>-14일- [CKA편 연재] 시험 접수 및 기본 정보, 시험 준비, 시험 후기 Blog 90% Recording 50%
+ 2020-04-11 CKA 취득</description>
+    </item>
     
     <item>
       <title>3월 진행사항</title>

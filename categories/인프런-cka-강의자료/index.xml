@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>인프런 CKA 강의자료 on KubeTM Blog with Kubernetes</title>
+    <link>https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-cka-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/</link>
+    <description>Recent content in 인프런 CKA 강의자료 on KubeTM Blog with Kubernetes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 13 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-cka-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CKA 자격증 개요</title>
+      <link>https://kubetm.github.io/practice/cka/ready/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/cka/ready/</guid>
+      <description>시험 접수 및 기본 정보 * 시험비 : 300불 재시험 기회 1번 포함  접수 : https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/ 할인 쿠폰 :
+구글 검색에 [cka exam coupon code] 키워드로 검색하면 최소 30%는 찾을 수 있음 ex: KUBERNETES30, ANYWHERE30   
+* 버전 : 꼭 버전 확인! 해당 내용은 1.17 기준 
+* 시험시간 : 3시간 
+* 시험문항 : 24문항 난이도에 따라 1점 ~ 9점, 모두 실습 형태</description>
+    </item>
+    
+  </channel>
+</rss>
