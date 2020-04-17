@@ -12,21 +12,6 @@
     
     
     <item>
-      <title>CKA 시험 공부 1</title>
-      <link>https://kubetm.github.io/practice/cka/exam1/</link>
-      <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://kubetm.github.io/practice/cka/exam1/</guid>
-      <description>사전 작업 node-1에 kubectl 명령 자동완성 설정
-https://v1-17.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete
-source &amp;lt;(kubectl completion bash) echo &amp;quot;source &amp;lt;(kubectl completion bash)&amp;quot; &amp;gt;&amp;gt; ~/.bashrc  alias k=kubectl complete -F __start_kubectl k   
-k8s Cluster - 17문항 k8s cluster에서 작업하는 문제 (아래 명령어는 문제에서도 알려줌)
-kubectl config use-context k8s   
-Pod에서 특정 Error Log 문자열만 출력해서 파일 저장 사전환경
-cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: Pod metadata: name: poo spec: containers: - name: container image: kubetm/init command: [&#39;sh&#39;, &#39;-c&#39;, &#39;echo Hello Kubernetes ; echo error-message; echo end; sleep 1000&#39;] EOF  문제풀이</description>
-    </item>
-    
-    <item>
       <title>CKA 자격증 개요</title>
       <link>https://kubetm.github.io/practice/cka/ready/</link>
       <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
@@ -241,6 +226,21 @@ curl 10.16.36.115:8080/hostname  service ip :</description>
       <description>1. Linux  1-1) hello.js var http = require(&#39;http&#39;); var content = function(req, resp) { resp.end(&amp;quot;Hello Kubernetes!&amp;quot; + &amp;quot;\n&amp;quot;); resp.writeHead(200); } var w = http.createServer(content); w.listen(8000);  node hello.js   
 2. Docker  2-1) Dockerfile FROM node:slim EXPOSE 8000 COPY hello.js . CMD node hello.js  2-2) Docker Hub Site https://hub.docker.com/
 2-3) Docker Container Run docker build -t kubetm/hello . -t : 레파지토리/이미지명:버전 docker images docker run -d -p 8100:8000 kubetm/hello -d : 백그라운드 모드 -p : 포트변경 docker ps docker exec -it c403442e8a59 /bin/bash  2-4) Docker Image Push docker login docker push kubetm/hello</description>
+    </item>
+    
+    <item>
+      <title>CKA 시험 공부 1</title>
+      <link>https://kubetm.github.io/practice/cka/exam1-d394-fdkjfa-ackife/</link>
+      <pubDate>Sun, 16 Apr 2000 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/cka/exam1-d394-fdkjfa-ackife/</guid>
+      <description>사전 작업 node-1에 kubectl 명령 자동완성 설정
+https://v1-17.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete
+source &amp;lt;(kubectl completion bash) echo &amp;quot;source &amp;lt;(kubectl completion bash)&amp;quot; &amp;gt;&amp;gt; ~/.bashrc  alias k=kubectl complete -F __start_kubectl k   
+k8s Cluster - 17문항 k8s cluster에서 작업하는 문제 (아래 명령어는 문제에서도 알려줌)
+kubectl config use-context k8s   
+Pod에서 특정 Error Log 문자열만 출력해서 파일 저장 사전환경
+cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: Pod metadata: name: poo spec: containers: - name: container image: kubetm/init command: [&#39;sh&#39;, &#39;-c&#39;, &#39;echo Hello Kubernetes ; echo error-message; echo end; sleep 1000&#39;] EOF  문제풀이</description>
     </item>
     
   </channel>

@@ -6,25 +6,10 @@
     <description>Recent content on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 16 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>CKA 시험 공부 1</title>
-      <link>https://kubetm.github.io/practice/cka/exam1/</link>
-      <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://kubetm.github.io/practice/cka/exam1/</guid>
-      <description>사전 작업 node-1에 kubectl 명령 자동완성 설정
-https://v1-17.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete
-source &amp;lt;(kubectl completion bash) echo &amp;quot;source &amp;lt;(kubectl completion bash)&amp;quot; &amp;gt;&amp;gt; ~/.bashrc  alias k=kubectl complete -F __start_kubectl k   
-k8s Cluster - 17문항 k8s cluster에서 작업하는 문제 (아래 명령어는 문제에서도 알려줌)
-kubectl config use-context k8s   
-Pod에서 특정 Error Log 문자열만 출력해서 파일 저장 사전환경
-cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: Pod metadata: name: poo spec: containers: - name: container image: kubetm/init command: [&#39;sh&#39;, &#39;-c&#39;, &#39;echo Hello Kubernetes ; echo error-message; echo end; sleep 1000&#39;] EOF  문제풀이</description>
-    </item>
     
     <item>
       <title>4월 진행사항</title>
@@ -32,12 +17,14 @@ cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: Pod metadata:
       <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2020_04/</guid>
-      <description>-16일- [CKA편 연재] 시험 공부1 Blog 100% Recording 0%
+      <description>-18일- [CKA편 연재] 시험 공부1 Blog 100% Recording 80%
+ 편집  
+-17일- [CKA편 연재] 시험 공부1 Blog 100% Recording 60%
+ 녹음 및 편집  
+-16일- [CKA편 연재] 시험 공부1 Blog 100% Recording 0%
  블로그 작성 편집 완료 및 업로드  
 -15일- [CKA편 연재] 시험 접수 및 기본 정보, 시험 준비, 시험 후기 Blog 100% Recording 100%
- 블로그 작성 완료 편집 완료 및 업로드   
--14일- [CKA편 연재] 시험 접수 및 기본 정보, 시험 준비, 시험 후기 Blog 90% Recording 50%
- 블로그 정리 및 녹음 2020-04-11 CKA 취득</description>
+ 블로그 작성 완료 편집 완료 및 업로드</description>
     </item>
     
     <item>
@@ -454,6 +441,21 @@ curl 10.16.36.115:8080/hostname  service ip :</description>
 -25일- [부록] Kubernetes 설치 개요 PPT 120% Github 100% Test 100% Recording 100%
  실습영상 편집 후 업로드  
 -24일- [부록] Kubernetes 설치 개요 PPT 120% Github 100% Test 100% Recording 80%</description>
+    </item>
+    
+    <item>
+      <title>CKA 시험 공부 1</title>
+      <link>https://kubetm.github.io/practice/cka/exam1-d394-fdkjfa-ackife/</link>
+      <pubDate>Sun, 16 Apr 2000 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/cka/exam1-d394-fdkjfa-ackife/</guid>
+      <description>사전 작업 node-1에 kubectl 명령 자동완성 설정
+https://v1-17.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete
+source &amp;lt;(kubectl completion bash) echo &amp;quot;source &amp;lt;(kubectl completion bash)&amp;quot; &amp;gt;&amp;gt; ~/.bashrc  alias k=kubectl complete -F __start_kubectl k   
+k8s Cluster - 17문항 k8s cluster에서 작업하는 문제 (아래 명령어는 문제에서도 알려줌)
+kubectl config use-context k8s   
+Pod에서 특정 Error Log 문자열만 출력해서 파일 저장 사전환경
+cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: Pod metadata: name: poo spec: containers: - name: container image: kubetm/init command: [&#39;sh&#39;, &#39;-c&#39;, &#39;echo Hello Kubernetes ; echo error-message; echo end; sleep 1000&#39;] EOF  문제풀이</description>
     </item>
     
   </channel>
