@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2000-04-16T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2000-04-16T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="958">
+<meta itemprop="wordCount" content="979">
 
 
 
@@ -447,6 +447,10 @@ kubectl get pods nginx -o wide
 
 <p>해당 Pod의 전반적인 작동내용은 init 컨테이너에서  /workdir/init.txt가 잘 만들어졌으면 Pod가 만들어지고 안만들어졌으면 종료</p>
 
+<ul>
+<li>initContainer란 : 본 Container가 실행되기 전에 사전 작업이 필요할 경우 initContainer를 사용하며, initContainer가 성공적으로 작업이 완료 된 후에 본 Container가 실행됨</li>
+</ul>
+
 <hr />
 
 <p><code>사전환경</code></p>
@@ -462,7 +466,7 @@ spec:
   containers:
   - name: nginx
     image: nginx
-    command: [&quot;sh&quot;, &quot;-c&quot;, &quot;if [ -f /work/init.txt ] ; then sleep 1000; else exit 1; fi&quot;]
+    command: [&quot;sh&quot;, &quot;-c&quot;, &quot;if [ -f /workdir/init.txt ] ; then sleep 1000; else exit 1; fi&quot;]
     volumeMounts:
     - name: workdir
       mountPath: /workdir
@@ -632,7 +636,7 @@ vi pod-namelist.txt
 
 <p><a href="https://v1-17.docs.kubernetes.io/docs/concepts/storage/volumes/#example-pod">https://v1-17.docs.kubernetes.io/docs/concepts/storage/volumes/#example-pod</a></p>
 
-<pre><code class="language-sh">kubectl create nm volume-1
+<pre><code class="language-sh">kubectl create ns volume-1
 </code></pre>
 
 <pre><code class="language-yaml">apiVersion: v1
@@ -890,6 +894,8 @@ kubectl get pods
 
 
 <div class="pagination">		
+  
+    <a href="/practice/cka/exam2-d394-fdkjfa-ackife2/" class="button"><div class="previous"><div>CKA 시험 공부 2</div></div></a>
   
   
     <a href="/practice/beginner/gettingstarted-kubernetes/" class="button"><div class="next"><div>Getting-started Kubernetes</div></div></a>

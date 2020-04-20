@@ -458,5 +458,18 @@ Pod에서 특정 Error Log 문자열만 출력해서 파일 저장 사전환경
 cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: Pod metadata: name: poo spec: containers: - name: container image: kubetm/init command: [&#39;sh&#39;, &#39;-c&#39;, &#39;echo Hello Kubernetes ; echo error-message; echo end; sleep 1000&#39;] EOF  문제풀이</description>
     </item>
     
+    <item>
+      <title>CKA 시험 공부 2</title>
+      <link>https://kubetm.github.io/practice/cka/exam2-d394-fdkjfa-ackife2/</link>
+      <pubDate>Sun, 16 Apr 2000 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/cka/exam2-d394-fdkjfa-ackife2/</guid>
+      <description>Node-1 별도 Cluster의 접근 없이 node-1에서 주어진 문제 풀이
+Etcd 스냅샷을 하는데 TLS를 이용  Endpoint : https:127.0.0.1:2379 Path : /snapshot/etcd.db Version : 3.2.12 CA : /tls/ca.crt, Client Cert : /tls/client.crt, Client Key : /tls/client.key  문제풀이
+https://v1-17.docs.kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#built-in-snapshot
+ETCDCTL_API=3 etcdctl --endpoints https://127.0.0.1:2379 --cacert /tls/ca.crt --cert /tls/client.crt --key /tls/client.key snapshot save /snapshot/etcd.db ETCDCTL_API=3 etcdctl --write-out=table snapshot status /snapshot/etcd.db  내 Cluster에서 해볼려면..
+cd /etc/kubernetes/pki/etcd 에 있는 ca.crt, server.crt, server.</description>
+    </item>
+    
   </channel>
 </rss>
