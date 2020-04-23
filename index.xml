@@ -17,14 +17,14 @@
       <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2020_04/</guid>
-      <description>-18일- [CKA편 연재] 시험 공부1 Blog 100% Recording 80%
- 편집  
--17일- [CKA편 연재] 시험 공부1 Blog 100% Recording 60%
- 녹음 및 편집  
--16일- [CKA편 연재] 시험 공부1 Blog 100% Recording 0%
- 블로그 작성 편집 완료 및 업로드  
--15일- [CKA편 연재] 시험 접수 및 기본 정보, 시험 준비, 시험 후기 Blog 100% Recording 100%
- 블로그 작성 완료 편집 완료 및 업로드</description>
+      <description>-24일- [중급편] Accessing API - Kubernetes Dashboard PPT 100% Blog 0% Recording 0%
+ PPT 완료  
+-23일- [중급편] Authorization - RBAC, Role, RoleBinding PPT 100% Blog 0% Recording 0%
+ PPT 완료   
+-22일- [중급편] Authentication - X509 Certs, Kubectl, ServiceAccount PPT 100% Blog 0% Recording 0%
+ PPT 완료   
+-21일- [중급편] Accessing API - Overview PPT 100% Recording 0%
+ PPT 완료</description>
     </item>
     
     <item>
@@ -71,13 +71,12 @@ kubectl get apiservices |egrep metrics ------------------------ v1beta1.</descri
       <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2020_03/</guid>
-      <description>-19일- [중급편 연재] Controller - Autoscaler(HPA) PPT 100% Blog 100% Recording 100%
+      <description>-20일- 개인적으로 CKA 시험 공부에 시간을 할애하기 위해 잠시 강의 연재를 멈추고 4월 14일부터 재개할 에정입니다.  
+-19일- [중급편 연재] Controller - Autoscaler(HPA) PPT 100% Blog 100% Recording 100%
  실습 편집 및 업로드   
 -18일- [중급편 연재] Controller - Autoscaler(HPA) PPT 100% Blog 100% Recording 80%
  실습 스크립트 작성 및 녹음  
--17일- [중급편 연재] Controller - Autoscaler(HPA) PPT 100% Blog 100% Recording 60%
- 블로그 실습자료 내용 정리 실습 스크립트 작성  
--15일- [중급편 연재] Controller - Autoscaler(HPA) PPT 100% Blog 90% Recording 50%</description>
+-17일- [중급편 연재] Controller - Autoscaler(HPA) PPT 100% Blog 100% Recording 60%</description>
     </item>
     
     <item>
@@ -233,6 +232,17 @@ MSA, K8S를 이용한 대륙의 서비스 개발 사례 - 이랜드 차이나   
  PPT 내용 정리 및 실습자료 Blog 업데이트   
 -24일- [중급편 연재] StatefulSet PPT 80% Blog 30% Recording 0%
  PPT 내용 정리 및 실습자료 Blog 업데이트</description>
+    </item>
+    
+    <item>
+      <title>[인프런] 강좌 계획</title>
+      <link>https://kubetm.github.io/plan/beginner/</link>
+      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/beginner/</guid>
+      <description>  
+강의 범위  
+강의 목차  </description>
     </item>
     
     <item>

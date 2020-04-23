@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2000-04-16T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2000-04-16T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="579">
+<meta itemprop="wordCount" content="594">
 
 
 
@@ -288,6 +288,7 @@ kubectl exec -n kube-system etcd-k8s-master -it -- sh
 
 ETCDCTL_API=3 etcdctl --help 명령으로 --cacert, --cert, --key 들의 옵션 이름을 확인합니다.
 ETCDCTL_API=3의 의미는 ectd version 3 api를 날린다는 의미인데 version마다 위에 옵션 이름이 달라짐.
+예를들어 다른 버전에서는 --cacert를 --ca-file로 사용하기 때문에 --ca-file을 version 3 api 명령에 넣으면 에러가 남
 
 그리고 아래 명령으로 snapshot을 만듬
 ETCDCTL_API=3 etcdctl --endpoints https://127.0.0.1:2379 --cacert ca.crt --cert server.crt --key server.key snapshot save snapshot.db
