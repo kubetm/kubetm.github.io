@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>인프런 중급편 강의자료 - KubeTM Blog with Kubernetes</title>
+<title>Authorization - KubeTM Blog with Kubernetes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -27,20 +27,28 @@
 
 
   <meta name="generator" content="Hugo 0.59.1" />
-  <meta itemprop="name" content="인프런 중급편 강의자료">
-<meta itemprop="description" content="">
+  <meta itemprop="name" content="Authorization">
+<meta itemprop="description" content="[RBAC, Role, RoleBinding]">
 
 
-  <meta property="og:title" content="인프런 중급편 강의자료" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/" />
+<meta itemprop="datePublished" content="2020-04-24T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-04-24T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="230">
 
-<meta property="og:updated_time" content="2020-04-24T00:00:00+00:00" />
+
+
+<meta itemprop="keywords" content="" />
+
+  <meta property="og:title" content="Authorization" />
+<meta property="og:description" content="[RBAC, Role, RoleBinding]" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/object-authorization/" />
+<meta property="article:published_time" content="2020-04-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-24T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="인프런 중급편 강의자료"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Authorization"/>
+<meta name="twitter:description" content="[RBAC, Role, RoleBinding]"/>
 
   
 
@@ -148,8 +156,6 @@
     <footer>
       <ul class="socnet-icons">
         
-    <li><a href="/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fas fa-rss"></a></li>
-
 
         
 
@@ -198,27 +204,21 @@
 </section>
 
       <main id="site-main">
-        <h1>인프런 중급편 강의자료</h1>
-        
-        
-            <article class="post">
+        <article class="post">
   <header>
   <div class="title">
     
-        <h2>Pod</h2>
+        <h2>Authorization</h2>
     
     
-        <p>[Readinessprobe, Livenessprobe]</p>
+        <p>[RBAC, Role, RoleBinding]</p>
     
-    
-    	</br>
-  		</button><a href="/documents/intermediate/Pod-Lifecycle_Probe_QosClass.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
     
 </div>
 
   <div class="meta">
-    <time class="published" datetime="2019-12-16 00:00:00 &#43;0000 UTC">
-      December 16, 2019
+    <time class="published" datetime="2020-04-24 00:00:00 &#43;0000 UTC">
+      April 24, 2020
     </time>
     <span class="author">KubeTM</span>
     
@@ -227,118 +227,352 @@
   </div>
 </header>
 
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
   
-  <a href="/practice/intermediate/pod-probe/" class="image featured">
-    <img src="/img/practice/intermediate/Pod%20Probe%20with%20ReadinessProbe,%20LivenessProbe%20for%20Kubernetes.jpg" alt="Pod Probe with ReadinessProbe, LivenessProbe for Kubernetes">
+  <a href="/practice/intermediate/object-authorization/" class="image featured">
+    <img src="/img/practice/intermediate/Access%20API%20with%20Authenticaiton%20for%20Kubernetes.jpg" alt="Access API with Authenticaiton for Kubernetes">
   </a>
 
 
   
-  <p><br/>
-<br/></p>
-  <footer>
-    <a href="/practice/intermediate/pod-probe/" class="button big">본문 보기</a>
+    
+  
+  <div class="content">
+  
+  
     
 
-  </footer>
-</article>
+<p><br/>
+<br/></p>
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
 
         
-            <article class="post">
-  <header>
-  <div class="title">
     
-        <h2>Volume</h2>
-    
-    
-        <p>[Dynamic Provisioning, StorageClass, Status, ReclaimPolicy]</p>
-    
-    
-    	</br>
-  		</button><a href="/documents/intermediate/Volume-Dynamic_Provisioning.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
-    
-</div>
 
-  <div class="meta">
-    <time class="published" datetime="2019-11-21 00:00:00 &#43;0000 UTC">
-      November 21, 2019
-    </time>
-    <span class="author">KubeTM</span>
     
-      <p>3 minutes read</p>
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Access%20API%20with%20Authorization%20RBAC%20for%20Kubernetes.jpg" alt="Access API with Authorization RBAC for Kubernetes" title="Access API with Authorization RBAC for Kubernetes"  >
+           	
+        </span>
     
+
+
+
+<hr />
+
+<h2 id="1-자신의-namespace-내에-pod들만-조회할-수-있는-권한">1. 자신의 Namespace 내에 Pod들만 조회할 수 있는 권한</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Access%20API%20with%20Authorization%20Role%20RoleBinding1%20for%20Kubernetes.jpg" alt="Access API with Authorization Role RoleBinding1 for Kubernetes" title="Access API with Authorization Role RoleBinding1 for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="1-1-role">1-1) Role</h3>
+
+<pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: r-01
+  namespace: nm-01
+rules:
+- apiGroups: [&quot;&quot;]
+  verbs: [&quot;get&quot;, &quot;list&quot;]
+  resources: [&quot;pods&quot;]
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="1-2-rolebinding">1-2) RoleBinding</h3>
+
+<pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: rb-01
+  namespace: nm-01
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: r-01
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: nm-01
+</code></pre>
+
+<h3 id="1-3-https-api-호출-token">1-3) Https API 호출 (Token)</h3>
+
+<p><code>header</code> Authorization : Bearer TOKEN</p>
+
+<pre><code class="language-sh">https://192.168.0.30:6443/api/v1/namespaces/nm-01
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="2-모든-namespace-내에-pod에-대해-조회만-할-수-있는-권한">2. 모든 Namespace 내에 Pod에 대해 조회만 할 수 있는 권한</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Access%20API%20with%20Authorization%20Role%20RoleBinding2%20for%20Kubernetes.jpg" alt="Access API with Authorization Role RoleBinding2 for Kubernetes" title="Access API with Authorization Role RoleBinding2 for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="2-1-namespaces">2-1) Namespaces</h3>
+
+<pre><code class="language-sh">apiVersion: v1
+kind: Namespace
+metadata:
+  name: nm-02
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="2-2-clusterrole">2-2) ClusterRole</h3>
+
+<pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cr-02
+rules:
+- apiGroups: [&quot;&quot;]
+  verbs: [&quot;get&quot;, &quot;list&quot;]
+  resources: [&quot;pods&quot;]
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="2-3-rolebinding">2-3) RoleBinding</h3>
+
+<pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: rb-02
+  namespace: nm-02
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cr-02
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: nm-02
+</code></pre>
+
+<h3 id="2-4-https-api-호출-token">2-4) Https API 호출 (Token)</h3>
+
+<p><code>header</code> Authorization : Bearer TOKEN</p>
+
+<pre><code class="language-sh">https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="3-모든-namespace-내에-object들에-대해-모든-권한을-부여">3. 모든 Namespace 내에 Object들에 대해 모든 권한을 부여</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/intermediate/Access%20API%20with%20Authorization%20Role%20RoleBinding3%20for%20Kubernetes.jpg" alt="Access API with Authorization Role RoleBinding3 for Kubernetes" title="Access API with Authorization Role RoleBinding3 for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="3-1-namespaces">3-1) Namespaces</h3>
+
+<pre><code class="language-sh">apiVersion: v1
+kind: Namespace
+metadata:
+  name: nm-03
+</code></pre>
+
+<h3 id="3-2-serviceaccount">3-2) ServiceAccount</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-03
+  namespace: nm-03
+</code></pre>
+
+<h3 id="3-3-clusterrole">3-3) ClusterRole</h3>
+
+<pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cr-03
+rules:
+- apiGroups: [&quot;*&quot;]
+  verbs: [&quot;*&quot;]
+  resources: [&quot;*&quot;]
+</code></pre>
+
+<h3 id="3-4-rolebinding">3-4) RoleBinding</h3>
+
+<pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: rb-03
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cr-03
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: nm-03
+</code></pre>
+
+<h3 id="3-5-https-api-호출-token">3-5) Https API 호출 (Token)</h3>
+
+<p><code>header</code> Authorization : Bearer TOKEN</p>
+
+<pre><code class="language-sh">https://192.168.0.30:6443/api/v1/namespaces/nm-01/service
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>Using RBAC Authorization</strong> : <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/">https://kubernetes.io/docs/reference/access-authn-authz/rbac/</a></li>
+</ul>
+
   </div>
-</header>
-
-  
-  <a href="/practice/intermediate/object-volume/" class="image featured">
-    <img src="/img/practice/intermediate/Volume%20with%20Dynamic%20Provisioning,%20Status,%20Policy%20for%20Kubernetes.jpg" alt="Volume with Dynamic Provisioning, Status, Policy for Kubernetes">
-  </a>
-
-
-  
-  <p><br/>
-<br/></p>
   <footer>
-    <a href="/practice/intermediate/object-volume/" class="button big">본문 보기</a>
     
 
   </footer>
 </article>
 
-        
-            <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2>Service</h2>
-    
-    
-        <p>[Headless, Endpoint, ExternalName]</p>
-    
-    
-    	</br>
-  		</button><a href="/documents/intermediate/Service-Headless_ExternalName.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
-    
-</div>
 
-  <div class="meta">
-    <time class="published" datetime="2019-11-16 00:00:00 &#43;0000 UTC">
-      November 16, 2019
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>3 minutes read</p>
-    
-  </div>
-</header>
-
+<div class="pagination">		
   
-  <a href="/practice/intermediate/object-service/" class="image featured">
-    <img src="/img/practice/intermediate/Service%20with%20Headless,%20Endpoint,%20ExternalName%20for%20Kubernetes.jpg" alt="Service with Headless, Endpoint, ExternalName for Kubernetes">
-  </a>
-
-
-  
-  <p><br/>
-<br/></p>
-  <footer>
-    <a href="/practice/intermediate/object-service/" class="button big">본문 보기</a>
-    
-
-  </footer>
-</article>
-
-        
-        
-<div class="pagination">
-  
-    <a href="/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/page/2/" class="button big previous"><i class="fas fa-angle-left"></i></a>
+    <a href="/practice/cka/ready/" class="button"><div class="previous"><div>CKA 자격증 개요</div></div></a>
   
   
-    <a href="#" class="disabled button big next"><i class="fas fa-angle-right"></i></a>
+    <a href="/practice/intermediate/object-authentication/" class="button"><div class="next"><div>Authentication</div></div></a>
   
 </div>
+
 
       </main>
       <section id="site-sidebar">

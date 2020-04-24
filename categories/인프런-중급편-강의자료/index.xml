@@ -6,10 +6,32 @@
     <description>Recent content in 인프런 중급편 강의자료 on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%A4%91%EA%B8%89%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Authentication</title>
+      <link>https://kubetm.github.io/practice/intermediate/object-authentication/</link>
+      <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/intermediate/object-authentication/</guid>
+      <description>1. X509 Client Certs  1-1) kubeconfig 인증서 확인 Path : /etc/kubernetes/admin.conf
+cluster.certificate-authority-data : CA.crt (Base64) user.client-certificate-data: Client.crt (Base64) user.client-key-data: Client.key (Base64)  
+1-2) Https API (Client.crt, Client.key) https://192.168.0.30:6443/api/v1/namespaces  postman
+Settings &amp;gt; General &amp;gt; SSL certificate verification &amp;gt; OFF Settings &amp;gt; Certificates &amp;gt; Client Certificates &amp;gt; Host, CRT file, KEY file  1-3) kubectl config 세팅 mkdir -p $HOME/.kube sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config sudo chown $(id -u):$(id -g) $HOME/.</description>
+    </item>
+    
+    <item>
+      <title>Authorization</title>
+      <link>https://kubetm.github.io/practice/intermediate/object-authorization/</link>
+      <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/intermediate/object-authorization/</guid>
+      <description>1. 자신의 Namespace 내에 Pod들만 조회할 수 있는 권한  1-1) Role apiVersion: rbac.authorization.k8s.io/v1 kind: Role metadata: name: r-01 namespace: nm-01 rules: - apiGroups: [&amp;quot;&amp;quot;] verbs: [&amp;quot;get&amp;quot;, &amp;quot;list&amp;quot;] resources: [&amp;quot;pods&amp;quot;]  
+1-2) RoleBinding apiVersion: rbac.authorization.k8s.io/v1 kind: RoleBinding metadata: name: rb-01 namespace: nm-01 roleRef: apiGroup: rbac.authorization.k8s.io kind: Role name: r-01 subjects: - kind: ServiceAccount name: default namespace: nm-01  1-3) Https API 호출 (Token) header Authorization : Bearer TOKEN</description>
+    </item>
     
     <item>
       <title>AutoScaler - HPA</title>
