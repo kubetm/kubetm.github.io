@@ -6,10 +6,23 @@
     <description>Recent content on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 24 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 26 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kubernetes Dashboard</title>
+      <link>https://kubetm.github.io/practice/intermediate/object-dashboard/</link>
+      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/intermediate/object-dashboard/</guid>
+      <description>1. Dashboard 2.0.0 설치  
+1-1) Dashboard 설치 kubetm 가이드로 Dashboard(1.10.1)를 설치했을 경우 아래 명령으로 삭제
+kubectl delete -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/sample/practice/appendix/gcp-kubernetes-dashboard.yaml  새 Dashboard (2.0.0) 설치 - https://github.com/kubernetes/dashboard
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml  
+1-2) ClusterRoleBinding 생성 cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: rbac.authorization.k8s.io/v1beta1 kind: ClusterRoleBinding metadata: name: kubernetes-dashboard2 labels: k8s-app: kubernetes-dashboard roleRef: apiGroup: rbac.authorization.k8s.io kind: ClusterRole name: cluster-admin subjects: - kind: ServiceAccount name: kubernetes-dashboard namespace: kubernetes-dashboard EOF</description>
+    </item>
     
     <item>
       <title>Authentication</title>
@@ -39,13 +52,13 @@ Settings &amp;gt; General &amp;gt; SSL certificate verification &amp;gt; OFF Set
       <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2020_04/</guid>
-      <description>-24일- [중급편] Authorization - RBAC, Role, RoleBinding [중급편] Authentication - X509 Certs, Kubectl, ServiceAccount PPT 100% Blog 100% Recording 0%
- Blog 완료  
--23일- [중급편] Authorization - RBAC, Role, RoleBinding PPT 100% Blog 0% Recording 0%
- PPT 완료   
--22일- [중급편] Authentication - X509 Certs, Kubectl, ServiceAccount PPT 100% Blog 0% Recording 0%
- PPT 완료   
--21일- [중급편] Accessing API - Overview PPT 100% Recording 0%</description>
+      <description>-26일- [중급편] Accessing API - Dashboard PPT 100% Blog 100% Recording 0%
+ 실습 내용 Blog 완료  
+-25일- [중급편] Accessing API - Dashboard PPT 100% Blog 0% Recording 0%
+ 이론 내용 PPT 작성 완료   
+-24일- [중급편] Authorization - RBAC, Role, RoleBinding [중급편] Authentication - X509 Certs, Kubectl, ServiceAccount PPT 100% Blog 100% Recording 0%
+ 실습 내용 Blog 완료  
+-23일- [중급편] Authorization - RBAC, Role, RoleBinding PPT 100% Blog 0% Recording 0%</description>
     </item>
     
     <item>
