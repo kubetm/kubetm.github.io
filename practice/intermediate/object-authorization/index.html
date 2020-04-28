@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-04-24T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-04-24T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="230">
+<meta itemprop="wordCount" content="155">
 
 
 
@@ -222,7 +222,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>1 minute read</p>
     
   </div>
 </header>
@@ -366,7 +366,7 @@ subjects:
 
 <hr />
 
-<h2 id="2-모든-namespace-내에-pod에-대해-조회만-할-수-있는-권한">2. 모든 Namespace 내에 Pod에 대해 조회만 할 수 있는 권한</h2>
+<h2 id="2-모든-namespace-내에-object들에-대해-모든-권한을-부여">2. 모든 Namespace 내에 Object들에 대해 모든 권한을 부여</h2>
 
 <hr />
 
@@ -410,133 +410,44 @@ metadata:
   name: nm-02
 </code></pre>
 
-<p><br/></p>
-
-<h3 id="2-2-clusterrole">2-2) ClusterRole</h3>
-
-<pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: cr-02
-rules:
-- apiGroups: [&quot;&quot;]
-  verbs: [&quot;get&quot;, &quot;list&quot;]
-  resources: [&quot;pods&quot;]
-</code></pre>
-
-<p><br/></p>
-
-<h3 id="2-3-rolebinding">2-3) RoleBinding</h3>
-
-<pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: rb-02
-  namespace: nm-02
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cr-02
-subjects:
-- kind: ServiceAccount
-  name: default
-  namespace: nm-02
-</code></pre>
-
-<h3 id="2-4-https-api-호출-token">2-4) Https API 호출 (Token)</h3>
-
-<p><code>header</code> Authorization : Bearer TOKEN</p>
-
-<pre><code class="language-sh">https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="3-모든-namespace-내에-object들에-대해-모든-권한을-부여">3. 모든 Namespace 내에 Object들에 대해 모든 권한을 부여</h2>
-
-<hr />
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-    
-    
-    
-    
-
-        
-    
-
-    
-        <span class="image left">
-        	
-            	<img src="/img/practice/intermediate/Access%20API%20with%20Authorization%20Role%20RoleBinding3%20for%20Kubernetes.jpg" alt="Access API with Authorization Role RoleBinding3 for Kubernetes" title="Access API with Authorization Role RoleBinding3 for Kubernetes"  >
-           	
-        </span>
-    
-
-
-
-<h3 id="3-1-namespaces">3-1) Namespaces</h3>
-
-<pre><code class="language-sh">apiVersion: v1
-kind: Namespace
-metadata:
-  name: nm-03
-</code></pre>
-
-<h3 id="3-2-serviceaccount">3-2) ServiceAccount</h3>
+<h3 id="2-2-serviceaccount">2-2) ServiceAccount</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: sa-03
-  namespace: nm-03
+  name: sa-02
+  namespace: nm-02
 </code></pre>
 
-<h3 id="3-3-clusterrole">3-3) ClusterRole</h3>
+<h3 id="2-3-clusterrole">2-3) ClusterRole</h3>
 
 <pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: cr-03
+  name: cr-02
 rules:
 - apiGroups: [&quot;*&quot;]
   verbs: [&quot;*&quot;]
   resources: [&quot;*&quot;]
 </code></pre>
 
-<h3 id="3-4-rolebinding">3-4) RoleBinding</h3>
+<h3 id="2-4-rolebinding">2-4) RoleBinding</h3>
 
 <pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: rb-03
+  name: rb-02
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: cr-03
+  name: cr-02
 subjects:
 - kind: ServiceAccount
   name: default
-  namespace: nm-03
+  namespace: nm-02
 </code></pre>
 
-<h3 id="3-5-https-api-호출-token">3-5) Https API 호출 (Token)</h3>
+<h3 id="2-5-https-api-호출-token">2-5) Https API 호출 (Token)</h3>
 
 <p><code>header</code> Authorization : Bearer TOKEN</p>
 
