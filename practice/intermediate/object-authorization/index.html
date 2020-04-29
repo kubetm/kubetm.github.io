@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-04-24T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-04-24T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="155">
+<meta itemprop="wordCount" content="180">
 
 
 
@@ -335,8 +335,6 @@ rules:
   resources: [&quot;pods&quot;]
 </code></pre>
 
-<p><br/></p>
-
 <h3 id="1-2-rolebinding">1-2) RoleBinding</h3>
 
 <pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
@@ -354,11 +352,25 @@ subjects:
   namespace: nm-01
 </code></pre>
 
-<h3 id="1-3-https-api-호출-token">1-3) Https API 호출 (Token)</h3>
+<h3 id="1-3-service">1-3) Service</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: svc-1
+spec:
+  selector:
+    app: pod
+  ports:
+  - port: 8080
+    targetPort: 8080
+</code></pre>
+
+<h3 id="1-4-https-api-호출-token">1-4) Https API 호출 (Token)</h3>
 
 <p><code>header</code> Authorization : Bearer TOKEN</p>
 
-<pre><code class="language-sh">https://192.168.0.30:6443/api/v1/namespaces/nm-01
+<pre><code class="language-sh">https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
 </code></pre>
 
 <p><br/>
@@ -431,7 +443,7 @@ rules:
   resources: [&quot;*&quot;]
 </code></pre>
 
-<h3 id="2-4-rolebinding">2-4) RoleBinding</h3>
+<h3 id="2-4-clusterrolebinding">2-4) ClusterRoleBinding</h3>
 
 <pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -443,7 +455,7 @@ roleRef:
   name: cr-02
 subjects:
 - kind: ServiceAccount
-  name: default
+  name: sa-02
   namespace: nm-02
 </code></pre>
 
@@ -465,6 +477,8 @@ subjects:
 
 <ul>
 <li><strong>Using RBAC Authorization</strong> : <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/">https://kubernetes.io/docs/reference/access-authn-authz/rbac/</a></li>
+<li><strong>Review Your Request Attributes</strong> : <a href="https://kubernetes.io/docs/reference/access-authn-authz/authorization/#review-your-request-attributes">https://kubernetes.io/docs/reference/access-authn-authz/authorization/#review-your-request-attributes</a>
+<br /></li>
 </ul>
 
   </div>

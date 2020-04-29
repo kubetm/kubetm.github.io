@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-04-24T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-04-24T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="259">
+<meta itemprop="wordCount" content="294">
 
 
 
@@ -299,20 +299,31 @@ user.client-certificate-data: Client.crt (Base64)
 user.client-key-data: Client.key (Base64)
 </code></pre>
 
+<pre><code class="language-sh">grep 'client-certificate-data' /etc/kubernetes/admin.conf | head -n 1 | awk '{print $2}' | base64 -d
+grep 'client-key-data' /etc/kubernetes/admin.conf | head -n 1 | awk '{print $2}' | base64 -d
+</code></pre>
+
 <p><br/></p>
 
 <h3 id="1-2-https-api-client-crt-client-key">1-2) Https API (Client.crt, Client.key)</h3>
 
-<pre><code class="language-sh">https://192.168.0.30:6443/api/v1/namespaces
-</code></pre>
-
 <p>postman</p>
+
+<pre><code class="language-sh">https://192.168.0.30:6443/api/v1/nodes
+</code></pre>
 
 <pre><code class="language-sh">Settings &gt; General &gt; SSL certificate verification &gt; OFF
 Settings &gt; Certificates &gt; Client Certificates &gt; Host, CRT file, KEY file
 </code></pre>
 
 <h3 id="1-3-kubectl-config-세팅">1-3) kubectl config 세팅</h3>
+
+<p>kubeadm / kubectl / kubelet 설치</p>
+
+<pre><code class="language-sh">yum install -y --disableexcludes=kubernetes kubeadm-1.15.5-0.x86_64 kubectl-1.15.5-0.x86_64 kubelet-1.15.5-0.x86_64
+</code></pre>
+
+<p>admin.conf 인증서 복사</p>
 
 <pre><code class="language-sh">mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -326,7 +337,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 <h3 id="1-4-http-api-호출-proxy">1-4) HTTP API 호출 (Proxy)</h3>
 
-<pre><code class="language-sh">http://192.168.0.30:8001/api/v1/namespaces
+<pre><code class="language-sh">http://192.168.0.30:8001/api/v1/nodes
 </code></pre>
 
 <p><br/>
@@ -415,7 +426,10 @@ users:
 
 <h3 id="2-4-kubectl-cli">2-4) kubectl CLI</h3>
 
-<p>windows kubectl download</p>
+<p>kubectl download :
+<a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">https://kubernetes.io/docs/tasks/tools/install-kubectl/</a></p>
+
+<p>windows</p>
 
 <pre><code class="language-sh">curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/windows/amd64/kubectl.exe
 </code></pre>
@@ -479,9 +493,10 @@ kubectl config use-context context-a
 kubectl describe -n nm-01 secrets
 </code></pre>
 
-<h3 id="3-3-pod-service">3-3) Pod, Service</h3>
+<h3 id="3-3-pod">3-3) Pod</h3>
 
-<pre><code class="language-yaml">apiVersion: v1
+<pre><code class="language-sh">cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: v1
 kind: Pod
 metadata:
   name: pod-1
@@ -491,17 +506,7 @@ spec:
   containers:
   - name: container
     image: kubetm/app
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: svc-1
-spec:
-  selector:
-    app: pod
-  ports:
-  - port: 8080
-    targetPort: 8080
+EOF
 </code></pre>
 
 <h3 id="3-4-https-api-호출-token">3-4) Https API 호출 (Token)</h3>
@@ -509,7 +514,7 @@ spec:
 <p><code>header</code> Authorization : Bearer TOKEN</p>
 
 <pre><code class="language-sh">https://192.168.0.30:6443/api/v1
-https://192.168.0.30:6443/api/v1/namespaces/nm-01
+https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
 </code></pre>
 
 <p><br/>
