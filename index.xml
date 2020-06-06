@@ -487,7 +487,7 @@ curl 10.16.36.115:8080/hostname  service ip :</description>
       
       <guid>https://kubetm.github.io/practice/cka/exam1-d394-fdkjfa-ackife/</guid>
       <description>사전 작업 node-1에 kubectl 명령 자동완성 설정
-https://v1-17.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete
+https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete
 source &amp;lt;(kubectl completion bash) echo &amp;quot;source &amp;lt;(kubectl completion bash)&amp;quot; &amp;gt;&amp;gt; ~/.bashrc  alias k=kubectl complete -F __start_kubectl k   
 k8s Cluster - 17문항 k8s cluster에서 작업하는 문제 (아래 명령어는 문제에서도 알려줌)
 kubectl config use-context k8s   
@@ -503,7 +503,7 @@ cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: Pod metadata:
       <guid>https://kubetm.github.io/practice/cka/exam2-d394-fdkjfa-ackife2/</guid>
       <description>Node-1 별도 Cluster의 접근 없이 node-1에서 주어진 문제 풀이
 Etcd 스냅샷을 하는데 TLS를 이용  Endpoint : https:127.0.0.1:2379 Path : /snapshot/etcd.db Version : 3.2.12 CA : /tls/ca.crt, Client Cert : /tls/client.crt, Client Key : /tls/client.key  문제풀이
-https://v1-17.docs.kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#built-in-snapshot
+https://v1-18.docs.kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#built-in-snapshot
 ETCDCTL_API=3 etcdctl --endpoints https://127.0.0.1:2379 --cacert /tls/ca.crt --cert /tls/client.crt --key /tls/client.key snapshot save /snapshot/etcd.db ETCDCTL_API=3 etcdctl --write-out=table snapshot status /snapshot/etcd.db  내 Cluster에서 해볼려면..
 cd /etc/kubernetes/pki/etcd 에 있는 ca.crt, server.crt, server.</description>
     </item>

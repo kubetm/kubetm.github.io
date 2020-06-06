@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2000-04-16T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2000-04-16T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="979">
+<meta itemprop="wordCount" content="1187">
 
 
 
@@ -222,7 +222,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>5 minutes read</p>
+      <p>6 minutes read</p>
     
   </div>
 </header>
@@ -260,7 +260,7 @@
 
 <p>node-1에 kubectl 명령 자동완성 설정</p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete">https://v1-17.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete">https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete</a></p>
 
 <pre><code class="language-sh">source &lt;(kubectl completion bash)
 echo &quot;source &lt;(kubectl completion bash)&quot; &gt;&gt; ~/.bashrc
@@ -308,7 +308,7 @@ EOF
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/">https://v1-17.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/">https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/</a></p>
 
 <pre><code class="language-sh">kubectl logs poo | grep error-message &gt; ./poo 
 </code></pre>
@@ -366,7 +366,7 @@ EOF
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/">https://v1-17.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/">https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/</a></p>
 
 <pre><code class="language-sh">kubectl get pv --all-namespaces --sort-by=.metadata.name &gt; ./pvname
 </code></pre>
@@ -380,7 +380,7 @@ EOF
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates">https://v1-17.docs.kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates">https://v1-18.docs.kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates</a></p>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -419,7 +419,7 @@ kubectl get nodes -l disktype=ssd
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/concepts/configuration/assign-pod-node/#step-two-add-a-nodeselector-field-to-your-pod-configuration">https://v1-17.docs.kubernetes.io/docs/concepts/configuration/assign-pod-node/#step-two-add-a-nodeselector-field-to-your-pod-configuration</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/configuration/assign-pod-node/#step-two-add-a-nodeselector-field-to-your-pod-configuration">https://v1-18.docs.kubernetes.io/docs/concepts/configuration/assign-pod-node/#step-two-add-a-nodeselector-field-to-your-pod-configuration</a></p>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -474,7 +474,7 @@ spec:
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/tasks/configure-pod-container/configure-pod-initialization/">https://v1-17.docs.kubernetes.io/docs/tasks/configure-pod-container/configure-pod-initialization/</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/configure-pod-initialization/">https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/configure-pod-initialization/</a></p>
 
 <pre><code class="language-yaml">  initContainers:
   - name: install
@@ -511,7 +511,7 @@ EOF
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/">https://v1-17.docs.kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/">https://v1-18.docs.kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/</a></p>
 
 <pre><code class="language-sh">kubectl expose pod exist-pod --name=cluster-service --type=ClusterIP --port=8080
 </code></pre>
@@ -529,7 +529,7 @@ EOF
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates">https://v1-17.docs.kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates">https://v1-18.docs.kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates</a></p>
 
 <pre><code class="language-sh">kubectl create ns ns-01
 </code></pre>
@@ -634,7 +634,7 @@ vi pod-namelist.txt
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/concepts/storage/volumes/#example-pod">https://v1-17.docs.kubernetes.io/docs/concepts/storage/volumes/#example-pod</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/storage/volumes/#example-pod">https://v1-18.docs.kubernetes.io/docs/concepts/storage/volumes/#example-pod</a></p>
 
 <pre><code class="language-sh">kubectl create ns volume-1
 </code></pre>
@@ -673,12 +673,12 @@ spec:
 
 <p>secret 만들기</p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/concepts/configuration/secret/#use-case-pods-with-prod-test-credentials">https://v1-17.docs.kubernetes.io/docs/concepts/configuration/secret/#use-case-pods-with-prod-test-credentials</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/configuration/secret/#use-case-pods-with-prod-test-credentials">https://v1-18.docs.kubernetes.io/docs/concepts/configuration/secret/#use-case-pods-with-prod-test-credentials</a></p>
 
 <pre><code class="language-sh">kubectl create secret generic mysecret --from-literal=username=sec1
 </code></pre>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod">https://v1-17.docs.kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod">https://v1-18.docs.kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod</a></p>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -698,7 +698,7 @@ spec:
       secretName: mysecret
 </code></pre>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables">https://v1-17.docs.kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables">https://v1-18.docs.kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables</a></p>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -735,10 +735,44 @@ kubectl exec secret-env-pod -it -- env | grep SECRET_USERNAME
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment">https://v1-17.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment</a></p>
+<p>1.18 버전부터 kubectl run으로 Deployment을 만드는건 Deprecated 됐습니다</p>
 
 <pre><code class="language-sh">kubectl run deploy-2 --image=redis --replicas=5 --labels=test=deploy2
-kubectl get deployments.apps deploy-2 -o yaml &gt; ./deploy-2.yaml
+
+</code></pre>
+
+<p>아래 URL을 참조해서 vi로 yaml 파일을 만드는 방식으로 교체합니다.</p>
+
+<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment">https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment</a></p>
+
+<pre><code class="language-sh">vi deploy-2.yaml
+---------------------------- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-2
+  labels:
+    test: deploy2
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      test: deploy2
+  template:
+    metadata:
+      labels:
+        test: deploy2
+    spec:
+      containers:
+      - name: redis
+        image: redis
+        ports:
+        - containerPort: 80
+----------------------------
+kubectl create deploy-2.yaml
+</code></pre>
+
+<pre><code class="language-sh">kubectl get deployments.apps deploy-2 -o yaml &gt; ./deploy-2.yaml
 kubectl delete deployments.apps deploy-2
 </code></pre>
 
@@ -755,12 +789,34 @@ kubectl delete deployments.apps deploy-2
 
 <p><code>사전환경</code></p>
 
-<pre><code class="language-sh">kubectl run scale-deployment --image=nginx:1.14.2 --replicas=1
+<pre><code class="language-sh">cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scale-deployment
+  labels:
+    test: scale
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      test: scale
+  template:
+    metadata:
+      labels:
+        test: scale
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+EOF
 </code></pre>
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#scaling-resources">https://v1-17.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#scaling-resources</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#scaling-resources">https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#scaling-resources</a></p>
 
 <pre><code class="language-sh">kubectl scale deployment/scale-deployment --replicas=5
 </code></pre>
@@ -780,10 +836,46 @@ kubectl delete deployments.apps deploy-2
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/">https://v1-17.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/</a></p>
+<p><br/></p>
+
+<p>1.18 버전부터 kubectl run으로 Deployment을 만드는건 Deprecated 됐습니다.</p>
 
 <pre><code class="language-sh">kubectl run deploy-01 --image=nginx:1.14.2 --replicas=3
-kubectl set image deployment/deploy-01 deploy-01=nginx:1.16.1 --record
+
+</code></pre>
+
+<p>아래 URL을 참조해서 vi로 yaml 파일을 만드는 방식으로 교체합니다.</p>
+
+<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment">https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment</a></p>
+
+<pre><code class="language-sh">vi deploy-01.yaml
+---------------------------- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-01
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+----------------------------
+kubectl create deploy-01.yaml
+</code></pre>
+
+<pre><code class="language-sh">kubectl set image deployment/deploy-01 deploy-01=nginx:1.16.1 --record
 kubectl rollout undo deployment.v1.apps/deploy-01
 </code></pre>
 
@@ -802,11 +894,47 @@ kubectl rollout history deployment deploy-01
 
 <p><code>문제풀이</code></p>
 
+<p>1.18 버전부터 kubectl run으로 Deployment을 만드는건 Deprecated 됐습니다.</p>
+
 <pre><code class="language-sh">kubectl run dns-deploy --image=nginx --replicas=1
-kubectl expose deployment dns-deploy --port=8080 --name=dns-svc
+
 </code></pre>
 
-<p><a href="https://v1-17.docs.kubernetes.io/ko/docs/concepts/services-networking/connect-applications-service/#dns">https://v1-17.docs.kubernetes.io/ko/docs/concepts/services-networking/connect-applications-service/#dns</a></p>
+<p>아래 URL을 참조해서 vi로 yaml 파일을 만드는 방식으로 교체합니다.</p>
+
+<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment">https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment</a></p>
+
+<pre><code class="language-sh">vi dns-deploy.yaml
+---------------------------- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dns-deploy
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+----------------------------
+kubectl create dns-deploy.yaml
+</code></pre>
+
+<pre><code class="language-sh">kubectl expose deployment dns-deploy --port=8080 --name=dns-svc
+</code></pre>
+
+<p><a href="https://v1-18.docs.kubernetes.io/ko/docs/concepts/services-networking/connect-applications-service/#dns">https://v1-18.docs.kubernetes.io/ko/docs/concepts/services-networking/connect-applications-service/#dns</a></p>
 
 <pre><code class="language-sh">kubectl get pods dns-deploy-5d6bd489d5-n4sx4 -o wide
  
@@ -826,7 +954,7 @@ kubectl delete deployments.apps curl
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/concepts/workloads/controllers/daemonset/">https://v1-17.docs.kubernetes.io/docs/concepts/workloads/controllers/daemonset/</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/daemonset/">https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/daemonset/</a></p>
 
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: DaemonSet

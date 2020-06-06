@@ -271,7 +271,7 @@
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#built-in-snapshot">https://v1-17.docs.kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#built-in-snapshot</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#built-in-snapshot">https://v1-18.docs.kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#built-in-snapshot</a></p>
 
 <pre><code class="language-sh">ETCDCTL_API=3 etcdctl --endpoints https://127.0.0.1:2379 --cacert /tls/ca.crt --cert /tls/client.crt --key /tls/client.key snapshot save /snapshot/etcd.db
 ETCDCTL_API=3 etcdctl --write-out=table snapshot status /snapshot/etcd.db
@@ -320,7 +320,7 @@ ETCDCTL_API=3 etcdctl --write-out=table snapshot status snapshot.db
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/">https://v1-17.docs.kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/">https://v1-18.docs.kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/</a></p>
 
 <pre><code class="language-sh">kubectl get node --show-labels |grep name=ek8s-node-0
 kubectl drain ek8s-node-0 --ignore-daemonsets --force
@@ -402,7 +402,7 @@ systemctl enable kubelet
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/tasks/configure-pod-container/static-pod/">https://v1-17.docs.kubernetes.io/docs/tasks/configure-pod-container/static-pod/</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/static-pod/">https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/static-pod/</a></p>
 
 <pre><code class="language-sh">해당 node에 접근해서 root권한으로 작업
 ssh wk8s-node-1
@@ -474,7 +474,7 @@ systemctl restart kubelet
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/tasks/configure-pod-container/static-pod/">https://v1-17.docs.kubernetes.io/docs/tasks/configure-pod-container/static-pod/</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/static-pod/">https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/static-pod/</a></p>
 
 <pre><code class="language-sh">문제의 원인은 Master Pod의 Static Pod들이 실행되지 않고 있었음.
 
@@ -530,7 +530,7 @@ kubectl get cs
 
 <p><code>문제풀이</code></p>
 
-<p><a href="https://v1-17.docs.kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume">https://v1-17.docs.kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume</a></p>
+<p><a href="https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume">https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume</a></p>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: PersistentVolume
@@ -577,11 +577,11 @@ spec:
 
 <p><code>문제풀이</code>
 <br/>
-<a href="https://v1-17.docs.kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/">https://v1-17.docs.kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/</a>
+<a href="https://v1-18.docs.kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/">https://v1-18.docs.kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/</a>
 <br/>
-<a href="https://v1-17.docs.kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm">https://v1-17.docs.kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm</a>
+<a href="https://v1-18.docs.kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm">https://v1-18.docs.kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm</a>
 <br/>
-<a href="https://v1-17.docs.kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/#init-workflow">https://v1-17.docs.kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/#init-workflow</a></p>
+<a href="https://v1-18.docs.kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/#init-workflow">https://v1-18.docs.kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/#init-workflow</a></p>
 
 <p>위에 링크들을 참고해서 설치</p>
 
