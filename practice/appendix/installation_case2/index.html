@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2019-11-11T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-11T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1215">
+<meta itemprop="wordCount" content="1196">
 
 
 
@@ -909,21 +909,10 @@ kubectl apply -f calico.yaml
 <br/>
 &gt;<a href="https://github.com/kubernetes/dashboard">https://github.com/kubernetes/dashboard</a></p>
 
-<pre><code class="language-sh">kubectl apply -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/sample/practice/appendix/gcp-kubernetes-dashboard.yaml
+<pre><code class="language-sh">kubectl apply -f https://kubetm.github.io/documents/appendix/kubetm-dashboard-v1.10.1.yaml
 </code></pre>
 
-<h3 id="6-2-2-권한-해지-설정">6-2-2) 권한 해지 설정</h3>
-
-<p>접속시 인증 Skip 설정</p>
-
-<ul>
-<li><p>updated 2019-11-26</p>
-
-<pre><code class="language-sh">위 gcp-kubernetes-dashboard.yaml에 해당 내용 포함되어 있습니다. 별도로 안하셔도 되세요.
-</code></pre></li>
-</ul>
-
-<h3 id="6-2-3-백그라운드로-proxy-띄우기">6-2-3) 백그라운드로 proxy 띄우기</h3>
+<h3 id="6-2-2-백그라운드로-proxy-띄우기">6-2-2) 백그라운드로 proxy 띄우기</h3>
 
 <p><code>--address</code>에 자신의 Host IP 입력</p>
 
@@ -934,12 +923,12 @@ kubectl apply -f calico.yaml
 <li>만약 Master 노드가 Restart 됐을 경우 이 부분은 다시 실행해 줘야 합니다.</li>
 </ul>
 
-<h3 id="6-2-4-접속-url">6-2-4) 접속 URL</h3>
+<h3 id="6-2-3-접속-url">6-2-3) 접속 URL</h3>
 
 <pre><code class="language-sh">http://192.168.0.30:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/.
 </code></pre>
 
-<h3 id="6-2-5-언어-설정변경">6-2-5) 언어 설정변경</h3>
+<h3 id="6-2-4-언어-설정변경">6-2-4) 언어 설정변경</h3>
 
 <pre><code class="language-sh">Chrome 설정 &gt; 언어 &gt; 언어(한국어) &gt; 원하는 언어를 위로 추가
 </code></pre>
@@ -954,7 +943,7 @@ kubectl apply -f calico.yaml
 
 <div class="pagination">		
   
-    <a href="/practice/appendix/installation_case4/" class="button"><div class="previous"><div>Case 4. 내PC &#43; Vagrant(VirtualBox)</div></div></a>
+    <a href="/practice/appendix/installation_case4/" class="button"><div class="previous"><div>Case 4. 내PC &#43; VirtualBox</div></div></a>
   
   
     <a href="/practice/appendix/installation_case3/" class="button"><div class="next"><div>Case 3. 구글 클라우드 플랫폼</div></div></a>
