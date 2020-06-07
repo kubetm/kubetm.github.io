@@ -36,7 +36,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://kubetm.github.io/" />
 
-<meta property="og:updated_time" content="2020-04-26T00:00:00+00:00" />
+<meta property="og:updated_time" content="2020-06-06T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="KubeTM Blog with Kubernetes"/>
@@ -204,6 +204,117 @@
   <header>
   <div class="title">
     
+        <h2>DaemonSet, Job, CronJob</h2>
+    
+    
+        <p>[3. 컨트롤러]</p>
+    
+    
+    	</br>
+  		</button><a href="/documents/beginner/DaemonSet_CronJob_Job.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
+    
+</div>
+
+  <div class="meta">
+    <time class="published" datetime="2019-11-09 00:00:00 &#43;0000 UTC">
+      November 9, 2019
+    </time>
+    <span class="author">KubeTM</span>
+    
+      <p>2 minutes read</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  <pre><code class="language-yaml">apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonset-1
+spec:
+  selector:
+    matchLabels:
+      type: app
+  template:
+    metadata:
+      labels:
+        type: app
+    spec:
+      containers:
+      - name: container
+        image: kubetm/app
+        ports:
+        - containerPort: 8080
+          hostPort: 18080
+</code></pre>
+
+<h3 id="command">Command</h3>
+
+<pre><code class="language-sh">curl 192.168.0.31:18080/hostname
+</code></pre>
+
+<h2 id="1-2-daemonset-nodeselector">1-2) DaemonSet - NodeSelector</h2>
+
+<h3 id="daemonset-1">DaemonSet</h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonset-2
+spec:
+  selector:&hellip;</code></pre>
+  <footer>
+    <a href="/practice/beginner/controller-daemonset_job_cronjob/" class="button big">본문 보기</a>
+    
+
+  </footer>
+</article>
+
+        
+          <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2>Deployment</h2>
+    
+    
+        <p>[3. 컨트롤러]</p>
+    
+    
+    	</br>
+  		</button><a href="/documents/beginner/Deployment.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
+    
+</div>
+
+  <div class="meta">
+    <time class="published" datetime="2019-11-08 00:00:00 &#43;0000 UTC">
+      November 8, 2019
+    </time>
+    <span class="author">KubeTM</span>
+    
+      <p>1 minute read</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  
+  <footer>
+    <a href="/practice/beginner/controller-deployment/" class="button big">본문 보기</a>
+    
+
+  </footer>
+</article>
+
+        
+          <article class="post">
+  <header>
+  <div class="title">
+    
         <h2>Replication Controller, ReplicaSet</h2>
     
     
@@ -264,92 +375,6 @@ spec:
         image: kubetm/app:v1&hellip;</code></pre>
   <footer>
     <a href="/practice/beginner/controller-replicationcontroller_replicaset/" class="button big">본문 보기</a>
-    
-
-  </footer>
-</article>
-
-        
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2>Namespace, ResourceQuota, LimitRange</h2>
-    
-    
-        <p>[2. 기본 오브젝트]</p>
-    
-    
-    	</br>
-  		</button><a href="/documents/beginner/Namespace_ResourceQuota_LimitRange.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
-    
-</div>
-
-  <div class="meta">
-    <time class="published" datetime="2019-11-06 00:00:00 &#43;0000 UTC">
-      November 6, 2019
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>2 minutes read</p>
-    
-  </div>
-</header>
-
-  
-  <a href="/practice/beginner/object-namespace_resourcequota_limitrange/" class="image featured">
-    <img src="/img/practice/beginner/Namespace,%20ResourceQuota,%20LimitRange%20for%20Kubernetes.jpg" alt="Namespace, ResourceQuota, LimitRange for Kubernetes">
-  </a>
-
-
-  
-  <p><br/>
-<br/></p>
-  <footer>
-    <a href="/practice/beginner/object-namespace_resourcequota_limitrange/" class="button big">본문 보기</a>
-    
-
-  </footer>
-</article>
-
-        
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2>ConfigMap, Secret</h2>
-    
-    
-        <p>[Env(Literal, File), Mount(File)]</p>
-    
-    
-    	</br>
-  		</button><a href="/documents/beginner/Configmapt_Secret.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
-    
-</div>
-
-  <div class="meta">
-    <time class="published" datetime="2019-11-05 00:00:00 &#43;0000 UTC">
-      November 5, 2019
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>2 minutes read</p>
-    
-  </div>
-</header>
-
-  
-  <a href="/practice/beginner/object-configmap_secret/" class="image featured">
-    <img src="/img/practice/beginner/ConfigMap,%20Secret%20with%20Literal,%20File%20on%20Env,%20Mount%20for%20Kubernetes.jpg" alt="ConfigMap, Secret with Literal, File on Env, Mount for Kubernetes">
-  </a>
-
-
-  
-  <p><br/>
-<br/></p>
-  <footer>
-    <a href="/practice/beginner/object-configmap_secret/" class="button big">본문 보기</a>
     
 
   </footer>

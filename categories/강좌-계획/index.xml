@@ -6,10 +6,19 @@
     <description>Recent content in 강좌 계획 on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 14 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>6월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2020_06/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2020_06/</guid>
+      <description> -6일- [CKA] 1.18 버전 업데이트  1.18 링크 페이지 수정 Deployment 생성 명령 수정  </description>
+    </item>
     
     <item>
       <title>4월 진행사항</title>
