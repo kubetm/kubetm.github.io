@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2019-11-04T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-04T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="205">
+<meta itemprop="wordCount" content="268">
 
 
 
@@ -225,7 +225,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>1 minute read</p>
+      <p>2 minutes read</p>
     
   </div>
 </header>
@@ -476,6 +476,55 @@ spec:
   - name : pvc-pv
     persistentVolumeClaim:
       claimName: pvc-01
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="pv-pvc를-label과-selector를-이용해-연결하는-방법">PV-PVC를 label과 selector를 이용해 연결하는 방법</h2>
+
+<hr />
+
+<h3 id="3-1-persistentvolume-1">3-1) PersistentVolume</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-03
+  labels:
+    pv: pv-03
+spec:
+  capacity:
+    storage: 2G
+  accessModes:
+  - ReadWriteOnce
+  local:
+    path: /node-v
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - {key: kubernetes.io/hostname, operator: In, values: [k8s-node1]}
+</code></pre>
+
+<h3 id="3-2-persistentvolumeclaim-1">3-2) PersistentVolumeClaim</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-04
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1G
+  storageClassName: &quot;&quot;
+  selector:
+    matchLabels:
+      pv: pv-03
 </code></pre>
 
 <p><br/>

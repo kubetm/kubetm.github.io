@@ -136,13 +136,10 @@ Headless  1-1) Service apiVersion: v1 kind: Service metadata: name: clusterip1 s
       <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/appendix/installation_case3/</guid>
-      <description>구글 클라우드 플랫폼을 이용해서 VM을 만드는 경우   
+      <description>2020-06-13 자료실 내용 업데이트 되었습니다. 기본적으로 영상을 따라가시면서 하시되 상세한 설정 내용은 자료실 내용을 참고 하시면 되세요.  
  1-1) Join GCP 1-1-1) Join 아래 사이트에 들어가서 상단에 [무료로 시작하기] 버튼 클릭  &amp;gt;https://cloud.google.com/
 
-1) Country : South Korea 2) Terms of Service : 체크 후 [CONTINUE] 3) 이름 및 주소 확인 후 Payment method 입력  자신의 신용카드 번호를 입력하지만 크레딧을 다 소모하거나 12개월이 지나도 자동으로 결재가 되진 않습니다.
- 
-
-2-1) Create Cluster 2-1-1) Cluster 생성 Kubernetes Engine &amp;gt; Clusters &amp;gt; [CREATE CLUSTER] 클릭</description>
+1) Country : South Korea 2) Terms of Service : 체크 후 [CONTINUE] 3) 이름 및 주소 확인 후 Payment method 입력  자신의 신용카드 번호를 입력하지만 크레딧을 다 소모하거나 12개월이 지나도 자동으로 결재가 되진 않습니다.</description>
     </item>
     
     <item>
