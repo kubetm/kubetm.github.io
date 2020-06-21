@@ -12,6 +12,30 @@
     
     
     <item>
+      <title>Case 5. 내PC &#43; VirtualBox (Network: NatNetwork &#43; Host-Only)</title>
+      <link>https://kubetm.github.io/practice/appendix/installation_case5/</link>
+      <pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/appendix/installation_case5/</guid>
+      <description>쿠버네티스 1.18. 버전의 설치 방법으로써 설치시 영상 강의 UI와 약간의 차이가 있을 수 있습니다.  VM 생성시 노트북에 연결되어 있는 공유기로부터 IP를 할당 받을 수 없는 경우 Virtualbox로부터 VM끼리 통신할 수 있는 가상의 네트워크를 생성하는 방법입니다.  
+전체 네트워크 구성   - NatNetwork : k8s-Master와 k8s-Node들간에 통신역할 및 인터넷으로부터 파일을 다운로드 받을 수 있게 해주는 역할  - VirtualBox Host-Only : 내 Host OS에서 각 Guest OS에 연결 할 수 있도록 해주는 역할</description>
+    </item>
+    
+    <item>
+      <title>Case 4. 내PC &#43; VirtualBox (Network: Bridge)</title>
+      <link>https://kubetm.github.io/practice/appendix/installation_case4/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/appendix/installation_case4/</guid>
+      <description>쿠버네티스 1.18. 버전의 설치 방법으로써 설치시 영상 강의 UI와 약간의 차이가 있을 수 있습니다.  VM 생성시 노트북에 연결되어 있는 공유기로부터 IP를 할당 받을 수 있을 경우의 설치 방법입니다.  
+ 1-1) Install Virtualbox 1-1-1) virtualbox 다운로드 및 설치 [윈도우10 버전으로 진행] 아래 경로에서 [Windows hosts] 클릭 하여 다운로드 후 설치 (별다른 변경없이 Next만 함)  &amp;gt;https://www.virtualbox.org/wiki/Downloads
+
+Mac 사용자 참고 URL  &amp;gt;https://www.virtualbox.org/wiki/Mac%20OS%20X%20build%20instructions
+
+1-1-2) CentOS Download 아래 경로로 들어가서 원하는 경로에서 Minimal 버전의 파일 다운로드  &amp;gt;http://isoredirect.</description>
+    </item>
+    
+    <item>
       <title>Kubernetes Dashboard</title>
       <link>https://kubetm.github.io/practice/intermediate/object-dashboard/</link>
       <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
@@ -148,20 +172,6 @@ Headless  1-1) Service apiVersion: v1 kind: Service metadata: name: clusterip1 s
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/appendix/installation_case2/</guid>
-      <description>윈도우나 맥이 설치되어 있는 Desktop가 1대 있고, 그위에 VirtualBox와 같은 도구를 이용해서 VM을 만드는 경우   
- 1-1) Install Virtualbox 1-1-1) virtualbox 다운로드 및 설치 [윈도우10 버전으로 진행] 아래 경로에서 [Windows hosts] 클릭 하여 다운로드 후 설치 (별다른 변경없이 Next만 함)  &amp;gt;https://www.virtualbox.org/wiki/Downloads
-
-Mac 사용자 참고 URL  &amp;gt;https://www.virtualbox.org/wiki/Mac%20OS%20X%20build%20instructions
-
-1-1-2) CentOS Download 아래 경로로 들어가서 원하는 경로에서 Minimal 버전의 파일 다운로드  &amp;gt;http://isoredirect.centos.org/centos/7/isos/x86_64/</description>
-    </item>
-    
-    <item>
-      <title>Case 4. 내PC &#43; VirtualBox</title>
-      <link>https://kubetm.github.io/practice/appendix/installation_case4/</link>
-      <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kubetm.github.io/practice/appendix/installation_case4/</guid>
       <description>윈도우나 맥이 설치되어 있는 Desktop가 1대 있고, 그위에 VirtualBox와 같은 도구를 이용해서 VM을 만드는 경우   
  1-1) Install Virtualbox 1-1-1) virtualbox 다운로드 및 설치 [윈도우10 버전으로 진행] 아래 경로에서 [Windows hosts] 클릭 하여 다운로드 후 설치 (별다른 변경없이 Next만 함)  &amp;gt;https://www.virtualbox.org/wiki/Downloads
 

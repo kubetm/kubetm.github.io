@@ -36,7 +36,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://kubetm.github.io/" />
 
-<meta property="og:updated_time" content="2020-06-06T00:00:00+00:00" />
+<meta property="og:updated_time" content="2020-06-21T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="KubeTM Blog with Kubernetes"/>
@@ -204,6 +204,114 @@
   <header>
   <div class="title">
     
+        <h2>Deployment</h2>
+    
+    
+        <p>[3. 컨트롤러]</p>
+    
+    
+    	</br>
+  		</button><a href="/documents/beginner/Deployment.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
+    
+</div>
+
+  <div class="meta">
+    <time class="published" datetime="2019-11-08 00:00:00 &#43;0000 UTC">
+      November 8, 2019
+    </time>
+    <span class="author">KubeTM</span>
+    
+      <p>1 minute read</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  
+  <footer>
+    <a href="/practice/beginner/controller-deployment/" class="button big">본문 보기</a>
+    
+
+  </footer>
+</article>
+
+        
+          <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2>Replication Controller, ReplicaSet</h2>
+    
+    
+        <p>[3. 컨트롤러]</p>
+    
+    
+    	</br>
+  		</button><a href="/documents/beginner/ReplicaSet.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
+    
+</div>
+
+  <div class="meta">
+    <time class="published" datetime="2019-11-07 00:00:00 &#43;0000 UTC">
+      November 7, 2019
+    </time>
+    <span class="author">KubeTM</span>
+    
+      <p>1 minute read</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  <pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+  labels:
+    type: web
+spec:
+  containers:
+  - name: container
+    image: kubetm/app:v1
+  terminationGracePeriodSeconds: 0
+</code></pre>
+
+<h3 id="replicaset">ReplicaSet</h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replica1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: web
+  template:
+    metadata:
+      name: pod1
+      labels:
+        type: web
+    spec:
+      containers:
+      - name: container
+        image: kubetm/app:v1&hellip;</code></pre>
+  <footer>
+    <a href="/practice/beginner/controller-replicationcontroller_replicaset/" class="button big">본문 보기</a>
+    
+
+  </footer>
+</article>
+
+        
+          <article class="post">
+  <header>
+  <div class="title">
+    
         <h2>Namespace, ResourceQuota, LimitRange</h2>
     
     
@@ -237,92 +345,6 @@
 <br/></p>
   <footer>
     <a href="/practice/beginner/object-namespace_resourcequota_limitrange/" class="button big">본문 보기</a>
-    
-
-  </footer>
-</article>
-
-        
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2>ConfigMap, Secret</h2>
-    
-    
-        <p>[Env(Literal, File), Mount(File)]</p>
-    
-    
-    	</br>
-  		</button><a href="/documents/beginner/Configmapt_Secret.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
-    
-</div>
-
-  <div class="meta">
-    <time class="published" datetime="2019-11-05 00:00:00 &#43;0000 UTC">
-      November 5, 2019
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>2 minutes read</p>
-    
-  </div>
-</header>
-
-  
-  <a href="/practice/beginner/object-configmap_secret/" class="image featured">
-    <img src="/img/practice/beginner/ConfigMap,%20Secret%20with%20Literal,%20File%20on%20Env,%20Mount%20for%20Kubernetes.jpg" alt="ConfigMap, Secret with Literal, File on Env, Mount for Kubernetes">
-  </a>
-
-
-  
-  <p><br/>
-<br/></p>
-  <footer>
-    <a href="/practice/beginner/object-configmap_secret/" class="button big">본문 보기</a>
-    
-
-  </footer>
-</article>
-
-        
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2>Volume</h2>
-    
-    
-        <p>[emptyDir, hostPath, PV/PVC]</p>
-    
-    
-    	</br>
-  		</button><a href="/documents/beginner/Volume.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
-    
-</div>
-
-  <div class="meta">
-    <time class="published" datetime="2019-11-04 00:00:00 &#43;0000 UTC">
-      November 4, 2019
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>2 minutes read</p>
-    
-  </div>
-</header>
-
-  
-  <a href="/practice/beginner/object-volume/" class="image featured">
-    <img src="/img/practice/beginner/Volume%20with%20emptyDir,%20hostPath,%20PV,%20PVC,%20for%20Kubernetes.jpg" alt="Volume with emptyDir, hostPath, PV, PVC for Kubernetes">
-  </a>
-
-
-  
-  <p><br/>
-<br/></p>
-  <footer>
-    <a href="/practice/beginner/object-volume/" class="button big">본문 보기</a>
     
 
   </footer>

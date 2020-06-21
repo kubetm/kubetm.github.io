@@ -17,7 +17,9 @@
       <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2020_06/</guid>
-      <description> -6일- [CKA] 1.18 버전 업데이트  1.18 링크 페이지 수정 Deployment 생성 명령 수정  </description>
+      <description> -22일- [설치] 1.18 버전 쿠버네티스 설치 자료실 업데이트  VirtualBox Network : NatNetwork 모드 + Host Only 모드  
+-10일- [설치] 1.18 버전 쿠버네티스 설치 자료실 업데이트  VirtualBox Network : Bridge 모드   
+-6일- [CKA] 1.18 버전 업데이트  1.18 링크 페이지 수정 Deployment 생성 명령 수정  </description>
     </item>
     
     <item>

@@ -6,10 +6,20 @@
     <description>Recent content in 유용한 정보 on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 24 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EC%A0%95%EB%B3%B4/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kubernetes CNCF Webinar</title>
+      <link>https://kubetm.github.io/info/youtube-kubernetes_cncf_webinar/</link>
+      <pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/youtube-kubernetes_cncf_webinar/</guid>
+      <description>Youtube URL : https://www.youtube.com/channel/UCvqbFHwN-nwalWPjPUKpvTA   
+Multi-Tenant Kubernetes Cluser를 운영하기 위해 고려할 사항    Namespace per Tenant Node per Tenant Cluster per Tenant</description>
+    </item>
     
     <item>
       <title>Kubernetes Forum Seoul 2019</title>

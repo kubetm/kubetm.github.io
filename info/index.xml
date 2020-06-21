@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Kubernetes CNCF Webinar</title>
+      <link>https://kubetm.github.io/info/youtube-kubernetes_cncf_webinar/</link>
+      <pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/youtube-kubernetes_cncf_webinar/</guid>
+      <description>Youtube URL : https://www.youtube.com/channel/UCvqbFHwN-nwalWPjPUKpvTA   
+Multi-Tenant Kubernetes Cluser를 운영하기 위해 고려할 사항    Namespace per Tenant Node per Tenant Cluster per Tenant</description>
+    </item>
+    
+    <item>
       <title>Kubernetes Forum Seoul 2019</title>
       <link>https://kubetm.github.io/info/youtube-kubernetes_forum_seoul1-2019/</link>
       <pubDate>Tue, 24 Mar 2020 00:00:00 +0000</pubDate>
