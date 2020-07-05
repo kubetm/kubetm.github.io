@@ -6,10 +6,22 @@
     <description>Recent content in [인프런] 강좌 계획 on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/plan/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>7월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2020_07/</link>
+      <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2020_07/</guid>
+      <description>  
+-3일- [아키텍쳐편] Storage PPT 50% Blog 0% Recording 0%
+ 개념 정리   -2일- [아키텍쳐편] Storage PPT 20% Blog 0% Recording 0%
+ 개념 정리   </description>
+    </item>
     
     <item>
       <title>6월 진행사항</title>
