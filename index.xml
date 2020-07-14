@@ -6,10 +6,25 @@
     <description>Recent content on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Storage Architecture</title>
+      <link>https://kubetm.github.io/practice/architecture/storage/</link>
+      <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/architecture/storage/</guid>
+      <description>1. FTP Server 구축 1-1) NFS 패키지 다운 및 설치 설치
+yum -y install nfs-utils rpcbind systemctl start rpcbind systemctl start nfs-server systemctl start rpc-statd systemctl enable rpcbind systemctl enable nfs-server  확인
+systemctl status nfs-server  
+1-2) 공유 폴더 생성 및 설정 공유 폴더 생성
+mkdir /share-data chmod 777 /share-data  vi /etc/exports 로 아래 내용 입력 후 저장
+/share-data *(rw,sync,no_root_squash)  반영
+exportfs -r  방화벽 해제 및 NFS Server재시작</description>
+    </item>
     
     <item>
       <title>7월 진행사항</title>
@@ -18,8 +33,11 @@
       
       <guid>https://kubetm.github.io/plan/2020_07/</guid>
       <description>  
+-13일- [아키텍쳐편] Storage PPT 70% Blog 50% Recording 0%
+ 개념 정리   
 -3일- [아키텍쳐편] Storage PPT 50% Blog 0% Recording 0%
- 개념 정리   -2일- [아키텍쳐편] Storage PPT 20% Blog 0% Recording 0%
+ 개념 정리   
+-2일- [아키텍쳐편] Storage PPT 20% Blog 0% Recording 0%
  개념 정리   </description>
     </item>
     
@@ -146,9 +164,9 @@ Running gRPC Services for Serving Legacy RESTful API    why gRPC How to Support 
       
       <guid>https://kubetm.github.io/practice/intermediate/controller-autoscaler_hpa/</guid>
       <description>1. Metrics Server 설치 1-1) Metrics Server 다운 및 설치 설치
-yum -y install git git clone https://github.com/kubernetes-sigs/metrics-server.git cd metrics-server kubectl apply -f deploy/kubernetes/   Metrics Deployment 수정 (args 에 kubelet-insecure-tls 와 kubelet-preferred-address-types=InternalIP 추가)
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml   Metrics Deployment 수정 (args 에 kubelet-insecure-tls 와 kubelet-preferred-address-types=InternalIP 추가)
 kubectl edit deployment metrics-server -n kube-system ------------------------ spec: containers: - args: - --cert-dir=/tmp - --secure-port=4443 - --kubelet-insecure-tls - --kubelet-preferred-address-types=InternalIP image: k8s.gcr.io/metrics-server-amd64:v0.3.6 imagePullPolicy: IfNotPresent name: metrics-server ------------------------   설치 확인 (True값 확인)
-kubectl get apiservices |egrep metrics ------------------------ v1beta1.</description>
+kubectl get apiservices |egrep metrics ------------------------ v1beta1.metrics.k8s.io kube-system/metrics-server True 28m ------------------------   메트릭 값 확인 (1~2분 후)</description>
     </item>
     
     <item>

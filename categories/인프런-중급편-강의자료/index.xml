@@ -52,9 +52,9 @@ https://192.168.0.30:6443/api/v1/nodes  Settings &amp;gt; General &amp;gt; SSL c
       
       <guid>https://kubetm.github.io/practice/intermediate/controller-autoscaler_hpa/</guid>
       <description>1. Metrics Server 설치 1-1) Metrics Server 다운 및 설치 설치
-yum -y install git git clone https://github.com/kubernetes-sigs/metrics-server.git cd metrics-server kubectl apply -f deploy/kubernetes/   Metrics Deployment 수정 (args 에 kubelet-insecure-tls 와 kubelet-preferred-address-types=InternalIP 추가)
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml   Metrics Deployment 수정 (args 에 kubelet-insecure-tls 와 kubelet-preferred-address-types=InternalIP 추가)
 kubectl edit deployment metrics-server -n kube-system ------------------------ spec: containers: - args: - --cert-dir=/tmp - --secure-port=4443 - --kubelet-insecure-tls - --kubelet-preferred-address-types=InternalIP image: k8s.gcr.io/metrics-server-amd64:v0.3.6 imagePullPolicy: IfNotPresent name: metrics-server ------------------------   설치 확인 (True값 확인)
-kubectl get apiservices |egrep metrics ------------------------ v1beta1.</description>
+kubectl get apiservices |egrep metrics ------------------------ v1beta1.metrics.k8s.io kube-system/metrics-server True 28m ------------------------   메트릭 값 확인 (1~2분 후)</description>
     </item>
     
     <item>

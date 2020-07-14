@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>인프런 아키텍쳐편 강의자료 on KubeTM Blog with Kubernetes</title>
+    <link>https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/</link>
+    <description>Recent content in 인프런 아키텍쳐편 강의자료 on KubeTM Blog with Kubernetes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 13 Jul 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Storage Architecture</title>
+      <link>https://kubetm.github.io/practice/architecture/storage/</link>
+      <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/architecture/storage/</guid>
+      <description>1. FTP Server 구축 1-1) NFS 패키지 다운 및 설치 설치
+yum -y install nfs-utils rpcbind systemctl start rpcbind systemctl start nfs-server systemctl start rpc-statd systemctl enable rpcbind systemctl enable nfs-server  확인
+systemctl status nfs-server  
+1-2) 공유 폴더 생성 및 설정 공유 폴더 생성
+mkdir /share-data chmod 777 /share-data  vi /etc/exports 로 아래 내용 입력 후 저장
+/share-data *(rw,sync,no_root_squash)  반영
+exportfs -r  방화벽 해제 및 NFS Server재시작</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2019-11-02T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-02T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="420">
+<meta itemprop="wordCount" content="483">
 
 
 
@@ -225,7 +225,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
@@ -471,6 +471,17 @@ spec:
         memory: 2Gi
       limits:
         memory: 3Gi
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="cpu와-memory의-request-limits-에-대한-강의-내용-보충">CPU와 Memory의 (request, limits)에 대한 강의 내용 보충</h3>
+
+<pre><code class="language-yaml">CPU가 limits 수치까지 올라갔다고 해서 무조건 Request 수치까지 core를 낮추는 것이 아니고,
+Node의 전체 부하 상태가 OverCommit된 상태일때 동작합니다.
+Node 위의 Pod들이 Node의 자원을 모두 사용하고도 그 이상을 자원을 요구하게 되었을 때
+Limit 수치까지 CPU를 사용하고 있는 Pod들에 한해서 그 수치를 Reqeust까지 떨어뜨리게 되며
+Memory의 경우에도 그러한 상태일때 Limit까지 올라간 Pod들에 한해 재기동 시키게 됩니다. 
 </code></pre>
 
 <p><br/>

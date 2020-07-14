@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-03-10T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-03-10T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="459">
+<meta itemprop="wordCount" content="450">
 
 
 
@@ -264,10 +264,7 @@
 
 <p>설치</p>
 
-<pre><code class="language-sh">yum -y install git
-git clone https://github.com/kubernetes-sigs/metrics-server.git
-cd metrics-server
-kubectl apply -f deploy/kubernetes/
+<pre><code class="language-sh">kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 </code></pre>
 
 <p><br/>
