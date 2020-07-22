@@ -28,19 +28,19 @@
 
   <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="Storage Architecture">
-<meta itemprop="description" content="[FileStorage(NFS), BlockStorage(StorageOS)]">
+<meta itemprop="description" content="[FileStorage(NFS), BlockStorage(Longhorn)]">
 
 
 <meta itemprop="datePublished" content="2020-07-13T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-07-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="187">
+<meta itemprop="wordCount" content="273">
 
 
 
 <meta itemprop="keywords" content="" />
 
   <meta property="og:title" content="Storage Architecture" />
-<meta property="og:description" content="[FileStorage(NFS), BlockStorage(StorageOS)]" />
+<meta property="og:description" content="[FileStorage(NFS), BlockStorage(Longhorn)]" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kubetm.github.io/practice/architecture/storage/" />
 <meta property="article:published_time" content="2020-07-13T00:00:00+00:00" />
@@ -48,7 +48,7 @@
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Storage Architecture"/>
-<meta name="twitter:description" content="[FileStorage(NFS), BlockStorage(StorageOS)]"/>
+<meta name="twitter:description" content="[FileStorage(NFS), BlockStorage(Longhorn)]"/>
 
   
 
@@ -211,7 +211,7 @@
         <h2>Storage Architecture</h2>
     
     
-        <p>[FileStorage(NFS), BlockStorage(StorageOS)]</p>
+        <p>[FileStorage(NFS), BlockStorage(Longhorn)]</p>
     
     
 </div>
@@ -222,7 +222,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>1 minute read</p>
+      <p>2 minutes read</p>
     
   </div>
 </header>
@@ -374,6 +374,79 @@ spec:
 
 <hr />
 
+<h2 id="3-longhorn-구축">3. Longhorn 구축</h2>
+
+<hr />
+
+<h3 id="3-1-모든-master-work-node에-iscsi-설치">3-1) 모든 Master/Work Node에 iscsi 설치</h3>
+
+<pre><code class="language-sh">yum install iscsi-initiator-utils
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="3-2-longhorn-설치">3-2) Longhorn 설치</h3>
+
+<pre><code class="language-sh">kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/master/deploy/longhorn.yaml
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="3-3-확인">3-3) 확인</h3>
+
+<pre><code class="language-sh">kubectl get pods -n longhorn-system
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="4-longhorn-volume에-pod-연결">4. Longhorn Volume에 POD 연결</h2>
+
+<hr />
+
+<h3 id="4-1-persistentvolumeclaim">4-1) PersistentVolumeClaim</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: longhorn-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 1Gi
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="4-2-pod">4-2) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-blockstorage
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+    volumeMounts:
+    - name: volume-blockstorage
+      mountPath: /longhorn/data
+  volumes:
+  - name : volume-blockstorage
+    persistentVolumeClaim:
+      claimName: longhorn-pvc
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="referenece">Referenece</h2>
 
 <hr />
@@ -384,6 +457,14 @@ spec:
 <li><strong>PV Access Mode</strong> : <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes</a></li>
 <li><strong>PV Provisioner</strong> : <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner">https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner</a></li>
 <li><strong>CSI Developer Documentation</strong> : <a href="https://kubernetes-csi.github.io/docs/">https://kubernetes-csi.github.io/docs/</a>
+<br /></li>
+</ul>
+
+<h3 id="others">* <strong>Others</strong></h3>
+
+<ul>
+<li><strong>Install Longhorn</strong> : <a href="https://longhorn.io/docs/0.8.1/deploy/install/install-with-kubectl/">https://longhorn.io/docs/0.8.1/deploy/install/install-with-kubectl/</a>
+
 <br />
 <br /></li>
 </ul>
