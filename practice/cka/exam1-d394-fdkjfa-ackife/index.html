@@ -885,7 +885,7 @@ spec:
 kubectl create deploy-01.yaml
 </code></pre>
 
-<pre><code class="language-sh">kubectl set image deployment/deploy-01 deploy-01=nginx:1.16.1 --record
+<pre><code class="language-sh">kubectl set image deployment/deploy-01 nginx=nginx:1.16.1 --record
 kubectl rollout undo deployment.v1.apps/deploy-01
 </code></pre>
 
