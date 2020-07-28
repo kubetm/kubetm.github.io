@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-06-01T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-06-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1202">
+<meta itemprop="wordCount" content="1176">
 
 
 
@@ -893,12 +893,9 @@ echo &quot;source &lt;(kubectl completion bash)&quot; &gt;&gt; ~/.bashrc
 <p>Kubernetes Cluster Networking에는 많은 Plugin들이 있는데 그중 Calico 설치에 대한 내용 입니다.
 <br/>
 &gt;<a href="https://docs.projectcalico.org/v3.9/getting-started/kubernetes/">https://docs.projectcalico.org/v3.9/getting-started/kubernetes/</a>
-<br/>
-Calico는 기본 192.168.0.0/16 대역으로 설치가 되는데, 그럼  실제 VM이 사용하고 있는 대역대와 겹치기 때문에 수정을 해서 설치해야 할 경우</p>
+<br/></p>
 
-<pre><code class="language-sh">curl -O https://docs.projectcalico.org/manifests/calico.yaml
-sed s/192.168.0.0\\/16/20.96.0.0\\/12/g -i calico.yaml
-kubectl apply -f calico.yaml
+<pre><code class="language-sh">kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 </code></pre>
 
 <p>calico와 coredns 관련 Pod의 Status가 Running인지 확인</p>
