@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-07-13T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-07-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="330">
+<meta itemprop="wordCount" content="352">
 
 
 
@@ -444,6 +444,37 @@ spec:
 <pre><code class="language-sh">kubectl get pods -n longhorn-system
 </code></pre>
 
+<p><br/></p>
+
+<h3 id="3-4-기존-longhorn-storageclass-삭제-및-재생성">3-4) 기존 Longhorn StorageClass 삭제 및 재생성</h3>
+
+<pre><code class="language-sh">kubectl get storageclasses.storage.k8s.io -n longhorn-system longhorn
+kubectl delete storageclasses.storage.k8s.io -n longhorn-system longhorn
+</code></pre>
+
+<pre><code class="language-yaml">cat &lt;&lt;EOF | kubectl create -f -
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: longhorn
+provisioner: driver.longhorn.io
+allowVolumeExpansion: true
+parameters:
+  numberOfReplicas: &quot;2&quot;
+  staleReplicaTimeout: &quot;2880&quot;
+  fromBackup: &quot;&quot;
+EOF
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="3-5-longhorn-dashboard-접속을-위한-port-type변경">3-5) Longhorn Dashboard 접속을 위한 Port Type변경</h3>
+
+<p>Service Type 변경 [ClusterIP -&gt; NodePort]</p>
+
+<pre><code class="language-sh">kubectl edit svc -n longhorn-system longhorn-frontend
+</code></pre>
+
 <p><br/>
 <br/></p>
 
@@ -485,26 +516,7 @@ spec:
 
 
 
-<h3 id="4-1-기존-longhorn-storageclass-삭제-및-재생성">4-1) 기존 Longhorn StorageClass 삭제 및 재생성</h3>
-
-<pre><code class="language-sh">kubectl delete storageclasses.storage.k8s.io -n longhorn-system longhorn
-</code></pre>
-
-<pre><code class="language-yaml">kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: longhorn
-provisioner: driver.longhorn.io
-allowVolumeExpansion: true
-parameters:
-  numberOfReplicas: &quot;2&quot;
-  staleReplicaTimeout: &quot;2880&quot;
-  fromBackup: &quot;&quot;
-</code></pre>
-
-<p><br/></p>
-
-<h3 id="4-2-persistentvolumeclaim">4-2) PersistentVolumeClaim</h3>
+<h3 id="4-1-persistentvolumeclaim">4-1) PersistentVolumeClaim</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: PersistentVolumeClaim
@@ -521,16 +533,14 @@ spec:
 
 <p><br/></p>
 
-<h3 id="4-3-longhorn-dashboard-접속">4-3) Longhorn Dashboard 접속</h3>
+<h3 id="4-2-longhorn-dashboard-접속">4-2) Longhorn Dashboard 접속</h3>
 
-<p>Service Type 변경 [ClusterIP -&gt; NodePort]</p>
-
-<pre><code class="language-sh">kubectl edit svc -n longhorn-system longhorn-frontend
+<pre><code class="language-sh">http://localhost:30001
 </code></pre>
 
 <p><br/></p>
 
-<h3 id="4-4-pod">4-4) Pod</h3>
+<h3 id="4-3-pod">4-3) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -551,7 +561,7 @@ spec:
 
 <p><br/></p>
 
-<h3 id="4-5-longhorn-storageclass-확인">4-5) Longhorn StorageClass 확인</h3>
+<h3 id="4-4-longhorn-volumeattachments-확인">4-4) Longhorn Volumeattachments 확인</h3>
 
 <pre><code class="language-sh">kubectl get -n longhorn-system volumeattachments.storage.k8s.io
 </code></pre>
