@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-04-24T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-04-24T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="180">
+<meta itemprop="wordCount" content="202">
 
 
 
@@ -383,9 +383,16 @@ spec:
 
 <h3 id="1-4-https-api-호출-token">1-4) Https API 호출 (Token)</h3>
 
+<p>case1) postman</p>
+
 <p><code>header</code> Authorization : Bearer TOKEN</p>
 
 <pre><code class="language-sh">https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
+</code></pre>
+
+<p>case2) curl</p>
+
+<pre><code class="language-sh">curl -k -H &quot;Authorization: Bearer TOKEN&quot; https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
 </code></pre>
 
 <p><br/>
@@ -476,9 +483,16 @@ subjects:
 
 <h3 id="2-5-https-api-호출-token">2-5) Https API 호출 (Token)</h3>
 
+<p>case1) postman</p>
+
 <p><code>header</code> Authorization : Bearer TOKEN</p>
 
 <pre><code class="language-sh">https://192.168.0.30:6443/api/v1/namespaces/nm-01/service
+</code></pre>
+
+<p>case2) curl</p>
+
+<pre><code class="language-sh">curl -k -H &quot;Authorization: Bearer TOKEN&quot; https://192.168.0.30:6443/api/v1/namespaces/nm-01/service
 </code></pre>
 
 <p><br/>
