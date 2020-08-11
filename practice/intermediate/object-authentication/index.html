@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-04-24T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-04-24T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="328">
+<meta itemprop="wordCount" content="330">
 
 
 
@@ -539,9 +539,7 @@ EOF
 
 <h3 id="3-4-https-api-호출-token">3-4) Https API 호출 (Token)</h3>
 
-<ul>
-<li>http</li>
-</ul>
+<p>case1) http</p>
 
 <p><code>header</code> Authorization : Bearer TOKEN</p>
 
@@ -549,13 +547,11 @@ EOF
 https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
 </code></pre>
 
-<ul>
-<li><p>curl</p>
+<p>case2) curl</p>
 
 <pre><code class="language-sh">curl -k -H &quot;Authorization: Bearer TOKEN&quot; https://192.168.0.30:6443/api/v1
 curl -k -H &quot;Authorization: Bearer TOKEN&quot; https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
-</code></pre></li>
-</ul>
+</code></pre>
 
 <p><br/>
 <br/></p>
