@@ -17,12 +17,27 @@
       <pubDate>Wed, 05 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2020_08/</guid>
-      <description>-19일- [아키텍쳐편] Networking PPT 30% Blog 0% Recording 0%
+      <description>-28일- [아키텍쳐편] Networking PPT 70% Blog 40% Recording 0%
+ 이론편 내용 정리 및 블로그 업데이트   
+-25일- [아키텍쳐편] Networking PPT 60% Blog 0% Recording 0%
+ 이론편 내용 정리   
+-19일- [아키텍쳐편] Networking PPT 30% Blog 0% Recording 0%
  이론편 내용 정리   
 -8일- [아키텍쳐편] Storage PPT 100% Blog 100% Recording 100%
- 실습편 편집 및 업로드   
--3일- [아키텍쳐편] Storage PPT 100% Blog 100% Recording 80%
- 스크립팅 및 실습편 녹음</description>
+ 실습편 편집 및 업로드</description>
+    </item>
+    
+    <item>
+      <title>Networking Architecture</title>
+      <link>https://kubetm.github.io/practice/architecture/networking/</link>
+      <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/architecture/networking/</guid>
+      <description>1. Pod Network - Pause Container 1-1) Pause Container apiVersion: v1 kind: Pod metadata: name: pod-pause spec: nodeSelector: kubernetes.io/hostname: k8s-node1 containers: - name: container1 image: kubetm/p8000 ports: - containerPort: 8000 - name: container2 image: kubetm/p8080 ports: - containerPort: 8080  Pause Container 확인
+docker ps  
+1-2) Calico Interface 확인 route 명령 설치
+yum -y install net-tools  
+route으로 Pod IP와 연결 되어 있는 인터페이스 확인</description>
     </item>
     
     <item>
