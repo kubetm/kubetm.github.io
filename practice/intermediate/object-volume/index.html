@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2019-11-21T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="561">
+<meta itemprop="wordCount" content="603">
 
 
 
@@ -424,7 +424,7 @@ END
 <pre><code class="language-sh">kubectl get all -n storageos
 </code></pre>
 
-<p>Dashboard 접속을 위한 Service 수정</p>
+<p>Dashboard 접속을 위한 Service 수정 (방법 1)</p>
 
 <pre><code class="language-sh">kubectl edit service storageos -n storageos
 </code></pre>
@@ -441,6 +441,30 @@ END
 <p>접속</p>
 
 <pre><code>http://192.168.0.30:5705/
+</code></pre>
+
+<p><br/></p>
+
+<p>Dashboard 접속을 위한 Service 수정 (방법 2)</p>
+
+<pre><code class="language-sh">kubectl edit service storageos -n storageos
+</code></pre>
+
+<p>type을  <code>NodePort</code>로 변경</p>
+
+<pre><code class="language-yaml">spec:
+  ports:
+  - name: storageos
+    port: 5705
+    protocol: TCP
+    targetPort: 5705
+    nodePort: 30705  # port 번호 추가
+  type: NodePort     # type 변경
+</code></pre>
+
+<p>접속</p>
+
+<pre><code>http://192.168.0.30:30705/
 </code></pre>
 
 <p><br/></p>
