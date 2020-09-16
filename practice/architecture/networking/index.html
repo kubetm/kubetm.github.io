@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-07-13T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-07-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="357">
+<meta itemprop="wordCount" content="365">
 
 
 
@@ -600,7 +600,14 @@ spec:
 
 <p><br/></p>
 
-<h3 id="4-2-트래픽-확인">4-2) 트래픽 확인</h3>
+<h3 id="4-2-nodeport-확인">4-2) nodeport 확인</h3>
+
+<pre><code class="language-sh">netstat -anp | grep 38080
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="4-3-트래픽-확인">4-3) 트래픽 확인</h3>
 
 <pre><code class="language-sh">tcpdump -i &lt;interface-name&gt;
 </code></pre>
