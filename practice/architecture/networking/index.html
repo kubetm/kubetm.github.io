@@ -331,6 +331,16 @@ spec:
 
 <p><br/></p>
 
+<p>Pause Container 인터페이스 확인</p>
+
+<pre><code class="language-sh">docker ps | grep pod-pause
+docker inspect &lt;container-id&gt; -f &quot;{{json .NetworkSettings}}&quot;
+sudo ln -s /var/run/docker/netns /var/run/netns
+ip netns exec &lt;SandboxKey&gt; ip a
+</code></pre>
+
+<p><br/></p>
+
 <h3 id="1-2-calico-interface-확인">1-2) Calico Interface 확인</h3>
 
 <p>route 명령 설치</p>
@@ -346,16 +356,6 @@ spec:
 <p><br/></p>
 
 <h3 id="1-3-pause-container-network-namespaces-확인">1-3) Pause Container Network Namespaces 확인</h3>
-
-<p>Pause Container 인터페이스 확인</p>
-
-<pre><code class="language-sh">docker ps | grep pod-pause
-docker inspect &lt;container-id&gt; -f &quot;{{json .NetworkSettings}}&quot;
-sudo ln -s /var/run/docker/netns /var/run/netns
-ip netns exec &lt;SandboxKey&gt; ip a
-</code></pre>
-
-<p><br/></p>
 
 <p>Pause Container와 타 Container간에 연결 확인</p>
 
