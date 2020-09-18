@@ -594,7 +594,7 @@ spec:
   ports:
   - port: 8080
     targetPort: 8080
-    nodePort: 38080
+    nodePort: 31080
   type: NodePort
 </code></pre>
 
@@ -602,7 +602,7 @@ spec:
 
 <h3 id="4-2-nodeport-확인">4-2) nodeport 확인</h3>
 
-<pre><code class="language-sh">netstat -anp | grep 38080
+<pre><code class="language-sh">netstat -anp | grep 31080
 </code></pre>
 
 <p><br/></p>
