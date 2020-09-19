@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-07-13T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-07-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="359">
+<meta itemprop="wordCount" content="369">
 
 
 
@@ -349,6 +349,11 @@ ip netns exec &lt;SandboxKey&gt; ip a
 <p>route으로 Pod IP와 연결 되어 있는 인터페이스 확인</p>
 
 <pre><code class="language-sh">route | grep cal
+</code></pre>
+
+<p>route로 확인된 가상인터페이스 ID가 호스트 네트워크에 있는지 확인</p>
+
+<pre><code class="language-sh">ip addr
 </code></pre>
 
 <p><br/></p>
