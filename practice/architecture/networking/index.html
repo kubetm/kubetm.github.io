@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-07-13T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-07-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="365">
+<meta itemprop="wordCount" content="359">
 
 
 
@@ -329,8 +329,6 @@ spec:
 <pre><code class="language-sh">docker ps | grep pod-pause
 </code></pre>
 
-<p><br/></p>
-
 <p>Pause Container 인터페이스 확인</p>
 
 <pre><code class="language-sh">docker ps | grep pod-pause
@@ -359,8 +357,7 @@ ip netns exec &lt;SandboxKey&gt; ip a
 
 <p>Pause Container와 타 Container간에 연결 확인</p>
 
-<pre><code class="language-sh">docker inspect &lt;container-id&gt; -f &quot;{{json .NetworkSettings}}&quot;
-docker inspect 9143f2963f54 -f &quot;{{json .HostConfig.NetworkMode}}&quot;
+<pre><code class="language-sh">docker inspect &lt;container-id&gt; -f &quot;{{json .HostConfig.NetworkMode}}&quot;
 </code></pre>
 
 <p>Docker Container NetworkMode</p>
@@ -417,7 +414,7 @@ kind: Pod
 metadata:
   name: pod-src
   labels:
-  type: src  
+    type: src  
 spec:
   nodeSelector:
     kubernetes.io/hostname: k8s-node2
@@ -437,7 +434,7 @@ kind: Pod
 metadata:
   name: pod-dest
   labels:
-  type: dest
+    type: dest
 spec:
   nodeSelector:
     kubernetes.io/hostname: k8s-node1

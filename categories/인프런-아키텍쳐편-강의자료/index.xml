@@ -18,8 +18,7 @@
       
       <guid>https://kubetm.github.io/practice/architecture/networking/</guid>
       <description>1. Pod Network - Pause Container  1-1) Pause Container apiVersion: v1 kind: Pod metadata: name: pod-pause spec: nodeSelector: kubernetes.io/hostname: k8s-node1 containers: - name: container1 image: kubetm/p8000 ports: - containerPort: 8000 - name: container2 image: kubetm/p8080 ports: - containerPort: 8080  Pause Container 확인
-docker ps | grep pod-pause  
-Pause Container 인터페이스 확인
+docker ps | grep pod-pause  Pause Container 인터페이스 확인
 docker ps | grep pod-pause docker inspect &amp;lt;container-id&amp;gt; -f &amp;quot;{{json .NetworkSettings}}&amp;quot; sudo ln -s /var/run/docker/netns /var/run/netns ip netns exec &amp;lt;SandboxKey&amp;gt; ip a</description>
     </item>
     
