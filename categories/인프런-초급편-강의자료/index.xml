@@ -27,7 +27,7 @@
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/appendix/installation_case4/</guid>
-      <description>쿠버네티스 1.18. 버전의 설치 방법으로써 설치시 영상 강의 UI와 약간의 차이가 있을 수 있습니다.  VM 생성시 노트북에 연결되어 있는 공유기로부터 IP를 할당 받을 수 있을 경우의 설치 방법입니다.  
+      <description>쿠버네티스 1.19 버전의 설치 방법으로써 설치시 영상 강의 UI와 약간의 차이가 있을 수 있습니다.  VM 생성시 노트북에 연결되어 있는 공유기로부터 IP를 할당 받을 수 있을 경우의 설치 방법입니다.  
  1-1) Install Virtualbox 1-1-1) virtualbox 다운로드 및 설치 [윈도우10 버전으로 진행] 아래 경로에서 [Windows hosts] 클릭 하여 다운로드 후 설치 (별다른 변경없이 Next만 함)  &amp;gt;https://www.virtualbox.org/wiki/Downloads
 
 Mac 사용자 참고 URL  &amp;gt;https://www.virtualbox.org/wiki/Mac%20OS%20X%20build%20instructions
