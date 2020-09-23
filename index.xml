@@ -91,7 +91,7 @@ exportfs -r  방화벽 해제 및 NFS Server재시작</description>
       <pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/appendix/installation_case5/</guid>
-      <description>쿠버네티스 1.18. 버전의 설치 방법으로써 설치시 영상 강의 UI와 약간의 차이가 있을 수 있습니다.  VM 생성시 노트북에 연결되어 있는 공유기로부터 IP를 할당 받을 수 없는 경우 Virtualbox로부터 VM끼리 통신할 수 있는 가상의 네트워크를 생성하는 방법입니다.  
+      <description>쿠버네티스 1.19 버전의 설치 방법으로써 설치시 영상 강의 UI와 약간의 차이가 있을 수 있습니다.  VM 생성시 노트북에 연결되어 있는 공유기로부터 IP를 할당 받을 수 없는 경우 Virtualbox로부터 VM끼리 통신할 수 있는 가상의 네트워크를 생성하는 방법입니다.  
 전체 네트워크 구성   - NatNetwork : k8s-Master와 k8s-Node들간에 통신역할 및 인터넷으로부터 파일을 다운로드 받을 수 있게 해주는 역할  - VirtualBox Host-Only : 내 Host OS에서 각 Guest OS에 연결 할 수 있도록 해주는 역할</description>
     </item>
     
