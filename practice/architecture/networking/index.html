@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-07-13T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-07-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="365">
+<meta itemprop="wordCount" content="369">
 
 
 
@@ -329,6 +329,14 @@ spec:
 <pre><code class="language-sh">docker ps | grep pod-pause
 </code></pre>
 
+<p>Pause Container 인터페이스 확인</p>
+
+<pre><code class="language-sh">docker ps | grep pod-pause
+docker inspect &lt;container-id&gt; -f &quot;{{json .NetworkSettings}}&quot;
+sudo ln -s /var/run/docker/netns /var/run/netns
+ip netns exec &lt;SandboxKey&gt; ip a
+</code></pre>
+
 <p><br/></p>
 
 <h3 id="1-2-calico-interface-확인">1-2) Calico Interface 확인</h3>
@@ -343,24 +351,18 @@ spec:
 <pre><code class="language-sh">route | grep cal
 </code></pre>
 
-<p><br/></p>
+<p>route로 확인된 가상인터페이스 ID가 호스트 네트워크에 있는지 확인</p>
 
-<h3 id="1-3-pause-container-network-namespaces-확인">1-3) Pause Container Network Namespaces 확인</h3>
-
-<p>Pause Container 인터페이스 확인</p>
-
-<pre><code class="language-sh">docker ps | grep pod-pause
-docker inspect &lt;container-id&gt; -f &quot;{{json .NetworkSettings}}&quot;
-sudo ln -s /var/run/docker/netns /var/run/netns
-ip netns exec &lt;SandboxKey&gt; ip a
+<pre><code class="language-sh">ip addr
 </code></pre>
 
 <p><br/></p>
 
+<h3 id="1-3-pause-container-network-namespaces-확인">1-3) Pause Container Network Namespaces 확인</h3>
+
 <p>Pause Container와 타 Container간에 연결 확인</p>
 
-<pre><code class="language-sh">docker inspect &lt;container-id&gt; -f &quot;{{json .NetworkSettings}}&quot;
-docker inspect 9143f2963f54 -f &quot;{{json .HostConfig.NetworkMode}}&quot;
+<pre><code class="language-sh">docker inspect &lt;container-id&gt; -f &quot;{{json .HostConfig.NetworkMode}}&quot;
 </code></pre>
 
 <p>Docker Container NetworkMode</p>
@@ -417,7 +419,7 @@ kind: Pod
 metadata:
   name: pod-src
   labels:
-  type: src  
+    type: src  
 spec:
   nodeSelector:
     kubernetes.io/hostname: k8s-node2
@@ -437,7 +439,7 @@ kind: Pod
 metadata:
   name: pod-dest
   labels:
-  type: dest
+    type: dest
 spec:
   nodeSelector:
     kubernetes.io/hostname: k8s-node1
@@ -594,7 +596,7 @@ spec:
   ports:
   - port: 8080
     targetPort: 8080
-    nodePort: 38080
+    nodePort: 31080
   type: NodePort
 </code></pre>
 
@@ -602,7 +604,7 @@ spec:
 
 <h3 id="4-2-nodeport-확인">4-2) nodeport 확인</h3>
 
-<pre><code class="language-sh">netstat -anp | grep 38080
+<pre><code class="language-sh">netstat -anp | grep 31080
 </code></pre>
 
 <p><br/></p>
