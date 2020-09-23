@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-06-01T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-06-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1177">
+<meta itemprop="wordCount" content="1188">
 
 
 
@@ -422,10 +422,14 @@ VM 생성시 노트북에 연결되어 있는 공유기로부터 IP를 할당 �
    - [완료], [변경 사항 적용]
 4. 네트워크 설정 [시스템 &gt; 네트워크 및 호스트명 설정]
    - 호스트 이름: k8s-master [적용]
-   - 이더넷 [켬], [설정], [IPv4 설정] 탭
-   - 방식: 수동으로 선택, 
-   - [Add] -&gt; 주소: 192.168.0.30, 넷마스크 : 255.255.255.0, 게이트웨이: 192.168.0.1, DNS 서버 : 8.8.8.8 [저장][완료]
-5. 설치시작
+   - 이더넷 [설정]
+      [일반] 탭
+      - 사용 가능하면 자동으로 이 네트워크에 연결 [체크]
+      [IPv4 설정] 탭
+      - 방식: 수동으로 선택, 
+      - [Add] -&gt; 주소: 192.168.0.30, 넷마스크 : 255.255.255.0, 게이트웨이: 192.168.0.1, DNS 서버 : 8.8.8.8
+      - [저장][완료]   
+ 5. 설치시작
 6. [설정 &gt; 사용자 설정] ROOT 암호 설정 
 7. 설치 완료 후 [재부팅]
 </code></pre>
@@ -783,7 +787,7 @@ IPADDR=&quot;192.168.0.31&quot;
 <p><br/>
 <code>service-cidr</code> 를 설정하면 Service의 IP가 자동으로 생성될때 해당 대역으로 생성되요 <code>Default: 10.96.0.0/12</code></p>
 
-<pre><code class="language-sh">kubeadm init --pod-network-cidr=20.96.0.0/12
+<pre><code class="language-sh">kubeadm init --pod-network-cidr=20.96.0.0/12 --apiserver-advertise-address=192.168.0.30
 </code></pre>
 
 <p>실행 후 <code>[Your Kubernetes master has initialized successfully!]</code> 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다.

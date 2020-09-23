@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2019-11-10T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-10T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1518">
+<meta itemprop="wordCount" content="1519">
 
 
 
@@ -867,7 +867,7 @@ IPADDR=&quot;192.168.0.31&quot;
 <p><br/>
 <code>service-cidr</code> 를 설정하면 Service의 IP가 자동으로 생성될때 해당 대역으로 생성되요 <code>Default: 10.96.0.0/12</code></p>
 
-<pre><code class="language-sh">kubeadm init --pod-network-cidr=20.96.0.0/12
+<pre><code class="language-sh">kubeadm init --pod-network-cidr=20.96.0.0/12 --apiserver-advertise-address=192.168.0.30
 </code></pre>
 
 <p>실행 후 <code>[Your Kubernetes master has initialized successfully!]</code> 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다.
