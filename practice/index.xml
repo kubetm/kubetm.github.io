@@ -282,32 +282,6 @@ curl 10.16.36.115:8080/hostname  service ip :</description>
     </item>
     
     <item>
-      <title>Networking Architecture</title>
-      <link>https://kubetm.github.io/practice/architecture/networking-difm-diadf-9aa/</link>
-      <pubDate>Tue, 13 Jul 2010 00:00:00 +0000</pubDate>
-      
-      <guid>https://kubetm.github.io/practice/architecture/networking-difm-diadf-9aa/</guid>
-      <description>1. Pod Network - Pause Container  1-1) Pause Container apiVersion: v1 kind: Pod metadata: name: pod-pause spec: nodeSelector: kubernetes.io/hostname: k8s-node1 containers: - name: container1 image: kubetm/p8000 ports: - containerPort: 8000 - name: container2 image: kubetm/p8080 ports: - containerPort: 8080  Pause Container 확인
-docker ps | grep pod-pause  Pause Container 인터페이스 확인
-docker ps | grep pod-pause docker inspect &amp;lt;container-id&amp;gt; -f &amp;quot;{{json .NetworkSettings}}&amp;quot; sudo ln -s /var/run/docker/netns /var/run/netns ip netns exec &amp;lt;SandboxKey&amp;gt; ip a</description>
-    </item>
-    
-    <item>
-      <title>Storage Architecture</title>
-      <link>https://kubetm.github.io/practice/architecture/storage-difm-diadf-9aa/</link>
-      <pubDate>Tue, 13 Jul 2010 00:00:00 +0000</pubDate>
-      
-      <guid>https://kubetm.github.io/practice/architecture/storage-difm-diadf-9aa/</guid>
-      <description>1. FTP Server 구축 1-1) NFS 패키지 다운 및 설치 설치
-yum -y install nfs-utils rpcbind systemctl start rpcbind systemctl start nfs-server systemctl start rpc-statd systemctl enable rpcbind systemctl enable nfs-server  확인
-systemctl status nfs-server  
-1-2) 공유 폴더 생성 및 설정 공유 폴더 생성
-mkdir /share-data chmod 777 /share-data  vi /etc/exports 로 아래 내용 입력 후 저장
-/share-data *(rw,sync,no_root_squash)  반영
-exportfs -r  방화벽 해제 및 NFS Server재시작</description>
-    </item>
-    
-    <item>
       <title>CKA 시험 공부 1</title>
       <link>https://kubetm.github.io/practice/cka/exam1-d394-fdkjfa-ackife/</link>
       <pubDate>Sun, 16 Apr 2000 00:00:00 +0000</pubDate>
@@ -333,6 +307,32 @@ Etcd 스냅샷을 하는데 TLS를 이용  Endpoint : https:127.0.0.1:2379 Path 
 https://v1-18.docs.kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#built-in-snapshot
 ETCDCTL_API=3 etcdctl --endpoints https://127.0.0.1:2379 --cacert /tls/ca.crt --cert /tls/client.crt --key /tls/client.key snapshot save /snapshot/etcd.db ETCDCTL_API=3 etcdctl --write-out=table snapshot status /snapshot/etcd.db  내 Cluster에서 해볼려면..
 cd /etc/kubernetes/pki/etcd 에 있는 ca.crt, server.crt, server.</description>
+    </item>
+    
+    <item>
+      <title>Networking Architecture</title>
+      <link>https://kubetm.github.io/practice/architecture/networking-difm-diadf-9aa/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/architecture/networking-difm-diadf-9aa/</guid>
+      <description>1. Pod Network - Pause Container  1-1) Pause Container apiVersion: v1 kind: Pod metadata: name: pod-pause spec: nodeSelector: kubernetes.io/hostname: k8s-node1 containers: - name: container1 image: kubetm/p8000 ports: - containerPort: 8000 - name: container2 image: kubetm/p8080 ports: - containerPort: 8080  Pause Container 확인
+docker ps | grep pod-pause  Pause Container 인터페이스 확인
+docker ps | grep pod-pause docker inspect &amp;lt;container-id&amp;gt; -f &amp;quot;{{json .NetworkSettings}}&amp;quot; sudo ln -s /var/run/docker/netns /var/run/netns ip netns exec &amp;lt;SandboxKey&amp;gt; ip a</description>
+    </item>
+    
+    <item>
+      <title>Storage Architecture</title>
+      <link>https://kubetm.github.io/practice/architecture/storage-difm-diadf-9aa/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/architecture/storage-difm-diadf-9aa/</guid>
+      <description>1. FTP Server 구축 1-1) NFS 패키지 다운 및 설치 설치
+yum -y install nfs-utils rpcbind systemctl start rpcbind systemctl start nfs-server systemctl start rpc-statd systemctl enable rpcbind systemctl enable nfs-server  확인
+systemctl status nfs-server  
+1-2) 공유 폴더 생성 및 설정 공유 폴더 생성
+mkdir /share-data chmod 777 /share-data  vi /etc/exports 로 아래 내용 입력 후 저장
+/share-data *(rw,sync,no_root_squash)  반영
+exportfs -r  방화벽 해제 및 NFS Server재시작</description>
     </item>
     
   </channel>
