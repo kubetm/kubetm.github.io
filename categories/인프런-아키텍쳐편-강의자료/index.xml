@@ -6,17 +6,17 @@
     <description>Recent content in 인프런 아키텍쳐편 강의자료 on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 13 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Jul 2010 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Networking Architecture</title>
-      <link>https://kubetm.github.io/practice/architecture/networking/</link>
-      <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
+      <link>https://kubetm.github.io/practice/architecture/networking-difm-diadf-9aa/</link>
+      <pubDate>Tue, 13 Jul 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/practice/architecture/networking/</guid>
+      <guid>https://kubetm.github.io/practice/architecture/networking-difm-diadf-9aa/</guid>
       <description>1. Pod Network - Pause Container  1-1) Pause Container apiVersion: v1 kind: Pod metadata: name: pod-pause spec: nodeSelector: kubernetes.io/hostname: k8s-node1 containers: - name: container1 image: kubetm/p8000 ports: - containerPort: 8000 - name: container2 image: kubetm/p8080 ports: - containerPort: 8080  Pause Container 확인
 docker ps | grep pod-pause  Pause Container 인터페이스 확인
 docker ps | grep pod-pause docker inspect &amp;lt;container-id&amp;gt; -f &amp;quot;{{json .NetworkSettings}}&amp;quot; sudo ln -s /var/run/docker/netns /var/run/netns ip netns exec &amp;lt;SandboxKey&amp;gt; ip a</description>
@@ -24,10 +24,10 @@ docker ps | grep pod-pause docker inspect &amp;lt;container-id&amp;gt; -f &amp;q
     
     <item>
       <title>Storage Architecture</title>
-      <link>https://kubetm.github.io/practice/architecture/storage/</link>
-      <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
+      <link>https://kubetm.github.io/practice/architecture/storage-difm-diadf-9aa/</link>
+      <pubDate>Tue, 13 Jul 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/practice/architecture/storage/</guid>
+      <guid>https://kubetm.github.io/practice/architecture/storage-difm-diadf-9aa/</guid>
       <description>1. FTP Server 구축 1-1) NFS 패키지 다운 및 설치 설치
 yum -y install nfs-utils rpcbind systemctl start rpcbind systemctl start nfs-server systemctl start rpc-statd systemctl enable rpcbind systemctl enable nfs-server  확인
 systemctl status nfs-server  

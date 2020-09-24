@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Getting-started Kubernetes - KubeTM Blog with Kubernetes</title>
+<title>Networking Architecture - KubeTM Blog with Kubernetes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -27,28 +27,28 @@
 
 
   <meta name="generator" content="Hugo 0.59.1" />
-  <meta itemprop="name" content="Getting-started Kubernetes">
-<meta itemprop="description" content="[1. 기초다지기]">
+  <meta itemprop="name" content="Networking Architecture">
+<meta itemprop="description" content="[Pod Network(Pause Container, Network Plugin), Service Network(iptables, IPVS)]">
 
 
-<meta itemprop="datePublished" content="2019-11-01T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-11-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="136">
+<meta itemprop="datePublished" content="2010-07-13T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2010-07-13T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="369">
 
 
 
 <meta itemprop="keywords" content="" />
 
-  <meta property="og:title" content="Getting-started Kubernetes" />
-<meta property="og:description" content="[1. 기초다지기]" />
+  <meta property="og:title" content="Networking Architecture" />
+<meta property="og:description" content="[Pod Network(Pause Container, Network Plugin), Service Network(iptables, IPVS)]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/practice/beginner/gettingstarted-kubernetes/" />
-<meta property="article:published_time" content="2019-11-01T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-11-01T00:00:00+00:00" />
+<meta property="og:url" content="https://kubetm.github.io/practice/architecture/networking-difm-diadf-9aa/" />
+<meta property="article:published_time" content="2010-07-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2010-07-13T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Getting-started Kubernetes"/>
-<meta name="twitter:description" content="[1. 기초다지기]"/>
+<meta name="twitter:title" content="Networking Architecture"/>
+<meta name="twitter:description" content="[Pod Network(Pause Container, Network Plugin), Service Network(iptables, IPVS)]"/>
 
   
 
@@ -220,24 +220,24 @@
   <header>
   <div class="title">
     
-        <h2>Getting-started Kubernetes</h2>
+        <h2>Networking Architecture</h2>
     
     
-        <p>[1. 기초다지기]</p>
+        <p>[Pod Network(Pause Container, Network Plugin), Service Network(iptables, IPVS)]</p>
     
     
     	</br>
-  		</button><a href="/documents/beginner/Getting_Started.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
+  		</button><a href="/documents/architecture/Networking1.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
     
 </div>
 
   <div class="meta">
-    <time class="published" datetime="2019-11-01 00:00:00 &#43;0000 UTC">
-      November 1, 2019
+    <time class="published" datetime="2010-07-13 00:00:00 &#43;0000 UTC">
+      July 13, 2010
     </time>
     <span class="author">KubeTM</span>
     
-      <p>1 minute read</p>
+      <p>2 minutes read</p>
     
   </div>
 </header>
@@ -251,8 +251,8 @@
 
   </section>
   
-  <a href="/practice/beginner/gettingstarted-kubernetes/" class="image featured">
-    <img src="/img/practice/beginner/Getting%20started%20Kubernetes.jpg" alt="Getting started Kubernetes">
+  <a href="/practice/architecture/networking-difm-diadf-9aa/" class="image featured">
+    <img src="/img/practice/architecture/Networking%20Architecture%20with%20PodNetwork,%20ServiceNetwork%20for%20Kubernetes.jpg" alt="Networking Architecture with PodNetwork, ServiceNetwork for Kubernetes">
   </a>
 
 
@@ -264,67 +264,11 @@
   
     
 
-<p><br/>
-<br/></p>
+<p><br/></p>
 
 <hr />
 
-<h2 id="1-linux">1. Linux</h2>
-
-<hr />
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-    
-    
-    
-    
-
-        
-    
-
-    
-        <span class="image left">
-        	
-            	<img src="/img/practice/beginner/Getting%20started%20Hello%20World%20on%20Linux.jpg" alt="Getting started Hello World on Linux" title="Getting started Hello World on Linux"  >
-           	
-        </span>
-    
-
-
-
-<h3 id="1-1-hello-js">1-1) hello.js</h3>
-
-<pre><code class="language-javascript">var http = require('http');
-var content = function(req, resp) {
- resp.end(&quot;Hello Kubernetes!&quot; + &quot;\n&quot;);
- resp.writeHead(200);
-}
-var w = http.createServer(content);
-w.listen(8000);
-</code></pre>
-
-<pre><code class="language-sh">node hello.js
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="2-docker">2. Docker</h2>
+<h2 id="1-pod-network-pause-container">1. Pod Network - Pause Container</h2>
 
 <hr />
 
@@ -353,117 +297,348 @@ w.listen(8000);
     
         <span class="image left">
         	
-            	<img src="/img/practice/beginner/Getting%20started%20Hello%20World%20on%20Docker.jpg" alt="Getting started Hello World on Docker" title="Getting started Hello World on Docker"  >
+            	<img src="/img/practice/architecture/Pause%20Container%20on%20Pod%20Network%20for%20Kubernetes.jpg" alt="Pause Container on Pod Network for Kubernetes" title="Pause Container on Pod Network for Kubernetes"  >
            	
         </span>
     
 
 
 
-<h3 id="2-1-dockerfile">2-1) Dockerfile</h3>
-
-<pre><code class="language-sh">FROM node:slim
-EXPOSE 8000
-COPY hello.js .
-CMD node hello.js
-</code></pre>
-
-<h3 id="2-2-docker-hub-site">2-2) Docker Hub Site</h3>
-
-<p><a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
-
-<h3 id="2-3-docker-container-run">2-3) Docker Container Run</h3>
-
-<pre><code class="language-sh">docker build -t kubetm/hello .
--t : 레파지토리/이미지명:버전
-
-docker images
-docker run -d -p 8100:8000 kubetm/hello
--d : 백그라운드 모드
--p : 포트변경
-
-docker ps
-docker exec -it c403442e8a59 /bin/bash
-</code></pre>
-
-<h3 id="2-4-docker-image-push">2-4) Docker Image Push</h3>
-
-<pre><code class="language-sh">docker login
-docker push kubetm/hello
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="3-kubernetes">3. Kubernetes</h2>
-
-<hr />
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-    
-    
-    
-    
-
-        
-    
-
-    
-        <span class="image left">
-        	
-            	<img src="/img/practice/beginner/Getting%20started%20Hello%20World%20on%20Kubernetes.jpg" alt="Getting started Hello World on Kubernetes" title="Getting started Hello World on Kubernetes"  >
-           	
-        </span>
-    
-
-
-
-<h3 id="3-1-pod">3-1) Pod</h3>
+<h3 id="1-1-pause-container">1-1) Pause Container</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
 metadata:
-  name: hello-pod
-  labels:
-    app: hello
+  name: pod-pause
 spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-node1
   containers:
-  - name: hello-container
-    image: kubetm/hello
+  - name: container1
+    image: kubetm/p8000
     ports:
     - containerPort: 8000
+  - name: container2
+    image: kubetm/p8080
+    ports:
+    - containerPort: 8080
 </code></pre>
 
-<h3 id="3-2-service">3-2) Service</h3>
+<p>Pause Container 확인</p>
+
+<pre><code class="language-sh">docker ps | grep pod-pause
+</code></pre>
+
+<p>Pause Container 인터페이스 확인</p>
+
+<pre><code class="language-sh">docker ps | grep pod-pause
+docker inspect &lt;container-id&gt; -f &quot;{{json .NetworkSettings}}&quot;
+sudo ln -s /var/run/docker/netns /var/run/netns
+ip netns exec &lt;SandboxKey&gt; ip a
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="1-2-calico-interface-확인">1-2) Calico Interface 확인</h3>
+
+<p>route 명령 설치</p>
+
+<pre><code class="language-sh">yum -y install net-tools
+</code></pre>
+
+<p>route으로 Pod IP와 연결 되어 있는 인터페이스 확인</p>
+
+<pre><code class="language-sh">route | grep cal
+</code></pre>
+
+<p>route로 확인된 가상인터페이스 ID가 호스트 네트워크에 있는지 확인</p>
+
+<pre><code class="language-sh">ip addr
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="1-3-pause-container-network-namespaces-확인">1-3) Pause Container Network Namespaces 확인</h3>
+
+<p>Pause Container와 타 Container간에 연결 확인</p>
+
+<pre><code class="language-sh">docker inspect &lt;container-id&gt; -f &quot;{{json .HostConfig.NetworkMode}}&quot;
+</code></pre>
+
+<p>Docker Container NetworkMode</p>
+
+<pre><code>NetworkMode - Sets the networking mode for the container. 
+Supported standard values are: bridge, host, none, and container:&lt;name|id&gt;. 
+Any other value is taken as a custom network’s name to which this container should connect to.
+</code></pre>
+
+<p><br/></p>
+
+<hr />
+
+<h2 id="2-pod-network-calico">2. Pod Network - Calico</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/architecture/Calico%20Network%20Plugin%20on%20Pod%20Network%20for%20Kubernetes.jpg" alt="Calico Network Plugin on Pod Network for Kubernetes" title="Calico Network Plugin on Pod Network for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="2-1-pod-source">2-1) Pod (source)</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-src
+  labels:
+    type: src  
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-node2
+  containers:
+  - name: container
+    image: kubetm/init
+    ports:
+    - containerPort: 8080
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="2-2-pod-destination">2-2) Pod (destination)</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-dest
+  labels:
+    type: dest
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-node1
+  containers:
+  - name: container
+    image: kubetm/app
+    ports:
+    - containerPort: 80
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="2-3-overlay-network-ip-in-ip-트래픽-확인">2-3) Overlay Network(IP-in-IP) 트래픽 확인</h3>
+
+<p>Calico Overlay Network 확인</p>
+
+<pre><code class="language-sh">kubectl describe IPPool
+</code></pre>
+
+<p>Cluster의 Pod Network CIDR 확인</p>
+
+<pre><code class="language-sh">kubectl cluster-info dump | grep -m 1 cluster-cidr
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="2-4-트래픽-확인">2-4) 트래픽 확인</h3>
+
+<p>tcpdump 설치</p>
+
+<pre><code class="language-sh">yum -y install tcpdump
+</code></pre>
+
+<p>트래픽 확인</p>
+
+<pre><code class="language-sh">route | grep cal
+tcpdump -i &lt;interface-name&gt;
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="3-service-network-clusterip-calico">3. Service Network[clusterIP] - Calico</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/architecture/ClusterIP%20with%20Calico%20on%20Service%20Network%20for%20Kubernetes.jpg" alt="ClusterIP with Calico on Service Network for Kubernetes" title="ClusterIP with Calico on Service Network for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="3-1-service-clusterip">3-1) service (clusterIP)</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Service
 metadata:
-  name: hello-svc
+  name: svc-clusterip
 spec:
   selector:
-    app: hello
+    type: dest
   ports:
-    - port: 8200
-      targetPort: 8000
-  externalIPs:
-  - 192.168.0.30
+  - port: 8080
+    targetPort: 8080
+  type: ClusterIP
 </code></pre>
+
+<p><br/></p>
+
+<h3 id="3-2-트래픽-확인">3-2) 트래픽 확인</h3>
+
+<pre><code class="language-sh">route | grep cal
+tcpdump -i &lt;interface-name&gt;
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="4-service-network-nodeport-calico">4. Service Network[NodePort] - Calico</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/architecture/NodePort%20with%20Calico%20on%20Service%20Network%20for%20Kubernetes.jpg" alt="NodePort with Calico on Service Network for Kubernetes" title="NodePort with Calico on Service Network for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="4-1-service-nodeport">4-1) service (NodePort)</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: svc-nodeport
+spec:
+  selector:
+    type: dest
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 31080
+  type: NodePort
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="4-2-nodeport-확인">4-2) nodeport 확인</h3>
+
+<pre><code class="language-sh">netstat -anp | grep 31080
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="4-3-트래픽-확인">4-3) 트래픽 확인</h3>
+
+<pre><code class="language-sh">tcpdump -i &lt;interface-name&gt;
+</code></pre>
+
+<p><br/></p>
+
+<h2 id="br"><br/></h2>
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>Service</strong> : <a href="https://kubernetes.io/docs/concepts/services-networking/service/">https://kubernetes.io/docs/concepts/services-networking/service/</a>
+
+<br /></li>
+</ul>
+
+<h3 id="others">* <strong>Others</strong></h3>
+
+<ul>
+<li><strong>The Almighty Pause Container</strong> : <a href="https://www.ianlewis.org/en/almighty-pause-container">https://www.ianlewis.org/en/almighty-pause-container</a></li>
+<li><strong>Calico</strong> : <a href="https://docs.projectcalico.org/getting-started/kubernetes/">https://docs.projectcalico.org/getting-started/kubernetes/</a></li>
+<li><strong>Comparing kube-proxy modes: iptables or IPVS?</strong> : <a href="https://www.tigera.io/blog/comparing-kube-proxy-modes-iptables-or-ipvs/">https://www.tigera.io/blog/comparing-kube-proxy-modes-iptables-or-ipvs/</a>
+<br />
+<br /></li>
+</ul>
 
   </div>
   <footer>
@@ -475,10 +650,10 @@ spec:
 
 <div class="pagination">		
   
-    <a href="/practice/architecture/networking-difm-diadf-9aa/" class="button"><div class="previous"><div>Networking Architecture</div></div></a>
+    <a href="/practice/architecture/storage-difm-diadf-9aa/" class="button"><div class="previous"><div>Storage Architecture</div></div></a>
   
   
-    <a href="/practice/beginner/object-pod/" class="button"><div class="next"><div>Pod</div></div></a>
+    <a href="/practice/beginner/gettingstarted-kubernetes/" class="button"><div class="next"><div>Getting-started Kubernetes</div></div></a>
   
 </div>
 

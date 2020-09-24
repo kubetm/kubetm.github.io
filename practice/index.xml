@@ -12,32 +12,6 @@
     
     
     <item>
-      <title>Networking Architecture</title>
-      <link>https://kubetm.github.io/practice/architecture/networking/</link>
-      <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://kubetm.github.io/practice/architecture/networking/</guid>
-      <description>1. Pod Network - Pause Container  1-1) Pause Container apiVersion: v1 kind: Pod metadata: name: pod-pause spec: nodeSelector: kubernetes.io/hostname: k8s-node1 containers: - name: container1 image: kubetm/p8000 ports: - containerPort: 8000 - name: container2 image: kubetm/p8080 ports: - containerPort: 8080  Pause Container 확인
-docker ps | grep pod-pause  Pause Container 인터페이스 확인
-docker ps | grep pod-pause docker inspect &amp;lt;container-id&amp;gt; -f &amp;quot;{{json .NetworkSettings}}&amp;quot; sudo ln -s /var/run/docker/netns /var/run/netns ip netns exec &amp;lt;SandboxKey&amp;gt; ip a</description>
-    </item>
-    
-    <item>
-      <title>Storage Architecture</title>
-      <link>https://kubetm.github.io/practice/architecture/storage/</link>
-      <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://kubetm.github.io/practice/architecture/storage/</guid>
-      <description>1. FTP Server 구축 1-1) NFS 패키지 다운 및 설치 설치
-yum -y install nfs-utils rpcbind systemctl start rpcbind systemctl start nfs-server systemctl start rpc-statd systemctl enable rpcbind systemctl enable nfs-server  확인
-systemctl status nfs-server  
-1-2) 공유 폴더 생성 및 설정 공유 폴더 생성
-mkdir /share-data chmod 777 /share-data  vi /etc/exports 로 아래 내용 입력 후 저장
-/share-data *(rw,sync,no_root_squash)  반영
-exportfs -r  방화벽 해제 및 NFS Server재시작</description>
-    </item>
-    
-    <item>
       <title>Case 5. 내PC &#43; VirtualBox (Network: NatNetwork &#43; Host-Only)</title>
       <link>https://kubetm.github.io/practice/appendix/installation_case5/</link>
       <pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate>
@@ -305,6 +279,32 @@ curl 10.16.36.115:8080/hostname  service ip :</description>
       <description>1. Linux  1-1) hello.js var http = require(&#39;http&#39;); var content = function(req, resp) { resp.end(&amp;quot;Hello Kubernetes!&amp;quot; + &amp;quot;\n&amp;quot;); resp.writeHead(200); } var w = http.createServer(content); w.listen(8000);  node hello.js   
 2. Docker  2-1) Dockerfile FROM node:slim EXPOSE 8000 COPY hello.js . CMD node hello.js  2-2) Docker Hub Site https://hub.docker.com/
 2-3) Docker Container Run docker build -t kubetm/hello . -t : 레파지토리/이미지명:버전 docker images docker run -d -p 8100:8000 kubetm/hello -d : 백그라운드 모드 -p : 포트변경 docker ps docker exec -it c403442e8a59 /bin/bash  2-4) Docker Image Push docker login docker push kubetm/hello</description>
+    </item>
+    
+    <item>
+      <title>Networking Architecture</title>
+      <link>https://kubetm.github.io/practice/architecture/networking-difm-diadf-9aa/</link>
+      <pubDate>Tue, 13 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/architecture/networking-difm-diadf-9aa/</guid>
+      <description>1. Pod Network - Pause Container  1-1) Pause Container apiVersion: v1 kind: Pod metadata: name: pod-pause spec: nodeSelector: kubernetes.io/hostname: k8s-node1 containers: - name: container1 image: kubetm/p8000 ports: - containerPort: 8000 - name: container2 image: kubetm/p8080 ports: - containerPort: 8080  Pause Container 확인
+docker ps | grep pod-pause  Pause Container 인터페이스 확인
+docker ps | grep pod-pause docker inspect &amp;lt;container-id&amp;gt; -f &amp;quot;{{json .NetworkSettings}}&amp;quot; sudo ln -s /var/run/docker/netns /var/run/netns ip netns exec &amp;lt;SandboxKey&amp;gt; ip a</description>
+    </item>
+    
+    <item>
+      <title>Storage Architecture</title>
+      <link>https://kubetm.github.io/practice/architecture/storage-difm-diadf-9aa/</link>
+      <pubDate>Tue, 13 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/architecture/storage-difm-diadf-9aa/</guid>
+      <description>1. FTP Server 구축 1-1) NFS 패키지 다운 및 설치 설치
+yum -y install nfs-utils rpcbind systemctl start rpcbind systemctl start nfs-server systemctl start rpc-statd systemctl enable rpcbind systemctl enable nfs-server  확인
+systemctl status nfs-server  
+1-2) 공유 폴더 생성 및 설정 공유 폴더 생성
+mkdir /share-data chmod 777 /share-data  vi /etc/exports 로 아래 내용 입력 후 저장
+/share-data *(rw,sync,no_root_squash)  반영
+exportfs -r  방화벽 해제 및 NFS Server재시작</description>
     </item>
     
     <item>

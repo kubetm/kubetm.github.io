@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>KubeTM Blog with Kubernetes</title>
+<title>Storage Architecture - KubeTM Blog with Kubernetes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -27,20 +27,28 @@
 
 
   <meta name="generator" content="Hugo 0.59.1" />
-  <meta itemprop="name" content="KubeTM Blog with Kubernetes">
-<meta itemprop="description" content="">
+  <meta itemprop="name" content="Storage Architecture">
+<meta itemprop="description" content="[FileStorage(NFS), BlockStorage(Longhorn)]">
 
 
-  <meta property="og:title" content="KubeTM Blog with Kubernetes" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://kubetm.github.io/" />
+<meta itemprop="datePublished" content="2010-07-13T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2010-07-13T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="352">
 
-<meta property="og:updated_time" content="2020-09-05T00:00:00+00:00" />
+
+
+<meta itemprop="keywords" content="" />
+
+  <meta property="og:title" content="Storage Architecture" />
+<meta property="og:description" content="[FileStorage(NFS), BlockStorage(Longhorn)]" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kubetm.github.io/practice/architecture/storage-difm-diadf-9aa/" />
+<meta property="article:published_time" content="2010-07-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2010-07-13T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="KubeTM Blog with Kubernetes"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Storage Architecture"/>
+<meta name="twitter:description" content="[FileStorage(NFS), BlockStorage(Longhorn)]"/>
 
   
 
@@ -92,11 +100,6 @@
 </head>
 
   <body>
-    
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWDJZXR" height="0" width="0" style="display:none;visibility:hidden">
-	</iframe></noscript>
-    
-
     
 <header id="site-header">
   <nav id="site-nav">
@@ -165,8 +168,6 @@
     <footer>
       <ul class="socnet-icons">
         
-    <li><a href="/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fas fa-rss"></a></li>
-
 
         
 
@@ -215,9 +216,7 @@
 </section>
 
       <main id="site-main">
-        
-        
-          <article class="post">
+        <article class="post">
   <header>
   <div class="title">
     
@@ -243,6 +242,14 @@
   </div>
 </header>
 
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
   
   <a href="/practice/architecture/storage-difm-diadf-9aa/" class="image featured">
     <img src="/img/practice/architecture/Storage%20Architecture%20with%20FileStorage,%20BlockStorage,%20ObjectStorage%20for%20Kubernetes.jpg" alt="Storage Architecture with FileStorage, BlockStorage, ObjectStorage for Kubernetes">
@@ -250,104 +257,358 @@
 
 
   
-  <p><br/></p>
-  <footer>
-    <a href="/practice/architecture/storage-difm-diadf-9aa/" class="button big">본문 보기</a>
     
-
-  </footer>
-</article>
-
-        
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2>CKA 시험 공부 1</h2>
-    
-    
-        <p>[시험에 나오는 유형 정리]</p>
-    
-    
-</div>
-
-  <div class="meta">
-    <time class="published" datetime="2000-04-16 00:00:00 &#43;0000 UTC">
-      April 16, 2000
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>6 minutes read</p>
-    
-  </div>
-</header>
-
   
-  <a href="/practice/cka/exam1-d394-fdkjfa-ackife/" class="image featured">
-    <img src="/img/practice/cka/Certified%20Kubernetes%20Administrator%20for%20Kubernetes.jpg" alt="Certified Kubernetes Administrator for Kubernetes">
-  </a>
-
-
+  <div class="content">
   
-  <p><br/>
+  
+    
+
+<p><br/></p>
+
+<hr />
+
+<h2 id="1-ftp-server-구축">1. FTP Server 구축</h2>
+
+<hr />
+
+<h3 id="1-1-nfs-패키지-다운-및-설치">1-1) NFS 패키지 다운 및 설치</h3>
+
+<p>설치</p>
+
+<pre><code class="language-sh">yum -y install nfs-utils rpcbind
+systemctl start rpcbind
+systemctl start nfs-server
+systemctl start rpc-statd
+systemctl enable rpcbind
+systemctl enable nfs-server
+</code></pre>
+
+<p>확인</p>
+
+<pre><code class="language-sh">systemctl status nfs-server
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="1-2-공유-폴더-생성-및-설정">1-2) 공유 폴더 생성 및 설정</h3>
+
+<p>공유 폴더 생성</p>
+
+<pre><code class="language-sh">mkdir /share-data
+chmod 777 /share-data
+</code></pre>
+
+<p><code>vi /etc/exports</code> 로 아래 내용 입력 후 저장</p>
+
+<pre><code class="language-sh">/share-data *(rw,sync,no_root_squash)
+</code></pre>
+
+<p>반영</p>
+
+<pre><code class="language-sh">exportfs -r
+</code></pre>
+
+<p>방화벽 해제 및 NFS Server재시작</p>
+
+<pre><code class="language-sh">systemctl stop firewalld &amp;&amp; systemctl disable firewalld
+systemctl stop NetworkManager &amp;&amp; systemctl disable NetworkManager
+systemctl restart nfs-server
+</code></pre>
+
+<p><br/>
 <br/></p>
-  <footer>
-    <a href="/practice/cka/exam1-d394-fdkjfa-ackife/" class="button big">본문 보기</a>
+
+<hr />
+
+<h2 id="2-filestroage-nfs-연결-pod">2. FileStroage (NFS) 연결 Pod</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
     
 
-  </footer>
-</article>
+    
+    
+    
+    
+    
+    
 
         
-          <article class="post">
-  <header>
-  <div class="title">
     
-        <h2>CKA 시험 공부 2</h2>
-    
-    
-        <p>[시험에 나오는 유형 정리]</p>
-    
-    
-</div>
 
-  <div class="meta">
-    <time class="published" datetime="2000-04-16 00:00:00 &#43;0000 UTC">
-      April 16, 2000
-    </time>
-    <span class="author">KubeTM</span>
     
-      <p>3 minutes read</p>
+        <span class="image left">
+        	
+            	<img src="/img/practice/architecture/NFS%20with%20FileStorage%20for%20Kubernetes.jpg" alt="NFS with FileStorage for Kubernetes" title="NFS with FileStorage for Kubernetes"  >
+           	
+        </span>
     
-  </div>
-</header>
-
-  
-  <a href="/practice/cka/exam2-d394-fdkjfa-ackife2/" class="image featured">
-    <img src="/img/practice/cka/Certified%20Kubernetes%20Administrator%20for%20Kubernetes.jpg" alt="Certified Kubernetes Administrator for Kubernetes">
-  </a>
 
 
-  
-  <p><br/>
+
+<h3 id="2-1-nfs-연결을-위한-persistentvolume-생성">2-1) NFS 연결을 위한 PersistentVolume 생성</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-nfs
+  labels:
+    pv: pv-nfs
+spec:
+  capacity:
+    storage: 2G
+  accessModes:
+  - ReadWriteMany
+  nfs:
+    path: /share-data
+    server: 192.168.219.10
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="2-2-persistentvolumeclaim">2-2) PersistentVolumeClaim</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-nfs
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 2G
+  storageClassName: &quot;&quot;
+  selector:
+    matchLabels:
+      pv: pv-nfs
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="2-3-pod">2-3) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-nfs
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+    volumeMounts:
+    - name: volume-nfs
+      mountPath: /nfs/share-data
+  volumes:
+  - name : volume-nfs
+    persistentVolumeClaim:
+      claimName: pvc-nfs
+</code></pre>
+
+<p><br/>
 <br/></p>
+
+<hr />
+
+<h2 id="3-longhorn-구축">3. Longhorn 구축</h2>
+
+<hr />
+
+<h3 id="3-1-모든-master-work-node에-iscsi-설치">3-1) 모든 Master/Work Node에 iscsi 설치</h3>
+
+<pre><code class="language-sh">yum install -y iscsi-initiator-utils
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="3-2-longhorn-설치">3-2) Longhorn 설치</h3>
+
+<pre><code class="language-sh">kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/master/deploy/longhorn.yaml
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="3-3-확인">3-3) 확인</h3>
+
+<pre><code class="language-sh">kubectl get pods -n longhorn-system
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="3-4-기존-longhorn-storageclass-삭제-및-재생성">3-4) 기존 Longhorn StorageClass 삭제 및 재생성</h3>
+
+<pre><code class="language-sh">kubectl get storageclasses.storage.k8s.io -n longhorn-system longhorn
+kubectl delete storageclasses.storage.k8s.io -n longhorn-system longhorn
+</code></pre>
+
+<pre><code class="language-yaml">cat &lt;&lt;EOF | kubectl create -f -
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: longhorn
+provisioner: driver.longhorn.io
+allowVolumeExpansion: true
+parameters:
+  numberOfReplicas: &quot;2&quot;
+  staleReplicaTimeout: &quot;2880&quot;
+  fromBackup: &quot;&quot;
+EOF
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="3-5-longhorn-dashboard-접속을-위한-port-type변경">3-5) Longhorn Dashboard 접속을 위한 Port Type변경</h3>
+
+<p>Service Type 변경 [ClusterIP -&gt; NodePort]</p>
+
+<pre><code class="language-sh">kubectl edit svc -n longhorn-system longhorn-frontend
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="4-longhorn-volume에-pod-연결">4. Longhorn Volume에 POD 연결</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/architecture/Longhorn%20with%20BlockStorage%20for%20Kubernetes.jpg" alt="Longhorn with BlockStorage for Kubernetes" title="Longhorn with BlockStorage for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="4-1-persistentvolumeclaim">4-1) PersistentVolumeClaim</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: longhorn-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 1Gi
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="4-2-longhorn-dashboard-접속">4-2) Longhorn Dashboard 접속</h3>
+
+<pre><code class="language-sh">http://localhost:30001
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="4-3-pod">4-3) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-blockstorage
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+    volumeMounts:
+    - name: volume-blockstorage
+      mountPath: /longhorn/data
+  volumes:
+  - name : volume-blockstorage
+    persistentVolumeClaim:
+      claimName: longhorn-pvc
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="4-4-longhorn-volumeattachments-확인">4-4) Longhorn Volumeattachments 확인</h3>
+
+<pre><code class="language-sh">kubectl get -n longhorn-system volumeattachments.storage.k8s.io
+</code></pre>
+
+<p><br/></p>
+
+<hr />
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>PV Access Mode</strong> : <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes</a></li>
+<li><strong>PV Provisioner</strong> : <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner">https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner</a></li>
+<li><strong>CSI Developer Documentation</strong> : <a href="https://kubernetes-csi.github.io/docs/">https://kubernetes-csi.github.io/docs/</a>
+<br /></li>
+</ul>
+
+<h3 id="others">* <strong>Others</strong></h3>
+
+<ul>
+<li><strong>Install Longhorn</strong> : <a href="https://longhorn.io/docs/0.8.1/deploy/install/install-with-kubectl/">https://longhorn.io/docs/0.8.1/deploy/install/install-with-kubectl/</a>
+
+<br />
+<br /></li>
+</ul>
+
+  </div>
   <footer>
-    <a href="/practice/cka/exam2-d394-fdkjfa-ackife2/" class="button big">본문 보기</a>
     
 
   </footer>
 </article>
 
-        
-        
-<div class="pagination">
+
+<div class="pagination">		
   
-    <a href="/page/16/" class="button big previous"><i class="fas fa-angle-left"></i></a>
+    <a href="/practice/cka/exam1-d394-fdkjfa-ackife/" class="button"><div class="previous"><div>CKA 시험 공부 1</div></div></a>
   
   
-    <a href="#" class="disabled button big next"><i class="fas fa-angle-right"></i></a>
+    <a href="/practice/architecture/networking-difm-diadf-9aa/" class="button"><div class="next"><div>Networking Architecture</div></div></a>
   
 </div>
+
 
       </main>
       <section id="site-sidebar">
@@ -430,4 +691,3 @@ if (!doNotTrack) {
     </div>
   </body>
 </html>
-

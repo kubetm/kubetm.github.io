@@ -33,21 +33,6 @@
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/practice/architecture/networking/</loc>
-    <lastmod>2020-07-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/practice/architecture/storage/</loc>
-    <lastmod>2020-07-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/</loc>
-    <lastmod>2020-07-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://kubetm.github.io/plan/2020_07/</loc>
     <lastmod>2020-07-05T00:00:00+00:00</lastmod>
   </url>
@@ -305,6 +290,21 @@
   <url>
     <loc>https://kubetm.github.io/plan/2019_09/</loc>
     <lastmod>2019-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/practice/architecture/networking-difm-diadf-9aa/</loc>
+    <lastmod>2010-07-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/practice/architecture/storage-difm-diadf-9aa/</loc>
+    <lastmod>2010-07-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/</loc>
+    <lastmod>2010-07-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
