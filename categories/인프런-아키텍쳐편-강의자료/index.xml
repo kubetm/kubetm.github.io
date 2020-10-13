@@ -11,6 +11,17 @@
     
     
     <item>
+      <title>Logging/Monitoring Architecture</title>
+      <link>https://kubetm.github.io/practice/architecture/logging-difm-diadf-9aa/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/architecture/logging-difm-diadf-9aa/</guid>
+      <description>1. Basic Logging Construction 1-1) Pod 생성 apiVersion: v1 kind: Pod metadata: name: log-pod spec: nodeSelector: kubernetes.io/hostname: k8s-node1 containers: - name: app image: kubetm/app  
+2-2) PersistentVolumeClaim apiVersion: v1 kind: PersistentVolumeClaim metadata: name: pvc-nfs spec: accessModes: - ReadWriteMany resources: requests: storage: 2G storageClassName: &amp;quot;&amp;quot; selector: matchLabels: pv: pv-nfs  
+2-3) Pod apiVersion: v1 kind: Pod metadata: name: pod-nfs spec: containers: - name: container image: kubetm/init volumeMounts: - name: volume-nfs mountPath: /nfs/share-data volumes: - name : volume-nfs persistentVolumeClaim: claimName: pvc-nfs</description>
+    </item>
+    
+    <item>
       <title>Networking Architecture</title>
       <link>https://kubetm.github.io/practice/architecture/networking-difm-diadf-9aa/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
