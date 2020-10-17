@@ -26,10 +26,10 @@
     
     <item>
       <title>CKA 시험 공부 1</title>
-      <link>https://kubetm.github.io/practice/cka/exam1-d394-fdkjfa-ackife/</link>
+      <link>https://kubetm.github.io/practice/cka/exam1/</link>
       <pubDate>Sun, 16 Apr 2000 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/practice/cka/exam1-d394-fdkjfa-ackife/</guid>
+      <guid>https://kubetm.github.io/practice/cka/exam1/</guid>
       <description>사전 작업 node-1에 kubectl 명령 자동완성 설정
 https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete
 source &amp;lt;(kubectl completion bash) echo &amp;quot;source &amp;lt;(kubectl completion bash)&amp;quot; &amp;gt;&amp;gt; ~/.bashrc  alias k=kubectl complete -F __start_kubectl k   
@@ -41,10 +41,10 @@ cat &amp;lt;&amp;lt;EOF | kubectl create -f - apiVersion: v1 kind: Pod metadata:
     
     <item>
       <title>CKA 시험 공부 2</title>
-      <link>https://kubetm.github.io/practice/cka/exam2-d394-fdkjfa-ackife2/</link>
+      <link>https://kubetm.github.io/practice/cka/exam2/</link>
       <pubDate>Sun, 16 Apr 2000 00:00:00 +0000</pubDate>
       
-      <guid>https://kubetm.github.io/practice/cka/exam2-d394-fdkjfa-ackife2/</guid>
+      <guid>https://kubetm.github.io/practice/cka/exam2/</guid>
       <description>Node-1 별도 Cluster의 접근 없이 node-1에서 주어진 문제 풀이
 Etcd 스냅샷을 하는데 TLS를 이용  Endpoint : https:127.0.0.1:2379 Path : /snapshot/etcd.db Version : 3.2.12 CA : /tls/ca.crt, Client Cert : /tls/client.crt, Client Key : /tls/client.key  문제풀이
 https://v1-18.docs.kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#built-in-snapshot

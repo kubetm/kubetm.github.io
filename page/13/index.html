@@ -244,9 +244,14 @@
 </header>
 
   
+  <a href="/practice/beginner/controller-deployment/" class="image featured">
+    <img src="/img/practice/beginner/Deployment%20with%20ReCreate,%20RollingUpdate%20for%20Kubernetes.jpg" alt="Deployment with ReCreate, RollingUpdate for Kubernetes">
+  </a>
+
 
   
-  
+  <p><br/>
+<br/></p>
   <footer>
     <a href="/practice/beginner/controller-deployment/" class="button big">본문 보기</a>
     
@@ -282,41 +287,14 @@
 </header>
 
   
+  <a href="/practice/beginner/controller-replicationcontroller_replicaset/" class="image featured">
+    <img src="/img/practice/beginner/Controller%20with%20Replicastion%20Controller,%20ReplicaSet%20for%20Kubernetes.jpg" alt="Controller with Replicastion Controller, ReplicaSet for Kubernetes">
+  </a>
+
 
   
-  <pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod1
-  labels:
-    type: web
-spec:
-  containers:
-  - name: container
-    image: kubetm/app:v1
-  terminationGracePeriodSeconds: 0
-</code></pre>
-
-<h3 id="replicaset">ReplicaSet</h3>
-
-<pre><code class="language-yaml">apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-  name: replica1
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      type: web
-  template:
-    metadata:
-      name: pod1
-      labels:
-        type: web
-    spec:
-      containers:
-      - name: container
-        image: kubetm/app:v1&hellip;</code></pre>
+  <p><br/>
+<br/></p>
   <footer>
     <a href="/practice/beginner/controller-replicationcontroller_replicaset/" class="button big">본문 보기</a>
     

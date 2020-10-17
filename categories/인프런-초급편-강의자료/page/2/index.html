@@ -332,44 +332,14 @@
 </header>
 
   
+  <a href="/practice/beginner/controller-daemonset_job_cronjob/" class="image featured">
+    <img src="/img/practice/beginner/Controller%20with%20DatemonSet,%20Job,%20CronJob%20for%20Kubernetes.jpg" alt="Controller with DatemonSet, Job, CronJob for Kubernetes">
+  </a>
+
 
   
-  <pre><code class="language-yaml">apiVersion: apps/v1
-kind: DaemonSet
-metadata:
-  name: daemonset-1
-spec:
-  selector:
-    matchLabels:
-      type: app
-  template:
-    metadata:
-      labels:
-        type: app
-    spec:
-      containers:
-      - name: container
-        image: kubetm/app
-        ports:
-        - containerPort: 8080
-          hostPort: 18080
-</code></pre>
-
-<h3 id="command">Command</h3>
-
-<pre><code class="language-sh">curl 192.168.0.31:18080/hostname
-</code></pre>
-
-<h2 id="1-2-daemonset-nodeselector">1-2) DaemonSet - NodeSelector</h2>
-
-<h3 id="daemonset-1">DaemonSet</h3>
-
-<pre><code class="language-yaml">apiVersion: apps/v1
-kind: DaemonSet
-metadata:
-  name: daemonset-2
-spec:
-  selector:&hellip;</code></pre>
+  <p><br/>
+<br/></p>
   <footer>
     <a href="/practice/beginner/controller-daemonset_job_cronjob/" class="button big">본문 보기</a>
     

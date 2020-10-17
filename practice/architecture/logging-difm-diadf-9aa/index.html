@@ -32,7 +32,7 @@
 
 
 
-<meta itemprop="wordCount" content="77">
+<meta itemprop="wordCount" content="146">
 
 
 
@@ -281,49 +281,87 @@ spec:
     image: kubetm/app
 </code></pre>
 
-<p><br/></p>
+<p>api 호출</p>
 
-<h3 id="2-2-persistentvolumeclaim">2-2) PersistentVolumeClaim</h3>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: pvc-nfs
-spec:
-  accessModes:
-  - ReadWriteMany
-  resources:
-    requests:
-      storage: 2G
-  storageClassName: &quot;&quot;
-  selector:
-    matchLabels:
-      pv: pv-nfs
+<pre><code class="language-sh">crul &lt;pod-id&gt;/applog
 </code></pre>
 
 <p><br/></p>
 
-<h3 id="2-3-pod">2-3) Pod</h3>
+<h3 id="1-2-container-log-확인">1-2) Container Log 확인</h3>
 
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: pod-nfs
-spec:
-  containers:
-  - name: container
-    image: kubetm/init
-    volumeMounts:
-    - name: volume-nfs
-      mountPath: /nfs/share-data
-  volumes:
-  - name : volume-nfs
-    persistentVolumeClaim:
-      claimName: pvc-nfs
+<p>Docker Log Driver 설정 확인</p>
+
+<pre><code class="language-sh">cat /etc/docker/daemon.json
+docker inspect -f '{{.HostConfig.LogConfig.Type}}' &lt;container-id&gt;
+</code></pre>
+
+<p>Container 로그 파일 확인</p>
+
+<pre><code class="language-sh">cat /var/lib/docker/containers/&lt;container-id&gt;/&lt;container-id&gt;-json.log
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="1-3-log-link-확인">1-3) Log Link 확인</h3>
+
+<pre><code class="language-yaml">ls al /var/log/containers
+ls al /var/log/pods/&lt;Namespace&gt;_&lt;pod-name&gt;_&lt;pod-id&gt;/&lt;container-name&gt;
 </code></pre>
 
 <p><br/>
 <br/></p>
+
+<hr />
+
+<h2 id="2-efk-설치">2. EFK 설치</h2>
+
+<hr />
+
+<h3 id="2-1-helm-설치">2-1) Helm 설치</h3>
+
+<p><a href="https://helm.sh/docs/intro/install/">https://helm.sh/docs/intro/install/</a></p>
+
+<pre><code class="language-yaml">curl -O https://get.helm.sh/helm-v3.3.4-linux-amd64.tar.gz
+tar -xf helm-v3.3.4-linux-amd64.tar.gz
+cd linux-adm64
+cp ./helm /usr/local/bin/
+</code></pre>
+
+<h3 id="2-2-elastic-stack-설치">2-2) Elastic-stack 설치</h3>
+
+<p><a href="https://artifacthub.io/packages/helm/helm-stable/elastic-stack">https://artifacthub.io/packages/helm/helm-stable/elastic-stack</a></p>
+
+<pre><code class="language-yaml">helm repo add helm-stable https://kubernetes-charts.storage.googleapis.com
+helm fetch helm-stable/elastic-stack --version 2.0.3
+tar -xf elastic-stack-2.0.3.tgz
+cd elastic-stack/
+vi values.yaml
+kubectl create ns elastic-stack
+helm install elastic-stack -f values.yaml . -n elastic-stack
+helm uninstall elastic-stack -n elastic-stack
+</code></pre>
+
+<h3 id="2-3-persistentvolume">2-3) PersistentVolume</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: elastic-stack-data-pv
+spec:
+  capacity:
+    storage: 40G
+  accessModes:
+  - ReadWriteOnce
+  hostPath:
+    path: /tmp/elastic-stack-data
+    type: DirectoryOrCreate
+</code></pre>
+
+<h3 id="2-4-kibana-service">2-4) Kibana Service</h3>
+
+<pre><code class="language-yaml">kubectl edit -n elastic-stack svc elastic-stack-kibana
+</code></pre>
 
   </div>
   <footer>

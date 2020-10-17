@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2019-11-07T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-07T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="195">
+<meta itemprop="wordCount" content="213">
 
 
 
@@ -251,6 +251,10 @@
 
   </section>
   
+  <a href="/practice/beginner/controller-replicationcontroller_replicaset/" class="image featured">
+    <img src="/img/practice/beginner/Controller%20with%20Replicastion%20Controller,%20ReplicaSet%20for%20Kubernetes.jpg" alt="Controller with Replicastion Controller, ReplicaSet for Kubernetes">
+  </a>
+
 
   
     
@@ -260,9 +264,48 @@
   
     
 
-<h2 id="1-template-replicas">1) Template, Replicas</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="pod">Pod</h3>
+<hr />
+
+<h2 id="1-template-replicas">1. Template, Replicas</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/Controller%20with%20Replication,%20ReplicaSet%20for%20Kubernetes.jpg" alt="Controller with Replication, ReplicaSet for Kubernetes" title="Controller with Replication, ReplicaSet for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="1-1-pod">1-1) Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -277,7 +320,9 @@ spec:
   terminationGracePeriodSeconds: 0
 </code></pre>
 
-<h3 id="replicaset">ReplicaSet</h3>
+<p><br/></p>
+
+<h3 id="1-2-replicaset">1-2) ReplicaSet</h3>
 
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: ReplicaSet
@@ -300,7 +345,14 @@ spec:
       terminationGracePeriodSeconds: 0
 </code></pre>
 
-<h2 id="2-updating-controller">2) Updating Controller</h2>
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="2-updating-controller">2. Updating Controller</h2>
+
+<hr />
 
 <p>ReplicationController -&gt; ReplicaSet</p>
 
@@ -329,7 +381,7 @@ spec:
 <pre><code class="language-sh">kubectl delete replicationcontrollers replication1 --cascade=false
 </code></pre>
 
-<h3 id="replicaset-1">ReplicaSet</h3>
+<h3 id="replicaset">ReplicaSet</h3>
 
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: ReplicaSet
@@ -350,9 +402,48 @@ spec:
         image: kubetm/app:v1
 </code></pre>
 
-<h2 id="3-selector">3) Selector</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="replicaset-2">ReplicaSet</h3>
+<hr />
+
+<h2 id="3-selector">3. Selector</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/Match%20with%20Replication,%20ReplicaSet%20for%20Kubernetes.jpg" alt="Match with Replication, ReplicaSet for Kubernetes" title="Match with Replication, ReplicaSet for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="3-1-replicaset">3-1) ReplicaSet</h3>
 
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: ReplicaSet
@@ -380,7 +471,10 @@ spec:
       terminationGracePeriodSeconds: 0
 </code></pre>
 
-<h3 id="pod-1">Pod</h3>
+<p><br/>
+<br/></p>
+
+<h3 id="pod">Pod</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Pod
@@ -397,6 +491,57 @@ spec:
   - name: container
     image: kubetm/init
 </code></pre>
+
+<h3 id="matchexpressions">MatchExpressions</h3>
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/Match2%20with%20Replication,%20ReplicaSet%20for%20Kubernetes.jpg" alt="Match2 with Replication, ReplicaSet for Kubernetes" title="Match2 with Replication, ReplicaSet for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>ReplicaSet</strong> : <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/">https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/</a></li>
+<li><strong>Labels and Selectors</strong> : <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/</a></li>
+<li><strong>ReplicationController</strong> : <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/">https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/</a></li>
+</ul>
 
   </div>
   <footer>

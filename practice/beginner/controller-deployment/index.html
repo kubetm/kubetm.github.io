@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2019-11-08T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-08T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="195">
+<meta itemprop="wordCount" content="205">
 
 
 
@@ -251,6 +251,10 @@
 
   </section>
   
+  <a href="/practice/beginner/controller-deployment/" class="image featured">
+    <img src="/img/practice/beginner/Deployment%20with%20ReCreate,%20RollingUpdate%20for%20Kubernetes.jpg" alt="Deployment with ReCreate, RollingUpdate for Kubernetes">
+  </a>
+
 
   
     
@@ -260,9 +264,48 @@
   
     
 
-<h2 id="1-recreate">1) ReCreate</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="deployment">Deployment</h3>
+<hr />
+
+<h2 id="1-recreate">1. ReCreate</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/Deployment%20with%20ReCreate%20for%20Kubernetes.jpg" alt="Deployment with ReCreate for Kubernetes" title="Deployment with ReCreate for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="1-1-deployment">1-1) Deployment</h3>
 
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: Deployment
@@ -287,7 +330,9 @@ spec:
       terminationGracePeriodSeconds: 10
 </code></pre>
 
-<h3 id="service">Service</h3>
+<p><br/></p>
+
+<h3 id="1-2-service">1-2) Service</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Service
@@ -314,9 +359,48 @@ spec:
 kubectl rollout history deployment deployment-1
 </code></pre>
 
-<h2 id="2-rollingupdate">2) RollingUpdate</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="deployment-1">Deployment</h3>
+<hr />
+
+<h2 id="2-rollingupdate">2. RollingUpdate</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/Deployment%20with%20RollingUpdate%20for%20Kubernetes.jpg" alt="Deployment with RollingUpdate for Kubernetes" title="Deployment with RollingUpdate for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="2-1-deployment">2-1) Deployment</h3>
 
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: Deployment
@@ -341,7 +425,7 @@ spec:
       terminationGracePeriodSeconds: 0
 </code></pre>
 
-<h3 id="service-1">Service</h3>
+<h3 id="2-2-service">2-2) Service</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Service
@@ -361,7 +445,14 @@ spec:
 <pre><code class="language-sh">while true; do curl 10.99.5.3:8080/version; sleep 1; done
 </code></pre>
 
-<h2 id="3-blue-green">3) Blue/Green</h2>
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="3-blue-green">3. Blue/Green</h2>
+
+<hr />
 
 <h3 id="replicaset">ReplicaSet</h3>
 
@@ -386,7 +477,7 @@ spec:
       terminationGracePeriodSeconds: 0
 </code></pre>
 
-<h3 id="service-2">Service</h3>
+<h3 id="service">Service</h3>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: Service
@@ -400,6 +491,21 @@ spec:
     protocol: TCP
     targetPort: 8080
 </code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>Deployments</strong> : <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">https://kubernetes.io/docs/concepts/workloads/controllers/deployment/</a></li>
+</ul>
 
   </div>
   <footer>

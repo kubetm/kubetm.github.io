@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2019-11-09T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-09T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="274">
+<meta itemprop="wordCount" content="318">
 
 
 
@@ -251,6 +251,10 @@
 
   </section>
   
+  <a href="/practice/beginner/controller-daemonset_job_cronjob/" class="image featured">
+    <img src="/img/practice/beginner/Controller%20with%20DatemonSet,%20Job,%20CronJob%20for%20Kubernetes.jpg" alt="Controller with DatemonSet, Job, CronJob for Kubernetes">
+  </a>
+
 
   
     
@@ -260,9 +264,48 @@
   
     
 
-<h2 id="1-1-daemonset-hostport">1-1) DaemonSet - HostPort</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="daemonset">DaemonSet</h3>
+<hr />
+
+<h2 id="1-daemonset">1. DaemonSet</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/HostPort,%20NodeSelector%20with%20DaemonSet%20for%20Kubernetes.jpg" alt="HostPort, NodeSelector with DaemonSet for Kubernetes" title="HostPort, NodeSelector with DaemonSet for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="1-1-daemonset-hostport">1-1) DaemonSet - HostPort</h3>
 
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: DaemonSet
@@ -290,9 +333,9 @@ spec:
 <pre><code class="language-sh">curl 192.168.0.31:18080/hostname
 </code></pre>
 
-<h2 id="1-2-daemonset-nodeselector">1-2) DaemonSet - NodeSelector</h2>
+<p><br/></p>
 
-<h3 id="daemonset-1">DaemonSet</h3>
+<h3 id="1-2-daemonset-nodeselector">1-2) DaemonSet - NodeSelector</h3>
 
 <pre><code class="language-yaml">apiVersion: apps/v1
 kind: DaemonSet
@@ -329,9 +372,16 @@ kubectl label nodes k8s-node2 os=ubuntu
 <pre><code class="language-sh">kubectl label nodes k8s-node2 os-
 </code></pre>
 
-<h2 id="2-job">2) Job</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="job-1">Job 1</h3>
+<hr />
+
+<h2 id="2-job">2. Job</h2>
+
+<hr />
+
+<h3 id="2-1-job1">2-1) Job1</h3>
 
 <pre><code class="language-yaml">apiVersion: batch/v1
 kind: Job
@@ -345,10 +395,45 @@ spec:
       - name: container
         image: kubetm/init
         command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'job start';sleep 20; echo 'job end'&quot;]
-        terminationGracePeriodSeconds: 0
+      terminationGracePeriodSeconds: 0
 </code></pre>
 
-<h3 id="job-2">Job 2</h3>
+<p><br/>
+<br/></p>
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/Parrallelism,%20Completions%20with%20Job%20for%20Kubernetes.jpg" alt="Parrallelism, Completions with Job for Kubernetes" title="Parrallelism, Completions with Job for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="2-2-job2">2-2) Job2</h3>
 
 <pre><code class="language-yaml">apiVersion: batch/v1
 kind: Job
@@ -365,12 +450,51 @@ spec:
       - name: container
         image: kubetm/init
         command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'job start';sleep 20; echo 'job end'&quot;]
-        terminationGracePeriodSeconds: 0
+      terminationGracePeriodSeconds: 0
 </code></pre>
 
-<h2 id="3-1-cronjob">3-1) CronJob</h2>
+<p><br/>
+<br/></p>
 
-<h3 id="cronjob">CronJob</h3>
+<hr />
+
+<h2 id="3-cronjob">3. CronJob</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/Allow%20with%20CronJob%20for%20Kubernetes.jpg" alt="Allow with CronJob for Kubernetes" title="Allow with CronJob for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="3-1-cronjob">3-1) CronJob</h3>
 
 <pre><code class="language-yaml">apiVersion: batch/v1beta1
 kind: CronJob
@@ -387,7 +511,7 @@ spec:
           - name: container
             image: kubetm/init
             command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'job start';sleep 20; echo 'job end'&quot;]
-            terminationGracePeriodSeconds: 0
+          terminationGracePeriodSeconds: 0
 </code></pre>
 
 <h3 id="kubectl-1">Kubectl</h3>
@@ -402,11 +526,50 @@ spec:
 <pre><code class="language-sh">kubectl patch cronjobs cron-job -p '{&quot;spec&quot; : {&quot;suspend&quot; : false }}'
 </code></pre>
 
-<h2 id="3-2-cronjob-concurrencypolicy">3-2) CronJob - ConcurrencyPolicy</h2>
+<p><br/></p>
 
-<p>(Allow, Forbid, Replace)</p>
+<h3 id="1-19버전-변경사항">[1.19버전 변경사항]</h3>
 
-<h3 id="cronjob-1">CronJob</h3>
+<p>Cronjob 삭제시 Manual로 만든 Job도 같이 삭제됨</p>
+
+<p><br/>
+<br/></p>
+
+<h3 id="3-2-cronjob-concurrencypolicy">3-2) CronJob - ConcurrencyPolicy</h3>
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/ConcurencyPolicy%20with%20CronJob%20for%20Kubernetes.jpg" alt="ConcurencyPolicy with CronJob for Kubernetes" title="ConcurencyPolicy with CronJob for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="cronjob">CronJob</h3>
 
 <pre><code class="language-yaml">apiVersion: batch/v1beta1
 kind: CronJob
@@ -424,8 +587,63 @@ spec:
           - name: container
             image: kubetm/init
             command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'job start';sleep 140; echo 'job end'&quot;]
-            terminationGracePeriodSeconds: 0
+          terminationGracePeriodSeconds: 0
 </code></pre>
+
+<p><br/></p>
+
+<h3 id="1-19버전-변경사항-1">[1.19버전 변경사항]</h3>
+
+<p><strong>Replace 모드</strong> : 2min이 되었을 시 기존 Job은 삭제되고 (기존 Pod도 같이 삭제됨), 새 Job이(새 pod 생성) 만들어집니다.</p>
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/ConcurencyPolicy%201.19%20with%20CronJob%20for%20Kubernetes.jpg" alt="ConcurencyPolicy 1.19 with CronJob for Kubernetes" title="ConcurencyPolicy 1.19 with CronJob for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>Jobs</strong> : <a href="https://kubernetes.io/docs/concepts/workloads/controllers/job/">https://kubernetes.io/docs/concepts/workloads/controllers/job/</a></li>
+<li><strong>CronJob</strong> : <a href="https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/">https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/</a></li>
+<li><strong>Running Automated Tasks with a CronJob</strong> : <a href="https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/">https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/</a></li>
+</ul>
 
   </div>
   <footer>

@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-06-21T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-06-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1350">
+<meta itemprop="wordCount" content="1352">
 
 
 
@@ -702,10 +702,11 @@ EOF
 
 <p>도커 패키지 설치</p>
 
-<pre><code class="language-sh">yum update -y &amp;&amp; yum install -y docker-ce-19.03.8
+<pre><code class="language-sh">yum update -y &amp;&amp; yum install -y containerd.io-1.2.13 docker-ce-19.03.11 docker-ce-cli-19.03.11
 </code></pre>
 
 <pre><code class="language-sh">mkdir /etc/docker
+
 cat &gt; /etc/docker/daemon.json &lt;&lt;EOF
 {
   &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;],

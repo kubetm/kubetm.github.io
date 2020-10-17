@@ -79,7 +79,8 @@ Mac 사용자 참고 URL  &amp;gt;https://www.virtualbox.org/wiki/Mac%20OS%20X%2
       <pubDate>Sat, 09 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/beginner/controller-daemonset_job_cronjob/</guid>
-      <description>1-1) DaemonSet - HostPort DaemonSet apiVersion: apps/v1 kind: DaemonSet metadata: name: daemonset-1 spec: selector: matchLabels: type: app template: metadata: labels: type: app spec: containers: - name: container image: kubetm/app ports: - containerPort: 8080 hostPort: 18080  Command curl 192.168.0.31:18080/hostname  1-2) DaemonSet - NodeSelector DaemonSet apiVersion: apps/v1 kind: DaemonSet metadata: name: daemonset-2 spec: selector: matchLabels: type: app template: metadata: labels: type: app spec: nodeSelector: os: centos containers: - name: container image: kubetm/app ports: - containerPort: 8080  Kubectl Label Add</description>
+      <description>1. DaemonSet  1-1) DaemonSet - HostPort apiVersion: apps/v1 kind: DaemonSet metadata: name: daemonset-1 spec: selector: matchLabels: type: app template: metadata: labels: type: app spec: containers: - name: container image: kubetm/app ports: - containerPort: 8080 hostPort: 18080  Command curl 192.168.0.31:18080/hostname  
+1-2) DaemonSet - NodeSelector apiVersion: apps/v1 kind: DaemonSet metadata: name: daemonset-2 spec: selector: matchLabels: type: app template: metadata: labels: type: app spec: nodeSelector: os: centos containers: - name: container image: kubetm/app ports: - containerPort: 8080  Kubectl Label Add</description>
     </item>
     
     <item>
@@ -88,7 +89,8 @@ Mac 사용자 참고 URL  &amp;gt;https://www.virtualbox.org/wiki/Mac%20OS%20X%2
       <pubDate>Fri, 08 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/beginner/controller-deployment/</guid>
-      <description>1) ReCreate Deployment apiVersion: apps/v1 kind: Deployment metadata: name: deployment-1 spec: selector: matchLabels: type: app replicas: 2 strategy: type: Recreate revisionHistoryLimit: 1 template: metadata: labels: type: app spec: containers: - name: container image: kubetm/app:v1 terminationGracePeriodSeconds: 10  Service apiVersion: v1 kind: Service metadata: name: svc-1 spec: selector: type: app ports: - port: 8080 protocol: TCP targetPort: 8080  Command while true; do curl 10.99.5.3:8080/version; sleep 1; done  Kubectl kubectl rollout undo deployment deployment-1 --to-revision=2 kubectl rollout history deployment deployment-1  2) RollingUpdate Deployment apiVersion: apps/v1 kind: Deployment metadata: name: deployment-2 spec: selector: matchLabels: type: app2 replicas: 2 strategy: type: RollingUpdate minReadySeconds: 10 template: metadata: labels: type: app2 spec: containers: - name: container image: kubetm/app:v1 terminationGracePeriodSeconds: 0  Service apiVersion: v1 kind: Service metadata: name: svc-2 spec: selector: type: app2 ports: - port: 8080 protocol: TCP targetPort: 8080  Command while true; do curl 10.</description>
+      <description>1. ReCreate  1-1) Deployment apiVersion: apps/v1 kind: Deployment metadata: name: deployment-1 spec: selector: matchLabels: type: app replicas: 2 strategy: type: Recreate revisionHistoryLimit: 1 template: metadata: labels: type: app spec: containers: - name: container image: kubetm/app:v1 terminationGracePeriodSeconds: 10  
+1-2) Service apiVersion: v1 kind: Service metadata: name: svc-1 spec: selector: type: app ports: - port: 8080 protocol: TCP targetPort: 8080  Command while true; do curl 10.</description>
     </item>
     
     <item>
@@ -97,8 +99,9 @@ Mac 사용자 참고 URL  &amp;gt;https://www.virtualbox.org/wiki/Mac%20OS%20X%2
       <pubDate>Thu, 07 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/beginner/controller-replicationcontroller_replicaset/</guid>
-      <description> 1) Template, Replicas Pod apiVersion: v1 kind: Pod metadata: name: pod1 labels: type: web spec: containers: - name: container image: kubetm/app:v1 terminationGracePeriodSeconds: 0  ReplicaSet apiVersion: apps/v1 kind: ReplicaSet metadata: name: replica1 spec: replicas: 1 selector: matchLabels: type: web template: metadata: name: pod1 labels: type: web spec: containers: - name: container image: kubetm/app:v1 terminationGracePeriodSeconds: 0  2) Updating Controller ReplicationController -&amp;gt; ReplicaSet
-ReplicationController apiVersion: v1 kind: ReplicationController metadata: name: replication1 spec: replicas: 2 selector: cascade: &amp;quot;false&amp;quot; template: metadata: labels: cascade: &amp;quot;false&amp;quot; spec: containers: - name: container image: kubetm/app:v1  kubectl kubectl delete replicationcontrollers replication1 --cascade=false  ReplicaSet apiVersion: apps/v1 kind: ReplicaSet metadata: name: replica2 spec: replicas: 2 selector: matchLabels: cascade: &amp;quot;false&amp;quot; template: metadata: labels: cascade: &amp;quot;false&amp;quot; spec: containers: - name: container image: kubetm/app:v1  3) Selector ReplicaSet apiVersion: apps/v1 kind: ReplicaSet metadata: name: replica1 spec: replicas: 1 selector: matchLabels: type: web ver: v1 matchExpressions: - {key: type, operator: In, values: [web]} - {key: ver, operator: Exists} template: metadata: labels: type: web ver: v1 location: dev spec: containers: - name: container image: kubetm/app:v1 terminationGracePeriodSeconds: 0  Pod apiVersion: v1 kind: Pod metadata: name: pod-node-affinity1 spec: affinity: nodeAffinity: requiredDuringSchedulingIngnoredDuringExecution: nodeSelectorTerms: - matchExpressions: - {key: AZ-01, operator: Exists} containers: - name: container image: kubetm/init  </description>
+      <description>1. Template, Replicas  1-1) Pod apiVersion: v1 kind: Pod metadata: name: pod1 labels: type: web spec: containers: - name: container image: kubetm/app:v1 terminationGracePeriodSeconds: 0  
+1-2) ReplicaSet apiVersion: apps/v1 kind: ReplicaSet metadata: name: replica1 spec: replicas: 1 selector: matchLabels: type: web template: metadata: name: pod1 labels: type: web spec: containers: - name: container image: kubetm/app:v1 terminationGracePeriodSeconds: 0   
+2. Updating Controller ReplicationController -&amp;gt; ReplicaSet</description>
     </item>
     
     <item>
