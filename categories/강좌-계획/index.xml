@@ -6,10 +6,37 @@
     <description>Recent content in 강좌 계획 on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 05 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>11월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2020_11/</link>
+      <pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2020_11/</guid>
+      <description>-2일- [아키텍쳐편] Logging PPT 100% Blog 90% Recording 60%
+ 실습편 스크립트 작성</description>
+    </item>
+    
+    <item>
+      <title>10월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2020_10/</link>
+      <pubDate>Mon, 05 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2020_10/</guid>
+      <description>-31일- [아키텍쳐편] Logging PPT 100% Blog 90% Recording 50%
+ 편집 및 업로드   
+-28일- [아키텍쳐편] Logging PPT 100% Blog 90% Recording 40%
+ 이론편 녹음  
+-21일- [아키텍쳐편] Logging PPT 100% Blog 90% Recording 20%
+ 블로그 업데이트 및 이론편 스크립트 작성  
+-19일- [아키텍쳐편] Logging PPT 100% Blog 80% Recording 10%
+ 블로그 업데이트 및 이론편 스크립트 작성  
+-15일- [아키텍쳐편] Logging PPT 100% Blog 70% Recording 0%</description>
+    </item>
     
     <item>
       <title>9월 진행사항</title>

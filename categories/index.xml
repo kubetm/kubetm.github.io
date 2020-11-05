@@ -6,7 +6,7 @@
     <description>Recent content in Categories on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 05 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>강좌 계획</title>
       <link>https://kubetm.github.io/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/</link>
-      <pubDate>Sat, 05 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/categories/%EA%B0%95%EC%A2%8C-%EA%B3%84%ED%9A%8D/</guid>
       <description></description>

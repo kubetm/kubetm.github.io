@@ -28,25 +28,25 @@
 
   <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="Logging/Monitoring Architecture">
-<meta itemprop="description" content="[Fluentd, ElasticSearch, Grafana]">
+<meta itemprop="description" content="[Promtail, Loki, Grafana]">
 
 
 
-<meta itemprop="wordCount" content="146">
+<meta itemprop="wordCount" content="227">
 
 
 
 <meta itemprop="keywords" content="" />
 
   <meta property="og:title" content="Logging/Monitoring Architecture" />
-<meta property="og:description" content="[Fluentd, ElasticSearch, Grafana]" />
+<meta property="og:description" content="[Promtail, Loki, Grafana]" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kubetm.github.io/practice/architecture/logging-difm-diadf-9aa/" />
 
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Logging/Monitoring Architecture"/>
-<meta name="twitter:description" content="[Fluentd, ElasticSearch, Grafana]"/>
+<meta name="twitter:description" content="[Promtail, Loki, Grafana]"/>
 
   
 
@@ -221,7 +221,7 @@
         <h2>Logging/Monitoring Architecture</h2>
     
     
-        <p>[Fluentd, ElasticSearch, Grafana]</p>
+        <p>[Promtail, Loki, Grafana]</p>
     
     
 </div>
@@ -232,7 +232,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>1 minute read</p>
+      <p>2 minutes read</p>
     
   </div>
 </header>
@@ -267,46 +267,133 @@
 
 <hr />
 
-<h3 id="1-1-pod-생성">1-1) Pod 생성</h3>
 
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/architecture/Node%20Level%20Logging%20for%20Kubernetes.jpg" alt="Node Level Logging for Kubernetes" title="Node Level Logging for Kubernetes"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="1-1-deployment-생성">1-1) Deployment 생성</h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: log-pod
+  name: app-log
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: k8s-node1
-  containers:
-  - name: app
-    image: kubetm/app
+  selector:
+    matchLabels:
+      type: app
+  template:
+    metadata:
+      labels:
+        type: app
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-node1
+      containers:
+      - name: container
+        image: kubetm/app
 </code></pre>
 
 <p>api 호출</p>
 
-<pre><code class="language-sh">crul &lt;pod-id&gt;/applog
+<pre><code class="language-sh">curl &lt;pod-ip&gt;:8080/hostname
+curl &lt;pod-ip&gt;:8080/version
 </code></pre>
 
 <p><br/></p>
 
 <h3 id="1-2-container-log-확인">1-2) Container Log 확인</h3>
 
-<p>Docker Log Driver 설정 확인</p>
+<p>kubectl exec로 Container 내부 로그파일 확인</p>
 
-<pre><code class="language-sh">cat /etc/docker/daemon.json
-docker inspect -f '{{.HostConfig.LogConfig.Type}}' &lt;container-id&gt;
-</code></pre>
-
-<p>Container 로그 파일 확인</p>
-
-<pre><code class="language-sh">cat /var/lib/docker/containers/&lt;container-id&gt;/&lt;container-id&gt;-json.log
+<pre><code class="language-sh">kubectl exec &lt;pod-name&gt; -it -- /bin/sh
 </code></pre>
 
 <p><br/></p>
 
-<h3 id="1-3-log-link-확인">1-3) Log Link 확인</h3>
+<p>kubectl logs로 Stdout 로그 확인</p>
 
-<pre><code class="language-yaml">ls al /var/log/containers
-ls al /var/log/pods/&lt;Namespace&gt;_&lt;pod-name&gt;_&lt;pod-id&gt;/&lt;container-name&gt;
+<pre><code class="language-sh">kubectl logs &lt;pod-name&gt;
+kubectl logs &lt;pod-name&gt; --tail 10 --follow
+</code></pre>
+
+<p><br/></p>
+
+<p>Docker Log Driver 설정 확인</p>
+
+<pre><code class="language-sh">cat /etc/docker/daemon.json
+</code></pre>
+
+<p><br/></p>
+
+<p>Docker Container 로그 파일 확인</p>
+
+<pre><code class="language-sh">cd  /var/lib/docker/containers
+docker ps
+cd &lt;container-id&gt;
+ls
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="1-3-node1에서-log-link-확인">1-3) Node1에서 Log Link 확인</h3>
+
+<pre><code class="language-sh">cd /var/log/pods
+cd &lt;Namespace&gt;_&lt;pod-name&gt;_&lt;pod-id&gt;
+cd container
+ls -al
+
+cd /var/log/containers
+ls -al
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="1-4-event-log-확인">1-4) Event Log 확인</h3>
+
+<pre><code class="language-sh">kubectl get events
+kubectl get events | grep app-log
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="1-5-termination-log-확인">1-5) Termination Log 확인</h3>
+
+<p>Termination API Call</p>
+
+<pre><code class="language-sh">curl &lt;pod-ip&gt;:8080/termination
+</code></pre>
+
+<p>Container Status 확인</p>
+
+<pre><code class="language-sh">kubectl describe pods &lt;pod-name&gt;
 </code></pre>
 
 <p><br/>
@@ -314,9 +401,41 @@ ls al /var/log/pods/&lt;Namespace&gt;_&lt;pod-name&gt;_&lt;pod-id&gt;/&lt;contai
 
 <hr />
 
-<h2 id="2-efk-설치">2. EFK 설치</h2>
+<h2 id="2-loki-stack-설치">2. Loki Stack 설치</h2>
 
 <hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/architecture/Loki%20Stack%20for%20Kubernetes.jpg" alt="Loki Stack for Kubernetes" title="Loki Stack for Kubernetes"  >
+           	
+        </span>
+    
+
+
 
 <h3 id="2-1-helm-설치">2-1) Helm 설치</h3>
 
@@ -324,43 +443,43 @@ ls al /var/log/pods/&lt;Namespace&gt;_&lt;pod-name&gt;_&lt;pod-id&gt;/&lt;contai
 
 <pre><code class="language-yaml">curl -O https://get.helm.sh/helm-v3.3.4-linux-amd64.tar.gz
 tar -xf helm-v3.3.4-linux-amd64.tar.gz
-cd linux-adm64
+cd linux-amd64
 cp ./helm /usr/local/bin/
 </code></pre>
 
-<h3 id="2-2-elastic-stack-설치">2-2) Elastic-stack 설치</h3>
+<p><br/></p>
 
-<p><a href="https://artifacthub.io/packages/helm/helm-stable/elastic-stack">https://artifacthub.io/packages/helm/helm-stable/elastic-stack</a></p>
+<h3 id="2-2-loki-stack-설치">2-2) loki-stack 설치</h3>
 
-<pre><code class="language-yaml">helm repo add helm-stable https://kubernetes-charts.storage.googleapis.com
-helm fetch helm-stable/elastic-stack --version 2.0.3
-tar -xf elastic-stack-2.0.3.tgz
-cd elastic-stack/
+<p>패키지 다운로드
+<a href="https://artifacthub.io/packages/helm/loki/loki-stack">https://artifacthub.io/packages/helm/loki/loki-stack</a></p>
+
+<pre><code class="language-sh">helm repo add loki https://grafana.github.io/loki/charts
+helm fetch loki/loki-stack --version 0.41.2
+
+tar -xf loki-stack-0.41.2.tgz
+cd loki-stack/
 vi values.yaml
-kubectl create ns elastic-stack
-helm install elastic-stack -f values.yaml . -n elastic-stack
-helm uninstall elastic-stack -n elastic-stack
 </code></pre>
 
-<h3 id="2-3-persistentvolume">2-3) PersistentVolume</h3>
+<p>helm 배포 / 삭제</p>
 
-<pre><code class="language-yaml">apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: elastic-stack-data-pv
-spec:
-  capacity:
-    storage: 40G
-  accessModes:
-  - ReadWriteOnce
-  hostPath:
-    path: /tmp/elastic-stack-data
-    type: DirectoryOrCreate
+<pre><code class="language-sh">kubectl create ns loki-stack
+helm install loki-stack -f values.yaml . -n loki-stack
+helm uninstall loki-stack -n loki-stack
 </code></pre>
 
-<h3 id="2-4-kibana-service">2-4) Kibana Service</h3>
+<p><br/></p>
 
-<pre><code class="language-yaml">kubectl edit -n elastic-stack svc elastic-stack-kibana
+<h3 id="2-3-grafana-service">2-3) Grafana Service</h3>
+
+<pre><code class="language-sh">kubectl edit -n loki-stack svc loki-stack-grafana
+----
+type: NodePort
+nodePort : 30000
+----
+
+kubectl get secret --namespace loki-stack loki-stack-grafana -o jsonpath=&quot;{.data.admin-password}&quot; | base64 --decode ; echo
 </code></pre>
 
   </div>

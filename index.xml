@@ -6,10 +6,37 @@
     <description>Recent content on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 05 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>11월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2020_11/</link>
+      <pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2020_11/</guid>
+      <description>-2일- [아키텍쳐편] Logging PPT 100% Blog 90% Recording 60%
+ 실습편 스크립트 작성</description>
+    </item>
+    
+    <item>
+      <title>10월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2020_10/</link>
+      <pubDate>Mon, 05 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2020_10/</guid>
+      <description>-31일- [아키텍쳐편] Logging PPT 100% Blog 90% Recording 50%
+ 편집 및 업로드   
+-28일- [아키텍쳐편] Logging PPT 100% Blog 90% Recording 40%
+ 이론편 녹음  
+-21일- [아키텍쳐편] Logging PPT 100% Blog 90% Recording 20%
+ 블로그 업데이트 및 이론편 스크립트 작성  
+-19일- [아키텍쳐편] Logging PPT 100% Blog 80% Recording 10%
+ 블로그 업데이트 및 이론편 스크립트 작성  
+-15일- [아키텍쳐편] Logging PPT 100% Blog 70% Recording 0%</description>
+    </item>
     
     <item>
       <title>9월 진행사항</title>
@@ -478,8 +505,8 @@ Mac 사용자 참고 URL  &amp;gt;https://www.virtualbox.org/wiki/Mac%20OS%20X%2
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/beginner/object-namespace_resourcequota_limitrange/</guid>
-      <description>1. Namespace  1-1) Namespace apiVersion: v1 kind: Namespace metadata: name: nm-1  1-2) Pod apiVersion: v1 kind: Pod metadata: name: pod-1 namespace: nm-1 labels: app: pod spec: containers: - name: container image: kubetm/app ports: - containerPort: 8080  1-3) Service apiVersion: v1 kind: Service metadata: name: svc-1 namespace: nm-1 spec: selector: app: pod ports: - port: 9000 targetPort: 8080  pod ip :
-curl 10.16.36.115:8080/hostname  service ip :</description>
+      <description>1. Namespace  1-1) Namespace apiVersion: v1 kind: Namespace metadata: name: nm-1  1-2) Pod apiVersion: v1 kind: Pod metadata: name: pod-1 namespace: nm-1 labels: app: pod spec: containers: - name: container image: kubetm/app ports: - containerPort: 8080  1-3) Service apiVersion: v1 kind: Service metadata: name: svc-1 namespace: nm-1 spec: selector: app: pod ports: - port: 9000 targetPort: 8080  
+1-1&amp;rsquo;) Namespace apiVersion: v1 kind: Namespace metadata: name: nm-2  1-2&amp;rsquo;) Pod apiVersion: v1 kind: Pod metadata: name: pod-1 namespace: nm-2 labels: app: pod spec: containers: - name: container image: kubetm/init ports: - containerPort: 8080</description>
     </item>
     
     <item>
@@ -609,12 +636,12 @@ cd /etc/kubernetes/pki/etcd 에 있는 ca.crt, server.crt, server.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/architecture/logging-difm-diadf-9aa/</guid>
-      <description>1. Basic Logging Construction 1-1) Pod 생성 apiVersion: v1 kind: Pod metadata: name: log-pod spec: nodeSelector: kubernetes.io/hostname: k8s-node1 containers: - name: app image: kubetm/app  api 호출
-crul &amp;lt;pod-id&amp;gt;/applog  
-1-2) Container Log 확인 Docker Log Driver 설정 확인
-cat /etc/docker/daemon.json docker inspect -f &#39;{{.HostConfig.LogConfig.Type}}&#39; &amp;lt;container-id&amp;gt;  Container 로그 파일 확인
-cat /var/lib/docker/containers/&amp;lt;container-id&amp;gt;/&amp;lt;container-id&amp;gt;-json.log  
-1-3) Log Link 확인 ls al /var/log/containers ls al /var/log/pods/&amp;lt;Namespace&amp;gt;_&amp;lt;pod-name&amp;gt;_&amp;lt;pod-id&amp;gt;/&amp;lt;container-name&amp;gt;</description>
+      <description>1. Basic Logging Construction  1-1) Deployment 생성 apiVersion: apps/v1 kind: Deployment metadata: name: app-log spec: selector: matchLabels: type: app template: metadata: labels: type: app spec: nodeSelector: kubernetes.io/hostname: k8s-node1 containers: - name: container image: kubetm/app  api 호출
+curl &amp;lt;pod-ip&amp;gt;:8080/hostname curl &amp;lt;pod-ip&amp;gt;:8080/version  
+1-2) Container Log 확인 kubectl exec로 Container 내부 로그파일 확인
+kubectl exec &amp;lt;pod-name&amp;gt; -it -- /bin/sh  
+kubectl logs로 Stdout 로그 확인
+kubectl logs &amp;lt;pod-name&amp;gt; kubectl logs &amp;lt;pod-name&amp;gt; --tail 10 --follow</description>
     </item>
     
     <item>

@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2019-11-06T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-11-06T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="420">
+<meta itemprop="wordCount" content="454">
 
 
 
@@ -237,7 +237,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
@@ -344,6 +344,35 @@ spec:
   - port: 9000
     targetPort: 8080
 </code></pre>
+
+<p><br/></p>
+
+<h3 id="1-1-namespace-1">1-1&rsquo;) Namespace</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: nm-2
+</code></pre>
+
+<h3 id="1-2-pod-1">1-2&rsquo;) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+  namespace: nm-2
+  labels:
+    app: pod
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+    ports:
+    - containerPort: 8080
+</code></pre>
+
+<p><br/></p>
 
 <p>pod ip :</p>
 
