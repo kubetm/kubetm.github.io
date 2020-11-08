@@ -32,7 +32,7 @@
 
 
 
-<meta itemprop="wordCount" content="227">
+<meta itemprop="wordCount" content="234">
 
 
 
@@ -223,6 +223,9 @@
     
         <p>[Promtail, Loki, Grafana]</p>
     
+    
+    	</br>
+  		</button><a href="/documents/architecture/Logging.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
     
 </div>
 
@@ -481,6 +484,23 @@ nodePort : 30000
 
 kubectl get secret --namespace loki-stack loki-stack-grafana -o jsonpath=&quot;{.data.admin-password}&quot; | base64 --decode ; echo
 </code></pre>
+
+<p><br/></p>
+
+<h2 id="br"><br/></h2>
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>Logging Architecture</strong> : <a href="https://kubernetes.io/docs/concepts/cluster-administration/logging/">https://kubernetes.io/docs/concepts/cluster-administration/logging/</a>
+
+
+<br /></li>
+</ul>
 
   </div>
   <footer>
