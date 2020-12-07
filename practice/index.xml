@@ -313,6 +313,16 @@ cd /etc/kubernetes/pki/etcd 에 있는 ca.crt, server.crt, server.</description>
     </item>
     
     <item>
+      <title>Component Architecture</title>
+      <link>https://kubetm.github.io/practice/architecture/component-difm-diadf-9aa2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/architecture/component-difm-diadf-9aa2/</guid>
+      <description>  해당강의는 실습은 없고, 이론 강의 자료를 다운 받으실 수 있습니다. 
+Referenece * Kubernetes  Kubernetes Components : https://kubernetes.io/ko/docs/concepts/overview/components/   * Others  A Closer Look at Etcd: The Brain of a Kubernetes Cluster : https://medium.com/better-programming/a-closer-look-at-etcd-the-brain-of-a-kubernetes-cluster-788c8ea759a5 Kubernetes Architecture : https://www.slideshare.net/harryzhang735/kubernetes-beyond-a-black-box-part-1  </description>
+    </item>
+    
+    <item>
       <title>Logging/Monitoring Architecture</title>
       <link>https://kubetm.github.io/practice/architecture/logging-difm-diadf-9aa/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

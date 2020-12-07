@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>KubeTM Blog with Kubernetes</title>
+<title>Component Architecture - KubeTM Blog with Kubernetes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -27,20 +27,26 @@
 
 
   <meta name="generator" content="Hugo 0.59.1" />
-  <meta itemprop="name" content="KubeTM Blog with Kubernetes">
-<meta itemprop="description" content="">
+  <meta itemprop="name" content="Component Architecture">
+<meta itemprop="description" content="[Kube-apiserver, Etcd, Kube-scheduler, Kube-proxy, Kube-controller-manager]">
 
 
-  <meta property="og:title" content="KubeTM Blog with Kubernetes" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://kubetm.github.io/" />
 
-<meta property="og:updated_time" content="2020-12-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="36">
+
+
+
+<meta itemprop="keywords" content="" />
+
+  <meta property="og:title" content="Component Architecture" />
+<meta property="og:description" content="[Kube-apiserver, Etcd, Kube-scheduler, Kube-proxy, Kube-controller-manager]" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kubetm.github.io/practice/architecture/component-difm-diadf-9aa2/" />
+
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="KubeTM Blog with Kubernetes"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Component Architecture"/>
+<meta name="twitter:description" content="[Kube-apiserver, Etcd, Kube-scheduler, Kube-proxy, Kube-controller-manager]"/>
 
   
 
@@ -92,11 +98,6 @@
 </head>
 
   <body>
-    
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWDJZXR" height="0" width="0" style="display:none;visibility:hidden">
-	</iframe></noscript>
-    
-
     
 <header id="site-header">
   <nav id="site-nav">
@@ -165,8 +166,6 @@
     <footer>
       <ul class="socnet-icons">
         
-    <li><a href="/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fas fa-rss"></a></li>
-
 
         
 
@@ -215,26 +214,24 @@
 </section>
 
       <main id="site-main">
-        
-        
-          <article class="post">
+        <article class="post">
   <header>
   <div class="title">
     
-        <h2>Authorization</h2>
+        <h2>Component Architecture</h2>
     
     
-        <p>[RBAC, Role, RoleBinding]</p>
+        <p>[Kube-apiserver, Etcd, Kube-scheduler, Kube-proxy, Kube-controller-manager]</p>
     
     
     	</br>
-  		</button><a href="/documents/intermediate/Authorization.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
+  		</button><a href="/documents/architecture/Component.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
     
 </div>
 
   <div class="meta">
-    <time class="published" datetime="2020-04-24 00:00:00 &#43;0000 UTC">
-      April 24, 2020
+    <time class="published" datetime="0001-01-01 00:00:00 &#43;0000 UTC">
+      January 1, 0001
     </time>
     <span class="author">KubeTM</span>
     
@@ -243,99 +240,62 @@
   </div>
 </header>
 
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
   
-  <a href="/practice/intermediate/object-authorization/" class="image featured">
-    <img src="/img/practice/intermediate/Access%20API%20with%20Authenticaiton%20for%20Kubernetes.jpg" alt="Access API with Authenticaiton for Kubernetes">
+  <a href="/practice/architecture/component-difm-diadf-9aa2/" class="image featured">
+    <img src="/img/practice/architecture/Component%20Architecture%20with%20Kube-apiserver,%20Etcd,%20Kube-scheduler,%20Kube-proxy,%20Kube-controller-manager%20for%20Kubernetes.jpg" alt="Component Architecture with Kube-apiserver, Etcd, Kube-scheduler, Kube-proxy, Kube-controller-manager for Kubernetes">
   </a>
 
 
   
-  <p><br/>
+    
+  
+  <div class="content">
+  
+  
+    
+
+<p><br/>
+해당강의는 실습은 없고, 이론 강의 자료를 다운 받으실 수 있습니다.
 <br/></p>
-  <footer>
-    <a href="/practice/intermediate/object-authorization/" class="button big">본문 보기</a>
-    
 
-  </footer>
-</article>
+<hr />
 
-        
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2>4월 진행사항</h2>
-    
-    
-        <p>[강좌 계획]</p>
-    
-    
-</div>
+<h2 id="referenece">Referenece</h2>
 
-  <div class="meta">
-    <time class="published" datetime="2020-04-14 00:00:00 &#43;0000 UTC">
-      April 14, 2020
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>2 minutes read</p>
-    
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
+<ul>
+<li><strong>Kubernetes Components</strong> : <a href="https://kubernetes.io/ko/docs/concepts/overview/components/">https://kubernetes.io/ko/docs/concepts/overview/components/</a>
+<br /></li>
+</ul>
+
+<h3 id="others">* <strong>Others</strong></h3>
+
+<ul>
+<li><strong>A Closer Look at Etcd: The Brain of a Kubernetes Cluster</strong> : <a href="https://medium.com/better-programming/a-closer-look-at-etcd-the-brain-of-a-kubernetes-cluster-788c8ea759a5">https://medium.com/better-programming/a-closer-look-at-etcd-the-brain-of-a-kubernetes-cluster-788c8ea759a5</a></li>
+<li><strong>Kubernetes Architecture</strong> : <a href="https://www.slideshare.net/harryzhang735/kubernetes-beyond-a-black-box-part-1">https://www.slideshare.net/harryzhang735/kubernetes-beyond-a-black-box-part-1</a></li>
+</ul>
+
   </div>
-</header>
-
-  
-
-  
-  <p><strong><code>PPT</code></strong> 100%  <strong><code>Blog</code></strong> 100%  <strong><code>Recording</code></strong> 100%</p>
   <footer>
-    <a href="/plan/2020_04/" class="button big">본문 보기</a>
     
 
   </footer>
 </article>
 
-        
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2>CKA 자격증 개요</h2>
-    
-    
-        <p>[시험 관련 전반적인 내용 설명]</p>
-    
-    
-</div>
-
-  <div class="meta">
-    <time class="published" datetime="2020-04-13 00:00:00 &#43;0000 UTC">
-      April 13, 2020
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>3 minutes read</p>
-    
-  </div>
-</header>
-
-  
-  <a href="/practice/cka/ready/" class="image featured">
-    <img src="/img/practice/cka/Certified%20Kubernetes%20Administrator%20for%20Kubernetes.jpg" alt="Certified Kubernetes Administrator for Kubernetes">
-  </a>
 
 
-  
-  <p><br/>
-<br/></p>
-  <footer>
-    <a href="/practice/cka/ready/" class="button big">본문 보기</a>
-    
 
-  </footer>
-</article>
-
-        
-        
       </main>
       <section id="site-sidebar">
 
@@ -417,4 +377,3 @@ if (!doNotTrack) {
     </div>
   </body>
 </html>
-

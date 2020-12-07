@@ -6,10 +6,24 @@
     <description>Recent content on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 05 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>12월 진행사항</title>
+      <link>https://kubetm.github.io/plan/2020_12/</link>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/plan/2020_12/</guid>
+      <description>-6일- [아키텍쳐편] Component PPT 100% Blog 100% Recording 100%
+ 녹음 및 편집, 그리고 업로드 완료   
+-5일- [아키텍쳐편] Component PPT 100% Blog 100% Recording 50%
+ 이론 스크립팅 완료  
+-3일- [아키텍쳐편] Component PPT 100% Blog 100% Recording 0%
+ 이론 강의완료 및 블로그 업데이트</description>
+    </item>
     
     <item>
       <title>11월 진행사항</title>
@@ -17,14 +31,15 @@
       <pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/plan/2020_11/</guid>
-      <description>-8일- [아키텍쳐편] Logging PPT 100% Blog 100% Recording 100%
+      <description>-27일- [아키텍쳐편] Component PPT 100% Blog 0% Recording 0%
  편집 및 업로드   
--6일- [아키텍쳐편] Logging PPT 100% Blog 100% Recording 80%
- 실습 영상 녹음  
--4일- [아키텍쳐편] Logging PPT 100% Blog 100% Recording 70%
- 블로그 업데이트 및 실습편 스크립트 작성2  
--2일- [아키텍쳐편] Logging PPT 100% Blog 90% Recording 60%
- 실습편 스크립트 작성</description>
+-23일- [아키텍쳐편] Component PPT 60% Blog 0% Recording 0%
+ 편집 및 업로드   
+-18일- [아키텍쳐편] Component PPT 30% Blog 0% Recording 0%
+ 편집 및 업로드   
+-8일- [아키텍쳐편] Logging PPT 100% Blog 100% Recording 100%
+ 편집 및 업로드   
+-6일- [아키텍쳐편] Logging PPT 100% Blog 100% Recording 80%</description>
     </item>
     
     <item>
@@ -289,7 +304,7 @@ Docker</description>
       
       <guid>https://kubetm.github.io/info/book/</guid>
       <description>Kubernetes IN ACTION   방대한 분량임에도 불구하고 버릴 내용이 하나도 없음 시간이 되서 3번정도 정독한다면 제 강의는 들을 필요 없어요 ^^ 처음 쿠버네티스를 시작하거나 시간적인 여부가 있는 분들께 권장 Example Github : https://github.com/luksa/kubernetes-in-action   
-쿠버네티스 패턴   쿠버네티스 기본오브젝트들에 대해 어느정도 알고 있는 분들이 읽으면 좋은책 번역이 잘되있어서 읽기가 편함 실무에서 쿠버네티스를 쓰게 됐을때 한번쯤 고민하게 되는 부분들을 다루고 있어서 매우 유익한 책입니다.</description>
+쿠버네티스 패턴   쿠버네티스 기본오브젝트들에 대해 어느정도 알고 있는 분들이 읽으면 좋은책 번역이 잘되있어서 읽기가 편함 실무에서 쿠버네티스를 쓰게 됐을때 한번쯤 고민하게 되는 부분들을 다루고 있어서 매우 유익한 책입니다.   개인적인 의견이며, 삭제 요청시 kube.</description>
     </item>
     
     <item>
@@ -634,6 +649,16 @@ Etcd 스냅샷을 하는데 TLS를 이용  Endpoint : https:127.0.0.1:2379 Path 
 https://v1-18.docs.kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#built-in-snapshot
 ETCDCTL_API=3 etcdctl --endpoints https://127.0.0.1:2379 --cacert /tls/ca.crt --cert /tls/client.crt --key /tls/client.key snapshot save /snapshot/etcd.db ETCDCTL_API=3 etcdctl --write-out=table snapshot status /snapshot/etcd.db  내 Cluster에서 해볼려면..
 cd /etc/kubernetes/pki/etcd 에 있는 ca.crt, server.crt, server.</description>
+    </item>
+    
+    <item>
+      <title>Component Architecture</title>
+      <link>https://kubetm.github.io/practice/architecture/component-difm-diadf-9aa2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/practice/architecture/component-difm-diadf-9aa2/</guid>
+      <description>  해당강의는 실습은 없고, 이론 강의 자료를 다운 받으실 수 있습니다. 
+Referenece * Kubernetes  Kubernetes Components : https://kubernetes.io/ko/docs/concepts/overview/components/   * Others  A Closer Look at Etcd: The Brain of a Kubernetes Cluster : https://medium.com/better-programming/a-closer-look-at-etcd-the-brain-of-a-kubernetes-cluster-788c8ea759a5 Kubernetes Architecture : https://www.slideshare.net/harryzhang735/kubernetes-beyond-a-black-box-part-1  </description>
     </item>
     
     <item>
