@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-12-08T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-12-08T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1262">
+<meta itemprop="wordCount" content="1271">
 
 
 
@@ -353,9 +353,9 @@ VM 생성시 노트북에 연결되어 있는 공유기로부터 IP를 할당 �
 <pre><code class="language-sh">- [GET MOBAXTERM NOW] 버튼 클릭
 - Free 버전 [Download now]
 - Installer editon 다운로드 및 실행
-- Sessions &gt; SSH &gt; Remote host : 192.168.56.30 &gt; [Bookmark settings] Session name : master-192.168.56.30 &gt; [ok]
-- Sessions &gt; SSH &gt; Remote host : 192.168.56.31 &gt; [Bookmark settings] Session name : node1-192.168.56.31 &gt; [ok]
-- Sessions &gt; SSH &gt; Remote host : 192.168.56.32 &gt; [Bookmark settings] Session name : node2-192.168.56.32 &gt; [ok]
+- Sessions &gt; SSH &gt; Remote host : 127.0.0.1, Port : 10030 &gt; [Bookmark settings] Session name : master-30 &gt; [ok]
+- Sessions &gt; SSH &gt; Remote host : 127.0.0.1, Port : 10031 &gt; [Bookmark settings] Session name : node1-31 &gt; [ok]
+- Sessions &gt; SSH &gt; Remote host : 127.0.0.1, Port : 10032 &gt; [Bookmark settings] Session name : node2-32 &gt; [ok]
 </code></pre>
 
 <p><br/>
@@ -1023,7 +1023,7 @@ echo &quot;source &lt;(kubectl completion bash)&quot; &gt;&gt; ~/.bashrc
 
 <p><code>--address</code>에 자신의 Host IP 입력</p>
 
-<pre><code class="language-sh">nohup kubectl proxy --port=8001 --address=192.168.56.30 --accept-hosts='^*$' &gt;/dev/null 2&gt;&amp;1 &amp;
+<pre><code class="language-sh">nohup kubectl proxy --port=8001 --address=30.0.2.30 --accept-hosts='^*$' &gt;/dev/null 2&gt;&amp;1 &amp;
 </code></pre>
 
 <ul>
@@ -1032,7 +1032,7 @@ echo &quot;source &lt;(kubectl completion bash)&quot; &gt;&gt; ~/.bashrc
 
 <h3 id="6-2-4-접속-url">6-2-4) 접속 URL</h3>
 
-<pre><code class="language-sh">http://192.168.56.30:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+<pre><code class="language-sh">http://127.0.0.1:10080/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
 </code></pre>
 
 <h3 id="6-2-5-언어-설정변경">6-2-5) 언어 설정변경</h3>
