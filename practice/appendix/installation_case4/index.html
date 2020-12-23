@@ -33,7 +33,7 @@
 
 <meta itemprop="datePublished" content="2020-06-01T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-06-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1188">
+<meta itemprop="wordCount" content="1193">
 
 
 
@@ -262,7 +262,7 @@
     
 
 <p><br/>
-쿠버네티스 1.19 버전의 설치 방법으로써 설치시 영상 강의 UI와 약간의 차이가 있을 수 있습니다.
+쿠버네티스 1.19.4 버전의 설치 방법으로써 설치시 영상 강의 UI와 약간의 차이가 있을 수 있습니다.
 <br/>
 VM 생성시 노트북에 연결되어 있는 공유기로부터 IP를 할당 받을 수 있을 경우의 설치 방법입니다.
 <br/>
@@ -550,6 +550,7 @@ enabled=1
 gpgcheck=1
 repo_gpgcheck=1
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kubelet kubeadm kubectl
 EOF
 </code></pre>
 
@@ -592,7 +593,7 @@ EOF
 
 <p>도커 패키지 설치</p>
 
-<pre><code class="language-sh">yum update -y &amp;&amp; yum install -y docker-ce-19.03.8
+<pre><code class="language-sh">yum update -y &amp;&amp; yum install -y containerd.io-1.2.13 docker-ce-19.03.11 docker-ce-cli-19.03.11
 </code></pre>
 
 <pre><code class="language-sh">mkdir /etc/docker
@@ -615,7 +616,7 @@ mkdir -p /etc/systemd/system/docker.service.d
 
 <h3 id="3-2-2-kubernetes-설치">3-2-2) Kubernetes 설치</h3>
 
-<pre><code class="language-sh">yum install -y kubelet kubeadm kubectl –disableexcludes=kubernetes
+<pre><code class="language-sh">yum install -y --disableexcludes=kubernetes kubeadm-1.19.4-0.x86_64 kubectl-1.19.4-0.x86_64 kubelet-1.19.4-0.x86_64
 </code></pre>
 
 <p><br/>
