@@ -18,12 +18,8 @@
       
       <guid>https://kubetm.github.io/practice/appendix/installation_case5/</guid>
       <description>쿠버네티스 1.19.4 버전의 설치 방법으로써 설치시 영상 강의 UI와 약간의 차이가 있을 수 있습니다.  VM 생성시 노트북에 연결되어 있는 공유기로부터 IP를 할당 받을 수 없는 경우 Virtualbox로부터 VM끼리 통신할 수 있는 가상의 네트워크를 생성하는 방법입니다.  
-<<<<<<< HEAD
 전체 네트워크 구성   
 1-1) Install Virtualbox 1-1-1) virtualbox 다운로드 및 설치 [윈도우10 버전으로 진행] 아래 경로에서 [Windows hosts] 클릭 하여 다운로드 후 설치 (별다른 변경없이 Next만 함)  &amp;gt;https://www.</description>
-=======
-전체 네트워크 구성   - NatNetwork : k8s-Master와 k8s-Node들간에 통신역할 및 인터넷으로부터 파일을 다운로드 받을 수 있게 해주는 역할  - VirtualBox Host-Only : 내 Host OS에서 각 Guest OS에 연결 할 수 있도록 해주는 역할</description>
->>>>>>> branch 'master' of https://github.com/kubetm/kubetm.github.io.git
     </item>
     
     <item>
