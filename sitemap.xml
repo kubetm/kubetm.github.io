@@ -293,6 +293,11 @@
   </url>
   
   <url>
+    <loc>https://kubetm.github.io/helm_practice/</loc>
+    <lastmod>2019-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kubetm.github.io/practice/</loc>
     <lastmod>2019-10-21T00:00:00+00:00</lastmod>
   </url>
@@ -328,10 +333,6 @@
   
   <url>
     <loc>https://kubetm.github.io/helm_practice/basic/gettingstarted-helm/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/helm_practice/</loc>
   </url>
   
   <url>

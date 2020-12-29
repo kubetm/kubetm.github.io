@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Helm 빠르게 맛보기 - KubeTM Blog with Kubernetes</title>
+<title>Helm 기본 다지기 - KubeTM Blog with Kubernetes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -27,26 +27,26 @@
 
 
   <meta name="generator" content="Hugo 0.59.1" />
-  <meta itemprop="name" content="Helm 빠르게 맛보기">
-<meta itemprop="description" content="[Install, Helm, Tomcat]">
+  <meta itemprop="name" content="Helm 기본 다지기">
+<meta itemprop="description" content="[Helm으로 Tomcat 배포]">
 
 
 
-<meta itemprop="wordCount" content="216">
+<meta itemprop="wordCount" content="227">
 
 
 
 <meta itemprop="keywords" content="" />
 
-  <meta property="og:title" content="Helm 빠르게 맛보기" />
-<meta property="og:description" content="[Install, Helm, Tomcat]" />
+  <meta property="og:title" content="Helm 기본 다지기" />
+<meta property="og:description" content="[Helm으로 Tomcat 배포]" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kubetm.github.io/helm_practice/basic/gettingstarted-helm/" />
 
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Helm 빠르게 맛보기"/>
-<meta name="twitter:description" content="[Install, Helm, Tomcat]"/>
+<meta name="twitter:title" content="Helm 기본 다지기"/>
+<meta name="twitter:description" content="[Helm으로 Tomcat 배포]"/>
 
   
 
@@ -114,7 +114,7 @@
         
           
           
-            <a href="/practice/" class="link"><i class='far fa-clipboard' style='color:green'></i> 강의 자료실</a>
+            <a href="/practice/" class="link"><i class='far fa-clipboard' style='color:green'></i> 쿠버네티스 강의자료실</a>
           
         
       
@@ -218,10 +218,10 @@
   <header>
   <div class="title">
     
-        <h2>Helm 빠르게 맛보기</h2>
+        <h2>Helm 기본 다지기</h2>
     
     
-        <p>[Install, Helm, Tomcat]</p>
+        <p>[Helm으로 Tomcat 배포]</p>
     
     
     	</br>
@@ -249,10 +249,6 @@
 
   </section>
   
-  <a href="/helm_practice/basic/gettingstarted-helm/" class="image featured">
-    <img src="/img/helm_practice/basic/GettingStarted%20Installation,%20Install%20tomcat%20for%20Helm.jpg" alt="GettingStarted Installation, Install tomcat for Helm">
-  </a>
-
 
   
     
@@ -270,48 +266,16 @@
 
 <hr />
 
+<p>Helm 설치 가이드 URL : <a href="https://helm.sh/ko/docs/intro/install/">https://helm.sh/ko/docs/intro/install/</a></p>
 
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-    
-    
-    
-    
-
-        
-    
-
-    
-        <span class="image left">
-        	
-            	<img src="/img/practice/architecture/Node%20Level%20Logging%20for%20Kubernetes.jpg" alt="Node Level Logging for Kubernetes" title="Node Level Logging for Kubernetes"  >
-           	
-        </span>
-    
-
-
-
-<p>Helm 설치 : <a href="https://helm.sh/ko/docs/intro/install/">https://helm.sh/ko/docs/intro/install/</a></p>
+<p><br/></p>
 
 <h3 id="1-1-릴리즈별-수동-다운로드">1-1) 릴리즈별 수동 다운로드</h3>
 
-<pre><code class="language-sh">https://github.com/helm/helm/releases
-</code></pre>
+<p>릴리즈별 다운로드 : <a href="https://github.com/helm/helm/releases/">https://github.com/helm/helm/releases/</a></p>
 
-<p>설치</p>
-
-<pre><code class="language-sh">tar -zxvf helm-v3.0.0-linux-amd64.tar.gz
+<pre><code class="language-sh">curl -O https://get.helm.sh/helm-v3.4.2-linux-amd64.tar.gz
+tar -zxvf helm-v3.4.2-linux-amd64.tar.gz
 mv linux-amd64/helm /usr/local/bin/helm
 </code></pre>
 
@@ -422,6 +386,7 @@ helm repo list
 <h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
 
 <ul>
+<li><strong>Helm Home</strong> : <a href="https://helm.sh">https://helm.sh</a></li>
 <li><strong>Installing Helm</strong> : <a href="https://helm.sh/ko/docs/intro/install/">https://helm.sh/ko/docs/intro/install/</a>
 
 
