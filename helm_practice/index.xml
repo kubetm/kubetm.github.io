@@ -20,7 +20,16 @@
       <description>1. Installing Helm Helm 설치 가이드 URL : https://helm.sh/ko/docs/intro/install/
 
 1-1) 릴리즈별 수동 다운로드 릴리즈별 다운로드 : https://github.com/helm/helm/releases/
-curl -O https://get.helm.sh/helm-v3.4.2-linux-amd64.tar.gz tar -zxvf helm-v3.4.2-linux-amd64.tar.gz mv linux-amd64/helm /usr/local/bin/helm  1-2) 자동 최신버전 다운로드 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 chmod 700 get_helm.sh ./get_helm.sh  1-3) 자동 완성 기능 source &amp;lt;(helm completion bash) Linux: helm completion bash &amp;gt; /etc/bash_completion.d/helm MacOS: helm completion bash &amp;gt; /usr/local/etc/bash_completion.d/helm [zsh] source &amp;lt;(helm completion zsh) helm completion zsh &amp;gt; &amp;quot;${fpath[1]}/_helm&amp;quot; [fish] helm completion fish | source helm completion fish &amp;gt; ~/.</description>
+curl -O https://get.helm.sh/helm-v3.4.2-linux-amd64.tar.gz tar -zxvf helm-v3.4.2-linux-amd64.tar.gz mv linux-amd64/helm /usr/local/bin/helm  1-2) 자동 최신버전 다운로드 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 chmod 700 get_helm.sh ./get_helm.sh  1-3) 키워드 자동 완성 기능 source &amp;lt;(helm completion bash) Linux: helm completion bash &amp;gt; /etc/bash_completion.d/helm MacOS: helm completion bash &amp;gt; /usr/local/etc/bash_completion.d/helm [zsh] source &amp;lt;(helm completion zsh) helm completion zsh &amp;gt; &amp;quot;${fpath[1]}/_helm&amp;quot; [fish] helm completion fish | source helm completion fish &amp;gt; ~/.</description>
+    </item>
+    
+    <item>
+      <title>Helm 기본 다지기</title>
+      <link>https://kubetm.github.io/helm_practice/template_guide/step1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/helm_practice/template_guide/step1/</guid>
+      <description>1. Chart Template 1-1) Chart Template 생성 helm create mychart  1-2) Chart Get 명령 helm show values . helm show chart . helm show readme . helm show all .  1-3) Chart Template 명령 helm template mychart .  1-4) Chart 배포 &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD helm install mychart .  1-5) Chart get 명령 helm get manifest mychart helm get notes mychart helm get values mychart helm get all mychart  helm get values 비교</description>
     </item>
     
   </channel>

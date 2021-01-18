@@ -32,7 +32,7 @@
 
 
 
-<meta itemprop="wordCount" content="260">
+<meta itemprop="wordCount" content="549">
 
 
 
@@ -41,7 +41,7 @@
   <meta property="og:title" content="Helm 기본 다지기" />
 <meta property="og:description" content="[Helm으로 Tomcat 배포]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/helm_practice/basic/gettingstarted-helm/" />
+<meta property="og:url" content="https://kubetm.github.io/helm_practice/template_guide/step1/" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -235,7 +235,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
@@ -262,153 +262,265 @@
 
 <hr />
 
-<h2 id="1-installing-helm">1. Installing Helm</h2>
+<h2 id="1-chart-template">1. Chart Template</h2>
 
 <hr />
 
-<p>Helm 설치 가이드 URL : <a href="https://helm.sh/ko/docs/intro/install/">https://helm.sh/ko/docs/intro/install/</a></p>
+<h3 id="1-1-chart-template-생성">1-1) Chart Template 생성</h3>
+
+<pre><code class="language-sh">helm create mychart
+</code></pre>
+
+<h3 id="1-2-chart-get-명령">1-2) Chart Get 명령</h3>
+
+<pre><code class="language-sh">helm show values .
+helm show chart .
+helm show readme .
+helm show all .
+</code></pre>
+
+<h3 id="1-3-chart-template-명령">1-3) Chart Template 명령</h3>
+
+<pre><code class="language-sh">helm template mychart .
+</code></pre>
+
+<h3 id="1-4-chart-배포">1-4) Chart 배포</h3>
+
+<pre><code class="language-sh">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+helm install mychart .
+</code></pre>
+
+<h3 id="1-5-chart-get-명령">1-5) Chart get 명령</h3>
+
+<pre><code class="language-sh">helm get manifest mychart
+helm get notes mychart
+helm get values mychart
+helm get all mychart
+</code></pre>
+
+<p>helm get values 비교</p>
+
+<pre><code class="language-sh">helm uninstall mychart
+helm install mychart . -f values.yaml
+helm install mychart . --set replicaCount=3
+=======
+helm install --dry-run mychart . 
+helm template mychart .
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch 'master' of https://github.com/kubetm/kubetm.git
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="2-내장-객체">2. 내장 객체</h2>
+
+<hr />
+
+<p>templates 폴더 안에 불필요한 파일 삭제</p>
+
+<pre><code class="language-sh">rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml tests
+</code></pre>
+
+<h3 id="2-1-configmap-추가">2-1) configmap 추가</h3>
+
+<p>vi cm-object.yaml</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: built-in-object
+data:
+  .Release: ______________________________________
+  .Release.Name: {{ .Release.Name }}
+  .Release.Namespace: {{ .Release.Namespace }}
+  .Release.IsUpgrade: &quot;{{ .Release.IsUpgrade }}&quot;
+  .Release.IsInstall: &quot;{{ .Release.IsInstall }}&quot;
+  .Release.Revision: &quot;{{ .Release.Revision }}&quot;
+  .Release.Service: {{ .Release.Service }}
+  .Values: ______________________________________
+  .Values.replicaCount: &quot;{{ .Values.replicaCount }}&quot;
+  .Values.image.repository: {{ .Values.image.repository }}
+  .Values.image.pullPolicy: {{ .Values.image.pullPolicy }}
+  .Values.service.type: {{ .Values.service.type }}
+  .Values.service.port: &quot;{{ .Values.service.port }}&quot;
+  .Chart: ______________________________________
+  .Chart.Name: {{ .Chart.Name }}
+  .Chart.Description: {{ .Chart.Description }}
+  .Chart.Type: {{ .Chart.Type }}
+  .Chart.Version: {{ .Chart.Version }}
+  .Chart.AppVersion: {{ .Chart.AppVersion }}
+  .Template: ______________________________________
+  .Template.Name: {{ .Template.Name }}
+  .Template.BasePath: {{ .Template.BasePath }}
+</code></pre>
+
+<p>결과 값</p>
+
+<pre><code class="language-sh">[Release]
+  .Release.Name: mychart
+  .Release.Namespace: default
+  .Release.IsUpgrade: &quot;false&quot;
+  .Release.IsInstall: &quot;true&quot;
+  .Release.Revision: &quot;1&quot;
+  .Release.Service: Helm
+[Values]
+  .Values.replicaCount: &quot;1&quot;
+  .Values.image.repository: nginx
+  .Values.image.pullPolicy: IfNotPresent
+  .Values.service.type: ClusterIP
+  .Values.service.port: &quot;80&quot;
+[Chart]
+  .Chart.Name: mychart
+  .Chart.Description: A Helm chart for Kubernetes
+  .Chart.Type: application
+  .Chart.Version: 0.1.0
+  .Chart.AppVersion: 1.16.0
+[Template]
+  .Template.BasePath: mychart/templates
+  .Template.Name: mychart/templates/cm-object.yaml
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="3-values-yaml-파일">3. Values.yaml 파일</h2>
+
+<hr />
+
+<p>vi cm-values.yaml</p>
+
+<h3 id="3-1-configmap-추가">3-1) configmap 추가</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: values-yaml
+data:
+  env: {{ .Values.configMapData.env }}
+  log: {{ .Values.configMapData.log }}
+  path: &quot;{{ .Values.configMapData.path }}&quot;
+</code></pre>
+
+<h3 id="3-2-values-yaml에-해당-속성-추가">3-2) values.yaml에 해당 속성 추가</h3>
+
+<pre><code class="language-yaml">configMapData:
+  env: dev
+  log: debug
+  path: &quot;/data&quot;
+</code></pre>
+
+<h3 id="3-3-확인">3-3) 확인</h3>
+
+<pre><code class="language-sh">helm template mychart .
+</code></pre>
+
+<h3 id="3-4-prod용-values-prod-yaml-파일-추가">3-4) Prod용 values_prod.yaml 파일 추가</h3>
+
+<pre><code class="language-yaml">configMapData:
+  env: prod
+  log: info
+</code></pre>
+
+<h3 id="3-5-f-적용">3-5) -f 적용</h3>
+
+<pre><code class="language-sh">helm template mychart . -f ./values_prod.yaml
+</code></pre>
+
+<h3 id="3-6-f-적용-set-적용">3-6) -f 적용, &ndash;set 적용</h3>
+
+<pre><code class="language-sh">helm template mychart . -f ./values_prod.yaml --set configMapData.log=debug
+</code></pre>
+
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<br/>
+<br/></p>
+
+<hr />
+
+<h2 id="4-사용자-정의-변수">4. 사용자 정의 변수</h2>
+
+<hr />
+
+<p>_helpers.tpl 파일</p>
+
+<pre><code class="language-sh">{{/*
+Expand the name of the chart.
+*/}}
+{{- define &quot;mychart.name&quot; -}}
+{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix &quot;-&quot; }}
+{{- end }}
+
+{{/*
+Common labels
+*/}}
+{{- define &quot;mychart.labels&quot; -}}
+helm.sh/chart: {{ include &quot;mychart.chart&quot; . }}
+{{ include &quot;mychart.selectorLabels&quot; . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+</code></pre>
 
 <p><br/></p>
 
-<h3 id="1-1-릴리즈별-수동-다운로드">1-1) 릴리즈별 수동 다운로드</h3>
+<p>service.yaml 파일</p>
 
-<p>릴리즈별 다운로드 : <a href="https://github.com/helm/helm/releases/">https://github.com/helm/helm/releases/</a></p>
-
-<pre><code class="language-sh">curl -O https://get.helm.sh/helm-v3.4.2-linux-amd64.tar.gz
-tar -zxvf helm-v3.4.2-linux-amd64.tar.gz
-mv linux-amd64/helm /usr/local/bin/helm
+<pre><code class="language-sh">apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include &quot;mychart.fullname&quot; . }}
+  labels:
+    {{- include &quot;mychart.labels&quot; . | nindent 4 }}
 </code></pre>
 
-<h3 id="1-2-자동-최신버전-다운로드">1-2) 자동 최신버전 다운로드</h3>
-
-<pre><code class="language-sh">curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-chmod 700 get_helm.sh
-./get_helm.sh
-</code></pre>
-
-<h3 id="1-3-키워드-자동-완성-기능">1-3) 키워드 자동 완성 기능</h3>
-
-<pre><code class="language-sh">source &lt;(helm completion bash)
-
-Linux: helm completion bash &gt; /etc/bash_completion.d/helm 
-MacOS: helm completion bash &gt; /usr/local/etc/bash_completion.d/helm
-
-[zsh] 
-source &lt;(helm completion zsh)
-helm completion zsh &gt; &quot;${fpath[1]}/_helm&quot;
-
-[fish]
-helm completion fish | source
-helm completion fish &gt; ~/.config/fish/completions/helm.fish
-</code></pre>
-
-<h3 id="1-4-버전-확인-명령어">1-4) 버전 확인 명령어</h3>
-
-<pre><code class="language-sh">helm version
-</code></pre>
-
-<h3 id="1-5-쿠버네티스-config-파일-확인">1-5) 쿠버네티스 config 파일 확인</h3>
-
-<pre><code class="language-sh">cd ~/.kube/
-</code></pre>
-
-<p><br/>
+<p>=======
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch &lsquo;master&rsquo; of <a href="https://github.com/kubetm/kubetm.git">https://github.com/kubetm/kubetm.git</a>
+<br/>
 <br/></p>
 
 <hr />
 
-<h2 id="2-차트-레포지토리-등록-및-톰켓-배포">2. 차트 레포지토리 등록 및 톰켓 배포</h2>
+<h2 id="4-helpers-tpl-파일">4. _helpers.tpl 파일</h2>
 
 <hr />
 
-<h3 id="2-1-레포지토리-등록">2-1) 레포지토리 등록</h3>
+<h3 id="4-1-debug-모드-실행">4-1) Debug 모드 실행</h3>
 
-<p>Artifact Hub URL : <a href="https://artifacthub.io/">https://artifacthub.io/</a></p>
-
-<pre><code class="language-sh">[등록]
-helm repo add bitnami https://charts.bitnami.com/bitnami
-
-[조회]
-helm repo list
-
-[Chart 찾기]
-helm search repo bitnami | grep tomcat
-
-[업데이트]
-helm repo update
-
-[삭제]
-helm repo remove bitnami
+<pre><code class="language-sh">helm install --debug --dry-run devchart .
 </code></pre>
 
-<h3 id="2-2-tomcat-배포">2-2) Tomcat 배포</h3>
+<h3 id="4-2-생성된-service-확인">4-2) 생성된 Service 확인</h3>
 
-<pre><code class="language-sh">[Tomcat 배포]
-helm install my-tomcat bitnami/tomcat --version 7.1.2 --set persistence.enabled=false
-
-[NodePort 확인 및 접속]
-kubectl get svc my-tomcat
-http://&lt;master-ip&gt;:&lt;nodePort&gt;/
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  # name: {{ include &quot;mychart.fullname&quot; . }}
+  name: devchart-mychart
+  labels:  
+    #{{- include &quot;mychart.labels&quot; . | nindent 4 }}
+    helm.sh/chart: mychart-0.1.0
+    app.kubernetes.io/name: mychart
+    app.kubernetes.io/instance: devchart
+    app.kubernetes.io/version: &quot;1.16.0&quot;
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:  
+    #{{- include &quot;mychart.selectorLabels&quot; . | nindent 4 }}
+    app.kubernetes.io/name: mychart
+    app.kubernetes.io/instance: devchart
 </code></pre>
-
-<h3 id="2-3-tomcat-삭제">2-3) Tomcat 삭제</h3>
-
-<pre><code class="language-sh">[배포 리스트 조회]
-helm list
-
-[배포 상태확인]
-helm status my-tomcat
-
-[Tomcat 삭제]
-helm uninstall my-tomcat
-
-[Pod 확인]
-kubectl get pods
-</code></pre>
-
-<p><br/></p>
-
-<h3 id="2-4-관리자-페이지에-접속이-되도록-다시-재설치">2-4) 관리자 페이지에 접속이 되도록 다시 재설치</h3>
-
-<pre><code class="language-sh">
-[Tomcat 배포]
-helm install my-tomcat bitnami/tomcat --version 7.1.2 --set persistence.enabled=false,tomcatAllowRemoteManagement=1
-
-[NodePort 확인 및 접속]
-kubectl get svc my-tomcat
-http://&lt;master-ip&gt;:&lt;nodePort&gt;/
-
-[Tomcat 삭제]
-helm uninstall my-tomcat
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="3-톰켓-chart-다운-및-배포">3. 톰켓 Chart 다운 및 배포</h2>
-
-<hr />
-
-<h3 id="3-1-chart-다운로드">3-1) Chart 다운로드</h3>
-
-<pre><code class="language-sh">[다운로드]
-helm pull bitnami/tomcat --version 7.1.2
-
-[압축풀기]
-tar -xf ./tomcat-7.1.2.tgz
-
-[Tomcat 배포]
-helm install my-tomcat . -f values.yaml
-
-[NodePort 확인 및 접속]
-kubectl get svc my-tomcat
-http://&lt;master-ip&gt;:&lt;nodePort&gt;/
-</code></pre>
-
-<p><br/>
-<br/></p>
 
 <hr />
 
@@ -419,12 +531,37 @@ http://&lt;master-ip&gt;:&lt;nodePort&gt;/
 <h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
 
 <ul>
-<li><strong>Helm Home</strong> : <a href="https://helm.sh">https://helm.sh</a></li>
-<li><strong>Installing Helm</strong> : <a href="https://helm.sh/ko/docs/intro/install/">https://helm.sh/ko/docs/intro/install/</a>
+<li><p><strong>Markdown Guide</strong> : <a href="https://www.markdownguide.org/basic-syntax/">https://www.markdownguide.org/basic-syntax/</a></p></li>
 
+<li><p><strong>Getting Started</strong> : <a href="https://helm.sh/docs/chart_template_guide/getting_started/">https://helm.sh/docs/chart_template_guide/getting_started/</a></p></li>
 
-<br /></li>
+<li><p><strong>Built-in Objects</strong> : <a href="https://helm.sh/docs/chart_template_guide/builtin_objects/">https://helm.sh/docs/chart_template_guide/builtin_objects/</a></p></li>
+
+<li><p><strong>Values Files</strong> : <a href="https://helm.sh/docs/chart_template_guide/values_files/">https://helm.sh/docs/chart_template_guide/values_files/</a>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p></li>
+
+<li><h1 id="named-templates-https-helm-sh-docs-chart-template-guide-named-templates"><strong>Named Templates</strong> : <a href="https://helm.sh/docs/chart_template_guide/named_templates/">https://helm.sh/docs/chart_template_guide/named_templates/</a></h1></li>
+
+<li><p><strong>GoDoc-package template</strong> : <a href="https://godoc.org/text/template">https://godoc.org/text/template</a></p></li>
+
+<li><p><strong>Sprig Function Documentation</strong> : <a href="https://masterminds.github.io/sprig/">https://masterminds.github.io/sprig/</a></p></li>
 </ul>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>branch &lsquo;master&rsquo; of <a href="https://github.com/kubetm/kubetm.git">https://github.com/kubetm/kubetm.git</a></p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 
   </div>
   <footer>

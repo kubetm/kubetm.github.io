@@ -290,9 +290,9 @@ Mac 사용자 참고 URL  &amp;gt;https://www.virtualbox.org/wiki/Mac%20OS%20X%2
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/practice/beginner/gettingstarted-kubernetes/</guid>
-      <description>1. Linux  1-1) hello.js var http = require(&#39;http&#39;); var content = function(req, resp) { resp.end(&amp;quot;Hello Kubernetes!&amp;quot; + &amp;quot;\n&amp;quot;); resp.writeHead(200); } var w = http.createServer(content); w.listen(8000);  node hello.js   
-2. Docker  2-1) Dockerfile FROM node:slim EXPOSE 8000 COPY hello.js . CMD node hello.js  2-2) Docker Hub Site https://hub.docker.com/
-2-3) Docker Container Run docker build -t kubetm/hello . -t : 레파지토리/이미지명:버전 docker images docker run -d -p 8100:8000 kubetm/hello -d : 백그라운드 모드 -p : 포트변경 docker ps docker exec -it c403442e8a59 /bin/bash  2-4) Docker Image Push docker login docker push kubetm/hello</description>
+      <description>이 실습 강의의 목적은 일반 서버와 도커, 그리고 쿠버네티스 환경의 차이점에 대해 대략적인 흐름을 이해하기 위함입니다.  그렇기 때문에 강의를 위한 별도의 사전 구축 내용들은 설명되지 않았고, 이후 쿠버네티스를 설치하고 [기초편]부터 실습을 진행하시면 되세요.  하지만 기존에 도커를 잘 아시는 분께서는 자신의 환경에 마춰 실습해 보셔도 무관합니다.
+
+1. Linux  1-1) hello.js var http = require(&#39;http&#39;); var content = function(req, resp) { resp.end(&amp;quot;Hello Kubernetes!&amp;quot; + &amp;quot;\n&amp;quot;); resp.</description>
     </item>
     
     <item>
