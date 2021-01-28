@@ -6,10 +6,23 @@
     <description>Recent content in 유용한 정보 on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 21 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kubetm.github.io/categories/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EC%A0%95%EB%B3%B4/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cloud Native Community Groups Seoul 2020</title>
+      <link>https://kubetm.github.io/info/youtube-kubernetes_forum_seoul-2020/</link>
+      <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/youtube-kubernetes_forum_seoul-2020/</guid>
+      <description>Site URL : https://cncg-kr.net/# Youtube URL : https://www.youtube.com/channel/UC1BCaPrwl7KK4KkQVaNK3Dg?fbclid=IwAR1kjmb2qJq9txmFY5nYnt-gT8eRp8lu13ZAJS4FGZ7wu2afiWKP9IUzaeA Facebook : https://www.facebook.com/groups/k8skr Meetup : https://www.meetup.com/ko-KR/Cloud-Native-Computing-Seoul/?fbclid=IwAR2GMDVHV2gVcKD-U2F9_qZka3zYXi0ax7EesTSGmFcRRQipZNQpvnmkoFA   
+온프레미스에서도 로드밸런서를? (w/ Metallb) - 조훈    
+쿠버네티스 환경에서 생각해 볼 DevOps와 보안, Azure에서는&amp;hellip; - 최영락    
+Keycloak을 이용한 Kubernetes 사용자 분리방법 - 이재상    
+차세대 메모리 인터페이스 CXL 관점에서 그리는 데이터 센터와 가상화의 미래 - 이천용/한석재</description>
+    </item>
     
     <item>
       <title>Kubernetes CNCF Webinar</title>
