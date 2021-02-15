@@ -32,7 +32,7 @@
 
 
 
-<meta itemprop="wordCount" content="352">
+<meta itemprop="wordCount" content="362">
 
 
 
@@ -305,6 +305,11 @@ chmod 777 /share-data
 <pre><code class="language-sh">systemctl stop firewalld &amp;&amp; systemctl disable firewalld
 systemctl stop NetworkManager &amp;&amp; systemctl disable NetworkManager
 systemctl restart nfs-server
+</code></pre>
+
+<p>node1 및 node2에 NFS 클라이언트 설치</p>
+
+<pre><code>sudo yum install nfs-utils
 </code></pre>
 
 <p><br/>

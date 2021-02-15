@@ -32,7 +32,7 @@
 
 
 
-<meta itemprop="wordCount" content="384">
+<meta itemprop="wordCount" content="650">
 
 
 
@@ -228,7 +228,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>4 minutes read</p>
     
   </div>
 </header>
@@ -336,9 +336,12 @@ data:
   repeat.upper.quote: {{ .Values.pipe.log | repeat 2 | upper | quote}}  
 </code></pre>
 
+<p><br/>
+<br/></p>
+
 <hr />
 
-<h2 id="2-여러가지-함수들">2. 여러가지 함수들</h2>
+<h2 id="2-제어-흐름">2. 제어 흐름</h2>
 
 <hr />
 
@@ -376,44 +379,127 @@ data:
 
 <h3 id="2-1-values-yaml에-해당-속성-추가">2-1) values.yaml에 해당 속성 추가</h3>
 
-<pre><code class="language-yaml">func:
-  enabled: true
-  data: &quot;helm&quot; 
-  
-pipe:
+<pre><code class="language-yaml">dev:
+  env: dev
   log: info
 
+qa:
+  env: qa
+  log: info
+  
+prod:
+  env: prod
+  log: 
 </code></pre>
 
 <h3 id="2-2-configmap-추가">2-2) configmap 추가</h3>
 
-<p>vi cm1.yaml</p>
+<p>If 문에서 False 인 조건들</p>
+
+<pre><code class="language-sh">  Number:0, String: &quot;&quot;, List: [], Object: {}, Boolean: false, Null
+</code></pre>
+
+<p>If 문에 쓰이는 함수들</p>
+
+<pre><code class="language-sh">  and(&amp;&amp;), or(||), ne(!=), not(!), eq(=), ge(&gt;=), gt(&gt;), le(&lt;=), lt(&lt;), default, empty 
+</code></pre>
+
+<p>vi cm2.yaml</p>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: function2
+  name: flow-if
 data:
-  Default: 
-  default1: {{ .Values.func.data | default &quot;null&quot; }}
+  dev:
+    env: {{ .Values.dev.env }}
+    {{ if eq .Values.dev.env &quot;dev&quot; }}
+    log: debug
+    {{ else if .Values.dev.env }}
+    log: {{ .Values.dev.log }}
+    {{ else }}
+    log: error
+    {{ end }}
 
-  Lookup: 
+  qa:
+    env: {{ .Values.qa.env }}
+{{ if eq .Values.qa.env &quot;qa&quot; }}
+    log: debug
+{{ else if .Values.qa.env }}
+    log: {{ .Values.qa.log }}
+{{ else }}
+    log: error
+{{ end }}
+    
+  prod:
+    env: {{ .Values.prod.env }}
+    {{- if eq .Values.prod.env &quot;qa&quot; }}
+    log: debug
+    {{- else if .Values.prod.env }}
+    log: {{ .Values.prod.log }}
+    {{- else }}
+    log: error
+    {{- end }}
 </code></pre>
 
-<p><br/></p>
+<p>vi cm-with.yaml</p>
 
-<p>templates 폴더 안에 불필요한 파일 삭제</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flow-with
+data:
+  dev:
+  {{- with .Values.dev }}
+    env: {{ .env }}
+    log: {{ .log }}
+  {{- end }}
 
-<pre><code class="language-sh">rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml tests
+  qa:
+  {{- with .Values.qa }}
+    env: {{ .env }}
+    log: {{ .log }}
+  {{- end }}
+  
+  prod:
+  {{- with .Values.prod }}
+    env: {{ .env }}
+    log: {{ .log }}
+  {{- end }}
 </code></pre>
 
-<p><br/></p>
+<h3 id="2-1-values-yaml에-해당-속성-추가-1">2-1) values.yaml에 해당 속성 추가</h3>
 
-<p>install 배포</p>
+<pre><code class="language-yaml">data:
+  - a
+  - b
+  - c
+</code></pre>
 
-<pre><code class="language-sh">helm install mychart . -n default
-helm get manifest mychart 
-helm upgrade mychart . -n default
+<p>vi cm-range.yaml</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flow-range
+data:
+  yaml:
+  {{- .Values.data | toYaml | nindent 2 }}
+
+  range:
+  {{- range .Values.data }}
+  - {{ . }}
+  {{- end }}
+
+  range-quote:
+  {{- range .Values.data }}
+  - {{ . | quote }}
+  {{- end }}
+
+  range-upper-quote:
+  {{- range .Values.data }}
+  - {{ . | upper | quote }}
+  {{- end }}
 </code></pre>
 
 <p><br/>
@@ -421,7 +507,7 @@ helm upgrade mychart . -n default
 
 <hr />
 
-<h2 id="3-변수-주입-우선순위">3. 변수 주입 우선순위</h2>
+<h2 id="3-여러가지-함수들">3. 여러가지 함수들</h2>
 
 <hr />
 
@@ -450,139 +536,76 @@ helm upgrade mychart . -n default
     
         <span class="image left">
         	
-            	<img src="/img/helm/template/values%20yaml%20for%20Helm.jpg" alt="values yaml for Helm" title="values yaml for Helm"  >
+            	<img src="/img/helm/template/Build%20in%20Objects%20for%20Helm.jpg" alt="Build in Objects for Helm" title="Build in Objects for Helm"  >
            	
         </span>
     
 
 
 
-<h3 id="3-1-configmap-추가">3-1) configmap 추가</h3>
+<h3 id="3-1-values-yaml에-해당-속성-추가">3-1) values.yaml에 해당 속성 추가</h3>
 
-<p>vi cm-values.yaml</p>
+<pre><code class="language-yaml">default:
+  nil: 
+  list: []
+  object: {}
+  number: 0
+  string: &quot;&quot;
+  boolean: false
+  
+ternary: 
+  case1: true
+  case2: false
+  
+print:
+  data1: &quot;a&quot;
+  data2: &quot;b&quot;
+</code></pre>
+
+<h3 id="3-2-configmap-추가">3-2) configmap 추가</h3>
+
+<p>vi cm3.yaml</p>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: values-yaml
+  name: string-func
 data:
-  env: {{ .Values.configMapData.env }}
-  log: {{ .Values.configMapData.log }}
-  path: &quot;{{ .Values.configMapData.path }}&quot;
+  default: # Number:0, String: &quot;&quot;, List: [], Object: {}, Boolean: false, Null
+    nil: {{ .Values.default.nil | default &quot;default&quot; }}
+    list: {{ .Values.default.list | default (list &quot;default1&quot; &quot;default2&quot;) | toYaml | nindent 6}}
+    object: {{ .Values.default.object | default &quot;default:1&quot; | toYaml | nindent 6 }}
+    number: {{ .Values.default.number | default &quot;default&quot; }}
+    string: {{ .Values.default.string | default &quot;default&quot; }}
+    boolean: {{ .Values.default.boolean | default &quot;default&quot; }}
+    
+  ternary:
+    case1: {{ .Values.ternary.case1 | ternary &quot;ture&quot; &quot;false&quot; }}
+    case2: {{ .Values.ternary.case2 | ternary &quot;ture&quot; &quot;false&quot; }}
+
+  print:
+    print: {{ print &quot;Hard Cording&quot; }}
+    printf: {{ printf &quot;%s-%s&quot; .Chart.Name .Chart.Version }}
+    
+  trim:
+    trim: {{ trim &quot;  hello &quot; }}
+    trimSuffix: {{ trimSuffix &quot;-&quot; &quot;hello-&quot; }}
+
+  random:
+    randAlphaNum: {{ randAlphaNum 5 }}   # 0-9a-zA-Z
+    randAlpha: {{ randAlpha 5 }}         # a-zA-Z
+    randNumeric: {{ randNumeric 5 }}     # 0-9
+    randAscii: {{ randAscii 5 }}         # ASCII characters
+
+  indent:
+    indent: {{- .Values.data | toYaml | indent 4 }}
+    nindent: {{- .Values.data | toYaml | nindent 4 }}
+    
+  trunc: {{ trunc 5 &quot;hello world&quot; }}
+  replace: {{ &quot;hello world&quot; | replace &quot; &quot; &quot;-&quot; }}
+  contains: {{ contains &quot;cat&quot; &quot;catch&quot; }}
+  b64enc: {{ b64enc &quot;hello&quot; }}
 </code></pre>
-
-<h3 id="3-2-values-yaml에-해당-속성-추가">3-2) values.yaml에 해당 속성 추가</h3>
-
-<pre><code class="language-yaml">configMapData:
-  env: dev
-  log: debug
-  path: &quot;/data&quot;
-</code></pre>
-
-<h3 id="3-3-확인">3-3) 확인</h3>
-
-<pre><code class="language-sh">helm template mychart .
-</code></pre>
-
-<h3 id="3-4-prod용-values-prod-yaml-파일-추가">3-4) Prod용 values_prod.yaml 파일 추가</h3>
-
-<p>vi values_prod.yaml</p>
-
-<pre><code class="language-yaml">configMapData:
-  env: prod
-  log: info
-</code></pre>
-
-<h3 id="3-5-f-옵션-적용">3-5) -f 옵션 적용</h3>
-
-<pre><code class="language-sh">helm template mychart . -f ./values_prod.yaml
-</code></pre>
-
-<h3 id="3-6-f-옵션-적용-set-옵션-적용">3-6) -f 옵션 적용, &ndash;set 옵션 적용</h3>
-
-<pre><code class="language-sh">helm template mychart . -f ./values_prod.yaml --set configMapData.log=debug
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="4-사용자-정의-변수">4. 사용자 정의 변수</h2>
-
-<hr />
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-    
-    
-    
-    
-
-        
-    
-
-    
-        <span class="image left">
-        	
-            	<img src="/img/helm/template/helpers%20tpl%20for%20Helm.jpg" alt="helpers tpl for Helm" title="helpers tpl for Helm"  >
-           	
-        </span>
-    
-
-
-
-<p>_helpers.tpl 파일</p>
-
-<pre><code class="language-sh">{{/*
-Expand the name of the chart.
-*/}}
-{{- define &quot;mychart.name&quot; -}}
-{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix &quot;-&quot; }}
-{{- end }}
-
-{{/*
-Common labels
-*/}}
-{{- define &quot;mychart.labels&quot; -}}
-helm.sh/chart: {{ include &quot;mychart.chart&quot; . }}
-{{ include &quot;mychart.selectorLabels&quot; . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- end }}
-</code></pre>
-
-<p><br/></p>
-
-<p>service.yaml 파일</p>
-
-<pre><code class="language-sh">apiVersion: v1
-kind: Service
-metadata:
-  name: {{ include &quot;mychart.fullname&quot; . }}
-  labels:
-    {{- include &quot;mychart.labels&quot; . | nindent 4 }}
-</code></pre>
-
-<pre><code class="language-sh">helm template mychart .
-</code></pre>
-
-<p><br/>
-<br/></p>
 
 <hr />
 
