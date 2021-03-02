@@ -32,7 +32,7 @@
 
 
 
-<meta itemprop="wordCount" content="650">
+<meta itemprop="wordCount" content="771">
 
 
 
@@ -323,7 +323,7 @@ metadata:
 data:
   Function_Argument: 
   quote: {{ quote .Values.func.enabled }}      # quote(arg1)
-  include: {{ include &quot;mychart.fullname&quot; . }}  # include(arg1, arg2)
+  include: {{ include &quot;mychart.name&quot; . }}  # include(arg1, arg2)
 
   Function_Quote: 
   function_case1: {{ .Values.func.enabled }}  
@@ -545,21 +545,21 @@ data:
 
 <h3 id="3-1-values-yaml에-해당-속성-추가">3-1) values.yaml에 해당 속성 추가</h3>
 
-<pre><code class="language-yaml">default:
+<pre><code class="language-yaml">print:
+  a: &quot;1&quot;
+  b: &quot;2&quot;
+
+ternary: 
+  case1: true
+  case2: false
+  
+default:
   nil: 
   list: []
   object: {}
   number: 0
   string: &quot;&quot;
   boolean: false
-  
-ternary: 
-  case1: true
-  case2: false
-  
-print:
-  data1: &quot;a&quot;
-  data2: &quot;b&quot;
 </code></pre>
 
 <h3 id="3-2-configmap-추가">3-2) configmap 추가</h3>
@@ -571,40 +571,119 @@ kind: ConfigMap
 metadata:
   name: string-func
 data:
-  default: # Number:0, String: &quot;&quot;, List: [], Object: {}, Boolean: false, Null
-    nil: {{ .Values.default.nil | default &quot;default&quot; }}
-    list: {{ .Values.default.list | default (list &quot;default1&quot; &quot;default2&quot;) | toYaml | nindent 6}}
-    object: {{ .Values.default.object | default &quot;default:1&quot; | toYaml | nindent 6 }}
-    number: {{ .Values.default.number | default &quot;default&quot; }}
-    string: {{ .Values.default.string | default &quot;default&quot; }}
-    boolean: {{ .Values.default.boolean | default &quot;default&quot; }}
-    
-  ternary:
-    case1: {{ .Values.ternary.case1 | ternary &quot;ture&quot; &quot;false&quot; }}
-    case2: {{ .Values.ternary.case2 | ternary &quot;ture&quot; &quot;false&quot; }}
-
   print:
-    print: {{ print &quot;Hard Cording&quot; }}
-    printf: {{ printf &quot;%s-%s&quot; .Chart.Name .Chart.Version }}
-    
+    print:  {{ print &quot;Hard Cording&quot; }}
+    printf: {{ printf &quot;%s-%s&quot; .Values.print.a .Values.print.b }}
+
+  ternary:
+    case1: {{ .Values.ternary.case1 | ternary &quot;1&quot; &quot;2&quot; }}
+    case2: {{ .Values.ternary.case2 | ternary &quot;1&quot; &quot;2&quot; }}
+
+  indent:
+    indent: 
+{{ .Values.data | toYaml | indent 4 }}
+    nindent: {{ .Values.data | toYaml | nindent 4 }}
+        
+  default: # Number:0, String: &quot;&quot;, List: [], Object: {}, Boolean: false, Null
+    nil:     {{ .Values.default.nil     | default &quot;default&quot; }}
+    list:    {{ .Values.default.list    | default (list &quot;default1&quot; &quot;default2&quot;) | toYaml | nindent 6}}
+    object:  {{ .Values.default.object  | default &quot;default:1&quot; | toYaml | nindent 6 }}
+    number:  {{ .Values.default.number  | default 1 }}
+    string:  {{ .Values.default.string  | default &quot;default&quot; }}
+    boolean: {{ .Values.default.boolean | default true }}
+
   trim:
-    trim: {{ trim &quot;  hello &quot; }}
+    trim:       {{ trim &quot;  hello &quot; }}
     trimSuffix: {{ trimSuffix &quot;-&quot; &quot;hello-&quot; }}
 
   random:
     randAlphaNum: {{ randAlphaNum 5 }}   # 0-9a-zA-Z
-    randAlpha: {{ randAlpha 5 }}         # a-zA-Z
-    randNumeric: {{ randNumeric 5 }}     # 0-9
-    randAscii: {{ randAscii 5 }}         # ASCII characters
+    randAlpha:    {{ randAlpha 5 }}      # a-zA-Z
+    randNumeric:  {{ randNumeric 5 }}    # 0-9
+    randAscii:    {{ randAscii 5 }}      # ASCII characters
 
-  indent:
-    indent: {{- .Values.data | toYaml | indent 4 }}
-    nindent: {{- .Values.data | toYaml | nindent 4 }}
-    
-  trunc: {{ trunc 5 &quot;hello world&quot; }}
-  replace: {{ &quot;hello world&quot; | replace &quot; &quot; &quot;-&quot; }}
+  trunc:    {{ trunc 5 &quot;hello world&quot; }}
+  replace:  {{ &quot;hello world&quot; | replace &quot; &quot; &quot;-&quot; }}
   contains: {{ contains &quot;cat&quot; &quot;catch&quot; }}
-  b64enc: {{ b64enc &quot;hello&quot; }}
+  b64enc:   {{ b64enc &quot;hello&quot; }}
+</code></pre>
+
+<hr />
+
+<h2 id="4-변수">4. 변수</h2>
+
+<hr />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/helm/template/Build%20in%20Objects%20for%20Helm.jpg" alt="Build in Objects for Helm" title="Build in Objects for Helm"  >
+           	
+        </span>
+    
+
+
+
+<h3 id="3-1-with-내부에서-사용할-경우">3-1) with 내부에서 사용할 경우</h3>
+
+<p>vi cm-variables-with.yaml</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: variables-with
+data:
+  dev:
+  {{- $relname := .Release.Name -}}
+  {{- with .Values.dev }}
+    env: {{ .env }}
+    release: {{ $relname }}
+    log: {{ .log }}
+  {{- end }}
+</code></pre>
+
+<h3 id="3-2-range와-함꼐-사용">3-2) range와 함꼐 사용</h3>
+
+<p>vi cm-variables-range.yaml</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: variables-range
+data:
+  # for (int i ; i=list.length ; i++) { printf &quot;i : list[i]&quot; };
+  index: 
+  {{- range $index, $value := .Values.data }}
+    {{ $index }}: {{ $value | quote }}
+  {{- end }}
+
+  # for (Map&lt;key, value&gt; map : list) { printf &quot;map.key() : map.value()&quot; };
+  key-value:
+  {{- range $key, $value := .Values.dev }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
 </code></pre>
 
 <hr />
