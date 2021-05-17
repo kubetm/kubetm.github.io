@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Helm 기본 다지기 - KubeTM Blog with Kubernetes</title>
+<title>내 차트 만들기1 - KubeTM Blog with Kubernetes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -27,8 +27,8 @@
 
 
   <meta name="generator" content="Hugo 0.59.1" />
-  <meta itemprop="name" content="Helm 기본 다지기">
-<meta itemprop="description" content="[Helm으로 Tomcat 배포]">
+  <meta itemprop="name" content="내 차트 만들기1">
+<meta itemprop="description" content="[내장 객체, 변수 주입 우선순위, 사용자 정의 변수]">
 
 
 
@@ -38,15 +38,15 @@
 
 <meta itemprop="keywords" content="" />
 
-  <meta property="og:title" content="Helm 기본 다지기" />
-<meta property="og:description" content="[Helm으로 Tomcat 배포]" />
+  <meta property="og:title" content="내 차트 만들기1" />
+<meta property="og:description" content="[내장 객체, 변수 주입 우선순위, 사용자 정의 변수]" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kubetm.github.io/helm_practice/template/chart-step1/" />
 
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Helm 기본 다지기"/>
-<meta name="twitter:description" content="[Helm으로 Tomcat 배포]"/>
+<meta name="twitter:title" content="내 차트 만들기1"/>
+<meta name="twitter:description" content="[내장 객체, 변수 주입 우선순위, 사용자 정의 변수]"/>
 
   
 
@@ -211,10 +211,10 @@
   <header>
   <div class="title">
     
-        <h2>Helm 기본 다지기</h2>
+        <h2>내 차트 만들기1</h2>
     
     
-        <p>[Helm으로 Tomcat 배포]</p>
+        <p>[내장 객체, 변수 주입 우선순위, 사용자 정의 변수]</p>
     
     
     	</br>
@@ -305,8 +305,6 @@ helm show chart .
 helm show readme .
 helm show all .
 </code></pre>
-
-<p><br/></p>
 
 <p>vi README.md</p>
 
@@ -418,6 +416,8 @@ helm install mychart . --set replicaCount=3
 
 
 
+<p><br/></p>
+
 <h3 id="2-1-configmap-추가">2-1) configmap 추가</h3>
 
 <p>vi cm-object.yaml</p>
@@ -451,14 +451,10 @@ data:
   .Template.Name: {{ .Template.Name }}
 </code></pre>
 
-<p><br/></p>
-
 <p>templates 폴더 안에 불필요한 파일 삭제</p>
 
 <pre><code class="language-sh">rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml tests
 </code></pre>
-
-<p><br/></p>
 
 <p>install 배포</p>
 
@@ -507,6 +503,8 @@ helm upgrade mychart . -n default
     
 
 
+
+<p><br/></p>
 
 <h3 id="3-1-configmap-추가">3-1) configmap 추가</h3>
 

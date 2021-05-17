@@ -318,7 +318,7 @@ spec:
       -  {key: kr, operator: Exists}
  containers:
  - name: container
-   image: tmkube/app
+   image: kubetm/app
  terminationGracePeriodSeconds: 0
 </code></pre>
 
@@ -337,7 +337,7 @@ spec:
       - {key: ch, operator: Exists}
  containers:
  - name: container
-   image: tmkube/app
+   image: kubetm/app
  terminationGracePeriodSeconds: 0
 </code></pre>
 
@@ -357,7 +357,7 @@ spec:
        - {key: ch, operator: Exists}
  containers:
  - name: container
-   image: tmkube/app
+   image: kubetm/app
  terminationGracePeriodSeconds: 0
 </code></pre>
 
@@ -440,7 +440,7 @@ spec:
       -  {key: type, operator: In, values: [web1]}
  containers:
  - name: container
-   image: tmkube/app
+   image: kubetm/app
  terminationGracePeriodSeconds: 0
 </code></pre>
 
@@ -460,7 +460,7 @@ spec:
       -  {key: type, operator: In, values: [web2]}
  containers:
  - name: container
-   image: tmkube/app
+   image: kubetm/app
  terminationGracePeriodSeconds: 0
 </code></pre>
 
@@ -550,7 +550,7 @@ spec:
       -  {key: type, operator: In, values: [master]}
  containers:
  - name: container
-   image: tmkube/app
+   image: kubetm/app
  terminationGracePeriodSeconds: 0
 </code></pre>
 
@@ -620,7 +620,7 @@ spec:
    value: gpu
  containers:
  - name: container
-   image: tmkube/app
+   image: kubetm/app
  terminationGracePeriodSeconds: 0
 </code></pre>
 
@@ -635,7 +635,7 @@ spec:
   gpu: no1
  containers:
  - name: container
-   image: tmkube/app
+   image: kubetm/app
  terminationGracePeriodSeconds: 0
 </code></pre>
 
@@ -653,7 +653,7 @@ spec:
    tolerationSeconds: 30
  containers:
  - name: container
-   image: tmkube/app
+   image: kubetm/app
  terminationGracePeriodSeconds: 0
 </code></pre>
 
@@ -666,7 +666,7 @@ metadata:
 spec:
  containers:
  - name: container
-   image: tmkube/app
+   image: kubetm/app
  terminationGracePeriodSeconds: 0
 </code></pre>
 
@@ -695,7 +695,7 @@ spec:
  nodeName: k8s-node1
  containers:
  - name: container
-   image: tmkube/app
+   image: kubetm/app
 </code></pre>
 
 <p><br/></p>
@@ -711,7 +711,7 @@ spec:
   key1:value1
  containers:
  - name: container
-   image: tmkube/app
+   image: kubetm/app
 </code></pre>
 
 <p><br/></p>

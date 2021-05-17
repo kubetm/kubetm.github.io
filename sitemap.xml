@@ -341,14 +341,6 @@
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/helm_practice/template/chart-step1/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/helm_practice/template/chart-step2/</loc>
-  </url>
-  
-  <url>
     <loc>https://kubetm.github.io/practice/architecture/logging-difm-diadf-9aa/</loc>
   </url>
   
@@ -366,6 +358,22 @@
   
   <url>
     <loc>https://kubetm.github.io/auth/</loc>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/helm_practice/template/chart-step1/</loc>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/helm_practice/template/chart-step2/</loc>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/helm_practice/sample/prometheus/</loc>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/helm_practice/sample/tomcat/</loc>
   </url>
   
   <url>

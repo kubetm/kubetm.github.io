@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>KubeTM Blog with Kubernetes</title>
+<title>오픈소스 Helm 차트 분석 - KubeTM Blog with Kubernetes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -27,20 +27,26 @@
 
 
   <meta name="generator" content="Hugo 0.59.1" />
-  <meta itemprop="name" content="KubeTM Blog with Kubernetes">
-<meta itemprop="description" content="">
+  <meta itemprop="name" content="오픈소스 Helm 차트 분석">
+<meta itemprop="description" content="[tomcat]">
 
 
-  <meta property="og:title" content="KubeTM Blog with Kubernetes" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://kubetm.github.io/" />
 
-<meta property="og:updated_time" content="2021-01-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="223">
+
+
+
+<meta itemprop="keywords" content="" />
+
+  <meta property="og:title" content="오픈소스 Helm 차트 분석" />
+<meta property="og:description" content="[tomcat]" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kubetm.github.io/helm_practice/sample/tomcat/" />
+
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="KubeTM Blog with Kubernetes"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="오픈소스 Helm 차트 분석"/>
+<meta name="twitter:description" content="[tomcat]"/>
 
   
 
@@ -92,11 +98,6 @@
 </head>
 
   <body>
-    
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWDJZXR" height="0" width="0" style="display:none;visibility:hidden">
-	</iframe></noscript>
-    
-
     
 <header id="site-header">
   <nav id="site-nav">
@@ -158,8 +159,6 @@
     <footer>
       <ul class="socnet-icons">
         
-    <li><a href="/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fas fa-rss"></a></li>
-
 
         
 
@@ -208,20 +207,18 @@
 </section>
 
       <main id="site-main">
-        
-        
-          <article class="post">
+        <article class="post">
   <header>
   <div class="title">
     
-        <h2>Networking Architecture</h2>
+        <h2>오픈소스 Helm 차트 분석</h2>
     
     
-        <p>[Pod Network(Pause Container, Network Plugin), Service Network(iptables, IPVS)]</p>
+        <p>[tomcat]</p>
     
     
     	</br>
-  		</button><a href="/documents/architecture/Networking.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
+  		</button><a href="/documents/helm/sample/tomcat.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
     
 </div>
 
@@ -236,103 +233,158 @@
   </div>
 </header>
 
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
   
-  <a href="/practice/architecture/networking-difm-diadf-9aa/" class="image featured">
-    <img src="/img/practice/architecture/Networking%20Architecture%20with%20PodNetwork,%20ServiceNetwork%20for%20Kubernetes.jpg" alt="Networking Architecture with PodNetwork, ServiceNetwork for Kubernetes">
-  </a>
-
 
   
-  <p><br/></p>
-  <footer>
-    <a href="/practice/architecture/networking-difm-diadf-9aa/" class="button big">본문 보기</a>
+    
+  
+  <div class="content">
+  
+  
     
 
-  </footer>
-</article>
+<p><br/></p>
 
-        
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2>Storage Architecture</h2>
-    
-    
-        <p>[FileStorage(NFS), BlockStorage(Longhorn)]</p>
-    
-    
-    	</br>
-  		</button><a href="/documents/architecture/Storage.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
-    
-</div>
+<hr />
 
-  <div class="meta">
-    <time class="published" datetime="0001-01-01 00:00:00 &#43;0000 UTC">
-      January 1, 0001
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>2 minutes read</p>
-    
+<h2 id="1-tomcat-차트-설치-및-배포">1. tomcat 차트 설치 및 배포</h2>
+
+<hr />
+
+<h3 id="1-1-레포지토리-등록">1-1) 레포지토리 등록</h3>
+
+<pre><code class="language-sh">helm repo add bitnami https://charts.bitnami.com/bitnami
+</code></pre>
+
+<h3 id="1-2-tomcat-7-1-2-다운로드">1-2) Tomcat 7.1.2 다운로드</h3>
+
+<pre><code class="language-sh">helm pull bitnami/tomcat --version 7.1.2
+tar -xf tomcat-7.1.2.tgz
+</code></pre>
+
+<h3 id="1-3-tomcat-template-보기">1-3) Tomcat Template 보기</h3>
+
+<pre><code class="language-sh">helm template mytomcat .
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="2-tomcat에서-나오는-함수-따라해보기">2. tomcat에서 나오는 함수 따라해보기</h2>
+
+<hr />
+
+<h3 id="2-1-chart-template-생성">2-1) Chart Template 생성</h3>
+
+<pre><code class="language-sh">helm create mychart
+</code></pre>
+
+<p>templates 폴더 안에 불필요한 파일 삭제</p>
+
+<pre><code class="language-sh">rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml service.yaml tests
+</code></pre>
+
+<h3 id="2-2-test-values-yaml에-해당-속성-추가">2-2) test-values.yaml에 해당 속성 추가</h3>
+
+<p>vi test-values.yaml</p>
+
+<pre><code class="language-yaml">data:
+
+include : &quot;value2&quot;
+
+typeIs1 : &quot;text&quot;
+typeIs2 : true
+
+defaultLevel : info
+dev:
+  env: dev
+  log: &quot;{{ .Values.defaultLevel }}&quot;
+qa:
+  env: qa
+  log: &quot;{{ .Values.defaultLevel }}&quot;
+
+data1:
+data2:
+data3: &quot;text3&quot;
+</code></pre>
+
+<h3 id="2-3-configmap-추가">2-3) configmap 추가</h3>
+
+<p>vi cm.yaml</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tomcat
+data:
+#&lt;dict&gt;
+ {{- $myDict := dict &quot;key1&quot; &quot;value1&quot; }}
+  dict: {{ get $myDict &quot;key1&quot; }}
+
+#&lt;include&gt;
+  include1: {{- include &quot;mychart.include&quot; (dict &quot;key1&quot; &quot;value1&quot;) | nindent 4 }}
+  include2: {{- include &quot;mychart.include&quot; (dict &quot;key1&quot; .Values.include) | nindent 4 }}
+
+#&lt;typels&gt;
+  {{- if typeIs &quot;string&quot; .Values.typeIs1 }}
+  typels1: {{ .Values.typeIs1 }}
+  {{- end }}
+  {{- if typeIs &quot;bool&quot; .Values.typeIs2 }}
+  typels2: {{ .Values.typeIs2 }}
+  {{- end }}
+
+#&lt;tpl&gt;
+  normal: &quot;{{ .Values.dev.log }}&quot;
+  tpl: &quot;{{ tpl .Values.dev.log . }}&quot;
+
+#&lt;coalesce&gt;
+  coalesce1: {{ coalesce .Values.data1 .Values.data2 &quot;text1&quot; }}
+  coalesce2: {{ coalesce .Values.data1 &quot;text2&quot; .Values.data3 }}
+</code></pre>
+
+<h3 id="2-4-template-명령">2-4) Template 명령</h3>
+
+<pre><code class="language-sh">helm template mychart ./../ -f ./../test-values.yaml
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="helm">* <strong>Helm</strong></h3>
+
+<ul>
+<li><strong>함수</strong> : <a href="https://helm.sh/docs/chart_template_guide/function_list/">https://helm.sh/docs/chart_template_guide/function_list/</a></li>
+<li><strong>&lsquo;tpl&rsquo; 함수</strong> : <a href="https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-tpl-function">https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-tpl-function</a></li>
+<li><strong>지역변수</strong> : <a href="https://helm.sh/docs/chart_template_guide/variables/">https://helm.sh/docs/chart_template_guide/variables/</a>
+<br /></li>
+</ul>
+
   </div>
-</header>
-
-  
-  <a href="/practice/architecture/storage-difm-diadf-9aa/" class="image featured">
-    <img src="/img/practice/architecture/Storage%20Architecture%20with%20FileStorage,%20BlockStorage,%20ObjectStorage%20for%20Kubernetes.jpg" alt="Storage Architecture with FileStorage, BlockStorage, ObjectStorage for Kubernetes">
-  </a>
-
-
-  
-  <p><br/></p>
   <footer>
-    <a href="/practice/architecture/storage-difm-diadf-9aa/" class="button big">본문 보기</a>
     
 
   </footer>
 </article>
 
-        
-          <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2>내 차트 만들기1</h2>
-    
-    
-        <p>[내장 객체, 변수 주입 우선순위, 사용자 정의 변수]</p>
-    
-    
-    	</br>
-  		</button><a href="/documents/helm/template/MyChartStep1.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
-    
-</div>
 
-  <div class="meta">
-    <time class="published" datetime="0001-01-01 00:00:00 &#43;0000 UTC">
-      January 1, 0001
-    </time>
-    <span class="author">KubeTM</span>
-    
-      <p>3 minutes read</p>
-    
-  </div>
-</header>
 
-  
 
-  
-  <p><br/></p>
-  <footer>
-    <a href="/helm_practice/template/chart-step1/" class="button big">본문 보기</a>
-    
-
-  </footer>
-</article>
-
-        
-        
       </main>
       <section id="site-sidebar">
 
@@ -414,4 +466,3 @@ if (!doNotTrack) {
     </div>
   </body>
 </html>
-
