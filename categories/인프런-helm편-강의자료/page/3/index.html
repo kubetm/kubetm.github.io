@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>오픈소스 Helm 차트 분석 - KubeTM Blog with Kubernetes</title>
+<title>인프런 Helm편 강의자료 - KubeTM Blog with Kubernetes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -27,26 +27,19 @@
 
 
   <meta name="generator" content="Hugo 0.59.1" />
-  <meta itemprop="name" content="오픈소스 Helm 차트 분석">
-<meta itemprop="description" content="[Prometheus]">
+  <meta itemprop="name" content="인프런 Helm편 강의자료">
+<meta itemprop="description" content="">
 
 
-
-<meta itemprop="wordCount" content="238">
-
-
-
-<meta itemprop="keywords" content="" />
-
-  <meta property="og:title" content="오픈소스 Helm 차트 분석" />
-<meta property="og:description" content="[Prometheus]" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/helm_practice/sample/prometheus/" />
+  <meta property="og:title" content="인프런 Helm편 강의자료" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://kubetm.github.io/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-helm%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/" />
 
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="오픈소스 Helm 차트 분석"/>
-<meta name="twitter:description" content="[Prometheus]"/>
+<meta name="twitter:title" content="인프런 Helm편 강의자료"/>
+<meta name="twitter:description" content=""/>
 
   
 
@@ -159,6 +152,8 @@
     <footer>
       <ul class="socnet-icons">
         
+    <li><a href="/categories/%EC%9D%B8%ED%94%84%EB%9F%B0-helm%ED%8E%B8-%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fas fa-rss"></a></li>
+
 
         
 
@@ -207,18 +202,21 @@
 </section>
 
       <main id="site-main">
-        <article class="post">
+        <h1>인프런 Helm편 강의자료</h1>
+        
+        
+            <article class="post">
   <header>
   <div class="title">
     
-        <h2>오픈소스 Helm 차트 분석</h2>
+        <h2>차트 개발 팁과 요령</h2>
     
     
-        <p>[Prometheus]</p>
+        <p>[Install, Upgreade, Uninstall]</p>
     
     
     	</br>
-  		</button><a href="/documents/helm/sample/Prometheus.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
+  		</button><a href="/documents/helm/topic/tip.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
     
 </div>
 
@@ -228,162 +226,24 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>1 minute read</p>
     
   </div>
 </header>
 
-  <section id="socnet-share">
-    
-
-
-
-
-
-  </section>
   
 
   
-    
-  
-  <div class="content">
-  
-  
-    
-
-<p><br/></p>
-
-<hr />
-
-<h2 id="1-prometheus-차트-설치-및-배포">1. Prometheus 차트 설치 및 배포</h2>
-
-<hr />
-
-<h3 id="1-1-레포지토리-등록">1-1) 레포지토리 등록</h3>
-
-<pre><code class="language-sh">helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-</code></pre>
-
-<h3 id="1-2-tomcat-7-1-2-다운로드">1-2) Tomcat 7.1.2 다운로드</h3>
-
-<pre><code class="language-sh">helm pull prometheus-community/prometheus --version 13.8.0
-tar -xf prometheus-13.8.0.tgz
-</code></pre>
-
-<h3 id="1-3-tomcat-template-보기">1-3) Tomcat Template 보기</h3>
-
-<pre><code class="language-sh">helm template mytomcat .
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="2-prometheus에서-나오는-함수-따라해보기">2. Prometheus에서 나오는 함수 따라해보기</h2>
-
-<hr />
-
-<h3 id="2-1-chart-template-생성">2-1) Chart Template 생성</h3>
-
-<pre><code class="language-sh">helm create mychart
-</code></pre>
-
-<p>templates 폴더 안에 불필요한 파일 삭제</p>
-
-<pre><code class="language-sh">rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml service.yaml tests
-</code></pre>
-
-<h3 id="2-2-test-values-yaml에-해당-속성-추가">2-2) test-values.yaml에 해당 속성 추가</h3>
-
-<p>vi test-values.yaml</p>
-
-<pre><code class="language-yaml">colors: 
-  - &quot;blue&quot;
-  - &quot;red&quot;
-  - &quot;green&quot; 
-
-server: 
-  path:
-    prefix: &quot;prom&quot;
-</code></pre>
-
-<h3 id="2-3-configmap-추가">2-3) configmap 추가</h3>
-
-<p>vi cm.yaml</p>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: tomcat
-data:
-#&lt;splitList&gt;
- {{- $url := splitList &quot;/&quot; &quot;helm.sh/docs/helm/&quot; }}
-  splitList:
-    host: {{ first $url }}
-    path: {{ rest $url | join &quot;/&quot; }}
-
-#&lt;regexMatch&gt;
-  regexmatch: {{ regexMatch &quot;.*\\.ya?ml$&quot; &quot;config.yaml&quot; }}
-
-#&lt;index&gt;
-  index:
-    colors: &quot;{{ index .Values.colors 0 }}&quot;
- {{- if index .Values &quot;server&quot; &quot;path&quot; &quot;prefix&quot; }}
-    path: /{{ index .Values &quot;server&quot; &quot;path&quot; &quot;prefix&quot; }}/ready
- {{- end }}
-
-#&lt;semver&gt;
-{{- $version := semver &quot;1.2.3-alpha.1+123&quot; }} 
-  semver:
-    major: {{ $version.Major }}
-    minor: {{ $version.Minor }}
-    patch: {{ $version.Patch }}
-    prerelease: {{ $version.Prerelease }}
-    metadata: {{ $version.Metadata }}
-    original: {{ $version.Original }}
-
-#&lt;semverCompare&gt;
-  semverCompare:
-    greaterthan: {{ semverCompare &quot;&gt;1.2.1&quot; &quot;1.2.3&quot; }}
-    lessthan: {{ semverCompare &quot;&lt;1.2.1&quot; &quot;2.2.3&quot; }}
-    equal: {{ semverCompare &quot;=1.2.*&quot; &quot;1.2.3&quot; }}   #1.2.0 &lt;= [1.2.*] &lt; 1.3.0
-    tilde: {{ semverCompare &quot;~1.2.3&quot; &quot;1.2.0&quot; }}   #1.2.3 &lt;= [~1.2.3] &lt; 1.3.0
-</code></pre>
-
-<h3 id="2-4-template-명령">2-4) Template 명령</h3>
-
-<pre><code class="language-sh">helm template mychart ./../ -f ./../test-values.yaml
-</code></pre>
-
-<p><br/>
-<br/></p>
-
-<hr />
-
-<h2 id="referenece">Referenece</h2>
-
-<hr />
-
-<h3 id="helm">* <strong>Helm</strong></h3>
-
-<ul>
-<li><strong>차트 종속성</strong> : <a href="https://helm.sh/docs/chart_best_practices/dependencies/">https://helm.sh/docs/chart_best_practices/dependencies/</a></li>
-<li><strong>Semantic Versions</strong> : <a href="https://github.com/Masterminds/semver">https://github.com/Masterminds/semver</a></li>
-<li><strong>함수</strong> : <a href="https://helm.sh/docs/chart_template_guide/function_list/">https://helm.sh/docs/chart_template_guide/function_list/</a>
-<br /></li>
-</ul>
-
-  </div>
+  <p><br/></p>
   <footer>
+    <a href="/helm_practice/topic/tip/" class="button big">본문 보기</a>
     
 
   </footer>
 </article>
 
-
-
-
+        
+        
       </main>
       <section id="site-sidebar">
 
