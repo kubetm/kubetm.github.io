@@ -800,9 +800,22 @@ rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml service.yaml te
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/helm_practice/topic/tip/</guid>
-      <description>1. 샘플 템플릿 만들기  
+      <description>1. Install 및 Upgrade 팁  
 1-1) Chart Template 생성 helm create mychart  templates 폴더 안에 불필요한 파일 삭제
-rm -rf hpa.yaml ingress.yaml service.yaml serviceaccount.yaml tests  1-2) configmap.yaml 추가 apiVersion: v1 kind: ConfigMap metadata: name: test-cm data: env: prod log: Error  1-3) pvc.yaml 추가 apiVersion: v1 kind: PersistentVolumeClaim metadata: name: test-pvc spec: accessModes: - ReadWriteOnce resources: requests: storage: 1G storageClassName: &amp;quot;&amp;quot; selector: matchLabels: name: test-pv  1-4) pv.</description>
+rm -rf deployment.yaml hpa.yaml ingress.yaml service.yaml serviceaccount.yaml tests  1-2) deployment.yaml 내용 업데이트 vi deployment.yaml
+apiVersion: apps/v1 kind: Deployment metadata: name: test spec: selector: matchLabels: type: app replicas: 1 template: metadata: labels: type: app spec: containers: - name: container image: kubetm/init envFrom: - configMapRef: name: test-cm volumeMounts: - name: volume mountPath: /hostpath volumes: - name : volume persistentVolumeClaim: claimName: test-pvc  1-3) configmap.</description>
+    </item>
+    
+    <item>
+      <title>추가 기능</title>
+      <link>https://kubetm.github.io/helm_practice/topic/topics1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/helm_practice/topic/topics1/</guid>
+      <description>1. Install 및 Upgrade 팁  
+1-1) Chart Template 생성 helm create mychart  templates 폴더 안에 불필요한 파일 삭제
+rm -rf deployment.yaml hpa.yaml ingress.yaml service.yaml serviceaccount.yaml tests  1-2) deployment.yaml 내용 업데이트 vi deployment.yaml
+apiVersion: apps/v1 kind: Deployment metadata: name: test spec: selector: matchLabels: type: app replicas: 1 template: metadata: labels: type: app spec: containers: - name: container image: kubetm/init envFrom: - configMapRef: name: test-cm volumeMounts: - name: volume mountPath: /hostpath volumes: - name : volume persistentVolumeClaim: claimName: test-pvc  1-3) configmap.</description>
     </item>
     
   </channel>
