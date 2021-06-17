@@ -32,7 +32,7 @@
 
 
 
-<meta itemprop="wordCount" content="421">
+<meta itemprop="wordCount" content="543">
 
 
 
@@ -218,7 +218,7 @@
     
     
     	</br>
-  		</button><a href="/documents/helm/topic/tip.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
+  		</button><a href="/documents/helm/topic/Tip.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
     
 </div>
 
@@ -228,7 +228,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
@@ -255,7 +255,7 @@
 
 <hr />
 
-<h2 id="1-install-및-upgrade-팁">1. Install 및 Upgrade 팁</h2>
+<h2 id="1-install-및-upgrade-tip">1. Install 및 Upgrade Tip</h2>
 
 <hr />
 
@@ -321,15 +321,19 @@ spec:
       labels:
         type: app
     spec:
+      initContainers:
+      - name: init-myservice
+        image: kubetm/app
+        command: ['sh', '-c', &quot;sleep 30; done&quot;]
       containers:
       - name: container
-        image: kubetm/init
+        image: kubetm/app
         envFrom:
         - configMapRef:
             name: test-cm
         volumeMounts:
         - name: volume
-          mountPath: /hostpath        
+          mountPath: /hostpath
       volumes:
       - name : volume
         persistentVolumeClaim:
@@ -338,7 +342,7 @@ spec:
 
 <h3 id="1-3-configmap-yaml-추가">1-3) configmap.yaml 추가</h3>
 
-<p>vi comfigmap.yaml</p>
+<p>vi configmap.yaml</p>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: ConfigMap
@@ -350,6 +354,8 @@ data:
 </code></pre>
 
 <h3 id="1-4-pvc-yaml-추가">1-4) pvc.yaml 추가</h3>
+
+<p>vi pvc.yaml</p>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: PersistentVolumeClaim
@@ -369,6 +375,8 @@ spec:
 
 <h3 id="1-5-pv-yaml-추가">1-5) pv.yaml 추가</h3>
 
+<p>vi pv.yaml</p>
+
 <pre><code class="language-yaml">apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -381,7 +389,7 @@ spec:
   capacity:
     storage: 1G
   hostPath:
-    path: /hostPath
+    path: /host1
     type: DirectoryOrCreate
 </code></pre>
 
@@ -389,10 +397,16 @@ spec:
 
 <pre><code class="language-sh">cd ..
 helm install mychart . -n nm-1
+
 helm install mychart . -n nm-1 --create-namespace
-helm upgrade mychart . -n nm-1 --create-namespace
+kubectl get ns nm-1
+kubectl get -n nm-1 pods
+
+helm upgrade mychart . -n nm-1 
+helm uninstall mychart -n nm-1 
+
 helm upgrade mychart . -n nm-1 --create-namespace --install
-helm upgrade mychart . -n nm-1 --create-namespace --install --wait --timeout 10
+helm upgrade mychart . -n nm-1 --create-namespace --install --wait --timeout 10m
 </code></pre>
 
 <p><br/>
@@ -400,7 +414,7 @@ helm upgrade mychart . -n nm-1 --create-namespace --install --wait --timeout 10
 
 <hr />
 
-<h2 id="2-pod-배포-팁">2. Pod 배포 팁</h2>
+<h2 id="2-pod-자동-재기동-tip">2. Pod 자동 재기동 Tip</h2>
 
 <hr />
 
@@ -440,7 +454,7 @@ helm upgrade mychart . -n nm-1 --create-namespace --install --wait --timeout 10
 
 <h3 id="2-1-configmap-yaml-수정">2-1) configmap.yaml 수정</h3>
 
-<p>vi comfigmap.yaml</p>
+<p>vi configmap.yaml</p>
 
 <pre><code class="language-yaml">apiVersion: v1
 kind: ConfigMap
@@ -452,6 +466,9 @@ data:
 </code></pre>
 
 <pre><code class="language-sh">helm upgrade mychart . -n nm-1 --create-namespace --install
+kubectl get -n nm-1 pods
+kubectl get -n nm-1 cm -o yaml
+kubectl exec -n nm-1 test-7c4fff79cd-4m5st -it env
 </code></pre>
 
 <h3 id="2-2-deployment-yaml-내용-업데이트">2-2) deployment.yaml 내용 업데이트</h3>
@@ -481,6 +498,12 @@ spec:
 </code></pre>
 
 <pre><code class="language-sh">helm upgrade mychart . -n nm-1 --create-namespace --install
+kubectl get -n nm-1 pods
+kubectl exec -n nm-1 test-7c4fff79cd-4m5st -it env
+
+helm upgrade mychart . -n nm-1 --create-namespace --install
+kubectl get -n nm-1 pods
+kubectl get -n nm-1 deployment -o yaml
 </code></pre>
 
 <p><br/>
@@ -540,15 +563,24 @@ spec:
   accessModes:
   - ReadWriteOnce
   capacity:
-    storage: 2G
+    storage: 1G
   hostPath:
-    path: /hostPath
+    path: /host2
     type: DirectoryOrCreate
 </code></pre>
 
 <pre><code class="language-sh">helm upgrade mychart . -n nm-1 --create-namespace --install
 helm uninstall mychart -n nm-1
+kubectl get pv
+kubectl get pvc -n nm-1
 helm upgrade mychart . -n nm-1 --create-namespace --install
+kubectl get pv -o yaml
+
+helm list -n nm-1
+helm uninstall mychart -n nm-1
+helm list -n nm-1
+kubectl get ns nm-1
+kubectl delete ns nm-1
 </code></pre>
 
 <h3 id="3-2-uninstall시-namespace-확인">3-2) Uninstall시 Namespace 확인</h3>
@@ -602,7 +634,6 @@ helm upgrade mychart . -n nm-1 --create-namespace --install
 <h3 id="4-1-install-및-upgrade-실행">4-1) Install 및 Upgrade 실행</h3>
 
 <pre><code class="language-sh">helm upgrade mychart . -n nm-1 --create-namespace --install
-
 </code></pre>
 
 <h3 id="4-2-secret-확인">4-2) Secret 확인</h3>
@@ -615,6 +646,7 @@ kubectl get -n nm-1 secret sh.helm.release.v1.mychart.v1 -o yaml
 
 <pre><code class="language-sh">helm history -n nm-1 mychart
 helm upgrade mychart . -n nm-1 --create-namespace --install --history-max 2
+kubectl get -n nm-1 secret -l name=mychart
 helm history -n nm-1 mychart
 </code></pre>
 
