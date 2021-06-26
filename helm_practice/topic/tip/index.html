@@ -32,7 +32,7 @@
 
 
 
-<meta itemprop="wordCount" content="543">
+<meta itemprop="wordCount" content="546">
 
 
 
@@ -115,6 +115,13 @@
           
           
             <a href="/practice/" class="link"><i class='far fa-clipboard' style='color:green'></i> 쿠버네티스 강의자료실</a>
+          
+        
+      
+        
+          
+          
+            <a href="/helm_practice/" class="link"><i class='far fa-clipboard' style='color:green'></i> Helm 강의자료실</a>
           
         
       
@@ -324,7 +331,7 @@ spec:
       initContainers:
       - name: init-myservice
         image: kubetm/app
-        command: ['sh', '-c', &quot;sleep 30; done&quot;]
+        command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'start'; sleep 30; echo 'done'&quot;]
       containers:
       - name: container
         image: kubetm/app
@@ -490,7 +497,7 @@ spec:
         type: app
       annotations:
         checksum/config: {{ include (print $.Template.BasePath &quot;/configmap.yaml&quot;) . | sha256sum }}
-#        rollme: {{ randAlphaNum 5 | quote }}        
+#        rollme: {{ randAlphaNum 5 | quote }}
     spec:
       containers:
       - name: container

@@ -88,7 +88,7 @@ rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml service.yaml te
       <description>1. Install 및 Upgrade Tip  
 1-1) Chart Template 생성 helm create mychart  templates 폴더 안에 불필요한 파일 삭제
 rm -rf deployment.yaml hpa.yaml ingress.yaml service.yaml serviceaccount.yaml tests  1-2) deployment.yaml 내용 업데이트 vi deployment.yaml
-apiVersion: apps/v1 kind: Deployment metadata: name: test spec: selector: matchLabels: type: app replicas: 1 template: metadata: labels: type: app spec: initContainers: - name: init-myservice image: kubetm/app command: [&#39;sh&#39;, &#39;-c&#39;, &amp;quot;sleep 30; done&amp;quot;] containers: - name: container image: kubetm/app envFrom: - configMapRef: name: test-cm volumeMounts: - name: volume mountPath: /hostpath volumes: - name : volume persistentVolumeClaim: claimName: test-pvc  1-3) configmap.</description>
+apiVersion: apps/v1 kind: Deployment metadata: name: test spec: selector: matchLabels: type: app replicas: 1 template: metadata: labels: type: app spec: initContainers: - name: init-myservice image: kubetm/app command: [&amp;quot;sh&amp;quot;, &amp;quot;-c&amp;quot;, &amp;quot;echo &#39;start&#39;; sleep 30; echo &#39;done&#39;&amp;quot;] containers: - name: container image: kubetm/app envFrom: - configMapRef: name: test-cm volumeMounts: - name: volume mountPath: /hostpath volumes: - name : volume persistentVolumeClaim: claimName: test-pvc  1-3) configmap.</description>
     </item>
     
     <item>
@@ -97,10 +97,10 @@ apiVersion: apps/v1 kind: Deployment metadata: name: test spec: selector: matchL
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/helm_practice/topic/topics1/</guid>
-      <description>1. Install 및 Upgrade 팁  
+      <description>1. Helm Hook 기본 Flow  
 1-1) Chart Template 생성 helm create mychart  templates 폴더 안에 불필요한 파일 삭제
-rm -rf deployment.yaml hpa.yaml ingress.yaml service.yaml serviceaccount.yaml tests  1-2) deployment.yaml 내용 업데이트 vi deployment.yaml
-apiVersion: apps/v1 kind: Deployment metadata: name: test spec: selector: matchLabels: type: app replicas: 1 template: metadata: labels: type: app spec: containers: - name: container image: kubetm/init envFrom: - configMapRef: name: test-cm volumeMounts: - name: volume mountPath: /hostpath volumes: - name : volume persistentVolumeClaim: claimName: test-pvc  1-3) configmap.</description>
+rm -rf deployment.yaml hpa.yaml ingress.yaml service.yaml serviceaccount.yaml tests/test-connection.yaml  1-2) pre-pod 생성 vi pre-pod.yaml
+apiVersion: v1 kind: Pod metadata: name: pre-pod annotations: helm.sh/hook: pre-upgrade spec: restartPolicy: Never containers: - name: container image: kubetm/init command: [&amp;quot;sh&amp;quot;, &amp;quot;-c&amp;quot;, &amp;quot;echo &#39;start&#39;; sleep 10; echo &#39;done&#39;&amp;quot;]  1-3) Deployment 생성 vi deployment.</description>
     </item>
     
   </channel>
