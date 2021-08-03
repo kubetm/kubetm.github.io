@@ -3,311 +3,311 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/01-beginner-index/</loc>
+    <loc>https://kubetm.github.io/k8s/01-beginner-index/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/09-intermediate-architecture/component/</loc>
+    <loc>https://kubetm.github.io/k8s/09-intermediate-architecture/component/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/02-beginner/gettingstarted/</loc>
+    <loc>https://kubetm.github.io/k8s/02-beginner/gettingstarted/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/06-intermediate-pod/probe/</loc>
+    <loc>https://kubetm.github.io/k8s/06-intermediate-pod/probe/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/06-intermediate-pod/nodescheduling/</loc>
+    <loc>https://kubetm.github.io/k8s/06-intermediate-pod/nodescheduling/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/07-intermediate-basic-resource/service/</loc>
+    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/service/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/08-intermediate-controller/statefulset/</loc>
+    <loc>https://kubetm.github.io/k8s/08-intermediate-controller/statefulset/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/02-template-guide/step_1/</loc>
+    <loc>https://kubetm.github.io/helm/02-template-guide/step_1/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/03-chart-analysis/tomcat/</loc>
+    <loc>https://kubetm.github.io/helm/03-chart-analysis/tomcat/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/04-topic/tip/</loc>
+    <loc>https://kubetm.github.io/helm/04-topic/tip/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/01-beginner/</loc>
+    <loc>https://kubetm.github.io/helm/01-beginner/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/92-installation/case1/</loc>
+    <loc>https://kubetm.github.io/k8s/92-installation/case1/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/01-beginner/gettingstarted/</loc>
+    <loc>https://kubetm.github.io/helm/01-beginner/gettingstarted/</loc>
     <lastmod>2018-08-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/91-cka/ready/</loc>
+    <loc>https://kubetm.github.io/k8s/91-cka/ready/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/91-cka/exam1/</loc>
+    <loc>https://kubetm.github.io/k8s/91-cka/exam1/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/08-intermediate-controller/ingress/</loc>
+    <loc>https://kubetm.github.io/k8s/08-intermediate-controller/ingress/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/09-intermediate-architecture/storage/</loc>
+    <loc>https://kubetm.github.io/k8s/09-intermediate-architecture/storage/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/03-chart-analysis/prometheus/</loc>
+    <loc>https://kubetm.github.io/helm/03-chart-analysis/prometheus/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/02-template-guide/step_2/</loc>
+    <loc>https://kubetm.github.io/helm/02-template-guide/step_2/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/07-intermediate-basic-resource/volume/</loc>
+    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/02-beginner/</loc>
+    <loc>https://kubetm.github.io/k8s/02-beginner/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/92-installation/case2/</loc>
+    <loc>https://kubetm.github.io/k8s/92-installation/case2/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/04-topic/topic1/</loc>
+    <loc>https://kubetm.github.io/helm/04-topic/topic1/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/02-template-guide/</loc>
+    <loc>https://kubetm.github.io/helm/02-template-guide/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/07-intermediate-basic-resource/authentication/</loc>
+    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/authentication/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/91-cka/exam2/</loc>
+    <loc>https://kubetm.github.io/k8s/91-cka/exam2/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/03-chart-analysis/grafana/</loc>
+    <loc>https://kubetm.github.io/helm/03-chart-analysis/grafana/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/08-intermediate-controller/hpa/</loc>
+    <loc>https://kubetm.github.io/k8s/08-intermediate-controller/hpa/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/02-beginner/cluster-install-case6/</loc>
+    <loc>https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/09-intermediate-architecture/networking/</loc>
+    <loc>https://kubetm.github.io/k8s/09-intermediate-architecture/networking/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/03-beginner-basic-resource/</loc>
+    <loc>https://kubetm.github.io/k8s/03-beginner-basic-resource/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/92-installation/case4/</loc>
+    <loc>https://kubetm.github.io/k8s/92-installation/case4/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/03-chart-analysis/</loc>
+    <loc>https://kubetm.github.io/helm/03-chart-analysis/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/07-intermediate-basic-resource/authorization/</loc>
+    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/authorization/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/09-intermediate-architecture/logging/</loc>
+    <loc>https://kubetm.github.io/k8s/09-intermediate-architecture/logging/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/03-beginner-basic-resource/pod/</loc>
+    <loc>https://kubetm.github.io/k8s/03-beginner-basic-resource/pod/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/92-installation/case5/</loc>
+    <loc>https://kubetm.github.io/k8s/92-installation/case5/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/04-topic/</loc>
+    <loc>https://kubetm.github.io/helm/04-topic/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/04-beginner-controller/</loc>
+    <loc>https://kubetm.github.io/k8s/04-beginner-controller/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/05-intermediate-index/</loc>
+    <loc>https://kubetm.github.io/k8s/05-intermediate-index/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/07-intermediate-basic-resource/dashboard/</loc>
+    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/dashboard/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/03-beginner-basic-resource/service/</loc>
+    <loc>https://kubetm.github.io/k8s/03-beginner-basic-resource/service/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/10-cicd-index/</loc>
+    <loc>https://kubetm.github.io/helm/10-cicd-index/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/03-beginner-basic-resource/volume/</loc>
+    <loc>https://kubetm.github.io/k8s/03-beginner-basic-resource/volume/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/06-intermediate-pod/</loc>
+    <loc>https://kubetm.github.io/k8s/06-intermediate-pod/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/03-beginner-basic-resource/configmap/</loc>
+    <loc>https://kubetm.github.io/k8s/03-beginner-basic-resource/configmap/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/03-beginner-basic-resource/namespace/</loc>
+    <loc>https://kubetm.github.io/k8s/03-beginner-basic-resource/namespace/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/07-intermediate-basic-resource/</loc>
+    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/08-intermediate-controller/</loc>
+    <loc>https://kubetm.github.io/k8s/08-intermediate-controller/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/09-intermediate-architecture/</loc>
+    <loc>https://kubetm.github.io/k8s/09-intermediate-architecture/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/04-beginner-controller/replicaset/</loc>
+    <loc>https://kubetm.github.io/k8s/04-beginner-controller/replicaset/</loc>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/04-beginner-controller/deployment/</loc>
+    <loc>https://kubetm.github.io/k8s/04-beginner-controller/deployment/</loc>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/04-beginner-controller/daemonset/</loc>
+    <loc>https://kubetm.github.io/k8s/04-beginner-controller/daemonset/</loc>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/90-deplicated/</loc>
+    <loc>https://kubetm.github.io/k8s/90-deplicated/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/91-cka/</loc>
+    <loc>https://kubetm.github.io/k8s/91-cka/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/92-installation/</loc>
+    <loc>https://kubetm.github.io/k8s/92-installation/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/</loc>
+    <loc>https://kubetm.github.io/helm/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/</loc>
+    <loc>https://kubetm.github.io/k8s/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/</loc>
+    <loc>https://kubetm.github.io/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/search/</loc>
+    <loc>https://kubetm.github.io/search/</loc>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/about/</loc>
+    <loc>https://kubetm.github.io/about/</loc>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/tags/</loc>
+    <loc>https://kubetm.github.io/tags/</loc>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/info/</loc>
+    <loc>https://kubetm.github.io/info/</loc>
   </url>
   
 </urlset>
