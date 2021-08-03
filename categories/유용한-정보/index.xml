@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>유용한 정보 on KubeTM Blog with Kubernetes</title>
+    <link>https://kubetm.github.io/categories/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EC%A0%95%EB%B3%B4/</link>
+    <description>Recent content in 유용한 정보 on KubeTM Blog with Kubernetes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 28 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kubetm.github.io/categories/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EC%A0%95%EB%B3%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cloud Native Community Groups Seoul 2020</title>
+      <link>https://kubetm.github.io/info/youtube-kubernetes_forum_seoul-2020/</link>
+      <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/youtube-kubernetes_forum_seoul-2020/</guid>
+      <description> Site URL : https://cncg-kr.net/# Youtube URL : https://www.youtube.com/channel/UC1BCaPrwl7KK4KkQVaNK3Dg?fbclid=IwAR1kjmb2qJq9txmFY5nYnt-gT8eRp8lu13ZAJS4FGZ7wu2afiWKP9IUzaeA Facebook : https://www.facebook.com/groups/k8skr Meetup : https://www.meetup.com/ko-KR/Cloud-Native-Computing-Seoul/?fbclid=IwAR2GMDVHV2gVcKD-U2F9_qZka3zYXi0ax7EesTSGmFcRRQipZNQpvnmkoFA  온프레미스에서도 로드밸런서를? (w/ Metallb) - 조훈    쿠버네티스 환경에서 생각해 볼 DevOps와 보안, Azure에서는&amp;hellip; - 최영락    Keycloak을 이용한 Kubernetes 사용자 분리방법 - 이재상    차세대 메모리 인터페이스 CXL 관점에서 그리는 데이터 센터와 가상화의 미래 - 이천용/한석재    MariaDB Galera Cluster on Kubernetes - 이정훈    SIG Docs 및 한글화 기여를 통해 쿠버네티스에 참여하기 - 손석호    </description>
+    </item>
+    
+    <item>
+      <title>Kubernetes CNCF Webinar</title>
+      <link>https://kubetm.github.io/info/youtube-kubernetes_cncf_webinar/</link>
+      <pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/youtube-kubernetes_cncf_webinar/</guid>
+      <description> Youtube URL : https://www.youtube.com/channel/UCvqbFHwN-nwalWPjPUKpvTA  Multi-Tenant Kubernetes Cluser를 운영하기 위해 고려할 사항     Namespace per Tenant Node per Tenant Cluster per Tenant  </description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Forum Seoul 2019</title>
+      <link>https://kubetm.github.io/info/youtube-kubernetes_forum_seoul1-2019/</link>
+      <pubDate>Tue, 24 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/youtube-kubernetes_forum_seoul1-2019/</guid>
+      <description> Site URL : https://events19.linuxfoundation.org/events/kubernetes-forum-seoul-2019/ Youtube URL : https://www.youtube.com/playlist?list=PLj6h78yzYM2OxLtNu5THSdKUj5vC_Thco/  The Secret Recipe of etcd     Raft Consensus Algorithm failures and tuning  Improving Monitoring Systems Interoperability with Prometheus, OpenMetrics     Interoperability with OpenMetrics Prometheus OpenMetrics  Re-architecting Data Platform with Spark     Data Platform Deployment-helm Analytics-spark, jupyterhub, superset Access Control  Running gRPC Services for Serving Legacy RESTful API     why gRPC How to Support both gRPC/REST-envoy Deploying service using transcoding  How to Debug the Pod    Helm3     아키텍처 및 기능설명 업그레이드 v2-&amp;gt;v3  Kubeflow Endoscopy     도입이유, Jupyter, Katib, Pipelines, KFServing  </description>
+    </item>
+    
+    <item>
+      <title>Kubernetes 관련 즐겨찾기</title>
+      <link>https://kubetm.github.io/info/kubernetes/</link>
+      <pubDate>Sat, 22 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/kubernetes/</guid>
+      <description>Kubernetes   Kubernetes : https://kubernetes.io/ Kubectl Reference : https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands Github for Java Client : https://github.com/kubernetes-client/java API Doc for 1.15 : http://kubernetes.io/docs/reference/generated/kubernetes-api/v1.15/  Plugins  Helm   Helm : https://helm.sh/ Helm Hub : https://hub.helm.sh/  Docker  </description>
+    </item>
+    
+    <item>
+      <title>Kubernetes 관련 도서</title>
+      <link>https://kubetm.github.io/info/book/</link>
+      <pubDate>Mon, 06 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/book/</guid>
+      <description>Kubernetes IN ACTION    방대한 분량임에도 불구하고 버릴 내용이 하나도 없음 시간이 되서 3번정도 정독한다면 제 강의는 들을 필요 없어요 ^^ 처음 쿠버네티스를 시작하거나 시간적인 여부가 있는 분들께 권장 Example Github : https://github.com/luksa/kubernetes-in-action  쿠버네티스 패턴    쿠버네티스 기본오브젝트들에 대해 어느정도 알고 있는 분들이 읽으면 좋은책 번역이 잘되있어서 읽기가 편함 실무에서 쿠버네티스를 쓰게 됐을때 한번쯤 고민하게 되는 부분들을 다루고 있어서 매우 유익한 책입니다.    개인적인 의견이며, 삭제 요청시 kube.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes 관련 블로그</title>
+      <link>https://kubetm.github.io/info/blog/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/blog/</guid>
+      <description>그동안 쿠버네티스를 공부하면서 즐겨찾기를 해놨던 블로그들인데, 다들 너무 도움이 되는 내용들이고 자신의 이해도에 맞는 블로그들을 참조하시면 좋습니다^^
+  내용도 좋지만 트랜드나 기술에 대한 정보들이 가장 빨리 업데이트 됩니다.  alice_k106     쿠버네티스 전 범위를 다루고 있지는 않지만, 포스트된 주제에 대해서는 가장 깊히 있게 배울 수 있는 것 같아요.  아리수     많은 범위를 다루고 있고, 주제마다 내용도 간결합니다. 그리고 다양한 옵션들이 설명되 있어요.  Small talks with something     그림 설명이 많아서 내용을 이해하는데 쉽게 포스팅되 있어요.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes 관련 커뮤니티</title>
+      <link>https://kubetm.github.io/info/community/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/community/</guid>
+      <description> Kubernetes Korea Group     쿠버네티스 관련 많은 전문가들께서 활동하고 계시고 각종 행사나 이슈들이 공유됨 대한민국 넘버원 커뮤니티라고 생각함  참고
+ 글로벌 커뮤니티1 : https://www.facebook.com/groups/kubernetes.users 글로벌 커뮤니티2 : https://www.facebook.com/kubernetesio/    개인적인 의견이며, 삭제 요청시 kube.taemin@gmail.com로 연락바랍니다.   </description>
+    </item>
+    
+    <item>
+      <title>GoogleCloud Summit Seoul 2019</title>
+      <link>https://kubetm.github.io/info/youtube-googlecloud-2019/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/youtube-googlecloud-2019/</guid>
+      <description> Site URL : https://inthecloud.withgoogle.com/summit-sel-19/home.html Youtube URL : https://www.youtube.com/watch?v=ZkKgyXDc1lQ&amp;amp;list=PLBgogxgQVM9tS7Yhzjc3Wt56jc5j-z_4C  한 번 빌드해 Anthos로 클라우드와 온프레미스에서 구동하기     Kubernetes, MicroService, Istio Knative Anthos SKAFFOLD  Cloud, Journey to Right Things.     Cloud, 기업의 대표적인 고민, 왜 사용해야 할까요? Why Google Cloud? 도입을 위한 지침서  Google Cloud Platform에서의 Istio     Istio  마이크로서비스, 그리고 서비스 메시     서비스 메시 과정 데모  </description>
+    </item>
+    
+    <item>
+      <title>Open Infrastructure &amp; Cloud Native Days Korea 2019</title>
+      <link>https://kubetm.github.io/info/youtube-openinfra-2019/</link>
+      <pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/youtube-openinfra-2019/</guid>
+      <description>Site URL : https://openinfradays.kr/ Youtube URL : https://www.youtube.com/channel/UCVQ1ILIOsGH-YX9FkEmkjRQ  카카오 T 택시 사례를 통해 살펴보는 카카오 클라우드의 Kubernetes as a Service     Kubernetes를 도입하면 뭐가 좋아지나요? 카카오 T택시 시스템 구조 Canary 배포 멀티 클러스터 인증 통합, 사용자 ACL 자동화된 클러스터 라이프사이클 물리 인프라 자원 통합  MSA, K8S를 이용한 대륙의 서비스 개발 사례 - 이랜드 차이나     왜 Docker를 선택했나? k8s 사용으로 진화, Kong의 도입 Log 관리, k8s 모니터링  Truly understanding container     Container와 Virtual Machine은 비교대상인가?</description>
+    </item>
+    
+    <item>
+      <title>[Kubernetes] 유용한 정보</title>
+      <link>https://kubetm.github.io/info/</link>
+      <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/info/</guid>
+      <description>Kubernetes 관련 유튜브   Kubernets Forum Seoul 20   Cloud Native Community Groups Seoul 2020      Kubernets CNCF Webinar   쿠버네티스 CNCF 세미나      Open Infrastructure &amp;amp; Cloud Native Days Korea 2019   Kakao, Line, NCSoft, Naver, Oracle.. 실무에서 알려주는 Kubernetes 경험 이야기      Google Cloud Summit Seoul 19   서울에서 개최된 구글 클라우드 써밋 중 쿠버네티스 관련내용들      Kubernets Forum Seoul 19   서울에서 개최된 쿠버네티스 포럼     Kubernetes 관련 커뮤니티    Kubernetes 관련 블로그    Kubernetes 관련 도서    즐겨찾기   Kubernetes 관련 즐겨찾기     </description>
+    </item>
+    
+  </channel>
+</rss>

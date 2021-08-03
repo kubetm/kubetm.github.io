@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Getting-started Kubernetes - KubeTM Blog with Kubernetes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png?v=1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png?v=1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png?v=1">
+  <link rel="manifest" href="/favicon/site.webmanifest?v=1">
+  
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg?v=1" color="#ffffff">
+    <link rel="shortcut icon" href="/favicon/favicon.ico?v=1">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml?v=1">
+  
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Kubernetes Blog for Inflearn Pratice">
+  <link rel="canonical" href="https://kubetm.github.io/">
+  <meta property="og:image" content="https://kubetm.github.io/img/main/KubeTM%20Blog%20with%20Kubernetes%20and%20Inflearn.jpg">
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="">
+  <meta property="og:description" content="Kubernetes Blog for Inflearn Pratice">
+  <meta property="og:url" content="https://kubetm.github.io/">
+
+
+  <meta name="generator" content="Hugo 0.85.0" />
+  <meta itemprop="name" content="Getting-started Kubernetes">
+<meta itemprop="description" content="[1. 기초다지기]"><meta itemprop="datePublished" content="2019-11-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-11-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="179">
+<meta itemprop="keywords" content="" />
+  <meta property="og:title" content="Getting-started Kubernetes" />
+<meta property="og:description" content="[1. 기초다지기]" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kubetm.github.io/practice/beginner/gettingstarted-kubernetes/" /><meta property="article:section" content="practice" />
+<meta property="article:published_time" content="2019-11-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-11-01T00:00:00+00:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Getting-started Kubernetes"/>
+<meta name="twitter:description" content="[1. 기초다지기]"/>
+
+  
+
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+  
+    
+      <link rel="stylesheet" href="/css/normalize.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+      
+      
+      <link rel="stylesheet" href="/css/main.min.0f23715d48aca8d3992b71d685569cbeb1829480f2845491b33fe969df8c0da3.css" integrity="sha256-DyNxXUisqNOZK3HWhVacvrGClIDyhFSRsz/pad&#43;MDaM=">
+      <link rel="stylesheet" href="/css/add-on.css">
+    
+  
+  
+  
+  
+    
+  
+  <script data-ad-client="ca-pub-4901365465538759" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+	 
+  </script>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151245038-1"></script>
+  <script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'UA-151245038-1');
+  </script>
+
+
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-PWDJZXR');
+	</script>
+
+
+  <meta name="naver-site-verification" content="9588451d5bdf44018208298d2d6b5d3c5fc35e18"/>
+
+</head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+      	<img src="/img/main/kubernetes-logo.png"  style="max-width: 26px; height: auto;" alt="KubeTM Blog"/>
+        
+          KubeTM Blog
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/practice/" class="link"><i class='far fa-clipboard' style='color:green'></i> 쿠버네티스 강의자료실</a>
+          
+        
+      
+        
+          
+          
+            <a href="/helm_practice/" class="link"><i class='far fa-clipboard' style='color:green'></i> Helm 강의자료실</a>
+          
+        
+      
+        
+          
+          
+            <a href="/info/" class="link"><i class='fa fa-thumbs-up' style='color:green'></i> 유용한 정보</a>
+          
+        
+      
+        
+          
+          
+            <a href="https://www.inflearn.com/course/%ec%bf%a0%eb%b2%84%eb%84%a4%ed%8b%b0%ec%8a%a4-%ea%b8%b0%ec%b4%88?inst=a8bd115b" class="link"><i class='fa fa-leaf' style='color:green'></i> 인프런가기</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro">
+  <a href="/"><img src="/img/main/KubeTM%20Blog%20with%20Kubernetes%20and%20Inflearn.jpg" class="diamond" width="250" alt="KubeTM Blog with Kubernetes and Inflearn" /></a>
+  <header>
+    <h1>Welcome to My Kubernetes Blog</h1>
+  </header>
+  <main>
+    <p>안녕하세요. 김태민입니다. ^^ <br/> 쿠버네티스 기술 블로그에 오신걸 환영합니다.</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/taeminkim" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/kim.taemin.3517563" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/results?search_query=kubetm" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:kube.taemin@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2>Getting-started Kubernetes</h2>
+    
+    
+        <p>[1. 기초다지기]</p>
+    
+    
+    	</br>
+  		</button><a href="/documents/beginner/Getting_Started3.pdf" download><button style="cursor:pointer">강의자료 다운로드</button></a>
+    
+</div>
+
+  <div class="meta">
+    <time class="published" datetime="2019-11-01 00:00:00 &#43;0000 UTC">
+      November 1, 2019
+    </time>
+    <span class="author">KubeTM</span>
+    
+      <p>1 minute read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
+  
+  <a href="/practice/beginner/gettingstarted-kubernetes/" class="image featured">
+    <img src="/img/practice/beginner/Getting%20started%20Kubernetes.jpg" alt="Getting started Kubernetes">
+  </a>
+
+
+  
+    
+  
+  <div class="content">
+  
+  
+    <!-- raw HTML omitted -->
+<hr>
+<p>이 실습 강의의 목적은 일반 서버와 도커, 그리고 쿠버네티스 환경의 차이점에 대해 대략적인 흐름을 이해하기 위함입니다.
+<!-- raw HTML omitted -->
+그렇기 때문에 강의를 위한 별도의 사전 구축 내용들은 설명되지 않았고, 이후 쿠버네티스를 설치하고 [기초편]부터 실습을 진행하시면 되세요.
+<!-- raw HTML omitted -->
+하지만 기존에 도커를 잘 아시는 분께서는 자신의 환경에 마춰 실습해 보셔도 무관합니다.</p>
+<hr>
+<!-- raw HTML omitted -->
+<hr>
+<h2 id="1-linux">1. Linux</h2>
+<hr>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/Getting%20started%20Hello%20World%20on%20Linux.jpg" alt="Getting started Hello World on Linux" title="Getting started Hello World on Linux"  >
+           	
+        </span>
+    
+
+
+<h3 id="1-1-hellojs">1-1) hello.js</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">http</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;http&#39;</span>);
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">resp</span>) {
+ <span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#34;Hello Kubernetes!&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;\n&#34;</span>);
+ <span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">writeHead</span>(<span style="color:#ae81ff">200</span>);
+}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">w</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">createServer</span>(<span style="color:#a6e22e">content</span>);
+<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">8000</span>);
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">node hello.js
+</code></pre></div><!-- raw HTML omitted -->
+<hr>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/Getting%20started%20Hello%20World%20on%20Docker.jpg" alt="Getting started Hello World on Docker" title="Getting started Hello World on Docker"  >
+           	
+        </span>
+    
+
+
+<h3 id="2-1-dockerfile">2-1) Dockerfile</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">FROM node:slim
+EXPOSE <span style="color:#ae81ff">8000</span>
+COPY hello.js .
+CMD node hello.js
+</code></pre></div><h3 id="2-2-docker-hub-site">2-2) Docker Hub Site</h3>
+<p><a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+<h3 id="2-3-docker-container-run">2-3) Docker Container Run</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker build -t kubetm/hello .
+-t : 레파지토리/이미지명:버전
+
+docker images
+docker run -d -p 8100:8000 kubetm/hello
+-d : 백그라운드 모드
+-p : 포트변경
+
+docker ps
+docker exec -it c403442e8a59 /bin/bash
+</code></pre></div><h3 id="2-4-docker-image-push">2-4) Docker Image Push</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker login
+docker push kubetm/hello
+</code></pre></div><!-- raw HTML omitted -->
+<hr>
+<h2 id="3-kubernetes">3. Kubernetes</h2>
+<hr>
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+
+        
+    
+
+    
+        <span class="image left">
+        	
+            	<img src="/img/practice/beginner/Getting%20started%20Hello%20World%20on%20Kubernetes.jpg" alt="Getting started Hello World on Kubernetes" title="Getting started Hello World on Kubernetes"  >
+           	
+        </span>
+    
+
+
+<h3 id="3-1-pod">3-1) Pod</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello-pod</span>
+  <span style="color:#f92672">labels</span>:
+    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">hello</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">containers</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello-container</span>
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/hello</span>
+    <span style="color:#f92672">ports</span>:
+    - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8000</span>
+</code></pre></div><h3 id="3-2-service">3-2) Service</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello-svc</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">selector</span>:
+    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">hello</span>
+  <span style="color:#f92672">ports</span>:
+    - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8200</span>
+      <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8000</span>
+  <span style="color:#f92672">externalIPs</span>:
+  - <span style="color:#ae81ff">192.168.0.30</span>
+</code></pre></div>
+  </div>
+  <footer>
+    
+
+  </footer>
+</article>
+
+
+
+
+      </main>
+      <section id="site-sidebar">
+
+
+<script type="text/javascript">
+
+
+
+		
+
+
+		
+</script>
+  
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4901365465538759"
+     data-ad-slot="1691182311"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+  
+</section>
+
+
+
+
+
+      <footer id="site-footer">
+  
+  <p class="copyright">
+    
+      &copy; 2021
+      
+        KubeTM Blog with Kubernetes
+      
+    . <br>
+    Copyright 2019. Kimtaemin all rights reserved.
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/yaml.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/groovy.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  <script src=/js/util.js></script>
+  <script src=/js/main.js></script>
+  <script src=/js/add-on.js></script>
+  
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-151245038-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+    </div>
+  </body>
+</html>
