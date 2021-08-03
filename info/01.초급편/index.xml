@@ -1,0 +1,18 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>KubeTM Blog – 준비중</title>
+    <link>https://kubetm.github.io/info/01.%EC%B4%88%EA%B8%89%ED%8E%B8/</link>
+    <description>Recent content in 준비중 on KubeTM Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://kubetm.github.io/info/01.%EC%B4%88%EA%B8%89%ED%8E%B8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>
