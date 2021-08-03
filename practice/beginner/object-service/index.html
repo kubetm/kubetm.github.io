@@ -26,19 +26,25 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="Service">
-<meta itemprop="description" content="[ClusterIP, NodePort, LoadBalancer]"><meta itemprop="datePublished" content="2019-11-03T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2019-11-03T00:00:00+00:00" />
+<meta itemprop="description" content="[ClusterIP, NodePort, LoadBalancer]">
+
+
+<meta itemprop="datePublished" content="2019-11-03T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-11-03T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="189">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="Service" />
 <meta property="og:description" content="[ClusterIP, NodePort, LoadBalancer]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/practice/beginner/object-service/" /><meta property="article:section" content="practice" />
+<meta property="og:url" content="https://kubetm.github.io/practice/beginner/object-service/" />
 <meta property="article:published_time" content="2019-11-03T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-11-03T00:00:00+00:00" />
-
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Service"/>
@@ -256,10 +262,17 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
-<hr>
+    
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="1-clusterip">1. ClusterIP</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -291,37 +304,51 @@
     
 
 
+
 <h3 id="1-1-pod">1-1) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-1</span>
-  <span style="color:#f92672">labels</span>:
-     <span style="color:#f92672">app</span>: <span style="color:#ae81ff">pod</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">nodeSelector</span>:
-    <span style="color:#f92672">kubernetes.io/hostname</span>: <span style="color:#ae81ff">k8s-node1</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-    <span style="color:#f92672">ports</span>:
-    - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
-</code></pre></div><h3 id="1-2-service">1-2) Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">svc-1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">pod</span>
-  <span style="color:#f92672">ports</span>:
-  - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">9000</span>
-    <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl 10.104.103.107:9000/hostname
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+  labels:
+     app: pod
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-node1
+  containers:
+  - name: container
+    image: kubetm/app
+    ports:
+    - containerPort: 8080
+</code></pre>
+
+<h3 id="1-2-service">1-2) Service</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: svc-1
+spec:
+  selector:
+    app: pod
+  ports:
+  - port: 9000
+    targetPort: 8080
+</code></pre>
+
+<pre><code class="language-sh">curl 10.104.103.107:9000/hostname
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="2-nodeport">2. NodePort</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -353,23 +380,30 @@
     
 
 
+
 <h3 id="service">Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">svc-2</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">pod</span>
-  <span style="color:#f92672">ports</span>:
-  - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">9000</span>
-    <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>
-    <span style="color:#f92672">nodePort</span>: <span style="color:#ae81ff">30000</span>
-  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">NodePort</span>
-  <span style="color:#f92672">externalTrafficPolicy</span>: <span style="color:#ae81ff">Local</span>
-</code></pre></div><hr>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: svc-2
+spec:
+  selector:
+    app: pod
+  ports:
+  - port: 9000
+    targetPort: 8080
+    nodePort: 30000
+  type: NodePort
+  externalTrafficPolicy: Local
+</code></pre>
+
+<hr />
+
 <h2 id="3-load-balancer">3. Load Balancer</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -401,60 +435,99 @@
     
 
 
+
 <h3 id="service-1">Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">svc-3</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">pod</span>
-  <span style="color:#f92672">ports</span>:
-  - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">9000</span>
-    <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>
-  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">LoadBalancer</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get service svc-3
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: svc-3
+spec:
+  selector:
+    app: pod
+  ports:
+  - port: 9000
+    targetPort: 8080
+  type: LoadBalancer
+</code></pre>
+
+<pre><code class="language-sh">kubectl get service svc-3
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="sample-yaml">Sample Yaml</h2>
-<hr>
-<h3 id="-__service__">* <strong>Service</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">svc-3</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:             <span style="color:#75715e"># Pod의 Label과 매칭</span>
-    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">pod</span>
-  <span style="color:#f92672">ports</span>:
-  - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">9000</span>          <span style="color:#75715e"># Service 자체 Port</span>
-    <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>    <span style="color:#75715e"># Pod의 Container Port</span>
-  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">ClusterIP, NodePort, LoadBalancer </span> <span style="color:#75715e"># 생략시 ClusterIP</span>
-  <span style="color:#f92672">externalTrafficPolicy</span>: <span style="color:#ae81ff">Local, Cluster   </span> <span style="color:#75715e"># 트래픽 분배 역할</span>
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<hr />
+
+<h3 id="service-2">* <strong>Service</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: svc-3
+spec:
+  selector:             # Pod의 Label과 매칭
+    app: pod
+  ports:
+  - port: 9000          # Service 자체 Port
+    targetPort: 8080    # Pod의 Container Port
+  type: ClusterIP, NodePort, LoadBalancer  # 생략시 ClusterIP
+  externalTrafficPolicy: Local, Cluster    # 트래픽 분배 역할
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="kubectl">kubectl</h2>
-<hr>
-<h3 id="-__get__">* <strong>Get</strong></h3>
+
+<hr />
+
+<h3 id="get">* <strong>Get</strong></h3>
+
 <h1 id="defalut-이름의-namespace에서-svc-3-이름의-service-조회">defalut 이름의 Namespace에서 svc-3 이름의 Service 조회</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get service svc-3 -n defalut
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-sh">kubectl get service svc-3 -n defalut
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="tips">Tips</h2>
-<hr>
-<h3 id="-__nodeport__">* <strong>NodePort</strong></h3>
+
+<hr />
+
+<h3 id="nodeport">* <strong>NodePort</strong></h3>
+
 <ul>
-<li>Node Port의 범위 : 30000~32767</li>
+<li>Node Port의 범위 : 30000~32767
+<br /></li>
 </ul>
-<!-- raw HTML omitted -->
-<hr>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="referenece">Referenece</h2>
-<hr>
-<h3 id="-__kubernetes__">* <strong>Kubernetes</strong></h3>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
 <ul>
 <li><strong>Service</strong> : <a href="https://kubernetes.io/docs/concepts/services-networking/service/">https://kubernetes.io/docs/concepts/services-networking/service/</a></li>
 </ul>
-<h3 id="-__others__">* <strong>Others</strong></h3>
+
+<h3 id="others">* <strong>Others</strong></h3>
+
 <ul>
 <li><strong>Kubernetes NodePort vs LoadBalancer vs Ingress?</strong> : <a href="https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0">https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0</a></li>
 </ul>

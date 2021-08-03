@@ -26,19 +26,25 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="Kubernetes Dashboard">
-<meta itemprop="description" content="[Kubeconfig, Token]"><meta itemprop="datePublished" content="2020-04-26T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2020-04-26T00:00:00+00:00" />
+<meta itemprop="description" content="[Kubeconfig, Token]">
+
+
+<meta itemprop="datePublished" content="2020-04-26T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-04-26T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="144">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="Kubernetes Dashboard" />
 <meta property="og:description" content="[Kubeconfig, Token]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/object-dashboard/" /><meta property="article:section" content="practice" />
+<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/object-dashboard/" />
 <meta property="article:published_time" content="2020-04-26T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-04-26T00:00:00+00:00" />
-
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Kubernetes Dashboard"/>
@@ -256,10 +262,17 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
-<hr>
-<h2 id="1-dashboard-200-설치">1. Dashboard 2.0.0 설치</h2>
-<hr>
+    
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="1-dashboard-2-0-0-설치">1. Dashboard 2.0.0 설치</h2>
+
+<hr />
+
 
 
 
@@ -291,43 +304,68 @@
     
 
 
-<!-- raw HTML omitted -->
-<h3 id="1-1--dashboard-설치">1-1)  Dashboard 설치</h3>
+
+<p><br/></p>
+
+<h3 id="1-1-dashboard-설치">1-1)  Dashboard 설치</h3>
+
 <p>kubetm 가이드로 Dashboard(1.10.1)를 설치했을 경우 아래 명령으로 삭제</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/sample/practice/appendix/gcp-kubernetes-dashboard.yaml
-</code></pre></div><p>새 Dashboard (2.0.0) 설치 - <a href="https://github.com/kubernetes/dashboard">https://github.com/kubernetes/dashboard</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
-</code></pre></div><!-- raw HTML omitted -->
+
+<pre><code class="language-sh">kubectl delete -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/sample/practice/appendix/gcp-kubernetes-dashboard.yaml
+</code></pre>
+
+<p>새 Dashboard (2.0.0) 설치 - <a href="https://github.com/kubernetes/dashboard">https://github.com/kubernetes/dashboard</a></p>
+
+<pre><code class="language-sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+</code></pre>
+
+<p><br/></p>
+
 <h3 id="1-2-clusterrolebinding-생성">1-2) ClusterRoleBinding 생성</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat <span style="color:#e6db74">&lt;&lt;EOF | kubectl create -f -
-</span><span style="color:#e6db74">apiVersion: rbac.authorization.k8s.io/v1beta1
-</span><span style="color:#e6db74">kind: ClusterRoleBinding
-</span><span style="color:#e6db74">metadata:
-</span><span style="color:#e6db74">  name: kubernetes-dashboard2
-</span><span style="color:#e6db74">  labels:
-</span><span style="color:#e6db74">    k8s-app: kubernetes-dashboard
-</span><span style="color:#e6db74">roleRef:
-</span><span style="color:#e6db74">  apiGroup: rbac.authorization.k8s.io
-</span><span style="color:#e6db74">  kind: ClusterRole
-</span><span style="color:#e6db74">  name: cluster-admin
-</span><span style="color:#e6db74">subjects:
-</span><span style="color:#e6db74">- kind: ServiceAccount
-</span><span style="color:#e6db74">  name: kubernetes-dashboard
-</span><span style="color:#e6db74">  namespace: kubernetes-dashboard
-</span><span style="color:#e6db74">EOF</span>
-</code></pre></div><!-- raw HTML omitted -->
+
+<pre><code class="language-sh">cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: kubernetes-dashboard2
+  labels:
+    k8s-app: kubernetes-dashboard
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: kubernetes-dashboard
+  namespace: kubernetes-dashboard
+EOF
+</code></pre>
+
+<p><br/></p>
+
 <h3 id="1-3-token-확인">1-3) Token 확인</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl -n kubernetes-dashboard get secret kubernetes-dashboard-token- <span style="color:#ae81ff">\-</span>o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.data.token}&#39;</span> | base64 --decode
-</code></pre></div><!-- raw HTML omitted -->
+
+<pre><code class="language-sh">kubectl -n kubernetes-dashboard get secret kubernetes-dashboard-token- \-o jsonpath='{.data.token}' | base64 --decode
+</code></pre>
+
+<p><br/></p>
+
 <h3 id="1-4-내-pc에-인증서-설치">1-4) 내 PC에 인증서 설치</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">grep <span style="color:#e6db74">&#39;client-certificate-data&#39;</span> ~/.kube/config | head -n <span style="color:#ae81ff">1</span> | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> | base64 -d &gt;&gt; client.crt
-grep <span style="color:#e6db74">&#39;client-key-data&#39;</span> ~/.kube/config | head -n <span style="color:#ae81ff">1</span> | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> | base64 -d &gt;&gt; client.key
-openssl pkcs12 -export -clcerts -inkey client.key -in client.crt -out client.p12 -name <span style="color:#e6db74">&#34;k8s-master-30&#34;</span>
-</code></pre></div><p>kubecfg.p12 파일을 내 PC에서 인증서 등록</p>
-<!-- raw HTML omitted -->
+
+<pre><code class="language-sh">grep 'client-certificate-data' ~/.kube/config | head -n 1 | awk '{print $2}' | base64 -d &gt;&gt; client.crt
+grep 'client-key-data' ~/.kube/config | head -n 1 | awk '{print $2}' | base64 -d &gt;&gt; client.key
+openssl pkcs12 -export -clcerts -inkey client.key -in client.crt -out client.p12 -name &quot;k8s-master-30&quot;
+</code></pre>
+
+<p>kubecfg.p12 파일을 내 PC에서 인증서 등록</p>
+
+<p><br/></p>
+
 <h3 id="1-5-https-로-dashboard-접근-후-token-으로-로그인">1-5) Https 로 Dashboard 접근 후 Token 으로 로그인</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">https://192.168.0.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
-</code></pre></div>
+
+<pre><code class="language-sh">https://192.168.0.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
+</code></pre>
+
   </div>
   <footer>
     

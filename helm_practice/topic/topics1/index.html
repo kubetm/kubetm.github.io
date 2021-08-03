@@ -26,18 +26,22 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="추가 기능">
 <meta itemprop="description" content="[Helm Hook, Helm Test]">
 
+
+
 <meta itemprop="wordCount" content="560">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="추가 기능" />
 <meta property="og:description" content="[Helm Hook, Helm Test]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/helm_practice/topic/topics1/" /><meta property="article:section" content="helm_practice" />
-
-
+<meta property="og:url" content="https://kubetm.github.io/helm_practice/topic/topics1/" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -252,10 +256,16 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
-<hr>
+    
+
+<p><br/></p>
+
+<hr />
+
 <h2 id="1-helm-hook-기본-flow">1. Helm Hook 기본 Flow</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -287,120 +297,162 @@
     
 
 
-<!-- raw HTML omitted -->
+
+<p><br/></p>
+
 <h3 id="1-1-chart-template-생성">1-1) Chart Template 생성</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm create mychart
-</code></pre></div><p>templates 폴더 안에 불필요한 파일 삭제</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">rm -rf deployment.yaml  hpa.yaml  ingress.yaml  service.yaml  serviceaccount.yaml  tests/test-connection.yaml
-</code></pre></div><h3 id="1-2-pre-pod-생성">1-2) pre-pod 생성</h3>
+
+<pre><code class="language-sh">helm create mychart
+</code></pre>
+
+<p>templates 폴더 안에 불필요한 파일 삭제</p>
+
+<pre><code class="language-sh">rm -rf deployment.yaml  hpa.yaml  ingress.yaml  service.yaml  serviceaccount.yaml  tests/test-connection.yaml
+</code></pre>
+
+<h3 id="1-2-pre-pod-생성">1-2) pre-pod 생성</h3>
+
 <p>vi pre-pod.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pre-pod</span>
-  <span style="color:#f92672">annotations</span>:
-    <span style="color:#f92672">helm.sh/hook</span>: <span style="color:#ae81ff">pre-upgrade</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">restartPolicy</span>: <span style="color:#ae81ff">Never</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;sh&#34;</span>, <span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;echo &#39;start&#39;; sleep 10; echo &#39;done&#39;&#34;</span>]
-</code></pre></div><h3 id="1-3-deployment-생성">1-3) Deployment 생성</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pre-pod
+  annotations:
+    helm.sh/hook: pre-upgrade
+spec:
+  restartPolicy: Never
+  containers:
+  - name: container
+    image: kubetm/init
+    command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'start'; sleep 10; echo 'done'&quot;]
+</code></pre>
+
+<h3 id="1-3-deployment-생성">1-3) Deployment 생성</h3>
+
 <p>vi deployment.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">svc</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">app</span>
-  <span style="color:#f92672">ports</span>:
-  - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">80</span>
-    <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: svc
+spec:
+  selector:
+    type: app
+  ports:
+  - port: 80
+    targetPort: 8080
 ---
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">deployment</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">app</span>
-  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#f92672">template</span>:
-    <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">labels</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">app</span>
-      <span style="color:#f92672">annotations</span>:
-        <span style="color:#f92672">rollme</span>: {{ <span style="color:#ae81ff">randAlphaNum 5 | quote }}</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">initContainers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">init-myservice</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-        <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;sh&#34;</span>, <span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;echo &#39;start&#39;; sleep 10; echo &#39;done&#39;&#34;</span>]
-      <span style="color:#f92672">containers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-</code></pre></div><h3 id="1-4-post-pod-생성">1-4) post-pod 생성</h3>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  selector:
+    matchLabels:
+      type: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        type: app
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+    spec:
+      initContainers:
+      - name: init-myservice
+        image: kubetm/app
+        command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'start'; sleep 10; echo 'done'&quot;]
+      containers:
+      - name: container
+        image: kubetm/app
+</code></pre>
+
+<h3 id="1-4-post-pod-생성">1-4) post-pod 생성</h3>
+
 <p>vi post-pod.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">post-pod</span>
-  <span style="color:#f92672">annotations</span>:
-    <span style="color:#f92672">helm.sh/hook</span>: <span style="color:#ae81ff">post-upgrade</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">restartPolicy</span>: <span style="color:#ae81ff">Never</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;sh&#34;</span>, <span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;echo &#39;start&#39;; sleep 10; echo &#39;done&#39;&#34;</span>]
-</code></pre></div><h3 id="1-5-test-pod-생성">1-5) test-pod 생성</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: post-pod
+  annotations:
+    helm.sh/hook: post-upgrade
+spec:
+  restartPolicy: Never
+  containers:
+  - name: container
+    image: kubetm/init
+    command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'start'; sleep 10; echo 'done'&quot;]
+</code></pre>
+
+<h3 id="1-5-test-pod-생성">1-5) test-pod 생성</h3>
+
 <p>mkdir tests
-<!-- raw HTML omitted -->
+<br/>
 vi test-pod.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test-pod</span>
-  <span style="color:#f92672">annotations</span>:
-    <span style="color:#f92672">helm.sh/hook</span>: <span style="color:#ae81ff">test</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">restartPolicy</span>: <span style="color:#ae81ff">Never</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;sh&#34;</span>, <span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;echo &#39;start&#39;; curl svc/hostname; echo &#39;done&#39;&#34;</span>]
-</code></pre></div><h3 id="1-6-crd-podyaml-내용-업데이트">1-6) crd-pod.yaml 내용 업데이트</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod
+  annotations:
+    helm.sh/hook: test
+spec:
+  restartPolicy: Never
+  containers:
+  - name: container
+    image: kubetm/init
+    command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'start'; curl svc/hostname; echo 'done'&quot;]
+</code></pre>
+
+<h3 id="1-6-crd-pod-yaml-내용-업데이트">1-6) crd-pod.yaml 내용 업데이트</h3>
+
 <p>mkdir crds
-<!-- raw HTML omitted -->
+<br/>
 vi crd-pod.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">crd-pod</span>
-  <span style="color:#f92672">annotations</span>:
-    <span style="color:#f92672">helm.sh/hook</span>: <span style="color:#ae81ff">pre-upgrade</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">restartPolicy</span>: <span style="color:#ae81ff">Never</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;sh&#34;</span>, <span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;echo &#39;start&#39;; sleep 10; echo &#39;done&#39;&#34;</span>]
-</code></pre></div><h3 id="1-7-install-명령">1-7) Install 명령</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm upgrade mychart ./../ -n nm-1 --create-namespace --install
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: crd-pod
+  annotations:
+    helm.sh/hook: pre-upgrade
+spec:
+  restartPolicy: Never
+  containers:
+  - name: container
+    image: kubetm/init
+    command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'start'; sleep 10; echo 'done'&quot;]
+</code></pre>
+
+<h3 id="1-7-install-명령">1-7) Install 명령</h3>
+
+<pre><code class="language-sh">helm upgrade mychart ./../ -n nm-1 --create-namespace --install
 kubectl get pods -n nm-1
-</code></pre></div><h3 id="1-8-upgrade-명령">1-8) Upgrade 명령</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm upgrade mychart ./../ -n nm-1 --create-namespace --install
+</code></pre>
+
+<h3 id="1-8-upgrade-명령">1-8) Upgrade 명령</h3>
+
+<pre><code class="language-sh">helm upgrade mychart ./../ -n nm-1 --create-namespace --install
 kubectl get pods -n nm-1
-</code></pre></div><h3 id="1-9-test-명령">1-9) Test 명령</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm test mychart -n nm-1
+</code></pre>
+
+<h3 id="1-9-test-명령">1-9) Test 명령</h3>
+
+<pre><code class="language-sh">helm test mychart -n nm-1
 kubectl get pods -n nm-1
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="2-hook-weight">2. hook-weight</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -432,83 +484,115 @@ kubectl get pods -n nm-1
     
 
 
-<!-- raw HTML omitted -->
+
+<p><br/></p>
+
 <h3 id="2-1-chart-template-생성">2-1) Chart Template 생성</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm create mychart2
-</code></pre></div><p>templates 폴더 안에 불필요한 파일 삭제</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">rm -rf deployment.yaml  hpa.yaml  ingress.yaml  service.yaml  serviceaccount.yaml  tests
-</code></pre></div><h3 id="2-2-pre-pod1-생성">2-2) pre-pod1 생성</h3>
+
+<pre><code class="language-sh">helm create mychart2
+</code></pre>
+
+<p>templates 폴더 안에 불필요한 파일 삭제</p>
+
+<pre><code class="language-sh">rm -rf deployment.yaml  hpa.yaml  ingress.yaml  service.yaml  serviceaccount.yaml  tests
+</code></pre>
+
+<h3 id="2-2-pre-pod1-생성">2-2) pre-pod1 생성</h3>
+
 <p>vi pre-pod1.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pre-pod1</span>
-  <span style="color:#f92672">annotations</span>:
-    <span style="color:#f92672">helm.sh/hook</span>: <span style="color:#ae81ff">pre-install</span>
-    <span style="color:#f92672">helm.sh/weight</span>: <span style="color:#e6db74">&#34;-1&#34;</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">restartPolicy</span>: <span style="color:#ae81ff">Never</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;sh&#34;</span>, <span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;echo &#39;start&#39;; sleep 10; echo &#39;done&#39;&#34;</span>]
-</code></pre></div><h3 id="2-3-pre-pod2-생성">2-3) pre-pod2 생성</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pre-pod1
+  annotations:
+    helm.sh/hook: pre-install
+    helm.sh/weight: &quot;-1&quot;
+spec:
+  restartPolicy: Never
+  containers:
+  - name: container
+    image: kubetm/init
+    command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'start'; sleep 10; echo 'done'&quot;]
+</code></pre>
+
+<h3 id="2-3-pre-pod2-생성">2-3) pre-pod2 생성</h3>
+
 <p>vi pre-pod2.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pre-pod2</span>
-  <span style="color:#f92672">annotations</span>:
-    <span style="color:#f92672">helm.sh/hook</span>: <span style="color:#ae81ff">pre-install</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">restartPolicy</span>: <span style="color:#ae81ff">Never</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;sh&#34;</span>, <span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;echo &#39;start&#39;; sleep 10; echo &#39;done&#39;&#34;</span>]
-</code></pre></div><h3 id="2-4-pre-pod3-생성">2-4) pre-pod3 생성</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pre-pod2
+  annotations:
+    helm.sh/hook: pre-install
+spec:
+  restartPolicy: Never
+  containers:
+  - name: container
+    image: kubetm/init
+    command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'start'; sleep 10; echo 'done'&quot;]
+</code></pre>
+
+<h3 id="2-4-pre-pod3-생성">2-4) pre-pod3 생성</h3>
+
 <p>vi pre-pod3.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pre-pod3</span>
-  <span style="color:#f92672">annotations</span>:
-    <span style="color:#f92672">helm.sh/hook</span>: <span style="color:#ae81ff">pre-install</span>
-    <span style="color:#f92672">helm.sh/hook-weight</span>: <span style="color:#e6db74">&#34;1&#34;</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">restartPolicy</span>: <span style="color:#ae81ff">Never</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;sh&#34;</span>, <span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;echo &#39;start&#39;; sleep 10; echo &#39;done&#39;&#34;</span>]
-</code></pre></div><h3 id="2-5-deployment-생성">2-5) Deployment 생성</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pre-pod3
+  annotations:
+    helm.sh/hook: pre-install
+    helm.sh/hook-weight: &quot;1&quot;
+spec:
+  restartPolicy: Never
+  containers:
+  - name: container
+    image: kubetm/init
+    command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'start'; sleep 10; echo 'done'&quot;]
+</code></pre>
+
+<h3 id="2-5-deployment-생성">2-5) Deployment 생성</h3>
+
 <p>vi deployment.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">deployment</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">init</span>
-  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#f92672">template</span>:
-    <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">labels</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">init</span>
-      <span style="color:#f92672">annotations</span>:
-        <span style="color:#f92672">rollme</span>: {{ <span style="color:#ae81ff">randAlphaNum 5 | quote }}</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">containers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-</code></pre></div><h3 id="2-6-helm-install-실행">2-6) Helm Install 실행</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm upgrade mychart2 ./../ -n nm-2 --create-namespace --install
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  selector:
+    matchLabels:
+      type: init
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        type: init
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+    spec:
+      containers:
+      - name: container
+        image: kubetm/init
+</code></pre>
+
+<h3 id="2-6-helm-install-실행">2-6) Helm Install 실행</h3>
+
+<pre><code class="language-sh">helm upgrade mychart2 ./../ -n nm-2 --create-namespace --install
 kubectl get pods -n nm-2
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="3-hook-delete-policy">3. hook-delete-policy</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -540,40 +624,59 @@ kubectl get pods -n nm-2
     
 
 
-<!-- raw HTML omitted -->
+
+<p><br/></p>
+
 <h3 id="3-1-이전-실습-리소스-제거">3-1) 이전 실습 리소스 제거</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">rm -rf pre-pod2.yaml pre-pod3.yaml
+
+<pre><code class="language-sh">rm -rf pre-pod2.yaml pre-pod3.yaml
 kubectl delete pods -n nm-2 pre-hook-pod2 pre-hook-pod3
 kubectl get pods -n nm-2
-</code></pre></div><h3 id="3-2-pre-pod1">3-2) pre-pod1</h3>
+</code></pre>
+
+<h3 id="3-2-pre-pod1">3-2) pre-pod1</h3>
+
 <p>vi pre-pod1.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pre-pod1</span>
-  <span style="color:#f92672">annotations</span>:
-    <span style="color:#f92672">helm.sh/hook</span>: <span style="color:#ae81ff">pre-upgrade</span>
-<span style="color:#75715e">#   helm.sh/hook-delete-policy: hook-succeeded</span>
-<span style="color:#75715e">#   helm.sh/hook-delete-policy: hook-failed</span>
-<span style="color:#75715e">#   helm.sh/hook-delete-policy: before-hook-creation</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">restartPolicy</span>: <span style="color:#ae81ff">Never</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;sh&#34;</span>, <span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;echo &#39;start&#39;; sleep 10; echo &#39;done&#39;&#34;</span>]
-</code></pre></div><h3 id="3-3-helm-install-실행">3-3) Helm Install 실행</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm upgrade mychart2 ./../ -n nm-2 --create-namespace --install
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pre-pod1
+  annotations:
+    helm.sh/hook: pre-upgrade
+#   helm.sh/hook-delete-policy: hook-succeeded
+#   helm.sh/hook-delete-policy: hook-failed
+#   helm.sh/hook-delete-policy: before-hook-creation
+spec:
+  restartPolicy: Never
+  containers:
+  - name: container
+    image: kubetm/init
+    command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'start'; sleep 10; echo 'done'&quot;]
+</code></pre>
+
+<h3 id="3-3-helm-install-실행">3-3) Helm Install 실행</h3>
+
+<pre><code class="language-sh">helm upgrade mychart2 ./../ -n nm-2 --create-namespace --install
 kubectl delete pods -n nm-2 pre-hook-pod1
 kubectl get pods -n nm-2
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="referenece">Referenece</h2>
-<hr>
-<h3 id="-__helm__">* <strong>Helm</strong></h3>
+
+<hr />
+
+<h3 id="helm">* <strong>Helm</strong></h3>
+
 <ul>
 <li><strong>Helm Hook</strong> : <a href="https://helm.sh/docs/topics/charts_hooks/">https://helm.sh/docs/topics/charts_hooks/</a></li>
-<li><strong>Helm Test</strong> : <a href="https://helm.sh/docs/topics/chart_tests/">https://helm.sh/docs/topics/chart_tests/</a></li>
+<li><strong>Helm Test</strong> : <a href="https://helm.sh/docs/topics/chart_tests/">https://helm.sh/docs/topics/chart_tests/</a>
+<br /></li>
 </ul>
 
   </div>

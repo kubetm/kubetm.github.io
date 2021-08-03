@@ -26,9 +26,11 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="인프런 아키텍쳐편 강의자료">
 <meta itemprop="description" content="">
+
+
   <meta property="og:title" content="인프런 아키텍쳐편 강의자료" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -239,7 +241,9 @@
   
 
   
-  
+  <p><br/>
+해당강의는 실습은 없고, 이론 강의 자료를 다운 받으실 수 있습니다.
+<br/></p>
   <footer>
     <a href="/practice/architecture/component-difm-diadf-9aa/" class="button big">본문 보기</a>
     
@@ -281,25 +285,7 @@
 
 
   
-  <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">app-log</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">app</span>
-  <span style="color:#f92672">template</span>:
-    <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">labels</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">app</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">nodeSelector</span>:
-        <span style="color:#f92672">kubernetes.io/hostname</span>: <span style="color:#ae81ff">k8s-node1</span>
-      <span style="color:#f92672">containers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-</code></pre></div><p>api 호출</p>
+  <p><br/></p>
   <footer>
     <a href="/practice/architecture/logging-difm-diadf-9aa/" class="button big">본문 보기</a>
     
@@ -341,23 +327,7 @@
 
 
   
-  <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-pause</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">nodeSelector</span>:
-    <span style="color:#f92672">kubernetes.io/hostname</span>: <span style="color:#ae81ff">k8s-node1</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container1</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/p8000</span>
-    <span style="color:#f92672">ports</span>:
-    - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8000</span>
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container2</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/p8080</span>
-    <span style="color:#f92672">ports</span>:
-    - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
-</code></pre></div><p>Pause Container 확인</p>
+  <p><br/></p>
   <footer>
     <a href="/practice/architecture/networking-difm-diadf-9aa/" class="button big">본문 보기</a>
     

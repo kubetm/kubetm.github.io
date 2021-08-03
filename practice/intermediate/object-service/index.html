@@ -26,19 +26,25 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="Service">
-<meta itemprop="description" content="[Headless, Endpoint, ExternalName]"><meta itemprop="datePublished" content="2019-11-16T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2019-11-16T00:00:00+00:00" />
+<meta itemprop="description" content="[Headless, Endpoint, ExternalName]">
+
+
+<meta itemprop="datePublished" content="2019-11-16T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-11-16T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="477">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="Service" />
 <meta property="og:description" content="[Headless, Endpoint, ExternalName]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/object-service/" /><meta property="article:section" content="practice" />
+<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/object-service/" />
 <meta property="article:published_time" content="2019-11-16T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-11-16T00:00:00+00:00" />
-
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Service"/>
@@ -256,9 +262,15 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
-<hr>
+    
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="dns">Dns</h2>
+
 
 
 
@@ -290,7 +302,9 @@
     
 
 
+
 <h2 id="headless">Headless</h2>
+
 
 
 
@@ -322,7 +336,9 @@
     
 
 
+
 <h2 id="exteranl">Exteranl</h2>
+
 
 
 
@@ -354,10 +370,16 @@
     
 
 
-<!-- raw HTML omitted -->
-<hr>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="headless-1">Headless</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -389,45 +411,65 @@
     
 
 
+
 <h3 id="1-1-service">1-1) Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">clusterip1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">svc</span>: <span style="color:#ae81ff">clusterip</span>
-  <span style="color:#f92672">ports</span>:
-  - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">80</span>
-    <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>
-</code></pre></div><h3 id="1-2-pod">1-2) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod1</span>
-  <span style="color:#f92672">labels</span>:
-    <span style="color:#f92672">svc</span>: <span style="color:#ae81ff">clusterip</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-</code></pre></div><h3 id="1-3-request-pod">1-3) Request Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">request-pod</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl exec request-pod -it /bin/bash
-</code></pre></div><p>nslookup</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">nslookup clusterip1
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: clusterip1
+spec:
+  selector:
+    svc: clusterip
+  ports:
+  - port: 80
+    targetPort: 8080
+</code></pre>
+
+<h3 id="1-2-pod">1-2) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+  labels:
+    svc: clusterip
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+</code></pre>
+
+<h3 id="1-3-request-pod">1-3) Request Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: request-pod
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+</code></pre>
+
+<pre><code class="language-sh">kubectl exec request-pod -it /bin/bash
+</code></pre>
+
+<p>nslookup</p>
+
+<pre><code class="language-sh">nslookup clusterip1
 nslookup clusterip1.default.svc.cluster.local
-</code></pre></div><p>curl</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl clusterip1/hostname
+</code></pre>
+
+<p>curl</p>
+
+<pre><code class="language-sh">curl clusterip1/hostname
 curl clusterip1.default.svc.cluster.local/hostname
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre>
+
+<p><br/>
+<br/></p>
+
 
 
 
@@ -459,43 +501,61 @@ curl clusterip1.default.svc.cluster.local/hostname
     
 
 
+
 <h3 id="2-1-service">2-1) Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">headless1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">svc</span>: <span style="color:#ae81ff">headless</span>
-  <span style="color:#f92672">ports</span>:
-    - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">80</span>
-      <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>    
-  <span style="color:#f92672">clusterIP</span>: <span style="color:#ae81ff">None</span>
-</code></pre></div><h3 id="2-2-pod">2-2) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod4</span>
-  <span style="color:#f92672">labels</span>:
-    <span style="color:#f92672">svc</span>: <span style="color:#ae81ff">headless</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">hostname</span>: <span style="color:#ae81ff">pod-a</span>
-  <span style="color:#f92672">subdomain</span>: <span style="color:#ae81ff">headless1</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-</code></pre></div><p>Nslookup</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">nslookup headless1
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: headless1
+spec:
+  selector:
+    svc: headless
+  ports:
+    - port: 80
+      targetPort: 8080    
+  clusterIP: None
+</code></pre>
+
+<h3 id="2-2-pod">2-2) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod4
+  labels:
+    svc: headless
+spec:
+  hostname: pod-a
+  subdomain: headless1
+  containers:
+  - name: container
+    image: kubetm/app
+</code></pre>
+
+<p>Nslookup</p>
+
+<pre><code class="language-sh">nslookup headless1
 nslookup pod-a.headless1
 nslookup pod-b.headless1
 
-</code></pre></div><p>Curl</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl pod-a.headless1:8080/hostname
+</code></pre>
+
+<p>Curl</p>
+
+<pre><code class="language-sh">curl pod-a.headless1:8080/hostname
 curl pod-b.headless1:8080/hostname
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="endpoint">Endpoint</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -527,29 +587,40 @@ curl pod-b.headless1:8080/hostname
     
 
 
+
 <h3 id="3-1-service">3-1) Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">endpoint1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">svc</span>: <span style="color:#ae81ff">endpoint</span>
-  <span style="color:#f92672">ports</span>:
-  - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8080</span>
-</code></pre></div><h3 id="3-2-pod">3-2) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod7</span>
-  <span style="color:#f92672">labels</span>:
-    <span style="color:#f92672">svc</span>: <span style="color:#ae81ff">endpoint</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl describe endpoints endpoint1
-</code></pre></div><!-- raw HTML omitted -->
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: endpoint1
+spec:
+  selector:
+    svc: endpoint
+  ports:
+  - port: 8080
+</code></pre>
+
+<h3 id="3-2-pod">3-2) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod7
+  labels:
+    svc: endpoint
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+</code></pre>
+
+<pre><code class="language-sh">kubectl describe endpoints endpoint1
+</code></pre>
+
+<p><br/>
+<br/></p>
+
 
 
 
@@ -581,35 +652,49 @@ curl pod-b.headless1:8080/hostname
     
 
 
+
 <h3 id="4-1-service">4-1) Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">endpoint2</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">ports</span>:
-  - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8080</span>
-</code></pre></div><h3 id="4-2-pod">4-2) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod9</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-</code></pre></div><h3 id="4-3-endpoint">4-3) Endpoint</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Endpoints</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">endpoint2</span>
-<span style="color:#f92672">subsets</span>:
- - <span style="color:#f92672">addresses</span>:
-   - <span style="color:#f92672">ip</span>: <span style="color:#ae81ff">20.109.5.12</span>
-   <span style="color:#f92672">ports</span>:
-   - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8080</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl endpoint2:8080/hostname
-</code></pre></div><!-- raw HTML omitted -->
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: endpoint2
+spec:
+  ports:
+  - port: 8080
+</code></pre>
+
+<h3 id="4-2-pod">4-2) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod9
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+</code></pre>
+
+<h3 id="4-3-endpoint">4-3) Endpoint</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Endpoints
+metadata:
+  name: endpoint2
+subsets:
+ - addresses:
+   - ip: 20.109.5.12
+   ports:
+   - port: 8080
+</code></pre>
+
+<pre><code class="language-sh">curl endpoint2:8080/hostname
+</code></pre>
+
+<p><br/>
+<br/></p>
+
 
 
 
@@ -641,32 +726,49 @@ curl pod-b.headless1:8080/hostname
     
 
 
+
 <h3 id="5-1-service">5-1) Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">endpoint3</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">ports</span>:
-  - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">80</span>
-</code></pre></div><p>Github - Ip Address</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">nslookup https://www.github.com
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: endpoint3
+spec:
+  ports:
+  - port: 80
+</code></pre>
+
+<p>Github - Ip Address</p>
+
+<pre><code class="language-sh">nslookup https://www.github.com
 curl -O 185.199.110.153:80/kubetm/kubetm.github.io/blob/master/sample/practice/intermediate/service-sample.md
-</code></pre></div><h3 id="5-2-endpoint">5-2) Endpoint</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Endpoints</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">endpoint3</span>
-<span style="color:#f92672">subsets</span>:
- - <span style="color:#f92672">addresses</span>:
-   - <span style="color:#f92672">ip</span>: <span style="color:#ae81ff">185.199.110.153</span>
-   <span style="color:#f92672">ports</span>:
-   - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">80</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl -O endpoint3/kubetm/kubetm.github.io/blob/master/sample/practice/intermediate/service-sample.md
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<h3 id="5-2-endpoint">5-2) Endpoint</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Endpoints
+metadata:
+  name: endpoint3
+subsets:
+ - addresses:
+   - ip: 185.199.110.153
+   ports:
+   - port: 80
+</code></pre>
+
+<pre><code class="language-sh">curl -O endpoint3/kubetm/kubetm.github.io/blob/master/sample/practice/intermediate/service-sample.md
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="externalname">ExternalName</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -698,81 +800,123 @@ curl -O 185.199.110.153:80/kubetm/kubetm.github.io/blob/master/sample/practice/i
     
 
 
+
 <h3 id="6-1-service">6-1) Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">externalname1</span>
-<span style="color:#f92672">spec</span>:
- <span style="color:#f92672">type</span>: <span style="color:#ae81ff">ExternalName</span>
- <span style="color:#f92672">externalName</span>: <span style="color:#ae81ff">github.github.io</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl -O externalname1/kubetm/kubetm.github.io/blob/master/sample/practice/intermediate/service-sample.md
-</code></pre></div><!-- raw HTML omitted -->
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+ name: externalname1
+spec:
+ type: ExternalName
+ externalName: github.github.io
+</code></pre>
+
+<pre><code class="language-sh">curl -O externalname1/kubetm/kubetm.github.io/blob/master/sample/practice/intermediate/service-sample.md
+</code></pre>
+
+<p><br/>
+<br/></p>
+
 <h2 id="yaml">yaml</h2>
-<hr>
-<h3 id="-__service__">* <strong>Service</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">headless1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:             <span style="color:#75715e"># 생략시 Endpoints 직접 생성해서 사용</span>
-    <span style="color:#f92672">svc</span>: <span style="color:#ae81ff">headless</span>
-  <span style="color:#f92672">ports</span>:
-    - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">80</span>
-      <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>    
-  <span style="color:#f92672">clusterIP</span>: <span style="color:#ae81ff">None      </span> <span style="color:#75715e"># headless 서비스  </span>
-  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">ExternalName   </span> <span style="color:#75715e"># ExternalName Service 설정시 사용</span>
-  <span style="color:#f92672">externalName</span>: <span style="color:#ae81ff">github.github.io </span> <span style="color:#75715e"># ExternalName사용시 연결 Domain지정</span>
-</code></pre></div><h3 id="-__endpoints__">* <strong>Endpoints</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Endpoints</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">headless1      </span> <span style="color:#75715e"># Service의 이름과 동일하게 지정</span>
-<span style="color:#f92672">subsets</span>:
- - <span style="color:#f92672">addresses</span>:
-   - <span style="color:#f92672">ip</span>: <span style="color:#ae81ff">20.109.5.12</span>    <span style="color:#75715e"># Pod의 ClusterIp</span>
-   <span style="color:#f92672">ports</span>:
-   - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8080</span>         <span style="color:#75715e"># Pod의 Container Port</span>
-</code></pre></div><h3 id="-__pod__">* <strong>Pod</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod4</span>
-  <span style="color:#f92672">labels</span>:
-    <span style="color:#f92672">svc</span>: <span style="color:#ae81ff">headless</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">hostname</span>: <span style="color:#ae81ff">pod-a      </span> <span style="color:#75715e"># 호스트네임 설정, 생략시 Pod Name이 적용됨</span>
-  <span style="color:#f92672">subdomain</span>: <span style="color:#ae81ff">headless1 </span> <span style="color:#75715e"># headless 서비스 사용시 Service의 이름으로 지정</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-</code></pre></div><!-- raw HTML omitted -->
+
+<hr />
+
+<h3 id="service">* <strong>Service</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: headless1
+spec:
+  selector:             # 생략시 Endpoints 직접 생성해서 사용
+    svc: headless
+  ports:
+    - port: 80
+      targetPort: 8080    
+  clusterIP: None       # headless 서비스  
+  type: ExternalName    # ExternalName Service 설정시 사용
+  externalName: github.github.io  # ExternalName사용시 연결 Domain지정
+</code></pre>
+
+<h3 id="endpoints">* <strong>Endpoints</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Endpoints
+metadata:
+  name: headless1       # Service의 이름과 동일하게 지정
+subsets:
+ - addresses:
+   - ip: 20.109.5.12    # Pod의 ClusterIp
+   ports:
+   - port: 8080         # Pod의 Container Port
+</code></pre>
+
+<h3 id="pod">* <strong>Pod</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod4
+  labels:
+    svc: headless
+spec:
+  hostname: pod-a       # 호스트네임 설정, 생략시 Pod Name이 적용됨
+  subdomain: headless1  # headless 서비스 사용시 Service의 이름으로 지정
+  containers:
+  - name: container
+    image: kubetm/app
+</code></pre>
+
+<p><br/>
+<br/></p>
+
 <h2 id="kubectl">kubectl</h2>
-<hr>
-<h3 id="-__exec__">* <strong>Exec</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Pod이름이 request-pod인 Container로 들어가기 (나올땐 exit)</span>
+
+<hr />
+
+<h3 id="exec">* <strong>Exec</strong></h3>
+
+<pre><code class="language-sh"># Pod이름이 request-pod인 Container로 들어가기 (나올땐 exit)
 kubectl exec request-pod -it /bin/bash
-</code></pre></div><h3 id="-__describe__">* <strong>Describe</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Endpoints 상세보기</span>
+</code></pre>
+
+<h3 id="describe">* <strong>Describe</strong></h3>
+
+<pre><code class="language-sh"># Endpoints 상세보기
 kubectl describe endpoints endpoint1
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre>
+
+<p><br/>
+<br/></p>
+
 <h2 id="tips">Tips</h2>
-<hr>
-<h3 id="-__dns__">* <strong>Dns</strong></h3>
+
+<hr />
+
+<h3 id="dns-1">* <strong>Dns</strong></h3>
+
 <ul>
 <li>Kubernetes 버전 1.11 이전의 Kubernetes DNS 서비스는 kube-dns를 기반</li>
 <li>버전 1.11은 kube-dns의 일부 보안 및 안정성 문제를 해결하기 위해 CoreDNS 를 도입</li>
 </ul>
-<!-- raw HTML omitted -->
+
+<p><br/>
+<br/></p>
+
 <h2 id="referenece">Referenece</h2>
-<hr>
-<h3 id="-__kubernetes__">* <strong>Kubernetes</strong></h3>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
 <ul>
 <li><strong>DNS for Services and Pods</strong> : <a href="https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/">https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/</a></li>
 <li><strong>Customizing DNS Service</strong> : <a href="https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/">https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/</a></li>
 </ul>
-<h3 id="-__others__">* <strong>Others</strong></h3>
+
+<h3 id="others">* <strong>Others</strong></h3>
+
 <ul>
 <li><strong>Kubernetes DNS-Based Service Discovery</strong> : <a href="https://github.com/kubernetes/dns/blob/master/docs/specification.md">https://github.com/kubernetes/dns/blob/master/docs/specification.md</a></li>
 <li><strong>Kubernetes best practices: mapping external services</strong> : <a href="https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-mapping-external-services">https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-mapping-external-services</a></li>

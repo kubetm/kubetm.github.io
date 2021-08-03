@@ -26,19 +26,25 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="AutoScaler - HPA">
-<meta itemprop="description" content="[HPA, VPA, CA]"><meta itemprop="datePublished" content="2020-03-10T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2020-03-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="425">
+<meta itemprop="description" content="[HPA, VPA, CA]">
+
+
+<meta itemprop="datePublished" content="2020-03-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-03-10T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="450">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="AutoScaler - HPA" />
 <meta property="og:description" content="[HPA, VPA, CA]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/controller-autoscaler_hpa/" /><meta property="article:section" content="practice" />
+<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/controller-autoscaler_hpa/" />
 <meta property="article:published_time" content="2020-03-10T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-03-10T00:00:00+00:00" />
-
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="AutoScaler - HPA"/>
@@ -231,7 +237,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>2 minutes read</p>
+      <p>3 minutes read</p>
     
   </div>
 </header>
@@ -256,54 +262,74 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
-<hr>
-<h2 id="1-metrics-server-설치">1. Metrics Server 설치</h2>
-<hr>
-<h3 id="1-1-metrics-server-다운-및-설치">1-1) Metrics Server 다운 및 설치</h3>
-<p>설치</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
-<p>spec:
-containers:</p>
-<ul>
-<li>args:
-<ul>
-<li>&ndash;cert-dir=/tmp</li>
-<li>&ndash;secure-port=4443</li>
-<li>&ndash;kubelet-insecure-tls</li>
-<li>&ndash;kubelet-preferred-address-types=InternalIP
-image: k8s.gcr.io/metrics-server-amd64:v0.3.6
-imagePullPolicy: IfNotPresent
-name: metrics-server</li>
-</ul>
-<hr>
-</li>
-</ul>
-<pre><code>
-&lt;br/&gt;
-설치 확인 (True값 확인)
+    
 
-```sh
-kubectl get apiservices |egrep metrics
+<p><br/></p>
+
+<hr />
+
+<h2 id="1-metrics-server-설치">1. Metrics Server 설치</h2>
+
+<hr />
+
+<h3 id="1-1-metrics-server-다운-및-설치">1-1) Metrics Server 다운 및 설치</h3>
+
+<p>설치</p>
+
+<pre><code class="language-sh">kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
+</code></pre>
+
+<p><br/>
+Metrics Deployment 수정 (args 에 <code>kubelet-insecure-tls</code> 와 <code>kubelet-preferred-address-types=InternalIP</code> 추가)</p>
+
+<pre><code class="language-sh">kubectl edit deployment metrics-server -n kube-system
+
+------------------------
+spec:
+   containers:
+   - args:
+     - --cert-dir=/tmp
+     - --secure-port=4443
+     - --kubelet-insecure-tls
+     - --kubelet-preferred-address-types=InternalIP
+     image: k8s.gcr.io/metrics-server-amd64:v0.3.6
+     imagePullPolicy: IfNotPresent
+     name: metrics-server
+     ------------------------
+</code></pre>
+
+<p><br/>
+설치 확인 (True값 확인)</p>
+
+<pre><code class="language-sh">kubectl get apiservices |egrep metrics
 
 ------------------------
 v1beta1.metrics.k8s.io                     kube-system/metrics-server   True        28m
 ------------------------
-</code></pre><!-- raw HTML omitted -->
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl top node
+</code></pre>
+
+<p><br/>
+메트릭 값 확인 (1~2분 후)</p>
+
+<pre><code class="language-sh">kubectl top node
 
 ------------------------
-NAME             CPU<span style="color:#f92672">(</span>cores<span style="color:#f92672">)</span>   CPU%   MEMORY<span style="color:#f92672">(</span>bytes<span style="color:#f92672">)</span>   MEMORY%   
+NAME             CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
 k8s-master       485m         9%     4852Mi          32%       
 k8s-node1        413m         8%     4929Mi          33%       
 k8s-node2        554m         11%    4672Mi          31%       
 ------------------------
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="2-hpa-horizontal-pod-autoscaler">2. HPA (Horizontal Pod Autoscaler)</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -335,66 +361,82 @@ k8s-node2        554m         11%    4672Mi          31%
     
 
 
-<h3 id="2-1-target-deployment-cpu--service">2-1) Target Deployment (CPU) / Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
-<span style="color:#f92672">metadata</span>:
- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">stateless-cpu1</span>
-<span style="color:#f92672">spec</span>:
- <span style="color:#f92672">selector</span>:
-   <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">resource</span>: <span style="color:#ae81ff">cpu</span>
- <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">2</span>
- <span style="color:#f92672">template</span>:
-   <span style="color:#f92672">metadata</span>:
-     <span style="color:#f92672">labels</span>:
-       <span style="color:#f92672">resource</span>: <span style="color:#ae81ff">cpu</span>
-   <span style="color:#f92672">spec</span>:
-     <span style="color:#f92672">containers</span>:
-     - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-       <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app:v1</span>
-       <span style="color:#f92672">resources</span>:
-         <span style="color:#f92672">requests</span>:
-           <span style="color:#f92672">cpu</span>: <span style="color:#ae81ff">10m</span>
-         <span style="color:#f92672">limits</span>:
-           <span style="color:#f92672">cpu</span>: <span style="color:#ae81ff">20m</span>
+
+<h3 id="2-1-target-deployment-cpu-service">2-1) Target Deployment (CPU) / Service</h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: stateless-cpu1
+spec:
+ selector:
+   matchLabels:
+      resource: cpu
+ replicas: 2
+ template:
+   metadata:
+     labels:
+       resource: cpu
+   spec:
+     containers:
+     - name: container
+       image: kubetm/app:v1
+       resources:
+         requests:
+           cpu: 10m
+         limits:
+           cpu: 20m
 ---
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">stateless-svc1</span>
-<span style="color:#f92672">spec</span>:
- <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">resource</span>: <span style="color:#ae81ff">cpu</span>
- <span style="color:#f92672">ports</span>:
-   - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8080</span>
-     <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>
-     <span style="color:#f92672">nodePort</span>: <span style="color:#ae81ff">30001</span>
- <span style="color:#f92672">type</span>: <span style="color:#ae81ff">NodePort</span>
-</code></pre></div><!-- raw HTML omitted -->
-<h3 id="2-2-hpa---resource-utilization">2-2) HPA - Resource (Utilization)</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">autoscaling/v2beta2</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">HorizontalPodAutoscaler</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hpa-resource-cpu</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">maxReplicas</span>: <span style="color:#ae81ff">10</span>
-  <span style="color:#f92672">minReplicas</span>: <span style="color:#ae81ff">2</span>
-  <span style="color:#f92672">scaleTargetRef</span>:
-    <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-    <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
-    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">stateless-cpu1</span>
-  <span style="color:#f92672">metrics</span>:
-  - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">Resource </span>
-    <span style="color:#f92672">resource</span>:
-      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cpu</span>
-      <span style="color:#f92672">target</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">Utilization</span>
-        <span style="color:#f92672">averageUtilization</span>: <span style="color:#ae81ff">50</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get hpa -w
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#66d9ef">while</span> true;<span style="color:#66d9ef">do</span> curl 192.168.0.30:30001/hostname; sleep 0.01; <span style="color:#66d9ef">done</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete horizontalpodautoscalers.autoscaling hpa-resource-cpu
-</code></pre></div><!-- raw HTML omitted -->
+apiVersion: v1
+kind: Service
+metadata:
+ name: stateless-svc1
+spec:
+ selector:
+    resource: cpu
+ ports:
+   - port: 8080
+     targetPort: 8080
+     nodePort: 30001
+ type: NodePort
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="2-2-hpa-resource-utilization">2-2) HPA - Resource (Utilization)</h3>
+
+<pre><code class="language-yaml">apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-resource-cpu
+spec:
+  maxReplicas: 10
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: stateless-cpu1
+  metrics:
+  - type: Resource 
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+</code></pre>
+
+<pre><code class="language-sh">kubectl get hpa -w
+</code></pre>
+
+<pre><code class="language-sh">while true;do curl 192.168.0.30:30001/hostname; sleep 0.01; done
+</code></pre>
+
+<pre><code class="language-sh">kubectl delete horizontalpodautoscalers.autoscaling hpa-resource-cpu
+</code></pre>
+
+<p><br/>
+<br/></p>
+
 
 
 
@@ -426,122 +468,153 @@ k8s-node2        554m         11%    4672Mi          31%
     
 
 
-<h3 id="2-3-target-deployment-memory--service">2-3) Target Deployment (Memory) / Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
-<span style="color:#f92672">metadata</span>:
- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">stateless-memory1</span>
-<span style="color:#f92672">spec</span>:
- <span style="color:#f92672">selector</span>:
-   <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">resource</span>: <span style="color:#ae81ff">memory</span>
- <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">2</span>
- <span style="color:#f92672">template</span>:
-   <span style="color:#f92672">metadata</span>:
-     <span style="color:#f92672">labels</span>:
-       <span style="color:#f92672">resource</span>: <span style="color:#ae81ff">memory</span>
-   <span style="color:#f92672">spec</span>:
-     <span style="color:#f92672">containers</span>:
-     - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-       <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app:v1</span>
-       <span style="color:#f92672">resources</span>:
-         <span style="color:#f92672">requests</span>:
-           <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">10Mi</span>
-         <span style="color:#f92672">limits</span>:
-           <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">20Mi</span>
+
+<h3 id="2-3-target-deployment-memory-service">2-3) Target Deployment (Memory) / Service</h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: stateless-memory1
+spec:
+ selector:
+   matchLabels:
+      resource: memory
+ replicas: 2
+ template:
+   metadata:
+     labels:
+       resource: memory
+   spec:
+     containers:
+     - name: container
+       image: kubetm/app:v1
+       resources:
+         requests:
+           memory: 10Mi
+         limits:
+           memory: 20Mi
 ---
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">stateless-svc2</span>
-<span style="color:#f92672">spec</span>:
- <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">resource</span>: <span style="color:#ae81ff">memory</span>
- <span style="color:#f92672">ports</span>:
-   - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8080</span>
-     <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>
-     <span style="color:#f92672">nodePort</span>: <span style="color:#ae81ff">30002</span>
- <span style="color:#f92672">type</span>: <span style="color:#ae81ff">NodePort</span>
-</code></pre></div><!-- raw HTML omitted -->
-<h3 id="2-4-hpa---resource-averagevalue">2-4) HPA - Resource (AverageValue)</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">autoscaling/v2beta2</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">HorizontalPodAutoscaler</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hpa-resource-memory</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">maxReplicas</span>: <span style="color:#ae81ff">10</span>
-  <span style="color:#f92672">minReplicas</span>: <span style="color:#ae81ff">2</span>
-  <span style="color:#f92672">scaleTargetRef</span>:
-    <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-    <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
-    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">stateless-memory1</span>
-  <span style="color:#f92672">metrics</span>:
-  - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">Resource </span>
-    <span style="color:#f92672">resource</span>:
-      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">memory</span>
-      <span style="color:#f92672">target</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">AverageValue</span>
-        <span style="color:#f92672">averageValue</span>: <span style="color:#ae81ff">5Mi</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#66d9ef">while</span> true;<span style="color:#66d9ef">do</span> curl 192.168.0.30:30002/hostname; sleep 0.01; <span style="color:#66d9ef">done</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete horizontalpodautoscalers.autoscaling hpa-resource-memory
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+apiVersion: v1
+kind: Service
+metadata:
+ name: stateless-svc2
+spec:
+ selector:
+    resource: memory
+ ports:
+   - port: 8080
+     targetPort: 8080
+     nodePort: 30002
+ type: NodePort
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="2-4-hpa-resource-averagevalue">2-4) HPA - Resource (AverageValue)</h3>
+
+<pre><code class="language-yaml">apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-resource-memory
+spec:
+  maxReplicas: 10
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: stateless-memory1
+  metrics:
+  - type: Resource 
+    resource:
+      name: memory
+      target:
+        type: AverageValue
+        averageValue: 5Mi
+</code></pre>
+
+<pre><code class="language-sh">while true;do curl 192.168.0.30:30002/hostname; sleep 0.01; done
+</code></pre>
+
+<pre><code class="language-sh">kubectl delete horizontalpodautoscalers.autoscaling hpa-resource-memory
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="sample-yaml">Sample yaml</h2>
-<hr>
-<h3 id="-__hpa-for---pods__">* <strong>HPA for - Pods</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">autoscaling/v2beta2</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">HorizontalPodAutoscaler</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hpa-pods</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">maxReplicas</span>: <span style="color:#ae81ff">10</span>
-  <span style="color:#f92672">minReplicas</span>: <span style="color:#ae81ff">2</span>
-  <span style="color:#f92672">scaleTargetRef</span>:
-    <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-    <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
-    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">stateless-app1</span>
-  <span style="color:#f92672">metrics</span>:
-  - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">Pods</span>
-    <span style="color:#f92672">pods</span>:
-      <span style="color:#f92672">metric</span>:
-        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">packets-per-second</span>
-      <span style="color:#f92672">target</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">AverageValue</span>
-        <span style="color:#f92672">averageValue</span>: <span style="color:#ae81ff">10</span>
-</code></pre></div><h3 id="-__hpa---object__">* <strong>HPA - Object</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">autoscaling/v2beta2</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">HorizontalPodAutoscaler</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hpa-object</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">maxReplicas</span>: <span style="color:#ae81ff">10</span>
-  <span style="color:#f92672">minReplicas</span>: <span style="color:#ae81ff">2</span>
-  <span style="color:#f92672">scaleTargetRef</span>:
-    <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-    <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
-    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">stateless-app1</span>
-  <span style="color:#f92672">metrics</span>:
-  - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">Object</span>
-    <span style="color:#f92672">object</span>:
-      <span style="color:#f92672">metric</span>:
-        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">requests-per-second</span>
-      <span style="color:#f92672">target</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">Value</span>
-        <span style="color:#f92672">value</span>: <span style="color:#ae81ff">10</span>
-      <span style="color:#f92672">describedObject</span>:
-        <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">networking.k8s.io/v1beta1</span>
-        <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Ingress</span>
-        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">ingress-hpa</span>
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<hr />
+
+<h3 id="hpa-for-pods">* <strong>HPA for - Pods</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-pods
+spec:
+  maxReplicas: 10
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: stateless-app1
+  metrics:
+  - type: Pods
+    pods:
+      metric:
+        name: packets-per-second
+      target:
+        type: AverageValue
+        averageValue: 10
+</code></pre>
+
+<h3 id="hpa-object">* <strong>HPA - Object</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-object
+spec:
+  maxReplicas: 10
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: stateless-app1
+  metrics:
+  - type: Object
+    object:
+      metric:
+        name: requests-per-second
+      target:
+        type: Value
+        value: 10
+      describedObject:
+        apiVersion: networking.k8s.io/v1beta1
+        kind: Ingress
+        name: ingress-hpa
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="referenece">Referenece</h2>
-<hr>
-<h3 id="-__kubernetes__">* <strong>Kubernetes</strong></h3>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
 <ul>
 <li><strong>Horizontal Pod Autoscaler</strong> : <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/">https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/</a></li>
 <li><strong>Horizontal Pod Autoscaler Walkthrough</strong> : <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/">https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/</a></li>
 </ul>
-<h3 id="-__others__">* <strong>Others</strong></h3>
+
+<h3 id="others">* <strong>Others</strong></h3>
+
 <ul>
 <li><strong>Best Practices for Cluster Autoscaler, HPA and VPA</strong> : <a href="https://www.replex.io/blog/kubernetes-in-production-best-practices-for-cluster-autoscaler-hpa-and-vpa">https://www.replex.io/blog/kubernetes-in-production-best-practices-for-cluster-autoscaler-hpa-and-vpa</a></li>
 <li><strong>Cluster Autoscaler, Horizontal Pod Autoscaler, and Vertical Pod Autoscaler</strong> : <a href="https://levelup.gitconnected.com/kubernetes-autoscaling-101-cluster-autoscaler-horizontal-pod-autoscaler-and-vertical-pod-2a441d9ad231">https://levelup.gitconnected.com/kubernetes-autoscaling-101-cluster-autoscaler-horizontal-pod-autoscaler-and-vertical-pod-2a441d9ad231</a></li>

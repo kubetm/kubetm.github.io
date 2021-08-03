@@ -26,19 +26,25 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="StatefulSet">
-<meta itemprop="description" content="[Pod, PersistentVolume, Headless Service]"><meta itemprop="datePublished" content="2019-12-24T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2019-12-24T00:00:00+00:00" />
+<meta itemprop="description" content="[Pod, PersistentVolume, Headless Service]">
+
+
+<meta itemprop="datePublished" content="2019-12-24T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-12-24T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="240">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="StatefulSet" />
 <meta property="og:description" content="[Pod, PersistentVolume, Headless Service]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/new-statefulset/" /><meta property="article:section" content="practice" />
+<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/new-statefulset/" />
 <meta property="article:published_time" content="2019-12-24T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-12-24T00:00:00+00:00" />
-
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="StatefulSet"/>
@@ -256,7 +262,11 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
+    
+
+<p><br/>
+<br/></p>
+
 
 
 
@@ -288,9 +298,13 @@
     
 
 
-<hr>
+
+<hr />
+
 <h2 id="1-statefulset-controller">1. StatefulSet Controller</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -322,48 +336,59 @@
     
 
 
+
 <h3 id="1-1-replicaset">1-1) ReplicaSet</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ReplicaSet</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">replica-web</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">web</span>
-  <span style="color:#f92672">template</span>:
-    <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">labels</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">web</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">containers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-      <span style="color:#f92672">terminationGracePeriodSeconds</span>: <span style="color:#ae81ff">10</span>
-</code></pre></div><h3 id="1-2-statefulset">1-2) StatefulSet</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">StatefulSet</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">stateful-db</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">db</span>
-  <span style="color:#f92672">template</span>:
-    <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">labels</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">db</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">containers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-      <span style="color:#f92672">terminationGracePeriodSeconds</span>: <span style="color:#ae81ff">10</span>
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replica-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: web
+  template:
+    metadata:
+      labels:
+        type: web
+    spec:
+      containers:
+      - name: container
+        image: kubetm/app
+      terminationGracePeriodSeconds: 10
+</code></pre>
+
+<h3 id="1-2-statefulset">1-2) StatefulSet</h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: stateful-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: db
+  template:
+    metadata:
+      labels:
+        type: db
+    spec:
+      containers:
+      - name: container
+        image: kubetm/app
+      terminationGracePeriodSeconds: 10
+</code></pre>
+
+<p><br/></p>
+
+<hr />
+
 <h2 id="2-persistentvolumeclaim">2. PersistentVolumeClaim</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -395,84 +420,100 @@
     
 
 
+
 <h3 id="2-1-persistentvolumeclaim">2-1) PersistentVolumeClaim</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">PersistentVolumeClaim</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">replica-pvc1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">accessModes</span>:
-  - <span style="color:#ae81ff">ReadWriteOnce</span>
-  <span style="color:#f92672">resources</span>:
-    <span style="color:#f92672">requests</span>:
-      <span style="color:#f92672">storage</span>: <span style="color:#ae81ff">1G</span>
-  <span style="color:#f92672">storageClassName</span>: <span style="color:#e6db74">&#34;fast&#34;</span>
-</code></pre></div><h3 id="2-2-replicaset">2-2) ReplicaSet</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ReplicaSet</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">replica-pvc</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">web2</span>
-  <span style="color:#f92672">template</span>:
-    <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">labels</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">web2</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">nodeSelector</span>:
-        <span style="color:#f92672">kubernetes.io/hostname</span>: <span style="color:#ae81ff">k8s-node1</span>
-      <span style="color:#f92672">containers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-        <span style="color:#f92672">volumeMounts</span>:
-        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">storageos</span>
-          <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/applog</span>
-      <span style="color:#f92672">volumes</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">storageos</span>
-        <span style="color:#f92672">persistentVolumeClaim</span>:
-          <span style="color:#f92672">claimName</span>: <span style="color:#ae81ff">replica-pvc1</span>
-      <span style="color:#f92672">terminationGracePeriodSeconds</span>: <span style="color:#ae81ff">10</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">touch /applog/server.log
-</code></pre></div><h3 id="2-3-statefulset">2-3) StatefulSet</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">StatefulSet</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">stateful-pvc</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">db2</span>
-  <span style="color:#f92672">serviceName</span>: <span style="color:#e6db74">&#34;stateful-headless&#34;</span>
-  <span style="color:#f92672">template</span>: 
-    <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">labels</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">db2</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">containers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-        <span style="color:#f92672">volumeMounts</span>:
-        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">volume</span>
-          <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/applog</span>
-      <span style="color:#f92672">terminationGracePeriodSeconds</span>: <span style="color:#ae81ff">10</span>
-  <span style="color:#f92672">volumeClaimTemplates</span>:
-  - <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">volume</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">accessModes</span>:
-      - <span style="color:#ae81ff">ReadWriteOnce</span>
-      <span style="color:#f92672">resources</span>:
-        <span style="color:#f92672">requests</span>:
-          <span style="color:#f92672">storage</span>: <span style="color:#ae81ff">1G</span>
-      <span style="color:#f92672">storageClassName</span>: <span style="color:#e6db74">&#34;fast&#34;</span>
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: replica-pvc1
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1G
+  storageClassName: &quot;fast&quot;
+</code></pre>
+
+<h3 id="2-2-replicaset">2-2) ReplicaSet</h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replica-pvc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: web2
+  template:
+    metadata:
+      labels:
+        type: web2
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-node1
+      containers:
+      - name: container
+        image: kubetm/init
+        volumeMounts:
+        - name: storageos
+          mountPath: /applog
+      volumes:
+      - name: storageos
+        persistentVolumeClaim:
+          claimName: replica-pvc1
+      terminationGracePeriodSeconds: 10
+</code></pre>
+
+<pre><code class="language-sh">touch /applog/server.log
+</code></pre>
+
+<h3 id="2-3-statefulset">2-3) StatefulSet</h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: stateful-pvc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: db2
+  serviceName: &quot;stateful-headless&quot;
+  template: 
+    metadata:
+      labels:
+        type: db2
+    spec:
+      containers:
+      - name: container
+        image: kubetm/app
+        volumeMounts:
+        - name: volume
+          mountPath: /applog
+      terminationGracePeriodSeconds: 10
+  volumeClaimTemplates:
+  - metadata:
+      name: volume
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1G
+      storageClassName: &quot;fast&quot;
+</code></pre>
+
+<p><br/></p>
+
+<hr />
+
 <h2 id="3-headless-service">3. Headless Service</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -504,33 +545,47 @@
     
 
 
+
 <h3 id="3-1-service-headless">3-1) Service (Headless)</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">stateful-headless</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">db2</span>
-  <span style="color:#f92672">ports</span>:
-    - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">80</span>
-      <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>    
-  <span style="color:#f92672">clusterIP</span>: <span style="color:#ae81ff">None</span>
-</code></pre></div><h3 id="3-2-pod">3-2) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">request-pod</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">nslookup stateful-headless
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: stateful-headless
+spec:
+  selector:
+    type: db2
+  ports:
+    - port: 80
+      targetPort: 8080    
+  clusterIP: None
+</code></pre>
+
+<h3 id="3-2-pod">3-2) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: request-pod
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+</code></pre>
+
+<pre><code class="language-sh">nslookup stateful-headless
 curl stateful-pvc-0.stateful-headless:8080/hostname
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre>
+
+<p><br/>
+<br/></p>
+
 <h2 id="referenece">Referenece</h2>
-<hr>
-<h3 id="-__kubernetes__">* <strong>Kubernetes</strong></h3>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
 <ul>
 <li><strong>StatefulSets</strong> : <a href="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset">https://kubernetes.io/docs/concepts/workloads/controllers/statefulset</a></li>
 <li><strong>StatefulSet Basics</strong> : <a href="https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set">https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set</a></li>

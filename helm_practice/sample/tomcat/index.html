@@ -26,18 +26,22 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="오픈소스 Helm 차트 분석">
 <meta itemprop="description" content="[tomcat]">
 
+
+
 <meta itemprop="wordCount" content="223">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="오픈소스 Helm 차트 분석" />
 <meta property="og:description" content="[tomcat]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/helm_practice/sample/tomcat/" /><meta property="article:section" content="helm_practice" />
-
-
+<meta property="og:url" content="https://kubetm.github.io/helm_practice/sample/tomcat/" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -252,86 +256,130 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
-<hr>
+    
+
+<p><br/></p>
+
+<hr />
+
 <h2 id="1-tomcat-차트-설치-및-배포">1. tomcat 차트 설치 및 배포</h2>
-<hr>
+
+<hr />
+
 <h3 id="1-1-레포지토리-등록">1-1) 레포지토리 등록</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm repo add bitnami https://charts.bitnami.com/bitnami
-</code></pre></div><h3 id="1-2-tomcat-712-다운로드">1-2) Tomcat 7.1.2 다운로드</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm pull bitnami/tomcat --version 7.1.2
+
+<pre><code class="language-sh">helm repo add bitnami https://charts.bitnami.com/bitnami
+</code></pre>
+
+<h3 id="1-2-tomcat-7-1-2-다운로드">1-2) Tomcat 7.1.2 다운로드</h3>
+
+<pre><code class="language-sh">helm pull bitnami/tomcat --version 7.1.2
 tar -xf tomcat-7.1.2.tgz
-</code></pre></div><h3 id="1-3-tomcat-template-보기">1-3) Tomcat Template 보기</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm template mytomcat .
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<h3 id="1-3-tomcat-template-보기">1-3) Tomcat Template 보기</h3>
+
+<pre><code class="language-sh">helm template mytomcat .
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="2-tomcat에서-나오는-함수-따라해보기">2. tomcat에서 나오는 함수 따라해보기</h2>
-<hr>
+
+<hr />
+
 <h3 id="2-1-chart-template-생성">2-1) Chart Template 생성</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm create mychart
-</code></pre></div><p>templates 폴더 안에 불필요한 파일 삭제</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml service.yaml tests
-</code></pre></div><h3 id="2-2-test-valuesyaml에-해당-속성-추가">2-2) test-values.yaml에 해당 속성 추가</h3>
+
+<pre><code class="language-sh">helm create mychart
+</code></pre>
+
+<p>templates 폴더 안에 불필요한 파일 삭제</p>
+
+<pre><code class="language-sh">rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml service.yaml tests
+</code></pre>
+
+<h3 id="2-2-test-values-yaml에-해당-속성-추가">2-2) test-values.yaml에 해당 속성 추가</h3>
+
 <p>vi test-values.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">data</span>:
 
-<span style="color:#f92672">include </span>: <span style="color:#e6db74">&#34;value2&#34;</span>
+<pre><code class="language-yaml">data:
 
-<span style="color:#f92672">typeIs1 </span>: <span style="color:#e6db74">&#34;text&#34;</span>
-<span style="color:#f92672">typeIs2 </span>: <span style="color:#66d9ef">true</span>
+include : &quot;value2&quot;
 
-<span style="color:#f92672">defaultLevel </span>: <span style="color:#ae81ff">info</span>
-<span style="color:#f92672">dev</span>:
-  <span style="color:#f92672">env</span>: <span style="color:#ae81ff">dev</span>
-  <span style="color:#f92672">log</span>: <span style="color:#e6db74">&#34;{{ .Values.defaultLevel }}&#34;</span>
-<span style="color:#f92672">qa</span>:
-  <span style="color:#f92672">env</span>: <span style="color:#ae81ff">qa</span>
-  <span style="color:#f92672">log</span>: <span style="color:#e6db74">&#34;{{ .Values.defaultLevel }}&#34;</span>
+typeIs1 : &quot;text&quot;
+typeIs2 : true
 
-<span style="color:#f92672">data1</span>:
-<span style="color:#f92672">data2</span>:
-<span style="color:#f92672">data3</span>: <span style="color:#e6db74">&#34;text3&#34;</span>
-</code></pre></div><h3 id="2-3-configmap-추가">2-3) configmap 추가</h3>
+defaultLevel : info
+dev:
+  env: dev
+  log: &quot;{{ .Values.defaultLevel }}&quot;
+qa:
+  env: qa
+  log: &quot;{{ .Values.defaultLevel }}&quot;
+
+data1:
+data2:
+data3: &quot;text3&quot;
+</code></pre>
+
+<h3 id="2-3-configmap-추가">2-3) configmap 추가</h3>
+
 <p>vi cm.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ConfigMap</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">tomcat</span>
-<span style="color:#f92672">data</span>:
-<span style="color:#75715e">#&lt;dict&gt;</span>
- {{- <span style="color:#ae81ff">$myDict := dict &#34;key1&#34; &#34;value1&#34; }}</span>
-  <span style="color:#f92672">dict</span>: {{ <span style="color:#ae81ff">get $myDict &#34;key1&#34; }}</span>
 
-<span style="color:#75715e">#&lt;include&gt;</span>
-  <span style="color:#f92672">include1</span>: {{- <span style="color:#ae81ff">include &#34;mychart.include&#34; (dict &#34;key1&#34; &#34;value1&#34;) | nindent 4 }}</span>
-  <span style="color:#f92672">include2</span>: {{- <span style="color:#ae81ff">include &#34;mychart.include&#34; (dict &#34;key1&#34; .Values.include) | nindent 4 }}</span>
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tomcat
+data:
+#&lt;dict&gt;
+ {{- $myDict := dict &quot;key1&quot; &quot;value1&quot; }}
+  dict: {{ get $myDict &quot;key1&quot; }}
 
-<span style="color:#75715e">#&lt;typels&gt;</span>
-  {{- <span style="color:#ae81ff">if typeIs &#34;string&#34; .Values.typeIs1 }}</span>
-  <span style="color:#f92672">typels1</span>: {{ <span style="color:#ae81ff">.Values.typeIs1 }}</span>
-  {{- <span style="color:#ae81ff">end }}</span>
-  {{- <span style="color:#ae81ff">if typeIs &#34;bool&#34; .Values.typeIs2 }}</span>
-  <span style="color:#f92672">typels2</span>: {{ <span style="color:#ae81ff">.Values.typeIs2 }}</span>
-  {{- <span style="color:#ae81ff">end }}</span>
+#&lt;include&gt;
+  include1: {{- include &quot;mychart.include&quot; (dict &quot;key1&quot; &quot;value1&quot;) | nindent 4 }}
+  include2: {{- include &quot;mychart.include&quot; (dict &quot;key1&quot; .Values.include) | nindent 4 }}
 
-<span style="color:#75715e">#&lt;tpl&gt;</span>
-  <span style="color:#f92672">normal</span>: <span style="color:#e6db74">&#34;{{ .Values.dev.log }}&#34;</span>
-  <span style="color:#f92672">tpl</span>: <span style="color:#e6db74">&#34;{{ tpl .Values.dev.log . }}&#34;</span>
+#&lt;typels&gt;
+  {{- if typeIs &quot;string&quot; .Values.typeIs1 }}
+  typels1: {{ .Values.typeIs1 }}
+  {{- end }}
+  {{- if typeIs &quot;bool&quot; .Values.typeIs2 }}
+  typels2: {{ .Values.typeIs2 }}
+  {{- end }}
 
-<span style="color:#75715e">#&lt;coalesce&gt;</span>
-  <span style="color:#f92672">coalesce1</span>: {{ <span style="color:#ae81ff">coalesce .Values.data1 .Values.data2 &#34;text1&#34; }}</span>
-  <span style="color:#f92672">coalesce2</span>: {{ <span style="color:#ae81ff">coalesce .Values.data1 &#34;text2&#34; .Values.data3 }}</span>
-</code></pre></div><h3 id="2-4-template-명령">2-4) Template 명령</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm template mychart ./../ -f ./../test-values.yaml
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+#&lt;tpl&gt;
+  normal: &quot;{{ .Values.dev.log }}&quot;
+  tpl: &quot;{{ tpl .Values.dev.log . }}&quot;
+
+#&lt;coalesce&gt;
+  coalesce1: {{ coalesce .Values.data1 .Values.data2 &quot;text1&quot; }}
+  coalesce2: {{ coalesce .Values.data1 &quot;text2&quot; .Values.data3 }}
+</code></pre>
+
+<h3 id="2-4-template-명령">2-4) Template 명령</h3>
+
+<pre><code class="language-sh">helm template mychart ./../ -f ./../test-values.yaml
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="referenece">Referenece</h2>
-<hr>
-<h3 id="-__helm__">* <strong>Helm</strong></h3>
+
+<hr />
+
+<h3 id="helm">* <strong>Helm</strong></h3>
+
 <ul>
 <li><strong>함수</strong> : <a href="https://helm.sh/docs/chart_template_guide/function_list/">https://helm.sh/docs/chart_template_guide/function_list/</a></li>
 <li><strong>&lsquo;tpl&rsquo; 함수</strong> : <a href="https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-tpl-function">https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-tpl-function</a></li>
-<li><strong>지역변수</strong> : <a href="https://helm.sh/docs/chart_template_guide/variables/">https://helm.sh/docs/chart_template_guide/variables/</a></li>
+<li><strong>지역변수</strong> : <a href="https://helm.sh/docs/chart_template_guide/variables/">https://helm.sh/docs/chart_template_guide/variables/</a>
+<br /></li>
 </ul>
 
   </div>

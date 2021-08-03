@@ -26,14 +26,17 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="KubeTM Blog with Kubernetes">
 <meta itemprop="description" content="">
+
+
   <meta property="og:title" content="KubeTM Blog with Kubernetes" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://kubetm.github.io/" />
 
+<meta property="og:updated_time" content="2021-01-28T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="KubeTM Blog with Kubernetes"/>
@@ -247,7 +250,8 @@
 
 
   
-  <p>kubetm 가이드로 Dashboard(1.10.1)를 설치했을 경우 아래 명령으로 삭제</p>
+  <p><br/>
+<br/></p>
   <footer>
     <a href="/practice/intermediate/object-dashboard/" class="button big">본문 보기</a>
     
@@ -289,7 +293,8 @@
 
 
   
-  <p>Path : /etc/kubernetes/admin.conf</p>
+  <p><br/>
+<br/></p>
   <footer>
     <a href="/practice/intermediate/object-authentication/" class="button big">본문 보기</a>
     
@@ -331,32 +336,8 @@
 
 
   
-  <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Role</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">r-01</span>
-  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nm-01</span>
-<span style="color:#f92672">rules</span>:
-- <span style="color:#f92672">apiGroups</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
-  <span style="color:#f92672">verbs</span>: [<span style="color:#e6db74">&#34;get&#34;</span>, <span style="color:#e6db74">&#34;list&#34;</span>]
-  <span style="color:#f92672">resources</span>: [<span style="color:#e6db74">&#34;pods&#34;</span>]
-</code></pre></div><h3 id="1-2-rolebinding">1-2) RoleBinding</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">RoleBinding</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">rb-01</span>
-  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nm-01</span>
-<span style="color:#f92672">roleRef</span>:
-  <span style="color:#f92672">apiGroup</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io</span>
-  <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Role</span>
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">r-01</span>
-<span style="color:#f92672">subjects</span>:
-- <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ServiceAccount</span>
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">default</span>
-  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nm-01</span>
-</code></pre></div><h3 id="1-3-service">1-3) Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service&hellip;</span></code></pre></div>
+  <p><br/>
+<br/></p>
   <footer>
     <a href="/practice/intermediate/object-authorization/" class="button big">본문 보기</a>
     

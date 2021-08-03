@@ -5,6 +5,10 @@
     <link>https://kubetm.github.io/tags/</link>
     <description>Recent content in Tags on KubeTM Blog with Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://kubetm.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    
+	<atom:link href="https://kubetm.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
   </channel>
 </rss>

@@ -26,18 +26,22 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="Logging/Monitoring Architecture">
 <meta itemprop="description" content="[Promtail, Loki, Grafana]">
 
-<meta itemprop="wordCount" content="236">
+
+
+<meta itemprop="wordCount" content="237">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="Logging/Monitoring Architecture" />
 <meta property="og:description" content="[Promtail, Loki, Grafana]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/practice/architecture/logging-difm-diadf-9aa/" /><meta property="article:section" content="practice" />
-
-
+<meta property="og:url" content="https://kubetm.github.io/practice/architecture/logging-difm-diadf-9aa/" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -256,10 +260,16 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
-<hr>
+    
+
+<p><br/></p>
+
+<hr />
+
 <h2 id="1-basic-logging-construction">1. Basic Logging Construction</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -291,68 +301,113 @@
     
 
 
+
 <h3 id="1-1-deployment-생성">1-1) Deployment 생성</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">app-log</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">app</span>
-  <span style="color:#f92672">template</span>:
-    <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">labels</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">app</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">nodeSelector</span>:
-        <span style="color:#f92672">kubernetes.io/hostname</span>: <span style="color:#ae81ff">k8s-node1</span>
-      <span style="color:#f92672">containers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-</code></pre></div><p>api 호출</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl &lt;pod-ip&gt;:8080/hostname
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-log
+spec:
+  selector:
+    matchLabels:
+      type: app
+  template:
+    metadata:
+      labels:
+        type: app
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-node1
+      containers:
+      - name: container
+        image: kubetm/app
+</code></pre>
+
+<p>api 호출</p>
+
+<pre><code class="language-sh">curl &lt;pod-ip&gt;:8080/hostname
 curl &lt;pod-ip&gt;:8080/version
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre>
+
+<p><br/></p>
+
 <h3 id="1-2-container-log-확인">1-2) Container Log 확인</h3>
+
 <p>kubectl exec로 Container 내부 로그파일 확인</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl exec &lt;pod-name&gt; -it -- /bin/sh
-</code></pre></div><!-- raw HTML omitted -->
+
+<pre><code class="language-sh">kubectl exec &lt;pod-name&gt; -it -- /bin/sh
+</code></pre>
+
+<p><br/></p>
+
 <p>kubectl logs로 Stdout 로그 확인</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl logs &lt;pod-name&gt;
-kubectl logs &lt;pod-name&gt; --tail <span style="color:#ae81ff">10</span> --follow
-</code></pre></div><!-- raw HTML omitted -->
+
+<pre><code class="language-sh">kubectl logs &lt;pod-name&gt;
+kubectl logs &lt;pod-name&gt; --tail 10 --follow
+</code></pre>
+
+<p><br/></p>
+
 <p>Docker Log Driver 설정 확인</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat /etc/docker/daemon.json
-</code></pre></div><!-- raw HTML omitted -->
+
+<pre><code class="language-sh">cat /etc/docker/daemon.json
+</code></pre>
+
+<p><br/></p>
+
 <p>Docker Container 로그 파일 확인</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cd  /var/lib/docker/containers
+
+<pre><code class="language-sh">cd  /var/lib/docker/containers
 docker ps
 cd &lt;container-id&gt;
 ls
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre>
+
+<p><br/></p>
+
 <h3 id="1-3-node1에서-log-link-확인">1-3) Node1에서 Log Link 확인</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cd /var/log/pods
+
+<pre><code class="language-sh">cd /var/log/pods
 cd &lt;Namespace&gt;_&lt;pod-name&gt;_&lt;pod-id&gt;
 cd container
 ls -al
 
 cd /var/log/containers
 ls -al
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre>
+
+<p><br/></p>
+
 <h3 id="1-4-event-log-확인">1-4) Event Log 확인</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get events
+
+<pre><code class="language-sh">kubectl get events
 kubectl get events | grep app-log
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre>
+
+<p><br/></p>
+
 <h3 id="1-5-termination-log-확인">1-5) Termination Log 확인</h3>
+
 <p>Termination API Call</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl &lt;pod-ip&gt;:8080/termination
-</code></pre></div><p>Container Status 확인</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl describe pods &lt;pod-name&gt;
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-sh">curl &lt;pod-ip&gt;:8080/termination
+</code></pre>
+
+<p>Container Status 확인</p>
+
+<pre><code class="language-sh">kubectl describe pods &lt;pod-name&gt;
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="2-loki-stack-설치">2. Loki Stack 설치</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -384,40 +439,68 @@ kubectl get events | grep app-log
     
 
 
+
 <h3 id="2-1-helm-설치">2-1) Helm 설치</h3>
+
 <p><a href="https://helm.sh/docs/intro/install/">https://helm.sh/docs/intro/install/</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">curl -O https://get.helm.sh/helm-v3.3.4-linux-amd64.tar.gz</span>
-<span style="color:#ae81ff">tar -xf helm-v3.3.4-linux-amd64.tar.gz</span>
-<span style="color:#ae81ff">cd linux-amd64</span>
-<span style="color:#ae81ff">cp ./helm /usr/local/bin/</span>
-</code></pre></div><!-- raw HTML omitted -->
+
+<pre><code class="language-yaml">curl -O https://get.helm.sh/helm-v3.3.4-linux-amd64.tar.gz
+tar -xf helm-v3.3.4-linux-amd64.tar.gz
+cd linux-amd64
+cp ./helm /usr/local/bin/
+</code></pre>
+
+<p><br/></p>
+
 <h3 id="2-2-loki-stack-설치">2-2) loki-stack 설치</h3>
-<p>패키지 다운로드 
+
+<p>패키지 다운로드
 <a href="https://artifacthub.io/packages/helm/loki/loki-stack">https://artifacthub.io/packages/helm/loki/loki-stack</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm repo add loki https://grafana.github.io/loki/charts
+
+<pre><code class="language-sh">helm repo add loki https://grafana.github.io/loki/charts
 helm fetch loki/loki-stack --version 0.41.2
 
 tar -xf loki-stack-0.41.2.tgz
 cd loki-stack/
 vi values.yaml
-<span style="color:#f92672">(</span>Grafana Enable 설정<span style="color:#f92672">)</span>
-</code></pre></div><p>helm 배포 / 삭제</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl create ns loki-stack
+(Grafana Enable 설정)
+</code></pre>
+
+<p>helm 배포 / 삭제</p>
+
+<pre><code class="language-sh">kubectl create ns loki-stack
 helm install loki-stack -f values.yaml . -n loki-stack
 helm uninstall loki-stack -n loki-stack
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre>
+
+<p><br/></p>
+
 <h3 id="2-3-grafana-service">2-3) Grafana Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl edit -n loki-stack svc loki-stack-grafana
+
+<pre><code class="language-sh">kubectl edit -n loki-stack svc loki-stack-grafana
 ----
 type: NodePort
-nodePort : <span style="color:#ae81ff">30000</span>
+nodePort : 30000
 ----
 
-kubectl get secret --namespace loki-stack loki-stack-grafana -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{.data.admin-password}&#34;</span> | base64 --decode ; echo
-</code></pre></div><!-- raw HTML omitted -->
-<h3 id="-__kubernetes__">* <strong>Kubernetes</strong></h3>
+kubectl get secret --namespace loki-stack loki-stack-grafana -o jsonpath=&quot;{.data.admin-password}&quot; | base64 --decode ; echo
+</code></pre>
+
+<p><br/></p>
+
+<h2 id="br"><br/></h2>
+
+<h2 id="referenece">Referenece</h2>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
 <ul>
-<li><strong>Logging Architecture</strong> : <a href="https://kubernetes.io/docs/concepts/cluster-administration/logging/">https://kubernetes.io/docs/concepts/cluster-administration/logging/</a></li>
+<li><strong>Logging Architecture</strong> : <a href="https://kubernetes.io/docs/concepts/cluster-administration/logging/">https://kubernetes.io/docs/concepts/cluster-administration/logging/</a>
+
+
+<br /></li>
 </ul>
 
   </div>

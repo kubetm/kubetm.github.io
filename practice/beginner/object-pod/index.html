@@ -26,19 +26,25 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="Pod">
-<meta itemprop="description" content="[Container, Label, NodeSchedule]"><meta itemprop="datePublished" content="2019-11-02T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2019-11-02T00:00:00+00:00" />
+<meta itemprop="description" content="[Container, Label, NodeSchedule]">
+
+
+<meta itemprop="datePublished" content="2019-11-02T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-11-02T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="483">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="Pod" />
 <meta property="og:description" content="[Container, Label, NodeSchedule]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/practice/beginner/object-pod/" /><meta property="article:section" content="practice" />
+<meta property="og:url" content="https://kubetm.github.io/practice/beginner/object-pod/" />
 <meta property="article:published_time" content="2019-11-02T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-11-02T00:00:00+00:00" />
-
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Pod"/>
@@ -256,10 +262,17 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
-<hr>
+    
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="1-container">1. Container</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -291,43 +304,55 @@
     
 
 
+
 <h3 id="1-1-pod">1-1) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container1</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/p8000</span>
-    <span style="color:#f92672">ports</span>:
-    - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8000</span>
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container2</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/p8080</span>
-    <span style="color:#f92672">ports</span>:
-    - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
-</code></pre></div><h3 id="1-2-replicationcontroller">1-2) ReplicationController</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ReplicationController</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">replication-1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">rc</span>
-  <span style="color:#f92672">template</span>:
-    <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-1</span>
-      <span style="color:#f92672">labels</span>:
-        <span style="color:#f92672">app</span>: <span style="color:#ae81ff">rc</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">containers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+spec:
+  containers:
+  - name: container1
+    image: kubetm/p8000
+    ports:
+    - containerPort: 8000
+  - name: container2
+    image: kubetm/p8080
+    ports:
+    - containerPort: 8080
+</code></pre>
+
+<h3 id="1-2-replicationcontroller">1-2) ReplicationController</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: replication-1
+spec:
+  replicas: 1
+  selector:
+    app: rc
+  template:
+    metadata:
+      name: pod-1
+      labels:
+        app: rc
+    spec:
+      containers:
+      - name: container
+        image: kubetm/init
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="2-label">2. Label</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -359,32 +384,44 @@
     
 
 
+
 <h3 id="2-1-pod">2-1) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-2</span>
-  <span style="color:#f92672">labels</span>:
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">web</span>
-    <span style="color:#f92672">lo</span>: <span style="color:#ae81ff">dev</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-</code></pre></div><h3 id="2-2-service">2-2) Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">svc-1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">web</span>
-  <span style="color:#f92672">ports</span>:
-  - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8080</span>
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-2
+  labels:
+    type: web
+    lo: dev
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+</code></pre>
+
+<h3 id="2-2-service">2-2) Service</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: svc-1
+spec:
+  selector:
+    type: web
+  ports:
+  - port: 8080
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="3-node-schedule">3. Node Schedule</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -416,140 +453,201 @@
     
 
 
+
 <h3 id="3-1-pod">3-1) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-3</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">nodeSelector</span>:
-    <span style="color:#f92672">kubernetes.io/hostname</span>: <span style="color:#ae81ff">k8s-node1</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-</code></pre></div><h3 id="3-2-pod">3-2) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-4</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">resources</span>:
-      <span style="color:#f92672">requests</span>:
-        <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">2Gi</span>
-      <span style="color:#f92672">limits</span>:
-        <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">3Gi</span>
-</code></pre></div><!-- raw HTML omitted -->
-<h3 id="cpu와-memory의-request-limits에-대한-강의-내용-보충">CPU와 Memory의 (request, limits)에 대한 강의 내용 보충</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">CPU가 limits 수치까지 올라갔다고 해서 무조건 Request 수치까지 core를 낮추는 것이 아니고,</span>
-<span style="color:#ae81ff">Node의 전체 부하 상태가 OverCommit된 상태일때 동작합니다.</span>
-<span style="color:#ae81ff">Node 위의 Pod들이 Node의 자원을 모두 사용하고도 그 이상을 자원을 요구하게 되었을 때</span>
-<span style="color:#ae81ff">Limit 수치까지 CPU를 사용하고 있는 Pod들에 한해서 그 수치를 Reqeust까지 떨어뜨리게 되며</span>
-<span style="color:#ae81ff">Memory의 경우에도 그러한 상태일때 Limit까지 올라간 Pod들에 한해 재기동 시키게 됩니다. </span>
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-3
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-node1
+  containers:
+  - name: container
+    image: kubetm/init
+</code></pre>
+
+<h3 id="3-2-pod">3-2) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-4
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+    resources:
+      requests:
+        memory: 2Gi
+      limits:
+        memory: 3Gi
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="cpu와-memory의-request-limits-에-대한-강의-내용-보충">CPU와 Memory의 (request, limits)에 대한 강의 내용 보충</h3>
+
+<pre><code class="language-yaml">CPU가 limits 수치까지 올라갔다고 해서 무조건 Request 수치까지 core를 낮추는 것이 아니고,
+Node의 전체 부하 상태가 OverCommit된 상태일때 동작합니다.
+Node 위의 Pod들이 Node의 자원을 모두 사용하고도 그 이상을 자원을 요구하게 되었을 때
+Limit 수치까지 CPU를 사용하고 있는 Pod들에 한해서 그 수치를 Reqeust까지 떨어뜨리게 되며
+Memory의 경우에도 그러한 상태일때 Limit까지 올라간 Pod들에 한해 재기동 시키게 됩니다. 
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="sample-yaml">Sample Yaml</h2>
-<hr>
-<h3 id="-__pod__">* <strong>Pod</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-4                          </span> <span style="color:#75715e"># Pod 이름</span>
-  <span style="color:#f92672">labels</span>:                               <span style="color:#75715e"># Label </span>
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">web                           </span>
-    <span style="color:#f92672">lo</span>: <span style="color:#ae81ff">dev  </span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">nodeSelector</span>:                         <span style="color:#75715e"># Node 직접 지정시</span>
-    <span style="color:#f92672">kubernetes.io/hostname</span>: <span style="color:#ae81ff">k8s-node1   </span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container                    </span> <span style="color:#75715e"># Container 이름</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init                 </span> <span style="color:#75715e"># 이미지 선택</span>
-    <span style="color:#f92672">ports</span>:
-    - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>               
-    <span style="color:#f92672">resources</span>:                          <span style="color:#75715e"># 자원 사용량 설정</span>
-      <span style="color:#f92672">requests</span>:
-        <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">1Gi</span>
-      <span style="color:#f92672">limits</span>:
-        <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">1Gi</span>
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<hr />
+
+<h3 id="pod">* <strong>Pod</strong></h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-4                           # Pod 이름
+  labels:                               # Label 
+    type: web                           
+    lo: dev  
+spec:
+  nodeSelector:                         # Node 직접 지정시
+    kubernetes.io/hostname: k8s-node1   
+  containers:
+  - name: container                     # Container 이름
+    image: kubetm/init                  # 이미지 선택
+    ports:
+    - containerPort: 8080               
+    resources:                          # 자원 사용량 설정
+      requests:
+        memory: 1Gi
+      limits:
+        memory: 1Gi
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="kubectl">kubectl</h2>
-<hr>
-<h3 id="-__create__">* <strong>Create</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 파일이 있을 경우</span>
+
+<hr />
+
+<h3 id="create">* <strong>Create</strong></h3>
+
+<pre><code class="language-sh"># 파일이 있을 경우
 kubectl create -f ./pod.yaml
 
-<span style="color:#75715e"># 내용과 함께 바로 작성</span>
-kubectl create -f - <span style="color:#e6db74">&lt;&lt;END
-</span><span style="color:#e6db74">apiVersion: v1
-</span><span style="color:#e6db74">kind: Pod
-</span><span style="color:#e6db74">metadata:
-</span><span style="color:#e6db74">  name: pod1
-</span><span style="color:#e6db74">spec:
-</span><span style="color:#e6db74">  containers:
-</span><span style="color:#e6db74">  - name: container
-</span><span style="color:#e6db74">    image: kubetm/init
-</span><span style="color:#e6db74">END</span>
-</code></pre></div><h3 id="-__apply__">* <strong>Apply</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f ./pod.yaml
-</code></pre></div><h3 id="-__get__">* <strong>Get</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 기본 Pod 리스트 조회 (Namepsace 포함)</span>
+# 내용과 함께 바로 작성
+kubectl create -f - &lt;&lt;END
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+END
+</code></pre>
+
+<h3 id="apply">* <strong>Apply</strong></h3>
+
+<pre><code class="language-sh">kubectl apply -f ./pod.yaml
+</code></pre>
+
+<h3 id="get">* <strong>Get</strong></h3>
+
+<pre><code class="language-sh"># 기본 Pod 리스트 조회 (Namepsace 포함)
 kubectl get pods -n defalut
 
-<span style="color:#75715e"># 좀더 많은 내용 출력</span>
+# 좀더 많은 내용 출력
 kubectl get pods -o wide
 
-<span style="color:#75715e"># Pod 이름 지정</span>
+# Pod 이름 지정
 kubectl get pod pod1
 
-<span style="color:#75715e"># Json 형태로 출력</span>
+# Json 형태로 출력
 kubectl get pod pod1 -o json
-</code></pre></div><h3 id="-__describe__">* <strong>Describe</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 상세 출력</span>
+</code></pre>
+
+<h3 id="describe">* <strong>Describe</strong></h3>
+
+<pre><code class="language-sh"># 상세 출력
 kubectl describe pod pod1
-</code></pre></div><h3 id="-__delete__">* <strong>Delete</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 파일이 있을 경우 생성한 방법 그대로 삭제</span>
+</code></pre>
+
+<h3 id="delete">* <strong>Delete</strong></h3>
+
+<pre><code class="language-sh"># 파일이 있을 경우 생성한 방법 그대로 삭제
 kubectl delete -f ./pod.yaml
 
-<span style="color:#75715e"># 내용과 함께 바로 작성한 경우 생성한 방법 그대로 삭제</span>
-kubectl delete -f - <span style="color:#e6db74">&lt;&lt;END
-</span><span style="color:#e6db74">apiVersion: v1
-</span><span style="color:#e6db74">kind: Pod
-</span><span style="color:#e6db74">metadata:
-</span><span style="color:#e6db74">  name: pod1
-</span><span style="color:#e6db74">spec:
-</span><span style="color:#e6db74">  containers:
-</span><span style="color:#e6db74">  - name: container
-</span><span style="color:#e6db74">    image: kubetm/init
-</span><span style="color:#e6db74">END</span>
+# 내용과 함께 바로 작성한 경우 생성한 방법 그대로 삭제
+kubectl delete -f - &lt;&lt;END
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+END
 
-<span style="color:#75715e"># Pod 이름 지정</span>
+# Pod 이름 지정
 kubectl delete pod pod1
-</code></pre></div><h3 id="-__exec__">* <strong>Exec</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Pod이름이 pod1인 Container로 들어가기 (나올땐 exit)</span>
+</code></pre>
+
+<h3 id="exec">* <strong>Exec</strong></h3>
+
+<pre><code class="language-sh"># Pod이름이 pod1인 Container로 들어가기 (나올땐 exit)
 kubectl exec pod1 -it /bin/bash
 
-<span style="color:#75715e"># Container가 두개 이상 있을때 Container이름이 con1인 Container로 들어가기 </span>
+# Container가 두개 이상 있을때 Container이름이 con1인 Container로 들어가기 
 kubectl exec pod1 -c con1 -it /bin/bash
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="tips">Tips</h2>
-<hr>
-<h3 id="-__apply-vs-create__">* <strong>Apply vs Create</strong></h3>
+
+<hr />
+
+<h3 id="apply-vs-create">* <strong>Apply vs Create</strong></h3>
+
 <ul>
-<li>둘다 자원을 생성할때 사용할 수 있지만, [<strong>Create</strong>]는 기존에 같은 이름의 Pod가 존재하면 생성이 안되고, [<strong>Apply</strong>]는 기존에 같은 이름의 Pod가 존재하면 업데이트됨</li>
+<li>둘다 자원을 생성할때 사용할 수 있지만, [<strong>Create</strong>]는 기존에 같은 이름의 Pod가 존재하면 생성이 안되고, [<strong>Apply</strong>]는 기존에 같은 이름의 Pod가 존재하면 업데이트됨
+<br /></li>
 </ul>
-<!-- raw HTML omitted -->
-<hr>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="referenece">Referenece</h2>
-<hr>
-<h3 id="-__kubernetes__">* <strong>Kubernetes</strong></h3>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
 <ul>
 <li><strong>Pod Overview</strong> : <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/">https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/</a></li>
 <li><strong>Labels and Selectors</strong> : <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/</a></li>
-<li><strong>Assigning Pods to Nodes</strong> : <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/">https://kubernetes.io/docs/concepts/configuration/assign-pod-node/</a></li>
+<li><strong>Assigning Pods to Nodes</strong> : <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/">https://kubernetes.io/docs/concepts/configuration/assign-pod-node/</a>
+
+
+
+
+<br /></li>
 </ul>
 
   </div>

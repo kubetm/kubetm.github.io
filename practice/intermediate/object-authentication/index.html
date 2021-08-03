@@ -26,19 +26,25 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="Authentication">
-<meta itemprop="description" content="[X509 Certs, Kubectl, ServiceAccount]"><meta itemprop="datePublished" content="2020-04-24T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2020-04-24T00:00:00+00:00" />
+<meta itemprop="description" content="[X509 Certs, Kubectl, ServiceAccount]">
+
+
+<meta itemprop="datePublished" content="2020-04-24T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-04-24T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="330">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="Authentication" />
 <meta property="og:description" content="[X509 Certs, Kubectl, ServiceAccount]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/object-authentication/" /><meta property="article:section" content="practice" />
+<meta property="og:url" content="https://kubetm.github.io/practice/intermediate/object-authentication/" />
 <meta property="article:published_time" content="2020-04-24T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-04-24T00:00:00+00:00" />
-
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Authentication"/>
@@ -256,10 +262,17 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
-<hr>
+    
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="1-x509-client-certs">1. X509 Client Certs</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -291,39 +304,78 @@
     
 
 
+
 <h3 id="1-1-kubeconfig-인증서-확인">1-1) kubeconfig 인증서 확인</h3>
+
 <p>Path : /etc/kubernetes/admin.conf</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cluster.certificate-authority-data : CA.crt <span style="color:#f92672">(</span>Base64<span style="color:#f92672">)</span>
-user.client-certificate-data: Client.crt <span style="color:#f92672">(</span>Base64<span style="color:#f92672">)</span>
-user.client-key-data: Client.key <span style="color:#f92672">(</span>Base64<span style="color:#f92672">)</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">grep <span style="color:#e6db74">&#39;client-certificate-data&#39;</span> /etc/kubernetes/admin.conf | head -n <span style="color:#ae81ff">1</span> | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> | base64 -d
-grep <span style="color:#e6db74">&#39;client-key-data&#39;</span> /etc/kubernetes/admin.conf | head -n <span style="color:#ae81ff">1</span> | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> | base64 -d
-</code></pre></div><!-- raw HTML omitted -->
-<h3 id="1-2-https-api-clientcrt-clientkey">1-2) Https API (Client.crt, Client.key)</h3>
+
+<pre><code class="language-sh">cluster.certificate-authority-data : CA.crt (Base64)
+user.client-certificate-data: Client.crt (Base64)
+user.client-key-data: Client.key (Base64)
+</code></pre>
+
+<pre><code class="language-sh">grep 'client-certificate-data' /etc/kubernetes/admin.conf | head -n 1 | awk '{print $2}' | base64 -d
+grep 'client-key-data' /etc/kubernetes/admin.conf | head -n 1 | awk '{print $2}' | base64 -d
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="1-2-https-api-client-crt-client-key">1-2) Https API (Client.crt, Client.key)</h3>
+
 <p>case1) postman</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">https://192.168.0.30:6443/api/v1/nodes
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">Settings &gt; General &gt; SSL certificate verification &gt; OFF
+
+<pre><code class="language-sh">https://192.168.0.30:6443/api/v1/nodes
+</code></pre>
+
+<pre><code class="language-sh">Settings &gt; General &gt; SSL certificate verification &gt; OFF
 Settings &gt; Certificates &gt; Client Certificates &gt; Host, CRT file, KEY file
-</code></pre></div><p>case2) curl</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl -k --key ./Client.key --cert ./Client.crt https://192.168.0.30:6443/api/v1/nodes
-</code></pre></div><h3 id="1-3-kubectl-config-세팅">1-3) kubectl config 세팅</h3>
+</code></pre>
+
+<p>case2) curl</p>
+
+<pre><code class="language-sh">curl -k --key ./Client.key --cert ./Client.crt https://192.168.0.30:6443/api/v1/nodes
+</code></pre>
+
+<h3 id="1-3-kubectl-config-세팅">1-3) kubectl config 세팅</h3>
+
 <p>kubeadm / kubectl / kubelet 설치</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yum install -y --disableexcludes<span style="color:#f92672">=</span>kubernetes kubeadm-1.15.5-0.x86_64 kubectl-1.15.5-0.x86_64 kubelet-1.15.5-0.x86_64
-</code></pre></div><p>admin.conf 인증서 복사</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir -p $HOME/.kube
+
+<pre><code class="language-sh">yum install -y --disableexcludes=kubernetes kubeadm-1.15.5-0.x86_64 kubectl-1.15.5-0.x86_64 kubelet-1.15.5-0.x86_64
+</code></pre>
+
+<p>admin.conf 인증서 복사</p>
+
+<pre><code class="language-sh">mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown <span style="color:#66d9ef">$(</span>id -u<span style="color:#66d9ef">)</span>:<span style="color:#66d9ef">$(</span>id -g<span style="color:#66d9ef">)</span> $HOME/.kube/config
-</code></pre></div><p>Kubectl Proxy 띄우기</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">nohup kubectl proxy --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8001</span> --address<span style="color:#f92672">=</span>192.168.0.30 --accept-hosts<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;^*$&#39;</span> &gt;/dev/null 2&gt;&amp;<span style="color:#ae81ff">1</span> &amp;
-</code></pre></div><h3 id="1-4-http-api-호출-proxy">1-4) HTTP API 호출 (Proxy)</h3>
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+</code></pre>
+
+<p>Kubectl Proxy 띄우기</p>
+
+<pre><code class="language-sh">nohup kubectl proxy --port=8001 --address=192.168.0.30 --accept-hosts='^*$' &gt;/dev/null 2&gt;&amp;1 &amp;
+</code></pre>
+
+<h3 id="1-4-http-api-호출-proxy">1-4) HTTP API 호출 (Proxy)</h3>
+
 <p>case1) postman</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">http://192.168.0.30:8001/api/v1/nodes
-</code></pre></div><p>case2) curl</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl http://192.168.0.30:8001/api/v1/nodes
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-sh">http://192.168.0.30:8001/api/v1/nodes
+</code></pre>
+
+<p>case2) curl</p>
+
+<pre><code class="language-sh">curl http://192.168.0.30:8001/api/v1/nodes
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="2-kubectl">2. kubectl</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -355,54 +407,76 @@ sudo chown <span style="color:#66d9ef">$(</span>id -u<span style="color:#66d9ef"
     
 
 
+
 <h3 id="2-1-cluster-a-kubeconfig">2-1) Cluster A kubeconfig</h3>
+
 <p>path : /etc/kubernetes/admin.conf</p>
+
 <h3 id="2-2-cluster-b-kubeconfig">2-2) Cluster B kubeconfig</h3>
+
 <p>path : /etc/kubernetes/admin.conf</p>
+
 <h3 id="2-3-kubeconfig">2-3) kubeconfig</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">clusters</span>:
-- <span style="color:#f92672">cluster</span>:
-    <span style="color:#f92672">certificate-authority-data</span>: <span style="color:#ae81ff">LS0tLS1KVEUtLS0tLQo=</span>
-    <span style="color:#f92672">server</span>: <span style="color:#ae81ff">https://192.168.0.30:6443</span>
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cluster-a</span>
-- <span style="color:#f92672">cluster</span>:
-    <span style="color:#f92672">certificate-authority-data</span>: <span style="color:#ae81ff">LS0tLS1KVEUtLS0tLQo=</span>
-    <span style="color:#f92672">server</span>: <span style="color:#ae81ff">https://192.168.0.50:6443</span>
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cluster-b</span>
-<span style="color:#f92672">contexts</span>:
-- <span style="color:#f92672">context</span>:
-    <span style="color:#f92672">cluster</span>: <span style="color:#ae81ff">cluster-a</span>
-    <span style="color:#f92672">user</span>: <span style="color:#ae81ff">admin-a</span>
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">context-a</span>
-- <span style="color:#f92672">context</span>:
-    <span style="color:#f92672">cluster</span>: <span style="color:#ae81ff">cluster-b</span>
-    <span style="color:#f92672">user</span>: <span style="color:#ae81ff">admin-b</span>
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">context-b</span>
-<span style="color:#f92672">current-context</span>: <span style="color:#ae81ff">context-a</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Config</span>
-<span style="color:#f92672">preferences</span>: {}
-<span style="color:#f92672">users</span>:
-- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">admin-a</span>
-  <span style="color:#f92672">user</span>:
-    <span style="color:#f92672">client-certificate-data</span>: <span style="color:#ae81ff">LS0tLS1KVEUtLS0tLQo=</span>
-    <span style="color:#f92672">client-key-data</span>: <span style="color:#ae81ff">LS0tLS1KVEUtLS0tLQo=</span>
-- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">admin-b</span>
-  <span style="color:#f92672">user</span>:
-    <span style="color:#f92672">client-certificate-data</span>: <span style="color:#ae81ff">LS0tLS1KVEUtLS0tLQo=</span>
-    <span style="color:#f92672">client-key-data</span>: <span style="color:#ae81ff">LS0tLS1KVEUtLS0tLQo=</span>
-</code></pre></div><h3 id="2-4-kubectl-cli">2-4) kubectl CLI</h3>
-<p>kubectl download : 
+
+<pre><code class="language-yaml">apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1KVEUtLS0tLQo=
+    server: https://192.168.0.30:6443
+  name: cluster-a
+- cluster:
+    certificate-authority-data: LS0tLS1KVEUtLS0tLQo=
+    server: https://192.168.0.50:6443
+  name: cluster-b
+contexts:
+- context:
+    cluster: cluster-a
+    user: admin-a
+  name: context-a
+- context:
+    cluster: cluster-b
+    user: admin-b
+  name: context-b
+current-context: context-a
+kind: Config
+preferences: {}
+users:
+- name: admin-a
+  user:
+    client-certificate-data: LS0tLS1KVEUtLS0tLQo=
+    client-key-data: LS0tLS1KVEUtLS0tLQo=
+- name: admin-b
+  user:
+    client-certificate-data: LS0tLS1KVEUtLS0tLQo=
+    client-key-data: LS0tLS1KVEUtLS0tLQo=
+</code></pre>
+
+<h3 id="2-4-kubectl-cli">2-4) kubectl CLI</h3>
+
+<p>kubectl download :
 <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">https://kubernetes.io/docs/tasks/tools/install-kubectl/</a></p>
+
 <p>windows</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/windows/amd64/kubectl.exe
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>aemin
+
+<pre><code class="language-sh">curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/windows/amd64/kubectl.exe
+</code></pre>
+
+<pre><code class="language-sh">C:\Users\taemin
 kubectl config use-context context-a
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get nodes
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<pre><code class="language-sh">kubectl get nodes
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="3-service-account">3. Service Account</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -434,37 +508,60 @@ kubectl config use-context context-a
     
 
 
+
 <h3 id="3-1-namespace">3-1) Namespace</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl create ns nm-01
-</code></pre></div><h3 id="3-2-serviceaccount--secret-확인">3-2) ServiceAccount &amp; Secret 확인</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl describe -n nm-01 serviceaccounts
+
+<pre><code class="language-sh">kubectl create ns nm-01
+</code></pre>
+
+<h3 id="3-2-serviceaccount-secret-확인">3-2) ServiceAccount &amp; Secret 확인</h3>
+
+<pre><code class="language-sh">kubectl describe -n nm-01 serviceaccounts
 kubectl describe -n nm-01 secrets
-</code></pre></div><h3 id="3-3-pod">3-3) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat <span style="color:#e6db74">&lt;&lt;EOF | kubectl create -f -
-</span><span style="color:#e6db74">apiVersion: v1
-</span><span style="color:#e6db74">kind: Pod
-</span><span style="color:#e6db74">metadata:
-</span><span style="color:#e6db74">  name: pod-1
-</span><span style="color:#e6db74">  namespace: nm-01
-</span><span style="color:#e6db74">  labels:
-</span><span style="color:#e6db74">     app: pod
-</span><span style="color:#e6db74">spec:
-</span><span style="color:#e6db74">  containers:
-</span><span style="color:#e6db74">  - name: container
-</span><span style="color:#e6db74">    image: kubetm/app
-</span><span style="color:#e6db74">EOF</span>
-</code></pre></div><h3 id="3-4-https-api-호출-token">3-4) Https API 호출 (Token)</h3>
+</code></pre>
+
+<h3 id="3-3-pod">3-3) Pod</h3>
+
+<pre><code class="language-sh">cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+  namespace: nm-01
+  labels:
+     app: pod
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+EOF
+</code></pre>
+
+<h3 id="3-4-https-api-호출-token">3-4) Https API 호출 (Token)</h3>
+
 <p>case1) http</p>
+
 <p><code>header</code> Authorization : Bearer TOKEN</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">https://192.168.0.30:6443/api/v1
+
+<pre><code class="language-sh">https://192.168.0.30:6443/api/v1
 https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
-</code></pre></div><p>case2) curl</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl -k -H <span style="color:#e6db74">&#34;Authorization: Bearer TOKEN&#34;</span> https://192.168.0.30:6443/api/v1
-curl -k -H <span style="color:#e6db74">&#34;Authorization: Bearer TOKEN&#34;</span> https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre>
+
+<p>case2) curl</p>
+
+<pre><code class="language-sh">curl -k -H &quot;Authorization: Bearer TOKEN&quot; https://192.168.0.30:6443/api/v1
+curl -k -H &quot;Authorization: Bearer TOKEN&quot; https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
+</code></pre>
+
+<p><br/>
+<br/></p>
+
 <h2 id="referenece">Referenece</h2>
-<hr>
-<h3 id="-__kubernetes__">* <strong>Kubernetes</strong></h3>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
 <ul>
 <li><strong>Authenticating</strong> : <a href="https://kubernetes.io/docs/reference/access-authn-authz/authentication/">https://kubernetes.io/docs/reference/access-authn-authz/authentication/</a></li>
 </ul>

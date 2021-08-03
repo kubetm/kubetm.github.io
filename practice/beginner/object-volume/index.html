@@ -26,19 +26,25 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="Volume">
-<meta itemprop="description" content="[emptyDir, hostPath, PV/PVC]"><meta itemprop="datePublished" content="2019-11-04T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2019-11-04T00:00:00+00:00" />
+<meta itemprop="description" content="[emptyDir, hostPath, PV/PVC]">
+
+
+<meta itemprop="datePublished" content="2019-11-04T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-11-04T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="268">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="Volume" />
 <meta property="og:description" content="[emptyDir, hostPath, PV/PVC]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/practice/beginner/object-volume/" /><meta property="article:section" content="practice" />
+<meta property="og:url" content="https://kubetm.github.io/practice/beginner/object-volume/" />
 <meta property="article:published_time" content="2019-11-04T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-11-04T00:00:00+00:00" />
-
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Volume"/>
@@ -256,10 +262,17 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
-<hr>
+    
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="1-emptydir">1. emptyDir</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -291,32 +304,43 @@
     
 
 
+
 <h3 id="1-1-pod">1-1) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-volume-1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container1</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">volumeMounts</span>:
-    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">empty-dir</span>
-      <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/mount1</span>
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container2</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">volumeMounts</span>:
-    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">empty-dir</span>
-      <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/mount2</span>
-  <span style="color:#f92672">volumes</span>:
-  - <span style="color:#f92672">name </span>: <span style="color:#ae81ff">empty-dir</span>
-    <span style="color:#f92672">emptyDir</span>: {}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mount | grep mount1
-echo <span style="color:#e6db74">&#34;file context&#34;</span> &gt;&gt; file.txt
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-volume-1
+spec:
+  containers:
+  - name: container1
+    image: kubetm/init
+    volumeMounts:
+    - name: empty-dir
+      mountPath: /mount1
+  - name: container2
+    image: kubetm/init
+    volumeMounts:
+    - name: empty-dir
+      mountPath: /mount2
+  volumes:
+  - name : empty-dir
+    emptyDir: {}
+</code></pre>
+
+<pre><code class="language-sh">mount | grep mount1
+echo &quot;file context&quot; &gt;&gt; file.txt
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="2-hostpath">2. hostPath</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -348,29 +372,38 @@ echo <span style="color:#e6db74">&#34;file context&#34;</span> &gt;&gt; file.txt
     
 
 
+
 <h3 id="2-1-pod">2-1) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-volume-3</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">nodeSelector</span>:
-    <span style="color:#f92672">kubernetes.io/hostname</span>: <span style="color:#ae81ff">k8s-node1</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">volumeMounts</span>:
-    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">host-path</span>
-      <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/mount1</span>
-  <span style="color:#f92672">volumes</span>:
-  - <span style="color:#f92672">name </span>: <span style="color:#ae81ff">host-path</span>
-    <span style="color:#f92672">hostPath</span>:
-      <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/node-v</span>
-      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">DirectoryOrCreate</span>
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
-<h2 id="3-pvc--pv">3. PVC / PV</h2>
-<hr>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-volume-3
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-node1
+  containers:
+  - name: container
+    image: kubetm/init
+    volumeMounts:
+    - name: host-path
+      mountPath: /mount1
+  volumes:
+  - name : host-path
+    hostPath:
+      path: /node-v
+      type: DirectoryOrCreate
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="3-pvc-pv">3. PVC / PV</h2>
+
+<hr />
+
 
 
 
@@ -402,103 +435,135 @@ echo <span style="color:#e6db74">&#34;file context&#34;</span> &gt;&gt; file.txt
     
 
 
+
 <h3 id="3-1-persistentvolume">3-1) PersistentVolume</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">PersistentVolume</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pv-03</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">capacity</span>:
-    <span style="color:#f92672">storage</span>: <span style="color:#ae81ff">2G</span>
-  <span style="color:#f92672">accessModes</span>:
-  - <span style="color:#ae81ff">ReadWriteOnce</span>
-  <span style="color:#f92672">local</span>:
-    <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/node-v</span>
-  <span style="color:#f92672">nodeAffinity</span>:
-    <span style="color:#f92672">required</span>:
-      <span style="color:#f92672">nodeSelectorTerms</span>:
-      - <span style="color:#f92672">matchExpressions</span>:
-        - {<span style="color:#f92672">key: kubernetes.io/hostname, operator: In, values</span>: [<span style="color:#ae81ff">k8s-node1]}</span>
-</code></pre></div><h3 id="3-2-persistentvolumeclaim">3-2) PersistentVolumeClaim</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">PersistentVolumeClaim</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pvc-04</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">accessModes</span>:
-  - <span style="color:#ae81ff">ReadWriteOnce</span>
-  <span style="color:#f92672">resources</span>:
-    <span style="color:#f92672">requests</span>:
-      <span style="color:#f92672">storage</span>: <span style="color:#ae81ff">1G</span>
-  <span style="color:#f92672">storageClassName</span>: <span style="color:#e6db74">&#34;&#34;</span>
-</code></pre></div><h3 id="3-3-pod">3-3) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-volume-3</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">volumeMounts</span>:
-    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pvc-pv</span>
-      <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/mount3</span>
-  <span style="color:#f92672">volumes</span>:
-  - <span style="color:#f92672">name </span>: <span style="color:#ae81ff">pvc-pv</span>
-    <span style="color:#f92672">persistentVolumeClaim</span>:
-      <span style="color:#f92672">claimName</span>: <span style="color:#ae81ff">pvc-01</span>
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-03
+spec:
+  capacity:
+    storage: 2G
+  accessModes:
+  - ReadWriteOnce
+  local:
+    path: /node-v
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - {key: kubernetes.io/hostname, operator: In, values: [k8s-node1]}
+</code></pre>
+
+<h3 id="3-2-persistentvolumeclaim">3-2) PersistentVolumeClaim</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-04
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1G
+  storageClassName: &quot;&quot;
+</code></pre>
+
+<h3 id="3-3-pod">3-3) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-volume-3
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+    volumeMounts:
+    - name: pvc-pv
+      mountPath: /mount3
+  volumes:
+  - name : pvc-pv
+    persistentVolumeClaim:
+      claimName: pvc-01
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="pv-pvc를-label과-selector를-이용해-연결하는-방법">PV-PVC를 label과 selector를 이용해 연결하는 방법</h2>
-<hr>
+
+<hr />
+
 <h3 id="3-1-persistentvolume-1">3-1) PersistentVolume</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">PersistentVolume</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pv-03</span>
-  <span style="color:#f92672">labels</span>:
-    <span style="color:#f92672">pv</span>: <span style="color:#ae81ff">pv-03</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">capacity</span>:
-    <span style="color:#f92672">storage</span>: <span style="color:#ae81ff">2G</span>
-  <span style="color:#f92672">accessModes</span>:
-  - <span style="color:#ae81ff">ReadWriteOnce</span>
-  <span style="color:#f92672">local</span>:
-    <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/node-v</span>
-  <span style="color:#f92672">nodeAffinity</span>:
-    <span style="color:#f92672">required</span>:
-      <span style="color:#f92672">nodeSelectorTerms</span>:
-      - <span style="color:#f92672">matchExpressions</span>:
-        - {<span style="color:#f92672">key: kubernetes.io/hostname, operator: In, values</span>: [<span style="color:#ae81ff">k8s-node1]}</span>
-</code></pre></div><h3 id="3-2-persistentvolumeclaim-1">3-2) PersistentVolumeClaim</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">PersistentVolumeClaim</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pvc-04</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">accessModes</span>:
-  - <span style="color:#ae81ff">ReadWriteOnce</span>
-  <span style="color:#f92672">resources</span>:
-    <span style="color:#f92672">requests</span>:
-      <span style="color:#f92672">storage</span>: <span style="color:#ae81ff">1G</span>
-  <span style="color:#f92672">storageClassName</span>: <span style="color:#e6db74">&#34;&#34;</span>
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">pv</span>: <span style="color:#ae81ff">pv-03</span>
-</code></pre></div><!-- raw HTML omitted -->
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-03
+  labels:
+    pv: pv-03
+spec:
+  capacity:
+    storage: 2G
+  accessModes:
+  - ReadWriteOnce
+  local:
+    path: /node-v
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - {key: kubernetes.io/hostname, operator: In, values: [k8s-node1]}
+</code></pre>
+
+<h3 id="3-2-persistentvolumeclaim-1">3-2) PersistentVolumeClaim</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-04
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1G
+  storageClassName: &quot;&quot;
+  selector:
+    matchLabels:
+      pv: pv-03
+</code></pre>
+
+<p><br/>
+<br/></p>
+
 <h2 id="tips">Tips</h2>
-<hr>
-<h3 id="-__hostpath-type__">* <strong>hostPath Type</strong></h3>
+
+<hr />
+
+<h3 id="hostpath-type">* <strong>hostPath Type</strong></h3>
+
 <ul>
 <li>DirectoryOrCreate : 실제 경로가 없다면 생성</li>
 <li>Directory : 실제 경로가 있어야됨</li>
 <li>FileOrCreate : 실제 경로에 파일이 없다면 생성</li>
 <li>File : 실제 파일이 었어야함</li>
 </ul>
-<!-- raw HTML omitted -->
+
+<p><br/>
+<br/></p>
+
 <h2 id="referenece">Referenece</h2>
-<hr>
-<h3 id="-__kubernetes__">* <strong>Kubernetes</strong></h3>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
 <ul>
 <li><strong>Volumes</strong> : <a href="https://kubernetes.io/docs/concepts/storage/volumes/">https://kubernetes.io/docs/concepts/storage/volumes/</a></li>
 </ul>

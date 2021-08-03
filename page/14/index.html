@@ -26,14 +26,17 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="KubeTM Blog with Kubernetes">
 <meta itemprop="description" content="">
+
+
   <meta property="og:title" content="KubeTM Blog with Kubernetes" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://kubetm.github.io/" />
 
+<meta property="og:updated_time" content="2021-01-28T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="KubeTM Blog with Kubernetes"/>
@@ -235,7 +238,7 @@
     </time>
     <span class="author">KubeTM</span>
     
-      <p>7 minutes read</p>
+      <p>8 minutes read</p>
     
   </div>
 </header>
@@ -247,8 +250,11 @@
 
 
   
-  <p>아래 경로로 들어가서 원하는 경로에서 Minimal 버전의 파일 다운로드
-<!-- raw HTML omitted --></p>
+  <p><br/>
+남는 Server나 Netebook이 1대 있고, 그 서버 자체를 처음부터 구성하는 경우 그 서버의 CentOS 설치부터 가이드 시작..
+<br/>
+<br/>
+<br/></p>
   <footer>
     <a href="/practice/appendix/installation_case1/" class="button big">본문 보기</a>
     
@@ -290,36 +296,8 @@
 
 
   
-  <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">DaemonSet</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">daemonset-1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">app</span>
-  <span style="color:#f92672">template</span>:
-    <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">labels</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">app</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">containers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-        <span style="color:#f92672">ports</span>:
-        - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
-          <span style="color:#f92672">hostPort</span>: <span style="color:#ae81ff">18080</span>
-</code></pre></div><h3 id="command">Command</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl 192.168.0.31:18080/hostname
-</code></pre></div><!-- raw HTML omitted -->
-<h3 id="1-2-daemonset---nodeselector">1-2) DaemonSet - NodeSelector</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">DaemonSet</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">daemonset-2</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:&hellip;</code></pre></div></!-->
+  <p><br/>
+<br/></p>
   <footer>
     <a href="/practice/beginner/controller-daemonset_job_cronjob/" class="button big">본문 보기</a>
     
@@ -361,7 +339,8 @@
 
 
   
-  
+  <p><br/>
+<br/></p>
   <footer>
     <a href="/practice/beginner/controller-deployment/" class="button big">본문 보기</a>
     

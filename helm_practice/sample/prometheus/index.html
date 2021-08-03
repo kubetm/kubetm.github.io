@@ -26,18 +26,22 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="오픈소스 Helm 차트 분석">
 <meta itemprop="description" content="[Prometheus]">
 
+
+
 <meta itemprop="wordCount" content="238">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="오픈소스 Helm 차트 분석" />
 <meta property="og:description" content="[Prometheus]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/helm_practice/sample/prometheus/" /><meta property="article:section" content="helm_practice" />
-
-
+<meta property="og:url" content="https://kubetm.github.io/helm_practice/sample/prometheus/" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -252,85 +256,129 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
-<hr>
+    
+
+<p><br/></p>
+
+<hr />
+
 <h2 id="1-prometheus-차트-설치-및-배포">1. Prometheus 차트 설치 및 배포</h2>
-<hr>
+
+<hr />
+
 <h3 id="1-1-레포지토리-등록">1-1) 레포지토리 등록</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-</code></pre></div><h3 id="1-2-tomcat-712-다운로드">1-2) Tomcat 7.1.2 다운로드</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm pull prometheus-community/prometheus --version 13.8.0
+
+<pre><code class="language-sh">helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+</code></pre>
+
+<h3 id="1-2-tomcat-7-1-2-다운로드">1-2) Tomcat 7.1.2 다운로드</h3>
+
+<pre><code class="language-sh">helm pull prometheus-community/prometheus --version 13.8.0
 tar -xf prometheus-13.8.0.tgz
-</code></pre></div><h3 id="1-3-tomcat-template-보기">1-3) Tomcat Template 보기</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm template mytomcat .
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<h3 id="1-3-tomcat-template-보기">1-3) Tomcat Template 보기</h3>
+
+<pre><code class="language-sh">helm template mytomcat .
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="2-prometheus에서-나오는-함수-따라해보기">2. Prometheus에서 나오는 함수 따라해보기</h2>
-<hr>
+
+<hr />
+
 <h3 id="2-1-chart-template-생성">2-1) Chart Template 생성</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm create mychart
-</code></pre></div><p>templates 폴더 안에 불필요한 파일 삭제</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml service.yaml tests
-</code></pre></div><h3 id="2-2-test-valuesyaml에-해당-속성-추가">2-2) test-values.yaml에 해당 속성 추가</h3>
+
+<pre><code class="language-sh">helm create mychart
+</code></pre>
+
+<p>templates 폴더 안에 불필요한 파일 삭제</p>
+
+<pre><code class="language-sh">rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml service.yaml tests
+</code></pre>
+
+<h3 id="2-2-test-values-yaml에-해당-속성-추가">2-2) test-values.yaml에 해당 속성 추가</h3>
+
 <p>vi test-values.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">colors</span>: 
-  - <span style="color:#e6db74">&#34;blue&#34;</span>
-  - <span style="color:#e6db74">&#34;red&#34;</span>
-  - <span style="color:#e6db74">&#34;green&#34;</span> 
 
-<span style="color:#f92672">server</span>: 
-  <span style="color:#f92672">path</span>:
-    <span style="color:#f92672">prefix</span>: <span style="color:#e6db74">&#34;prom&#34;</span>
-</code></pre></div><h3 id="2-3-configmap-추가">2-3) configmap 추가</h3>
+<pre><code class="language-yaml">colors: 
+  - &quot;blue&quot;
+  - &quot;red&quot;
+  - &quot;green&quot; 
+
+server: 
+  path:
+    prefix: &quot;prom&quot;
+</code></pre>
+
+<h3 id="2-3-configmap-추가">2-3) configmap 추가</h3>
+
 <p>vi cm.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ConfigMap</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">tomcat</span>
-<span style="color:#f92672">data</span>:
-<span style="color:#75715e">#&lt;splitList&gt;</span>
- {{- <span style="color:#ae81ff">$url := splitList &#34;/&#34; &#34;helm.sh/docs/helm/&#34; }}</span>
-  <span style="color:#f92672">splitList</span>:
-    <span style="color:#f92672">host</span>: {{ <span style="color:#ae81ff">first $url }}</span>
-    <span style="color:#f92672">path</span>: {{ <span style="color:#ae81ff">rest $url | join &#34;/&#34; }}</span>
 
-<span style="color:#75715e">#&lt;regexMatch&gt;</span>
-  <span style="color:#f92672">regexmatch</span>: {{ <span style="color:#ae81ff">regexMatch &#34;.*\\.ya?ml$&#34; &#34;config.yaml&#34; }}</span>
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tomcat
+data:
+#&lt;splitList&gt;
+ {{- $url := splitList &quot;/&quot; &quot;helm.sh/docs/helm/&quot; }}
+  splitList:
+    host: {{ first $url }}
+    path: {{ rest $url | join &quot;/&quot; }}
 
-<span style="color:#75715e">#&lt;index&gt;</span>
-  <span style="color:#f92672">index</span>:
-    <span style="color:#f92672">colors</span>: <span style="color:#e6db74">&#34;{{ index .Values.colors 0 }}&#34;</span>
- {{- <span style="color:#ae81ff">if index .Values &#34;server&#34; &#34;path&#34; &#34;prefix&#34; }}</span>
-    <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/{{ index .Values &#34;server&#34; &#34;path&#34; &#34;prefix&#34; }}/ready</span>
- {{- <span style="color:#ae81ff">end }}</span>
+#&lt;regexMatch&gt;
+  regexmatch: {{ regexMatch &quot;.*\\.ya?ml$&quot; &quot;config.yaml&quot; }}
 
-<span style="color:#75715e">#&lt;semver&gt;</span>
-{{- <span style="color:#ae81ff">$version := semver &#34;1.2.3-alpha.1+123&#34; }} </span>
-  <span style="color:#f92672">semver</span>:
-    <span style="color:#f92672">major</span>: {{ <span style="color:#ae81ff">$version.Major }}</span>
-    <span style="color:#f92672">minor</span>: {{ <span style="color:#ae81ff">$version.Minor }}</span>
-    <span style="color:#f92672">patch</span>: {{ <span style="color:#ae81ff">$version.Patch }}</span>
-    <span style="color:#f92672">prerelease</span>: {{ <span style="color:#ae81ff">$version.Prerelease }}</span>
-    <span style="color:#f92672">metadata</span>: {{ <span style="color:#ae81ff">$version.Metadata }}</span>
-    <span style="color:#f92672">original</span>: {{ <span style="color:#ae81ff">$version.Original }}</span>
+#&lt;index&gt;
+  index:
+    colors: &quot;{{ index .Values.colors 0 }}&quot;
+ {{- if index .Values &quot;server&quot; &quot;path&quot; &quot;prefix&quot; }}
+    path: /{{ index .Values &quot;server&quot; &quot;path&quot; &quot;prefix&quot; }}/ready
+ {{- end }}
 
-<span style="color:#75715e">#&lt;semverCompare&gt;</span>
-  <span style="color:#f92672">semverCompare</span>:
-    <span style="color:#f92672">greaterthan</span>: {{ <span style="color:#ae81ff">semverCompare &#34;&gt;1.2.1&#34; &#34;1.2.3&#34; }}</span>
-    <span style="color:#f92672">lessthan</span>: {{ <span style="color:#ae81ff">semverCompare &#34;&lt;1.2.1&#34; &#34;2.2.3&#34; }}</span>
-    <span style="color:#f92672">equal</span>: {{ <span style="color:#ae81ff">semverCompare &#34;=1.2.*&#34; &#34;1.2.3&#34; }}  </span> <span style="color:#75715e">#1.2.0 &lt;= [1.2.*] &lt; 1.3.0</span>
-    <span style="color:#f92672">tilde</span>: {{ <span style="color:#ae81ff">semverCompare &#34;~1.2.3&#34; &#34;1.2.0&#34; }}  </span> <span style="color:#75715e">#1.2.3 &lt;= [~1.2.3] &lt; 1.3.0</span>
-</code></pre></div><h3 id="2-4-template-명령">2-4) Template 명령</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm template mychart ./../ -f ./../test-values.yaml
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+#&lt;semver&gt;
+{{- $version := semver &quot;1.2.3-alpha.1+123&quot; }} 
+  semver:
+    major: {{ $version.Major }}
+    minor: {{ $version.Minor }}
+    patch: {{ $version.Patch }}
+    prerelease: {{ $version.Prerelease }}
+    metadata: {{ $version.Metadata }}
+    original: {{ $version.Original }}
+
+#&lt;semverCompare&gt;
+  semverCompare:
+    greaterthan: {{ semverCompare &quot;&gt;1.2.1&quot; &quot;1.2.3&quot; }}
+    lessthan: {{ semverCompare &quot;&lt;1.2.1&quot; &quot;2.2.3&quot; }}
+    equal: {{ semverCompare &quot;=1.2.*&quot; &quot;1.2.3&quot; }}   #1.2.0 &lt;= [1.2.*] &lt; 1.3.0
+    tilde: {{ semverCompare &quot;~1.2.3&quot; &quot;1.2.0&quot; }}   #1.2.3 &lt;= [~1.2.3] &lt; 1.3.0
+</code></pre>
+
+<h3 id="2-4-template-명령">2-4) Template 명령</h3>
+
+<pre><code class="language-sh">helm template mychart ./../ -f ./../test-values.yaml
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="referenece">Referenece</h2>
-<hr>
-<h3 id="-__helm__">* <strong>Helm</strong></h3>
+
+<hr />
+
+<h3 id="helm">* <strong>Helm</strong></h3>
+
 <ul>
 <li><strong>차트 종속성</strong> : <a href="https://helm.sh/docs/chart_best_practices/dependencies/">https://helm.sh/docs/chart_best_practices/dependencies/</a></li>
 <li><strong>Semantic Versions</strong> : <a href="https://github.com/Masterminds/semver">https://github.com/Masterminds/semver</a></li>
-<li><strong>함수</strong> : <a href="https://helm.sh/docs/chart_template_guide/function_list/">https://helm.sh/docs/chart_template_guide/function_list/</a></li>
+<li><strong>함수</strong> : <a href="https://helm.sh/docs/chart_template_guide/function_list/">https://helm.sh/docs/chart_template_guide/function_list/</a>
+<br /></li>
 </ul>
 
   </div>

@@ -26,18 +26,22 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="차트 개발 팁과 요령">
 <meta itemprop="description" content="[Install, Upgreade, Uninstall]">
 
+
+
 <meta itemprop="wordCount" content="546">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="차트 개발 팁과 요령" />
 <meta property="og:description" content="[Install, Upgreade, Uninstall]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/helm_practice/topic/tip/" /><meta property="article:section" content="helm_practice" />
-
-
+<meta property="og:url" content="https://kubetm.github.io/helm_practice/topic/tip/" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -252,10 +256,16 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
-<hr>
+    
+
+<p><br/></p>
+
+<hr />
+
 <h2 id="1-install-및-upgrade-tip">1. Install 및 Upgrade Tip</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -287,87 +297,112 @@
     
 
 
-<!-- raw HTML omitted -->
+
+<p><br/></p>
+
 <h3 id="1-1-chart-template-생성">1-1) Chart Template 생성</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm create mychart
-</code></pre></div><p>templates 폴더 안에 불필요한 파일 삭제</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">rm -rf deployment.yaml  hpa.yaml  ingress.yaml  service.yaml  serviceaccount.yaml  tests
-</code></pre></div><h3 id="1-2-deploymentyaml-내용-업데이트">1-2) deployment.yaml 내용 업데이트</h3>
+
+<pre><code class="language-sh">helm create mychart
+</code></pre>
+
+<p>templates 폴더 안에 불필요한 파일 삭제</p>
+
+<pre><code class="language-sh">rm -rf deployment.yaml  hpa.yaml  ingress.yaml  service.yaml  serviceaccount.yaml  tests
+</code></pre>
+
+<h3 id="1-2-deployment-yaml-내용-업데이트">1-2) deployment.yaml 내용 업데이트</h3>
+
 <p>vi deployment.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">app</span>
-  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#f92672">template</span>:
-    <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">labels</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">app</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">initContainers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">init-myservice</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-        <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;sh&#34;</span>, <span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;echo &#39;start&#39;; sleep 30; echo &#39;done&#39;&#34;</span>]
-      <span style="color:#f92672">containers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-        <span style="color:#f92672">envFrom</span>:
-        - <span style="color:#f92672">configMapRef</span>:
-            <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test-cm</span>
-        <span style="color:#f92672">volumeMounts</span>:
-        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">volume</span>
-          <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/hostpath</span>
-      <span style="color:#f92672">volumes</span>:
-      - <span style="color:#f92672">name </span>: <span style="color:#ae81ff">volume</span>
-        <span style="color:#f92672">persistentVolumeClaim</span>:
-          <span style="color:#f92672">claimName</span>: <span style="color:#ae81ff">test-pvc</span>
-</code></pre></div><h3 id="1-3-configmapyaml-추가">1-3) configmap.yaml 추가</h3>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+spec:
+  selector:
+    matchLabels:
+      type: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        type: app
+    spec:
+      initContainers:
+      - name: init-myservice
+        image: kubetm/app
+        command: [&quot;sh&quot;, &quot;-c&quot;, &quot;echo 'start'; sleep 30; echo 'done'&quot;]
+      containers:
+      - name: container
+        image: kubetm/app
+        envFrom:
+        - configMapRef:
+            name: test-cm
+        volumeMounts:
+        - name: volume
+          mountPath: /hostpath
+      volumes:
+      - name : volume
+        persistentVolumeClaim:
+          claimName: test-pvc
+</code></pre>
+
+<h3 id="1-3-configmap-yaml-추가">1-3) configmap.yaml 추가</h3>
+
 <p>vi configmap.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ConfigMap</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test-cm</span>
-<span style="color:#f92672">data</span>:
-  <span style="color:#f92672">env</span>: <span style="color:#ae81ff">prod</span>
-  <span style="color:#f92672">log</span>: <span style="color:#ae81ff">Error</span>
-</code></pre></div><h3 id="1-4-pvcyaml-추가">1-4) pvc.yaml 추가</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-cm
+data:
+  env: prod
+  log: Error
+</code></pre>
+
+<h3 id="1-4-pvc-yaml-추가">1-4) pvc.yaml 추가</h3>
+
 <p>vi pvc.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">PersistentVolumeClaim</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test-pvc</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">accessModes</span>:
-  - <span style="color:#ae81ff">ReadWriteOnce</span>
-  <span style="color:#f92672">resources</span>:
-    <span style="color:#f92672">requests</span>:
-      <span style="color:#f92672">storage</span>: <span style="color:#ae81ff">1G</span>
-  <span style="color:#f92672">storageClassName</span>: <span style="color:#e6db74">&#34;&#34;</span>
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test-pv</span>
-</code></pre></div><h3 id="1-5-pvyaml-추가">1-5) pv.yaml 추가</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: test-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1G
+  storageClassName: &quot;&quot;
+  selector:
+    matchLabels:
+      name: test-pv
+</code></pre>
+
+<h3 id="1-5-pv-yaml-추가">1-5) pv.yaml 추가</h3>
+
 <p>vi pv.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">PersistentVolume</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test-pv</span>
-  <span style="color:#f92672">labels</span>:
-    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test-pv</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">accessModes</span>:
-  - <span style="color:#ae81ff">ReadWriteOnce</span>
-  <span style="color:#f92672">capacity</span>:
-    <span style="color:#f92672">storage</span>: <span style="color:#ae81ff">1G</span>
-  <span style="color:#f92672">hostPath</span>:
-    <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/host1</span>
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">DirectoryOrCreate</span>
-</code></pre></div><h3 id="1-6-install-upgrade-명령">1-6) Install, Upgrade 명령</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cd ..
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: test-pv
+  labels:
+    name: test-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1G
+  hostPath:
+    path: /host1
+    type: DirectoryOrCreate
+</code></pre>
+
+<h3 id="1-6-install-upgrade-명령">1-6) Install, Upgrade 명령</h3>
+
+<pre><code class="language-sh">cd ..
 helm install mychart . -n nm-1
 
 helm install mychart . -n nm-1 --create-namespace
@@ -379,10 +414,17 @@ helm uninstall mychart -n nm-1
 
 helm upgrade mychart . -n nm-1 --create-namespace --install
 helm upgrade mychart . -n nm-1 --create-namespace --install --wait --timeout 10m
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="2-pod-자동-재기동-tip">2. Pod 자동 재기동 Tip</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -414,53 +456,72 @@ helm upgrade mychart . -n nm-1 --create-namespace --install --wait --timeout 10m
     
 
 
-<!-- raw HTML omitted -->
-<h3 id="2-1-configmapyaml-수정">2-1) configmap.yaml 수정</h3>
+
+<p><br/></p>
+
+<h3 id="2-1-configmap-yaml-수정">2-1) configmap.yaml 수정</h3>
+
 <p>vi configmap.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ConfigMap</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test-cm</span>
-<span style="color:#f92672">data</span>:
-  <span style="color:#f92672">env</span>: <span style="color:#ae81ff">prod</span>
-  <span style="color:#f92672">log</span>: <span style="color:#ae81ff">Info</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm upgrade mychart . -n nm-1 --create-namespace --install
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-cm
+data:
+  env: prod
+  log: Info
+</code></pre>
+
+<pre><code class="language-sh">helm upgrade mychart . -n nm-1 --create-namespace --install
 kubectl get -n nm-1 pods
 kubectl get -n nm-1 cm -o yaml
 kubectl exec -n nm-1 test-7c4fff79cd-4m5st -it env
-</code></pre></div><h3 id="2-2-deploymentyaml-내용-업데이트">2-2) deployment.yaml 내용 업데이트</h3>
+</code></pre>
+
+<h3 id="2-2-deployment-yaml-내용-업데이트">2-2) deployment.yaml 내용 업데이트</h3>
+
 <p>vi deployment.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">app</span>
-  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#f92672">template</span>:
-    <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">labels</span>:
-        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">app</span>
-      <span style="color:#f92672">annotations</span>:
-        <span style="color:#f92672">checksum/config</span>: {{ <span style="color:#ae81ff">include (print $.Template.BasePath &#34;/configmap.yaml&#34;) . | sha256sum }}</span>
-<span style="color:#75715e">#        rollme: {{ randAlphaNum 5 | quote }}</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">containers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-      <span style="color:#ae81ff">...</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm upgrade mychart . -n nm-1 --create-namespace --install
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+spec:
+  selector:
+    matchLabels:
+      type: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        type: app
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath &quot;/configmap.yaml&quot;) . | sha256sum }}
+#        rollme: {{ randAlphaNum 5 | quote }}
+    spec:
+      containers:
+      - name: container
+      ...
+</code></pre>
+
+<pre><code class="language-sh">helm upgrade mychart . -n nm-1 --create-namespace --install
 kubectl get -n nm-1 pods
 kubectl exec -n nm-1 test-7c4fff79cd-4m5st -it env
 
 helm upgrade mychart . -n nm-1 --create-namespace --install
 kubectl get -n nm-1 pods
 kubectl get -n nm-1 deployment -o yaml
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="3-기타-resource-특성">3. 기타 Resource 특성</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -492,24 +553,30 @@ kubectl get -n nm-1 deployment -o yaml
     
 
 
-<!-- raw HTML omitted -->
-<h3 id="3-1-pvyaml-내용-업데이트">3-1) pv.yaml 내용 업데이트</h3>
+
+<p><br/></p>
+
+<h3 id="3-1-pv-yaml-내용-업데이트">3-1) pv.yaml 내용 업데이트</h3>
+
 <p>vi pv.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">PersistentVolume</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test-pv</span>
-  <span style="color:#f92672">labels</span>:
-    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test-pv</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">accessModes</span>:
-  - <span style="color:#ae81ff">ReadWriteOnce</span>
-  <span style="color:#f92672">capacity</span>:
-    <span style="color:#f92672">storage</span>: <span style="color:#ae81ff">1G</span>
-  <span style="color:#f92672">hostPath</span>:
-    <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/host2</span>
-    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">DirectoryOrCreate</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm upgrade mychart . -n nm-1 --create-namespace --install
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: test-pv
+  labels:
+    name: test-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1G
+  hostPath:
+    path: /host2
+    type: DirectoryOrCreate
+</code></pre>
+
+<pre><code class="language-sh">helm upgrade mychart . -n nm-1 --create-namespace --install
 helm uninstall mychart -n nm-1
 kubectl get pv
 kubectl get pvc -n nm-1
@@ -521,12 +588,22 @@ helm uninstall mychart -n nm-1
 helm list -n nm-1
 kubectl get ns nm-1
 kubectl delete ns nm-1
-</code></pre></div><h3 id="3-2-uninstall시-namespace-확인">3-2) Uninstall시 Namespace 확인</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm uninstall mychart -n nm-1
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<h3 id="3-2-uninstall시-namespace-확인">3-2) Uninstall시 Namespace 확인</h3>
+
+<pre><code class="language-sh">helm uninstall mychart -n nm-1
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="4-helm-저장소">4. Helm 저장소</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -558,28 +635,46 @@ kubectl delete ns nm-1
     
 
 
-<!-- raw HTML omitted -->
+
+<p><br/></p>
+
 <h3 id="4-1-install-및-upgrade-실행">4-1) Install 및 Upgrade 실행</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm upgrade mychart . -n nm-1 --create-namespace --install
-</code></pre></div><h3 id="4-2-secret-확인">4-2) Secret 확인</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get -n nm-1 secret -l name<span style="color:#f92672">=</span>mychart
+
+<pre><code class="language-sh">helm upgrade mychart . -n nm-1 --create-namespace --install
+</code></pre>
+
+<h3 id="4-2-secret-확인">4-2) Secret 확인</h3>
+
+<pre><code class="language-sh">kubectl get -n nm-1 secret -l name=mychart
 kubectl get -n nm-1 secret sh.helm.release.v1.mychart.v1 -o yaml
-</code></pre></div><h3 id="4-3-helm-history-확인">4-3) Helm History 확인</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm history -n nm-1 mychart
-helm upgrade mychart . -n nm-1 --create-namespace --install --history-max <span style="color:#ae81ff">2</span>
-kubectl get -n nm-1 secret -l name<span style="color:#f92672">=</span>mychart
+</code></pre>
+
+<h3 id="4-3-helm-history-확인">4-3) Helm History 확인</h3>
+
+<pre><code class="language-sh">helm history -n nm-1 mychart
+helm upgrade mychart . -n nm-1 --create-namespace --install --history-max 2
+kubectl get -n nm-1 secret -l name=mychart
 helm history -n nm-1 mychart
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="referenece">Referenece</h2>
-<hr>
-<h3 id="-__helm__">* <strong>Helm</strong></h3>
+
+<hr />
+
+<h3 id="helm">* <strong>Helm</strong></h3>
+
 <ul>
 <li><strong>Helm Upgrade</strong> : <a href="https://helm.sh/docs/helm/helm_upgrade/">https://helm.sh/docs/helm/helm_upgrade/</a></li>
 <li><strong>Helm Install</strong> : <a href="https://helm.sh/docs/helm/helm_install/">https://helm.sh/docs/helm/helm_install/</a></li>
 <li><strong>Helm Uninstall</strong> : <a href="https://helm.sh/docs/helm/helm_uninstall/">https://helm.sh/docs/helm/helm_uninstall/</a></li>
 <li><strong>Helm History</strong> : <a href="https://helm.sh/docs/helm/helm_history/">https://helm.sh/docs/helm/helm_history/</a></li>
-<li><strong>Chart Development Tips and Tricks</strong> : <a href="https://helm.sh/docs/howto/charts_tips_and_tricks/">https://helm.sh/docs/howto/charts_tips_and_tricks/</a></li>
+<li><strong>Chart Development Tips and Tricks</strong> : <a href="https://helm.sh/docs/howto/charts_tips_and_tricks/">https://helm.sh/docs/howto/charts_tips_and_tricks/</a>
+<br /></li>
 </ul>
 
   </div>

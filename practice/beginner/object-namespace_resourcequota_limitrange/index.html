@@ -26,19 +26,25 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="Namespace, ResourceQuota, LimitRange">
-<meta itemprop="description" content="[2. 기본 오브젝트]"><meta itemprop="datePublished" content="2019-11-06T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2019-11-06T00:00:00+00:00" />
+<meta itemprop="description" content="[2. 기본 오브젝트]">
+
+
+<meta itemprop="datePublished" content="2019-11-06T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-11-06T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="454">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="Namespace, ResourceQuota, LimitRange" />
 <meta property="og:description" content="[2. 기본 오브젝트]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/practice/beginner/object-namespace_resourcequota_limitrange/" /><meta property="article:section" content="practice" />
+<meta property="og:url" content="https://kubetm.github.io/practice/beginner/object-namespace_resourcequota_limitrange/" />
 <meta property="article:published_time" content="2019-11-06T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-11-06T00:00:00+00:00" />
-
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Namespace, ResourceQuota, LimitRange"/>
@@ -256,10 +262,17 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
-<hr>
-<h2 id="1--namespace">1.  Namespace</h2>
-<hr>
+    
+
+<p><br/>
+<br/></p>
+
+<hr />
+
+<h2 id="1-namespace">1.  Namespace</h2>
+
+<hr />
+
 
 
 
@@ -291,100 +304,140 @@
     
 
 
+
 <h3 id="1-1-namespace">1-1) Namespace</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Namespace</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nm-1</span>
-</code></pre></div><h3 id="1-2-pod">1-2) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-1</span>
-  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nm-1</span>
-  <span style="color:#f92672">labels</span>:
-    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">pod</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-    <span style="color:#f92672">ports</span>:
-    - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
-</code></pre></div><h3 id="1-3-service">1-3) Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">svc-1</span>
-  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nm-1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">pod</span>
-  <span style="color:#f92672">ports</span>:
-  - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">9000</span>
-    <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>
-</code></pre></div><!-- raw HTML omitted -->
-<h3 id="1-1-namespace-1">1-1') Namespace</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Namespace</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nm-2</span>
-</code></pre></div><h3 id="1-2-pod-1">1-2') Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-1</span>
-  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nm-2</span>
-  <span style="color:#f92672">labels</span>:
-    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">pod</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">ports</span>:
-    - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
-</code></pre></div><!-- raw HTML omitted -->
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: nm-1
+</code></pre>
+
+<h3 id="1-2-pod">1-2) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+  namespace: nm-1
+  labels:
+    app: pod
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+    ports:
+    - containerPort: 8080
+</code></pre>
+
+<h3 id="1-3-service">1-3) Service</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: svc-1
+  namespace: nm-1
+spec:
+  selector:
+    app: pod
+  ports:
+  - port: 9000
+    targetPort: 8080
+</code></pre>
+
+<p><br/></p>
+
+<h3 id="1-1-namespace-1">1-1&rsquo;) Namespace</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: nm-2
+</code></pre>
+
+<h3 id="1-2-pod-1">1-2&rsquo;) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+  namespace: nm-2
+  labels:
+    app: pod
+spec:
+  containers:
+  - name: container
+    image: kubetm/init
+    ports:
+    - containerPort: 8080
+</code></pre>
+
+<p><br/></p>
+
 <p>pod ip :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl 10.16.36.115:8080/hostname
-</code></pre></div><p>service ip :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl 10.96.92.97:9000/hostname
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-sh">curl 10.16.36.115:8080/hostname
+</code></pre>
+
+<p>service ip :</p>
+
+<pre><code class="language-sh">curl 10.96.92.97:9000/hostname
+</code></pre>
+
+<p><br/></p>
+
+<hr />
+
 <h2 id="namespace-exception">Namespace Exception</h2>
+
 <h3 id="e-1-service">e-1) Service</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">svc-2</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">ports</span>:
-  - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">9000</span>
-    <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>
-    <span style="color:#f92672">nodePort</span>: <span style="color:#ae81ff">30000</span>
-  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">NodePort</span>
-</code></pre></div><h3 id="e-2-pod">e-2) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-2</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">nodeSelector</span>:
-    <span style="color:#f92672">kubernetes.io/hostname</span>: <span style="color:#ae81ff">k8s-node1</span>
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/init</span>
-    <span style="color:#f92672">volumeMounts</span>:
-    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">host-path</span>
-      <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/mount1</span>
-  <span style="color:#f92672">volumes</span>:
-  - <span style="color:#f92672">name </span>: <span style="color:#ae81ff">host-path</span>
-    <span style="color:#f92672">hostPath</span>:
-      <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/node-v</span>
-      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">DirectoryOrCreate</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">echo <span style="color:#e6db74">&#34;hello&#34;</span> &gt;&gt; hello.txt
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: svc-2
+spec:
+  ports:
+  - port: 9000
+    targetPort: 8080
+    nodePort: 30000
+  type: NodePort
+</code></pre>
+
+<h3 id="e-2-pod">e-2) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+ name: pod-2
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-node1
+  containers:
+  - name: container
+    image: kubetm/init
+    volumeMounts:
+    - name: host-path
+      mountPath: /mount1
+  volumes:
+  - name : host-path
+    hostPath:
+      path: /node-v
+      type: DirectoryOrCreate
+</code></pre>
+
+<pre><code class="language-sh">echo &quot;hello&quot; &gt;&gt; hello.txt
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h3 id="2-resourcequota">2. ResourceQuota</h3>
-<hr>
+
+<hr />
+
 
 
 
@@ -416,51 +469,72 @@
     
 
 
-<h3 id="2-1-namespace">2-1) Namespace</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Namespace</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nm-3</span>
-</code></pre></div><h3 id="2-2-resourcequota">2-2) ResourceQuota</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ResourceQuota</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">rq-1</span>
-  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">nm-3</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">hard</span>:
-    <span style="color:#f92672">requests.memory</span>: <span style="color:#ae81ff">1Gi</span>
-    <span style="color:#f92672">limits.memory</span>: <span style="color:#ae81ff">1Gi</span>
-</code></pre></div><p>ResourceQuota Check Command</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl describe resourcequotas --namespace<span style="color:#f92672">=</span>nm-3
-</code></pre></div><h3 id="2-3-pod">2-3) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-2</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
 
-</code></pre></div><h3 id="2-4-pod">2-4) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-3</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-    <span style="color:#f92672">resources</span>:
-      <span style="color:#f92672">requests</span>:
-        <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">5Gi</span>
-      <span style="color:#f92672">limits</span>:
-        <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">5Gi</span>
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+<h3 id="2-1-namespace">2-1) Namespace</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: nm-3
+</code></pre>
+
+<h3 id="2-2-resourcequota">2-2) ResourceQuota</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: rq-1
+  namespace: nm-3
+spec:
+  hard:
+    requests.memory: 1Gi
+    limits.memory: 1Gi
+</code></pre>
+
+<p>ResourceQuota Check Command</p>
+
+<pre><code class="language-sh">kubectl describe resourcequotas --namespace=nm-3
+</code></pre>
+
+<h3 id="2-3-pod">2-3) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-2
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+
+</code></pre>
+
+<h3 id="2-4-pod">2-4) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-3
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+    resources:
+      requests:
+        memory: 0.5Gi
+      limits:
+        memory: 0.5Gi
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="3-limitrange">3. LimitRange</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -492,116 +566,162 @@
     
 
 
+
 <h3 id="3-1-namespace">3-1) Namespace</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Namespace</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nm-5</span>
-</code></pre></div><h3 id="3-2-limitrange">3-2) LimitRange</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">LimitRange</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">lr-1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">limits</span>:
-  - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">Container</span>
-    <span style="color:#f92672">min</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">1Gi</span>
-    <span style="color:#f92672">max</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">4Gi</span>
-    <span style="color:#f92672">maxLimitRequestRatio</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">3</span>
-    <span style="color:#f92672">defaultRequest</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">1Gi</span>
-    <span style="color:#f92672">default</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">2Gi</span>
-</code></pre></div><p>LimitRange Check Command</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl describe limitranges --namespace<span style="color:#f92672">=</span>nm-5
-</code></pre></div><h3 id="3-3-pod">3-3) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-    <span style="color:#f92672">resources</span>:
-      <span style="color:#f92672">requests</span>:
-        <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">1Gi</span>
-      <span style="color:#f92672">limits</span>:
-        <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">5Gi</span>
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: nm-5
+</code></pre>
+
+<h3 id="3-2-limitrange">3-2) LimitRange</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: LimitRange
+metadata:
+  name: lr-1
+spec:
+  limits:
+  - type: Container
+    min:
+      memory: 0.1Gi
+    max:
+      memory: 0.4Gi
+    maxLimitRequestRatio:
+      memory: 3
+    defaultRequest:
+      memory: 0.1Gi
+    default:
+      memory: 0.2Gi
+</code></pre>
+
+<p>LimitRange Check Command</p>
+
+<pre><code class="language-sh">kubectl describe limitranges --namespace=nm-5
+</code></pre>
+
+<h3 id="3-3-pod">3-3) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+    resources:
+      requests:
+        memory: 0.1Gi
+      limits:
+        memory: 0.5Gi
+</code></pre>
+
+<p><br/></p>
+
+<hr />
+
 <h3 id="limitrange-exception">LimitRange Exception</h3>
+
 <h3 id="e-1-namespace">e-1) Namespace</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Namespace</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nm-6</span>
-</code></pre></div><h3 id="e-2-limitrange">e-2) LimitRange</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">LimitRange</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">lr-5</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">limits</span>:
-  - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">Container</span>
-    <span style="color:#f92672">min</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">1Gi</span>
-    <span style="color:#f92672">max</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">5Gi</span>
-    <span style="color:#f92672">maxLimitRequestRatio</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">1</span>
-    <span style="color:#f92672">defaultRequest</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">5Gi</span>
-    <span style="color:#f92672">default</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">5Gi</span>
-</code></pre></div><h3 id="e-3-limitrange">e-3) LimitRange</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">LimitRange</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">lr-3</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">limits</span>:
-  - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">Container</span>
-    <span style="color:#f92672">min</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">1Gi</span>
-    <span style="color:#f92672">max</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">3Gi</span>
-    <span style="color:#f92672">maxLimitRequestRatio</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">1</span>
-    <span style="color:#f92672">defaultRequest</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">3Gi</span>
-    <span style="color:#f92672">default</span>:
-      <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">3Gi</span>
-</code></pre></div><h3 id="e-4-pod">e-4) Pod</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pod-1</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">container</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">kubetm/app</span>
-</code></pre></div><!-- raw HTML omitted -->
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: nm-6
+</code></pre>
+
+<h3 id="e-2-limitrange">e-2) LimitRange</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: LimitRange
+metadata:
+  name: lr-5
+spec:
+  limits:
+  - type: Container
+    min:
+      memory: 0.1Gi
+    max:
+      memory: 0.5Gi
+    maxLimitRequestRatio:
+      memory: 1
+    defaultRequest:
+      memory: 0.5Gi
+    default:
+      memory: 0.5Gi
+</code></pre>
+
+<h3 id="e-3-limitrange">e-3) LimitRange</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: LimitRange
+metadata:
+  name: lr-3
+spec:
+  limits:
+  - type: Container
+    min:
+      memory: 0.1Gi
+    max:
+      memory: 0.3Gi
+    maxLimitRequestRatio:
+      memory: 1
+    defaultRequest:
+      memory: 0.3Gi
+    default:
+      memory: 0.3Gi
+</code></pre>
+
+<h3 id="e-4-pod">e-4) Pod</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+spec:
+  containers:
+  - name: container
+    image: kubetm/app
+</code></pre>
+
+<p><br/></p>
+
 <h3 id="limitrange에-대한-강의-내용-보충">LimitRange에 대한 강의 내용 보충</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">ResourceQuota는 Namespace 뿐만 아니라 Cluster 전체에 부여할 수 있는 권한이지만,</span>
-<span style="color:#ae81ff">LimitRange의 경우 Namespace내에서만 사용 가능합니다.</span>
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-yaml">ResourceQuota는 Namespace 뿐만 아니라 Cluster 전체에 부여할 수 있는 권한이지만,
+LimitRange의 경우 Namespace내에서만 사용 가능합니다.
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="kubectl">kubectl</h2>
-<hr>
-<h3 id="-__describe__">* <strong>Describe</strong></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># nm-3의 Namespace에 있는 ResourceQuota들의 상세 조회</span>
-kubectl describe resourcequotas --namespace<span style="color:#f92672">=</span>nm-3
-<span style="color:#75715e"># nm-5의 Namespace에 있는 LimitRange들의 상세 조회</span>
-kubectl describe limitranges --namespace<span style="color:#f92672">=</span>nm-5
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<hr />
+
+<h3 id="describe">* <strong>Describe</strong></h3>
+
+<pre><code class="language-sh"># nm-3의 Namespace에 있는 ResourceQuota들의 상세 조회
+kubectl describe resourcequotas --namespace=nm-3
+# nm-5의 Namespace에 있는 LimitRange들의 상세 조회
+kubectl describe limitranges --namespace=nm-5
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="referenece">Referenece</h2>
-<hr>
-<h3 id="-__kubernetes__">* <strong>Kubernetes</strong></h3>
+
+<hr />
+
+<h3 id="kubernetes">* <strong>Kubernetes</strong></h3>
+
 <ul>
 <li><strong>Share a Cluster with Namespaces</strong> : <a href="https://kubernetes.io/docs/tasks/administer-cluster/namespaces/">https://kubernetes.io/docs/tasks/administer-cluster/namespaces/</a></li>
 <li><strong>Resource Quotas</strong> : <a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/">https://kubernetes.io/docs/concepts/policy/resource-quotas/</a></li>

@@ -26,18 +26,22 @@
   <meta property="og:url" content="https://kubetm.github.io/">
 
 
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <meta itemprop="name" content="내 차트 만들기1">
 <meta itemprop="description" content="[내장 객체, 변수 주입 우선순위, 사용자 정의 변수]">
 
+
+
 <meta itemprop="wordCount" content="441">
+
+
+
 <meta itemprop="keywords" content="" />
+
   <meta property="og:title" content="내 차트 만들기1" />
 <meta property="og:description" content="[내장 객체, 변수 주입 우선순위, 사용자 정의 변수]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/helm_practice/template/chart-step1/" /><meta property="article:section" content="helm_practice" />
-
-
+<meta property="og:url" content="https://kubetm.github.io/helm_practice/template/chart-step1/" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -252,10 +256,16 @@
   <div class="content">
   
   
-    <!-- raw HTML omitted -->
-<hr>
+    
+
+<p><br/></p>
+
+<hr />
+
 <h2 id="1-helm-명령어">1. Helm 명령어</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -287,21 +297,37 @@
     
 
 
-<!-- raw HTML omitted -->
+
+<p><br/></p>
+
 <h3 id="1-1-chart-template-생성">1-1) Chart Template 생성</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm create mychart
-</code></pre></div><h3 id="1-2-show-명령">1-2) Show 명령</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm show values .
+
+<pre><code class="language-sh">helm create mychart
+</code></pre>
+
+<h3 id="1-2-show-명령">1-2) Show 명령</h3>
+
+<pre><code class="language-sh">helm show values .
 helm show chart .
 helm show readme .
 helm show all .
-</code></pre></div><p>vi README.md</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Title</span>
-<span style="color:#75715e">## Introduction</span>
+</code></pre>
+
+<p>vi README.md</p>
+
+<pre><code class="language-sh"># Title
+## Introduction
 This is README.md
-</code></pre></div><h3 id="1-3-template-명령">1-3) Template 명령</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm template mychart .
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre>
+
+<h3 id="1-3-template-명령">1-3) Template 명령</h3>
+
+<pre><code class="language-sh">helm template mychart .
+</code></pre>
+
+<p><br/>
+<br/></p>
+
 
 
 
@@ -333,22 +359,38 @@ This is README.md
     
 
 
-<!-- raw HTML omitted -->
+
+<p><br/></p>
+
 <h3 id="1-4-chart-배포">1-4) Chart 배포</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm install mychart .
-</code></pre></div><h3 id="1-5-get-명령">1-5) Get 명령</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm get manifest mychart
+
+<pre><code class="language-sh">helm install mychart .
+</code></pre>
+
+<h3 id="1-5-get-명령">1-5) Get 명령</h3>
+
+<pre><code class="language-sh">helm get manifest mychart
 helm get notes mychart
 helm get values mychart
 helm get all mychart
-</code></pre></div><p>helm get values 비교</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm uninstall mychart
+</code></pre>
+
+<p>helm get values 비교</p>
+
+<pre><code class="language-sh">helm uninstall mychart
 helm install mychart . -f values.yaml
-helm install mychart . --set replicaCount<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+helm install mychart . --set replicaCount=3
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="2-내장-객체">2. 내장 객체</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -380,46 +422,63 @@ helm install mychart . --set replicaCount<span style="color:#f92672">=</span><sp
     
 
 
-<!-- raw HTML omitted -->
+
+<p><br/></p>
+
 <h3 id="2-1-configmap-추가">2-1) configmap 추가</h3>
+
 <p>vi cm-object.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ConfigMap</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">built-in-object</span>
-<span style="color:#f92672">data</span>:
-  <span style="color:#f92672">.Release</span>: <span style="color:#ae81ff">______________________________________</span>
-  <span style="color:#f92672">.Release.Name</span>: {{ <span style="color:#ae81ff">.Release.Name }}</span>
-  <span style="color:#f92672">.Release.Namespace</span>: {{ <span style="color:#ae81ff">.Release.Namespace }}</span>
-  <span style="color:#f92672">.Release.IsUpgrade</span>: <span style="color:#e6db74">&#34;{{ .Release.IsUpgrade }}&#34;</span>
-  <span style="color:#f92672">.Release.IsInstall</span>: <span style="color:#e6db74">&#34;{{ .Release.IsInstall }}&#34;</span>
-  <span style="color:#f92672">.Release.Revision</span>: <span style="color:#e6db74">&#34;{{ .Release.Revision }}&#34;</span>
-  <span style="color:#f92672">.Release.Service</span>: {{ <span style="color:#ae81ff">.Release.Service }}</span>
-  <span style="color:#f92672">.Values</span>: <span style="color:#ae81ff">______________________________________</span>
-  <span style="color:#f92672">.Values.replicaCount</span>: <span style="color:#e6db74">&#34;{{ .Values.replicaCount }}&#34;</span>
-  <span style="color:#f92672">.Values.image.repository</span>: {{ <span style="color:#ae81ff">.Values.image.repository }}</span>
-  <span style="color:#f92672">.Values.image.pullPolicy</span>: {{ <span style="color:#ae81ff">.Values.image.pullPolicy }}</span>
-  <span style="color:#f92672">.Values.service.type</span>: {{ <span style="color:#ae81ff">.Values.service.type }}</span>
-  <span style="color:#f92672">.Values.service.port</span>: <span style="color:#e6db74">&#34;{{ .Values.service.port }}&#34;</span>
-  <span style="color:#f92672">.Chart</span>: <span style="color:#ae81ff">______________________________________</span>
-  <span style="color:#f92672">.Chart.Name</span>: {{ <span style="color:#ae81ff">.Chart.Name }}</span>
-  <span style="color:#f92672">.Chart.Description</span>: {{ <span style="color:#ae81ff">.Chart.Description }}</span>
-  <span style="color:#f92672">.Chart.Type</span>: {{ <span style="color:#ae81ff">.Chart.Type }}</span>
-  <span style="color:#f92672">.Chart.Version</span>: {{ <span style="color:#ae81ff">.Chart.Version }}</span>
-  <span style="color:#f92672">.Chart.AppVersion</span>: {{ <span style="color:#ae81ff">.Chart.AppVersion }}</span>
-  <span style="color:#f92672">.Template</span>: <span style="color:#ae81ff">______________________________________</span>
-  <span style="color:#f92672">.Template.BasePath</span>: {{ <span style="color:#ae81ff">.Template.BasePath }}</span>
-  <span style="color:#f92672">.Template.Name</span>: {{ <span style="color:#ae81ff">.Template.Name }}</span>
-</code></pre></div><p>templates 폴더 안에 불필요한 파일 삭제</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml tests
-</code></pre></div><p>install 배포</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm install mychart . -n default
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: built-in-object
+data:
+  .Release: ______________________________________
+  .Release.Name: {{ .Release.Name }}
+  .Release.Namespace: {{ .Release.Namespace }}
+  .Release.IsUpgrade: &quot;{{ .Release.IsUpgrade }}&quot;
+  .Release.IsInstall: &quot;{{ .Release.IsInstall }}&quot;
+  .Release.Revision: &quot;{{ .Release.Revision }}&quot;
+  .Release.Service: {{ .Release.Service }}
+  .Values: ______________________________________
+  .Values.replicaCount: &quot;{{ .Values.replicaCount }}&quot;
+  .Values.image.repository: {{ .Values.image.repository }}
+  .Values.image.pullPolicy: {{ .Values.image.pullPolicy }}
+  .Values.service.type: {{ .Values.service.type }}
+  .Values.service.port: &quot;{{ .Values.service.port }}&quot;
+  .Chart: ______________________________________
+  .Chart.Name: {{ .Chart.Name }}
+  .Chart.Description: {{ .Chart.Description }}
+  .Chart.Type: {{ .Chart.Type }}
+  .Chart.Version: {{ .Chart.Version }}
+  .Chart.AppVersion: {{ .Chart.AppVersion }}
+  .Template: ______________________________________
+  .Template.BasePath: {{ .Template.BasePath }}
+  .Template.Name: {{ .Template.Name }}
+</code></pre>
+
+<p>templates 폴더 안에 불필요한 파일 삭제</p>
+
+<pre><code class="language-sh">rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml tests
+</code></pre>
+
+<p>install 배포</p>
+
+<pre><code class="language-sh">helm install mychart . -n default
 helm get manifest mychart 
 helm upgrade mychart . -n default
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="3-변수-주입-우선순위">3. 변수 주입 우선순위</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -451,37 +510,64 @@ helm upgrade mychart . -n default
     
 
 
-<!-- raw HTML omitted -->
+
+<p><br/></p>
+
 <h3 id="3-1-configmap-추가">3-1) configmap 추가</h3>
+
 <p>vi cm-values.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ConfigMap</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">values-yaml</span>
-<span style="color:#f92672">data</span>:
-  <span style="color:#f92672">env</span>: {{ <span style="color:#ae81ff">.Values.configMapData.env }}</span>
-  <span style="color:#f92672">log</span>: {{ <span style="color:#ae81ff">.Values.configMapData.log }}</span>
-  <span style="color:#f92672">path</span>: <span style="color:#e6db74">&#34;{{ .Values.configMapData.path }}&#34;</span>
-</code></pre></div><h3 id="3-2-valuesyaml에-해당-속성-추가">3-2) values.yaml에 해당 속성 추가</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">configMapData</span>:
-  <span style="color:#f92672">env</span>: <span style="color:#ae81ff">dev</span>
-  <span style="color:#f92672">log</span>: <span style="color:#ae81ff">debug</span>
-  <span style="color:#f92672">path</span>: <span style="color:#e6db74">&#34;/data&#34;</span>
-</code></pre></div><h3 id="3-3-확인">3-3) 확인</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm template mychart .
-</code></pre></div><h3 id="3-4-prod용-values_prodyaml-파일-추가">3-4) Prod용 values_prod.yaml 파일 추가</h3>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: values-yaml
+data:
+  env: {{ .Values.configMapData.env }}
+  log: {{ .Values.configMapData.log }}
+  path: &quot;{{ .Values.configMapData.path }}&quot;
+</code></pre>
+
+<h3 id="3-2-values-yaml에-해당-속성-추가">3-2) values.yaml에 해당 속성 추가</h3>
+
+<pre><code class="language-yaml">configMapData:
+  env: dev
+  log: debug
+  path: &quot;/data&quot;
+</code></pre>
+
+<h3 id="3-3-확인">3-3) 확인</h3>
+
+<pre><code class="language-sh">helm template mychart .
+</code></pre>
+
+<h3 id="3-4-prod용-values-prod-yaml-파일-추가">3-4) Prod용 values_prod.yaml 파일 추가</h3>
+
 <p>vi values_prod.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">configMapData</span>:
-  <span style="color:#f92672">env</span>: <span style="color:#ae81ff">prod</span>
-  <span style="color:#f92672">log</span>: <span style="color:#ae81ff">info</span>
-</code></pre></div><h3 id="3-5--f-옵션-적용">3-5) -f 옵션 적용</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm template mychart . -f ./values_prod.yaml
-</code></pre></div><h3 id="3-6--f-옵션-적용---set-옵션-적용">3-6) -f 옵션 적용, &ndash;set 옵션 적용</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm template mychart . -f ./values_prod.yaml --set configMapData.log<span style="color:#f92672">=</span>debug
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+
+<pre><code class="language-yaml">configMapData:
+  env: prod
+  log: info
+</code></pre>
+
+<h3 id="3-5-f-옵션-적용">3-5) -f 옵션 적용</h3>
+
+<pre><code class="language-sh">helm template mychart . -f ./values_prod.yaml
+</code></pre>
+
+<h3 id="3-6-f-옵션-적용-set-옵션-적용">3-6) -f 옵션 적용, &ndash;set 옵션 적용</h3>
+
+<pre><code class="language-sh">helm template mychart . -f ./values_prod.yaml --set configMapData.log=debug
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="4-사용자-정의-변수">4. 사용자 정의 변수</h2>
-<hr>
+
+<hr />
+
 
 
 
@@ -513,51 +599,72 @@ helm upgrade mychart . -n default
     
 
 
-<p>_helpers.tpl 파일</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#f92672">{{</span>/*
-Expand the name of the chart.
-*/<span style="color:#f92672">}}</span>
-<span style="color:#f92672">{{</span>- define <span style="color:#e6db74">&#34;mychart.name&#34;</span> -<span style="color:#f92672">}}</span>
-<span style="color:#f92672">{{</span>- default .Chart.Name .Values.nameOverride | trunc <span style="color:#ae81ff">63</span> | trimSuffix <span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">}}</span>
-<span style="color:#f92672">{{</span>- end <span style="color:#f92672">}}</span>
 
-<span style="color:#f92672">{{</span>/*
+<p>_helpers.tpl 파일</p>
+
+<pre><code class="language-sh">{{/*
+Expand the name of the chart.
+*/}}
+{{- define &quot;mychart.name&quot; -}}
+{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix &quot;-&quot; }}
+{{- end }}
+
+{{/*
 Common labels
-*/<span style="color:#f92672">}}</span>
-<span style="color:#f92672">{{</span>- define <span style="color:#e6db74">&#34;mychart.labels&#34;</span> -<span style="color:#f92672">}}</span>
-helm.sh/chart: <span style="color:#f92672">{{</span> include <span style="color:#e6db74">&#34;mychart.chart&#34;</span> . <span style="color:#f92672">}}</span>
-<span style="color:#f92672">{{</span> include <span style="color:#e6db74">&#34;mychart.selectorLabels&#34;</span> . <span style="color:#f92672">}}</span>
-<span style="color:#f92672">{{</span>- <span style="color:#66d9ef">if</span> .Chart.AppVersion <span style="color:#f92672">}}</span>
-app.kubernetes.io/version: <span style="color:#f92672">{{</span> .Chart.AppVersion | quote <span style="color:#f92672">}}</span>
-<span style="color:#f92672">{{</span>- end <span style="color:#f92672">}}</span>
-app.kubernetes.io/managed-by: <span style="color:#f92672">{{</span> .Release.Service <span style="color:#f92672">}}</span>
-<span style="color:#f92672">{{</span>- end <span style="color:#f92672">}}</span>
-</code></pre></div><!-- raw HTML omitted -->
+*/}}
+{{- define &quot;mychart.labels&quot; -}}
+helm.sh/chart: {{ include &quot;mychart.chart&quot; . }}
+{{ include &quot;mychart.selectorLabels&quot; . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+</code></pre>
+
+<p><br/></p>
+
 <p>service.yaml 파일</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">apiVersion: v1
+
+<pre><code class="language-sh">apiVersion: v1
 kind: Service
 metadata:
-  name: <span style="color:#f92672">{{</span> include <span style="color:#e6db74">&#34;mychart.fullname&#34;</span> . <span style="color:#f92672">}}</span>
+  name: {{ include &quot;mychart.fullname&quot; . }}
   labels:
-    <span style="color:#f92672">{{</span>- include <span style="color:#e6db74">&#34;mychart.labels&#34;</span> . | nindent <span style="color:#ae81ff">4</span> <span style="color:#f92672">}}</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm template mychart .
-</code></pre></div><!-- raw HTML omitted -->
-<hr>
+    {{- include &quot;mychart.labels&quot; . | nindent 4 }}
+</code></pre>
+
+<pre><code class="language-sh">helm template mychart .
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<hr />
+
 <h2 id="referenece">Referenece</h2>
-<hr>
-<h3 id="-__helm__">* <strong>Helm</strong></h3>
+
+<hr />
+
+<h3 id="helm">* <strong>Helm</strong></h3>
+
 <ul>
 <li><strong>차트 템플릿에 관한 빠른 가이드</strong> : <a href="https://helm.sh/docs/chart_template_guide/getting_started/">https://helm.sh/docs/chart_template_guide/getting_started/</a></li>
 <li><strong>내장 객체</strong> : <a href="https://helm.sh/docs/chart_template_guide/builtin_objects/">https://helm.sh/docs/chart_template_guide/builtin_objects/</a></li>
 <li><strong>변수주입과 우선순위</strong> : <a href="https://helm.sh/docs/chart_template_guide/values_files/">https://helm.sh/docs/chart_template_guide/values_files/</a></li>
 <li><strong>사용자 정의 변수</strong> : <a href="https://helm.sh/docs/chart_template_guide/named_templates/">https://helm.sh/docs/chart_template_guide/named_templates/</a></li>
-<li><strong>Helm 생성시 명명규칙</strong> : <a href="https://helm.sh/docs/chart_best_practices/conventions/">https://helm.sh/docs/chart_best_practices/conventions/</a></li>
+<li><strong>Helm 생성시 명명규칙</strong> : <a href="https://helm.sh/docs/chart_best_practices/conventions/">https://helm.sh/docs/chart_best_practices/conventions/</a>
+<br /></li>
 </ul>
-<h3 id="-__others__">* <strong>Others</strong></h3>
+
+<h3 id="others">* <strong>Others</strong></h3>
+
 <ul>
 <li><strong>Markdown 가이드</strong> : <a href="https://www.markdownguide.org/basic-syntax/">https://www.markdownguide.org/basic-syntax/</a></li>
-<li><strong>GoDoc 패키지 템플릿</strong> : <a href="https://godoc.org/text/template">https://godoc.org/text/template</a></li>
-<li><strong>Sprig 함수</strong> : <a href="https://masterminds.github.io/sprig/">https://masterminds.github.io/sprig/</a></li>
+<li><strong>GoDoc 패키지 템플릿</strong> : <a href="https://godoc.org/text/template">https://godoc.org/text/template</a><br /></li>
+<li><strong>Sprig 함수</strong> : <a href="https://masterminds.github.io/sprig/">https://masterminds.github.io/sprig/</a>
+<br />
+<br /></li>
 </ul>
 
   </div>
