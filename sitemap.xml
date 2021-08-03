@@ -63,11 +63,6 @@
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/info/01.%EC%B4%88%EA%B8%89%ED%8E%B8/</loc>
-    <lastmod>2021-08-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.docsy.devhttps://kubetm.github.io/helm/01-beginner/gettingstarted/</loc>
     <lastmod>2018-08-03T00:00:00+00:00</lastmod>
   </url>
@@ -285,11 +280,6 @@
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/info/</loc>
-    <lastmod>2021-08-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.docsy.devhttps://kubetm.github.io/helm/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
@@ -314,6 +304,10 @@
   
   <url>
     <loc>https://www.docsy.devhttps://kubetm.github.io/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.docsy.devhttps://kubetm.github.io/info/</loc>
   </url>
   
 </urlset>
