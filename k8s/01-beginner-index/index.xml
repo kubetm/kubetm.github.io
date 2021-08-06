@@ -1,0 +1,18 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>KubeTM Blog – === 초급편 ===</title>
+    <link>https://taemin77.github.io/k8s/01-beginner-index/</link>
+    <description>Recent content in === 초급편 === on KubeTM Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://taemin77.github.io/k8s/01-beginner-index/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>
