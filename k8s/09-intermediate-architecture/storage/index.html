@@ -17,23 +17,23 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Networking Architecture | KubeTM Blog</title>
-<meta name="description" content=""><meta property="og:title" content="Networking Architecture" />
-<meta property="og:description" content="Pod Network(Pause Container, Network Plugin), Service Network(iptables, IPVS)
+<title>Storage Architecture | KubeTM Blog</title>
+<meta name="description" content=""><meta property="og:title" content="Storage Architecture" />
+<meta property="og:description" content="FileStorage(NFS), BlockStorage(Longhorn)
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://taemin77.github.io/k8s/09-intermediate-architecture/storage/" /><meta property="article:section" content="k8s" />
 <meta property="article:published_time" content="2021-08-02T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-08-02T00:00:00+00:00" /><meta property="og:site_name" content="KubeTM Blog" />
 
-<meta itemprop="name" content="Networking Architecture">
-<meta itemprop="description" content="Pod Network(Pause Container, Network Plugin), Service Network(iptables, IPVS)
+<meta itemprop="name" content="Storage Architecture">
+<meta itemprop="description" content="FileStorage(NFS), BlockStorage(Longhorn)
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="266">
+<meta itemprop="wordCount" content="243">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Networking Architecture"/>
-<meta name="twitter:description" content="Pod Network(Pause Container, Network Plugin), Service Network(iptables, IPVS)
+<meta name="twitter:title" content="Storage Architecture"/>
+<meta name="twitter:description" content="FileStorage(NFS), BlockStorage(Longhorn)
 "/>
 
 
@@ -1062,10 +1062,10 @@
   
   
   
-  <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-k8s09-intermediate-architecturestorage-li">
+  <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-k8s09-intermediate-architecturenetworking-li">
     
-      <input type="checkbox" id="m-k8s09-intermediate-architecturestorage-check"/>
-      <label for="m-k8s09-intermediate-architecturestorage-check"><a href="/k8s/09-intermediate-architecture/storage/" title="Networking Architecture" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s09-intermediate-architecturestorage"><span class="">Networking</span></a></label>
+      <input type="checkbox" id="m-k8s09-intermediate-architecturenetworking-check"/>
+      <label for="m-k8s09-intermediate-architecturenetworking-check"><a href="/k8s/09-intermediate-architecture/networking/" title="Networking Architecture" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s09-intermediate-architecturenetworking"><span class="">Networking</span></a></label>
     
     
   </li>
@@ -1090,10 +1090,10 @@
   
   
   
-  <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-k8s09-intermediate-architecturenetworking-li">
+  <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-k8s09-intermediate-architecturestorage-li">
     
-      <input type="checkbox" id="m-k8s09-intermediate-architecturenetworking-check"/>
-      <label for="m-k8s09-intermediate-architecturenetworking-check"><a href="/k8s/09-intermediate-architecture/networking/" title="Storage Architecture" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s09-intermediate-architecturenetworking"><span class="">Storage</span></a></label>
+      <input type="checkbox" id="m-k8s09-intermediate-architecturestorage-check"/>
+      <label for="m-k8s09-intermediate-architecturestorage-check"><a href="/k8s/09-intermediate-architecture/storage/" title="Storage Architecture" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s09-intermediate-architecturestorage"><span class="">Storage</span></a></label>
     
     
   </li>
@@ -1459,7 +1459,7 @@
 
     <a href="https://github.com/kubetm/blog/edit/main/userguide/content/en/k8s/09-intermediate-architecture/storage.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
     <a href="https://github.com/kubetm/blog/new/main/userguide/content/en/k8s/09-intermediate-architecture/storage.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-    <a href="https://github.com/kubetm/blog/issues/new?title=Networking%20Architecture" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+    <a href="https://github.com/kubetm/blog/issues/new?title=Storage%20Architecture" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
     
       
       <a href="https://github.com/kubetm/blog/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -1475,32 +1475,34 @@
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#1-pod-network---pause-container">1. Pod Network - Pause Container</a>
+    <li><a href="#1-ftp-server-구축">1. FTP Server 구축</a>
       <ul>
-        <li><a href="#1-1-pause-container">1-1) Pause Container</a></li>
-        <li><a href="#1-2-calico-interface-확인">1-2) Calico Interface 확인</a></li>
-        <li><a href="#1-3-pause-container-network-namespaces-확인">1-3) Pause Container Network Namespaces 확인</a></li>
+        <li><a href="#1-1-nfs-패키지-다운-및-설치">1-1) NFS 패키지 다운 및 설치</a></li>
+        <li><a href="#1-2-공유-폴더-생성-및-설정">1-2) 공유 폴더 생성 및 설정</a></li>
       </ul>
     </li>
-    <li><a href="#2-pod-network---calico">2. Pod Network - Calico</a>
+    <li><a href="#2-filestroage-nfs-연결-pod">2. FileStroage (NFS) 연결 Pod</a>
       <ul>
-        <li><a href="#2-1-pod-source">2-1) Pod (source)</a></li>
-        <li><a href="#2-2-pod-destination">2-2) Pod (destination)</a></li>
-        <li><a href="#2-3-overlay-networkip-in-ip-트래픽-확인">2-3) Overlay Network(IP-in-IP) 트래픽 확인</a></li>
-        <li><a href="#2-4-트래픽-확인">2-4) 트래픽 확인</a></li>
+        <li><a href="#2-1-nfs-연결을-위한-persistentvolume-생성">2-1) NFS 연결을 위한 PersistentVolume 생성</a></li>
+        <li><a href="#2-2-persistentvolumeclaim">2-2) PersistentVolumeClaim</a></li>
+        <li><a href="#2-3-pod">2-3) Pod</a></li>
       </ul>
     </li>
-    <li><a href="#3-service-networkclusterip---calico">3. Service Network[clusterIP] - Calico</a>
+    <li><a href="#3-longhorn-구축">3. Longhorn 구축</a>
       <ul>
-        <li><a href="#3-1-service-clusterip">3-1) service (clusterIP)</a></li>
-        <li><a href="#3-2-트래픽-확인">3-2) 트래픽 확인</a></li>
+        <li><a href="#3-1-모든-masterwork-node에-iscsi-설치">3-1) 모든 Master/Work Node에 iscsi 설치</a></li>
+        <li><a href="#3-2-longhorn-설치">3-2) Longhorn 설치</a></li>
+        <li><a href="#3-3-확인">3-3) 확인</a></li>
+        <li><a href="#3-4-기존-longhorn-storageclass-삭제-및-재생성">3-4) 기존 Longhorn StorageClass 삭제 및 재생성</a></li>
+        <li><a href="#3-5-longhorn-dashboard-접속을-위한-port-type변경">3-5) Longhorn Dashboard 접속을 위한 Port Type변경</a></li>
       </ul>
     </li>
-    <li><a href="#4-service-networknodeport---calico">4. Service Network[NodePort] - Calico</a>
+    <li><a href="#4-longhorn-volume에-pod-연결">4. Longhorn Volume에 POD 연결</a>
       <ul>
-        <li><a href="#4-1-service-nodeport">4-1) service (NodePort)</a></li>
-        <li><a href="#4-2-nodeport-확인">4-2) nodeport 확인</a></li>
-        <li><a href="#4-3-트래픽-확인">4-3) 트래픽 확인</a></li>
+        <li><a href="#4-1-persistentvolumeclaim">4-1) PersistentVolumeClaim</a></li>
+        <li><a href="#4-2-longhorn-dashboard-접속">4-2) Longhorn Dashboard 접속</a></li>
+        <li><a href="#4-3-pod">4-3) Pod</a></li>
+        <li><a href="#4-4-longhorn-volumeattachments-확인">4-4) Longhorn Volumeattachments 확인</a></li>
       </ul>
     </li>
     <li><a href="#referenece">Referenece</a>
@@ -1559,7 +1561,7 @@
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://taemin77.github.io/k8s/09-intermediate-architecture/storage/">Networking</a>
+	<a href="https://taemin77.github.io/k8s/09-intermediate-architecture/storage/">Storage</a>
 </li>
 
 	</ol>
@@ -1567,8 +1569,8 @@
 
             
 <div class="td-content">
-	<h1>Networking Architecture</h1>
-	<div class="lead">Pod Network(Pause Container, Network Plugin), Service Network(iptables, IPVS)</div>
+	<h1>Storage Architecture</h1>
+	<div class="lead">FileStorage(NFS), BlockStorage(Longhorn)</div>
 	<header class="article-meta">
 		
 		
@@ -1581,182 +1583,189 @@
 		
 	</header>    
 	<div class="mx-auto">
-	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="/documents/architecture/Storage.pdf" download>
+	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="/documents/architecture/Networking.pdf" download>
 		강의자료 PDF <i class="fas fa-download ml-2"></i>
 	</a>
 </div>
 <figure>
-  <img src="/img/practice/architecture/Networking Architecture with PodNetwork, ServiceNetwork for Kubernetes.jpg"
-       alt="Networking Architecture with PodNetwork, ServiceNetwork for Kubernetes."
+  <img src="/img/practice/architecture/Storage Architecture with FileStorage, BlockStorage, ObjectStorage for Kubernetes.jpg"
+       alt="Storage Architecture with FileStorage, BlockStorage, ObjectStorage for Kubernetes."
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
 <br/>
 <br/>
-<h2 id="1-pod-network---pause-container">1. Pod Network - Pause Container</h2>
+<h2 id="1-ftp-server-구축">1. FTP Server 구축</h2>
 <hr>
-<figure>
-  <img src="/img/practice/architecture/Pause Container on Pod Network for Kubernetes.jpg"
-       alt="Pause Container on Pod Network for Kubernetes."
-       class="mt-3 mb-3 border border-info rounded" />
-</figure>
-<h3 id="1-1-pause-container">1-1) Pause Container</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Pod</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pod-pause</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">nodeSelector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">kubernetes.io/hostname</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">k8s-node1</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">containers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">container1</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubetm/p8000</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8000</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">container2</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubetm/p8080</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>Pause Container 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker ps <span style="color:#000;font-weight:bold">|</span> grep pod-pause
-</code></pre></div><p>Pause Container 인터페이스 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker ps <span style="color:#000;font-weight:bold">|</span> grep pod-pause
-docker inspect &lt;container-id&gt; -f <span style="color:#4e9a06">&#34;{{json .NetworkSettings}}&#34;</span>
-sudo ln -s /var/run/docker/netns /var/run/netns
-ip netns <span style="color:#204a87">exec</span> &lt;SandboxKey&gt; ip a
+<h3 id="1-1-nfs-패키지-다운-및-설치">1-1) NFS 패키지 다운 및 설치</h3>
+<p>설치</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yum -y install nfs-utils rpcbind
+systemctl start rpcbind
+systemctl start nfs-server
+systemctl start rpc-statd
+systemctl <span style="color:#204a87">enable</span> rpcbind
+systemctl <span style="color:#204a87">enable</span> nfs-server
+</code></pre></div><p>확인</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">systemctl status nfs-server
 </code></pre></div><br/>
-<h3 id="1-2-calico-interface-확인">1-2) Calico Interface 확인</h3>
-<p>route 명령 설치</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yum -y install net-tools
-</code></pre></div><p>route으로 Pod IP와 연결 되어 있는 인터페이스 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">route <span style="color:#000;font-weight:bold">|</span> grep cal
-</code></pre></div><p>route로 확인된 가상인터페이스 ID가 호스트 네트워크에 있는지 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ip addr
-</code></pre></div><br/>
-<h3 id="1-3-pause-container-network-namespaces-확인">1-3) Pause Container Network Namespaces 확인</h3>
-<p>Pause Container와 타 Container간에 연결 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker inspect &lt;container-id&gt; -f <span style="color:#4e9a06">&#34;{{json .HostConfig.NetworkMode}}&#34;</span>
-</code></pre></div><p>Docker Container NetworkMode</p>
-<pre><code>NetworkMode - Sets the networking mode for the container. 
-Supported standard values are: bridge, host, none, and container:&lt;name|id&gt;. 
-Any other value is taken as a custom network’s name to which this container should connect to.
+<h3 id="1-2-공유-폴더-생성-및-설정">1-2) 공유 폴더 생성 및 설정</h3>
+<p>공유 폴더 생성</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir /share-data
+chmod <span style="color:#0000cf;font-weight:bold">777</span> /share-data
+</code></pre></div><p><code>vi /etc/exports</code> 로 아래 내용 입력 후 저장</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">/share-data *<span style="color:#ce5c00;font-weight:bold">(</span>rw,sync,no_root_squash<span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><p>반영</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">exportfs -r
+</code></pre></div><p>방화벽 해제 및 NFS Server재시작</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">systemctl stop firewalld <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> systemctl disable firewalld
+systemctl stop NetworkManager <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> systemctl disable NetworkManager
+systemctl restart nfs-server
+</code></pre></div><p>node1 및 node2에 NFS 클라이언트 설치</p>
+<pre><code>sudo yum install nfs-utils
 </code></pre><br/>
-<h2 id="2-pod-network---calico">2. Pod Network - Calico</h2>
+<br/>	
+<h2 id="2-filestroage-nfs-연결-pod">2. FileStroage (NFS) 연결 Pod</h2>
 <hr>
 <figure>
-  <img src="/img/practice/architecture/Calico Network Plugin on Pod Network for Kubernetes.jpg"
-       alt="Calico Network Plugin on Pod Network for Kubernetes."
+  <img src="/img/practice/architecture/NFS with FileStorage for Kubernetes.jpg"
+       alt="NFS with FileStorage for Kubernetes."
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
-<h3 id="2-1-pod-source">2-1) Pod (source)</h3>
+<h3 id="2-1-nfs-연결을-위한-persistentvolume-생성">2-1) NFS 연결을 위한 PersistentVolume 생성</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PersistentVolume</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pv-nfs</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">pv</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pv-nfs</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">capacity</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">storage</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">2G</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">accessModes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#000">ReadWriteMany</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">nfs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/share-data</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">server</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">192.168.219.10</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><br/>
+<h3 id="2-2-persistentvolumeclaim">2-2) PersistentVolumeClaim</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PersistentVolumeClaim</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pvc-nfs</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">accessModes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#000">ReadWriteMany</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">resources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">requests</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">storage</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">2G</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">storageClassName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">selector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">matchLabels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">pv</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pv-nfs</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><br/>
+<h3 id="2-3-pod">2-3) Pod</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Pod</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pod-src</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">src  </span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pod-nfs</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">nodeSelector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">kubernetes.io/hostname</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">k8s-node2</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">containers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">container</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubetm/init</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">volumeMounts</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">volume-nfs</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">mountPath</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/nfs/share-data</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">volumes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name </span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">volume-nfs</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">persistentVolumeClaim</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">claimName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pvc-nfs</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><br/>
-<h3 id="2-2-pod-destination">2-2) Pod (destination)</h3>
+<br/>
+<h2 id="3-longhorn-구축">3. Longhorn 구축</h2>
+<hr>
+<h3 id="3-1-모든-masterwork-node에-iscsi-설치">3-1) 모든 Master/Work Node에 iscsi 설치</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yum install -y iscsi-initiator-utils
+</code></pre></div><br/>
+<h3 id="3-2-longhorn-설치">3-2) Longhorn 설치</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/master/deploy/longhorn.yaml
+</code></pre></div><br/>
+<h3 id="3-3-확인">3-3) 확인</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get pods -n longhorn-system
+</code></pre></div><br/>
+<h3 id="3-4-기존-longhorn-storageclass-삭제-및-재생성">3-4) 기존 Longhorn StorageClass 삭제 및 재생성</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get storageclasses.storage.k8s.io -n longhorn-system longhorn
+kubectl delete storageclasses.storage.k8s.io -n longhorn-system longhorn
+</code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#000">cat &lt;&lt;EOF | kubectl create -f -</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">StorageClass</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storage.k8s.io/v1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">longhorn</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">provisioner</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">driver.longhorn.io</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">allowVolumeExpansion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">parameters</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">numberOfReplicas</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;2&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">staleReplicaTimeout</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;2880&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">fromBackup</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">EOF</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><br/>
+<h3 id="3-5-longhorn-dashboard-접속을-위한-port-type변경">3-5) Longhorn Dashboard 접속을 위한 Port Type변경</h3>
+<p>Service Type 변경 [ClusterIP -&gt; NodePort]</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl edit svc -n longhorn-system longhorn-frontend
+</code></pre></div><br/>
+<br/>
+<h2 id="4-longhorn-volume에-pod-연결">4. Longhorn Volume에 POD 연결</h2>
+<hr>
+<figure>
+  <img src="/img/practice/architecture/Longhorn with BlockStorage for Kubernetes.jpg"
+       alt="Longhorn with BlockStorage for Kubernetes."
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
+<h3 id="4-1-persistentvolumeclaim">4-1) PersistentVolumeClaim</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PersistentVolumeClaim</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">longhorn-pvc</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">accessModes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#000">ReadWriteOnce</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">storageClassName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">longhorn</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">resources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">requests</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">storage</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1Gi</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><br/>
+<h3 id="4-2-longhorn-dashboard-접속">4-2) Longhorn Dashboard 접속</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">http://localhost:30001
+</code></pre></div><br/>
+<h3 id="4-3-pod">4-3) Pod</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Pod</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pod-dest</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">dest</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pod-blockstorage</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">nodeSelector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">kubernetes.io/hostname</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">k8s-node1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">containers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">container</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubetm/app</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">80</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubetm/init</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">volumeMounts</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">volume-blockstorage</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">mountPath</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/longhorn/data</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">volumes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name </span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">volume-blockstorage</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">persistentVolumeClaim</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">claimName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">longhorn-pvc</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><br/>
-<h3 id="2-3-overlay-networkip-in-ip-트래픽-확인">2-3) Overlay Network(IP-in-IP) 트래픽 확인</h3>
-<p>Calico Overlay Network 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl describe IPPool
-</code></pre></div><p>Cluster의 Pod Network CIDR 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl cluster-info dump <span style="color:#000;font-weight:bold">|</span> grep -m <span style="color:#0000cf;font-weight:bold">1</span> cluster-cidr
+<h3 id="4-4-longhorn-volumeattachments-확인">4-4) Longhorn Volumeattachments 확인</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get -n longhorn-system volumeattachments.storage.k8s.io
 </code></pre></div><br/>
-<h3 id="2-4-트래픽-확인">2-4) 트래픽 확인</h3>
-<p>tcpdump 설치</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yum -y install tcpdump
-</code></pre></div><p>트래픽 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">route <span style="color:#000;font-weight:bold">|</span> grep cal
-tcpdump -i &lt;interface-name&gt;
-</code></pre></div><br/>
-<br/>
-<h2 id="3-service-networkclusterip---calico">3. Service Network[clusterIP] - Calico</h2>
-<hr>
-<figure>
-  <img src="/img/practice/architecture/ClusterIP with Calico on Service Network for Kubernetes.jpg"
-       alt="ClusterIP with Calico on Service Network for Kubernetes."
-       class="mt-3 mb-3 border border-info rounded" />
-</figure>
-<h3 id="3-1-service-clusterip">3-1) service (clusterIP)</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Service</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">svc-clusterip</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">selector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">dest</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">targetPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ClusterIP</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><br/>
-<h3 id="3-2-트래픽-확인">3-2) 트래픽 확인</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">route <span style="color:#000;font-weight:bold">|</span> grep cal
-tcpdump -i &lt;interface-name&gt;
-</code></pre></div><br/>
-<br/>
-<h2 id="4-service-networknodeport---calico">4. Service Network[NodePort] - Calico</h2>
-<hr>
-<figure>
-  <img src="/img/practice/architecture/NodePort with Calico on Service Network for Kubernetes.jpg"
-       alt="NodePort with Calico on Service Network for Kubernetes."
-       class="mt-3 mb-3 border border-info rounded" />
-</figure>
-<h3 id="4-1-service-nodeport">4-1) service (NodePort)</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Service</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">svc-nodeport</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">selector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">dest</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">targetPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">nodePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">31080</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">NodePort</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><br/>
-<h3 id="4-2-nodeport-확인">4-2) nodeport 확인</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">netstat -anp <span style="color:#000;font-weight:bold">|</span> grep <span style="color:#0000cf;font-weight:bold">31080</span>
-</code></pre></div><br/>
-<h3 id="4-3-트래픽-확인">4-3) 트래픽 확인</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">tcpdump -i &lt;interface-name&gt;
-</code></pre></div><br/>
-<br/>
 <h2 id="referenece">Referenece</h2>
 <hr>
 <h3 id="__kubernetes__"><strong>Kubernetes</strong></h3>
 <ul>
-<li><strong>Service</strong> : <a href="https://kubernetes.io/docs/concepts/services-networking/service/">https://kubernetes.io/docs/concepts/services-networking/service/</a></li>
+<li><strong>PV Access Mode</strong> : <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes</a></li>
+<li><strong>PV Provisioner</strong> : <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner">https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner</a></li>
+<li><strong>CSI Developer Documentation</strong> : <a href="https://kubernetes-csi.github.io/docs/">https://kubernetes-csi.github.io/docs/</a></li>
 </ul>
 <h3 id="__others__"><strong>Others</strong></h3>
 <ul>
-<li><strong>The Almighty Pause Container</strong> : <a href="https://www.ianlewis.org/en/almighty-pause-container">https://www.ianlewis.org/en/almighty-pause-container</a></li>
-<li><strong>Calico</strong> : <a href="https://docs.projectcalico.org/getting-started/kubernetes/">https://docs.projectcalico.org/getting-started/kubernetes/</a></li>
-<li><strong>Comparing kube-proxy modes: iptables or IPVS?</strong> : <a href="https://www.tigera.io/blog/comparing-kube-proxy-modes-iptables-or-ipvs/">https://www.tigera.io/blog/comparing-kube-proxy-modes-iptables-or-ipvs/</a></li>
+<li><strong>Install Longhorn</strong> : <a href="https://longhorn.io/docs/0.8.1/deploy/install/install-with-kubectl/">https://longhorn.io/docs/0.8.1/deploy/install/install-with-kubectl/</a></li>
 </ul>
 
 	

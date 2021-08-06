@@ -56,10 +56,10 @@
     
     <item>
       <title>K8s: Networking Architecture</title>
-      <link>https://taemin77.github.io/k8s/09-intermediate-architecture/storage/</link>
+      <link>https://taemin77.github.io/k8s/09-intermediate-architecture/networking/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/09-intermediate-architecture/storage/</guid>
+      <guid>https://taemin77.github.io/k8s/09-intermediate-architecture/networking/</guid>
       <description>
         
         
@@ -247,10 +247,10 @@ tcpdump -i &amp;lt;interface-name&amp;gt;
     
     <item>
       <title>K8s: Storage Architecture</title>
-      <link>https://taemin77.github.io/k8s/09-intermediate-architecture/networking/</link>
+      <link>https://taemin77.github.io/k8s/09-intermediate-architecture/storage/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/09-intermediate-architecture/networking/</guid>
+      <guid>https://taemin77.github.io/k8s/09-intermediate-architecture/storage/</guid>
       <description>
         
         
