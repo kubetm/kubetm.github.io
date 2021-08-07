@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>KubeTM Blog – - 차트 템플릿 가이드</title>
-    <link>https://taemin77.github.io/helm/02-template-guide/</link>
+    <link>https://kubetm.github.io/helm/02-template-guide/</link>
     <description>Recent content in - 차트 템플릿 가이드 on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate>
     
-	  <atom:link href="https://taemin77.github.io/helm/02-template-guide/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://kubetm.github.io/helm/02-template-guide/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,15 +16,15 @@
     
     <item>
       <title>Helm: 내 차트 만들기1</title>
-      <link>https://taemin77.github.io/helm/02-template-guide/step_1/</link>
+      <link>https://kubetm.github.io/helm/02-template-guide/step_1/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/helm/02-template-guide/step_1/</guid>
+      <guid>https://kubetm.github.io/helm/02-template-guide/step_1/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/helm/template/MyChartStep1.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/helm/template/MyChartStep1.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
@@ -32,7 +32,7 @@
 &lt;h2 id=&#34;1-helm-명령어&#34;&gt;1. Helm 명령어&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/template/Command with Show, Template for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/template/Command with Show, Template for Helm.jpg&#34;
        alt=&#34;Command with Show, Template for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -53,7 +53,7 @@ This is README.md
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/template/Command with Get, Install for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/template/Command with Get, Install for Helm.jpg&#34;
        alt=&#34;Command with Get, Install for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -74,7 +74,7 @@ helm install mychart . --set &lt;span style=&#34;color:#000&#34;&gt;replicaCount
 &lt;h2 id=&#34;2-내장-객체&#34;&gt;2. 내장 객체&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/template/Build in Objects for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/template/Build in Objects for Helm.jpg&#34;
        alt=&#34;Build in Objects for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -119,7 +119,7 @@ helm upgrade mychart . -n default
 &lt;h2 id=&#34;3-변수-주입-우선순위&#34;&gt;3. 변수 주입 우선순위&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/template/values yaml for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/template/values yaml for Helm.jpg&#34;
        alt=&#34;values yaml for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -155,7 +155,7 @@ helm upgrade mychart . -n default
 &lt;h2 id=&#34;4-사용자-정의-변수&#34;&gt;4. 사용자 정의 변수&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/template/helpers tpl for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/template/helpers tpl for Helm.jpg&#34;
        alt=&#34;helpers tpl for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -211,15 +211,15 @@ metadata:
     
     <item>
       <title>Helm: 내 차트 만들기2</title>
-      <link>https://taemin77.github.io/helm/02-template-guide/step_2/</link>
+      <link>https://kubetm.github.io/helm/02-template-guide/step_2/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/helm/02-template-guide/step_2/</guid>
+      <guid>https://kubetm.github.io/helm/02-template-guide/step_2/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/helm/template/MyChartStep2.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/helm/template/MyChartStep2.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
@@ -227,7 +227,7 @@ metadata:
 &lt;h2 id=&#34;1-함수와-파이프라인&#34;&gt;1. 함수와 파이프라인&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/template/Function and Pipeline for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/template/Function and Pipeline for Helm.jpg&#34;
        alt=&#34;Function and Pipeline for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -269,7 +269,7 @@ metadata:
 &lt;h2 id=&#34;2-흐름-제어&#34;&gt;2. 흐름 제어&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/template/Controller Flow with if, with, range for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/template/Controller Flow with if, with, range for Helm.jpg&#34;
        alt=&#34;Controller Flow with if, with, range for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -385,12 +385,12 @@ metadata:
 &lt;h2 id=&#34;3-여러가지-함수들&#34;&gt;3. 여러가지 함수들&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/template/Functions1 for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/template/Functions1 for Helm.jpg&#34;
        alt=&#34;Functions1 for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/template/Functions2 for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/template/Functions2 for Helm.jpg&#34;
        alt=&#34;Functions2 for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -461,7 +461,7 @@ metadata:
 &lt;h2 id=&#34;4-지역변수&#34;&gt;4. 지역변수&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/template/Local values with WITH for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/template/Local values with WITH for Helm.jpg&#34;
        alt=&#34;Local values with WITH for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -482,7 +482,7 @@ metadata:
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;{{- &lt;span style=&#34;color:#000&#34;&gt;end }}&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/template/Local values with RANGE for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/template/Local values with RANGE for Helm.jpg&#34;
        alt=&#34;Local values with RANGE for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;

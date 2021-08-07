@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>KubeTM Blog – - 기본 오브젝트</title>
-    <link>https://taemin77.github.io/k8s/07-intermediate-basic-resource/</link>
+    <link>https://kubetm.github.io/k8s/07-intermediate-basic-resource/</link>
     <description>Recent content in - 기본 오브젝트 on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate>
     
-	  <atom:link href="https://taemin77.github.io/k8s/07-intermediate-basic-resource/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://kubetm.github.io/k8s/07-intermediate-basic-resource/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,20 +16,20 @@
     
     <item>
       <title>K8s: Service</title>
-      <link>https://taemin77.github.io/k8s/07-intermediate-basic-resource/service/</link>
+      <link>https://kubetm.github.io/k8s/07-intermediate-basic-resource/service/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/07-intermediate-basic-resource/service/</guid>
+      <guid>https://kubetm.github.io/k8s/07-intermediate-basic-resource/service/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/intermediate/Service-Headless_ExternalName.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/intermediate/Service-Headless_ExternalName.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Service with Headless, Endpoint, ExternalName for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Service with Headless, Endpoint, ExternalName for Kubernetes.jpg&#34;
        alt=&#34;Service with Headless, Endpoint, ExternalName for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -37,19 +37,19 @@
 &lt;br/&gt;
 &lt;h2 id=&#34;dns&#34;&gt;Dns&lt;/h2&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Service with DNS Concept for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Service with DNS Concept for Kubernetes.jpg&#34;
        alt=&#34;Service with DNS Concept for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;h2 id=&#34;headless&#34;&gt;Headless&lt;/h2&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Service with Headless Concept for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Service with Headless Concept for Kubernetes.jpg&#34;
        alt=&#34;Service with Headless Concept for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;h2 id=&#34;exteranl&#34;&gt;Exteranl&lt;/h2&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Service with ExternalName Concept for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Service with ExternalName Concept for Kubernetes.jpg&#34;
        alt=&#34;Service with ExternalName Concept for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -58,7 +58,7 @@
 &lt;h2 id=&#34;headless-1&#34;&gt;Headless&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Service with DNS Practice for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Service with DNS Practice for Kubernetes.jpg&#34;
        alt=&#34;Service with DNS Practice for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -103,7 +103,7 @@ curl clusterip1.default.svc.cluster.local/hostname
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Service with Headless Practice for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Service with Headless Practice for Kubernetes.jpg&#34;
        alt=&#34;Service with Headless Practice for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -145,7 +145,7 @@ curl pod-b.headless1:8080/hostname
 &lt;h2 id=&#34;endpoint&#34;&gt;Endpoint&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Service with Endpoint Practice1 for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Service with Endpoint Practice1 for Kubernetes.jpg&#34;
        alt=&#34;Service with Endpoint Practice1 for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -174,7 +174,7 @@ curl pod-b.headless1:8080/hostname
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Service with Endpoint Practice2 for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Service with Endpoint Practice2 for Kubernetes.jpg&#34;
        alt=&#34;Service with Endpoint Practice2 for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -209,7 +209,7 @@ curl pod-b.headless1:8080/hostname
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Service with Endpoint Practice3 for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Service with Endpoint Practice3 for Kubernetes.jpg&#34;
        alt=&#34;Service with Endpoint Practice3 for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -240,7 +240,7 @@ curl -O 185.199.110.153:80/kubetm/kubetm.github.io/blob/master/sample/practice/i
 &lt;h2 id=&#34;externalname&#34;&gt;ExternalName&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Service with ExternalName Practice for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Service with ExternalName Practice for Kubernetes.jpg&#34;
        alt=&#34;Service with ExternalName Practice for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -333,20 +333,20 @@ kubectl describe endpoints endpoint1
     
     <item>
       <title>K8s: Volume</title>
-      <link>https://taemin77.github.io/k8s/07-intermediate-basic-resource/volume/</link>
+      <link>https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/07-intermediate-basic-resource/volume/</guid>
+      <guid>https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/intermediate/Volume-Dynamic_Provisioning.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/intermediate/Volume-Dynamic_Provisioning.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Volume with PV, PVC Concept for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Volume with PV, PVC Concept for Kubernetes.jpg&#34;
        alt=&#34;Volume with PV, PVC Concept for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -355,7 +355,7 @@ kubectl describe endpoints endpoint1
 &lt;h2 id=&#34;1-사전-구성---storageos-설치-및-storageclass-생성&#34;&gt;1. 사전 구성 - StorageOS 설치 및 StorageClass 생성&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Volume with StorageOS Installation for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Volume with StorageOS Installation for Kubernetes.jpg&#34;
        alt=&#34;Volume with StorageOS Installation for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -464,7 +464,7 @@ fast                kubernetes.io/storageos   59s
 &lt;h2 id=&#34;2-dynamic-provisioning&#34;&gt;2. Dynamic Provisioning&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Volume with Dynamic Provisioning Practice for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Volume with Dynamic Provisioning Practice for Kubernetes.jpg&#34;
        alt=&#34;Volume with Dynamic Provisioning Practice for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -521,7 +521,7 @@ fast                kubernetes.io/storageos   59s
 &lt;h2 id=&#34;3-pv-status-reclaimpolicy&#34;&gt;3. PV Status, ReclaimPolicy&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Volume with PV Status, ReclaimPolicy Practice for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Volume with PV Status, ReclaimPolicy Practice for Kubernetes.jpg&#34;
        alt=&#34;Volume with PV Status, ReclaimPolicy Practice for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -550,7 +550,7 @@ touch file.txt
 &lt;pre&gt;&lt;code&gt;http://192.168.0.30:5705/
 &lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Volume with ReclaimPolicy Recycle Practice for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Volume with ReclaimPolicy Recycle Practice for Kubernetes.jpg&#34;
        alt=&#34;Volume with ReclaimPolicy Recycle Practice for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -658,20 +658,20 @@ kubectl delete persistentvolume pvc-b53fd802-3919-4fb0-8c1f-02221a3e4bc0 --grace
     
     <item>
       <title>K8s: Authentication</title>
-      <link>https://taemin77.github.io/k8s/07-intermediate-basic-resource/authentication/</link>
+      <link>https://kubetm.github.io/k8s/07-intermediate-basic-resource/authentication/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/07-intermediate-basic-resource/authentication/</guid>
+      <guid>https://kubetm.github.io/k8s/07-intermediate-basic-resource/authentication/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/intermediate/Authentication.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/intermediate/Authentication.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Access API with Authenticaiton for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Access API with Authenticaiton for Kubernetes.jpg&#34;
        alt=&#34;Access API with Authenticaiton for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -680,7 +680,7 @@ kubectl delete persistentvolume pvc-b53fd802-3919-4fb0-8c1f-02221a3e4bc0 --grace
 &lt;h2 id=&#34;1-x509-client-certs&#34;&gt;1. X509 Client Certs&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Access API with Authenticaiton X509 for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Access API with Authenticaiton X509 for Kubernetes.jpg&#34;
        alt=&#34;Access API with Authenticaiton X509 for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -718,7 +718,7 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;h2 id=&#34;2-kubectl&#34;&gt;2. kubectl&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Access API with Authenticaiton kubectl for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Access API with Authenticaiton kubectl for Kubernetes.jpg&#34;
        alt=&#34;Access API with Authenticaiton kubectl for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -771,7 +771,7 @@ kubectl config use-context context-a
 &lt;h2 id=&#34;3-service-account&#34;&gt;3. Service Account&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Access API with Authenticaiton Service Account for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Access API with Authenticaiton Service Account for Kubernetes.jpg&#34;
        alt=&#34;Access API with Authenticaiton Service Account for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -816,34 +816,34 @@ curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bea
     
     <item>
       <title>K8s: Authorization</title>
-      <link>https://taemin77.github.io/k8s/07-intermediate-basic-resource/authorization/</link>
+      <link>https://kubetm.github.io/k8s/07-intermediate-basic-resource/authorization/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/07-intermediate-basic-resource/authorization/</guid>
+      <guid>https://kubetm.github.io/k8s/07-intermediate-basic-resource/authorization/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/intermediate/Authorization.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/intermediate/Authorization.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Access API with Authenticaiton for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Access API with Authenticaiton for Kubernetes.jpg&#34;
        alt=&#34;Access API with Authenticaiton for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Access API with Authorization RBAC for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Access API with Authorization RBAC for Kubernetes.jpg&#34;
        alt=&#34;Access API with Authorization RBAC for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;h2 id=&#34;1-자신의-namespace-내에-pod들만-조회할-수-있는-권한&#34;&gt;1. 자신의 Namespace 내에 Pod들만 조회할 수 있는 권한&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Access API with Authorization Role RoleBinding1 for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Access API with Authorization Role RoleBinding1 for Kubernetes.jpg&#34;
        alt=&#34;Access API with Authorization Role RoleBinding1 for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -893,7 +893,7 @@ curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bea
 &lt;h2 id=&#34;2-모든-namespace-내에-object들에-대해-모든-권한을-부여&#34;&gt;2. 모든 Namespace 내에 Object들에 대해 모든 권한을 부여&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Access API with Authorization Role RoleBinding2 for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Access API with Authorization Role RoleBinding2 for Kubernetes.jpg&#34;
        alt=&#34;Access API with Authorization Role RoleBinding2 for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -951,20 +951,20 @@ metadata:
     
     <item>
       <title>K8s: Dashboard</title>
-      <link>https://taemin77.github.io/k8s/07-intermediate-basic-resource/dashboard/</link>
+      <link>https://kubetm.github.io/k8s/07-intermediate-basic-resource/dashboard/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/07-intermediate-basic-resource/dashboard/</guid>
+      <guid>https://kubetm.github.io/k8s/07-intermediate-basic-resource/dashboard/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/intermediate/Kubernetes_Dashboard.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/intermediate/Kubernetes_Dashboard.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Access API with Authenticaiton for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Access API with Authenticaiton for Kubernetes.jpg&#34;
        alt=&#34;Access API with Authenticaiton for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -973,7 +973,7 @@ metadata:
 &lt;h2 id=&#34;1-dashboard-200-설치&#34;&gt;1. Dashboard 2.0.0 설치&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Access API with Dashaboard 2.0.0 for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Access API with Dashaboard 2.0.0 for Kubernetes.jpg&#34;
        alt=&#34;Access API with Dashaboard 2.0.0 for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;

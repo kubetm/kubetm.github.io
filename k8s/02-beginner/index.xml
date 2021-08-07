@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>KubeTM Blog – - 기초 다지기</title>
-    <link>https://taemin77.github.io/k8s/02-beginner/</link>
+    <link>https://kubetm.github.io/k8s/02-beginner/</link>
     <description>Recent content in - 기초 다지기 on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate>
     
-	  <atom:link href="https://taemin77.github.io/k8s/02-beginner/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://kubetm.github.io/k8s/02-beginner/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,20 +16,20 @@
     
     <item>
       <title>K8s: Getting-Started Kubernetes!</title>
-      <link>https://taemin77.github.io/k8s/02-beginner/gettingstarted/</link>
+      <link>https://kubetm.github.io/k8s/02-beginner/gettingstarted/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/02-beginner/gettingstarted/</guid>
+      <guid>https://kubetm.github.io/k8s/02-beginner/gettingstarted/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/beginner/Getting_Started3.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/beginner/Getting_Started3.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/Getting started Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/Getting started Kubernetes.jpg&#34;
        alt=&#34;Getting started Kubernetes&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -49,7 +49,7 @@
 &lt;h2 id=&#34;1-linux&#34;&gt;1. Linux&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/Getting started Hello World on Linux.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/Getting started Hello World on Linux.jpg&#34;
        alt=&#34;Getting started Hello World on Linux.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -67,7 +67,7 @@
 &lt;h2 id=&#34;2-docker&#34;&gt;2. Docker&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/Getting started Hello World on Docker.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/Getting started Hello World on Docker.jpg&#34;
        alt=&#34;Getting started Hello World on Linux.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -97,7 +97,7 @@ docker push kubetm/hello
 &lt;h2 id=&#34;3-kubernetes&#34;&gt;3. Kubernetes&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/Getting started Hello World on Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/Getting started Hello World on Kubernetes.jpg&#34;
        alt=&#34;Getting started Hello World on Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -133,10 +133,10 @@ docker push kubetm/hello
     
     <item>
       <title>K8s: Case 6. k8s v1.22버전 설치</title>
-      <link>https://taemin77.github.io/k8s/02-beginner/cluster-install-case6/</link>
+      <link>https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/02-beginner/cluster-install-case6/</guid>
+      <guid>https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/</guid>
       <description>
         
         

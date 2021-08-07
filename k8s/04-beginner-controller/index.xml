@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>KubeTM Blog – - 컨트롤러</title>
-    <link>https://taemin77.github.io/k8s/04-beginner-controller/</link>
+    <link>https://kubetm.github.io/k8s/04-beginner-controller/</link>
     <description>Recent content in - 컨트롤러 on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate>
     
-	  <atom:link href="https://taemin77.github.io/k8s/04-beginner-controller/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://kubetm.github.io/k8s/04-beginner-controller/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,20 +16,20 @@
     
     <item>
       <title>K8s: Replication Controller, ReplicaSet</title>
-      <link>https://taemin77.github.io/k8s/04-beginner-controller/replicaset/</link>
+      <link>https://kubetm.github.io/k8s/04-beginner-controller/replicaset/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/04-beginner-controller/replicaset/</guid>
+      <guid>https://kubetm.github.io/k8s/04-beginner-controller/replicaset/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/beginner/ReplicaSet.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/beginner/ReplicaSet.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/Controller with Replicastion Controller, ReplicaSet for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/Controller with Replicastion Controller, ReplicaSet for Kubernetes.jpg&#34;
        alt=&#34;Controller with Replicastion Controller, ReplicaSet for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -38,7 +38,7 @@
 &lt;h2 id=&#34;1-template-replicas&#34;&gt;1. Template, Replicas&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/Controller with Replication, ReplicaSet for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/Controller with Replication, ReplicaSet for Kubernetes.jpg&#34;
        alt=&#34;Controller with Replication, ReplicaSet for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -122,7 +122,7 @@
 &lt;h2 id=&#34;3-selector&#34;&gt;3. Selector&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/Match with Replication, ReplicaSet for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/Match with Replication, ReplicaSet for Kubernetes.jpg&#34;
        alt=&#34;Match with Replication, ReplicaSet for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -172,7 +172,7 @@
 &lt;hr&gt;
 &lt;h3 id=&#34;matchexpressions&#34;&gt;MatchExpressions&lt;/h3&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/Match2 with Replication, ReplicaSet for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/Match2 with Replication, ReplicaSet for Kubernetes.jpg&#34;
        alt=&#34;Match2 with Replication, ReplicaSet for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -192,20 +192,20 @@
     
     <item>
       <title>K8s: Deployment</title>
-      <link>https://taemin77.github.io/k8s/04-beginner-controller/deployment/</link>
+      <link>https://kubetm.github.io/k8s/04-beginner-controller/deployment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/04-beginner-controller/deployment/</guid>
+      <guid>https://kubetm.github.io/k8s/04-beginner-controller/deployment/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/beginner/Deployment.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/beginner/Deployment.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/Deployment with ReCreate, RollingUpdate for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/Deployment with ReCreate, RollingUpdate for Kubernetes.jpg&#34;
        alt=&#34;Deployment with ReCreate, RollingUpdate for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -214,7 +214,7 @@
 &lt;h2 id=&#34;1-recreate&#34;&gt;1. ReCreate&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/Deployment with ReCreate for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/Deployment with ReCreate for Kubernetes.jpg&#34;
        alt=&#34;Deployment with ReCreate for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -264,7 +264,7 @@ kubectl rollout &lt;span style=&#34;color:#204a87&#34;&gt;history&lt;/span&gt; d
 &lt;h2 id=&#34;2-rollingupdate&#34;&gt;2. RollingUpdate&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/Deployment with RollingUpdate for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/Deployment with RollingUpdate for Kubernetes.jpg&#34;
        alt=&#34;Deployment with RollingUpdate for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -354,20 +354,20 @@ kubectl rollout &lt;span style=&#34;color:#204a87&#34;&gt;history&lt;/span&gt; d
     
     <item>
       <title>K8s: DaemonSet, Job, CronJob</title>
-      <link>https://taemin77.github.io/k8s/04-beginner-controller/daemonset/</link>
+      <link>https://kubetm.github.io/k8s/04-beginner-controller/daemonset/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/04-beginner-controller/daemonset/</guid>
+      <guid>https://kubetm.github.io/k8s/04-beginner-controller/daemonset/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/beginner/DaemonSet_CronJob_Job.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/beginner/DaemonSet_CronJob_Job.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/Controller with DatemonSet, Job, CronJob for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/Controller with DatemonSet, Job, CronJob for Kubernetes.jpg&#34;
        alt=&#34;Controller with DatemonSet, Job, CronJob for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -376,7 +376,7 @@ kubectl rollout &lt;span style=&#34;color:#204a87&#34;&gt;history&lt;/span&gt; d
 &lt;h2 id=&#34;1-daemonset&#34;&gt;1. DaemonSet&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/HostPort, NodeSelector with DaemonSet for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/HostPort, NodeSelector with DaemonSet for Kubernetes.jpg&#34;
        alt=&#34;HostPort, NodeSelector with DaemonSet for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -450,7 +450,7 @@ kubectl label nodes k8s-node2 &lt;span style=&#34;color:#000&#34;&gt;os&lt;/span
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/Parrallelism, Completions with Job for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/Parrallelism, Completions with Job for Kubernetes.jpg&#34;
        alt=&#34;Parrallelism, Completions with Job for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -476,7 +476,7 @@ kubectl label nodes k8s-node2 &lt;span style=&#34;color:#000&#34;&gt;os&lt;/span
 &lt;h2 id=&#34;3-cronjob&#34;&gt;3. CronJob&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/Allow with CronJob for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/Allow with CronJob for Kubernetes.jpg&#34;
        alt=&#34;Allow with CronJob for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -515,7 +515,7 @@ kubectl label nodes k8s-node2 &lt;span style=&#34;color:#000&#34;&gt;os&lt;/span
 &lt;br/&gt;
 &lt;h3 id=&#34;3-2-cronjob---concurrencypolicy&#34;&gt;3-2) CronJob - ConcurrencyPolicy&lt;/h3&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/ConcurencyPolicy with CronJob for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/ConcurencyPolicy with CronJob for Kubernetes.jpg&#34;
        alt=&#34;ConcurencyPolicy with CronJob for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -548,7 +548,7 @@ kubectl label nodes k8s-node2 &lt;span style=&#34;color:#000&#34;&gt;os&lt;/span
 &lt;/div&gt;
 
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/beginner/ConcurencyPolicy 1.19 with CronJob for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/beginner/ConcurencyPolicy 1.19 with CronJob for Kubernetes.jpg&#34;
        alt=&#34;ConcurencyPolicy 1.19 with CronJob for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;

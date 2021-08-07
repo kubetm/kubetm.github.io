@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>KubeTM Blog – - 아키텍쳐</title>
-    <link>https://taemin77.github.io/k8s/09-intermediate-architecture/</link>
+    <link>https://kubetm.github.io/k8s/09-intermediate-architecture/</link>
     <description>Recent content in - 아키텍쳐 on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate>
     
-	  <atom:link href="https://taemin77.github.io/k8s/09-intermediate-architecture/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://kubetm.github.io/k8s/09-intermediate-architecture/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,15 +16,15 @@
     
     <item>
       <title>K8s: Component Architecture</title>
-      <link>https://taemin77.github.io/k8s/09-intermediate-architecture/component/</link>
+      <link>https://kubetm.github.io/k8s/09-intermediate-architecture/component/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/09-intermediate-architecture/component/</guid>
+      <guid>https://kubetm.github.io/k8s/09-intermediate-architecture/component/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/architecture/Component.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/architecture/Component.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
@@ -56,20 +56,20 @@
     
     <item>
       <title>K8s: Networking Architecture</title>
-      <link>https://taemin77.github.io/k8s/09-intermediate-architecture/networking/</link>
+      <link>https://kubetm.github.io/k8s/09-intermediate-architecture/networking/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/09-intermediate-architecture/networking/</guid>
+      <guid>https://kubetm.github.io/k8s/09-intermediate-architecture/networking/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/architecture/Storage.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/architecture/Storage.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/architecture/Networking Architecture with PodNetwork, ServiceNetwork for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/architecture/Networking Architecture with PodNetwork, ServiceNetwork for Kubernetes.jpg&#34;
        alt=&#34;Networking Architecture with PodNetwork, ServiceNetwork for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -78,7 +78,7 @@
 &lt;h2 id=&#34;1-pod-network---pause-container&#34;&gt;1. Pod Network - Pause Container&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/architecture/Pause Container on Pod Network for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/architecture/Pause Container on Pod Network for Kubernetes.jpg&#34;
        alt=&#34;Pause Container on Pod Network for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -126,7 +126,7 @@ Any other value is taken as a custom network’s name to which this container sh
 &lt;h2 id=&#34;2-pod-network---calico&#34;&gt;2. Pod Network - Calico&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/architecture/Calico Network Plugin on Pod Network for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/architecture/Calico Network Plugin on Pod Network for Kubernetes.jpg&#34;
        alt=&#34;Calico Network Plugin on Pod Network for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -179,7 +179,7 @@ tcpdump -i &amp;lt;interface-name&amp;gt;
 &lt;h2 id=&#34;3-service-networkclusterip---calico&#34;&gt;3. Service Network[clusterIP] - Calico&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/architecture/ClusterIP with Calico on Service Network for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/architecture/ClusterIP with Calico on Service Network for Kubernetes.jpg&#34;
        alt=&#34;ClusterIP with Calico on Service Network for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -204,7 +204,7 @@ tcpdump -i &amp;lt;interface-name&amp;gt;
 &lt;h2 id=&#34;4-service-networknodeport---calico&#34;&gt;4. Service Network[NodePort] - Calico&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/architecture/NodePort with Calico on Service Network for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/architecture/NodePort with Calico on Service Network for Kubernetes.jpg&#34;
        alt=&#34;NodePort with Calico on Service Network for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -247,20 +247,20 @@ tcpdump -i &amp;lt;interface-name&amp;gt;
     
     <item>
       <title>K8s: Storage Architecture</title>
-      <link>https://taemin77.github.io/k8s/09-intermediate-architecture/storage/</link>
+      <link>https://kubetm.github.io/k8s/09-intermediate-architecture/storage/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/09-intermediate-architecture/storage/</guid>
+      <guid>https://kubetm.github.io/k8s/09-intermediate-architecture/storage/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/architecture/Networking.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/architecture/Networking.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/architecture/Storage Architecture with FileStorage, BlockStorage, ObjectStorage for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/architecture/Storage Architecture with FileStorage, BlockStorage, ObjectStorage for Kubernetes.jpg&#34;
        alt=&#34;Storage Architecture with FileStorage, BlockStorage, ObjectStorage for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -298,7 +298,7 @@ systemctl restart nfs-server
 &lt;h2 id=&#34;2-filestroage-nfs-연결-pod&#34;&gt;2. FileStroage (NFS) 연결 Pod&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/architecture/NFS with FileStorage for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/architecture/NFS with FileStorage for Kubernetes.jpg&#34;
        alt=&#34;NFS with FileStorage for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -387,7 +387,7 @@ kubectl delete storageclasses.storage.k8s.io -n longhorn-system longhorn
 &lt;h2 id=&#34;4-longhorn-volume에-pod-연결&#34;&gt;4. Longhorn Volume에 POD 연결&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/architecture/Longhorn with BlockStorage for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/architecture/Longhorn with BlockStorage for Kubernetes.jpg&#34;
        alt=&#34;Longhorn with BlockStorage for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -445,20 +445,20 @@ kubectl delete storageclasses.storage.k8s.io -n longhorn-system longhorn
     
     <item>
       <title>K8s: Logging/Monitoring Architecture</title>
-      <link>https://taemin77.github.io/k8s/09-intermediate-architecture/logging/</link>
+      <link>https://kubetm.github.io/k8s/09-intermediate-architecture/logging/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/09-intermediate-architecture/logging/</guid>
+      <guid>https://kubetm.github.io/k8s/09-intermediate-architecture/logging/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/architecture/Logging.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/architecture/Logging.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/architecture/Logging and Monitoring Architecture with Fluentd, ElasticSearch, Grafana for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/architecture/Logging and Monitoring Architecture with Fluentd, ElasticSearch, Grafana for Kubernetes.jpg&#34;
        alt=&#34;Logging and Monitoring Architecture with Fluentd, ElasticSearch, Grafana for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -467,7 +467,7 @@ kubectl delete storageclasses.storage.k8s.io -n longhorn-system longhorn
 &lt;h2 id=&#34;1-basic-logging-construction&#34;&gt;1. Basic Logging Construction&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/architecture/Node Level Logging for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/architecture/Node Level Logging for Kubernetes.jpg&#34;
        alt=&#34;Node Level Logging for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -534,7 +534,7 @@ kubectl get events &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;
 &lt;h2 id=&#34;2-loki-stack-설치&#34;&gt;2. Loki Stack 설치&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/architecture/Loki Stack for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/architecture/Loki Stack for Kubernetes.jpg&#34;
        alt=&#34;Loki Stack for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;

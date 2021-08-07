@@ -24,7 +24,7 @@ curl 192.168.0.31:18080/hostname  1-2) DaemonSet - NodeSelector apiVersion:apps/
 kubectl label nodes k8s-node1 os=centos kubectl label nodes k8s-node2 os=ubuntu Label Remove
 kubectl label nodes k8s-node2 os-   2. Job  2-1) Job1 apiVersion:batch/v1kind:Jobmetadata:name:job-1spec:template:spec:restartPolicy:Nevercontainers:- name:containerimage:kubetm/initcommand:[&#34;sh&#34;,&#34;-c&#34;,&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;]terminationGracePeriodSeconds:0    2-2) Job2 apiVersion:batch/v1kind:Jobmetadata:name:job-2spec:completions:6parallelism:2activeDeadlineSeconds:30template:spec:restartPolicy:Nevercontainers:- name:containerimage:kubetm/initcommand:[&#34;sh&#34;,&#34;-c&#34;,&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;]terminationGracePeriodSeconds:0  3." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://taemin77.github.io/k8s/04-beginner-controller/daemonset/" /><meta property="article:section" content="k8s" />
+<meta property="og:url" content="https://kubetm.github.io/k8s/04-beginner-controller/daemonset/" /><meta property="article:section" content="k8s" />
 
 <meta property="og:site_name" content="KubeTM Blog" />
 
@@ -1541,21 +1541,21 @@ kubectl label nodes k8s-node2 os-   2. Job  2-1) Job1 apiVersion:batch/v1kind:Jo
 
 
 <li class="breadcrumb-item" >
-	<a href="https://taemin77.github.io/k8s/">K8S 실습 자료실</a>
+	<a href="https://kubetm.github.io/k8s/">K8S 실습 자료실</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item" >
-	<a href="https://taemin77.github.io/k8s/04-beginner-controller/">컨트롤러</a>
+	<a href="https://kubetm.github.io/k8s/04-beginner-controller/">컨트롤러</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://taemin77.github.io/k8s/04-beginner-controller/daemonset/">DaemonSet</a>
+	<a href="https://kubetm.github.io/k8s/04-beginner-controller/daemonset/">DaemonSet</a>
 </li>
 
 	</ol>
@@ -1894,7 +1894,7 @@ kubectl label nodes k8s-node2 <span style="color:#000">os</span><span style="col
 
 
 
-<script src="/js/main.min.ecf95b36a816ed4ee0b77b7acd97159017337490d573973804cb31e34248d45a.js" integrity="sha256-7PlbNqgW7U7gt3t6zZcVkBczdJDVc5c4BMsx40JI1Fo=" crossorigin="anonymous"></script>
+<script src="/js/main.min.1155f17948f2feda3df826c2b3f2c306474e2b5599f1baf9bfe51687241acf40.js" integrity="sha256-EVXxeUjy/to9&#43;CbCs/LDBkdOK1WZ8br5v&#43;UWhyQaz0A=" crossorigin="anonymous"></script>
 
 
 

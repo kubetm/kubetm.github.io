@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>KubeTM Blog – - 클러스터 설치</title>
-    <link>https://taemin77.github.io/k8s/92-installation/</link>
+    <link>https://kubetm.github.io/k8s/92-installation/</link>
     <description>Recent content in - 클러스터 설치 on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate>
     
-	  <atom:link href="https://taemin77.github.io/k8s/92-installation/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://kubetm.github.io/k8s/92-installation/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,27 +16,27 @@
     
     <item>
       <title>K8s: Case 1. OS(linux) &#43; Network(Bridge Mode) &#43; 가상화(KVM-CentOS7) &#43; k8s(v1.15.5)</title>
-      <link>https://taemin77.github.io/k8s/92-installation/case1/</link>
+      <link>https://kubetm.github.io/k8s/92-installation/case1/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/92-installation/case1/</guid>
+      <guid>https://kubetm.github.io/k8s/92-installation/case1/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/beginner/Kubernetes_Install1.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/beginner/Kubernetes_Install1.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Baremetal Installation with KVM for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Baremetal Installation with KVM for Kubernetes.jpg&#34;
        alt=&#34;Baremetal Installation with KVM for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Setting Physical Server for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Setting Physical Server for Kubernetes.jpg&#34;
        alt=&#34;Setting Physical Server for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -125,7 +125,7 @@ USB를 설치할 서버에 꼽고 부팅하면 CentOS 설치단계로 가져요
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Create VM for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Create VM for Kubernetes.jpg&#34;
        alt=&#34;Create VM for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -178,7 +178,7 @@ USB를 설치할 서버에 꼽고 부팅하면 CentOS 설치단계로 가져요
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Docker, Kubernetes Installation.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Docker, Kubernetes Installation.jpg&#34;
        alt=&#34;Docker, Kubernetes Installation.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -274,7 +274,7 @@ mkdir -p /etc/systemd/system/docker.service.d
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Clone VM on Node For Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Clone VM on Node For Kubernetes.jpg&#34;
        alt=&#34;Clone VM on Node For Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -311,7 +311,7 @@ Host의 Ip Address를 변경하기 위해 아래 명령어로 설정을 열고&l
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Initialize Master and Join Node for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Initialize Master and Join Node for Kubernetes.jpg&#34;
        alt=&#34;Initialize Master and Join Node for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -371,7 +371,7 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Add Networking and Dashboard Plugin for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Add Networking and Dashboard Plugin for Kubernetes.jpg&#34;
        alt=&#34;Add Networking and Dashboard Plugin for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -418,27 +418,27 @@ kubectl apply -f calico.yaml
     
     <item>
       <title>K8s: Case 2. OS(windows) &#43; Network(Bridge Mode) &#43; 가상화(VirtualBox-CentOS) &#43; k8s(v1.15.5)</title>
-      <link>https://taemin77.github.io/k8s/92-installation/case2/</link>
+      <link>https://kubetm.github.io/k8s/92-installation/case2/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/92-installation/case2/</guid>
+      <guid>https://kubetm.github.io/k8s/92-installation/case2/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/beginner/Kubernetes_Install2.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/beginner/Kubernetes_Install2.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/VirtualBox Installation for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/VirtualBox Installation for Kubernetes.jpg&#34;
        alt=&#34;VirtualBox Installation for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Setting Physical Server for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Setting Physical Server for Kubernetes.jpg&#34;
        alt=&#34;Setting Physical Server for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -481,7 +481,7 @@ kubectl apply -f calico.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Create VM for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Create VM for Kubernetes.jpg&#34;
        alt=&#34;Create VM for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -527,7 +527,7 @@ kubectl apply -f calico.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Docker, Kubernetes Installation.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Docker, Kubernetes Installation.jpg&#34;
        alt=&#34;Docker, Kubernetes Installation.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -626,7 +626,7 @@ mkdir -p /etc/systemd/system/docker.service.d
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Clone VM on Node For Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Clone VM on Node For Kubernetes.jpg&#34;
        alt=&#34;Clone VM on Node For Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -664,7 +664,7 @@ Host의 Ip Address를 변경하기 위해 아래 명령어로 설정을 열고&l
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Initialize Master and Join Node for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Initialize Master and Join Node for Kubernetes.jpg&#34;
        alt=&#34;Initialize Master and Join Node for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -722,7 +722,7 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Add Networking and Dashboard Plugin for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Add Networking and Dashboard Plugin for Kubernetes.jpg&#34;
        alt=&#34;Add Networking and Dashboard Plugin for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -766,15 +766,15 @@ kubectl apply -f calico.yaml
     
     <item>
       <title>K8s: Case 4. OS(windows) &#43; Network(Bridge Mode) &#43; 가상화(VirtualBox-CentOS) &#43; k8s(v1.19.4)</title>
-      <link>https://taemin77.github.io/k8s/92-installation/case4/</link>
+      <link>https://kubetm.github.io/k8s/92-installation/case4/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/92-installation/case4/</guid>
+      <guid>https://kubetm.github.io/k8s/92-installation/case4/</guid>
       <description>
         
         
         &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Setting VirtualBox for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Setting VirtualBox for Kubernetes.jpg&#34;
        alt=&#34;Setting VirtualBox for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -816,7 +816,7 @@ kubectl apply -f calico.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Create VM for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Create VM for Kubernetes.jpg&#34;
        alt=&#34;Create VM for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -861,7 +861,7 @@ kubectl apply -f calico.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Docker, Kubernetes Installation.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Docker, Kubernetes Installation.jpg&#34;
        alt=&#34;Docker, Kubernetes Installation.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -961,7 +961,7 @@ mkdir -p /etc/systemd/system/docker.service.d
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Clone VM on Node For Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Clone VM on Node For Kubernetes.jpg&#34;
        alt=&#34;Clone VM on Node For Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -999,7 +999,7 @@ Host의 Ip Address를 변경하기 위해 아래 명령어로 설정을 열고&l
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Initialize Master and Join Node for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Initialize Master and Join Node for Kubernetes.jpg&#34;
        alt=&#34;Initialize Master and Join Node for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -1057,7 +1057,7 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Add Networking and Dashboard Plugin for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Add Networking and Dashboard Plugin for Kubernetes.jpg&#34;
        alt=&#34;Add Networking and Dashboard Plugin for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -1098,15 +1098,15 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
     
     <item>
       <title>K8s: Case 5. OS(windows) &#43; Network(NatNetwork &#43; Port Forwarding) &#43; 가상화(VirtualBox-CentOS7) &#43; k8s(v1.19.4)</title>
-      <link>https://taemin77.github.io/k8s/92-installation/case5/</link>
+      <link>https://kubetm.github.io/k8s/92-installation/case5/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/92-installation/case5/</guid>
+      <guid>https://kubetm.github.io/k8s/92-installation/case5/</guid>
       <description>
         
         
         &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/VirtualBox Installation for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/VirtualBox Installation for Kubernetes.jpg&#34;
        alt=&#34;VirtualBox Installation for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -1115,7 +1115,7 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;h2 id=&#34;전체-네트워크-구성&#34;&gt;전체 네트워크 구성&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Virtualbox with NatNetwork.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Virtualbox with NatNetwork.jpg&#34;
        alt=&#34;Virtualbox with NatNetwork.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -1160,7 +1160,7 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Create VM for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Create VM for Kubernetes.jpg&#34;
        alt=&#34;Create VM for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -1171,13 +1171,13 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 2. 편집 버튼 클릭
    - 네트워크 CICR 수정 : 30.0.2.0/24
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Virtualbox with NatNetwork-1.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Virtualbox with NatNetwork-1.jpg&#34;
        alt=&#34;Virtualbox with NatNetwork-1.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;3. 포트 포워딩&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;P&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; 클릭 후 아래와 같이 설정
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Virtualbox with NatNetwork-3.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Virtualbox with NatNetwork-3.jpg&#34;
        alt=&#34;Virtualbox with NatNetwork-3.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -1228,7 +1228,7 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Docker, Kubernetes Installation.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Docker, Kubernetes Installation.jpg&#34;
        alt=&#34;Docker, Kubernetes Installation.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -1329,7 +1329,7 @@ mkdir -p /etc/systemd/system/docker.service.d
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Clone VM on Node For Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Clone VM on Node For Kubernetes.jpg&#34;
        alt=&#34;Clone VM on Node For Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -1366,7 +1366,7 @@ mkdir -p /etc/systemd/system/docker.service.d
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Initialize Master and Join Node for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Initialize Master and Join Node for Kubernetes.jpg&#34;
        alt=&#34;Initialize Master and Join Node for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -1425,7 +1425,7 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/appendix/Add Networking and Dashboard Plugin for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Add Networking and Dashboard Plugin for Kubernetes.jpg&#34;
        alt=&#34;Add Networking and Dashboard Plugin for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;

@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>KubeTM Blog – - 주제별 기능 익히기</title>
-    <link>https://taemin77.github.io/helm/04-topic/</link>
+    <link>https://kubetm.github.io/helm/04-topic/</link>
     <description>Recent content in - 주제별 기능 익히기 on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate>
     
-	  <atom:link href="https://taemin77.github.io/helm/04-topic/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://kubetm.github.io/helm/04-topic/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,15 +16,15 @@
     
     <item>
       <title>Helm: 차트 개발 팁과 요령</title>
-      <link>https://taemin77.github.io/helm/04-topic/tip/</link>
+      <link>https://kubetm.github.io/helm/04-topic/tip/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/helm/04-topic/tip/</guid>
+      <guid>https://kubetm.github.io/helm/04-topic/tip/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/helm/topic/Tip.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/helm/topic/Tip.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
@@ -32,7 +32,7 @@
 &lt;h2 id=&#34;1-install-및-upgrade-tip&#34;&gt;1. Install 및 Upgrade Tip&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/topic/Install and Upgrade  for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/topic/Install and Upgrade  for Helm.jpg&#34;
        alt=&#34;Install and Upgrade  for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -133,7 +133,7 @@ helm upgrade mychart . -n nm-1 --create-namespace --install --wait --timeout 10m
 &lt;h2 id=&#34;2-pod-자동-재기동-tip&#34;&gt;2. Pod 자동 재기동 Tip&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/topic/Pod Auto Deployment for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/topic/Pod Auto Deployment for Helm.jpg&#34;
        alt=&#34;Pod Auto Deployment for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -185,7 +185,7 @@ kubectl get -n nm-1 deployment -o yaml
 &lt;h2 id=&#34;3-기타-resource-특성&#34;&gt;3. 기타 Resource 특성&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/topic/Etc Resource for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/topic/Etc Resource for Helm.jpg&#34;
        alt=&#34;Etc Resource for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -225,7 +225,7 @@ kubectl delete ns nm-1
 &lt;h2 id=&#34;4-helm-저장소&#34;&gt;4. Helm 저장소&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/topic/Helm Deployment Repository for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/topic/Helm Deployment Repository for Helm.jpg&#34;
        alt=&#34;Helm Deployment Repository for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -258,15 +258,15 @@ helm &lt;span style=&#34;color:#204a87&#34;&gt;history&lt;/span&gt; -n nm-1 mych
     
     <item>
       <title>Helm: 추가 기능</title>
-      <link>https://taemin77.github.io/helm/04-topic/topic1/</link>
+      <link>https://kubetm.github.io/helm/04-topic/topic1/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/helm/04-topic/topic1/</guid>
+      <guid>https://kubetm.github.io/helm/04-topic/topic1/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/helm/topic/Hook.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/helm/topic/Hook.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
@@ -274,7 +274,7 @@ helm &lt;span style=&#34;color:#204a87&#34;&gt;history&lt;/span&gt; -n nm-1 mych
 &lt;h2 id=&#34;1-helm-hook-기본-flow&#34;&gt;1. Helm Hook 기본 Flow&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/topic/Concept helm hook for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/topic/Concept helm hook for Helm.jpg&#34;
        alt=&#34;Concept helm hook for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -393,7 +393,7 @@ kubectl get pods -n nm-1
 &lt;h2 id=&#34;2-hook-weight&#34;&gt;2. hook-weight&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/topic/hook-weight for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/topic/hook-weight for Helm.jpg&#34;
        alt=&#34;hook-weight for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -475,7 +475,7 @@ kubectl get pods -n nm-2
 &lt;h2 id=&#34;3-hook-delete-policy&#34;&gt;3. hook-delete-policy&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/helm/topic/hook-delete-policy for Helm.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/helm/topic/hook-delete-policy for Helm.jpg&#34;
        alt=&#34;hook-delete-policy for Helm.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;

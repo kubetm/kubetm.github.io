@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>KubeTM Blog – - Pod</title>
-    <link>https://taemin77.github.io/k8s/06-intermediate-pod/</link>
+    <link>https://kubetm.github.io/k8s/06-intermediate-pod/</link>
     <description>Recent content in - Pod on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate>
     
-	  <atom:link href="https://taemin77.github.io/k8s/06-intermediate-pod/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://kubetm.github.io/k8s/06-intermediate-pod/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,20 +16,20 @@
     
     <item>
       <title>K8s: Readinessprobe, Livenessprobe</title>
-      <link>https://taemin77.github.io/k8s/06-intermediate-pod/probe/</link>
+      <link>https://kubetm.github.io/k8s/06-intermediate-pod/probe/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/06-intermediate-pod/probe/</guid>
+      <guid>https://kubetm.github.io/k8s/06-intermediate-pod/probe/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/intermediate/Pod-Lifecycle_Probe_QosClass.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/intermediate/Pod-Lifecycle_Probe_QosClass.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Pod Probe with ReadinessProbe, LivenessProbe for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Pod Probe with ReadinessProbe, LivenessProbe for Kubernetes.jpg&#34;
        alt=&#34;Pod Probe with ReadinessProbe, LivenessProbe for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -38,7 +38,7 @@
 &lt;h2 id=&#34;1-readinessprobe&#34;&gt;1. ReadinessProbe&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Pod Probe with ReadinessProbe for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Pod Probe with ReadinessProbe for Kubernetes.jpg&#34;
        alt=&#34;Pod Probe with ReadinessProbe for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -103,7 +103,7 @@ touch ready.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2-livenessprove&#34;&gt;2. LivenessProve&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Pod Probe with LivenessProbe for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Pod Probe with LivenessProbe for Kubernetes.jpg&#34;
        alt=&#34;Pod Probe with LivenessProbe for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -218,20 +218,20 @@ watch &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kubectl describe pod po
     
     <item>
       <title>K8s: Node Scheduling</title>
-      <link>https://taemin77.github.io/k8s/06-intermediate-pod/nodescheduling/</link>
+      <link>https://kubetm.github.io/k8s/06-intermediate-pod/nodescheduling/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/06-intermediate-pod/nodescheduling/</guid>
+      <guid>https://kubetm.github.io/k8s/06-intermediate-pod/nodescheduling/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/intermediate/Pod-Node_Scheduling.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/intermediate/Pod-Node_Scheduling.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Scheduling with Affinity and Toleration Taint for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Scheduling with Affinity and Toleration Taint for Kubernetes.jpg&#34;
        alt=&#34;Scheduling with Affinity and Toleration Taint for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -240,7 +240,7 @@ watch &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kubectl describe pod po
 &lt;h2 id=&#34;1-node-affinity&#34;&gt;1. Node Affinity&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Scheduling of Node Affinity for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Scheduling of Node Affinity for Kubernetes.jpg&#34;
        alt=&#34;Scheduling of Node Affinity for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -300,7 +300,7 @@ kubectl label nodes k8s-node2 &lt;span style=&#34;color:#000&#34;&gt;us&lt;/span
 &lt;h2 id=&#34;2-pod-affinity--anti-affinity&#34;&gt;2. Pod Affinity / Anti-Affinity&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Scheduling of Pod Affinity for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Scheduling of Pod Affinity for Kubernetes.jpg&#34;
        alt=&#34;Scheduling of Pod Affinity for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -371,7 +371,7 @@ kubectl label nodes k8s-node2 a-team&lt;span style=&#34;color:#ce5c00;font-weigh
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;terminationGracePeriodSeconds&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Scheduling of Pod Anti-Affinity for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Scheduling of Pod Anti-Affinity for Kubernetes.jpg&#34;
        alt=&#34;Scheduling of Pod Anti-Affinity for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -411,7 +411,7 @@ kubectl label nodes k8s-node2 a-team&lt;span style=&#34;color:#ce5c00;font-weigh
 &lt;h2 id=&#34;3-taint--toleration&#34;&gt;3. Taint / Toleration&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Scheduling of Taint and Toleration for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Scheduling of Taint and Toleration for Kubernetes.jpg&#34;
        alt=&#34;Scheduling of Taint and Toleration for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -517,7 +517,7 @@ kubectl label nodes k8s-node1 &lt;span style=&#34;color:#000&#34;&gt;key1&lt;/sp
 &lt;hr&gt;
 &lt;h3 id=&#34;nodeaffinity-matchexpressions-operator&#34;&gt;NodeAffinity MatchExpressions Operator&lt;/h3&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Scheduling MatchExpressions for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Scheduling MatchExpressions for Kubernetes.jpg&#34;
        alt=&#34;Scheduling MatchExpressions for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;

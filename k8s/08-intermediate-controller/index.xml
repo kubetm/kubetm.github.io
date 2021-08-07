@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>KubeTM Blog – - 컨트롤러</title>
-    <link>https://taemin77.github.io/k8s/08-intermediate-controller/</link>
+    <link>https://kubetm.github.io/k8s/08-intermediate-controller/</link>
     <description>Recent content in - 컨트롤러 on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate>
     
-	  <atom:link href="https://taemin77.github.io/k8s/08-intermediate-controller/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://kubetm.github.io/k8s/08-intermediate-controller/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,34 +16,34 @@
     
     <item>
       <title>K8s: Statefulset</title>
-      <link>https://taemin77.github.io/k8s/08-intermediate-controller/statefulset/</link>
+      <link>https://kubetm.github.io/k8s/08-intermediate-controller/statefulset/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/08-intermediate-controller/statefulset/</guid>
+      <guid>https://kubetm.github.io/k8s/08-intermediate-controller/statefulset/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/intermediate/StatefulSet.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/intermediate/StatefulSet.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/StatefulSet with satefull application for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/StatefulSet with satefull application for Kubernetes.jpg&#34;
        alt=&#34;StatefulSet with satefull application for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/StatefulSet with Stateless, Stateful Application for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/StatefulSet with Stateless, Stateful Application for Kubernetes.jpg&#34;
        alt=&#34;StatefulSet with Stateless, Stateful Application for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;h2 id=&#34;1-statefulset-controller&#34;&gt;1. StatefulSet Controller&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/StatefulSet with Pod for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/StatefulSet with Pod for Kubernetes.jpg&#34;
        alt=&#34;StatefulSet with Pod for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -89,7 +89,7 @@
 &lt;h2 id=&#34;2-persistentvolumeclaim&#34;&gt;2. PersistentVolumeClaim&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/StatefulSet with PersistentVolumeClaims for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/StatefulSet with PersistentVolumeClaims for Kubernetes.jpg&#34;
        alt=&#34;StatefulSet with PersistentVolumeClaims for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -171,7 +171,7 @@
 &lt;h2 id=&#34;3-headless-service&#34;&gt;3. Headless Service&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/StatefulSet with Headless Service for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/StatefulSet with Headless Service for Kubernetes.jpg&#34;
        alt=&#34;StatefulSet with Headless Service for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -213,34 +213,34 @@ curl stateful-pvc-0.stateful-headless:8080/hostname
     
     <item>
       <title>K8s: Ingress</title>
-      <link>https://taemin77.github.io/k8s/08-intermediate-controller/ingress/</link>
+      <link>https://kubetm.github.io/k8s/08-intermediate-controller/ingress/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/08-intermediate-controller/ingress/</guid>
+      <guid>https://kubetm.github.io/k8s/08-intermediate-controller/ingress/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/intermediate/Ingress.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/intermediate/Ingress.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Ingress with Service Loadbalancing and Canary for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Ingress with Service Loadbalancing and Canary for Kubernetes.jpg&#34;
        alt=&#34;Ingress with Service Loadbalancing and Canary for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Ingress with Loadbalancing and Canary Concept for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Ingress with Loadbalancing and Canary Concept for Kubernetes.jpg&#34;
        alt=&#34;Ingress with Loadbalancing and Canary Concept for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;h2 id=&#34;1-nginx-controller&#34;&gt;1. Nginx Controller&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Ingress with Install Nginx Controller for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Ingress with Install Nginx Controller for Kubernetes.jpg&#34;
        alt=&#34;Ingress with Install Nginx Controller for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -252,7 +252,7 @@ curl stateful-pvc-0.stateful-headless:8080/hostname
 &lt;h2 id=&#34;2-service-loadbalancing&#34;&gt;2. Service Loadbalancing&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Ingress with Service Loadbalancing for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Ingress with Service Loadbalancing for Kubernetes.jpg&#34;
        alt=&#34;Ingress with Service Loadbalancing for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -348,7 +348,7 @@ curl 192.168.0.30:30431/customer
 &lt;h2 id=&#34;3-canary-upgrade&#34;&gt;3. Canary Upgrade&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Ingress with Canary Upgrade for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Ingress with Canary Upgrade for Kubernetes.jpg&#34;
        alt=&#34;Ingress with Canary Upgrade for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -453,7 +453,7 @@ curl www.app.com:30431/version
 &lt;h2 id=&#34;4-ssl&#34;&gt;4. SSL&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Ingress with SSL for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Ingress with SSL for Kubernetes.jpg&#34;
        alt=&#34;Ingress with SSL for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -525,20 +525,20 @@ kubectl create secret tls secret-https --key tls.key --cert tls.crt
     
     <item>
       <title>K8s: AutoScaler - HPA</title>
-      <link>https://taemin77.github.io/k8s/08-intermediate-controller/hpa/</link>
+      <link>https://kubetm.github.io/k8s/08-intermediate-controller/hpa/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/08-intermediate-controller/hpa/</guid>
+      <guid>https://kubetm.github.io/k8s/08-intermediate-controller/hpa/</guid>
       <description>
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://taemin77.github.io/documents/intermediate/Autoscaler.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/intermediate/Autoscaler.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Autoscaler with Horizontal Pod Autoscaler for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Autoscaler with Horizontal Pod Autoscaler for Kubernetes.jpg&#34;
        alt=&#34;Autoscaler with Horizontal Pod Autoscaler for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -595,7 +595,7 @@ k8s-node2        554m         11%    4672Mi          31%
 &lt;h2 id=&#34;2-hpa-horizontal-pod-autoscaler&#34;&gt;2. HPA (Horizontal Pod Autoscaler)&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Autoscaler with Horizontal Pod Autoscaler CPU for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Autoscaler with Horizontal Pod Autoscaler CPU for Kubernetes.jpg&#34;
        alt=&#34;Autoscaler with Horizontal Pod Autoscaler CPU for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -661,7 +661,7 @@ k8s-node2        554m         11%    4672Mi          31%
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/intermediate/Autoscaler with Horizontal Pod Autoscaler Memory for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Autoscaler with Horizontal Pod Autoscaler Memory for Kubernetes.jpg&#34;
        alt=&#34;Autoscaler with Horizontal Pod Autoscaler Memory for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;

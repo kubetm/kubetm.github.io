@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>KubeTM Blog – - CKA 준비</title>
-    <link>https://taemin77.github.io/k8s/91-cka/</link>
+    <link>https://kubetm.github.io/k8s/91-cka/</link>
     <description>Recent content in - CKA 준비 on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate>
     
-	  <atom:link href="https://taemin77.github.io/k8s/91-cka/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://kubetm.github.io/k8s/91-cka/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,15 +16,15 @@
     
     <item>
       <title>K8s: CKA 자격증 개요</title>
-      <link>https://taemin77.github.io/k8s/91-cka/ready/</link>
+      <link>https://kubetm.github.io/k8s/91-cka/ready/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/91-cka/ready/</guid>
+      <guid>https://kubetm.github.io/k8s/91-cka/ready/</guid>
       <description>
         
         
         &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/cka/Certified Kubernetes Administrator for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/cka/Certified Kubernetes Administrator for Kubernetes.jpg&#34;
        alt=&#34;Certified Kubernetes Administrator for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -130,7 +130,7 @@ ex: KUBERNETES30, ANYWHERE30
 &lt;li&gt;&lt;strong&gt;작업Cluster&lt;/strong&gt; : 기본적으로 Host(node-1)에서 [kubectl config user-context k8s] 명령을 통해서 원하는 Cluster로 작업 명령을 날림. 시험 문제마다 어떤 클러스터에 연결해서 작업을 하라는 내용이 나와있고, 70%정도가 k8s Cluster에서 작업함. (ik8s 용도는 쿠버네티스 master, node 설치), ssh로 연결시 user권한이고, root 권한이 아니기 때문에 sudo -i 명령을 써서 작업하는 경우가 있는데 작업 후 node-1까지 돌아갈려면 exit를 두번 해야함. (실수로 한번만 해서 worker를 node-1으로 착각할 수 있음)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/cka/Cka Clusters.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/cka/Cka Clusters.jpg&#34;
        alt=&#34;Cka Clusters.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -141,15 +141,15 @@ ex: KUBERNETES30, ANYWHERE30
     
     <item>
       <title>K8s: CKA 시험 공부 1</title>
-      <link>https://taemin77.github.io/k8s/91-cka/exam1/</link>
+      <link>https://kubetm.github.io/k8s/91-cka/exam1/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/91-cka/exam1/</guid>
+      <guid>https://kubetm.github.io/k8s/91-cka/exam1/</guid>
       <description>
         
         
         &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/cka/Certified Kubernetes Administrator for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/cka/Certified Kubernetes Administrator for Kubernetes.jpg&#34;
        alt=&#34;Certified Kubernetes Administrator for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -706,15 +706,15 @@ kubectl get pods
     
     <item>
       <title>K8s: CKA 시험 공부 2</title>
-      <link>https://taemin77.github.io/k8s/91-cka/exam2/</link>
+      <link>https://kubetm.github.io/k8s/91-cka/exam2/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://taemin77.github.io/k8s/91-cka/exam2/</guid>
+      <guid>https://kubetm.github.io/k8s/91-cka/exam2/</guid>
       <description>
         
         
         &lt;figure&gt;
-  &lt;img src=&#34;https://taemin77.github.io/img/practice/cka/Certified Kubernetes Administrator for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/cka/Certified Kubernetes Administrator for Kubernetes.jpg&#34;
        alt=&#34;Certified Kubernetes Administrator for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
