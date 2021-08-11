@@ -546,7 +546,7 @@ kubectl get events &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;cp ./helm /usr/local/bin/&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;h3 id=&#34;2-2-loki-stack-설치&#34;&gt;2-2) loki-stack 설치&lt;/h3&gt;
-&lt;p&gt;패키지 다운로드
+&lt;p&gt;패키지 다운로드 
 &lt;a href=&#34;https://artifacthub.io/packages/helm/loki/loki-stack&#34;&gt;https://artifacthub.io/packages/helm/loki/loki-stack&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;helm repo add loki https://grafana.github.io/loki/charts
 helm fetch loki/loki-stack --version 0.41.2

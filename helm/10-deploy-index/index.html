@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.85.0" /><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<meta name="generator" content="Hugo 0.85.0" /><link rel="alternate" type="application/rss&#43;xml" href="https://kubetm.github.io/helm/10-deploy-index/index.xml">
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -17,23 +18,18 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Grafana 차트 분석 | KubeTM Blog</title>
-<meta name="description" content=""><meta property="og:title" content="Grafana 차트 분석" />
-<meta property="og:description" content="Helm Test
+<title>=== 배포편 === | KubeTM Blog</title>
+<meta name="description" content=""><meta property="og:title" content="=== 배포편 ===" />
+<meta property="og:description" content="쿠버네티스로 배포를 위한 내용이 연재될 예정입니다 &lt;br/&gt;
 " />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/helm/03-chart-analysis/grafana/" /><meta property="article:section" content="helm" />
-<meta property="article:published_time" content="2021-08-02T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-08-02T00:00:00+00:00" /><meta property="og:site_name" content="KubeTM Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://kubetm.github.io/helm/10-deploy-index/" /><meta property="og:site_name" content="KubeTM Blog" />
 
-<meta itemprop="name" content="Grafana 차트 분석">
-<meta itemprop="description" content="Helm Test
-"><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="65">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Grafana 차트 분석"/>
-<meta name="twitter:description" content="Helm Test
+<meta itemprop="name" content="=== 배포편 ===">
+<meta itemprop="description" content="쿠버네티스로 배포를 위한 내용이 연재될 예정입니다 &lt;br/&gt;
+"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="=== 배포편 ==="/>
+<meta name="twitter:description" content="쿠버네티스로 배포를 위한 내용이 연재될 예정입니다 &lt;br/&gt;
 "/>
 
 
@@ -49,7 +45,7 @@
 
 
   </head>
-  <body class="td-page">
+  <body class="td-section">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -118,13 +114,13 @@
   <script>
     $(function() {
     $("#td-section-nav a").removeClass("active");
-    $("#td-section-nav #m-helm03-chart-analysisgrafana").addClass("active"); 
-    $("#td-section-nav #m-helm03-chart-analysisgrafana-li span").addClass("td-sidebar-nav-active-item"); 
-    $("#td-section-nav #m-helm03-chart-analysisgrafana").parents("li").addClass("active-path"); 
+    $("#td-section-nav #m-helm10-deploy-index").addClass("active"); 
+    $("#td-section-nav #m-helm10-deploy-index-li span").addClass("td-sidebar-nav-active-item"); 
+    $("#td-section-nav #m-helm10-deploy-index").parents("li").addClass("active-path"); 
     $("#td-section-nav li.active-path").addClass("show"); 
     $("#td-section-nav li.active-path").children("input").prop('checked', true);
-    $("#td-section-nav #m-helm03-chart-analysisgrafana-li").siblings("li").addClass("show");  
-    $("#td-section-nav #m-helm03-chart-analysisgrafana-li").children("ul").children("li").addClass("show");  
+    $("#td-section-nav #m-helm10-deploy-index-li").siblings("li").addClass("show");  
+    $("#td-section-nav #m-helm10-deploy-index-li").children("ul").children("li").addClass("show");  
     $("#td-sidebar-menu").toggleClass("d-none"); 
     });
   </script>
@@ -649,25 +645,6 @@
             
 
 
-<div class="td-toc"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#1-grafana-차트-설치-및-배포">1. Grafana 차트 설치 및 배포</a>
-      <ul>
-        <li><a href="#1-1-레포지토리-등록">1-1) 레포지토리 등록</a></li>
-        <li><a href="#1-2-grafana-691-다운로드">1-2) Grafana 6.9.1 다운로드</a></li>
-        <li><a href="#1-3-grafana-template-보기">1-3) Grafana Template 보기</a></li>
-        <li><a href="#1-4-grafana-install-배포">1-4) Grafana Install 배포</a></li>
-        <li><a href="#1-5-grafana-test-하기">1-5) Grafana Test 하기</a></li>
-      </ul>
-    </li>
-    <li><a href="#referenece">Referenece</a>
-      <ul>
-        <li><a href="#__helm__"><strong>Helm</strong></a></li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-
 
 
             
@@ -697,9 +674,6 @@
 
 
 
-
-
-
 <li class="breadcrumb-item" >
 	<a href="https://kubetm.github.io/helm/">Helm 실습 자료실</a>
 </li>
@@ -707,15 +681,8 @@
 
 
 
-<li class="breadcrumb-item" >
-	<a href="https://kubetm.github.io/helm/03-chart-analysis/">차트 분석</a>
-</li>
-
-
-
-
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://kubetm.github.io/helm/03-chart-analysis/grafana/">Grafana</a>
+	<a href="https://kubetm.github.io/helm/10-deploy-index/">=== 배포편 ===</a>
 </li>
 
 	</ol>
@@ -723,8 +690,8 @@
 
             
 <div class="td-content">
-	<h1>Grafana 차트 분석</h1>
-	<div class="lead">Helm Test</div>
+	<h1>=== 배포편 ===</h1>
+  <div class="lead">쿠버네티스로 배포를 위한 내용이 연재될 예정입니다 <br/></div>
 	<header class="article-meta">
 		
 		
@@ -735,36 +702,17 @@
 			
 		
 		
-	</header>    
-	<div class="mx-auto">
-	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="/documents/helm/sample/Grafana.pdf" download>
-		강의자료 PDF <i class="fas fa-download ml-2"></i>
-	</a>
+	</header>
+	
+        <div class="section-index">
+    
+    
+    
+    
+    
+    
+    
 </div>
-<p><br/><br/></p>
-<h2 id="1-grafana-차트-설치-및-배포">1. Grafana 차트 설치 및 배포</h2>
-<hr>
-<h3 id="1-1-레포지토리-등록">1-1) 레포지토리 등록</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm repo add grafana https://grafana.github.io/helm-charts
-</code></pre></div><h3 id="1-2-grafana-691-다운로드">1-2) Grafana 6.9.1 다운로드</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm pull grafana/grafana --version 6.9.1
-tar -xf grafana-6.9.1.tgz
-</code></pre></div><h3 id="1-3-grafana-template-보기">1-3) Grafana Template 보기</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm template my-grafana .
-</code></pre></div><h3 id="1-4-grafana-install-배포">1-4) Grafana Install 배포</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm install my-grafana .
-</code></pre></div><h3 id="1-5-grafana-test-하기">1-5) Grafana Test 하기</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm <span style="color:#204a87">test</span> my-grafana
-</code></pre></div><br/>
-<br/>
-<h2 id="referenece">Referenece</h2>
-<hr>
-<h3 id="__helm__"><strong>Helm</strong></h3>
-<ul>
-<li><strong>차트 테스트</strong> : <a href="https://helm.sh/docs/topics/chart_tests/">https://helm.sh/docs/topics/chart_tests/</a></li>
-<li><strong>Helm Test Command</strong> : <a href="https://helm.sh/docs/helm/helm_test/">https://helm.sh/docs/helm/helm_test/</a></li>
-<li><strong>내장객체(Files)</strong> : <a href="https://helm.sh/docs/chart_template_guide/builtin_objects/">https://helm.sh/docs/chart_template_guide/builtin_objects/</a></li>
-</ul>
 
 	
 	
@@ -773,7 +721,6 @@ tar -xf grafana-6.9.1.tgz
 </div>
 
 </div>
-
 
           </main>
         </div>

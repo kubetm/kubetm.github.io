@@ -1,0 +1,59 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>KubeTM Blog – - 배포 개요</title>
+    <link>https://kubetm.github.io/helm/11-deploy/</link>
+    <description>Recent content in - 배포 개요 on KubeTM Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 10 Aug 2021 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://kubetm.github.io/helm/11-deploy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Helm: 배포 개요</title>
+      <link>https://kubetm.github.io/helm/11-deploy/concept/</link>
+      <pubDate>Tue, 10 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/helm/11-deploy/concept/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h2 id=&#34;1-소스-코드&#34;&gt;1. 소스 코드&lt;/h2&gt;
+&lt;hr&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/deploy/concept/Source Code for k8s Deploy Concept.jpg&#34;
+       alt=&#34;Source Code for k8s Deploy Concept&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
+&lt;br/&gt;
+&lt;h2 id=&#34;2-이미지-생성&#34;&gt;2. 이미지 생성&lt;/h2&gt;
+&lt;hr&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/deploy/concept/Creating Container Images for k8s Deploy Concept.jpg&#34;
+       alt=&#34;Creating Container Images for k8s Deploy Concept&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
+&lt;br/&gt;
+&lt;h2 id=&#34;3-배포&#34;&gt;3. 배포&lt;/h2&gt;
+&lt;hr&gt;
+&lt;br/&gt;
+&lt;h3 id=&#34;3-1-어디에-배포할-것인가&#34;&gt;3-1) 어디에 배포할 것인가?&lt;/h3&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/deploy/concept/Where is deploying for k8s Deploy Concept.jpg&#34;
+       alt=&#34;Where is deploying for k8s Deploy Concept&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
+&lt;h3 id=&#34;3-2-어떻게-배포할-것인가&#34;&gt;3-2) 어떻게 배포할 것인가?&lt;/h3&gt;
+&lt;h3 id=&#34;3-3-배포-전략은&#34;&gt;3-3) 배포 전략은?&lt;/h3&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

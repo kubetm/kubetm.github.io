@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/11-deploy/concept/</loc>
+    <lastmod>2021-08-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/01-beginner-index/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
@@ -213,7 +218,7 @@
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/10-cicd-index/</loc>
+    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/10-deploy-index/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -257,6 +262,11 @@
   </url>
   
   <url>
+    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/11-deploy/</loc>
+    <lastmod>2021-08-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/04-beginner-controller/deployment/</loc>
   </url>
   
@@ -281,16 +291,16 @@
   
   <url>
     <loc>https://www.docsy.devhttps://kubetm.github.io/helm/</loc>
-    <lastmod>2021-08-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/</loc>
-    <lastmod>2021-08-02T00:00:00+00:00</lastmod>
+    <lastmod>2021-08-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.docsy.devhttps://kubetm.github.io/</loc>
+    <lastmod>2021-08-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
