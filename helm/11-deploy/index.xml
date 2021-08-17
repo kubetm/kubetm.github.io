@@ -50,6 +50,12 @@
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;h3 id=&#34;3-2-어떻게-배포할-것인가&#34;&gt;3-2) 어떻게 배포할 것인가?&lt;/h3&gt;
+&lt;p&gt;기존방식&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/deploy/concept/How to deploying1 for k8s Deploy Concept.jpg&#34;
+       alt=&#34;How to deploying1 for k8s Deploy Concept&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
 &lt;h3 id=&#34;3-3-배포-전략은&#34;&gt;3-3) 배포 전략은?&lt;/h3&gt;
 
       </description>
