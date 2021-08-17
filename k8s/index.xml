@@ -4,7 +4,7 @@
     <link>https://kubetm.github.io/k8s/</link>
     <description>Recent content in K8S 실습 자료실 on KubeTM Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Aug 2021 00:00:00 +0000</lastBuildDate>
     
 	  <atom:link href="https://kubetm.github.io/k8s/index.xml" rel="self" type="application/rss+xml" />
     
@@ -1241,7 +1241,7 @@ curl stateful-pvc-0.stateful-headless:8080/hostname
 &lt;p&gt;&lt;a href=&#34;http://isoredirect.centos.org/centos/7/isos/x86_64/&#34;&gt;http://isoredirect.centos.org/centos/7/isos/x86_64/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;1-1-2-booting-usb-만들기&#34;&gt;1-1-2) Booting USB 만들기&lt;/h3&gt;
-&lt;p&gt;아래 경로로 들어가면 중간 정도에 다운로드 버튼 있어요. 
+&lt;p&gt;아래 경로로 들어가면 중간 정도에 다운로드 버튼 있어요.
 &lt;br/&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://rufus.ie/ko_KR.html&#34;&gt;https://rufus.ie/ko_KR.html&lt;/a&gt;
@@ -1310,7 +1310,7 @@ USB를 설치할 서버에 꼽고 부팅하면 CentOS 설치단계로 가져요
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;systemctl start libvirtd &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl &lt;span style=&#34;color:#204a87&#34;&gt;enable&lt;/span&gt; libvirtd
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;virt-manager UI를 띄우기 위해 X Window System 및 폰트 설치&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;yum groupinstall &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;X Window System&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Fonts&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;virt-manager 실행 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;virt-manager 실행
 &lt;br/&gt;
 만약 UI가 뜨지 않으면 재접속 후 다시 실행&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;virt-manager
@@ -1326,7 +1326,7 @@ USB를 설치할 서버에 꼽고 부팅하면 CentOS 설치단계로 가져요
 &lt;h3 id=&#34;2-1-1-centos-최신버전-다운로드&#34;&gt;2-1-1) CentOS 최신버전 다운로드&lt;/h3&gt;
 &lt;p&gt;Virt-Manager의 Image 파일 기본 경로로 이동&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; /var/lib/libvirt/images
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Minimal ISO 버전 다운로드 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Minimal ISO 버전 다운로드
 &lt;br/&gt;
 만약 다운로드 받은 파일 크기가 매우 작다면 해당 경로에 파일이 없는 것이니, 아래 URL에서 [Minimal ISO]를 선택하고 원하는 경로로 변경하세요.
 &lt;br/&gt;&lt;/p&gt;
@@ -1529,7 +1529,7 @@ Host의 Ip Address를 변경하기 위해 아래 명령어로 설정을 열고&l
 &lt;br/&gt;
 `service-cidr` 를 설정하면 Service의 IP가 자동으로 생성될때 해당 대역으로 생성되요 `Default: 10.96.0.0/12`
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubeadm init --pod-network-cidr&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;20.96.0.0/12 --apiserver-advertise-address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.0.30
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다. 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다.
 &lt;br/&gt;
 kubeadm join 192.168.0.30:6443 &amp;ndash;token ki4szr.t3wondaclij6d1a3&lt;br&gt;
 &amp;ndash;discovery-token-ca-cert-hash sha256:2370f0451342c6e4bd0d38f6c2511bda5c50374c85e9c09da28e12dd666d5987&lt;/p&gt;
@@ -1674,7 +1674,7 @@ ex: KUBERNETES30, ANYWHERE30
 &lt;br/&gt;
 &lt;h3 id=&#34;__오픈북-시험__-&#34;&gt;&lt;strong&gt;오픈북 시험&lt;/strong&gt; :&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;탭 하나만 이용해서 아래 Site만 접속 가능&lt;/strong&gt; 
+&lt;li&gt;&lt;strong&gt;탭 하나만 이용해서 아래 Site만 접속 가능&lt;/strong&gt;
 &lt;br/&gt;
 &amp;ndash; &lt;a href=&#34;https://kubernetes.io/docs/&#34;&gt;https://kubernetes.io/docs/&lt;/a&gt;
 &lt;br/&gt;
@@ -1707,7 +1707,7 @@ ex: KUBERNETES30, ANYWHERE30
 &lt;hr&gt;
 &lt;h3 id=&#34;__시험전-준비__&#34;&gt;&lt;strong&gt;시험전 준비&lt;/strong&gt;&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;시험 작업 환경 세팅 : 화면 및 웹캠/마이크 공유, 신분증 검사, 웹켐으로 방 주변을 보여줌. 
+&lt;li&gt;시험 작업 환경 세팅 : 화면 및 웹캠/마이크 공유, 신분증 검사, 웹켐으로 방 주변을 보여줌.
 &lt;br/&gt;
 (개인적으로 화면 공유버튼을 눌러도 공유에 녹색불이 안들어와서 당황스러웠는데, 브라우저 캐시를 지우고 다시 접속해보라고 하고, 컴퓨터도 껏다가 다시 접속해 보라고함, 컴퓨터를 껐다킨 후 재접속하니까 정상적으로 작동됨)&lt;/li&gt;
 &lt;li&gt;컴퓨터 운영체제가 뭔지 물어보고, 다른 프로그램들이 실행중인지 &lt;code&gt;Task Manager&lt;/code&gt;도 실행해 보라고함.&lt;/li&gt;
@@ -3398,7 +3398,7 @@ Host의 Ip Address를 변경하기 위해 아래 명령어로 설정을 열고&l
 &lt;br/&gt;
 `service-cidr` 를 설정하면 Service의 IP가 자동으로 생성될때 해당 대역으로 생성되요 `Default: 10.96.0.0/12`
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubeadm init --pod-network-cidr&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;20.96.0.0/12 --apiserver-advertise-address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.0.30
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다. 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다.
 &lt;br/&gt;
 kubeadm join 192.168.0.30:6443 &amp;ndash;token ki4szr.t3wondaclij6d1a3&lt;br&gt;
 &amp;ndash;discovery-token-ca-cert-hash sha256:2370f0451342c6e4bd0d38f6c2511bda5c50374c85e9c09da28e12dd666d5987&lt;/p&gt;
@@ -3471,6 +3471,84 @@ kubectl apply -f calico.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;6-2-4-언어-설정변경&#34;&gt;6-2-4) 언어 설정변경&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;Chrome 설정 &amp;gt; 언어 &amp;gt; 언어&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;한국어&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &amp;gt; 원하는 언어를 위로 추가
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>K8s: Case 6. k8s v1.22버전 설치</title>
+      <link>https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/</link>
+      <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/</guid>
+      <description>
+        
+        
+        &lt;br/&gt;
+&lt;br/&gt;
+&lt;h2 id=&#34;전체-구성도&#34;&gt;전체 구성도&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;가이드대로 진행하시면 아래 전체 구성도와 같이 설치가 됩니다. 설치 실습 동영상과 세부 설정에 대한 추가 설명 강의가 만들어질 예정입니다.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation Overview Case6 for Kubernetes.jpg&#34;
+       alt=&#34;Installation Overview Case6 for Kubernetes&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
+&lt;br/&gt;
+&lt;h3 id=&#34;1-xshell-설치&#34;&gt;1. XShell 설치&lt;/h3&gt;
+&lt;p&gt;다운로드 url : &lt;a href=&#34;https://www.netsarang.com/en/free-for-home-school/&#34;&gt;https://www.netsarang.com/en/free-for-home-school/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;설치후 아래와 같이 Master, Worker1, Worker2 IP 등록&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation XShell for Kubernetes.jpg&#34;
+       alt=&#34;Installation XShell for Kubernetes&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
+&lt;br/&gt;
+&lt;h3 id=&#34;2-virtualbox-설치&#34;&gt;2. VirtualBox 설치&lt;/h3&gt;
+&lt;p&gt;다운로드 url : &lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;https://www.virtualbox.org/wiki/Downloads&lt;/a&gt;&lt;/p&gt;
+&lt;br/&gt;
+&lt;h3 id=&#34;3-vagrant-설치&#34;&gt;3. Vagrant 설치&lt;/h3&gt;
+&lt;p&gt;다운로드 url : &lt;a href=&#34;https://www.vagrantup.com/downloads&#34;&gt;https://www.vagrantup.com/downloads&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;vagrant 명령어&lt;/h4&gt;
+
+    vagrant up : 가상머신 기동 &lt;br/&gt;
+vagrant ssh : 가상머신 접속 &lt;br/&gt;
+vagrant halt : 가상머신 shutdown &lt;br/&gt;
+vagrant reload : 가상머신 restart &lt;br/&gt;
+vagrant destroy : 가상머신 삭제
+
+&lt;/div&gt;
+
+&lt;br/&gt;
+&lt;h3 id=&#34;4-vagrant-명령-실행&#34;&gt;4. Vagrant 명령 실행&lt;/h3&gt;
+&lt;p&gt;4-1) 윈도우에서 cmd 실행 &lt;br/&gt;
+4-2) k8s 폴더 생성 및 이동 &lt;br/&gt;
+4-3) Vagrantfile 파일 다운로드&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://kubetm.github.io/yamls/k8s-install/Vagrantfile&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;4-4) Vagrant 실행 (5~10분 소요)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; vagrant up&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;h3 id=&#34;5-worker-node-연결&#34;&gt;5. Worker Node 연결&lt;/h3&gt;
+&lt;p&gt;5-1) XShell을 통해 master 접속 (id/pw: root/vagrant) &lt;br/&gt;
+5-2) cat 명령으로 자신에 master 접근 token 확인 및 복사&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-master ~]# cat ~/join.sh
+kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;5-3) worker1 접속 후 토큰 붙여놓기 (id/pw: root/vagrant) &lt;br/&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-worker1 ~]# kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;5-4) worker2 접속 후 토큰 붙여놓기 반복&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-worker2 ~]# kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
+&lt;h3 id=&#34;6-설치-확인&#34;&gt;6. 설치 확인&lt;/h3&gt;
+&lt;p&gt;6-1) XShell을 통해 master 접속 (id/pw = root/vagrant) &lt;br/&gt;
+6-2) kubectl 명령어&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-master ~]# kubectl get pod -A
+[root@k8s-master ~]# kubectl get nodes
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
+&lt;h3 id=&#34;7-대시보드-접근&#34;&gt;7. 대시보드 접근&lt;/h3&gt;
+&lt;p&gt;http://192.168.56.30:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/workloads?namespace=_all&lt;/p&gt;
+
       </description>
     </item>
     
@@ -3577,7 +3655,7 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;client-certificate-data&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;LS0tLS1KVEUtLS0tLQo=&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;client-key-data&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;LS0tLS1KVEUtLS0tLQo=&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-4-kubectl-cli&#34;&gt;2-4) kubectl CLI&lt;/h3&gt;
-&lt;p&gt;kubectl download : 
+&lt;p&gt;kubectl download :
 &lt;a href=&#34;https://kubernetes.io/docs/tasks/tools/install-kubectl/&#34;&gt;https://kubernetes.io/docs/tasks/tools/install-kubectl/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;windows&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/windows/amd64/kubectl.exe
@@ -4159,24 +4237,6 @@ k8s-node2        554m         11%    4672Mi          31%
     </item>
     
     <item>
-      <title>K8s: Case 6. k8s v1.22버전 설치</title>
-      <link>https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/</link>
-      <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/</guid>
-      <description>
-        
-        
-        &lt;br/&gt;
-&lt;br/&gt;
-&lt;h2 id=&#34;1-1-준비중&#34;&gt;1-1) 준비중&lt;/h2&gt;
-&lt;p&gt;2021년 8월 초에 쿠버네티스 1.22버전이 출시 됩니다.  &lt;br/&gt;
-이 버전에 마춰서 설치 가이드가 작성될 예정입니다.&lt;/p&gt;
-
-      </description>
-    </item>
-    
-    <item>
       <title>K8s: Storage Architecture</title>
       <link>https://kubetm.github.io/k8s/09-intermediate-architecture/storage/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
@@ -4633,7 +4693,7 @@ Host의 Ip Address를 변경하기 위해 아래 명령어로 설정을 열고&l
 &lt;br/&gt;
 `service-cidr` 를 설정하면 Service의 IP가 자동으로 생성될때 해당 대역으로 생성되요 `Default: 10.96.0.0/12`
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubeadm init --pod-network-cidr&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;20.96.0.0/12 --apiserver-advertise-address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.0.30
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다. 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다.
 &lt;br/&gt;
 kubeadm join 192.168.0.30:6443 &amp;ndash;token ki4szr.t3wondaclij6d1a3&lt;br&gt;
 &amp;ndash;discovery-token-ca-cert-hash sha256:2370f0451342c6e4bd0d38f6c2511bda5c50374c85e9c09da28e12dd666d5987&lt;/p&gt;
@@ -4944,7 +5004,7 @@ kubectl get events &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;cp ./helm /usr/local/bin/&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;h3 id=&#34;2-2-loki-stack-설치&#34;&gt;2-2) loki-stack 설치&lt;/h3&gt;
-&lt;p&gt;패키지 다운로드 
+&lt;p&gt;패키지 다운로드
 &lt;a href=&#34;https://artifacthub.io/packages/helm/loki/loki-stack&#34;&gt;https://artifacthub.io/packages/helm/loki/loki-stack&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;helm repo add loki https://grafana.github.io/loki/charts
 helm fetch loki/loki-stack --version 0.41.2
@@ -5519,7 +5579,7 @@ mkdir -p /etc/systemd/system/docker.service.d
 &lt;br/&gt;
 `service-cidr` 를 설정하면 Service의 IP가 자동으로 생성될때 해당 대역으로 생성되요 `Default: 10.96.0.0/12`
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubeadm init --pod-network-cidr&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;20.96.0.0/12 --apiserver-advertise-address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;30.0.2.30
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다. 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다.
 &lt;br/&gt;
 kubeadm join 30.0.2.30:6443 &amp;ndash;token ki4szr.t3wondaclij6d1a3&lt;br&gt;
 &amp;ndash;discovery-token-ca-cert-hash sha256:2370f0451342c6e4bd0d38f6c2511bda5c50374c85e9c09da28e12dd666d5987&lt;/p&gt;
