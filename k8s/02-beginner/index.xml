@@ -142,18 +142,31 @@ docker push kubetm/hello
         
         &lt;br/&gt;
 &lt;br/&gt;
-&lt;h2 id=&#34;전체-구성도&#34;&gt;전체 구성도&lt;/h2&gt;
+&lt;h2 id=&#34;설치-가이드&#34;&gt;설치 가이드&lt;/h2&gt;
 &lt;hr&gt;
-&lt;p&gt;가이드대로 진행하시면 아래 전체 구성도와 같이 설치가 됩니다. 설치 실습 동영상과 세부 설정에 대한 추가 설명 강의가 만들어질 예정입니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;XShell 설치 : 생성될 Master/Woker Node에 접속할 툴 (기존에 쓰고 있는게 있으면 생략가능)&lt;/li&gt;
+&lt;li&gt;VirtualBox 설치 : VM 및 내부 네트워크 생성 툴&lt;/li&gt;
+&lt;li&gt;Vagrant 설치 및 k8s 설치 스크립트 실행 : 자동으로 VirtualBox를 이용해 VM들을 생성하고, K8S관련 설치 파일들이 실행됨&lt;/li&gt;
+&lt;li&gt;Worker Node 연결 : Worker Node들을 Master에 연결하여 쿠버네티스 클러스터 구축&lt;/li&gt;
+&lt;li&gt;설치 확인 : Node와 Pod 상태 조회&lt;/li&gt;
+&lt;li&gt;대시보드 접근 : Host OS에서 웹 브라우저를 이용해 클러스터 Dashboard에 접근&lt;/li&gt;
+&lt;/ol&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation Overview Case6 for Kubernetes.jpg&#34;
-       alt=&#34;Installation Overview Case6 for Kubernetes&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation Step Case6 for Kubernetes.jpg&#34;
+       alt=&#34;Installation Step Case6 for Kubernetes&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;br/&gt;
 &lt;h3 id=&#34;1-xshell-설치&#34;&gt;1. XShell 설치&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
 &lt;p&gt;다운로드 url : &lt;a href=&#34;https://www.netsarang.com/en/free-for-home-school/&#34;&gt;https://www.netsarang.com/en/free-for-home-school/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;설치후 아래와 같이 Master, Worker1, Worker2 IP 등록&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;figure&gt;
   &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation XShell for Kubernetes.jpg&#34;
        alt=&#34;Installation XShell for Kubernetes&#34;
@@ -161,14 +174,30 @@ docker push kubetm/hello
 &lt;/figure&gt;
 &lt;br/&gt;
 &lt;h3 id=&#34;2-virtualbox-설치&#34;&gt;2. VirtualBox 설치&lt;/h3&gt;
-&lt;p&gt;다운로드 url : &lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;https://www.virtualbox.org/wiki/Downloads&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;다운로드 url : &lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;https://www.virtualbox.org/wiki/Downloads&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;br/&gt;
-&lt;h3 id=&#34;3-vagrant-설치&#34;&gt;3. Vagrant 설치&lt;/h3&gt;
-&lt;p&gt;다운로드 url : &lt;a href=&#34;https://www.vagrantup.com/downloads&#34;&gt;https://www.vagrantup.com/downloads&lt;/a&gt;&lt;/p&gt;
-
+&lt;h3 id=&#34;3-vagrant-설치-및-k8s-설치-스크립트-실행&#34;&gt;3. Vagrant 설치 및 k8s 설치 스크립트 실행&lt;/h3&gt;
+&lt;p&gt;3-1) 설치&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;다운로드 url : &lt;a href=&#34;https://www.vagrantup.com/downloads&#34;&gt;https://www.vagrantup.com/downloads&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3-2) Vagrant 명령 실행&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;윈도우에서 cmd 실행 &lt;br/&gt;&lt;/li&gt;
+&lt;li&gt;k8s 폴더 생성 및 이동 &lt;br/&gt;&lt;/li&gt;
+&lt;li&gt;Vagrantfile 파일 다운로드&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://kubetm.github.io/yamls/k8s-install/Vagrantfile&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Vagrant 실행 (5~10분 소요)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; vagrant up&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
-&lt;h4 class=&#34;alert-heading&#34;&gt;vagrant 명령어&lt;/h4&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;vagrant 명령어 참고&lt;/h4&gt;
 
     vagrant up : 가상머신 기동 &lt;br/&gt;
 vagrant ssh : 가상머신 접속 &lt;br/&gt;
@@ -179,32 +208,38 @@ vagrant destroy : 가상머신 삭제
 &lt;/div&gt;
 
 &lt;br/&gt;
-&lt;h3 id=&#34;4-vagrant-명령-실행&#34;&gt;4. Vagrant 명령 실행&lt;/h3&gt;
-&lt;p&gt;4-1) 윈도우에서 cmd 실행 &lt;br/&gt;
-4-2) k8s 폴더 생성 및 이동 &lt;br/&gt;
-4-3) Vagrantfile 파일 다운로드&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://kubetm.github.io/yamls/k8s-install/Vagrantfile&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;4-4) Vagrant 실행 (5~10분 소요)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; vagrant up&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
-&lt;h3 id=&#34;5-worker-node-연결&#34;&gt;5. Worker Node 연결&lt;/h3&gt;
-&lt;p&gt;5-1) XShell을 통해 master 접속 (id/pw: root/vagrant) &lt;br/&gt;
-5-2) cat 명령으로 자신에 master 접근 token 확인 및 복사&lt;/p&gt;
+&lt;h3 id=&#34;4-worker-node-연결&#34;&gt;4. Worker Node 연결&lt;/h3&gt;
+&lt;p&gt;4-1) XShell을 통해 master 접속 (id/pw: root/vagrant) &lt;br/&gt;
+4-2) cat 명령으로 자신에 master 접근 token 확인 및 복사&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-master ~]# cat ~/join.sh
 kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;5-3) worker1 접속 후 토큰 붙여놓기 (id/pw: root/vagrant) &lt;br/&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;4-3) worker1 접속 후 토큰 붙여놓기 (id/pw: root/vagrant) &lt;br/&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-worker1 ~]# kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;5-4) worker2 접속 후 토큰 붙여놓기 반복&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;4-4) worker2 접속 후 토큰 붙여놓기 반복&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-worker2 ~]# kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
 &lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
-&lt;h3 id=&#34;6-설치-확인&#34;&gt;6. 설치 확인&lt;/h3&gt;
-&lt;p&gt;6-1) XShell을 통해 master 접속 (id/pw = root/vagrant) &lt;br/&gt;
-6-2) kubectl 명령어&lt;/p&gt;
+&lt;h3 id=&#34;5-설치-확인&#34;&gt;5. 설치 확인&lt;/h3&gt;
+&lt;p&gt;5-1) XShell을 통해 master 접속 (id/pw = root/vagrant) &lt;br/&gt;
+5-2) kubectl 명령어&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-master ~]# kubectl get pod -A
 [root@k8s-master ~]# kubectl get nodes
 &lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
-&lt;h3 id=&#34;7-대시보드-접근&#34;&gt;7. 대시보드 접근&lt;/h3&gt;
+&lt;h3 id=&#34;6-대시보드-접근&#34;&gt;6. 대시보드 접근&lt;/h3&gt;
 &lt;p&gt;http://192.168.56.30:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/workloads?namespace=_all&lt;/p&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;h3 id=&#34;참고-network-구성도&#34;&gt;*참고 (Network 구성도)&lt;/h3&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation Network Case6 for Kubernetes.jpg&#34;
+       alt=&#34;Installation Network Case6 for Kubernetes&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
+&lt;h3 id=&#34;참고-version-정보&#34;&gt;*참고 (Version 정보)&lt;/h3&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation Version Case6 for Kubernetes.jpg&#34;
+       alt=&#34;Installation Version Case6 for Kubernetes&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
 
       </description>
     </item>
