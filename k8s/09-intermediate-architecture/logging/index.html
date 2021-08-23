@@ -279,7 +279,7 @@
   <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-k8s02-beginnercluster-install-case6-li">
     
       <input type="checkbox" id="m-k8s02-beginnercluster-install-case6-check"/>
-      <label for="m-k8s02-beginnercluster-install-case6-check"><a href="/k8s/02-beginner/cluster-install-case6/" title="Case 6. k8s v1.22버전 설치" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s02-beginnercluster-install-case6"><span class="">Install 22.n.s</span></a></label>
+      <label for="m-k8s02-beginnercluster-install-case6-check"><a href="/k8s/02-beginner/cluster-install-case6/" title="Case 6. k8s v1.22버전 설치" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s02-beginnercluster-install-case6"><span class="">Install v1.22</span></a></label>
     
     
   </li>
@@ -1641,7 +1641,7 @@ kubectl get events <span style="color:#000;font-weight:bold">|</span> grep app-l
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">cp ./helm /usr/local/bin/</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><br/>
 <h3 id="2-2-loki-stack-설치">2-2) loki-stack 설치</h3>
-<p>패키지 다운로드 
+<p>패키지 다운로드
 <a href="https://artifacthub.io/packages/helm/loki/loki-stack">https://artifacthub.io/packages/helm/loki/loki-stack</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm repo add loki https://grafana.github.io/loki/charts
 helm fetch loki/loki-stack --version 0.41.2

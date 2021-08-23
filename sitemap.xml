@@ -128,6 +128,11 @@
   </url>
   
   <url>
+    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/02-beginner/cluster-install-case6/</loc>
+    <lastmod>2021-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/07-intermediate-basic-resource/authentication/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
@@ -144,11 +149,6 @@
   
   <url>
     <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/08-intermediate-controller/hpa/</loc>
-    <lastmod>2021-08-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/02-beginner/cluster-install-case6/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -290,18 +290,18 @@
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/</loc>
-    <lastmod>2021-08-10T00:00:00+00:00</lastmod>
+    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/</loc>
+    <lastmod>2021-08-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.docsy.devhttps://kubetm.github.io/</loc>
-    <lastmod>2021-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2021-08-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/</loc>
-    <lastmod>2021-08-02T00:00:00+00:00</lastmod>
+    <loc>https://www.docsy.devhttps://kubetm.github.io/helm/</loc>
+    <lastmod>2021-08-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>

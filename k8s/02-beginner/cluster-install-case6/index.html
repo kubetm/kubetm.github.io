@@ -20,32 +20,32 @@
 <title>Case 6. k8s v1.22버전 설치 | KubeTM Blog</title>
 <meta name="description" content=""><meta property="og:title" content="Case 6. k8s v1.22버전 설치" />
 <meta property="og:description" content="상세스펙 : &lt;br/&gt; 
- 내 PC : 운영체제(windows) 통신방식(NatNetwork &#43; Port Forwarding)
+ 내 PC : 운영체제(windows) 통신방식(NAT &#43; Host-Only)
 &lt;br/&gt;
  가상화방식  : 도구(VirtualBox), VM(CentOS8) 
-&lt;br/&gt; Cluster : 쿠버네티스(v1.22), 런타임도구(Docker), 설치도구()
+&lt;br/&gt; Cluster : 쿠버네티스(v1.22.0), 런타임도구(Docker), 설치도구(Vagrant)
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/" /><meta property="article:section" content="k8s" />
-<meta property="article:published_time" content="2021-08-02T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-08-02T00:00:00+00:00" /><meta property="og:site_name" content="KubeTM Blog" />
+<meta property="article:published_time" content="2021-08-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-16T00:00:00+00:00" /><meta property="og:site_name" content="KubeTM Blog" />
 
 <meta itemprop="name" content="Case 6. k8s v1.22버전 설치">
 <meta itemprop="description" content="상세스펙 : &lt;br/&gt; 
- 내 PC : 운영체제(windows) 통신방식(NatNetwork &#43; Port Forwarding)
+ 내 PC : 운영체제(windows) 통신방식(NAT &#43; Host-Only)
 &lt;br/&gt;
  가상화방식  : 도구(VirtualBox), VM(CentOS8) 
-&lt;br/&gt; Cluster : 쿠버네티스(v1.22), 런타임도구(Docker), 설치도구()
-"><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="16">
+&lt;br/&gt; Cluster : 쿠버네티스(v1.22.0), 런타임도구(Docker), 설치도구(Vagrant)
+"><meta itemprop="datePublished" content="2021-08-16T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-16T00:00:00+00:00" />
+<meta itemprop="wordCount" content="260">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Case 6. k8s v1.22버전 설치"/>
 <meta name="twitter:description" content="상세스펙 : &lt;br/&gt; 
- 내 PC : 운영체제(windows) 통신방식(NatNetwork &#43; Port Forwarding)
+ 내 PC : 운영체제(windows) 통신방식(NAT &#43; Host-Only)
 &lt;br/&gt;
  가상화방식  : 도구(VirtualBox), VM(CentOS8) 
-&lt;br/&gt; Cluster : 쿠버네티스(v1.22), 런타임도구(Docker), 설치도구()
+&lt;br/&gt; Cluster : 쿠버네티스(v1.22.0), 런타임도구(Docker), 설치도구(Vagrant)
 "/>
 
 
@@ -291,7 +291,7 @@
   <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-k8s02-beginnercluster-install-case6-li">
     
       <input type="checkbox" id="m-k8s02-beginnercluster-install-case6-check"/>
-      <label for="m-k8s02-beginnercluster-install-case6-check"><a href="/k8s/02-beginner/cluster-install-case6/" title="Case 6. k8s v1.22버전 설치" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s02-beginnercluster-install-case6"><span class="">Install 22.n.s</span></a></label>
+      <label for="m-k8s02-beginnercluster-install-case6-check"><a href="/k8s/02-beginner/cluster-install-case6/" title="Case 6. k8s v1.22버전 설치" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s02-beginnercluster-install-case6"><span class="">Install v1.22</span></a></label>
     
     
   </li>
@@ -1465,6 +1465,23 @@
             
 
 
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#설치-가이드">설치 가이드</a>
+      <ul>
+        <li><a href="#1-xshell-설치">1. XShell 설치</a></li>
+        <li><a href="#2-virtualbox-설치">2. VirtualBox 설치</a></li>
+        <li><a href="#3-vagrant-설치-및-k8s-설치-스크립트-실행">3. Vagrant 설치 및 k8s 설치 스크립트 실행</a></li>
+        <li><a href="#4-worker-node-연결">4. Worker Node 연결</a></li>
+        <li><a href="#5-설치-확인">5. 설치 확인</a></li>
+        <li><a href="#6-대시보드-접근">6. 대시보드 접근</a></li>
+        <li><a href="#참고-network-구성도">*참고 (Network 구성도)</a></li>
+        <li><a href="#참고-version-정보">*참고 (Version 정보)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+
 
 
             
@@ -1512,7 +1529,7 @@
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/">Install 22.n.s</a>
+	<a href="https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/">Install v1.22</a>
 </li>
 
 	</ol>
@@ -1522,10 +1539,10 @@
 <div class="td-content">
 	<h1>Case 6. k8s v1.22버전 설치</h1>
 	<div class="lead">상세스펙 : <br/>
-내 PC : 운영체제(windows) 통신방식(NatNetwork + Port Forwarding)
+내 PC : 운영체제(windows) 통신방식(NAT + Host-Only)
 <br/>
 가상화방식  : 도구(VirtualBox), VM(CentOS8)
-<br/> Cluster : 쿠버네티스(v1.22), 런타임도구(Docker), 설치도구()</div>
+<br/> Cluster : 쿠버네티스(v1.22.0), 런타임도구(Docker), 설치도구(Vagrant)</div>
 	<header class="article-meta">
 		
 		
@@ -1539,9 +1556,104 @@
 	</header>    
 	<br/>
 <br/>
-<h2 id="1-1-준비중">1-1) 준비중</h2>
-<p>2021년 8월 초에 쿠버네티스 1.22버전이 출시 됩니다.  <br/>
-이 버전에 마춰서 설치 가이드가 작성될 예정입니다.</p>
+<h2 id="설치-가이드">설치 가이드</h2>
+<hr>
+<ol>
+<li>XShell 설치 : 생성될 Master/Woker Node에 접속할 툴 (기존에 쓰고 있는게 있으면 생략가능)</li>
+<li>VirtualBox 설치 : VM 및 내부 네트워크 생성 툴</li>
+<li>Vagrant 설치 및 k8s 설치 스크립트 실행 : 자동으로 VirtualBox를 이용해 VM들을 생성하고, K8S관련 설치 파일들이 실행됨</li>
+<li>Worker Node 연결 : Worker Node들을 Master에 연결하여 쿠버네티스 클러스터 구축</li>
+<li>설치 확인 : Node와 Pod 상태 조회</li>
+<li>대시보드 접근 : Host OS에서 웹 브라우저를 이용해 클러스터 Dashboard에 접근</li>
+</ol>
+<figure>
+  <img src="/img/practice/install/Installation Step Case6 for Kubernetes.jpg"
+       alt="Installation Step Case6 for Kubernetes"
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
+<br/>
+<h3 id="1-xshell-설치">1. XShell 설치</h3>
+<ul>
+<li>
+<p>다운로드 url : <a href="https://www.netsarang.com/en/free-for-home-school/">https://www.netsarang.com/en/free-for-home-school/</a></p>
+</li>
+<li>
+<p>설치후 아래와 같이 Master, Worker1, Worker2 IP 등록</p>
+</li>
+</ul>
+<figure>
+  <img src="/img/practice/install/Installation XShell for Kubernetes.jpg"
+       alt="Installation XShell for Kubernetes"
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
+<br/>
+<h3 id="2-virtualbox-설치">2. VirtualBox 설치</h3>
+<ul>
+<li>다운로드 url : <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></li>
+</ul>
+<br/>
+<h3 id="3-vagrant-설치-및-k8s-설치-스크립트-실행">3. Vagrant 설치 및 k8s 설치 스크립트 실행</h3>
+<p>3-1) 설치</p>
+<ul>
+<li>다운로드 url : <a href="https://www.vagrantup.com/downloads">https://www.vagrantup.com/downloads</a></li>
+</ul>
+<p>3-2) Vagrant 명령 실행</p>
+<ul>
+<li>윈도우에서 cmd 실행 <br/></li>
+<li>k8s 폴더 생성 및 이동 <br/></li>
+<li>Vagrantfile 파일 다운로드</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\k8s</span><span style="color:#8f5902;font-style:italic">&gt; curl -O https://kubetm.github.io/yamls/k8s-install/Vagrantfile</span>
+</code></pre></div><ul>
+<li>Vagrant 실행 (5~10분 소요)</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\k8s</span><span style="color:#8f5902;font-style:italic">&gt; vagrant up</span>
+</code></pre></div>
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">vagrant 명령어 참고</h4>
+
+    vagrant up : 가상머신 기동 <br/>
+vagrant ssh : 가상머신 접속 <br/>
+vagrant halt : 가상머신 shutdown <br/>
+vagrant reload : 가상머신 restart <br/>
+vagrant destroy : 가상머신 삭제
+
+</div>
+
+<br/>
+<h3 id="4-worker-node-연결">4. Worker Node 연결</h3>
+<p>4-1) XShell을 통해 master 접속 (id/pw: root/vagrant) <br/>
+4-2) cat 명령으로 자신에 master 접근 token 확인 및 복사</p>
+<pre><code class="language-ssh" data-lang="ssh">[root@k8s-master ~]# cat ~/join.sh
+kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
+</code></pre><p>4-3) worker1 접속 후 토큰 붙여놓기 (id/pw: root/vagrant) <br/></p>
+<pre><code class="language-ssh" data-lang="ssh">[root@k8s-worker1 ~]# kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
+</code></pre><p>4-4) worker2 접속 후 토큰 붙여놓기 반복</p>
+<pre><code class="language-ssh" data-lang="ssh">[root@k8s-worker2 ~]# kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
+</code></pre><br/>
+<h3 id="5-설치-확인">5. 설치 확인</h3>
+<p>5-1) XShell을 통해 master 접속 (id/pw = root/vagrant) <br/>
+5-2) kubectl 명령어</p>
+<pre><code class="language-ssh" data-lang="ssh">[root@k8s-master ~]# kubectl get pod -A
+[root@k8s-master ~]# kubectl get nodes
+</code></pre><br/>
+<h3 id="6-대시보드-접근">6. 대시보드 접근</h3>
+<p>http://192.168.56.30:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/workloads?namespace=_all</p>
+<br/>
+<br/>
+<h3 id="참고-network-구성도">*참고 (Network 구성도)</h3>
+<figure>
+  <img src="/img/practice/install/Installation Network Case6 for Kubernetes.jpg"
+       alt="Installation Network Case6 for Kubernetes"
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
+<h3 id="참고-version-정보">*참고 (Version 정보)</h3>
+<figure>
+  <img src="/img/practice/install/Installation Version Case6 for Kubernetes.jpg"
+       alt="Installation Version Case6 for Kubernetes"
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
 
 	
 	
