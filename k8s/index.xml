@@ -1241,7 +1241,7 @@ curl stateful-pvc-0.stateful-headless:8080/hostname
 &lt;p&gt;&lt;a href=&#34;http://isoredirect.centos.org/centos/7/isos/x86_64/&#34;&gt;http://isoredirect.centos.org/centos/7/isos/x86_64/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;1-1-2-booting-usb-만들기&#34;&gt;1-1-2) Booting USB 만들기&lt;/h3&gt;
-&lt;p&gt;아래 경로로 들어가면 중간 정도에 다운로드 버튼 있어요.
+&lt;p&gt;아래 경로로 들어가면 중간 정도에 다운로드 버튼 있어요. 
 &lt;br/&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://rufus.ie/ko_KR.html&#34;&gt;https://rufus.ie/ko_KR.html&lt;/a&gt;
@@ -1310,7 +1310,7 @@ USB를 설치할 서버에 꼽고 부팅하면 CentOS 설치단계로 가져요
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;systemctl start libvirtd &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl &lt;span style=&#34;color:#204a87&#34;&gt;enable&lt;/span&gt; libvirtd
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;virt-manager UI를 띄우기 위해 X Window System 및 폰트 설치&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;yum groupinstall &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;X Window System&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Fonts&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;virt-manager 실행
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;virt-manager 실행 
 &lt;br/&gt;
 만약 UI가 뜨지 않으면 재접속 후 다시 실행&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;virt-manager
@@ -1326,7 +1326,7 @@ USB를 설치할 서버에 꼽고 부팅하면 CentOS 설치단계로 가져요
 &lt;h3 id=&#34;2-1-1-centos-최신버전-다운로드&#34;&gt;2-1-1) CentOS 최신버전 다운로드&lt;/h3&gt;
 &lt;p&gt;Virt-Manager의 Image 파일 기본 경로로 이동&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; /var/lib/libvirt/images
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Minimal ISO 버전 다운로드
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Minimal ISO 버전 다운로드 
 &lt;br/&gt;
 만약 다운로드 받은 파일 크기가 매우 작다면 해당 경로에 파일이 없는 것이니, 아래 URL에서 [Minimal ISO]를 선택하고 원하는 경로로 변경하세요.
 &lt;br/&gt;&lt;/p&gt;
@@ -1529,7 +1529,7 @@ Host의 Ip Address를 변경하기 위해 아래 명령어로 설정을 열고&l
 &lt;br/&gt;
 `service-cidr` 를 설정하면 Service의 IP가 자동으로 생성될때 해당 대역으로 생성되요 `Default: 10.96.0.0/12`
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubeadm init --pod-network-cidr&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;20.96.0.0/12 --apiserver-advertise-address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.0.30
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다. 
 &lt;br/&gt;
 kubeadm join 192.168.0.30:6443 &amp;ndash;token ki4szr.t3wondaclij6d1a3&lt;br&gt;
 &amp;ndash;discovery-token-ca-cert-hash sha256:2370f0451342c6e4bd0d38f6c2511bda5c50374c85e9c09da28e12dd666d5987&lt;/p&gt;
@@ -1674,7 +1674,7 @@ ex: KUBERNETES30, ANYWHERE30
 &lt;br/&gt;
 &lt;h3 id=&#34;__오픈북-시험__-&#34;&gt;&lt;strong&gt;오픈북 시험&lt;/strong&gt; :&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;탭 하나만 이용해서 아래 Site만 접속 가능&lt;/strong&gt;
+&lt;li&gt;&lt;strong&gt;탭 하나만 이용해서 아래 Site만 접속 가능&lt;/strong&gt; 
 &lt;br/&gt;
 &amp;ndash; &lt;a href=&#34;https://kubernetes.io/docs/&#34;&gt;https://kubernetes.io/docs/&lt;/a&gt;
 &lt;br/&gt;
@@ -1707,7 +1707,7 @@ ex: KUBERNETES30, ANYWHERE30
 &lt;hr&gt;
 &lt;h3 id=&#34;__시험전-준비__&#34;&gt;&lt;strong&gt;시험전 준비&lt;/strong&gt;&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;시험 작업 환경 세팅 : 화면 및 웹캠/마이크 공유, 신분증 검사, 웹켐으로 방 주변을 보여줌.
+&lt;li&gt;시험 작업 환경 세팅 : 화면 및 웹캠/마이크 공유, 신분증 검사, 웹켐으로 방 주변을 보여줌. 
 &lt;br/&gt;
 (개인적으로 화면 공유버튼을 눌러도 공유에 녹색불이 안들어와서 당황스러웠는데, 브라우저 캐시를 지우고 다시 접속해보라고 하고, 컴퓨터도 껏다가 다시 접속해 보라고함, 컴퓨터를 껐다킨 후 재접속하니까 정상적으로 작동됨)&lt;/li&gt;
 &lt;li&gt;컴퓨터 운영체제가 뭔지 물어보고, 다른 프로그램들이 실행중인지 &lt;code&gt;Task Manager&lt;/code&gt;도 실행해 보라고함.&lt;/li&gt;
@@ -3398,7 +3398,7 @@ Host의 Ip Address를 변경하기 위해 아래 명령어로 설정을 열고&l
 &lt;br/&gt;
 `service-cidr` 를 설정하면 Service의 IP가 자동으로 생성될때 해당 대역으로 생성되요 `Default: 10.96.0.0/12`
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubeadm init --pod-network-cidr&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;20.96.0.0/12 --apiserver-advertise-address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.0.30
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다. 
 &lt;br/&gt;
 kubeadm join 192.168.0.30:6443 &amp;ndash;token ki4szr.t3wondaclij6d1a3&lt;br&gt;
 &amp;ndash;discovery-token-ca-cert-hash sha256:2370f0451342c6e4bd0d38f6c2511bda5c50374c85e9c09da28e12dd666d5987&lt;/p&gt;
@@ -3690,7 +3690,7 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;client-certificate-data&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;LS0tLS1KVEUtLS0tLQo=&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;client-key-data&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;LS0tLS1KVEUtLS0tLQo=&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-4-kubectl-cli&#34;&gt;2-4) kubectl CLI&lt;/h3&gt;
-&lt;p&gt;kubectl download :
+&lt;p&gt;kubectl download : 
 &lt;a href=&#34;https://kubernetes.io/docs/tasks/tools/install-kubectl/&#34;&gt;https://kubernetes.io/docs/tasks/tools/install-kubectl/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;windows&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/windows/amd64/kubectl.exe
@@ -4728,7 +4728,7 @@ Host의 Ip Address를 변경하기 위해 아래 명령어로 설정을 열고&l
 &lt;br/&gt;
 `service-cidr` 를 설정하면 Service의 IP가 자동으로 생성될때 해당 대역으로 생성되요 `Default: 10.96.0.0/12`
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubeadm init --pod-network-cidr&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;20.96.0.0/12 --apiserver-advertise-address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.0.30
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다. 
 &lt;br/&gt;
 kubeadm join 192.168.0.30:6443 &amp;ndash;token ki4szr.t3wondaclij6d1a3&lt;br&gt;
 &amp;ndash;discovery-token-ca-cert-hash sha256:2370f0451342c6e4bd0d38f6c2511bda5c50374c85e9c09da28e12dd666d5987&lt;/p&gt;
@@ -5039,7 +5039,7 @@ kubectl get events &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;cp ./helm /usr/local/bin/&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;h3 id=&#34;2-2-loki-stack-설치&#34;&gt;2-2) loki-stack 설치&lt;/h3&gt;
-&lt;p&gt;패키지 다운로드
+&lt;p&gt;패키지 다운로드 
 &lt;a href=&#34;https://artifacthub.io/packages/helm/loki/loki-stack&#34;&gt;https://artifacthub.io/packages/helm/loki/loki-stack&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;helm repo add loki https://grafana.github.io/loki/charts
 helm fetch loki/loki-stack --version 0.41.2
@@ -5614,7 +5614,7 @@ mkdir -p /etc/systemd/system/docker.service.d
 &lt;br/&gt;
 `service-cidr` 를 설정하면 Service의 IP가 자동으로 생성될때 해당 대역으로 생성되요 `Default: 10.96.0.0/12`
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubeadm init --pod-network-cidr&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;20.96.0.0/12 --apiserver-advertise-address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;30.0.2.30
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다. 
 &lt;br/&gt;
 kubeadm join 30.0.2.30:6443 &amp;ndash;token ki4szr.t3wondaclij6d1a3&lt;br&gt;
 &amp;ndash;discovery-token-ca-cert-hash sha256:2370f0451342c6e4bd0d38f6c2511bda5c50374c85e9c09da28e12dd666d5987&lt;/p&gt;
