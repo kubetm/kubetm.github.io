@@ -19,11 +19,8 @@
 
 <title>Case 6. k8s v1.22버전 설치 | KubeTM Blog</title>
 <meta name="description" content=""><meta property="og:title" content="Case 6. k8s v1.22버전 설치" />
-<meta property="og:description" content="상세스펙 : &lt;br/&gt; 
- 내 PC : 운영체제(windows) 통신방식(NAT &#43; Host-Only)
-&lt;br/&gt;
- 가상화방식  : 도구(VirtualBox), VM(CentOS8) 
-&lt;br/&gt; Cluster : 쿠버네티스(v1.22.0), 런타임도구(Docker), 설치도구(Vagrant)
+<meta property="og:description" content="설치스펙 : &lt;br/&gt; 
+ Windows10, Cpu 3core 이상, Memory 12GB 이상, 인터넷 사용 가능 환경 (설치시에만)
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/" /><meta property="article:section" content="k8s" />
@@ -31,21 +28,15 @@
 <meta property="article:modified_time" content="2021-08-16T00:00:00+00:00" /><meta property="og:site_name" content="KubeTM Blog" />
 
 <meta itemprop="name" content="Case 6. k8s v1.22버전 설치">
-<meta itemprop="description" content="상세스펙 : &lt;br/&gt; 
- 내 PC : 운영체제(windows) 통신방식(NAT &#43; Host-Only)
-&lt;br/&gt;
- 가상화방식  : 도구(VirtualBox), VM(CentOS8) 
-&lt;br/&gt; Cluster : 쿠버네티스(v1.22.0), 런타임도구(Docker), 설치도구(Vagrant)
+<meta itemprop="description" content="설치스펙 : &lt;br/&gt; 
+ Windows10, Cpu 3core 이상, Memory 12GB 이상, 인터넷 사용 가능 환경 (설치시에만)
 "><meta itemprop="datePublished" content="2021-08-16T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-16T00:00:00+00:00" />
-<meta itemprop="wordCount" content="260">
+<meta itemprop="wordCount" content="271">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Case 6. k8s v1.22버전 설치"/>
-<meta name="twitter:description" content="상세스펙 : &lt;br/&gt; 
- 내 PC : 운영체제(windows) 통신방식(NAT &#43; Host-Only)
-&lt;br/&gt;
- 가상화방식  : 도구(VirtualBox), VM(CentOS8) 
-&lt;br/&gt; Cluster : 쿠버네티스(v1.22.0), 런타임도구(Docker), 설치도구(Vagrant)
+<meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
+ Windows10, Cpu 3core 이상, Memory 12GB 이상, 인터넷 사용 가능 환경 (설치시에만)
 "/>
 
 
@@ -1503,8 +1494,8 @@
         <li><a href="#4-worker-node-연결">4. Worker Node 연결</a></li>
         <li><a href="#5-설치-확인">5. 설치 확인</a></li>
         <li><a href="#6-대시보드-접근">6. 대시보드 접근</a></li>
-        <li><a href="#참고-network-구성도">*참고 (Network 구성도)</a></li>
         <li><a href="#참고-version-정보">*참고 (Version 정보)</a></li>
+        <li><a href="#참고-network-구성도">*참고 (Network 구성도)</a></li>
       </ul>
     </li>
   </ul>
@@ -1566,11 +1557,8 @@
             
 <div class="td-content">
 	<h1>Case 6. k8s v1.22버전 설치</h1>
-	<div class="lead">상세스펙 : <br/>
-내 PC : 운영체제(windows) 통신방식(NAT + Host-Only)
-<br/>
-가상화방식  : 도구(VirtualBox), VM(CentOS8)
-<br/> Cluster : 쿠버네티스(v1.22.0), 런타임도구(Docker), 설치도구(Vagrant)</div>
+	<div class="lead">설치스펙 : <br/>
+Windows10, Cpu 3core 이상, Memory 12GB 이상, 인터넷 사용 가능 환경 (설치시에만)</div>
 	<header class="article-meta">
 		
 		
@@ -1606,24 +1594,21 @@
 <p>다운로드 url : <a href="https://www.netsarang.com/en/free-for-home-school/">https://www.netsarang.com/en/free-for-home-school/</a></p>
 </li>
 <li>
-<p>설치후 아래와 같이 Master, Worker1, Worker2 IP 등록</p>
+<p>설치 후 k8s-master(19.168.56.30:22), k8s-worker1(19.168.56.31:22), k8s-worker2(19.168.56.32:22) IP 등록</p>
 </li>
 </ul>
-<figure>
-  <img src="/img/practice/install/Installation XShell for Kubernetes.jpg"
-       alt="Installation XShell for Kubernetes"
-       class="mt-3 mb-3 border border-info rounded" />
-</figure>
 <br/>
 <h3 id="2-virtualbox-설치">2. VirtualBox 설치</h3>
 <ul>
-<li>다운로드 url : <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></li>
+<li>6.1.26 버전 다운로드 : <a href="https://download.virtualbox.org/virtualbox/6.1.26/VirtualBox-6.1.26-145957-Win.exe">https://download.virtualbox.org/virtualbox/6.1.26/VirtualBox-6.1.26-145957-Win.exe</a></li>
+<li>다운로드 사이트 : <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></li>
 </ul>
 <br/>
 <h3 id="3-vagrant-설치-및-k8s-설치-스크립트-실행">3. Vagrant 설치 및 k8s 설치 스크립트 실행</h3>
 <p>3-1) 설치</p>
 <ul>
-<li>다운로드 url : <a href="https://www.vagrantup.com/downloads">https://www.vagrantup.com/downloads</a></li>
+<li>2.2.18 버전 다운로드 : <a href="https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_x86_64.msi">https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_x86_64.msi</a></li>
+<li>다운로드 사이트 : <a href="https://www.vagrantup.com/downloads">https://www.vagrantup.com/downloads</a></li>
 </ul>
 <p>3-2) Vagrant 명령 실행</p>
 <ul>
@@ -1631,7 +1616,9 @@
 <li>k8s 폴더 생성 및 이동 <br/></li>
 <li>Vagrantfile 파일 다운로드</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\k8s</span><span style="color:#8f5902;font-style:italic">&gt; curl -O https://kubetm.github.io/yamls/k8s-install/Vagrantfile</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\Users\사용자</span><span style="color:#8f5902;font-style:italic">&gt;mkdir k8s</span>
+C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\Users\사용자</span><span style="color:#8f5902;font-style:italic">&gt;cd k8s </span>
+C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\Users\사용자\k8s</span><span style="color:#8f5902;font-style:italic">&gt; curl -O https://kubetm.github.io/yamls/k8s-install/Vagrantfile</span>
 </code></pre></div><ul>
 <li>Vagrant 실행 (5~10분 소요)</li>
 </ul>
@@ -1642,9 +1629,8 @@
 <h4 class="alert-heading">vagrant 명령어 참고</h4>
 
     vagrant up : 가상머신 기동 <br/>
-vagrant ssh : 가상머신 접속 <br/>
-vagrant halt : 가상머신 shutdown <br/>
-vagrant reload : 가상머신 restart <br/>
+vagrant halt : 가상머신 Shutdown <br/>
+vagrant ssh : 가상머신 접속 (vagrant ssh k8s-master) <br/>
 vagrant destroy : 가상머신 삭제
 
 </div>
@@ -1670,16 +1656,16 @@ kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-toke
 <p>http://192.168.56.30:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/workloads?namespace=_all</p>
 <br/>
 <br/>
-<h3 id="참고-network-구성도">*참고 (Network 구성도)</h3>
-<figure>
-  <img src="/img/practice/install/Installation Network Case6 for Kubernetes.jpg"
-       alt="Installation Network Case6 for Kubernetes"
-       class="mt-3 mb-3 border border-info rounded" />
-</figure>
 <h3 id="참고-version-정보">*참고 (Version 정보)</h3>
 <figure>
   <img src="/img/practice/install/Installation Version Case6 for Kubernetes.jpg"
        alt="Installation Version Case6 for Kubernetes"
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
+<h3 id="참고-network-구성도">*참고 (Network 구성도)</h3>
+<figure>
+  <img src="/img/practice/install/Installation Network Case6 for Kubernetes.jpg"
+       alt="Installation Network Case6 for Kubernetes"
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
 
