@@ -3,27 +3,29 @@ NodeCnt = 2
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "centos/8"
-
-  config.vm.provider :virtualbox do |v|
-    v.memory = 4096
-    v.cpus = 2
+  config.vm.provider :virtualbox do |vb|
+    vb.memory = 4096
+    vb.cpus = 2
   end
 
   config.vm.provision :shell, privileged: true, inline: $install_common_tools
 
   config.vm.define "k8s-master" do |master|
+    master.vm.box = "centos/8"
     master.vm.hostname = "k8s-master"
-    master.vm.network "private_network", ip: "192.168.56.30", name: "VirtualBox Host-Only Ethernet Adapter"
+    master.vm.network "private_network", ip: "192.168.56.30"
     master.vm.provision :shell, privileged: true, inline: $provision_master_node
   end
 
   (1..NodeCnt).each do |i|
     config.vm.define "k8s-worker#{i}" do |worker|
+      worker.vm.box = "centos/8"
       worker.vm.hostname = "k8s-worker#{i}"
-      worker.vm.network "private_network", ip: "192.168.56.#{i + 30}", name: "VirtualBox Host-Only Ethernet Adapter"
+      worker.vm.network "private_network", ip: "192.168.56.#{i + 30}"
     end
   end
+  
+
 
 end
 

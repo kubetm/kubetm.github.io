@@ -30,7 +30,7 @@
 <meta itemprop="description" content="2020-06-13까지 자료실에 업데이트 되었으며, 그 이후에는 해당 설치가이드는 지원하지 않습니다
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="359">
+<meta itemprop="wordCount" content="378">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Case 3. 구글 클라우드 플랫폼"/>
 <meta name="twitter:description" content="2020-06-13까지 자료실에 업데이트 되었으며, 그 이후에는 해당 설치가이드는 지원하지 않습니다
@@ -1507,8 +1507,9 @@
     <li><a href="#4-1-dashboard">4-1) Dashboard</a>
       <ul>
         <li><a href="#4-1-1-dashboard-설치">4-1-1) Dashboard 설치</a></li>
-        <li><a href="#4-1-2-proxy-띄우기">4-1-2) proxy 띄우기</a></li>
-        <li><a href="#4-1-3-접속-url">4-1-3) 접속 URL</a></li>
+        <li><a href="#4-1-2-권한-해지-설정">4-1-2) 권한 해지 설정</a></li>
+        <li><a href="#4-1-3-proxy-띄우기">4-1-3) proxy 띄우기</a></li>
+        <li><a href="#4-1-4-접속-url">4-1-4) 접속 URL</a></li>
       </ul>
     </li>
   </ul>
@@ -1684,10 +1685,19 @@ GCP > Kubernetes Engine > Clusters > k8s-cluster 리스트에 [Connect] 버튼 �
 <blockquote>
 <p><a href="https://github.com/kubernetes/dashboard">https://github.com/kubernetes/dashboard</a></p>
 </blockquote>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/sample/practice/appendix/gcp-kubernetes-dashboard.yaml
-</code></pre></div><h3 id="4-1-2-proxy-띄우기">4-1-2) proxy 띄우기</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://kubetm.github.io/documents/appendix/kubetm-dashboard-v2.0.0.yaml
+</code></pre></div><br/>
+<h3 id="4-1-2-권한-해지-설정">4-1-2) 권한 해지 설정</h3>
+<p>접속시 인증 Skip 설정</p>
+<ul>
+<li>updated 2021-08-26</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">위 kubetm-dashboard-v2.0.0.yaml에 해당 내용 포함되어 있습니다. 별도로 안하셔도 되세요.
+</code></pre></div><br/>
+<h3 id="4-1-3-proxy-띄우기">4-1-3) proxy 띄우기</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl proxy
-</code></pre></div><h3 id="4-1-3-접속-url">4-1-3) 접속 URL</h3>
+</code></pre></div><br/>
+<h3 id="4-1-4-접속-url">4-1-4) 접속 URL</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
 </code></pre></div>
 	

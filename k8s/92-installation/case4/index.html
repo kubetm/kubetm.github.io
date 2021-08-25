@@ -30,7 +30,7 @@
 <meta itemprop="description" content="쿠버네티스 1.19.4 버전의 설치 방법으로써 설치시 영상 강의 UI와 약간의 차이가 있을 수 있습니다. &lt;br/&gt; VM 생성시 노트북에 연결되어 있는 공유기로부터 IP를 할당 받을 수 있을 경우의 설치 방법입니다.
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1165">
+<meta itemprop="wordCount" content="1184">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Case 4. OS(windows) &#43; Network(Bridge Mode) &#43; 가상화(VirtualBox-CentOS) &#43; k8s(v1.19.4)"/>
 <meta name="twitter:description" content="쿠버네티스 1.19.4 버전의 설치 방법으로써 설치시 영상 강의 UI와 약간의 차이가 있을 수 있습니다. &lt;br/&gt; VM 생성시 노트북에 연결되어 있는 공유기로부터 IP를 할당 받을 수 있을 경우의 설치 방법입니다.
@@ -1552,6 +1552,7 @@
     <li><a href="#6-2-dashboard">6-2) Dashboard</a>
       <ul>
         <li><a href="#6-2-1-dashboard-설치">6-2-1) Dashboard 설치</a></li>
+        <li><a href="#6-2-2-권한-해지-설정">6-2-2) 권한 해지 설정</a></li>
         <li><a href="#6-2-3-백그라운드로-proxy-띄우기">6-2-3) 백그라운드로 proxy 띄우기</a></li>
         <li><a href="#6-2-4-접속-url">6-2-4) 접속 URL</a></li>
         <li><a href="#6-2-5-언어-설정변경">6-2-5) 언어 설정변경</a></li>
@@ -1937,6 +1938,12 @@ sudo chown <span style="color:#204a87;font-weight:bold">$(</span>id -u<span styl
 <p><a href="https://github.com/kubernetes/dashboard">https://github.com/kubernetes/dashboard</a></p>
 </blockquote>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://kubetm.github.io/documents/appendix/kubetm-dashboard-v2.0.0.yaml
+</code></pre></div><h3 id="6-2-2-권한-해지-설정">6-2-2) 권한 해지 설정</h3>
+<p>접속시 인증 Skip 설정</p>
+<ul>
+<li>updated 2021-08-26</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">위 kubetm-dashboard-v2.0.0.yaml에 해당 내용 포함되어 있습니다. 별도로 안하셔도 되세요.
 </code></pre></div><h3 id="6-2-3-백그라운드로-proxy-띄우기">6-2-3) 백그라운드로 proxy 띄우기</h3>
 <p><code>--address</code>에 자신의 Host IP 입력</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">nohup kubectl proxy --port<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8001</span> --address<span style="color:#ce5c00;font-weight:bold">=</span>192.168.0.30 --accept-hosts<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;^*$&#39;</span> &gt;/dev/null 2&gt;<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000;font-weight:bold">&amp;</span>

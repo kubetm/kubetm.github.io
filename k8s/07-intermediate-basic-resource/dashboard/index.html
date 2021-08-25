@@ -1584,8 +1584,8 @@
 </figure>
 <br/>
 <h3 id="1-1--dashboard-설치">1-1)  Dashboard 설치</h3>
-<p>kubetm 가이드로 Dashboard(1.10.1)를 설치했을 경우 아래 명령으로 삭제</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/sample/practice/appendix/gcp-kubernetes-dashboard.yaml
+<p>kubetm 가이드로 Dashboard대로 설치했을 경우 아래 명령으로 삭제</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete -f https://kubetm.github.io/documents/appendix/kubetm-dashboard-v2.0.0.yaml
 </code></pre></div><p>새 Dashboard (2.0.0) 설치 - <a href="https://github.com/kubernetes/dashboard">https://github.com/kubernetes/dashboard</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
 </code></pre></div><br/>
