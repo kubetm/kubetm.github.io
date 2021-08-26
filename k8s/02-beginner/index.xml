@@ -238,7 +238,6 @@ kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-toke
        alt=&#34;Installation Network Case6 for Kubernetes&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
-<<<<<<< HEAD
 &lt;h3 id=&#34;qna-dashboard-관련&#34;&gt;*[QnA] Dashboard 관련&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Master Node 재기동시 Dashboard에 접속하기 위해선 아래 명령어를 실행해서 Proxy 오픈하기&lt;/li&gt;
@@ -262,8 +261,6 @@ VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component SessionMachi
 &lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
 &lt;li&gt;해결방법 : 작업관리자에 들어가서 VirtualBox 관련 프로세스 모두 죽이고 다시 실행 (VirtualBox Headless Frontend, VirtualBox Interface)&lt;/li&gt;
 &lt;/ul&gt;
-=======
->>>>>>> branch 'master' of https://github.com/kubetm/kubetm.github.io.git
 
       </description>
     </item>
