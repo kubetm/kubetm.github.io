@@ -398,13 +398,13 @@ kubectl apply -f calico.yaml
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/dashboard&#34;&gt;https://github.com/kubernetes/dashboard&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl apply -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/sample/practice/appendix/gcp-kubernetes-dashboard.yaml
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl apply -f https://kubetm.github.io/documents/appendix/kubetm-dashboard-v2.0.0.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;6-2-2-권한-해지-설정&#34;&gt;6-2-2) 권한 해지 설정&lt;/h3&gt;
 &lt;p&gt;접속시 인증 Skip 설정&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;updated 2019-11-26&lt;/li&gt;
+&lt;li&gt;updated 2021-08-26&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;위 gcp-kubernetes-dashboard.yaml에 해당 내용 포함되어 있습니다. 별도로 안하셔도 되세요.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;위 kubetm-dashboard-v2.0.0.yaml에 해당 내용 포함되어 있습니다. 별도로 안하셔도 되세요.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;6-2-3-백그라운드로-proxy-띄우기&#34;&gt;6-2-3) 백그라운드로 proxy 띄우기&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;--address&lt;/code&gt;에 자신의 Host IP 입력&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;nohup kubectl proxy --port&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8001&lt;/span&gt; --address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.0.30 --accept-hosts&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;^*$&amp;#39;&lt;/span&gt; &amp;gt;/dev/null 2&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;
@@ -765,6 +765,135 @@ kubectl apply -f calico.yaml
     </item>
     
     <item>
+      <title>K8s: Case 3. 구글 클라우드 플랫폼</title>
+      <link>https://kubetm.github.io/k8s/92-installation/case3/</link>
+      <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/k8s/92-installation/case3/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;mx-auto&#34;&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/beginner/Kubernetes_Install3.pdf&#34; download&gt;
+		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
+	&lt;/a&gt;
+&lt;/div&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Join Google Cloud Platform for Kubernetes.jpg&#34;
+       alt=&#34;Join Google Cloud Platform for Kubernetes.&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
+&lt;h2 id=&#34;1-1-join-gcp&#34;&gt;1-1) Join GCP&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;1-1-1-join&#34;&gt;1-1-1) Join&lt;/h3&gt;
+&lt;p&gt;아래 사이트에 들어가서 상단에 [무료로 시작하기] 버튼 클릭
+&lt;br/&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloud.google.com/&#34;&gt;https://cloud.google.com/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;br/&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;1&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; Country : South Korea
+2&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; Terms of Service : 체크 후 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;CONTINUE&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+3&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; 이름 및 주소 확인 후 Payment method 입력
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;자신의 신용카드 번호를 입력하지만 크레딧을 다 소모하거나 12개월이 지나도 자동으로 결재가 되진 않습니다.&lt;/p&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Create Master and Node Cluster for Kuebernetes.jpg&#34;
+       alt=&#34;Create Master and Node Cluster for Kuebernetes.&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
+&lt;h2 id=&#34;2-1-create-cluster&#34;&gt;2-1) Create Cluster&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2-1-1-cluster-생성&#34;&gt;2-1-1) Cluster 생성&lt;/h3&gt;
+&lt;p&gt;Kubernetes Engine &amp;gt; Clusters &amp;gt; [CREATE CLUSTER] 클릭&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;1. Name&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;이름&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; : k8s-cluster
+2. Location Type&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;위치 유형&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; : Zonal &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;영역&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+3. Zone&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;영역&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; : asia-east1-a 부터 asia-east2-c 중 하나 선택
+4. Specify default node locations &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;기본 노드 위치 지정&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; : 체크 안함
+5. Master version &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;마스터 버전&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; : 정적버전 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;Static version&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+6. Static version &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;정적버전&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; : 1.15.11-gke.15
+7. 맨 하단에 create &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;만들기&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; 클릭
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;node들은 자동으로 3개가 만들어집니다.&lt;/p&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Connect Google Cloud Platform for Kubernetes.jpg&#34;
+       alt=&#34;Connect Google Cloud Platform for Kubernetes.&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
+&lt;h2 id=&#34;3-1-connect-gcp&#34;&gt;3-1) Connect GCP&lt;/h2&gt;
+&lt;h3 id=&#34;3-1-1-install-sdk&#34;&gt;3-1-1) Install SDK&lt;/h3&gt;
+&lt;p&gt;아래 URL에서 Windows용 GCP SDK 설치
+&lt;br/&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloud.google.com/sdk/docs/quickstart-windows&#34;&gt;https://cloud.google.com/sdk/docs/quickstart-windows&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;br/&gt;
+&lt;p&gt;다른 운영체제에서는 아래 내용 참조
+&lt;br/&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloud.google.com/sdk&#34;&gt;https://cloud.google.com/sdk&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;1. &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;Google Cloud SDK 설치 프로그램&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; 다운로드
+2. Next &amp;gt; Next 를 통해 설치 후 마지막에 4가지 체크항목 모두 선택 후 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;Finish&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;h2 id=&#34;3-2-setting-sdk-shell&#34;&gt;3-2) Setting SDK Shell&lt;/h2&gt;
+&lt;h3 id=&#34;3-2-1-install-sdk&#34;&gt;3-2-1) Install SDK&lt;/h3&gt;
+&lt;p&gt;바탕화면에 설치된 [Google Cloud SDK Shell] 실행하면 아래 내용을 물어봅니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;1. Pick configuration to use : &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; Re-initialize
+2. Choose the account : &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; GCP 등록 구글 계정 선택, 없으면 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;2&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; Log in with a new account
+   &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;2&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; 선택시  나오는 URL 복사해서 웹 브라우저에 복사 후 인증 필요
+3. Pick cloud project to use : GCP &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;My First Project&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; ID 선택 
+   &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;GCP 브라우저에서 확인필요 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;강의 영상 참조&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;])&lt;/span&gt;
+4. Do you want to configure a default Compute Region and Zone : Y
+5. &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;46&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; asia-east2-c 선택  
+   &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;2-1-1&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; Cluster 생성시 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;3. Zone&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;영역&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;에 선택한 내용과 동일하게 선택&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;h3 id=&#34;3-2-2-gcloud-업그레이드-및-kubectl-설치&#34;&gt;3-2-2) gcloud 업그레이드 및 kubectl 설치&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;gcloud components update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;별도로 팝업창이 안뜰 수 있음 All components are up to date 문구 확인&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;gcloud components install kubectl
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+GCP &gt; Kubernetes Engine &gt; Clusters &gt; k8s-cluster 리스트에 [Connect] 버튼 클릭하여 나오는 팝업에서 아래 내용 복사
+&lt;br/&gt;
+&lt;p&gt;&lt;code&gt;gcloud container clusters get-credentials k8s-cluster --zone asia-east2-c --project turnkey-conduit-258023&lt;/code&gt;&lt;/p&gt;
+&lt;br/&gt;
+&lt;p&gt;Local GCP Shell에 붙여 놓기를 한 후 아래 Node 조회 명령어로&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl get nodes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;br/&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/appendix/Add Plugin Dashboard for Kubernetes.jpg&#34;
+       alt=&#34;Add Plugin Dashboard for Kubernetes.&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
+&lt;h2 id=&#34;4-1-dashboard&#34;&gt;4-1) Dashboard&lt;/h2&gt;
+&lt;h3 id=&#34;4-1-1-dashboard-설치&#34;&gt;4-1-1) Dashboard 설치&lt;/h3&gt;
+&lt;p&gt;해당 설정은 교육목적으로 권한 설정을 모두 해제하는 방법이기 때문에 프로젝트에서 사용하실때는 이점 유의바래요
+&lt;br/&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/dashboard&#34;&gt;https://github.com/kubernetes/dashboard&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl apply -f https://kubetm.github.io/documents/appendix/kubetm-dashboard-v2.0.0.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;h3 id=&#34;4-1-2-권한-해지-설정&#34;&gt;4-1-2) 권한 해지 설정&lt;/h3&gt;
+&lt;p&gt;접속시 인증 Skip 설정&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;updated 2021-08-26&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;위 kubetm-dashboard-v2.0.0.yaml에 해당 내용 포함되어 있습니다. 별도로 안하셔도 되세요.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;h3 id=&#34;4-1-3-proxy-띄우기&#34;&gt;4-1-3) proxy 띄우기&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl proxy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;h3 id=&#34;4-1-4-접속-url&#34;&gt;4-1-4) 접속 URL&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
       <title>K8s: Case 4. OS(windows) &#43; Network(Bridge Mode) &#43; 가상화(VirtualBox-CentOS) &#43; k8s(v1.19.4)</title>
       <link>https://kubetm.github.io/k8s/92-installation/case4/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
@@ -1082,6 +1211,12 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/dashboard&#34;&gt;https://github.com/kubernetes/dashboard&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl apply -f https://kubetm.github.io/documents/appendix/kubetm-dashboard-v2.0.0.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;6-2-2-권한-해지-설정&#34;&gt;6-2-2) 권한 해지 설정&lt;/h3&gt;
+&lt;p&gt;접속시 인증 Skip 설정&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;updated 2021-08-26&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;위 kubetm-dashboard-v2.0.0.yaml에 해당 내용 포함되어 있습니다. 별도로 안하셔도 되세요.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;6-2-3-백그라운드로-proxy-띄우기&#34;&gt;6-2-3) 백그라운드로 proxy 띄우기&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;--address&lt;/code&gt;에 자신의 Host IP 입력&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;nohup kubectl proxy --port&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8001&lt;/span&gt; --address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.0.30 --accept-hosts&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;^*$&amp;#39;&lt;/span&gt; &amp;gt;/dev/null 2&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;
@@ -1451,6 +1586,12 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/dashboard&#34;&gt;https://github.com/kubernetes/dashboard&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl apply -f https://kubetm.github.io/documents/appendix/kubetm-dashboard-v2.0.0.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;6-2-2-권한-해지-설정&#34;&gt;6-2-2) 권한 해지 설정&lt;/h3&gt;
+&lt;p&gt;접속시 인증 Skip 설정&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;updated 2021-08-26&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;위 kubetm-dashboard-v2.0.0.yaml에 해당 내용 포함되어 있습니다. 별도로 안하셔도 되세요.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;6-2-3-백그라운드로-proxy-띄우기&#34;&gt;6-2-3) 백그라운드로 proxy 띄우기&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;--address&lt;/code&gt;에 자신의 Host IP 입력&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;nohup kubectl proxy --port&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8001&lt;/span&gt; --address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;30.0.2.30 --accept-hosts&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;^*$&amp;#39;&lt;/span&gt; &amp;gt;/dev/null 2&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;

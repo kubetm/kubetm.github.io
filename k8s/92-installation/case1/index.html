@@ -1380,6 +1380,34 @@
   
   
   
+  <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-k8s92-installationcase3-li">
+    
+      <input type="checkbox" id="m-k8s92-installationcase3-check"/>
+      <label for="m-k8s92-installationcase3-check"><a href="/k8s/92-installation/case3/" title="Case 3. 구글 클라우드 플랫폼" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s92-installationcase3"><span class="">설치 Case 3</span></a></label>
+    
+    
+  </li>
+
+          
+        
+          
+            
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-k8s92-installationcase4-li">
     
       <input type="checkbox" id="m-k8s92-installationcase4-check"/>
@@ -1983,13 +2011,13 @@ kubectl apply -f calico.yaml
 <blockquote>
 <p><a href="https://github.com/kubernetes/dashboard">https://github.com/kubernetes/dashboard</a></p>
 </blockquote>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/sample/practice/appendix/gcp-kubernetes-dashboard.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://kubetm.github.io/documents/appendix/kubetm-dashboard-v2.0.0.yaml
 </code></pre></div><h3 id="6-2-2-권한-해지-설정">6-2-2) 권한 해지 설정</h3>
 <p>접속시 인증 Skip 설정</p>
 <ul>
-<li>updated 2019-11-26</li>
+<li>updated 2021-08-26</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">위 gcp-kubernetes-dashboard.yaml에 해당 내용 포함되어 있습니다. 별도로 안하셔도 되세요.
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">위 kubetm-dashboard-v2.0.0.yaml에 해당 내용 포함되어 있습니다. 별도로 안하셔도 되세요.
 </code></pre></div><h3 id="6-2-3-백그라운드로-proxy-띄우기">6-2-3) 백그라운드로 proxy 띄우기</h3>
 <p><code>--address</code>에 자신의 Host IP 입력</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">nohup kubectl proxy --port<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8001</span> --address<span style="color:#ce5c00;font-weight:bold">=</span>192.168.0.30 --accept-hosts<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;^*$&#39;</span> &gt;/dev/null 2&gt;<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000;font-weight:bold">&amp;</span>

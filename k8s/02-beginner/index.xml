@@ -164,24 +164,21 @@ docker push kubetm/hello
 &lt;p&gt;다운로드 url : &lt;a href=&#34;https://www.netsarang.com/en/free-for-home-school/&#34;&gt;https://www.netsarang.com/en/free-for-home-school/&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;설치후 아래와 같이 Master, Worker1, Worker2 IP 등록&lt;/p&gt;
+&lt;p&gt;설치 후 k8s-master(19.168.56.30:22), k8s-worker1(19.168.56.31:22), k8s-worker2(19.168.56.32:22) IP 등록&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure&gt;
-  &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation XShell for Kubernetes.jpg&#34;
-       alt=&#34;Installation XShell for Kubernetes&#34;
-       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
-&lt;/figure&gt;
 &lt;br/&gt;
 &lt;h3 id=&#34;2-virtualbox-설치&#34;&gt;2. VirtualBox 설치&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;다운로드 url : &lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;https://www.virtualbox.org/wiki/Downloads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;6.1.26 버전 다운로드 : &lt;a href=&#34;https://download.virtualbox.org/virtualbox/6.1.26/VirtualBox-6.1.26-145957-Win.exe&#34;&gt;https://download.virtualbox.org/virtualbox/6.1.26/VirtualBox-6.1.26-145957-Win.exe&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;다운로드 사이트 : &lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;https://www.virtualbox.org/wiki/Downloads&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
 &lt;h3 id=&#34;3-vagrant-설치-및-k8s-설치-스크립트-실행&#34;&gt;3. Vagrant 설치 및 k8s 설치 스크립트 실행&lt;/h3&gt;
 &lt;p&gt;3-1) 설치&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;다운로드 url : &lt;a href=&#34;https://www.vagrantup.com/downloads&#34;&gt;https://www.vagrantup.com/downloads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2.2.18 버전 다운로드 : &lt;a href=&#34;https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_x86_64.msi&#34;&gt;https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_x86_64.msi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;다운로드 사이트 : &lt;a href=&#34;https://www.vagrantup.com/downloads&#34;&gt;https://www.vagrantup.com/downloads&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;3-2) Vagrant 명령 실행&lt;/p&gt;
 &lt;ul&gt;
@@ -189,7 +186,9 @@ docker push kubetm/hello
 &lt;li&gt;k8s 폴더 생성 및 이동 &lt;br/&gt;&lt;/li&gt;
 &lt;li&gt;Vagrantfile 파일 다운로드&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://kubetm.github.io/yamls/k8s-install/Vagrantfile&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt;mkdir k8s&lt;/span&gt;
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt;cd k8s &lt;/span&gt;
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://kubetm.github.io/yamls/k8s-install/Vagrantfile&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;Vagrant 실행 (5~10분 소요)&lt;/li&gt;
 &lt;/ul&gt;
@@ -200,9 +199,8 @@ docker push kubetm/hello
 &lt;h4 class=&#34;alert-heading&#34;&gt;vagrant 명령어 참고&lt;/h4&gt;
 
     vagrant up : 가상머신 기동 &lt;br/&gt;
-vagrant ssh : 가상머신 접속 &lt;br/&gt;
-vagrant halt : 가상머신 shutdown &lt;br/&gt;
-vagrant reload : 가상머신 restart &lt;br/&gt;
+vagrant halt : 가상머신 Shutdown &lt;br/&gt;
+vagrant ssh : 가상머신 접속 (vagrant ssh k8s-master) &lt;br/&gt;
 vagrant destroy : 가상머신 삭제
 
 &lt;/div&gt;
@@ -228,18 +226,41 @@ kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-toke
 &lt;p&gt;http://192.168.56.30:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/workloads?namespace=_all&lt;/p&gt;
 &lt;br/&gt;
 &lt;br/&gt;
-&lt;h3 id=&#34;참고-network-구성도&#34;&gt;*참고 (Network 구성도)&lt;/h3&gt;
-&lt;figure&gt;
-  &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation Network Case6 for Kubernetes.jpg&#34;
-       alt=&#34;Installation Network Case6 for Kubernetes&#34;
-       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
-&lt;/figure&gt;
 &lt;h3 id=&#34;참고-version-정보&#34;&gt;*참고 (Version 정보)&lt;/h3&gt;
 &lt;figure&gt;
   &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation Version Case6 for Kubernetes.jpg&#34;
        alt=&#34;Installation Version Case6 for Kubernetes&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
+&lt;h3 id=&#34;참고-network-구성도&#34;&gt;*참고 (Network 구성도)&lt;/h3&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation Network Case6 for Kubernetes.jpg&#34;
+       alt=&#34;Installation Network Case6 for Kubernetes&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
+&lt;h3 id=&#34;qna-dashboard-관련&#34;&gt;*[QnA] Dashboard 관련&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Master Node 재기동시 Dashboard에 접속하기 위해선 아래 명령어를 실행해서 Proxy 오픈하기&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-master ~]# nohup kubectl proxy --port=8001 --address=192.168.56.30 --accept-hosts=&#39;^*$&#39; &amp;gt;/dev/null 2&amp;gt;&amp;amp;1 &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;Dashboard 접근시 ServiceUnavailable 에러 발생시 아래 명령을 통해 기동안된 Pod 확인&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-master ~]# kubectl get pods -A
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;qna-vagrnat-up-시-vm기동이-안될경우&#34;&gt;*[QnA] vagrnat up 시 VM기동이 안될경우&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;에러 메세지&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;There was an error while executing `VBoxManage`, a CLI used by Vagrant
+for controlling VirtualBox. The command and stderr is shown below.
+
+Command: [&amp;quot;startvm&amp;quot;, &amp;quot;8a9490a5-bbe4-4bac-9043-de39b93cf6b3&amp;quot;, &amp;quot;--type&amp;quot;, &amp;quot;headless&amp;quot;]
+
+Stderr: VBoxManage.exe: error: The VM session was closed before any attempt to power it on
+VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component SessionMachine, interface ISession
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;해결방법 : 작업관리자에 들어가서 VirtualBox 관련 프로세스 모두 죽이고 다시 실행 (VirtualBox Headless Frontend, VirtualBox Interface)&lt;/li&gt;
+&lt;/ul&gt;
 
       </description>
     </item>

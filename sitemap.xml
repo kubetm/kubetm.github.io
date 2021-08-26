@@ -163,7 +163,7 @@
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/92-installation/case4/</loc>
+    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/92-installation/case3/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -188,7 +188,7 @@
   </url>
   
   <url>
-    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/92-installation/case5/</loc>
+    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/92-installation/case4/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -214,6 +214,11 @@
   
   <url>
     <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/03-beginner-basic-resource/service/</loc>
+    <lastmod>2021-08-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.docsy.devhttps://kubetm.github.io/k8s/92-installation/case5/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   

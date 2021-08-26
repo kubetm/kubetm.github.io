@@ -19,7 +19,7 @@
 
 <title>배포 개요 | KubeTM Blog</title>
 <meta name="description" content=""><meta property="og:title" content="배포 개요" />
-<meta property="og:description" content="배포 강의에 대한 전반적인 개요 강의가 제작중입니다.
+<meta property="og:description" content="배포 강의에 대한 전반적인 개요 강의가 제작중입니다. (50%)
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kubetm.github.io/helm/11-deploy/concept/" /><meta property="article:section" content="helm" />
@@ -27,13 +27,13 @@
 <meta property="article:modified_time" content="2021-08-10T00:00:00+00:00" /><meta property="og:site_name" content="KubeTM Blog" />
 
 <meta itemprop="name" content="배포 개요">
-<meta itemprop="description" content="배포 강의에 대한 전반적인 개요 강의가 제작중입니다.
+<meta itemprop="description" content="배포 강의에 대한 전반적인 개요 강의가 제작중입니다. (50%)
 "><meta itemprop="datePublished" content="2021-08-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="20">
+<meta itemprop="wordCount" content="25">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="배포 개요"/>
-<meta name="twitter:description" content="배포 강의에 대한 전반적인 개요 강의가 제작중입니다.
+<meta name="twitter:description" content="배포 강의에 대한 전반적인 개요 강의가 제작중입니다. (50%)
 "/>
 
 
@@ -651,15 +651,16 @@
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#1-소스-코드">1. 소스 코드</a></li>
-    <li><a href="#2-이미지-생성">2. 이미지 생성</a></li>
-    <li><a href="#3-배포">3. 배포</a>
+    <li><a href="#배포-개요">배포 개요</a></li>
+    <li><a href="#1-어디에-배포할-것인가">1. 어디에 배포할 것인가?</a></li>
+    <li><a href="#2-어떻게-배포할-것인가">2. 어떻게 배포할 것인가?</a>
       <ul>
-        <li><a href="#3-1-어디에-배포할-것인가">3-1) 어디에 배포할 것인가?</a></li>
-        <li><a href="#3-2-어떻게-배포할-것인가">3-2) 어떻게 배포할 것인가?</a></li>
-        <li><a href="#3-3-배포-전략은">3-3) 배포 전략은?</a></li>
+        <li><a href="#2-1-기존방식">2-1) 기존방식</a></li>
+        <li><a href="#2-2-컨테이너-빌드-이해">2-2) 컨테이너 빌드 이해</a></li>
+        <li><a href="#2-3-컨테이너-환경-배포-방식">2-3) 컨테이너 환경 배포 방식</a></li>
       </ul>
     </li>
+    <li><a href="#3-배포시-고려-요소는">3. 배포시 고려 요소는?</a></li>
   </ul>
 </nav></div>
 
@@ -719,7 +720,7 @@
             
 <div class="td-content">
 	<h1>배포 개요</h1>
-	<div class="lead">배포 강의에 대한 전반적인 개요 강의가 제작중입니다.</div>
+	<div class="lead">배포 강의에 대한 전반적인 개요 강의가 제작중입니다. (50%)</div>
 	<header class="article-meta">
 		
 		
@@ -732,7 +733,7 @@
 		
 	</header>    
 	<p><br/><br/></p>
-<h2 id="1-소스-코드">1. 소스 코드</h2>
+<h2 id="배포-개요">배포 개요</h2>
 <hr>
 <figure>
   <img src="/img/deploy/concept/Source Code for k8s Deploy Concept.jpg"
@@ -740,31 +741,44 @@
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
 <br/>
-<h2 id="2-이미지-생성">2. 이미지 생성</h2>
-<hr>
-<figure>
-  <img src="/img/deploy/concept/Creating Container Images for k8s Deploy Concept.jpg"
-       alt="Creating Container Images for k8s Deploy Concept"
-       class="mt-3 mb-3 border border-info rounded" />
-</figure>
 <br/>
-<h2 id="3-배포">3. 배포</h2>
-<hr>
-<br/>
-<h3 id="3-1-어디에-배포할-것인가">3-1) 어디에 배포할 것인가?</h3>
+<h2 id="1-어디에-배포할-것인가">1. 어디에 배포할 것인가?</h2>
 <figure>
   <img src="/img/deploy/concept/Where is deploying for k8s Deploy Concept.jpg"
        alt="Where is deploying for k8s Deploy Concept"
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
-<h3 id="3-2-어떻게-배포할-것인가">3-2) 어떻게 배포할 것인가?</h3>
-<p>기존방식</p>
+<br/>
+<br/>
+<h2 id="2-어떻게-배포할-것인가">2. 어떻게 배포할 것인가?</h2>
+<h3 id="2-1-기존방식">2-1) 기존방식</h3>
 <figure>
   <img src="/img/deploy/concept/How to deploying1 for k8s Deploy Concept.jpg"
        alt="How to deploying1 for k8s Deploy Concept"
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
-<h3 id="3-3-배포-전략은">3-3) 배포 전략은?</h3>
+<br/>
+<h3 id="2-2-컨테이너-빌드-이해">2-2) 컨테이너 빌드 이해</h3>
+<figure>
+  <img src="/img/deploy/concept/How to Build Contianer for k8s Deploy Concept.jpg"
+       alt="How to Build Contianer for k8s Deploy Concept"
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
+<br/>
+<h3 id="2-3-컨테이너-환경-배포-방식">2-3) 컨테이너 환경 배포 방식</h3>
+<figure>
+  <img src="/img/deploy/concept/How to deploying Contianer for k8s Deploy Concept.jpg"
+       alt="How to deploying Contianer for k8s Deploy Concept"
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
+<br/>
+<br/>
+<h2 id="3-배포시-고려-요소는">3. 배포시 고려 요소는?</h2>
+<figure>
+  <img src="/img/deploy/concept/The fact is deploying for k8s Deploy Concept.jpg"
+       alt="The fact is deploying for k8s Deploy Concept"
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
 
 	
 	
