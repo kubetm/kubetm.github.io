@@ -38,7 +38,6 @@ systemctl restart sshd.service
 
 # 방화벽 해제
 systemctl stop firewalld && systemctl disable firewalld
-systemctl stop NetworkManager && systemctl disable NetworkManager
 
 # Swap 비활성화
 swapoff -a && sed -i '/ swap / s/^/#/' /etc/fstab
@@ -82,7 +81,7 @@ cat << EOF >> /etc/hosts
 EOF
 
 # 도커 설치
-yum install -y yum-utils device-mapper-persistent-data lvm2 
+yum install -y yum-utils
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum install -y containerd.io-1.4.9-3.1.el8 docker-ce-3:20.10.8-3.el8.x86_64 docker-ce-cli-1:20.10.8-3.el8.x86_64
 
@@ -136,8 +135,9 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc
 curl https://docs.projectcalico.org/manifests/calico.yaml -O
 kubectl apply -f calico.yaml
 
-# Dashboard 설치
+# Dashboard 설치 및 proxy 연결
 kubectl apply -f https://kubetm.github.io/yamls/k8s-install/dashboard-2.2.0.yaml
 nohup kubectl proxy --port=8001 --address=192.168.56.30 --accept-hosts='^*$' >/dev/null 2>&1 &
+
 
 SHELL
