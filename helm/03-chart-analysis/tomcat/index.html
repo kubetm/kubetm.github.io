@@ -19,8 +19,8 @@
 
 <title>Tomcat 차트 분석 | KubeTM Blog</title>
 <meta name="description" content=""><meta property="og:title" content="Tomcat 차트 분석" />
-<meta property="og:description" content="강의자료 PDF    
-1. tomcat 차트 설치 및 배포  1-1) 레포지토리 등록 helm repo add bitnami https://charts.bitnami.com/bitnami 1-2) Tomcat 7.1.2 다운로드 helm pull bitnami/tomcat --version 7.1.2 tar -xf tomcat-7.1.2.tgz 1-3) Tomcat Template 보기 helm template mytomcat .   2. tomcat에서 나오는 함수 따라해보기  2-1) Chart Template 생성 helm create mychart templates 폴더 안에 불필요한 파일 삭제
+<meta property="og:description" content="강의자료 PDF 
+1. tomcat 차트 설치 및 배포  1-1) 레포지토리 등록 helm repo add bitnami https://charts.bitnami.com/bitnami 1-2) Tomcat 7.1.2 다운로드 helm pull bitnami/tomcat --version 7.1.2 tar -xf tomcat-7.1.2.tgz 1-3) Tomcat Template 보기 helm template mytomcat . 2. tomcat에서 나오는 함수 따라해보기  2-1) Chart Template 생성 helm create mychart templates 폴더 안에 불필요한 파일 삭제
 rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml service.yaml tests 2-2) test-values." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kubetm.github.io/helm/03-chart-analysis/tomcat/" /><meta property="article:section" content="helm" />
@@ -28,15 +28,15 @@ rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml service.yaml te
 <meta property="article:modified_time" content="2021-08-02T00:00:00+00:00" /><meta property="og:site_name" content="KubeTM Blog" />
 
 <meta itemprop="name" content="Tomcat 차트 분석">
-<meta itemprop="description" content="강의자료 PDF    
-1. tomcat 차트 설치 및 배포  1-1) 레포지토리 등록 helm repo add bitnami https://charts.bitnami.com/bitnami 1-2) Tomcat 7.1.2 다운로드 helm pull bitnami/tomcat --version 7.1.2 tar -xf tomcat-7.1.2.tgz 1-3) Tomcat Template 보기 helm template mytomcat .   2. tomcat에서 나오는 함수 따라해보기  2-1) Chart Template 생성 helm create mychart templates 폴더 안에 불필요한 파일 삭제
+<meta itemprop="description" content="강의자료 PDF 
+1. tomcat 차트 설치 및 배포  1-1) 레포지토리 등록 helm repo add bitnami https://charts.bitnami.com/bitnami 1-2) Tomcat 7.1.2 다운로드 helm pull bitnami/tomcat --version 7.1.2 tar -xf tomcat-7.1.2.tgz 1-3) Tomcat Template 보기 helm template mytomcat . 2. tomcat에서 나오는 함수 따라해보기  2-1) Chart Template 생성 helm create mychart templates 폴더 안에 불필요한 파일 삭제
 rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml service.yaml tests 2-2) test-values."><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="wordCount" content="160">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tomcat 차트 분석"/>
-<meta name="twitter:description" content="강의자료 PDF    
-1. tomcat 차트 설치 및 배포  1-1) 레포지토리 등록 helm repo add bitnami https://charts.bitnami.com/bitnami 1-2) Tomcat 7.1.2 다운로드 helm pull bitnami/tomcat --version 7.1.2 tar -xf tomcat-7.1.2.tgz 1-3) Tomcat Template 보기 helm template mytomcat .   2. tomcat에서 나오는 함수 따라해보기  2-1) Chart Template 생성 helm create mychart templates 폴더 안에 불필요한 파일 삭제
+<meta name="twitter:description" content="강의자료 PDF 
+1. tomcat 차트 설치 및 배포  1-1) 레포지토리 등록 helm repo add bitnami https://charts.bitnami.com/bitnami 1-2) Tomcat 7.1.2 다운로드 helm pull bitnami/tomcat --version 7.1.2 tar -xf tomcat-7.1.2.tgz 1-3) Tomcat Template 보기 helm template mytomcat . 2. tomcat에서 나오는 함수 따라해보기  2-1) Chart Template 생성 helm create mychart templates 폴더 안에 불필요한 파일 삭제
 rm -rf deployment.yaml hpa.yaml ingress.yaml serviceaccount.yaml service.yaml tests 2-2) test-values."/>
 
 

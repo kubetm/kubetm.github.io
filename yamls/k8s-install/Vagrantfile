@@ -2,7 +2,11 @@
 NodeCnt = 2
 
 Vagrant.configure("2") do |config|
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> branch 'master' of https://github.com/kubetm/kubetm.github.io.git
   config.vm.provider :virtualbox do |vb|
     vb.memory = 4096
     vb.cpus = 2
@@ -11,7 +15,11 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, privileged: true, inline: $install_common_tools
 
   config.vm.define "k8s-master" do |master|
+<<<<<<< HEAD
     master.vm.box = "centos/7"
+=======
+    master.vm.box = "centos/8"
+>>>>>>> branch 'master' of https://github.com/kubetm/kubetm.github.io.git
     master.vm.hostname = "k8s-master"
     master.vm.network "private_network", ip: "192.168.56.30"
     master.vm.provision :shell, privileged: true, inline: $provision_master_node
@@ -19,11 +27,17 @@ Vagrant.configure("2") do |config|
 
   (1..NodeCnt).each do |i|
     config.vm.define "k8s-worker#{i}" do |worker|
+<<<<<<< HEAD
       worker.vm.box = "centos/7"
+=======
+      worker.vm.box = "centos/8"
+>>>>>>> branch 'master' of https://github.com/kubetm/kubetm.github.io.git
       worker.vm.hostname = "k8s-worker#{i}"
       worker.vm.network "private_network", ip: "192.168.56.#{i + 30}"
     end
   end
+  
+
 
 
 
@@ -38,7 +52,6 @@ systemctl restart sshd.service
 
 # 방화벽 해제
 systemctl stop firewalld && systemctl disable firewalld
-systemctl stop NetworkManager && systemctl disable NetworkManager
 
 # Swap 비활성화
 swapoff -a && sed -i '/ swap / s/^/#/' /etc/fstab
@@ -82,7 +95,7 @@ cat << EOF >> /etc/hosts
 EOF
 
 # 도커 설치
-yum install -y yum-utils device-mapper-persistent-data lvm2 
+yum install -y yum-utils
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum install -y containerd.io-1.4.9-3.1.el7 docker-ce-3:20.10.8-3.el7.x86_64 docker-ce-cli-1:20.10.8-3.el7.x86_64
 
@@ -136,8 +149,9 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc
 curl https://docs.projectcalico.org/manifests/calico.yaml -O
 kubectl apply -f calico.yaml
 
-# Dashboard 설치
+# Dashboard 설치 및 proxy 연결
 kubectl apply -f https://kubetm.github.io/yamls/k8s-install/dashboard-2.2.0.yaml
 nohup kubectl proxy --port=8001 --address=192.168.56.30 --accept-hosts='^*$' >/dev/null 2>&1 &
+
 
 SHELL
