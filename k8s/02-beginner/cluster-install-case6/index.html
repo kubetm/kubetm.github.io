@@ -1496,8 +1496,8 @@
         <li><a href="#6-대시보드-접근">6. 대시보드 접근</a></li>
         <li><a href="#참고-version-정보">*참고 (Version 정보)</a></li>
         <li><a href="#참고-network-구성도">*참고 (Network 구성도)</a></li>
-        <li><a href="#qna-dashboard-관련">*[QnA] Dashboard 관련</a></li>
         <li><a href="#qna-vagrnat-up-시-vm기동이-안될경우">*[QnA] vagrnat up 시 VM기동이 안될경우</a></li>
+        <li><a href="#qna-dashboard-관련">*[QnA] Dashboard 관련</a></li>
       </ul>
     </li>
   </ul>
@@ -1596,7 +1596,7 @@ Windows10, Cpu 6core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경<
 <p>다운로드 url : <a href="https://www.netsarang.com/en/free-for-home-school/">https://www.netsarang.com/en/free-for-home-school/</a></p>
 </li>
 <li>
-<p>설치 후 k8s-master(19.168.56.30:22), k8s-worker1(19.168.56.31:22), k8s-worker2(19.168.56.32:22) IP 등록</p>
+<p>설치 후 k8s-master(192.168.56.30:22), k8s-worker1(192.168.56.31:22), k8s-worker2(192.168.56.32:22) IP 등록</p>
 </li>
 </ul>
 <br/>
@@ -1670,16 +1670,7 @@ kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-toke
        alt="Installation Network Case6 for Kubernetes"
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
-<h3 id="qna-dashboard-관련">*[QnA] Dashboard 관련</h3>
-<ul>
-<li>Master Node 재기동시 Dashboard에 접속하기 위해선 아래 명령어를 실행해서 Proxy 오픈하기</li>
-</ul>
-<pre><code class="language-ssh" data-lang="ssh">[root@k8s-master ~]# nohup kubectl proxy --port=8001 --address=192.168.56.30 --accept-hosts='^*$' &gt;/dev/null 2&gt;&amp;1 &amp;
-</code></pre><ul>
-<li>Dashboard 접근시 ServiceUnavailable 에러 발생시 아래 명령을 통해 기동안된 Pod 확인</li>
-</ul>
-<pre><code class="language-ssh" data-lang="ssh">[root@k8s-master ~]# kubectl get pods -A
-</code></pre><h3 id="qna-vagrnat-up-시-vm기동이-안될경우">*[QnA] vagrnat up 시 VM기동이 안될경우</h3>
+<h3 id="qna-vagrnat-up-시-vm기동이-안될경우">*[QnA] vagrnat up 시 VM기동이 안될경우</h3>
 <ul>
 <li>에러 메세지</li>
 </ul>
@@ -1693,7 +1684,16 @@ VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component SessionMachi
 </code></pre><ul>
 <li>해결방법 : 작업관리자에 들어가서 VirtualBox 관련 프로세스 모두 죽이고 다시 실행 (VirtualBox Headless Frontend, VirtualBox Interface)</li>
 </ul>
-
+<h3 id="qna-dashboard-관련">*[QnA] Dashboard 관련</h3>
+<ul>
+<li>Master Node 재기동시 Dashboard에 접속하기 위해선 아래 명령어를 실행해서 Proxy 오픈하기</li>
+</ul>
+<pre><code class="language-ssh" data-lang="ssh">[root@k8s-master ~]# nohup kubectl proxy --port=8001 --address=192.168.56.30 --accept-hosts='^*$' &gt;/dev/null 2&gt;&amp;1 &amp;
+</code></pre><ul>
+<li>Dashboard 접근시 ServiceUnavailable 에러 발생시 아래 명령을 통해 기동안된 Pod 확인</li>
+</ul>
+<pre><code class="language-ssh" data-lang="ssh">[root@k8s-master ~]# kubectl get pods -A
+</code></pre>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
