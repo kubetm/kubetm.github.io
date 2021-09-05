@@ -32,7 +32,7 @@
  Windows10, Cpu 6core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "><meta itemprop="datePublished" content="2021-08-16T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-16T00:00:00+00:00" />
-<meta itemprop="wordCount" content="389">
+<meta itemprop="wordCount" content="441">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s v1.22버전 설치 (최신, 쉬운설치 버전)"/>
 <meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
@@ -1724,6 +1724,7 @@ Stderr: VBoxManage.exe: error: The VM session was closed before any attempt to p
 VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component SessionMachine, interface ISession
 </code></pre><ul>
 <li>해결방법 : 작업관리자에 들어가서 VirtualBox 관련 프로세스 모두 죽이고 다시 실행 (VirtualBox Headless Frontend, VirtualBox Interface)</li>
+<li>추가 커맨트 : 생각보다 자주 이런 현상이 발생하는것 같아요. 설치만 vagrant로하고 이후부터는 vagrant up으로 기동하지 않고, 그냥 virtualbox만 실행해서 UI를 통해 기동시키고 내리는것도 괜찮을것 같습니다. 이때 주의할 점은, virtualbox를 통해 core수나 memory를 직접 변경 했을때 나중에 vagrant up으로 기동할일이 있을 경우 Vagrantfile에 있는 core, memory 스펙으로 다시 업데이트 된다는 점 주의하시기 바랍니다.</li>
 </ul>
 <h3 id="dashboard-관련">Dashboard 관련</h3>
 <ul>

@@ -398,7 +398,7 @@ Host의 Ip Address를 변경하기 위해 아래 명령어로 설정을 열고&l
 &lt;br/&gt;
 `service-cidr` 를 설정하면 Service의 IP가 자동으로 생성될때 해당 대역으로 생성되요 `Default: 10.96.0.0/12`
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubeadm init --pod-network-cidr&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;20.96.0.0/12 --apiserver-advertise-address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.0.30
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다. 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다.
 &lt;br/&gt;
 kubeadm join 192.168.0.30:6443 &amp;ndash;token ki4szr.t3wondaclij6d1a3&lt;br&gt;
 &amp;ndash;discovery-token-ca-cert-hash sha256:2370f0451342c6e4bd0d38f6c2511bda5c50374c85e9c09da28e12dd666d5987&lt;/p&gt;
@@ -599,6 +599,7 @@ Stderr: VBoxManage.exe: error: The VM session was closed before any attempt to p
 VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component SessionMachine, interface ISession
 &lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
 &lt;li&gt;해결방법 : 작업관리자에 들어가서 VirtualBox 관련 프로세스 모두 죽이고 다시 실행 (VirtualBox Headless Frontend, VirtualBox Interface)&lt;/li&gt;
+&lt;li&gt;추가 커맨트 : 생각보다 자주 이런 현상이 발생하는것 같아요. 설치만 vagrant로하고 이후부터는 vagrant up으로 기동하지 않고, 그냥 virtualbox만 실행해서 UI를 통해 기동시키고 내리는것도 괜찮을것 같습니다. 이때 주의할 점은, virtualbox를 통해 core수나 memory를 직접 변경 했을때 나중에 vagrant up으로 기동할일이 있을 경우 Vagrantfile에 있는 core, memory 스펙으로 다시 업데이트 된다는 점 주의하시기 바랍니다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;dashboard-관련&#34;&gt;Dashboard 관련&lt;/h3&gt;
 &lt;ul&gt;

@@ -759,7 +759,7 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;client-certificate-data&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;LS0tLS1KVEUtLS0tLQo=&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;client-key-data&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;LS0tLS1KVEUtLS0tLQo=&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-4-kubectl-cli&#34;&gt;2-4) kubectl CLI&lt;/h3&gt;
-&lt;p&gt;kubectl download : 
+&lt;p&gt;kubectl download :
 &lt;a href=&#34;https://kubernetes.io/docs/tasks/tools/install-kubectl/&#34;&gt;https://kubernetes.io/docs/tasks/tools/install-kubectl/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;windows&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/windows/amd64/kubectl.exe
