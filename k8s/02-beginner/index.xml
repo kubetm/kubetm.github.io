@@ -488,6 +488,19 @@ kubectl apply -f calico.yaml
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;동영상 녹음 이후 설치 스크립트 수정사항&lt;/h4&gt;
+
+    &lt;ul&gt;
+&lt;li&gt;Dashboard 버전 변경 : v2.2.0 -&amp;gt; v2.3.0 &lt;br/&gt;&lt;/li&gt;
+&lt;li&gt;Worker Node명 변경 : k8s-worker1 -&amp;gt; k8s-node1, k8s-worker2 -&amp;gt; k8s-node2&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;/div&gt;
+
 &lt;h2 id=&#34;설치-가이드&#34;&gt;설치 가이드&lt;/h2&gt;
 &lt;hr&gt;
 &lt;ol&gt;
