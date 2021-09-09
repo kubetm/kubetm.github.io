@@ -398,7 +398,7 @@ Host의 Ip Address를 변경하기 위해 아래 명령어로 설정을 열고&l
 &lt;br/&gt;
 `service-cidr` 를 설정하면 Service의 IP가 자동으로 생성될때 해당 대역으로 생성되요 `Default: 10.96.0.0/12`
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubeadm init --pod-network-cidr&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;20.96.0.0/12 --apiserver-advertise-address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.0.30
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;실행 후 &lt;code&gt;[Your Kubernetes master has initialized successfully!]&lt;/code&gt; 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다. 
 &lt;br/&gt;
 kubeadm join 192.168.0.30:6443 &amp;ndash;token ki4szr.t3wondaclij6d1a3&lt;br&gt;
 &amp;ndash;discovery-token-ca-cert-hash sha256:2370f0451342c6e4bd0d38f6c2511bda5c50374c85e9c09da28e12dd666d5987&lt;/p&gt;
@@ -569,7 +569,7 @@ kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-toke
 [root@k8s-master ~]# kubectl get nodes
 &lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
 &lt;h3 id=&#34;6-대시보드-접근&#34;&gt;6. 대시보드 접근&lt;/h3&gt;
-&lt;p&gt;http://192.168.56.30:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/workloads?namespace=_all&lt;/p&gt;
+&lt;p&gt;http://192.168.56.30:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/workloads?namespace=default&lt;/p&gt;
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;h2 id=&#34;참고&#34;&gt;참고&lt;/h2&gt;
