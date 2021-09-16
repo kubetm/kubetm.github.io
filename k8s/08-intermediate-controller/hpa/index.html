@@ -30,7 +30,7 @@
 <meta itemprop="description" content="HPA, VPA, CA
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="215">
+<meta itemprop="wordCount" content="285">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="AutoScaler - HPA"/>
 <meta name="twitter:description" content="HPA, VPA, CA
@@ -1622,41 +1622,157 @@
 <h2 id="1-metrics-server-설치">1. Metrics Server 설치</h2>
 <hr>
 <h3 id="1-1-metrics-server-다운-및-설치">1-1) Metrics Server 다운 및 설치</h3>
-<p>설치</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
-</code></pre></div><br/>
-Metrics Deployment 수정 (args 에 `kubelet-insecure-tls` 와 `kubelet-preferred-address-types=InternalIP` 추가)
-```sh
-kubectl edit deployment metrics-server -n kube-system
-<hr>
-<p>spec:
-containers:</p>
-<ul>
-<li>args:
-<ul>
-<li>&ndash;cert-dir=/tmp</li>
-<li>&ndash;secure-port=4443</li>
-<li>&ndash;kubelet-insecure-tls</li>
-<li>&ndash;kubelet-preferred-address-types=InternalIP
-image: k8s.gcr.io/metrics-server-amd64:v0.3.6
-imagePullPolicy: IfNotPresent
-name: metrics-server</li>
-</ul>
-<hr>
-</li>
-</ul>
-<pre><code>
-&lt;br/&gt;
-설치 확인 (True값 확인)
 
-```sh
-kubectl get apiservices |egrep metrics
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab"
+        aria-controls="tabs-0-0" aria-selected="true">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-0-1-tab" data-toggle="tab" href="#tabs-0-1" role="tab"
+        aria-controls="tabs-0-1" aria-selected="false">
+        v1.15
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-0-content"><div class="tab-pane fade show active"
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.5.0/components.yaml
+</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
+</code></pre></div></div>
+  
+</div>
+
+<br/>
+Metrics Deployment 수정
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab"
+        aria-controls="tabs-1-0" aria-selected="true">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab"
+        aria-controls="tabs-1-1" aria-selected="false">
+        v1.15
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-1-content"><div class="tab-pane fade show active"
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># args 에 `kubelet-insecure-tls` 추가</span>
+kubectl edit deployment metrics-server -n kube-system
+
+<span style="color:#8f5902;font-style:italic">#spec:</span>
+<span style="color:#8f5902;font-style:italic">#  containers:</span>
+<span style="color:#8f5902;font-style:italic">#  - args:</span>
+<span style="color:#8f5902;font-style:italic">#    - --cert-dir=/tmp</span>
+<span style="color:#8f5902;font-style:italic">#    - --secure-port=443</span>
+<span style="color:#8f5902;font-style:italic">#    - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname</span>
+<span style="color:#8f5902;font-style:italic">#    - --kubelet-use-node-status-port</span>
+<span style="color:#8f5902;font-style:italic">#    - --metric-resolution=15s</span>
+<span style="color:#8f5902;font-style:italic">#    - --kubelet-insecure-tls  &lt;-- 추가</span>
+</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># args 에 `kubelet-insecure-tls` 와 `kubelet-preferred-address-types=InternalIP` 추가</span>
+kubectl edit deployment metrics-server -n kube-system
+
+<span style="color:#8f5902;font-style:italic">#spec:</span>
+<span style="color:#8f5902;font-style:italic">#   containers:</span>
+<span style="color:#8f5902;font-style:italic">#   - args:</span>
+<span style="color:#8f5902;font-style:italic">#     - --cert-dir=/tmp</span>
+<span style="color:#8f5902;font-style:italic">#     - --secure-port=4443</span>
+<span style="color:#8f5902;font-style:italic">#     - --kubelet-insecure-tls                       &lt;-- 추가</span>
+<span style="color:#8f5902;font-style:italic">#     - --kubelet-preferred-address-types=InternalIP &lt;-- 추가</span>
+</code></pre></div></div>
+  
+</div>
+
+<p>설치 확인 (True값 확인)</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get apiservices <span style="color:#000;font-weight:bold">|</span>egrep metrics
 
 ------------------------
 v1beta1.metrics.k8s.io                     kube-system/metrics-server   True        28m
 ------------------------
-</code></pre><br/>
-메트릭 값 확인 (1~2분 후)
+</code></pre></div><p>메트릭 값 확인 (1~2분 후)</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl top node
 
 ------------------------
@@ -1731,8 +1847,68 @@ k8s-node2        554m         11%    4672Mi          31%
 </span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Utilization</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">averageUtilization</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">50</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get hpa -w
-</code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87;font-weight:bold">while</span> true<span style="color:#000;font-weight:bold">;</span><span style="color:#204a87;font-weight:bold">do</span> curl 192.168.0.30:30001/hostname<span style="color:#000;font-weight:bold">;</span> sleep 0.01<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span>
-</code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete horizontalpodautoscalers.autoscaling hpa-resource-cpu
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-2" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab"
+        aria-controls="tabs-2-0" aria-selected="true">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab"
+        aria-controls="tabs-2-1" aria-selected="false">
+        v1.15
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-2-content"><div class="tab-pane fade show active"
+        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#204a87;font-weight:bold">while</span> true<span style="color:#000;font-weight:bold">;</span><span style="color:#204a87;font-weight:bold">do</span> curl 192.168.56.30:30001/hostname<span style="color:#000;font-weight:bold">;</span> sleep 0.01<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span>
+</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#204a87;font-weight:bold">while</span> true<span style="color:#000;font-weight:bold">;</span><span style="color:#204a87;font-weight:bold">do</span> curl 192.168.0.30:30001/hostname<span style="color:#000;font-weight:bold">;</span> sleep 0.01<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span>
+</code></pre></div></div>
+  
+</div>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete horizontalpodautoscalers.autoscaling hpa-resource-cpu
 </code></pre></div><br/>
 <br/>
 <figure>
@@ -1796,8 +1972,68 @@ k8s-node2        554m         11%    4672Mi          31%
 </span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">target</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">AverageValue</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">averageValue</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">5Mi</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87;font-weight:bold">while</span> true<span style="color:#000;font-weight:bold">;</span><span style="color:#204a87;font-weight:bold">do</span> curl 192.168.0.30:30002/hostname<span style="color:#000;font-weight:bold">;</span> sleep 0.01<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span>
-</code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete horizontalpodautoscalers.autoscaling hpa-resource-memory
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-3" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-3-0-tab" data-toggle="tab" href="#tabs-3-0" role="tab"
+        aria-controls="tabs-3-0" aria-selected="true">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-3-1-tab" data-toggle="tab" href="#tabs-3-1" role="tab"
+        aria-controls="tabs-3-1" aria-selected="false">
+        v1.15
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-3-content"><div class="tab-pane fade show active"
+        id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#204a87;font-weight:bold">while</span> true<span style="color:#000;font-weight:bold">;</span><span style="color:#204a87;font-weight:bold">do</span> curl 192.168.56.30:30002/hostname<span style="color:#000;font-weight:bold">;</span> sleep 0.01<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span>
+</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#204a87;font-weight:bold">while</span> true<span style="color:#000;font-weight:bold">;</span><span style="color:#204a87;font-weight:bold">do</span> curl 192.168.0.30:30002/hostname<span style="color:#000;font-weight:bold">;</span> sleep 0.01<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span>
+</code></pre></div></div>
+  
+</div>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete horizontalpodautoscalers.autoscaling hpa-resource-memory
 </code></pre></div><br/>
 <br/>
 <h2 id="sample-yaml">Sample yaml</h2>

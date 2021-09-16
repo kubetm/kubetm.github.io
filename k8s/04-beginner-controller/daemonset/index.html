@@ -19,8 +19,7 @@
 
 <title>DaemonSet, Job, CronJob | KubeTM Blog</title>
 <meta name="description" content=""><meta property="og:title" content="DaemonSet, Job, CronJob" />
-<meta property="og:description" content="강의자료 PDF 1. DaemonSet  1-1) DaemonSet - HostPort apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-1spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:containers:- name:containerimage:kubetm/appports:- containerPort:8080hostPort:18080Command
-curl 192.168.0.31:18080/hostname 1-2) DaemonSet - NodeSelector apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-2spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:nodeSelector:os:centoscontainers:- name:containerimage:kubetm/appports:- containerPort:8080Label Add
+<meta property="og:description" content="강의자료 PDF 1. DaemonSet  1-1) DaemonSet - HostPort apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-1spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:containers:- name:containerimage:kubetm/appports:- containerPort:8080hostPort:18080Command v1.22v1.15curl 192.168.56.31:18080/hostname curl 192.168.0.31:18080/hostname 1-2) DaemonSet - NodeSelector apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-2spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:nodeSelector:os:centoscontainers:- name:containerimage:kubetm/appports:- containerPort:8080Label Add
 kubectl label nodes k8s-node1 os=centos kubectl label nodes k8s-node2 os=ubuntu Label Remove
 kubectl label nodes k8s-node2 os- 2. Job  2-1) Job1 apiVersion:batch/v1kind:Jobmetadata:name:job-1spec:template:spec:restartPolicy:Nevercontainers:- name:containerimage:kubetm/initcommand:[&#34;sh&#34;,&#34;-c&#34;,&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;]terminationGracePeriodSeconds:02-2) Job2 apiVersion:batch/v1kind:Jobmetadata:name:job-2spec:completions:6parallelism:2activeDeadlineSeconds:30template:spec:restartPolicy:Nevercontainers:- name:containerimage:kubetm/initcommand:[&#34;sh&#34;,&#34;-c&#34;,&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;]terminationGracePeriodSeconds:03." />
 <meta property="og:type" content="article" />
@@ -29,16 +28,14 @@ kubectl label nodes k8s-node2 os- 2. Job  2-1) Job1 apiVersion:batch/v1kind:Jo
 <meta property="og:site_name" content="KubeTM Blog" />
 
 <meta itemprop="name" content="DaemonSet, Job, CronJob">
-<meta itemprop="description" content="강의자료 PDF 1. DaemonSet  1-1) DaemonSet - HostPort apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-1spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:containers:- name:containerimage:kubetm/appports:- containerPort:8080hostPort:18080Command
-curl 192.168.0.31:18080/hostname 1-2) DaemonSet - NodeSelector apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-2spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:nodeSelector:os:centoscontainers:- name:containerimage:kubetm/appports:- containerPort:8080Label Add
+<meta itemprop="description" content="강의자료 PDF 1. DaemonSet  1-1) DaemonSet - HostPort apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-1spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:containers:- name:containerimage:kubetm/appports:- containerPort:8080hostPort:18080Command v1.22v1.15curl 192.168.56.31:18080/hostname curl 192.168.0.31:18080/hostname 1-2) DaemonSet - NodeSelector apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-2spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:nodeSelector:os:centoscontainers:- name:containerimage:kubetm/appports:- containerPort:8080Label Add
 kubectl label nodes k8s-node1 os=centos kubectl label nodes k8s-node2 os=ubuntu Label Remove
 kubectl label nodes k8s-node2 os- 2. Job  2-1) Job1 apiVersion:batch/v1kind:Jobmetadata:name:job-1spec:template:spec:restartPolicy:Nevercontainers:- name:containerimage:kubetm/initcommand:[&#34;sh&#34;,&#34;-c&#34;,&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;]terminationGracePeriodSeconds:02-2) Job2 apiVersion:batch/v1kind:Jobmetadata:name:job-2spec:completions:6parallelism:2activeDeadlineSeconds:30template:spec:restartPolicy:Nevercontainers:- name:containerimage:kubetm/initcommand:[&#34;sh&#34;,&#34;-c&#34;,&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;]terminationGracePeriodSeconds:03.">
 
-<meta itemprop="wordCount" content="155">
+<meta itemprop="wordCount" content="176">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="DaemonSet, Job, CronJob"/>
-<meta name="twitter:description" content="강의자료 PDF 1. DaemonSet  1-1) DaemonSet - HostPort apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-1spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:containers:- name:containerimage:kubetm/appports:- containerPort:8080hostPort:18080Command
-curl 192.168.0.31:18080/hostname 1-2) DaemonSet - NodeSelector apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-2spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:nodeSelector:os:centoscontainers:- name:containerimage:kubetm/appports:- containerPort:8080Label Add
+<meta name="twitter:description" content="강의자료 PDF 1. DaemonSet  1-1) DaemonSet - HostPort apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-1spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:containers:- name:containerimage:kubetm/appports:- containerPort:8080hostPort:18080Command v1.22v1.15curl 192.168.56.31:18080/hostname curl 192.168.0.31:18080/hostname 1-2) DaemonSet - NodeSelector apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-2spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:nodeSelector:os:centoscontainers:- name:containerimage:kubetm/appports:- containerPort:8080Label Add
 kubectl label nodes k8s-node1 os=centos kubectl label nodes k8s-node2 os=ubuntu Label Remove
 kubectl label nodes k8s-node2 os- 2. Job  2-1) Job1 apiVersion:batch/v1kind:Jobmetadata:name:job-1spec:template:spec:restartPolicy:Nevercontainers:- name:containerimage:kubetm/initcommand:[&#34;sh&#34;,&#34;-c&#34;,&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;]terminationGracePeriodSeconds:02-2) Job2 apiVersion:batch/v1kind:Jobmetadata:name:job-2spec:completions:6parallelism:2activeDeadlineSeconds:30template:spec:restartPolicy:Nevercontainers:- name:containerimage:kubetm/initcommand:[&#34;sh&#34;,&#34;-c&#34;,&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;]terminationGracePeriodSeconds:03."/>
 
@@ -1651,8 +1648,69 @@ kubectl label nodes k8s-node2 os- 2. Job  2-1) Job1 apiVersion:batch/v1kind:Jo
 </span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">hostPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">18080</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>Command</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl 192.168.0.31:18080/hostname
+</span></code></pre></div><p>Command
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab"
+        aria-controls="tabs-0-0" aria-selected="true">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-0-1-tab" data-toggle="tab" href="#tabs-0-1" role="tab"
+        aria-controls="tabs-0-1" aria-selected="false">
+        v1.15
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-0-content"><div class="tab-pane fade show active"
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+curl 192.168.56.31:18080/hostname
+</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+curl 192.168.0.31:18080/hostname
+</code></pre></div></div>
+  
+</div>
+</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
 </code></pre></div><br/>
 <h3 id="1-2-daemonset---nodeselector">1-2) DaemonSet - NodeSelector</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">apps/v1</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1732,7 +1790,59 @@ kubectl label nodes k8s-node2 <span style="color:#000">os</span><span style="col
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
 <h3 id="3-1-cronjob">3-1) CronJob</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">batch/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab"
+        aria-controls="tabs-1-0" aria-selected="true">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab"
+        aria-controls="tabs-1-1" aria-selected="false">
+        v1.15
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-1-content"><div class="tab-pane fade show active"
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">batch/v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">CronJob</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cron-job</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1748,7 +1858,30 @@ kubectl label nodes k8s-node2 <span style="color:#000">os</span><span style="col
 </span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubetm/init</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">command</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;sh&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;-c&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;</span><span style="color:#000;font-weight:bold">]</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">terminationGracePeriodSeconds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>Manual</p>
+</span></code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">batch/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">CronJob</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cron-job</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">schedule</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;*/1 * * * *&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">jobTemplate</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">template</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">restartPolicy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Never</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">containers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">container</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubetm/init</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">command</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;sh&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;-c&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;</span><span style="color:#000;font-weight:bold">]</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">terminationGracePeriodSeconds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></div>
+  
+</div>
+
+<p>Manual</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl create job --from<span style="color:#ce5c00;font-weight:bold">=</span>cronjob/cron-job cron-job-manual-001
 </code></pre></div><p>Suspend</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl patch cronjobs cron-job -p <span style="color:#4e9a06">&#39;{&#34;spec&#34; : {&#34;suspend&#34; : false }}&#39;</span>
@@ -1756,7 +1889,7 @@ kubectl label nodes k8s-node2 <span style="color:#000">os</span><span style="col
 
 
 <div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">1.19버전 변경사항</h4>
+<h4 class="alert-heading">1.19버전 이후 변경사항</h4>
 
     Cronjob 삭제시 Manual로 만든 Job도 같이 삭제됨
 
@@ -1792,7 +1925,7 @@ kubectl label nodes k8s-node2 <span style="color:#000">os</span><span style="col
 
 
 <div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">1.19버전 변경사항</h4>
+<h4 class="alert-heading">1.19버전 이후 변경사항</h4>
 
     <strong>Replace 모드</strong> : 2min이 되었을 시 기존 Job은 삭제되고 (기존 Pod도 같이 삭제됨), 새 Job이(새 pod 생성) 만들어집니다.
 

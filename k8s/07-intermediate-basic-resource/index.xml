@@ -352,6 +352,16 @@ kubectl describe endpoints endpoint1
 &lt;/figure&gt;
 &lt;br/&gt;
 &lt;br/&gt;
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;1.22 버전 StorageOS 설치 안내&lt;/h4&gt;
+
+    해당 사이트에서 아직 1.22버전의 설치 가이드가 올라오지 않았습니다. 올라오는대로 업데이트 할 예정입니다.
+&lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;https://docs.storageos.com/docs/install/kubernetes/&lt;/a&gt;
+
+&lt;/div&gt;
+
 &lt;h2 id=&#34;1-사전-구성---storageos-설치-및-storageclass-생성&#34;&gt;1. 사전 구성 - StorageOS 설치 및 StorageClass 생성&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
