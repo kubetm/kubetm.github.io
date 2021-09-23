@@ -23,7 +23,12 @@
       <description>
         
         
-        &lt;p&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+        &lt;div class=&#34;mx-auto&#34;&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/deploy/concept/Cicd.pdf&#34; download&gt;
+		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
+	&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h2 id=&#34;배포-개요&#34;&gt;배포 개요&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
