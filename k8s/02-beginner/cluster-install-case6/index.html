@@ -32,7 +32,7 @@
  Windows10, Cpu 6core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "><meta itemprop="datePublished" content="2021-08-16T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-16T00:00:00+00:00" />
-<meta itemprop="wordCount" content="464">
+<meta itemprop="wordCount" content="466">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s v1.22버전 설치 (최신, 쉬운설치 버전)"/>
 <meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
@@ -1646,7 +1646,7 @@ Windows10, Cpu 6core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경<
 <p>다운로드 url : <a href="https://www.netsarang.com/en/free-for-home-school/">https://www.netsarang.com/en/free-for-home-school/</a></p>
 </li>
 <li>
-<p>설치 후 k8s-master(192.168.56.30:22), k8s-worker1(192.168.56.31:22), k8s-worker2(192.168.56.32:22) IP 등록</p>
+<p>설치 후 k8s-master(192.168.56.30:22), k8s-node1(192.168.56.31:22), k8s-node2(192.168.56.32:22) IP 등록</p>
 </li>
 </ul>
 <br/>
@@ -1693,10 +1693,10 @@ vagrant destroy : 가상머신 삭제
 4-2) cat 명령으로 자신에 master 접근 token 확인 및 복사</p>
 <pre><code class="language-ssh" data-lang="ssh">[root@k8s-master ~]# cat ~/join.sh
 kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
-</code></pre><p>4-3) worker1 접속 후 토큰 붙여놓기 (id/pw: root/vagrant) <br/></p>
-<pre><code class="language-ssh" data-lang="ssh">[root@k8s-worker1 ~]# kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
-</code></pre><p>4-4) worker2 접속 후 토큰 붙여놓기 반복</p>
-<pre><code class="language-ssh" data-lang="ssh">[root@k8s-worker2 ~]# kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
+</code></pre><p>4-3) worker node1 접속 후 토큰 붙여놓기 (id/pw: root/vagrant) <br/></p>
+<pre><code class="language-ssh" data-lang="ssh">[root@k8s-node1 ~]# kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
+</code></pre><p>4-4) worker node2 접속 후 토큰 붙여놓기 반복</p>
+<pre><code class="language-ssh" data-lang="ssh">[root@k8s-node2 ~]# kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
 </code></pre><br/>
 <h3 id="5-설치-확인">5. 설치 확인</h3>
 <p>5-1) XShell을 통해 master 접속 (id/pw = root/vagrant) <br/>

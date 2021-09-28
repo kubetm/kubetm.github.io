@@ -608,7 +608,7 @@ kubectl apply -f calico.yaml
 &lt;p&gt;다운로드 url : &lt;a href=&#34;https://www.netsarang.com/en/free-for-home-school/&#34;&gt;https://www.netsarang.com/en/free-for-home-school/&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;설치 후 k8s-master(192.168.56.30:22), k8s-worker1(192.168.56.31:22), k8s-worker2(192.168.56.32:22) IP 등록&lt;/p&gt;
+&lt;p&gt;설치 후 k8s-master(192.168.56.30:22), k8s-node1(192.168.56.31:22), k8s-node2(192.168.56.32:22) IP 등록&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
@@ -655,10 +655,10 @@ vagrant destroy : 가상머신 삭제
 4-2) cat 명령으로 자신에 master 접근 token 확인 및 복사&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-master ~]# cat ~/join.sh
 kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;4-3) worker1 접속 후 토큰 붙여놓기 (id/pw: root/vagrant) &lt;br/&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-worker1 ~]# kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;4-4) worker2 접속 후 토큰 붙여놓기 반복&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-worker2 ~]# kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;4-3) worker node1 접속 후 토큰 붙여놓기 (id/pw: root/vagrant) &lt;br/&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-node1 ~]# kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;4-4) worker node2 접속 후 토큰 붙여놓기 반복&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;[root@k8s-node2 ~]# kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
 &lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
 &lt;h3 id=&#34;5-설치-확인&#34;&gt;5. 설치 확인&lt;/h3&gt;
 &lt;p&gt;5-1) XShell을 통해 master 접속 (id/pw = root/vagrant) &lt;br/&gt;
