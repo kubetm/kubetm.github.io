@@ -313,10 +313,17 @@
     <loc>https://kubetm.github.io/helm/</loc>
     <lastmod>2021-08-10T00:00:00+00:00</lastmod>
   </url>
-
+  
+  <url>
+    <loc>https://kubetm.github.io/search/</loc>
+  </url>
+  
   <url>
     <loc>https://kubetm.github.io/about/</loc>
   </url>
-
+  
+  <url>
+    <loc>https://kubetm.github.io/tags/</loc>
+  </url>
   
 </urlset>
