@@ -4828,27 +4828,232 @@ user.client-key-data: Client.key &lt;span style=&#34;color:#ce5c00;font-weight:b
 grep &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;client-key-data&amp;#39;&lt;/span&gt; /etc/kubernetes/admin.conf &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; head -n &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; awk &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;{print $2}&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; base64 -d
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;h3 id=&#34;1-2-https-api-clientcrt-clientkey&#34;&gt;1-2) Https API (Client.crt, Client.key)&lt;/h3&gt;
-&lt;p&gt;case1) postman&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;https://192.168.0.30:6443/api/v1/nodes
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;Settings &amp;gt; General &amp;gt; SSL certificate verification &amp;gt; OFF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;ul class=&#34;nav nav-tabs&#34; id=&#34;tabs-0&#34; role=&#34;tablist&#34;&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link active&#34;
+        id=&#34;tabs-0-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-0&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-0-0&#34; aria-selected=&#34;true&#34;&gt;
+        v1.22
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link&#34;
+        id=&#34;tabs-0-1-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-1&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-0-1&#34; aria-selected=&#34;false&#34;&gt;
+        v1.15
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;/ul&gt;
+
+
+&lt;div class=&#34;tab-content&#34; id=&#34;tabs-0-content&#34;&gt;&lt;div class=&#34;tab-pane fade show active&#34;
+        id=&#34;tabs-0-0&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-0-0-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case1) postman&lt;/span&gt;
+https://192.168.56.30:6443/api/v1/nodes
+
+Settings &amp;gt; General &amp;gt; SSL certificate verification &amp;gt; OFF
 Settings &amp;gt; Certificates &amp;gt; Client Certificates &amp;gt; Host, CRT file, KEY file
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;case2) curl&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;curl -k --key ./Client.key --cert ./Client.crt https://192.168.0.30:6443/api/v1/nodes
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;1-3-kubectl-config-세팅&#34;&gt;1-3) kubectl config 세팅&lt;/h3&gt;
-&lt;p&gt;kubeadm / kubectl / kubelet 설치&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;yum install -y --disableexcludes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;kubernetes kubeadm-1.15.5-0.x86_64 kubectl-1.15.5-0.x86_64 kubelet-1.15.5-0.x86_64
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;admin.conf 인증서 복사&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;mkdir -p &lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;/.kube
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case2) curl&lt;/span&gt;
+curl -k --key ./Client.key --cert ./Client.crt https://192.168.56.30:6443/api/v1/nodes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&#34;tab-pane fade&#34;
+        id=&#34;tabs-0-1&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-0-1-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case1) postman&lt;/span&gt;
+https://192.168.0.30:6443/api/v1/nodes
+
+Settings &amp;gt; General &amp;gt; SSL certificate verification &amp;gt; OFF
+Settings &amp;gt; Certificates &amp;gt; Client Certificates &amp;gt; Host, CRT file, KEY file
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case2) curl&lt;/span&gt;
+curl -k --key ./Client.key --cert ./Client.crt https://192.168.0.30:6443/api/v1/nodes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  
+&lt;/div&gt;
+
+&lt;h3 id=&#34;1-3-kubectl-config-세팅&#34;&gt;1-3) kubectl config 세팅&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;ul class=&#34;nav nav-tabs&#34; id=&#34;tabs-1&#34; role=&#34;tablist&#34;&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link active&#34;
+        id=&#34;tabs-1-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-0&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-1-0&#34; aria-selected=&#34;true&#34;&gt;
+        v1.22
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link&#34;
+        id=&#34;tabs-1-1-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-1&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-1-1&#34; aria-selected=&#34;false&#34;&gt;
+        v1.15
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;/ul&gt;
+
+
+&lt;div class=&#34;tab-content&#34; id=&#34;tabs-1-content&#34;&gt;&lt;div class=&#34;tab-pane fade show active&#34;
+        id=&#34;tabs-1-0&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-1-0-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubeadm / kubectl / kubelet 설치&lt;/span&gt;
+yum install -y --disableexcludes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;kubernetes kubelet-1.22.0-0.x86_64 kubeadm-1.22.0-0.x86_64 kubectl-1.22.0-0.x86_64
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# admin.conf 인증서 복사&lt;/span&gt;
+mkdir -p &lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;/.kube
 sudo cp -i /etc/kubernetes/admin.conf &lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;/.kube/config
 sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/span&gt;id -u&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;)&lt;/span&gt;:&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/span&gt;id -g&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;/.kube/config
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Kubectl Proxy 띄우기&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;nohup kubectl proxy --port&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8001&lt;/span&gt; --address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.0.30 --accept-hosts&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;^*$&amp;#39;&lt;/span&gt; &amp;gt;/dev/null 2&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;1-4-http-api-호출-proxy&#34;&gt;1-4) HTTP API 호출 (Proxy)&lt;/h3&gt;
-&lt;p&gt;case1) postman&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;http://192.168.0.30:8001/api/v1/nodes
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;case2) curl&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;curl http://192.168.0.30:8001/api/v1/nodes
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Kubectl Proxy 띄우기&lt;/span&gt;
+nohup kubectl proxy --port&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8001&lt;/span&gt; --address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.56.30 --accept-hosts&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;^*$&amp;#39;&lt;/span&gt; &amp;gt;/dev/null 2&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&#34;tab-pane fade&#34;
+        id=&#34;tabs-1-1&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-1-1-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubeadm / kubectl / kubelet 설치&lt;/span&gt;
+yum install -y --disableexcludes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;kubernetes kubeadm-1.15.5-0.x86_64 kubectl-1.15.5-0.x86_64 kubelet-1.15.5-0.x86_64
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# admin.conf 인증서 복사&lt;/span&gt;
+mkdir -p &lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;/.kube
+sudo cp -i /etc/kubernetes/admin.conf &lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;/.kube/config
+sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/span&gt;id -u&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;)&lt;/span&gt;:&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/span&gt;id -g&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;/.kube/config
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Kubectl Proxy 띄우기&lt;/span&gt;
+nohup kubectl proxy --port&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8001&lt;/span&gt; --address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.0.30 --accept-hosts&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;^*$&amp;#39;&lt;/span&gt; &amp;gt;/dev/null 2&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  
+&lt;/div&gt;
+
+&lt;h3 id=&#34;1-4-http-api-호출-proxy&#34;&gt;1-4) HTTP API 호출 (Proxy)&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;ul class=&#34;nav nav-tabs&#34; id=&#34;tabs-2&#34; role=&#34;tablist&#34;&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link active&#34;
+        id=&#34;tabs-2-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-2-0&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-2-0&#34; aria-selected=&#34;true&#34;&gt;
+        v1.22
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link&#34;
+        id=&#34;tabs-2-1-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-2-1&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-2-1&#34; aria-selected=&#34;false&#34;&gt;
+        v1.15
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;/ul&gt;
+
+
+&lt;div class=&#34;tab-content&#34; id=&#34;tabs-2-content&#34;&gt;&lt;div class=&#34;tab-pane fade show active&#34;
+        id=&#34;tabs-2-0&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-2-0-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case1) postman&lt;/span&gt;
+http://192.168.56.30:8001/api/v1/nodes
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case2) curl&lt;/span&gt;
+curl http://192.168.56.30:8001/api/v1/nodes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&#34;tab-pane fade&#34;
+        id=&#34;tabs-2-1&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-2-1-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case1) postman&lt;/span&gt;
+http://192.168.0.30:8001/api/v1/nodes
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case2) curl&lt;/span&gt;
+curl http://192.168.0.30:8001/api/v1/nodes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  
+&lt;/div&gt;
+
+&lt;br/&gt;
 &lt;br/&gt;
 &lt;h2 id=&#34;2-kubectl&#34;&gt;2. kubectl&lt;/h2&gt;
 &lt;hr&gt;
@@ -4930,14 +5135,85 @@ kubectl describe -n nm-01 secrets
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    image: kubetm/app
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;EOF&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-4-https-api-호출-token&#34;&gt;3-4) Https API 호출 (Token)&lt;/h3&gt;
-&lt;p&gt;case1) http&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;header&lt;/code&gt; Authorization : Bearer TOKEN&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;https://192.168.0.30:6443/api/v1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;ul class=&#34;nav nav-tabs&#34; id=&#34;tabs-3&#34; role=&#34;tablist&#34;&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link active&#34;
+        id=&#34;tabs-3-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-3-0&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-3-0&#34; aria-selected=&#34;true&#34;&gt;
+        v1.22
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link&#34;
+        id=&#34;tabs-3-1-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-3-1&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-3-1&#34; aria-selected=&#34;false&#34;&gt;
+        v1.15
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;/ul&gt;
+
+
+&lt;div class=&#34;tab-content&#34; id=&#34;tabs-3-content&#34;&gt;&lt;div class=&#34;tab-pane fade show active&#34;
+        id=&#34;tabs-3-0&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-3-0-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case1) http&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# [header] Authorization : Bearer TOKEN&lt;/span&gt;
+
+https://192.168.56.30:6443/api/v1
+https://192.168.56.30:6443/api/v1/namespaces/nm-01/pods/
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case2) curl&lt;/span&gt;
+curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bearer TOKEN&amp;#34;&lt;/span&gt; https://192.168.56.30:6443/api/v1
+curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bearer TOKEN&amp;#34;&lt;/span&gt; https://192.168.56.30:6443/api/v1/namespaces/nm-01/pods/
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&#34;tab-pane fade&#34;
+        id=&#34;tabs-3-1&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-3-1-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case1) http&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# [header] Authorization : Bearer TOKEN&lt;/span&gt;
+
+https://192.168.0.30:6443/api/v1
 https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;case2) curl&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bearer TOKEN&amp;#34;&lt;/span&gt; https://192.168.0.30:6443/api/v1
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case2) curl&lt;/span&gt;
+curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bearer TOKEN&amp;#34;&lt;/span&gt; https://192.168.0.30:6443/api/v1
 curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bearer TOKEN&amp;#34;&lt;/span&gt; https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  
+&lt;/div&gt;
+
+&lt;br/&gt;
 &lt;br/&gt;
 &lt;h2 id=&#34;referenece&#34;&gt;Referenece&lt;/h2&gt;
 &lt;hr&gt;
@@ -6107,12 +6383,80 @@ GCP &gt; Kubernetes Engine &gt; Clusters &gt; k8s-cluster 리스트에 [Connect]
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;port&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8080&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;targetPort&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8080&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;1-4-https-api-호출-token&#34;&gt;1-4) Https API 호출 (Token)&lt;/h3&gt;
-&lt;p&gt;case1) postman&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;header&lt;/code&gt; Authorization : Bearer TOKEN&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;case2) curl&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bearer TOKEN&amp;#34;&lt;/span&gt; https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;ul class=&#34;nav nav-tabs&#34; id=&#34;tabs-0&#34; role=&#34;tablist&#34;&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link active&#34;
+        id=&#34;tabs-0-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-0&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-0-0&#34; aria-selected=&#34;true&#34;&gt;
+        v1.22
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link&#34;
+        id=&#34;tabs-0-1-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-1&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-0-1&#34; aria-selected=&#34;false&#34;&gt;
+        v1.15
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;/ul&gt;
+
+
+&lt;div class=&#34;tab-content&#34; id=&#34;tabs-0-content&#34;&gt;&lt;div class=&#34;tab-pane fade show active&#34;
+        id=&#34;tabs-0-0&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-0-0-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case1) postman&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# [header] Authorization : Bearer TOKEN&lt;/span&gt;
+
+https://192.168.56.30:6443/api/v1/namespaces/nm-01/pods/
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case2) curl&lt;/span&gt;
+curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bearer TOKEN&amp;#34;&lt;/span&gt; https://192.168.56.30:6443/api/v1/namespaces/nm-01/pods/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&#34;tab-pane fade&#34;
+        id=&#34;tabs-0-1&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-0-1-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case1) postman&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# [header] Authorization : Bearer TOKEN&lt;/span&gt;
+
+https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case2) curl&lt;/span&gt;
+curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bearer TOKEN&amp;#34;&lt;/span&gt; https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  
+&lt;/div&gt;
+
+&lt;br/&gt;
 &lt;br/&gt;
 &lt;h2 id=&#34;2-모든-namespace-내에-object들에-대해-모든-권한을-부여&#34;&gt;2. 모든 Namespace 내에 Object들에 대해 모든 권한을 부여&lt;/h2&gt;
 &lt;hr&gt;
@@ -6155,12 +6499,80 @@ metadata:
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;sa-02&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;namespace&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;nm-02&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-5-https-api-호출-token&#34;&gt;2-5) Https API 호출 (Token)&lt;/h3&gt;
-&lt;p&gt;case1) postman&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;header&lt;/code&gt; Authorization : Bearer TOKEN&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;https://192.168.0.30:6443/api/v1/namespaces/nm-01/service
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;case2) curl&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bearer TOKEN&amp;#34;&lt;/span&gt; https://192.168.0.30:6443/api/v1/namespaces/nm-01/service
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;ul class=&#34;nav nav-tabs&#34; id=&#34;tabs-1&#34; role=&#34;tablist&#34;&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link active&#34;
+        id=&#34;tabs-1-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-0&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-1-0&#34; aria-selected=&#34;true&#34;&gt;
+        v1.22
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link&#34;
+        id=&#34;tabs-1-1-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-1&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-1-1&#34; aria-selected=&#34;false&#34;&gt;
+        v1.15
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;/ul&gt;
+
+
+&lt;div class=&#34;tab-content&#34; id=&#34;tabs-1-content&#34;&gt;&lt;div class=&#34;tab-pane fade show active&#34;
+        id=&#34;tabs-1-0&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-1-0-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case1) postman&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# [header] Authorization : Bearer TOKEN&lt;/span&gt;
+
+https://192.168.56.30:6443/api/v1/namespaces/nm-01/service
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case2) curl&lt;/span&gt;
+curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bearer TOKEN&amp;#34;&lt;/span&gt; https://192.168.56.30:6443/api/v1/namespaces/nm-01/service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&#34;tab-pane fade&#34;
+        id=&#34;tabs-1-1&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-1-1-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case1) postman&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# [header] Authorization : Bearer TOKEN&lt;/span&gt;
+
+https://192.168.0.30:6443/api/v1/namespaces/nm-01/service
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# case2) curl&lt;/span&gt;
+curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bearer TOKEN&amp;#34;&lt;/span&gt; https://192.168.0.30:6443/api/v1/namespaces/nm-01/service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  
+&lt;/div&gt;
+
+&lt;br/&gt;
 &lt;br/&gt;
 &lt;h2 id=&#34;referenece&#34;&gt;Referenece&lt;/h2&gt;
 &lt;hr&gt;
@@ -6925,11 +7337,76 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;/figure&gt;
 &lt;br/&gt;
 &lt;h3 id=&#34;1-1--dashboard-설치&#34;&gt;1-1)  Dashboard 설치&lt;/h3&gt;
-&lt;p&gt;kubetm 가이드로 Dashboard대로 설치했을 경우 아래 명령으로 삭제&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl delete -f https://kubetm.github.io/documents/appendix/kubetm-dashboard-v2.0.0.yaml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;새 Dashboard (2.0.0) 설치 - &lt;a href=&#34;https://github.com/kubernetes/dashboard&#34;&gt;https://github.com/kubernetes/dashboard&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;ul class=&#34;nav nav-tabs&#34; id=&#34;tabs-0&#34; role=&#34;tablist&#34;&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link active&#34;
+        id=&#34;tabs-0-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-0&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-0-0&#34; aria-selected=&#34;true&#34;&gt;
+        v1.22
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link&#34;
+        id=&#34;tabs-0-1-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-1&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-0-1&#34; aria-selected=&#34;false&#34;&gt;
+        v1.15
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;/ul&gt;
+
+
+&lt;div class=&#34;tab-content&#34; id=&#34;tabs-0-content&#34;&gt;&lt;div class=&#34;tab-pane fade show active&#34;
+        id=&#34;tabs-0-0&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-0-0-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubetm 가이드로 Dashboard대로 설치했을 경우 아래 명령으로 삭제&lt;/span&gt;
+kubectl delete -f https://kubetm.github.io/yamls/k8s-install/dashboard-2.3.0.yaml
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 다시 Dashboard (2.3.0) 설치 - &amp;lt;https://github.com/kubernetes/dashboard/releases/tag/v2.3.0&amp;gt;&lt;/span&gt;
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.0/aio/deploy/recommended.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&#34;tab-pane fade&#34;
+        id=&#34;tabs-0-1&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-0-1-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubetm 가이드로 Dashboard대로 설치했을 경우 아래 명령으로 삭제&lt;/span&gt;
+kubectl delete -f https://kubetm.github.io/documents/appendix/kubetm-dashboard-v1.10.1.yaml
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 새 Dashboard (2.0.0) 설치 - &amp;lt;https://github.com/kubernetes/dashboard/releases/tag/v2.0.0&amp;gt;&lt;/span&gt;
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  
+&lt;/div&gt;
+
+&lt;br/&gt;
 &lt;h3 id=&#34;1-2-clusterrolebinding-생성&#34;&gt;1-2) ClusterRoleBinding 생성&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cat &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;lt;&amp;lt;EOF | kubectl create -f -
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -6958,8 +7435,68 @@ openssl pkcs12 -export -clcerts -inkey client.key -in client.crt -out client.p12
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;kubecfg.p12 파일을 내 PC에서 인증서 등록&lt;/p&gt;
 &lt;br/&gt;
 &lt;h3 id=&#34;1-5-https-로-dashboard-접근-후-token-으로-로그인&#34;&gt;1-5) Https 로 Dashboard 접근 후 Token 으로 로그인&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;https://192.168.0.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;ul class=&#34;nav nav-tabs&#34; id=&#34;tabs-1&#34; role=&#34;tablist&#34;&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link active&#34;
+        id=&#34;tabs-1-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-0&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-1-0&#34; aria-selected=&#34;true&#34;&gt;
+        v1.22
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
+      &lt;a class=&#34;nav-link&#34;
+        id=&#34;tabs-1-1-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-1&#34; role=&#34;tab&#34;
+        aria-controls=&#34;tabs-1-1&#34; aria-selected=&#34;false&#34;&gt;
+        v1.15
+      &lt;/a&gt;
+    &lt;/li&gt;&lt;/ul&gt;
+
+
+&lt;div class=&#34;tab-content&#34; id=&#34;tabs-1-content&#34;&gt;&lt;div class=&#34;tab-pane fade show active&#34;
+        id=&#34;tabs-1-0&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-1-0-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+https://192.168.56.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&#34;tab-pane fade&#34;
+        id=&#34;tabs-1-1&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-1-1-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;
+https://192.168.0.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  
+&lt;/div&gt;
+
+
       </description>
     </item>
     

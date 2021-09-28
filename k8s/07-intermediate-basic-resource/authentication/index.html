@@ -30,7 +30,7 @@
 <meta itemprop="description" content="X509 Certs, Kubectl, ServiceAccount
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="278">
+<meta itemprop="wordCount" content="413">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Authentication"/>
 <meta name="twitter:description" content="X509 Certs, Kubectl, ServiceAccount
@@ -1637,27 +1637,232 @@ user.client-key-data: Client.key <span style="color:#ce5c00;font-weight:bold">(<
 grep <span style="color:#4e9a06">&#39;client-key-data&#39;</span> /etc/kubernetes/admin.conf <span style="color:#000;font-weight:bold">|</span> head -n <span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{print $2}&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64 -d
 </code></pre></div><br/>
 <h3 id="1-2-https-api-clientcrt-clientkey">1-2) Https API (Client.crt, Client.key)</h3>
-<p>case1) postman</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">https://192.168.0.30:6443/api/v1/nodes
-</code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">Settings &gt; General &gt; SSL certificate verification &gt; OFF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab"
+        aria-controls="tabs-0-0" aria-selected="true">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-0-1-tab" data-toggle="tab" href="#tabs-0-1" role="tab"
+        aria-controls="tabs-0-1" aria-selected="false">
+        v1.15
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-0-content"><div class="tab-pane fade show active"
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># case1) postman</span>
+https://192.168.56.30:6443/api/v1/nodes
+
+Settings &gt; General &gt; SSL certificate verification &gt; OFF
 Settings &gt; Certificates &gt; Client Certificates &gt; Host, CRT file, KEY file
-</code></pre></div><p>case2) curl</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl -k --key ./Client.key --cert ./Client.crt https://192.168.0.30:6443/api/v1/nodes
-</code></pre></div><h3 id="1-3-kubectl-config-세팅">1-3) kubectl config 세팅</h3>
-<p>kubeadm / kubectl / kubelet 설치</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yum install -y --disableexcludes<span style="color:#ce5c00;font-weight:bold">=</span>kubernetes kubeadm-1.15.5-0.x86_64 kubectl-1.15.5-0.x86_64 kubelet-1.15.5-0.x86_64
-</code></pre></div><p>admin.conf 인증서 복사</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir -p <span style="color:#000">$HOME</span>/.kube
+
+<span style="color:#8f5902;font-style:italic"># case2) curl</span>
+curl -k --key ./Client.key --cert ./Client.crt https://192.168.56.30:6443/api/v1/nodes
+</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># case1) postman</span>
+https://192.168.0.30:6443/api/v1/nodes
+
+Settings &gt; General &gt; SSL certificate verification &gt; OFF
+Settings &gt; Certificates &gt; Client Certificates &gt; Host, CRT file, KEY file
+
+<span style="color:#8f5902;font-style:italic"># case2) curl</span>
+curl -k --key ./Client.key --cert ./Client.crt https://192.168.0.30:6443/api/v1/nodes
+</code></pre></div></div>
+  
+</div>
+
+<h3 id="1-3-kubectl-config-세팅">1-3) kubectl config 세팅</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab"
+        aria-controls="tabs-1-0" aria-selected="true">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab"
+        aria-controls="tabs-1-1" aria-selected="false">
+        v1.15
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-1-content"><div class="tab-pane fade show active"
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># kubeadm / kubectl / kubelet 설치</span>
+yum install -y --disableexcludes<span style="color:#ce5c00;font-weight:bold">=</span>kubernetes kubelet-1.22.0-0.x86_64 kubeadm-1.22.0-0.x86_64 kubectl-1.22.0-0.x86_64
+
+<span style="color:#8f5902;font-style:italic"># admin.conf 인증서 복사</span>
+mkdir -p <span style="color:#000">$HOME</span>/.kube
 sudo cp -i /etc/kubernetes/admin.conf <span style="color:#000">$HOME</span>/.kube/config
 sudo chown <span style="color:#204a87;font-weight:bold">$(</span>id -u<span style="color:#204a87;font-weight:bold">)</span>:<span style="color:#204a87;font-weight:bold">$(</span>id -g<span style="color:#204a87;font-weight:bold">)</span> <span style="color:#000">$HOME</span>/.kube/config
-</code></pre></div><p>Kubectl Proxy 띄우기</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">nohup kubectl proxy --port<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8001</span> --address<span style="color:#ce5c00;font-weight:bold">=</span>192.168.0.30 --accept-hosts<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;^*$&#39;</span> &gt;/dev/null 2&gt;<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000;font-weight:bold">&amp;</span>
-</code></pre></div><h3 id="1-4-http-api-호출-proxy">1-4) HTTP API 호출 (Proxy)</h3>
-<p>case1) postman</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">http://192.168.0.30:8001/api/v1/nodes
-</code></pre></div><p>case2) curl</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl http://192.168.0.30:8001/api/v1/nodes
-</code></pre></div><br/>
+
+<span style="color:#8f5902;font-style:italic"># Kubectl Proxy 띄우기</span>
+nohup kubectl proxy --port<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8001</span> --address<span style="color:#ce5c00;font-weight:bold">=</span>192.168.56.30 --accept-hosts<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;^*$&#39;</span> &gt;/dev/null 2&gt;<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000;font-weight:bold">&amp;</span>
+</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># kubeadm / kubectl / kubelet 설치</span>
+yum install -y --disableexcludes<span style="color:#ce5c00;font-weight:bold">=</span>kubernetes kubeadm-1.15.5-0.x86_64 kubectl-1.15.5-0.x86_64 kubelet-1.15.5-0.x86_64
+
+<span style="color:#8f5902;font-style:italic"># admin.conf 인증서 복사</span>
+mkdir -p <span style="color:#000">$HOME</span>/.kube
+sudo cp -i /etc/kubernetes/admin.conf <span style="color:#000">$HOME</span>/.kube/config
+sudo chown <span style="color:#204a87;font-weight:bold">$(</span>id -u<span style="color:#204a87;font-weight:bold">)</span>:<span style="color:#204a87;font-weight:bold">$(</span>id -g<span style="color:#204a87;font-weight:bold">)</span> <span style="color:#000">$HOME</span>/.kube/config
+
+<span style="color:#8f5902;font-style:italic"># Kubectl Proxy 띄우기</span>
+nohup kubectl proxy --port<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8001</span> --address<span style="color:#ce5c00;font-weight:bold">=</span>192.168.0.30 --accept-hosts<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;^*$&#39;</span> &gt;/dev/null 2&gt;<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000;font-weight:bold">&amp;</span>
+</code></pre></div></div>
+  
+</div>
+
+<h3 id="1-4-http-api-호출-proxy">1-4) HTTP API 호출 (Proxy)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-2" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab"
+        aria-controls="tabs-2-0" aria-selected="true">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab"
+        aria-controls="tabs-2-1" aria-selected="false">
+        v1.15
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-2-content"><div class="tab-pane fade show active"
+        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># case1) postman</span>
+http://192.168.56.30:8001/api/v1/nodes
+
+<span style="color:#8f5902;font-style:italic"># case2) curl</span>
+curl http://192.168.56.30:8001/api/v1/nodes
+</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># case1) postman</span>
+http://192.168.0.30:8001/api/v1/nodes
+
+<span style="color:#8f5902;font-style:italic"># case2) curl</span>
+curl http://192.168.0.30:8001/api/v1/nodes
+</code></pre></div></div>
+  
+</div>
+
+<br/>
 <br/>
 <h2 id="2-kubectl">2. kubectl</h2>
 <hr>
@@ -1739,14 +1944,85 @@ kubectl describe -n nm-01 secrets
 </span><span style="color:#4e9a06">    image: kubetm/app
 </span><span style="color:#4e9a06">EOF</span>
 </code></pre></div><h3 id="3-4-https-api-호출-token">3-4) Https API 호출 (Token)</h3>
-<p>case1) http</p>
-<p><code>header</code> Authorization : Bearer TOKEN</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">https://192.168.0.30:6443/api/v1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-3" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-3-0-tab" data-toggle="tab" href="#tabs-3-0" role="tab"
+        aria-controls="tabs-3-0" aria-selected="true">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-3-1-tab" data-toggle="tab" href="#tabs-3-1" role="tab"
+        aria-controls="tabs-3-1" aria-selected="false">
+        v1.15
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-3-content"><div class="tab-pane fade show active"
+        id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># case1) http</span>
+<span style="color:#8f5902;font-style:italic"># [header] Authorization : Bearer TOKEN</span>
+
+https://192.168.56.30:6443/api/v1
+https://192.168.56.30:6443/api/v1/namespaces/nm-01/pods/
+
+<span style="color:#8f5902;font-style:italic"># case2) curl</span>
+curl -k -H <span style="color:#4e9a06">&#34;Authorization: Bearer TOKEN&#34;</span> https://192.168.56.30:6443/api/v1
+curl -k -H <span style="color:#4e9a06">&#34;Authorization: Bearer TOKEN&#34;</span> https://192.168.56.30:6443/api/v1/namespaces/nm-01/pods/
+
+</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># case1) http</span>
+<span style="color:#8f5902;font-style:italic"># [header] Authorization : Bearer TOKEN</span>
+
+https://192.168.0.30:6443/api/v1
 https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
-</code></pre></div><p>case2) curl</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl -k -H <span style="color:#4e9a06">&#34;Authorization: Bearer TOKEN&#34;</span> https://192.168.0.30:6443/api/v1
+
+<span style="color:#8f5902;font-style:italic"># case2) curl</span>
+curl -k -H <span style="color:#4e9a06">&#34;Authorization: Bearer TOKEN&#34;</span> https://192.168.0.30:6443/api/v1
 curl -k -H <span style="color:#4e9a06">&#34;Authorization: Bearer TOKEN&#34;</span> https://192.168.0.30:6443/api/v1/namespaces/nm-01/pods/
-</code></pre></div><br/>
+</code></pre></div></div>
+  
+</div>
+
+<br/>
 <br/>
 <h2 id="referenece">Referenece</h2>
 <hr>

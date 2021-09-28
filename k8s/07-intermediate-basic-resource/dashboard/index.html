@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Kubeconfig, Token
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="146">
+<meta itemprop="wordCount" content="177">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dashboard"/>
 <meta name="twitter:description" content="Kubeconfig, Token
@@ -1610,11 +1610,76 @@
 </figure>
 <br/>
 <h3 id="1-1--dashboard-설치">1-1)  Dashboard 설치</h3>
-<p>kubetm 가이드로 Dashboard대로 설치했을 경우 아래 명령으로 삭제</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete -f https://kubetm.github.io/documents/appendix/kubetm-dashboard-v2.0.0.yaml
-</code></pre></div><p>새 Dashboard (2.0.0) 설치 - <a href="https://github.com/kubernetes/dashboard">https://github.com/kubernetes/dashboard</a></p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
-</code></pre></div><br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab"
+        aria-controls="tabs-0-0" aria-selected="true">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-0-1-tab" data-toggle="tab" href="#tabs-0-1" role="tab"
+        aria-controls="tabs-0-1" aria-selected="false">
+        v1.15
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-0-content"><div class="tab-pane fade show active"
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># kubetm 가이드로 Dashboard대로 설치했을 경우 아래 명령으로 삭제</span>
+kubectl delete -f https://kubetm.github.io/yamls/k8s-install/dashboard-2.3.0.yaml
+
+<span style="color:#8f5902;font-style:italic"># 다시 Dashboard (2.3.0) 설치 - &lt;https://github.com/kubernetes/dashboard/releases/tag/v2.3.0&gt;</span>
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.0/aio/deploy/recommended.yaml
+</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># kubetm 가이드로 Dashboard대로 설치했을 경우 아래 명령으로 삭제</span>
+kubectl delete -f https://kubetm.github.io/documents/appendix/kubetm-dashboard-v1.10.1.yaml
+
+<span style="color:#8f5902;font-style:italic"># 새 Dashboard (2.0.0) 설치 - &lt;https://github.com/kubernetes/dashboard/releases/tag/v2.0.0&gt;</span>
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+</code></pre></div></div>
+  
+</div>
+
+<br/>
 <h3 id="1-2-clusterrolebinding-생성">1-2) ClusterRoleBinding 생성</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat <span style="color:#4e9a06">&lt;&lt;EOF | kubectl create -f -
 </span><span style="color:#4e9a06">apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -1643,8 +1708,68 @@ openssl pkcs12 -export -clcerts -inkey client.key -in client.crt -out client.p12
 </code></pre></div><p>kubecfg.p12 파일을 내 PC에서 인증서 등록</p>
 <br/>
 <h3 id="1-5-https-로-dashboard-접근-후-token-으로-로그인">1-5) Https 로 Dashboard 접근 후 Token 으로 로그인</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">https://192.168.0.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
-</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab"
+        aria-controls="tabs-1-0" aria-selected="true">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab"
+        aria-controls="tabs-1-1" aria-selected="false">
+        v1.15
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-1-content"><div class="tab-pane fade show active"
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+https://192.168.56.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
+</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+https://192.168.0.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
+</code></pre></div></div>
+  
+</div>
+
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
