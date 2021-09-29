@@ -1,1 +1,3 @@
 User-agent: *
+Allow: /
+Sitemap: https://kubetm.github.io/sitemap.xml
