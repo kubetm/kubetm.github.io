@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-    
+  
+  <url>
+    <loc>https://kubetm.github.io/helm/12-setting/developenv/</loc>
+    <lastmod>2021-08-10T00:00:00+00:00</lastmod>
+  </url>
+  
   <url>
     <loc>https://kubetm.github.io/helm/11-deploy/concept/</loc>
     <lastmod>2021-08-10T00:00:00+00:00</lastmod>
@@ -279,7 +284,11 @@
   <url>
     <loc>https://kubetm.github.io/k8s/04-beginner-controller/deployment/</loc>
   </url>
-
+  
+  <url>
+    <loc>https://kubetm.github.io/helm/12-setting/</loc>
+    <lastmod>2021-10-21T00:00:00+00:00</lastmod>
+  </url>
   
   <url>
     <loc>https://kubetm.github.io/k8s/04-beginner-controller/daemonset/</loc>
