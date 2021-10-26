@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.85.0" /><link rel="alternate" type="application/rss&#43;xml" href="https://kubetm.github.io/helm/11-deploy/index.xml">
-<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<meta name="generator" content="Hugo 0.85.0" /><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -18,18 +17,23 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>- 배포 개요 | KubeTM Blog</title>
-<meta name="description" content=""><meta property="og:title" content="- 배포 개요" />
-<meta property="og:description" content="배포에 대한 개요 설명드려요
+<title>개발 환경 세팅 | KubeTM Blog</title>
+<meta name="description" content=""><meta property="og:title" content="개발 환경 세팅" />
+<meta property="og:description" content="이클립스로 개발환경을 세팅하고 Github로 소스를 Push하는 내용을 다룹니다.
 " />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://kubetm.github.io/helm/11-deploy/" /><meta property="og:site_name" content="KubeTM Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kubetm.github.io/helm/12-setting/developenv/" /><meta property="article:section" content="helm" />
+<meta property="article:published_time" content="2021-08-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-10T00:00:00+00:00" /><meta property="og:site_name" content="KubeTM Blog" />
 
-<meta itemprop="name" content="- 배포 개요">
-<meta itemprop="description" content="배포에 대한 개요 설명드려요
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="- 배포 개요"/>
-<meta name="twitter:description" content="배포에 대한 개요 설명드려요
+<meta itemprop="name" content="개발 환경 세팅">
+<meta itemprop="description" content="이클립스로 개발환경을 세팅하고 Github로 소스를 Push하는 내용을 다룹니다.
+"><meta itemprop="datePublished" content="2021-08-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="357">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="개발 환경 세팅"/>
+<meta name="twitter:description" content="이클립스로 개발환경을 세팅하고 Github로 소스를 Push하는 내용을 다룹니다.
 "/>
 
 
@@ -69,7 +73,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta name="naver-site-verification" content="9588451d5bdf44018208298d2d6b5d3c5fc35e18"/>
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -138,13 +142,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script>
     $(function() {
     $("#td-section-nav a").removeClass("active");
-    $("#td-section-nav #m-helm11-deploy").addClass("active"); 
-    $("#td-section-nav #m-helm11-deploy-li span").addClass("td-sidebar-nav-active-item"); 
-    $("#td-section-nav #m-helm11-deploy").parents("li").addClass("active-path"); 
+    $("#td-section-nav #m-helm12-settingdevelopenv").addClass("active"); 
+    $("#td-section-nav #m-helm12-settingdevelopenv-li span").addClass("td-sidebar-nav-active-item"); 
+    $("#td-section-nav #m-helm12-settingdevelopenv").parents("li").addClass("active-path"); 
     $("#td-section-nav li.active-path").addClass("show"); 
     $("#td-section-nav li.active-path").children("input").prop('checked', true);
-    $("#td-section-nav #m-helm11-deploy-li").siblings("li").addClass("show");  
-    $("#td-section-nav #m-helm11-deploy-li").children("ul").children("li").addClass("show");  
+    $("#td-section-nav #m-helm12-settingdevelopenv-li").siblings("li").addClass("show");  
+    $("#td-section-nav #m-helm12-settingdevelopenv-li").children("ul").children("li").addClass("show");  
     $("#td-sidebar-menu").toggleClass("d-none"); 
     });
   </script>
@@ -730,6 +734,53 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             
 
 
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#파이프라인-전체-구성-및-흐름">파이프라인 전체 구성 및 흐름</a></li>
+    <li><a href="#1-개발환경-세팅">1. 개발환경 세팅</a>
+      <ul>
+        <li><a href="#1-1-스프링-프로젝트용-이클립스-설치">1-1) 스프링 프로젝트용 이클립스 설치</a></li>
+        <li><a href="#1-2-이클립스-세팅">1-2) 이클립스 세팅</a></li>
+        <li><a href="#1-3-openjdk-다운로드-및-적용">1-3) OpenJdk 다운로드 및 적용</a></li>
+        <li><a href="#1-5-로컬-실행">1-5) 로컬 실행</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-github에-소스-올리기">2. Github에 소스 올리기</a>
+      <ul>
+        <li><a href="#2-1-git-repository-만들기">2-1) Git Repository 만들기</a></li>
+        <li><a href="#2-2-소스-push하기">2-2) 소스 Push하기</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-cicd-server-만들기">3. CICD Server 만들기</a>
+      <ul>
+        <li><a href="#3-1-vagrant-실행-환경-확인">3-1) vagrant 실행 환경 확인</a></li>
+        <li><a href="#3-2-jenkins-접속">3-2) Jenkins 접속</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-jenknis-프로젝트-만들기">3. Jenknis 프로젝트 만들기</a>
+      <ul>
+        <li><a href="#3-1-전역-설정">3-1) 전역 설정</a></li>
+        <li><a href="#3-3-job-설정">3-3) Job 설정</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-dockerfile-만들기-및-dockerhub-push">4. Dockerfile 만들기 및 DockerHub Push</a>
+      <ul>
+        <li><a href="#4-1-dockerfile-만들기">4-1) Dockerfile 만들기</a></li>
+        <li><a href="#4-1-docker빌드-및-dockerhub로-컨테이너-이미지-push">4-1) Docker빌드 및 DockerHub로 컨테이너 이미지 Push</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-kubernetes-배포">5. Kubernetes 배포</a>
+      <ul>
+        <li><a href="#5-1-adminconf-복사">5-1) admin.conf 복사</a></li>
+        <li><a href="#5-2-pod-배포">5-2) Pod 배포</a></li>
+        <li><a href="#5-2-service-생성-배포">5-2) Service 생성 배포</a></li>
+        <li><a href="#5-3-배포">5-3) 배포</a></li>
+        <li><a href="#5-4-확인">5-4) 확인</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+
 
 
             
@@ -759,6 +810,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="https://kubetm.github.io/helm/">Helm 실습 자료실</a>
 </li>
@@ -766,8 +820,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
+<li class="breadcrumb-item" >
+	<a href="https://kubetm.github.io/helm/12-setting/">환경 세팅</a>
+</li>
+
+
+
+
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://kubetm.github.io/helm/11-deploy/">배포 개요</a>
+	<a href="https://kubetm.github.io/helm/12-setting/developenv/">개발 환경 세팅</a>
 </li>
 
 	</ol>
@@ -775,8 +836,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             
 <div class="td-content">
-	<h1>- 배포 개요</h1>
-  <div class="lead">배포에 대한 개요 설명드려요</div>
+	<h1>개발 환경 세팅</h1>
+	<div class="lead">이클립스로 개발환경을 세팅하고 Github로 소스를 Push하는 내용을 다룹니다.</div>
 	<header class="article-meta">
 		
 		
@@ -787,27 +848,149 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			
 		
 		
-	</header>
-	
-        <div class="section-index">
-    
-    
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-            <div class="entry">
-                <h5>
-                    <a href="/helm/11-deploy/concept/">배포 개요</a>
-                </h5>
-                <p>배포 강의에 대한 전반적인 개요입니다</p>
-            </div>
-        
-    
+	</header>    
+	<div class="mx-auto">
+	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="/documents/deploy/concept/Cicd.pdf" download>
+		강의자료 PDF <i class="fas fa-download ml-2"></i>
+	</a>
 </div>
+<p><br/><br/></p>
+<h2 id="파이프라인-전체-구성-및-흐름">파이프라인 전체 구성 및 흐름</h2>
+<hr>
+<figure>
+  <img src="/img/deploy/setting/Setting Overview for k8s Deploy Concept.jpg"
+       alt="Setting Overview for k8s Deploy Concept"
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
+<br/>
+<br/>
+<h2 id="1-개발환경-세팅">1. 개발환경 세팅</h2>
+<h3 id="1-1-스프링-프로젝트용-이클립스-설치">1-1) 스프링 프로젝트용 이클립스 설치</h3>
+<p>윈도우용 자바 설치 사이트 URL</p>
+<blockquote>
+<p><a href="https://java.com/ko/download/ie_manual.jsp?locale=ko">https://java.com/ko/download/ie_manual.jsp?locale=ko</a></p>
+</blockquote>
+<p>이클립스 STS용 설치 사이트 URL</p>
+<blockquote>
+<p><a href="https://spring.io/tools">https://spring.io/tools</a></p>
+</blockquote>
+<p>바로 다운로드 URL</p>
+<blockquote>
+<p><a href="https://download.springsource.com/release/STS4/4.12.0.RELEASE/dist/e4.21/spring-tool-suite-4-4.12.0.RELEASE-e4.21.0-win32.win32.x86_64.self-extracting.jar">https://download.springsource.com/release/STS4/4.12.0.RELEASE/dist/e4.21/spring-tool-suite-4-4.12.0.RELEASE-e4.21.0-win32.win32.x86_64.self-extracting.jar</a></p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">설치 위치 
+C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\helm-ide\tools</span>
+압축해제 후 폴더 
+C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\helm-ide\tools\sts-4.12.0.RELEASE</span>
+</code></pre></div><h3 id="1-2-이클립스-세팅">1-2) 이클립스 세팅</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">workspace 위치 지정 : C:\helm-ide\workspace
+인코딩 : Preferences &gt; General &gt; Workspace &gt; Text file encoding &gt; UTF-8
+
+</code></pre></div><p><a href="https://github.com/spring-guides/gs-rest-service">https://github.com/spring-guides/gs-rest-service</a></p>
+<p>압축 해제 위치 
+C:\helm_practice\workspace\gs-rest-service-main
+Import projects &gt; General &gt; Projects from Folder or Archive &gt; Directory..
+C:\helm_practice\workspace\gs-rest-service-main&gt;complate 폴더 선택</p>
+<h3 id="1-3-openjdk-다운로드-및-적용">1-3) OpenJdk 다운로드 및 적용</h3>
+<p>다운로드 사이트 URL</p>
+<blockquote>
+<p><a href="https://jdk.java.net/archive/">https://jdk.java.net/archive/</a></p>
+</blockquote>
+<p>바로 다운로드 URL</p>
+<blockquote>
+<p><a href="https://download.java.net/java/ga/jdk11/openjdk-11_windows-x64_bin.zip">https://download.java.net/java/ga/jdk11/openjdk-11_windows-x64_bin.zip</a></p>
+</blockquote>
+<p>설치 위치 : C:\helm_practice\jdk\jdk-11</p>
+<p>OpenJDK 지정 : Preferences &gt; Java &gt; Installed JREs &gt; Add</p>
+<h3 id="1-5-로컬-실행">1-5) 로컬 실행</h3>
+<p>Boot Bashboard &gt; local &gt; rest-service &gt; (Re)start
+http://localhost:8080/greeting</p>
+<br/>
+<br/>
+<h2 id="2-github에-소스-올리기">2. Github에 소스 올리기</h2>
+<h3 id="2-1-git-repository-만들기">2-1) Git Repository 만들기</h3>
+<p>자신의 Github가 있어야 함</p>
+<p>생성
+Repositories &gt; New &gt; rest-service</p>
+<h3 id="2-2-소스-push하기">2-2) 소스 Push하기</h3>
+<p>team &gt; commit 
+git 생성 주소 붙여 놓기</p>
+<h2 id="3-cicd-server-만들기">3. CICD Server 만들기</h2>
+<h3 id="3-1-vagrant-실행-환경-확인">3-1) vagrant 실행 환경 확인</h3>
+<h3 id="3-2-jenkins-접속">3-2) Jenkins 접속</h3>
+<p>http://192.168.56.20:8080/</p>
+<h2 id="3-jenknis-프로젝트-만들기">3. Jenknis 프로젝트 만들기</h2>
+<h3 id="3-1-전역-설정">3-1) 전역 설정</h3>
+<p>jdk
+Name : jdk-11
+JAVA_HOME: /usr/lib/jvm/java-11-openjdk-11.0.12.0.7-0.el7_9.x86_64</p>
+<h3 id="3-3-job-설정">3-3) Job 설정</h3>
+<p>General &gt; Github project &gt; Project url &gt; <a href="https://github.com/kubetm/rest-service/">https://github.com/kubetm/rest-service/</a>
+Source Code Management &gt; Git &gt; Repositories &gt; Repository URL &gt; <a href="https://github.com/kubetm/rest-service.git">https://github.com/kubetm/rest-service.git</a>
+Credentials &gt; Add &gt; Add Credentials 
+Kind : Username with passowrd 
+Scope : Global
+Username : kubetm
+Password : 비번입력
+[Add]</p>
+<p>Credentials : kubetm/*****</p>
+<p>Build &gt; Invoke Gradle script &gt; Invoke Gradle &gt; Gradle Version : gradle-7.3
+Task :  clean build</p>
+<p>gradle 설정
+<a href="https://miiingo.tistory.com/171">https://miiingo.tistory.com/171</a></p>
+<p>빌드 jar 파일 위치
+/var/lib/jenkins/workspace/rest-service/complete/build/libs</p>
+<h2 id="4-dockerfile-만들기-및-dockerhub-push">4. Dockerfile 만들기 및 DockerHub Push</h2>
+<h3 id="4-1-dockerfile-만들기">4-1) Dockerfile 만들기</h3>
+<p>/var/lib/jenkins/workspace/rest-service/complete 위치에서 Dockerfile 만들기</p>
+<p>Dockerfile
+FROM openjdk:11
+EXPOSE 8080
+COPY ./build/libs/rest-service-0.0.1-SNAPSHOT.jar /usr/src/myapp/rest-service.jar
+WORKDIR /usr/src/myapp
+ENTRYPOINT [&ldquo;java&rdquo;, &ldquo;-jar&rdquo;, &ldquo;/usr/src/myapp/rest-service.jar&rdquo;]</p>
+<h3 id="4-1-docker빌드-및-dockerhub로-컨테이너-이미지-push">4-1) Docker빌드 및 DockerHub로 컨테이너 이미지 Push</h3>
+<p>docker build -t kubetm/rest-service:v1 .
+docker login 
+docker push kubetm/rest-service:v1</p>
+<h2 id="5-kubernetes-배포">5. Kubernetes 배포</h2>
+<h3 id="5-1-adminconf-복사">5-1) admin.conf 복사</h3>
+<h3 id="5-2-pod-배포">5-2) Pod 배포</h3>
+<p>apiVersion: v1
+kind: Pod
+metadata:
+name: rest-service-pod
+labels:
+app: rest-service
+spec:
+containers:</p>
+<ul>
+<li>name: rest-service
+image: kubetm/rest-service
+ports:
+<ul>
+<li>containerPort: 8080</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-2-service-생성-배포">5-2) Service 생성 배포</h3>
+<p>apiVersion: v1
+kind: Service
+metadata:
+name: rest-service-svc
+spec:
+selector:
+app: rest-service
+type: NodePort
+ports:
+- port: 8080
+targetPort: 8080
+nodePort: 38080</p>
+<h3 id="5-3-배포">5-3) 배포</h3>
+<p>kubectl apply -f rest-service-pod.yaml
+kubectl apply -f rest-service-svc.yaml</p>
+<h3 id="5-4-확인">5-4) 확인</h3>
+<p>http://192.168.56.30:38080/</p>
 
 	
 	
@@ -816,6 +999,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 </div>
+
 
           </main>
         </div>

@@ -1,0 +1,173 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>KubeTM Blog – - 환경 세팅</title>
+    <link>https://kubetm.github.io/helm/12-setting/</link>
+    <description>Recent content in - 환경 세팅 on KubeTM Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 21 Oct 2021 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://kubetm.github.io/helm/12-setting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Helm: 개발 환경 세팅</title>
+      <link>https://kubetm.github.io/helm/12-setting/developenv/</link>
+      <pubDate>Tue, 10 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kubetm.github.io/helm/12-setting/developenv/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;mx-auto&#34;&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/deploy/concept/Cicd.pdf&#34; download&gt;
+		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
+	&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h2 id=&#34;파이프라인-전체-구성-및-흐름&#34;&gt;파이프라인 전체 구성 및 흐름&lt;/h2&gt;
+&lt;hr&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/deploy/setting/Setting Overview for k8s Deploy Concept.jpg&#34;
+       alt=&#34;Setting Overview for k8s Deploy Concept&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;h2 id=&#34;1-개발환경-세팅&#34;&gt;1. 개발환경 세팅&lt;/h2&gt;
+&lt;h3 id=&#34;1-1-스프링-프로젝트용-이클립스-설치&#34;&gt;1-1) 스프링 프로젝트용 이클립스 설치&lt;/h3&gt;
+&lt;p&gt;윈도우용 자바 설치 사이트 URL&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://java.com/ko/download/ie_manual.jsp?locale=ko&#34;&gt;https://java.com/ko/download/ie_manual.jsp?locale=ko&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;이클립스 STS용 설치 사이트 URL&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://spring.io/tools&#34;&gt;https://spring.io/tools&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;바로 다운로드 URL&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://download.springsource.com/release/STS4/4.12.0.RELEASE/dist/e4.21/spring-tool-suite-4-4.12.0.RELEASE-e4.21.0-win32.win32.x86_64.self-extracting.jar&#34;&gt;https://download.springsource.com/release/STS4/4.12.0.RELEASE/dist/e4.21/spring-tool-suite-4-4.12.0.RELEASE-e4.21.0-win32.win32.x86_64.self-extracting.jar&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;설치 위치 
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\helm-ide\tools&lt;/span&gt;
+압축해제 후 폴더 
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\helm-ide\tools\sts-4.12.0.RELEASE&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;1-2-이클립스-세팅&#34;&gt;1-2) 이클립스 세팅&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;workspace 위치 지정 : C:\helm-ide\workspace
+인코딩 : Preferences &amp;gt; General &amp;gt; Workspace &amp;gt; Text file encoding &amp;gt; UTF-8
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/spring-guides/gs-rest-service&#34;&gt;https://github.com/spring-guides/gs-rest-service&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;압축 해제 위치 
+C:\helm_practice\workspace\gs-rest-service-main
+Import projects &amp;gt; General &amp;gt; Projects from Folder or Archive &amp;gt; Directory..
+C:\helm_practice\workspace\gs-rest-service-main&amp;gt;complate 폴더 선택&lt;/p&gt;
+&lt;h3 id=&#34;1-3-openjdk-다운로드-및-적용&#34;&gt;1-3) OpenJdk 다운로드 및 적용&lt;/h3&gt;
+&lt;p&gt;다운로드 사이트 URL&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://jdk.java.net/archive/&#34;&gt;https://jdk.java.net/archive/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;바로 다운로드 URL&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://download.java.net/java/ga/jdk11/openjdk-11_windows-x64_bin.zip&#34;&gt;https://download.java.net/java/ga/jdk11/openjdk-11_windows-x64_bin.zip&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;설치 위치 : C:\helm_practice\jdk\jdk-11&lt;/p&gt;
+&lt;p&gt;OpenJDK 지정 : Preferences &amp;gt; Java &amp;gt; Installed JREs &amp;gt; Add&lt;/p&gt;
+&lt;h3 id=&#34;1-5-로컬-실행&#34;&gt;1-5) 로컬 실행&lt;/h3&gt;
+&lt;p&gt;Boot Bashboard &amp;gt; local &amp;gt; rest-service &amp;gt; (Re)start
+http://localhost:8080/greeting&lt;/p&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;h2 id=&#34;2-github에-소스-올리기&#34;&gt;2. Github에 소스 올리기&lt;/h2&gt;
+&lt;h3 id=&#34;2-1-git-repository-만들기&#34;&gt;2-1) Git Repository 만들기&lt;/h3&gt;
+&lt;p&gt;자신의 Github가 있어야 함&lt;/p&gt;
+&lt;p&gt;생성
+Repositories &amp;gt; New &amp;gt; rest-service&lt;/p&gt;
+&lt;h3 id=&#34;2-2-소스-push하기&#34;&gt;2-2) 소스 Push하기&lt;/h3&gt;
+&lt;p&gt;team &amp;gt; commit 
+git 생성 주소 붙여 놓기&lt;/p&gt;
+&lt;h2 id=&#34;3-cicd-server-만들기&#34;&gt;3. CICD Server 만들기&lt;/h2&gt;
+&lt;h3 id=&#34;3-1-vagrant-실행-환경-확인&#34;&gt;3-1) vagrant 실행 환경 확인&lt;/h3&gt;
+&lt;h3 id=&#34;3-2-jenkins-접속&#34;&gt;3-2) Jenkins 접속&lt;/h3&gt;
+&lt;p&gt;http://192.168.56.20:8080/&lt;/p&gt;
+&lt;h2 id=&#34;3-jenknis-프로젝트-만들기&#34;&gt;3. Jenknis 프로젝트 만들기&lt;/h2&gt;
+&lt;h3 id=&#34;3-1-전역-설정&#34;&gt;3-1) 전역 설정&lt;/h3&gt;
+&lt;p&gt;jdk
+Name : jdk-11
+JAVA_HOME: /usr/lib/jvm/java-11-openjdk-11.0.12.0.7-0.el7_9.x86_64&lt;/p&gt;
+&lt;h3 id=&#34;3-3-job-설정&#34;&gt;3-3) Job 설정&lt;/h3&gt;
+&lt;p&gt;General &amp;gt; Github project &amp;gt; Project url &amp;gt; &lt;a href=&#34;https://github.com/kubetm/rest-service/&#34;&gt;https://github.com/kubetm/rest-service/&lt;/a&gt;
+Source Code Management &amp;gt; Git &amp;gt; Repositories &amp;gt; Repository URL &amp;gt; &lt;a href=&#34;https://github.com/kubetm/rest-service.git&#34;&gt;https://github.com/kubetm/rest-service.git&lt;/a&gt;
+Credentials &amp;gt; Add &amp;gt; Add Credentials 
+Kind : Username with passowrd 
+Scope : Global
+Username : kubetm
+Password : 비번입력
+[Add]&lt;/p&gt;
+&lt;p&gt;Credentials : kubetm/*****&lt;/p&gt;
+&lt;p&gt;Build &amp;gt; Invoke Gradle script &amp;gt; Invoke Gradle &amp;gt; Gradle Version : gradle-7.3
+Task :  clean build&lt;/p&gt;
+&lt;p&gt;gradle 설정
+&lt;a href=&#34;https://miiingo.tistory.com/171&#34;&gt;https://miiingo.tistory.com/171&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;빌드 jar 파일 위치
+/var/lib/jenkins/workspace/rest-service/complete/build/libs&lt;/p&gt;
+&lt;h2 id=&#34;4-dockerfile-만들기-및-dockerhub-push&#34;&gt;4. Dockerfile 만들기 및 DockerHub Push&lt;/h2&gt;
+&lt;h3 id=&#34;4-1-dockerfile-만들기&#34;&gt;4-1) Dockerfile 만들기&lt;/h3&gt;
+&lt;p&gt;/var/lib/jenkins/workspace/rest-service/complete 위치에서 Dockerfile 만들기&lt;/p&gt;
+&lt;p&gt;Dockerfile
+FROM openjdk:11
+EXPOSE 8080
+COPY ./build/libs/rest-service-0.0.1-SNAPSHOT.jar /usr/src/myapp/rest-service.jar
+WORKDIR /usr/src/myapp
+ENTRYPOINT [&amp;ldquo;java&amp;rdquo;, &amp;ldquo;-jar&amp;rdquo;, &amp;ldquo;/usr/src/myapp/rest-service.jar&amp;rdquo;]&lt;/p&gt;
+&lt;h3 id=&#34;4-1-docker빌드-및-dockerhub로-컨테이너-이미지-push&#34;&gt;4-1) Docker빌드 및 DockerHub로 컨테이너 이미지 Push&lt;/h3&gt;
+&lt;p&gt;docker build -t kubetm/rest-service:v1 .
+docker login 
+docker push kubetm/rest-service:v1&lt;/p&gt;
+&lt;h2 id=&#34;5-kubernetes-배포&#34;&gt;5. Kubernetes 배포&lt;/h2&gt;
+&lt;h3 id=&#34;5-1-adminconf-복사&#34;&gt;5-1) admin.conf 복사&lt;/h3&gt;
+&lt;h3 id=&#34;5-2-pod-배포&#34;&gt;5-2) Pod 배포&lt;/h3&gt;
+&lt;p&gt;apiVersion: v1
+kind: Pod
+metadata:
+name: rest-service-pod
+labels:
+app: rest-service
+spec:
+containers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;name: rest-service
+image: kubetm/rest-service
+ports:
+&lt;ul&gt;
+&lt;li&gt;containerPort: 8080&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5-2-service-생성-배포&#34;&gt;5-2) Service 생성 배포&lt;/h3&gt;
+&lt;p&gt;apiVersion: v1
+kind: Service
+metadata:
+name: rest-service-svc
+spec:
+selector:
+app: rest-service
+type: NodePort
+ports:
+- port: 8080
+targetPort: 8080
+nodePort: 38080&lt;/p&gt;
+&lt;h3 id=&#34;5-3-배포&#34;&gt;5-3) 배포&lt;/h3&gt;
+&lt;p&gt;kubectl apply -f rest-service-pod.yaml
+kubectl apply -f rest-service-svc.yaml&lt;/p&gt;
+&lt;h3 id=&#34;5-4-확인&#34;&gt;5-4) 확인&lt;/h3&gt;
+&lt;p&gt;http://192.168.56.30:38080/&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
