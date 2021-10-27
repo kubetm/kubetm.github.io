@@ -30,7 +30,7 @@
 <meta itemprop="description" content="이클립스로 개발환경을 세팅하고 Github로 소스를 Push하는 내용을 다룹니다.
 "><meta itemprop="datePublished" content="2021-08-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="357">
+<meta itemprop="wordCount" content="381">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="개발 환경 세팅"/>
 <meta name="twitter:description" content="이클립스로 개발환경을 세팅하고 Github로 소스를 Push하는 내용을 다룹니다.
@@ -740,15 +740,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#1-개발환경-세팅">1. 개발환경 세팅</a>
       <ul>
         <li><a href="#1-1-스프링-프로젝트용-이클립스-설치">1-1) 스프링 프로젝트용 이클립스 설치</a></li>
-        <li><a href="#1-2-이클립스-세팅">1-2) 이클립스 세팅</a></li>
-        <li><a href="#1-3-openjdk-다운로드-및-적용">1-3) OpenJdk 다운로드 및 적용</a></li>
-        <li><a href="#1-5-로컬-실행">1-5) 로컬 실행</a></li>
-      </ul>
-    </li>
-    <li><a href="#2-github에-소스-올리기">2. Github에 소스 올리기</a>
-      <ul>
-        <li><a href="#2-1-git-repository-만들기">2-1) Git Repository 만들기</a></li>
-        <li><a href="#2-2-소스-push하기">2-2) 소스 Push하기</a></li>
+        <li><a href="#1-2-이클립스-세팅-및-소스-다운">1-2) 이클립스 세팅 및 소스 다운</a></li>
+        <li><a href="#1-3-openjdk-다운로드-및-적용">1-3) OpenJDK 다운로드 및 적용</a></li>
+        <li><a href="#1-4-프로젝트-소스-다운-및-실행">1-4) 프로젝트 소스 다운 및 실행</a></li>
+        <li><a href="#1-5-github에-app-올리기">1-5) Github에 App 올리기</a></li>
       </ul>
     </li>
     <li><a href="#3-cicd-server-만들기">3. CICD Server 만들기</a>
@@ -865,6 +860,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <br/>
 <br/>
 <h2 id="1-개발환경-세팅">1. 개발환경 세팅</h2>
+<figure>
+  <img src="/img/deploy/setting/Setting Step1 for k8s Deploy Concept.jpg"
+       alt="Setting Overview for k8s Deploy Concept"
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
 <h3 id="1-1-스프링-프로젝트용-이클립스-설치">1-1) 스프링 프로젝트용 이클립스 설치</h3>
 <p>윈도우용 자바 설치 사이트 URL</p>
 <blockquote>
@@ -878,20 +878,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <blockquote>
 <p><a href="https://download.springsource.com/release/STS4/4.12.0.RELEASE/dist/e4.21/spring-tool-suite-4-4.12.0.RELEASE-e4.21.0-win32.win32.x86_64.self-extracting.jar">https://download.springsource.com/release/STS4/4.12.0.RELEASE/dist/e4.21/spring-tool-suite-4-4.12.0.RELEASE-e4.21.0-win32.win32.x86_64.self-extracting.jar</a></p>
 </blockquote>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">설치 위치 
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[설치 위치] 
 C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\helm-ide\tools</span>
-압축해제 후 폴더 
-C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\helm-ide\tools\sts-4.12.0.RELEASE</span>
-</code></pre></div><h3 id="1-2-이클립스-세팅">1-2) 이클립스 세팅</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">workspace 위치 지정 : C:\helm-ide\workspace
-인코딩 : Preferences &gt; General &gt; Workspace &gt; Text file encoding &gt; UTF-8
 
-</code></pre></div><p><a href="https://github.com/spring-guides/gs-rest-service">https://github.com/spring-guides/gs-rest-service</a></p>
-<p>압축 해제 위치 
-C:\helm_practice\workspace\gs-rest-service-main
-Import projects &gt; General &gt; Projects from Folder or Archive &gt; Directory..
-C:\helm_practice\workspace\gs-rest-service-main&gt;complate 폴더 선택</p>
-<h3 id="1-3-openjdk-다운로드-및-적용">1-3) OpenJdk 다운로드 및 적용</h3>
+[압축해제 후 폴더]
+C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\helm-ide\tools\sts-4.12.0.RELEASE</span>
+</code></pre></div><h3 id="1-2-이클립스-세팅-및-소스-다운">1-2) 이클립스 세팅 및 소스 다운</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[workspace 위치 지정]
+C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\helm-ide\workspace</span>
+
+[Eclipse 인코딩 변경]
+Preferences <span style="color:#000;font-weight:bold">&gt;</span> General <span style="color:#000;font-weight:bold">&gt;</span> Workspace <span style="color:#000;font-weight:bold">&gt;</span> Text file encoding <span style="color:#000;font-weight:bold">&gt;</span> UTF-8
+</code></pre></div><h3 id="1-3-openjdk-다운로드-및-적용">1-3) OpenJDK 다운로드 및 적용</h3>
 <p>다운로드 사이트 URL</p>
 <blockquote>
 <p><a href="https://jdk.java.net/archive/">https://jdk.java.net/archive/</a></p>
@@ -900,22 +898,41 @@ C:\helm_practice\workspace\gs-rest-service-main&gt;complate 폴더 선택</p>
 <blockquote>
 <p><a href="https://download.java.net/java/ga/jdk11/openjdk-11_windows-x64_bin.zip">https://download.java.net/java/ga/jdk11/openjdk-11_windows-x64_bin.zip</a></p>
 </blockquote>
-<p>설치 위치 : C:\helm_practice\jdk\jdk-11</p>
-<p>OpenJDK 지정 : Preferences &gt; Java &gt; Installed JREs &gt; Add</p>
-<h3 id="1-5-로컬-실행">1-5) 로컬 실행</h3>
-<p>Boot Bashboard &gt; local &gt; rest-service &gt; (Re)start
-http://localhost:8080/greeting</p>
-<br/>
-<br/>
-<h2 id="2-github에-소스-올리기">2. Github에 소스 올리기</h2>
-<h3 id="2-1-git-repository-만들기">2-1) Git Repository 만들기</h3>
-<p>자신의 Github가 있어야 함</p>
-<p>생성
-Repositories &gt; New &gt; rest-service</p>
-<h3 id="2-2-소스-push하기">2-2) 소스 Push하기</h3>
-<p>team &gt; commit 
-git 생성 주소 붙여 놓기</p>
-<h2 id="3-cicd-server-만들기">3. CICD Server 만들기</h2>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[설치 위치] 
+C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\helm_practice\jdk</span>
+
+[압축해제 후 폴더]
+C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\helm_practice\jdk\jdk-11</span>
+
+[Eclipse OpenJDK 지정]
+Preferences <span style="color:#000;font-weight:bold">&gt;</span> Java <span style="color:#000;font-weight:bold">&gt;</span> Installed JREs <span style="color:#000;font-weight:bold">&gt;</span> Add
+</code></pre></div><h3 id="1-4-프로젝트-소스-다운-및-실행">1-4) 프로젝트 소스 다운 및 실행</h3>
+<p>프로젝트 소스 다운로드 URL</p>
+<blockquote>
+<p><a href="https://github.com/spring-guides/gs-rest-service">https://github.com/spring-guides/gs-rest-service</a></p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[설치 위치]
+C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\helm_practice\workspace</span>
+
+[Eclipse 프로젝트 Import]
+Import projects <span style="color:#000;font-weight:bold">&gt;</span> General <span style="color:#000;font-weight:bold">&gt;</span> Projects from Folder or Archive <span style="color:#000;font-weight:bold">&gt;</span> Directory..
+<span style="color:#000;font-weight:bold">&gt;</span> C:\helm_practice\workspace\gs-rest-service-main\complate 폴더 선택
+
+[rest-service App 실행]
+Boot Bashboard <span style="color:#000;font-weight:bold">&gt;</span> local <span style="color:#000;font-weight:bold">&gt;</span> rest-service <span style="color:#000;font-weight:bold">&gt;</span> (Re)start
+
+[API 확인]
+http://localhost:8080/greeting
+</code></pre></div><h3 id="1-5-github에-app-올리기">1-5) Github에 App 올리기</h3>
+<ul>
+<li>Github에 가입되어 있어야 함</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[Github Repository 만들기]
+Repositories <span style="color:#000;font-weight:bold">&gt;</span> New <span style="color:#000;font-weight:bold">&gt;</span> rest-service
+
+[Eclipse 소스 Push하기]
+프로젝트 root 폴더 <span style="color:#000;font-weight:bold">&gt;</span> team <span style="color:#000;font-weight:bold">&gt;</span> commit <span style="color:#000;font-weight:bold">&gt;</span> Github Repository 주소 붙여 놓기
+</code></pre></div><h2 id="3-cicd-server-만들기">3. CICD Server 만들기</h2>
 <h3 id="3-1-vagrant-실행-환경-확인">3-1) vagrant 실행 환경 확인</h3>
 <h3 id="3-2-jenkins-접속">3-2) Jenkins 접속</h3>
 <p>http://192.168.56.20:8080/</p>

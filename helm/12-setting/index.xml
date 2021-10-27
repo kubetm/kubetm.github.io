@@ -39,6 +39,11 @@
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;h2 id=&#34;1-개발환경-세팅&#34;&gt;1. 개발환경 세팅&lt;/h2&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;https://kubetm.github.io/img/deploy/setting/Setting Step1 for k8s Deploy Concept.jpg&#34;
+       alt=&#34;Setting Overview for k8s Deploy Concept&#34;
+       class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+&lt;/figure&gt;
 &lt;h3 id=&#34;1-1-스프링-프로젝트용-이클립스-설치&#34;&gt;1-1) 스프링 프로젝트용 이클립스 설치&lt;/h3&gt;
 &lt;p&gt;윈도우용 자바 설치 사이트 URL&lt;/p&gt;
 &lt;blockquote&gt;
@@ -52,20 +57,18 @@
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://download.springsource.com/release/STS4/4.12.0.RELEASE/dist/e4.21/spring-tool-suite-4-4.12.0.RELEASE-e4.21.0-win32.win32.x86_64.self-extracting.jar&#34;&gt;https://download.springsource.com/release/STS4/4.12.0.RELEASE/dist/e4.21/spring-tool-suite-4-4.12.0.RELEASE-e4.21.0-win32.win32.x86_64.self-extracting.jar&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;설치 위치 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;[설치 위치] 
 C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\helm-ide\tools&lt;/span&gt;
-압축해제 후 폴더 
-C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\helm-ide\tools\sts-4.12.0.RELEASE&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;1-2-이클립스-세팅&#34;&gt;1-2) 이클립스 세팅&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;workspace 위치 지정 : C:\helm-ide\workspace
-인코딩 : Preferences &amp;gt; General &amp;gt; Workspace &amp;gt; Text file encoding &amp;gt; UTF-8
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/spring-guides/gs-rest-service&#34;&gt;https://github.com/spring-guides/gs-rest-service&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;압축 해제 위치 
-C:\helm_practice\workspace\gs-rest-service-main
-Import projects &amp;gt; General &amp;gt; Projects from Folder or Archive &amp;gt; Directory..
-C:\helm_practice\workspace\gs-rest-service-main&amp;gt;complate 폴더 선택&lt;/p&gt;
-&lt;h3 id=&#34;1-3-openjdk-다운로드-및-적용&#34;&gt;1-3) OpenJdk 다운로드 및 적용&lt;/h3&gt;
+[압축해제 후 폴더]
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\helm-ide\tools\sts-4.12.0.RELEASE&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;1-2-이클립스-세팅-및-소스-다운&#34;&gt;1-2) 이클립스 세팅 및 소스 다운&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;[workspace 위치 지정]
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\helm-ide\workspace&lt;/span&gt;
+
+[Eclipse 인코딩 변경]
+Preferences &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; General &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; Workspace &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; Text file encoding &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; UTF-8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;1-3-openjdk-다운로드-및-적용&#34;&gt;1-3) OpenJDK 다운로드 및 적용&lt;/h3&gt;
 &lt;p&gt;다운로드 사이트 URL&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://jdk.java.net/archive/&#34;&gt;https://jdk.java.net/archive/&lt;/a&gt;&lt;/p&gt;
@@ -74,22 +77,41 @@ C:\helm_practice\workspace\gs-rest-service-main&amp;gt;complate 폴더 선택&lt
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://download.java.net/java/ga/jdk11/openjdk-11_windows-x64_bin.zip&#34;&gt;https://download.java.net/java/ga/jdk11/openjdk-11_windows-x64_bin.zip&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;설치 위치 : C:\helm_practice\jdk\jdk-11&lt;/p&gt;
-&lt;p&gt;OpenJDK 지정 : Preferences &amp;gt; Java &amp;gt; Installed JREs &amp;gt; Add&lt;/p&gt;
-&lt;h3 id=&#34;1-5-로컬-실행&#34;&gt;1-5) 로컬 실행&lt;/h3&gt;
-&lt;p&gt;Boot Bashboard &amp;gt; local &amp;gt; rest-service &amp;gt; (Re)start
-http://localhost:8080/greeting&lt;/p&gt;
-&lt;br/&gt;
-&lt;br/&gt;
-&lt;h2 id=&#34;2-github에-소스-올리기&#34;&gt;2. Github에 소스 올리기&lt;/h2&gt;
-&lt;h3 id=&#34;2-1-git-repository-만들기&#34;&gt;2-1) Git Repository 만들기&lt;/h3&gt;
-&lt;p&gt;자신의 Github가 있어야 함&lt;/p&gt;
-&lt;p&gt;생성
-Repositories &amp;gt; New &amp;gt; rest-service&lt;/p&gt;
-&lt;h3 id=&#34;2-2-소스-push하기&#34;&gt;2-2) 소스 Push하기&lt;/h3&gt;
-&lt;p&gt;team &amp;gt; commit 
-git 생성 주소 붙여 놓기&lt;/p&gt;
-&lt;h2 id=&#34;3-cicd-server-만들기&#34;&gt;3. CICD Server 만들기&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;[설치 위치] 
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\helm_practice\jdk&lt;/span&gt;
+
+[압축해제 후 폴더]
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\helm_practice\jdk\jdk-11&lt;/span&gt;
+
+[Eclipse OpenJDK 지정]
+Preferences &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; Java &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; Installed JREs &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; Add
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;1-4-프로젝트-소스-다운-및-실행&#34;&gt;1-4) 프로젝트 소스 다운 및 실행&lt;/h3&gt;
+&lt;p&gt;프로젝트 소스 다운로드 URL&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/spring-guides/gs-rest-service&#34;&gt;https://github.com/spring-guides/gs-rest-service&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;[설치 위치]
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\helm_practice\workspace&lt;/span&gt;
+
+[Eclipse 프로젝트 Import]
+Import projects &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; General &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; Projects from Folder or Archive &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; Directory..
+&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; C:\helm_practice\workspace\gs-rest-service-main\complate 폴더 선택
+
+[rest-service App 실행]
+Boot Bashboard &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; local &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; rest-service &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; (Re)start
+
+[API 확인]
+http://localhost:8080/greeting
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;1-5-github에-app-올리기&#34;&gt;1-5) Github에 App 올리기&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Github에 가입되어 있어야 함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;[Github Repository 만들기]
+Repositories &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; New &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; rest-service
+
+[Eclipse 소스 Push하기]
+프로젝트 root 폴더 &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; team &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; commit &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; Github Repository 주소 붙여 놓기
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;3-cicd-server-만들기&#34;&gt;3. CICD Server 만들기&lt;/h2&gt;
 &lt;h3 id=&#34;3-1-vagrant-실행-환경-확인&#34;&gt;3-1) vagrant 실행 환경 확인&lt;/h3&gt;
 &lt;h3 id=&#34;3-2-jenkins-접속&#34;&gt;3-2) Jenkins 접속&lt;/h3&gt;
 &lt;p&gt;http://192.168.56.20:8080/&lt;/p&gt;
