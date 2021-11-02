@@ -60,7 +60,7 @@ echo "source <(helm completion bash)" > /etc/bash_completion.d/helm
 wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 yum upgrade -y 
-yum install -y epel-release-7-11 java-11-openjdk-devel-1:11.0.12.0.7-0.el7_9
+yum install -y epel-release-7-11 java-11-openjdk-devel
 yum install -y jenkins-2.303.2-1.1
 systemctl daemon-reload
 systemctl enable jenkins
