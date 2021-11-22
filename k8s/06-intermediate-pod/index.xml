@@ -100,7 +100,7 @@
 kubectl describe pod pod-readiness-exec1 &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep -A5 Conditions
 kubectl describe endpoints svc-readiness
 touch ready.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2-livenessprove&#34;&gt;2. LivenessProve&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2-livenessprobe&#34;&gt;2. LivenessProbe&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
   &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Pod Probe with LivenessProbe for Kubernetes.jpg&#34;
