@@ -30,7 +30,7 @@
 <meta itemprop="description" content="이클립스로 개발환경을 세팅하고 Github로 소스를 Push하는 내용을 다룹니다.
 "><meta itemprop="datePublished" content="2021-08-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="594">
+<meta itemprop="wordCount" content="593">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="개발 환경 세팅"/>
 <meta name="twitter:description" content="이클립스로 개발환경을 세팅하고 Github로 소스를 Push하는 내용을 다룹니다.
@@ -712,7 +712,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#1-4-github에-app-올리기">1-4) Github에 App 올리기</a></li>
       </ul>
     </li>
-    <li><a href="#2-cicd-server-세팅-및-컨테이너-빌드푸시">2. CI/CD Server 세팅 및 컨테이너 빌드/푸시</a>
+    <li><a href="#2-cicd-server-세팅-및-빌드">2. CI/CD Server 세팅 및 빌드</a>
       <ul>
         <li><a href="#2-1-vagrant로-cicd-server-세팅">2-1) vagrant로 CI/CD Server 세팅</a></li>
         <li><a href="#2-2-jenkins-접속-및-설정">2-2) Jenkins 접속 및 설정</a></li>
@@ -916,7 +916,7 @@ Github Repository(rest-service)에서 [Code]클릭 후 Clone HTTPS 주소 복사
 [Github에서 소스 확인]
 </code></pre></div><br/>
 <br/>
-<h2 id="2-cicd-server-세팅-및-컨테이너-빌드푸시">2. CI/CD Server 세팅 및 컨테이너 빌드/푸시</h2>
+<h2 id="2-cicd-server-세팅-및-빌드">2. CI/CD Server 세팅 및 빌드</h2>
 <figure>
   <img src="/img/deploy/setting/Setting Step2 for k8s Deploy Concept.jpg"
        alt="Setting Overview for k8s Deploy Concept"
@@ -968,7 +968,7 @@ Install automatically 체크
 Version : Gradle 7.3-rc3
 save
 </code></pre></div><h3 id="2-3-빌드-job-설정">2-3) 빌드 Job 설정</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">Dashboard <span style="color:#000;font-weight:bold">&gt;</span> 새로운 Item <span style="color:#000;font-weight:bold">&gt;</span> Enter an item name <span style="color:#000;font-weight:bold">&gt;</span> [rest-service] <span style="color:#000;font-weight:bold">&gt;</span> Freesytle project <span style="color:#000;font-weight:bold">&gt;</span> ok
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">Dashboard <span style="color:#000;font-weight:bold">&gt;</span> 새로운 Item <span style="color:#000;font-weight:bold">&gt;</span> Enter an item name <span style="color:#000;font-weight:bold">&gt;</span> [rest-service] <span style="color:#000;font-weight:bold">&gt;</span> Freestyle project <span style="color:#000;font-weight:bold">&gt;</span> ok
 
 [General] 
 - Github project 체크
@@ -978,7 +978,7 @@ save
 - Git 체크
   Repositories <span style="color:#000;font-weight:bold">&gt;</span> Repository URL <span style="color:#000;font-weight:bold">&gt;</span> https://github.com/kubetm/rest-service.git
   Credentials <span style="color:#000;font-weight:bold">&gt;</span> Add <span style="color:#000;font-weight:bold">&gt;</span> Add Credentials 
-    Kind : Username with passowrd 
+    Kind : Username with password 
     Username : kubetm
     Password : 비번입력
   Credentials : kubetm/***** 선택
@@ -1008,14 +1008,14 @@ save
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">cd</span> /var/lib/jenkins/workspace/rest-service
 vi Dockerfile
 </code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#4e9a06"> openjdk:11</span><span style="color:#a40000">
-</span><span style="color:#a40000"></span><span style="color:#204a87;font-weight:bold">EXPOSE</span><span style="color:#4e9a06"> 8080</span><span style="color:#a40000">
 </span><span style="color:#a40000"></span><span style="color:#204a87;font-weight:bold">COPY</span> ./complete/build/libs/rest-service-0.0.1-SNAPSHOT.jar /usr/src/myapp/rest-service.jar<span style="color:#a40000">
-</span><span style="color:#a40000"></span><span style="color:#204a87;font-weight:bold">WORKDIR</span><span style="color:#4e9a06"> /usr/src/myapp</span><span style="color:#a40000">
 </span><span style="color:#a40000"></span><span style="color:#204a87;font-weight:bold">ENTRYPOINT</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;java&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;-jar&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;/usr/src/myapp/rest-service.jar&#34;</span><span style="color:#000;font-weight:bold">]</span><span style="color:#a40000">
+</span><span style="color:#a40000"></span><span style="color:#204a87;font-weight:bold">EXPOSE</span><span style="color:#4e9a06"> 8080</span><span style="color:#a40000">
+</span><span style="color:#a40000"></span><span style="color:#204a87;font-weight:bold">WORKDIR</span><span style="color:#4e9a06"> /usr/src/myapp</span><span style="color:#a40000">
 </span></code></pre></div><p>Docker빌드 후 DockerHub로 컨테이너 이미지 Push</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile">docker login<span style="color:#a40000">
-</span><span style="color:#a40000"></span>docker build -t kubetm/rest-service:v1 .<span style="color:#a40000">
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile">docker build -t kubetm/rest-service:v1 .<span style="color:#a40000">
 </span><span style="color:#a40000"></span>docker images<span style="color:#a40000">
+</span><span style="color:#a40000"></span>docker login<span style="color:#a40000">
 </span><span style="color:#a40000"></span>docker push kubetm/rest-service:v1<span style="color:#a40000">
 </span></code></pre></div><h3 id="3-2-kubectl-설정">3-2) kubectl 설정</h3>
 <p>master 서버에서 클러스터 인증 파일 복사</p>
