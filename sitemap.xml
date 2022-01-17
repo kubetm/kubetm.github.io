@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://kubetm.github.io/helm/12-deploy-step/deploy_step1/</loc>
+    <lastmod>2022-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kubetm.github.io/helm/11-deploy/concept/</loc>
     <lastmod>2021-08-10T00:00:00+00:00</lastmod>
   </url>
@@ -286,6 +291,11 @@
   </url>
   
   <url>
+    <loc>https://kubetm.github.io/helm/12-deploy-step/</loc>
+    <lastmod>2021-08-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kubetm.github.io/k8s/04-beginner-controller/daemonset/</loc>
   </url>
   
@@ -305,18 +315,18 @@
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/k8s/</loc>
-    <lastmod>2021-08-16T00:00:00+00:00</lastmod>
+    <loc>https://kubetm.github.io/helm/</loc>
+    <lastmod>2022-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://kubetm.github.io/</loc>
-    <lastmod>2021-08-16T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/helm/</loc>
-    <lastmod>2021-08-10T00:00:00+00:00</lastmod>
+    <loc>https://kubetm.github.io/k8s/</loc>
+    <lastmod>2021-08-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
