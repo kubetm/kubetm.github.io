@@ -19,7 +19,7 @@
 
 <title>Step1 | KubeTM Blog</title>
 <meta name="description" content=""><meta property="og:title" content="Step1" />
-<meta property="og:description" content="초기 개발 환경에서 배포를 위한 적용 절차 1단계 내용입니다.
+<meta property="og:description" content="컨테이너 배포에 대한 첫번째 단계로, 환경별 배포, Helm 적용, ReadinessProbe/LivenessProbe에 대한 기능 확인을 실습합니다.
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kubetm.github.io/helm/12-deploy-step/deploy_step1/" /><meta property="article:section" content="helm" />
@@ -27,13 +27,13 @@
 <meta property="article:modified_time" content="2022-01-01T00:00:00+00:00" /><meta property="og:site_name" content="KubeTM Blog" />
 
 <meta itemprop="name" content="Step1">
-<meta itemprop="description" content="초기 개발 환경에서 배포를 위한 적용 절차 1단계 내용입니다.
+<meta itemprop="description" content="컨테이너 배포에 대한 첫번째 단계로, 환경별 배포, Helm 적용, ReadinessProbe/LivenessProbe에 대한 기능 확인을 실습합니다.
 "><meta itemprop="datePublished" content="2022-01-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-01-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="678">
+<meta itemprop="wordCount" content="709">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Step1"/>
-<meta name="twitter:description" content="초기 개발 환경에서 배포를 위한 적용 절차 1단계 내용입니다.
+<meta name="twitter:description" content="컨테이너 배포에 대한 첫번째 단계로, 환경별 배포, Helm 적용, ReadinessProbe/LivenessProbe에 대한 기능 확인을 실습합니다.
 "/>
 
 
@@ -765,7 +765,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
     <li><a href="#파이프라인-전체-구성-및-흐름">파이프라인 전체 구성 및 흐름</a></li>
-    <li><a href="#1-개발-프로젝트-생성">1. 개발 프로젝트 생성</a>
+    <li><a href="#1-개발-소스-생성">1. 개발 소스 생성</a>
       <ul>
         <li><a href="#1-1-새-프로젝트-생성">1-1) 새 프로젝트 생성</a></li>
         <li><a href="#1-2-application-파일-convert-및-내용-추가">1-2) application 파일 Convert 및 내용 추가</a></li>
@@ -779,17 +779,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#2-1-dockerfile-생성">2-1) Dockerfile 생성</a></li>
         <li><a href="#2-2-tomcat-helm-패키지-다운">2-2) Tomcat Helm 패키지 다운</a></li>
         <li><a href="#2-3-환경별dev-qa-prod-valuesyaml-파일-생성">2-3) 환경별(dev, qa, prod) values.yaml 파일 생성</a></li>
-        <li><a href="#2-4-github에-app-올리기">2-4) Github에 App 올리기</a></li>
       </ul>
     </li>
-    <li><a href="#3-jenkins에서-kubectl-helm-사용할-수-있도록">3. Jenkins에서 kubectl, helm 사용할 수 있도록</a>
+    <li><a href="#3-source-push">3. Source Push</a>
       <ul>
-        <li><a href="#3-1-jeknins에서-cluster로-접근-config-설정">3-1) jeknins에서 Cluster로 접근 config 설정</a></li>
-        <li><a href="#3-2-jeknins에서-helm-kubectl-명령-사용">3-2) jeknins에서 helm, kubectl 명령 사용</a></li>
-        <li><a href="#3-3-jeknins가-docker를-사용할-수-있도록-설정">3-3) jeknins가 Docker를 사용할 수 있도록 설정</a></li>
+        <li><a href="#3-1-github에-app-올리기">3-1) Github에 App 올리기</a></li>
       </ul>
     </li>
-    <li><a href="#4-jenkins-job-추가">4. Jenkins Job 추가</a></li>
+    <li><a href="#4-geustos-세팅-수정">4. GeustOS 세팅 수정</a>
+      <ul>
+        <li><a href="#4-1-jeknins에서-cluster로-접근-config-설정">4-1) jeknins에서 Cluster로 접근 config 설정</a></li>
+        <li><a href="#4-2-jeknins에서-helm-kubectl-명령-사용">4-2) jeknins에서 helm, kubectl 명령 사용</a></li>
+        <li><a href="#4-3-jeknins가-docker를-사용할-수-있도록-설정">4-3) jeknins가 Docker를 사용할 수 있도록 설정</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-배포-프로젝트-생성">5. 배포 프로젝트 생성</a>
+      <ul>
+        <li><a href="#5-1-jeknins-접속">5-1) jeknins 접속</a></li>
+        <li><a href="#5-2-jeknins에서-새-project-추가">5-2) jeknins에서 새 Project 추가</a></li>
+        <li><a href="#5-3-qa-및-운영-project-추가">5-3) QA 및 운영 Project 추가</a></li>
+        <li><a href="#5-4-pod-접속-테스트">5-4 Pod 접속 테스트</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
 
@@ -849,7 +860,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             
 <div class="td-content">
 	<h1>Step1</h1>
-	<div class="lead">초기 개발 환경에서 배포를 위한 적용 절차 1단계 내용입니다.</div>
+	<div class="lead">컨테이너 배포에 대한 첫번째 단계로, 환경별 배포, Helm 적용, ReadinessProbe/LivenessProbe에 대한 기능 확인을 실습합니다.</div>
 	<header class="article-meta">
 		
 		
@@ -870,14 +881,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="파이프라인-전체-구성-및-흐름">파이프라인 전체 구성 및 흐름</h2>
 <hr>
 <figure>
-  <img src="/img/deploy/setting/Setting Overview for k8s Deploy Concept.jpg"
-       alt="Setting Overview for k8s Deploy Concept"
+  <img src="/img/deploy/step1/Step1 Overview for Helm Deploy Step1.jpg"
+       alt="Step1 Overview for Helm Deploy Step1"
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
-<h2 id="1-개발-프로젝트-생성">1. 개발 프로젝트 생성</h2>
+<h2 id="1-개발-소스-생성">1. 개발 소스 생성</h2>
 <figure>
-  <img src="/img/deploy/setting/Setting Step1 for k8s Deploy Concept.jpg"
-       alt="Setting Overview for k8s Deploy Concept"
+  <img src="/img/deploy/step1/Develop Source for Helm Deploy Step1.jpg"
+       alt="Develop Source for Helm Deploy Step1"
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
 <h3 id="1-1-새-프로젝트-생성">1-1) 새 프로젝트 생성</h3>
@@ -898,7 +909,7 @@ application.properties <span style="color:#000;font-weight:bold">&gt;</span> [�
 application-dev.yaml
 application-qa.yaml
 application-prod.yaml
-</code></pre></div><p>application-dev.yaml 내용 추가 (dev)</p>
+</code></pre></div><p>application-dev.yaml 내용 추가 (qa, prod 반복 적용)</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#8f5902;font-style:italic"># 프로파일 정보</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spring</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">config</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -947,7 +958,7 @@ application-prod.yaml
 <span style="color:#8f5902;font-style:italic">// 마우스 우클릭 &gt; [Source] &gt; Generate Getters and Setters &gt; [Select All] &gt; [Generate]
 </span><span style="color:#8f5902;font-style:italic">// 마우스 우클릭 &gt; [Source] &gt; Generate toString()... &gt; [Generate]
 </span><span style="color:#8f5902;font-style:italic"></span>
-<span style="color:#8f5902;font-style:italic">// Ctrl + Shift + o
+<span style="color:#8f5902;font-style:italic">// Ctrl + Shift + o 로 Library Import 
 </span></code></pre></div><p>DatabaseController.java</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@RestController</span>
 <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">DatabaseController</span> <span style="color:#ce5c00;font-weight:bold">{</span>
@@ -963,7 +974,7 @@ application-prod.yaml
 	<span style="color:#ce5c00;font-weight:bold">}</span>
 <span style="color:#ce5c00;font-weight:bold">}</span>
 
-<span style="color:#8f5902;font-style:italic">// Ctrl + Shift + o
+<span style="color:#8f5902;font-style:italic">// Ctrl + Shift + o 로 Library Import 
 </span></code></pre></div><h3 id="1-4-application-arguments-설정">1-4) Application Arguments 설정</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[Boot Dashboard] <span style="color:#000;font-weight:bold">&gt;</span> database [devtools] <span style="color:#000;font-weight:bold">&gt;</span> 마우스 우클릭 <span style="color:#000;font-weight:bold">&gt;</span> [Open Config] <span style="color:#000;font-weight:bold">&gt;</span> Arguments 
 <span style="color:#000;font-weight:bold">&gt;</span> VM arguments : -Dspring.profiles.active=<span style="color:#4e9a06">&#34;dev&#34;</span> <span style="color:#000;font-weight:bold">&gt;</span> [Apply]
@@ -973,7 +984,14 @@ application-prod.yaml
 # livenessProbe, readinessProbe
 http://localhost:8080/actuator/health/liveness
 http://localhost:8080/actuator/health/readiness
-</code></pre></div><h2 id="2-배포-파일-생성-docker-helm">2. 배포 파일 생성 (Docker, Helm)</h2>
+</code></pre></div><br/>
+<br/>
+<h2 id="2-배포-파일-생성-docker-helm">2. 배포 파일 생성 (Docker, Helm)</h2>
+<figure>
+  <img src="/img/deploy/step1/Deploy Files for Helm Deploy Step1.jpg"
+       alt="Deploy Files for Helm Deploy Step1"
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
 <h3 id="2-1-dockerfile-생성">2-1) Dockerfile 생성</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 프로젝트에 폴더 생성
 [root] <span style="color:#000;font-weight:bold">&gt;</span> deploy
@@ -1013,7 +1031,15 @@ C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">extraEnvVars</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">JAVA_OPTS</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">value</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;-Dspring.profiles.active=dev&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><h3 id="2-4-github에-app-올리기">2-4) Github에 App 올리기</h3>
+</span></code></pre></div><br/>
+<br/>
+<h2 id="3-source-push">3. Source Push</h2>
+<figure>
+  <img src="/img/deploy/step1/Push Github for Helm Deploy Step1.jpg"
+       alt="Push Github for Helm Deploy Step1"
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
+<h3 id="3-1-github에-app-올리기">3-1) Github에 App 올리기</h3>
 <ul>
 <li>사전에 Github에 가입되어 있어야 함</li>
 </ul>
@@ -1028,15 +1054,23 @@ Repositories <span style="color:#000;font-weight:bold">&gt;</span> New <span sty
 Github Repository(rest-service)에서 [Code]클릭 후 Clone HTTPS 주소 복사 클릭 <span style="color:#000;font-weight:bold">&gt;</span> Eclipse에서 [Push HEAD..] 클릭 <span style="color:#000;font-weight:bold">&gt;</span> Preview <span style="color:#000;font-weight:bold">&gt;</span> Preview
 
 [Github에서 소스 확인]
-</code></pre></div><h2 id="3-jenkins에서-kubectl-helm-사용할-수-있도록">3. Jenkins에서 kubectl, helm 사용할 수 있도록</h2>
-<h3 id="3-1-jeknins에서-cluster로-접근-config-설정">3-1) jeknins에서 Cluster로 접근 config 설정</h3>
+</code></pre></div><br/>
+<br/>
+<h2 id="4-geustos-세팅-수정">4. GeustOS 세팅 수정</h2>
+<p>Jenkins에서 kubectl, helm 사용할 수 있도록 설정</p>
+<figure>
+  <img src="/img/deploy/step1/CICD Setting for Helm Deploy Step1.jpg"
+       alt="CICD Setting for Helm Deploy Step1"
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
+<h3 id="4-1-jeknins에서-cluster로-접근-config-설정">4-1) jeknins에서 Cluster로 접근 config 설정</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># mkdir /var/lib/jenkins/.kube/</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># cp /root/.kube/config /var/lib/jenkins/.kube/</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># chown -R jenkins:jenkins /var/lib/jenkins/.kube</span>
-</code></pre></div><h3 id="3-2-jeknins에서-helm-kubectl-명령-사용">3-2) jeknins에서 helm, kubectl 명령 사용</h3>
-<p>[root@cicd-server ~]# chmod 755 /usr/local/bin/helm
-[root@cicd-server ~]# chmod 600 /usr/local/bin/kubectl</p>
-<h3 id="3-3-jeknins가-docker를-사용할-수-있도록-설정">3-3) jeknins가 Docker를 사용할 수 있도록 설정</h3>
+</code></pre></div><h3 id="4-2-jeknins에서-helm-kubectl-명령-사용">4-2) jeknins에서 helm, kubectl 명령 사용</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># chmod 755 /usr/local/bin/helm</span>
+<span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># chmod 600 /usr/local/bin/kubectl</span>
+</code></pre></div><h3 id="4-3-jeknins가-docker를-사용할-수-있도록-설정">4-3) jeknins가 Docker를 사용할 수 있도록 설정</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># Docker 사용 권한 변경</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># chmod 666 /var/run/docker.sock</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># usermod -aG docker jenkins</span>
@@ -1051,13 +1085,19 @@ Github Repository(rest-service)에서 [Code]클릭 후 Clone HTTPS 주소 복사
 <span style="color:#8f5902;font-style:italic"># kubectl, helm 명령어 사용 확인</span>
 -bash-4.2$ kubectl get nodes
 -bash-4.2$ helm list
-
-</code></pre></div><h2 id="4-jenkins-job-추가">4. Jenkins Job 추가</h2>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># 접속 및 로그인</span>
-접속url: http://192.168.56.20:8080
+</code></pre></div><br/>
+<br/>
+<h2 id="5-배포-프로젝트-생성">5. 배포 프로젝트 생성</h2>
+<figure>
+  <img src="/img/deploy/step1/Jenkins Project for Helm Deploy Step1.jpg"
+       alt="Jenkins Project for Helm Deploy Step1"
+       class="mt-3 mb-3 border border-info rounded" />
+</figure>
+<h3 id="5-1-jeknins-접속">5-1) jeknins 접속</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">접속url: http://192.168.56.20:8080
 id/pw: admin/admin
-
-<span style="color:#8f5902;font-style:italic"># Job 생성</span>
+</code></pre></div><h3 id="5-2-jeknins에서-새-project-추가">5-2) jeknins에서 새 Project 추가</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># Job 생성</span>
 Dashboard &gt; 새로운 Item &gt; Enter an item name &gt; <span style="color:#ce5c00;font-weight:bold">[</span>database-dev<span style="color:#ce5c00;font-weight:bold">]</span> &gt; Freestyle project &gt; ok
 
 <span style="color:#ce5c00;font-weight:bold">[</span>General<span style="color:#ce5c00;font-weight:bold">]</span> 
@@ -1082,8 +1122,8 @@ cp ./database/build/libs/database-0.0.1-SNAPSHOT.war ./database/deploy/docker/ap
 chmod <span style="color:#0000cf;font-weight:bold">777</span> ./database/deploy/docker/app.war
 docker build -t kubetm/database-service:latest ./database/helm/docker
 docker push kubetm/database-service:latest
-kubectl create ns dev
-helm upgrade myapp ./database/deploy/tomcat --install -f values-dev.yaml -n dev
+kubectl apply -f ./database/deploy/kubectl/ns-dev.yaml
+helm upgrade myapp ./database/deploy/helm/tomcat --install -f values-dev.yaml -n dev
     
 <span style="color:#ce5c00;font-weight:bold">[</span>저장<span style="color:#ce5c00;font-weight:bold">]</span>
 
@@ -1091,10 +1131,8 @@ helm upgrade myapp ./database/deploy/tomcat --install -f values-dev.yaml -n dev
 
 <span style="color:#ce5c00;font-weight:bold">[</span>생성된 빌드 jar 파일 위치<span style="color:#ce5c00;font-weight:bold">]</span>
 /var/lib/jenkins/workspace/rest-service/complete/build/libs
-
-
-QA용 생성
-Dashboard &gt; 새로운 Item <span style="color:#ce5c00;font-weight:bold">[</span>클릭<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><h3 id="5-3-qa-및-운영-project-추가">5-3) QA 및 운영 Project 추가</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">Dashboard &gt; 새로운 Item <span style="color:#ce5c00;font-weight:bold">[</span>클릭<span style="color:#ce5c00;font-weight:bold">]</span>
 Enter an item name &gt; <span style="color:#ce5c00;font-weight:bold">[</span>database-qa<span style="color:#ce5c00;font-weight:bold">]</span>
 Copy form &gt; <span style="color:#ce5c00;font-weight:bold">[</span>database-dev<span style="color:#ce5c00;font-weight:bold">]</span> 
 <span style="color:#ce5c00;font-weight:bold">[</span>OK<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -1106,9 +1144,23 @@ helm upgrade myapp ./database/deploy/tomcat --install -f values-qa.yaml -n qa
 
 
 <span style="color:#ce5c00;font-weight:bold">[</span>APP 접근<span style="color:#ce5c00;font-weight:bold">]</span>
-&gt; http://192.168.56.30:30080/database
-&gt; http://192.168.56.30:30081/database
-</code></pre></div>
+
+</code></pre></div><h3 id="5-4-pod-접속-테스트">5-4 Pod 접속 테스트</h3>
+<p>dev</p>
+<blockquote>
+<p>http://192.168.56.30:30080/database
+<br/></p>
+</blockquote>
+<p>qa</p>
+<blockquote>
+<p>http://192.168.56.30:30081/database
+<br/></p>
+</blockquote>
+<p>prod</p>
+<blockquote>
+<p>http://192.168.56.30:30082/database</p>
+</blockquote>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
