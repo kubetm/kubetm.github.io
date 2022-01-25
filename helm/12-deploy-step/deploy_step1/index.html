@@ -30,7 +30,7 @@
 <meta itemprop="description" content="컨테이너 배포에 대한 첫번째 단계로, 환경별 배포, Helm 적용, ReadinessProbe/LivenessProbe에 대한 기능 확인을 실습합니다.
 "><meta itemprop="datePublished" content="2022-01-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-01-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="709">
+<meta itemprop="wordCount" content="735">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Step1"/>
 <meta name="twitter:description" content="컨테이너 배포에 대한 첫번째 단계로, 환경별 배포, Helm 적용, ReadinessProbe/LivenessProbe에 대한 기능 확인을 실습합니다.
@@ -774,11 +774,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#1-5-application-호출">1-5) Application 호출</a></li>
       </ul>
     </li>
-    <li><a href="#2-배포-파일-생성-docker-helm">2. 배포 파일 생성 (Docker, Helm)</a>
+    <li><a href="#2-배포-파일-생성-docker-helm-kubectl">2. 배포 파일 생성 (Docker, Helm, Kubectl)</a>
       <ul>
         <li><a href="#2-1-dockerfile-생성">2-1) Dockerfile 생성</a></li>
         <li><a href="#2-2-tomcat-helm-패키지-다운">2-2) Tomcat Helm 패키지 다운</a></li>
         <li><a href="#2-3-환경별dev-qa-prod-valuesyaml-파일-생성">2-3) 환경별(dev, qa, prod) values.yaml 파일 생성</a></li>
+        <li><a href="#2-4-환경별dev-qa-prod-namespace-배포-파일-생성">2-4) 환경별(dev, qa, prod) Namespace 배포 파일 생성</a></li>
       </ul>
     </li>
     <li><a href="#3-source-push">3. Source Push</a>
@@ -897,9 +898,11 @@ File <span style="color:#000;font-weight:bold">&gt;</span> NEW <span style="colo
 
 [New Spring Starter Project]
 Name: database
+Packaging: War
+<span style="color:#204a87;font-weight:bold">Type</span>: Gradle Project
 
 [New Spring Starter Project Dependencies]
-Spring Boot Version: 2.6.2
+Spring Boot Version: 2.6.x
 Available: Spring Boot Actuator, Spring Boot DevTools, Spring Configuration Processor
 </code></pre></div><h3 id="1-2-application-파일-convert-및-내용-추가">1-2) application 파일 Convert 및 내용 추가</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[application Convert]
@@ -982,11 +985,11 @@ application-prod.yaml
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">http://localhost:8080/app/database
 
 # livenessProbe, readinessProbe
-http://localhost:8080/actuator/health/liveness
-http://localhost:8080/actuator/health/readiness
+http://localhost:8080/app/actuator/health/liveness
+http://localhost:8080/app/actuator/health/readiness
 </code></pre></div><br/>
 <br/>
-<h2 id="2-배포-파일-생성-docker-helm">2. 배포 파일 생성 (Docker, Helm)</h2>
+<h2 id="2-배포-파일-생성-docker-helm-kubectl">2. 배포 파일 생성 (Docker, Helm, Kubectl)</h2>
 <figure>
   <img src="/img/deploy/step1/Deploy Files for Helm Deploy Step1.jpg"
        alt="Deploy Files for Helm Deploy Step1"
@@ -1031,6 +1034,14 @@ C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">extraEnvVars</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">JAVA_OPTS</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">value</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;-Dspring.profiles.active=dev&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><h3 id="2-4-환경별dev-qa-prod-namespace-배포-파일-생성">2-4) 환경별(dev, qa, prod) Namespace 배포 파일 생성</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 프로젝트에 폴더 생성
+[root] <span style="color:#000;font-weight:bold">&gt;</span> deploy <span style="color:#000;font-weight:bold">&gt;</span> kubectl
+</code></pre></div><p>ns-dev.yaml 파일 생성</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Namespace</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">dev</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><br/>
 <br/>
 <h2 id="3-source-push">3. Source Push</h2>
@@ -1047,11 +1058,11 @@ C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\
 Repositories <span style="color:#000;font-weight:bold">&gt;</span> New <span style="color:#000;font-weight:bold">&gt;</span> database-service
 
 [프로젝트  Git 설정]
-프로젝트 root 폴더 <span style="color:#000;font-weight:bold">&gt;</span> team <span style="color:#000;font-weight:bold">&gt;</span> Share Project.. <span style="color:#000;font-weight:bold">&gt;</span> Repository [Create..] <span style="color:#000;font-weight:bold">&gt;</span> [Browse..] <span style="color:#000;font-weight:bold">&gt;</span> C:\helm-ide\git 폴더 선택
+프로젝트 root 폴더 <span style="color:#000;font-weight:bold">&gt;</span> team <span style="color:#000;font-weight:bold">&gt;</span> Share Project.. <span style="color:#000;font-weight:bold">&gt;</span> Repository [Create..] <span style="color:#000;font-weight:bold">&gt;</span> [Browse..] <span style="color:#000;font-weight:bold">&gt;</span> C:\helm-ide\git-db 폴더 생성/선택
 
 [Eclipse 소스 Push하기]
 프로젝트 root 폴더 <span style="color:#000;font-weight:bold">&gt;</span> team <span style="color:#000;font-weight:bold">&gt;</span> commit <span style="color:#000;font-weight:bold">&gt;</span> 파일 Staged Changes 후 Commit
-Github Repository(rest-service)에서 [Code]클릭 후 Clone HTTPS 주소 복사 클릭 <span style="color:#000;font-weight:bold">&gt;</span> Eclipse에서 [Push HEAD..] 클릭 <span style="color:#000;font-weight:bold">&gt;</span> Preview <span style="color:#000;font-weight:bold">&gt;</span> Preview
+Github Repository(database-service)에서 [Code]클릭 후 Clone HTTPS 주소 복사 클릭 <span style="color:#000;font-weight:bold">&gt;</span> Eclipse에서 [Push HEAD..] 클릭 <span style="color:#000;font-weight:bold">&gt;</span> Preview <span style="color:#000;font-weight:bold">&gt;</span> Preview
 
 [Github에서 소스 확인]
 </code></pre></div><br/>

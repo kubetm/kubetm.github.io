@@ -182,7 +182,7 @@ Code &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&g
 C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\helm-ide\workspace&lt;/span&gt;
 
 [Eclipse 프로젝트 Import]
-New &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; Import Projects from File System or Archive &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; Directory..
+File &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; Open Projects from File System or Archive &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; Directory..
 &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; C:\helm-ide\workspace\gs-rest-service-main\complate 폴더 선택
 
 [rest-service App 실행]
