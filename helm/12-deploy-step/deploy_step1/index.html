@@ -1079,9 +1079,7 @@ Github Repository(database-service)에서 [Code]클릭 후 Clone HTTPS 주소 �
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># cp /root/.kube/config /var/lib/jenkins/.kube/</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># chown -R jenkins:jenkins /var/lib/jenkins/.kube</span>
 </code></pre></div><h3 id="4-2-jeknins에서-helm-kubectl-명령-사용">4-2) jeknins에서 helm, kubectl 명령 사용</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># chmod 755 /usr/local/bin/helm</span>
-<span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># chmod 600 /usr/local/bin/kubectl</span>
-</code></pre></div><h3 id="4-3-jeknins가-docker를-사용할-수-있도록-설정">4-3) jeknins가 Docker를 사용할 수 있도록 설정</h3>
+<h3 id="4-2-jeknins가-docker를-사용할-수-있도록-설정">4-2) jeknins가 Docker를 사용할 수 있도록 설정</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># Docker 사용 권한 변경</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># chmod 666 /var/run/docker.sock</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># usermod -aG docker jenkins</span>
