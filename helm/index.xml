@@ -15,7 +15,7 @@
     
     
     <item>
-      <title>Helm: Step1</title>
+      <title>Helm: 배포 Step1</title>
       <link>https://kubetm.github.io/helm/12-deploy-step/deploy_step1/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -179,7 +179,7 @@ C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span 
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;service&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;NodePort&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;nodePort&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;30080&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;nodePort&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;30081&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;extraEnvVars&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;JAVA_OPTS&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -228,10 +228,7 @@ Github Repository(database-service)에서 [Code]클릭 후 Clone HTTPS 주소 �
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@cicd-server ~&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# mkdir /var/lib/jenkins/.kube/&lt;/span&gt;
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@cicd-server ~&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# cp /root/.kube/config /var/lib/jenkins/.kube/&lt;/span&gt;
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@cicd-server ~&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# chown -R jenkins:jenkins /var/lib/jenkins/.kube&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-2-jeknins에서-helm-kubectl-명령-사용&#34;&gt;4-2) jeknins에서 helm, kubectl 명령 사용&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@cicd-server ~&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# chmod 755 /usr/local/bin/helm&lt;/span&gt;
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@cicd-server ~&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# chmod 600 /usr/local/bin/kubectl&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-3-jeknins가-docker를-사용할-수-있도록-설정&#34;&gt;4-3) jeknins가 Docker를 사용할 수 있도록 설정&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-2-jeknins가-docker를-사용할-수-있도록-설정&#34;&gt;4-2) jeknins가 Docker를 사용할 수 있도록 설정&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Docker 사용 권한 변경&lt;/span&gt;
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@cicd-server ~&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# chmod 666 /var/run/docker.sock&lt;/span&gt;
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@cicd-server ~&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# usermod -aG docker jenkins&lt;/span&gt;
@@ -263,11 +260,11 @@ Dashboard &amp;gt; 새로운 Item &amp;gt; Enter an item name &amp;gt; &lt;span 
 
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;General&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; 
 - Github project 체크
-  Project url : https://github.com/kubetm/database/
+  Project url : https://github.com/kubetm/database-service/
 
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;소스 코드 관리&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
 - Git 체크
-  Repositories &amp;gt; Repository URL &amp;gt; https://github.com/kubetm/database.git
+  Repositories &amp;gt; Repository URL &amp;gt; https://github.com/kubetm/database-service.git
   Credentials &amp;gt; kubetm/***** 선택
 
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;Build&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
@@ -281,47 +278,54 @@ Dashboard &amp;gt; 새로운 Item &amp;gt; Enter an item name &amp;gt; &lt;span 
   Command
 cp ./database/build/libs/database-0.0.1-SNAPSHOT.war ./database/deploy/docker/app.war
 chmod &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;777&lt;/span&gt; ./database/deploy/docker/app.war
-docker build -t kubetm/database-service:latest ./database/helm/docker
+docker build -t kubetm/database-service:latest ./database/deploy/docker
 docker push kubetm/database-service:latest
-kubectl apply -f ./database/deploy/kubectl/ns-dev.yaml
-helm upgrade myapp ./database/deploy/helm/tomcat --install -f values-dev.yaml -n dev
+/usr/local/bin/kubectl apply -f ./database/deploy/kubectl/ns-dev.yaml
+/usr/local/bin/helm upgrade myapp-dev ./database/deploy/helm/tomcat --install -f ./database/deploy/helm/tomcat/values-dev.yaml -n dev
     
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;저장&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
 
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;Build Now&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;생성된 빌드 jar 파일 위치&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-/var/lib/jenkins/workspace/rest-service/complete/build/libs
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-3-qa-및-운영-project-추가&#34;&gt;5-3) QA 및 운영 Project 추가&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-3-qa-및-운영-project-추가-이후-prod-반복&#34;&gt;5-3) QA 및 운영 Project 추가 (이후 Prod 반복)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;Dashboard &amp;gt; 새로운 Item &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;클릭&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
 Enter an item name &amp;gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;database-qa&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
 Copy form &amp;gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;database-dev&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; 
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;OK&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
 
-- &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;Add build step&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; &amp;gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;Execute shell&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; 수정
+- &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;Build&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; &amp;gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;Execute shell&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; 수정
   Command
-kubectl create ns qa
-helm upgrade myapp ./database/deploy/tomcat --install -f values-qa.yaml -n qa
+/usr/local/bin/kubectl apply -f ./database/deploy/kubectl/ns-qa.yaml
+/usr/local/bin/helm upgrade myapp-qa ./database/deploy/helm/tomcat --install -f ./database/deploy/helm/tomcat/values-qa.yaml -n qa
 
 
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;APP 접근&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+- &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;Build&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; &amp;gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;Invoke Gradle script&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; 삭제
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-4-pod-접속-테스트&#34;&gt;5-4 Pod 접속 테스트&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-4-pod-접속-테스트&#34;&gt;5-4) Pod 접속 테스트&lt;/h3&gt;
 &lt;p&gt;dev&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;http://192.168.56.30:30080/database
-&lt;br/&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;qa&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;http://192.168.56.30:30081/database
-&lt;br/&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;prod&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;http://192.168.56.30:30082/database&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;-bash-4.2$ kubectl get ns            &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 콘솔 Namespace 확인&lt;/span&gt;
+-bash-4.2$ kubectl get -n dev pods   &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Pod 확인&lt;/span&gt;
+http://192.168.56.30:30081/app/database  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 브라우저 접속&lt;/span&gt;
+http://192.168.56.30:30081/app/actuator/health/liveness
 
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Pod Yaml에서 env 확인&lt;/span&gt;
+kubectl get -n dev pods -o yaml
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Pod 접속&lt;/span&gt;
+kubectl &lt;span style=&#34;color:#204a87&#34;&gt;exec&lt;/span&gt; -n dev myapp-tomcat-&amp;lt;random&amp;gt;-&amp;lt;random&amp;gt; -it -- /bin/sh
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 톰켓 기동로그&lt;/span&gt;
+ps -ef &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep java
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;p&gt;qa&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;-bash-4.2$ kubectl get ns            &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 콘솔 Namespace 확인&lt;/span&gt;
+-bash-4.2$ kubectl get -n qa pods    &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Pod 확인&lt;/span&gt;
+http://192.168.56.30:30082/database  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 브라우저 접속&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;p&gt;prod&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;-bash-4.2$ kubectl get ns            &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 콘솔 Namespace 확인&lt;/span&gt;
+-bash-4.2$ kubectl get -n prod pods  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Pod 확인&lt;/span&gt;
+http://192.168.56.30:30083/database  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 브라우저 접속&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
@@ -1285,6 +1289,7 @@ vi Dockerfile
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;k8s-master&amp;gt; cat /root/.kube/config &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 내용 복사하기&lt;/span&gt;
 cicd-server&amp;gt; &lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; /root/.kube
 cicd-server&amp;gt; vi config             &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 생성 후 붙여놓고&lt;/span&gt;
+cicd-server&amp;gt; chmod &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;600&lt;/span&gt; config      &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 권한 설정 (내용 업데이트)&lt;/span&gt;
 cicd-server&amp;gt; kubectl get nodes     &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 확인&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-3-리소스-생성-및-배포&#34;&gt;3-3) 리소스 생성 및 배포&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;vi rest-pod.yaml

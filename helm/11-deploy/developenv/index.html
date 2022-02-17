@@ -30,7 +30,7 @@
 <meta itemprop="description" content="이클립스로 개발환경을 세팅하고 Github로 소스를 Push하는 내용을 다룹니다.
 "><meta itemprop="datePublished" content="2021-08-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="593">
+<meta itemprop="wordCount" content="602">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="개발 환경 세팅"/>
 <meta name="twitter:description" content="이클립스로 개발환경을 세팅하고 Github로 소스를 Push하는 내용을 다룹니다.
@@ -720,7 +720,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-helm12-deploy-stepdeploy_step1-li">
     
       <input type="checkbox" id="m-helm12-deploy-stepdeploy_step1-check"/>
-      <label for="m-helm12-deploy-stepdeploy_step1-check"><a href="/helm/12-deploy-step/deploy_step1/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-helm12-deploy-stepdeploy_step1"><span class="">Step1</span></a></label>
+      <label for="m-helm12-deploy-stepdeploy_step1-check"><a href="/helm/12-deploy-step/deploy_step1/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-helm12-deploy-stepdeploy_step1"><span class="">배포 Step1</span></a></label>
     
     
   </li>
@@ -1083,6 +1083,7 @@ vi Dockerfile
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">k8s-master&gt; cat /root/.kube/config <span style="color:#8f5902;font-style:italic"># 내용 복사하기</span>
 cicd-server&gt; <span style="color:#204a87">cd</span> /root/.kube
 cicd-server&gt; vi config             <span style="color:#8f5902;font-style:italic"># 생성 후 붙여놓고</span>
+cicd-server&gt; chmod <span style="color:#0000cf;font-weight:bold">600</span> config      <span style="color:#8f5902;font-style:italic"># 권한 설정 (내용 업데이트)</span>
 cicd-server&gt; kubectl get nodes     <span style="color:#8f5902;font-style:italic"># 확인</span>
 </code></pre></div><h3 id="3-3-리소스-생성-및-배포">3-3) 리소스 생성 및 배포</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">vi rest-pod.yaml

@@ -17,8 +17,8 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Step1 | KubeTM Blog</title>
-<meta name="description" content=""><meta property="og:title" content="Step1" />
+<title>배포 Step1 | KubeTM Blog</title>
+<meta name="description" content=""><meta property="og:title" content="배포 Step1" />
 <meta property="og:description" content="컨테이너 배포에 대한 첫번째 단계로, 환경별 배포, Helm 적용, ReadinessProbe/LivenessProbe에 대한 기능 확인을 실습합니다.
 " />
 <meta property="og:type" content="article" />
@@ -26,13 +26,13 @@
 <meta property="article:published_time" content="2022-01-01T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-01-01T00:00:00+00:00" /><meta property="og:site_name" content="KubeTM Blog" />
 
-<meta itemprop="name" content="Step1">
+<meta itemprop="name" content="배포 Step1">
 <meta itemprop="description" content="컨테이너 배포에 대한 첫번째 단계로, 환경별 배포, Helm 적용, ReadinessProbe/LivenessProbe에 대한 기능 확인을 실습합니다.
 "><meta itemprop="datePublished" content="2022-01-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-01-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="735">
+<meta itemprop="wordCount" content="811">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Step1"/>
+<meta name="twitter:title" content="배포 Step1"/>
 <meta name="twitter:description" content="컨테이너 배포에 대한 첫번째 단계로, 환경별 배포, Helm 적용, ReadinessProbe/LivenessProbe에 대한 기능 확인을 실습합니다.
 "/>
 
@@ -720,7 +720,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-helm12-deploy-stepdeploy_step1-li">
     
       <input type="checkbox" id="m-helm12-deploy-stepdeploy_step1-check"/>
-      <label for="m-helm12-deploy-stepdeploy_step1-check"><a href="/helm/12-deploy-step/deploy_step1/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-helm12-deploy-stepdeploy_step1"><span class="">Step1</span></a></label>
+      <label for="m-helm12-deploy-stepdeploy_step1-check"><a href="/helm/12-deploy-step/deploy_step1/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-helm12-deploy-stepdeploy_step1"><span class="">배포 Step1</span></a></label>
     
     
   </li>
@@ -789,7 +789,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </li>
     <li><a href="#4-geustos-세팅-수정">4. GeustOS 세팅 수정</a>
       <ul>
-        <li><a href="#4-1-jeknins에서-cluster로-접근-config-설정">4-1) jeknins에서 Cluster로 접근 config 설정</a></li>        
+        <li><a href="#4-1-jeknins에서-cluster로-접근-config-설정">4-1) jeknins에서 Cluster로 접근 config 설정</a></li>
         <li><a href="#4-2-jeknins가-docker를-사용할-수-있도록-설정">4-2) jeknins가 Docker를 사용할 수 있도록 설정</a></li>
       </ul>
     </li>
@@ -797,8 +797,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul>
         <li><a href="#5-1-jeknins-접속">5-1) jeknins 접속</a></li>
         <li><a href="#5-2-jeknins에서-새-project-추가">5-2) jeknins에서 새 Project 추가</a></li>
-        <li><a href="#5-3-qa-및-운영-project-추가">5-3) QA 및 운영 Project 추가</a></li>
-        <li><a href="#5-4-pod-접속-테스트">5-4 Pod 접속 테스트</a></li>
+        <li><a href="#5-3-qa-및-운영-project-추가-이후-prod-반복">5-3) QA 및 운영 Project 추가 (이후 Prod 반복)</a></li>
+        <li><a href="#5-4-pod-접속-테스트">5-4) Pod 접속 테스트</a></li>
       </ul>
     </li>
   </ul>
@@ -851,7 +851,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://kubetm.github.io/helm/12-deploy-step/deploy_step1/">Step1</a>
+	<a href="https://kubetm.github.io/helm/12-deploy-step/deploy_step1/">배포 Step1</a>
 </li>
 
 	</ol>
@@ -859,7 +859,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             
 <div class="td-content">
-	<h1>Step1</h1>
+	<h1>배포 Step1</h1>
 	<div class="lead">컨테이너 배포에 대한 첫번째 단계로, 환경별 배포, Helm 적용, ReadinessProbe/LivenessProbe에 대한 기능 확인을 실습합니다.</div>
 	<header class="article-meta">
 		
@@ -1028,7 +1028,7 @@ C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\
 </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">service</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">NodePort</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">nodePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;30080&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">nodePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;30081&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">extraEnvVars</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">JAVA_OPTS</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1077,8 +1077,7 @@ Github Repository(database-service)에서 [Code]클릭 후 Clone HTTPS 주소 �
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># mkdir /var/lib/jenkins/.kube/</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># cp /root/.kube/config /var/lib/jenkins/.kube/</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># chown -R jenkins:jenkins /var/lib/jenkins/.kube</span>
-</code></pre></div>
-<h3 id="4-2-jeknins가-docker를-사용할-수-있도록-설정">4-2) jeknins가 Docker를 사용할 수 있도록 설정</h3>
+</code></pre></div><h3 id="4-2-jeknins가-docker를-사용할-수-있도록-설정">4-2) jeknins가 Docker를 사용할 수 있도록 설정</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># Docker 사용 권한 변경</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># chmod 666 /var/run/docker.sock</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># usermod -aG docker jenkins</span>
@@ -1110,11 +1109,11 @@ Dashboard &gt; 새로운 Item &gt; Enter an item name &gt; <span style="color:#c
 
 <span style="color:#ce5c00;font-weight:bold">[</span>General<span style="color:#ce5c00;font-weight:bold">]</span> 
 - Github project 체크
-  Project url : https://github.com/kubetm/database/
+  Project url : https://github.com/kubetm/database-service/
 
 <span style="color:#ce5c00;font-weight:bold">[</span>소스 코드 관리<span style="color:#ce5c00;font-weight:bold">]</span>
 - Git 체크
-  Repositories &gt; Repository URL &gt; https://github.com/kubetm/database.git
+  Repositories &gt; Repository URL &gt; https://github.com/kubetm/database-service.git
   Credentials &gt; kubetm/***** 선택
 
 <span style="color:#ce5c00;font-weight:bold">[</span>Build<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -1128,47 +1127,54 @@ Dashboard &gt; 새로운 Item &gt; Enter an item name &gt; <span style="color:#c
   Command
 cp ./database/build/libs/database-0.0.1-SNAPSHOT.war ./database/deploy/docker/app.war
 chmod <span style="color:#0000cf;font-weight:bold">777</span> ./database/deploy/docker/app.war
-docker build -t kubetm/database-service:latest ./database/helm/docker
+docker build -t kubetm/database-service:latest ./database/deploy/docker
 docker push kubetm/database-service:latest
-kubectl apply -f ./database/deploy/kubectl/ns-dev.yaml
-helm upgrade myapp ./database/deploy/helm/tomcat --install -f values-dev.yaml -n dev
+/usr/local/bin/kubectl apply -f ./database/deploy/kubectl/ns-dev.yaml
+/usr/local/bin/helm upgrade myapp-dev ./database/deploy/helm/tomcat --install -f ./database/deploy/helm/tomcat/values-dev.yaml -n dev
     
 <span style="color:#ce5c00;font-weight:bold">[</span>저장<span style="color:#ce5c00;font-weight:bold">]</span>
 
 <span style="color:#ce5c00;font-weight:bold">[</span>Build Now<span style="color:#ce5c00;font-weight:bold">]</span>
-
-<span style="color:#ce5c00;font-weight:bold">[</span>생성된 빌드 jar 파일 위치<span style="color:#ce5c00;font-weight:bold">]</span>
-/var/lib/jenkins/workspace/rest-service/complete/build/libs
-</code></pre></div><h3 id="5-3-qa-및-운영-project-추가">5-3) QA 및 운영 Project 추가</h3>
+</code></pre></div><h3 id="5-3-qa-및-운영-project-추가-이후-prod-반복">5-3) QA 및 운영 Project 추가 (이후 Prod 반복)</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">Dashboard &gt; 새로운 Item <span style="color:#ce5c00;font-weight:bold">[</span>클릭<span style="color:#ce5c00;font-weight:bold">]</span>
 Enter an item name &gt; <span style="color:#ce5c00;font-weight:bold">[</span>database-qa<span style="color:#ce5c00;font-weight:bold">]</span>
 Copy form &gt; <span style="color:#ce5c00;font-weight:bold">[</span>database-dev<span style="color:#ce5c00;font-weight:bold">]</span> 
 <span style="color:#ce5c00;font-weight:bold">[</span>OK<span style="color:#ce5c00;font-weight:bold">]</span>
 
-- <span style="color:#ce5c00;font-weight:bold">[</span>Add build step<span style="color:#ce5c00;font-weight:bold">]</span> &gt; <span style="color:#ce5c00;font-weight:bold">[</span>Execute shell<span style="color:#ce5c00;font-weight:bold">]</span> 수정
+- <span style="color:#ce5c00;font-weight:bold">[</span>Build<span style="color:#ce5c00;font-weight:bold">]</span> &gt; <span style="color:#ce5c00;font-weight:bold">[</span>Execute shell<span style="color:#ce5c00;font-weight:bold">]</span> 수정
   Command
-kubectl create ns qa
-helm upgrade myapp ./database/deploy/tomcat --install -f values-qa.yaml -n qa
+/usr/local/bin/kubectl apply -f ./database/deploy/kubectl/ns-qa.yaml
+/usr/local/bin/helm upgrade myapp-qa ./database/deploy/helm/tomcat --install -f ./database/deploy/helm/tomcat/values-qa.yaml -n qa
 
 
-<span style="color:#ce5c00;font-weight:bold">[</span>APP 접근<span style="color:#ce5c00;font-weight:bold">]</span>
+- <span style="color:#ce5c00;font-weight:bold">[</span>Build<span style="color:#ce5c00;font-weight:bold">]</span> &gt; <span style="color:#ce5c00;font-weight:bold">[</span>Invoke Gradle script<span style="color:#ce5c00;font-weight:bold">]</span> 삭제
 
-</code></pre></div><h3 id="5-4-pod-접속-테스트">5-4 Pod 접속 테스트</h3>
+</code></pre></div><h3 id="5-4-pod-접속-테스트">5-4) Pod 접속 테스트</h3>
 <p>dev</p>
-<blockquote>
-<p>http://192.168.56.30:30080/database
-<br/></p>
-</blockquote>
-<p>qa</p>
-<blockquote>
-<p>http://192.168.56.30:30081/database
-<br/></p>
-</blockquote>
-<p>prod</p>
-<blockquote>
-<p>http://192.168.56.30:30082/database</p>
-</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">-bash-4.2$ kubectl get ns            <span style="color:#8f5902;font-style:italic"># 콘솔 Namespace 확인</span>
+-bash-4.2$ kubectl get -n dev pods   <span style="color:#8f5902;font-style:italic"># Pod 확인</span>
+http://192.168.56.30:30081/app/database  <span style="color:#8f5902;font-style:italic"># 브라우저 접속</span>
+http://192.168.56.30:30081/app/actuator/health/liveness
 
+<span style="color:#8f5902;font-style:italic"># Pod Yaml에서 env 확인</span>
+kubectl get -n dev pods -o yaml
+
+<span style="color:#8f5902;font-style:italic"># Pod 접속</span>
+kubectl <span style="color:#204a87">exec</span> -n dev myapp-tomcat-&lt;random&gt;-&lt;random&gt; -it -- /bin/sh
+
+<span style="color:#8f5902;font-style:italic"># 톰켓 기동로그</span>
+ps -ef <span style="color:#000;font-weight:bold">|</span> grep java
+</code></pre></div><br/>
+<p>qa</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">-bash-4.2$ kubectl get ns            <span style="color:#8f5902;font-style:italic"># 콘솔 Namespace 확인</span>
+-bash-4.2$ kubectl get -n qa pods    <span style="color:#8f5902;font-style:italic"># Pod 확인</span>
+http://192.168.56.30:30082/database  <span style="color:#8f5902;font-style:italic"># 브라우저 접속</span>
+</code></pre></div><br/>
+<p>prod</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">-bash-4.2$ kubectl get ns            <span style="color:#8f5902;font-style:italic"># 콘솔 Namespace 확인</span>
+-bash-4.2$ kubectl get -n prod pods  <span style="color:#8f5902;font-style:italic"># Pod 확인</span>
+http://192.168.56.30:30083/database  <span style="color:#8f5902;font-style:italic"># 브라우저 접속</span>
+</code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
