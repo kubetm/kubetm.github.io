@@ -30,7 +30,7 @@
 <meta itemprop="description" content="컨테이너 배포에 대한 첫번째 단계로, 환경별 배포, Helm 적용, ReadinessProbe/LivenessProbe에 대한 기능 확인을 실습합니다.
 "><meta itemprop="datePublished" content="2022-01-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-01-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="811">
+<meta itemprop="wordCount" content="940">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="배포 Step1"/>
 <meta name="twitter:description" content="컨테이너 배포에 대한 첫번째 단계로, 환경별 배포, Helm 적용, ReadinessProbe/LivenessProbe에 대한 기능 확인을 실습합니다.
@@ -789,7 +789,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </li>
     <li><a href="#4-geustos-세팅-수정">4. GeustOS 세팅 수정</a>
       <ul>
-        <li><a href="#4-1-jeknins에서-cluster로-접근-config-설정">4-1) jeknins에서 Cluster로 접근 config 설정</a></li>
+        <li><a href="#4-1-jeknins에서-helm-kubectl을-사용할-수-있도록-설정">4-1) jeknins에서 Helm, Kubectl을 사용할 수 있도록 설정</a></li>
         <li><a href="#4-2-jeknins가-docker를-사용할-수-있도록-설정">4-2) jeknins가 Docker를 사용할 수 있도록 설정</a></li>
       </ul>
     </li>
@@ -797,8 +797,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul>
         <li><a href="#5-1-jeknins-접속">5-1) jeknins 접속</a></li>
         <li><a href="#5-2-jeknins에서-새-project-추가">5-2) jeknins에서 새 Project 추가</a></li>
-        <li><a href="#5-3-qa-및-운영-project-추가-이후-prod-반복">5-3) QA 및 운영 Project 추가 (이후 Prod 반복)</a></li>
-        <li><a href="#5-4-pod-접속-테스트">5-4) Pod 접속 테스트</a></li>
+        <li><a href="#5-3-pod-접속-테스트">5-3) Pod 접속 테스트</a></li>
+        <li><a href="#5-4-qa-및-운영-project-추가-이후-prod-반복">5-4) QA 및 운영 Project 추가 (이후 Prod 반복)</a></li>
       </ul>
     </li>
   </ul>
@@ -912,20 +912,14 @@ application-dev.yaml
 application-qa.yaml
 application-prod.yaml
 </code></pre></div><p>application-dev.yaml 내용 추가 (qa, prod 반복 적용)</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#8f5902;font-style:italic"># 프로파일 정보</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spring</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">config</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">activate</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">on-profile</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">dev</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic"># 서버 정보</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">server</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#8f5902;font-style:italic"># 서버 정보 (localhost:8080/app/database)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">server</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">     
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">servlet</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">context-path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/app</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">context-path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/app  </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic"># Readinessprobe, Livenessprobe 용</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic"># Readinessprobe, Livenessprobe 용 </span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic"># /app/actuator/health/liveness, /app/actuator/health/readiness</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">management</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">endpoint</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">health</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1005,6 +999,12 @@ http://localhost:8080/app/actuator/health/readiness
 # Dockerfile 내용 추가
 FROM bitnami/tomcat:9.0.41-debian-10-r0
 <span style="color:#204a87;font-weight:bold">COPY</span> app.war /opt/bitnami/tomcat/webapps_default
+
+# https://artifacthub.io/packages/helm/bitnami/tomcat/7.1.2
+# https://hub.docker.com/  (bitnami/tomcat) (.WAR)
+
+# webapps이 아닌 webapps_default에에 대한 레퍼런스
+# https://docs.bitnami.com/tutorials/deploy-java-application-kubernetes-helm/
 </code></pre></div><h3 id="2-2-tomcat-helm-패키지-다운">2-2) Tomcat Helm 패키지 다운</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 다운로드 및 압축 풀기
 C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\helm-ide</span><span style="color:#8f5902;font-style:italic">&gt; helm 폴더 생성</span>
@@ -1018,8 +1018,9 @@ C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\
 <p>values-dev.yaml</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registry</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">docker.io</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">repository</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubetm/database-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">repository</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubetm/database-service  </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># kubetm -&gt; 개인 &lt;docker id&gt;로 변경</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">tag</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">latest</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic"># docker build -t kubetm/database-service:latest</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">tomcatAllowRemoteManagement</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1028,7 +1029,7 @@ C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\
 </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">service</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">NodePort</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">nodePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;30081&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">nodePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;30081&#34;</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># dev(30081), qa(30082), prod(30083)</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">extraEnvVars</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">JAVA_OPTS</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1073,25 +1074,44 @@ Github Repository(database-service)에서 [Code]클릭 후 Clone HTTPS 주소 �
        alt="CICD Setting for Helm Deploy Step1"
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
-<h3 id="4-1-jeknins에서-cluster로-접근-config-설정">4-1) jeknins에서 Cluster로 접근 config 설정</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># mkdir /var/lib/jenkins/.kube/</span>
+<h3 id="4-1-jeknins에서-helm-kubectl을-사용할-수-있도록-설정">4-1) jeknins에서 Helm, Kubectl을 사용할 수 있도록 설정</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># Jeknins로 사용자 변경 </span>
+<span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># su - jenkins -s /bin/bash</span>
+
+<span style="color:#8f5902;font-style:italic"># kubectl, helm 명령어 사용 확인</span>
+-bash-4.2$ kubectl get nodes
+-bash-4.2$ helm list
+
+<span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># mkdir /var/lib/jenkins/.kube/</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># cp /root/.kube/config /var/lib/jenkins/.kube/</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># chown -R jenkins:jenkins /var/lib/jenkins/.kube</span>
+
+<span style="color:#8f5902;font-style:italic"># Jeknins로 사용자 변경 </span>
+<span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># su - jenkins -s /bin/bash</span>
+
+<span style="color:#8f5902;font-style:italic"># kubectl, helm 명령어 사용 확인</span>
+-bash-4.2$ kubectl get nodes
+-bash-4.2$ helm list
 </code></pre></div><h3 id="4-2-jeknins가-docker를-사용할-수-있도록-설정">4-2) jeknins가 Docker를 사용할 수 있도록 설정</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># Docker 사용 권한 변경</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># Jeknins로 사용자 변경 </span>
+<span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># su - jenkins -s /bin/bash</span>
+-bash-4.2$ docker ps
+
+<span style="color:#8f5902;font-style:italic"># Docker 사용 권한 변경</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># chmod 666 /var/run/docker.sock</span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># usermod -aG docker jenkins</span>
 
 <span style="color:#8f5902;font-style:italic"># Jeknins로 사용자 변경 </span>
 <span style="color:#ce5c00;font-weight:bold">[</span>root@cicd-server ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># su - jenkins -s /bin/bash</span>
+-bash-4.2$ docker ps
 
 <span style="color:#8f5902;font-style:italic"># Jeknins에서 docker login</span>
 -bash-4.2$ docker login
 -bash-4.2$ 개인 dockerhub id/pw 입력
 
-<span style="color:#8f5902;font-style:italic"># kubectl, helm 명령어 사용 확인</span>
--bash-4.2$ kubectl get nodes
--bash-4.2$ helm list
+<span style="color:#8f5902;font-style:italic"># Docker 로그인 정보 저장</span>
+-bash-4.2$ cat ~/.docker/config.json
+
 </code></pre></div><br/>
 <br/>
 <h2 id="5-배포-프로젝트-생성">5. 배포 프로젝트 생성</h2>
@@ -1110,11 +1130,13 @@ Dashboard &gt; 새로운 Item &gt; Enter an item name &gt; <span style="color:#c
 <span style="color:#ce5c00;font-weight:bold">[</span>General<span style="color:#ce5c00;font-weight:bold">]</span> 
 - Github project 체크
   Project url : https://github.com/kubetm/database-service/
-
+  <span style="color:#8f5902;font-style:italic"># kubetm -&gt; 개인 &lt;docker id&gt;로 변경</span>
+  
 <span style="color:#ce5c00;font-weight:bold">[</span>소스 코드 관리<span style="color:#ce5c00;font-weight:bold">]</span>
 - Git 체크
   Repositories &gt; Repository URL &gt; https://github.com/kubetm/database-service.git
   Credentials &gt; kubetm/***** 선택
+  <span style="color:#8f5902;font-style:italic"># kubetm -&gt; 개인 &lt;docker id&gt;로 변경</span>
 
 <span style="color:#ce5c00;font-weight:bold">[</span>Build<span style="color:#ce5c00;font-weight:bold">]</span>
 - <span style="color:#ce5c00;font-weight:bold">[</span>Add build step<span style="color:#ce5c00;font-weight:bold">]</span> &gt; <span style="color:#ce5c00;font-weight:bold">[</span>Invoke Gradle script<span style="color:#ce5c00;font-weight:bold">]</span> 선택
@@ -1125,31 +1147,19 @@ Dashboard &gt; 새로운 Item &gt; Enter an item name &gt; <span style="color:#c
     
 - <span style="color:#ce5c00;font-weight:bold">[</span>Add build step<span style="color:#ce5c00;font-weight:bold">]</span> &gt; <span style="color:#ce5c00;font-weight:bold">[</span>Execute shell<span style="color:#ce5c00;font-weight:bold">]</span> 선택
   Command
-cp ./database/build/libs/database-0.0.1-SNAPSHOT.war ./database/deploy/docker/app.war
+mv ./database/build/libs/database-0.0.1-SNAPSHOT.war ./database/deploy/docker/app.war
 chmod <span style="color:#0000cf;font-weight:bold">777</span> ./database/deploy/docker/app.war
 docker build -t kubetm/database-service:latest ./database/deploy/docker
 docker push kubetm/database-service:latest
+<span style="color:#8f5902;font-style:italic"># kubetm -&gt; 개인 &lt;docker id&gt;로 변경</span>
+
 /usr/local/bin/kubectl apply -f ./database/deploy/kubectl/ns-dev.yaml
-/usr/local/bin/helm upgrade myapp-dev ./database/deploy/helm/tomcat --install -f ./database/deploy/helm/tomcat/values-dev.yaml -n dev
+/usr/local/bin/helm upgrade myapp-dev ./database/deploy/helm/tomcat --install -f ./database/deploy/helm/values-dev.yaml -n dev
     
 <span style="color:#ce5c00;font-weight:bold">[</span>저장<span style="color:#ce5c00;font-weight:bold">]</span>
 
 <span style="color:#ce5c00;font-weight:bold">[</span>Build Now<span style="color:#ce5c00;font-weight:bold">]</span>
-</code></pre></div><h3 id="5-3-qa-및-운영-project-추가-이후-prod-반복">5-3) QA 및 운영 Project 추가 (이후 Prod 반복)</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">Dashboard &gt; 새로운 Item <span style="color:#ce5c00;font-weight:bold">[</span>클릭<span style="color:#ce5c00;font-weight:bold">]</span>
-Enter an item name &gt; <span style="color:#ce5c00;font-weight:bold">[</span>database-qa<span style="color:#ce5c00;font-weight:bold">]</span>
-Copy form &gt; <span style="color:#ce5c00;font-weight:bold">[</span>database-dev<span style="color:#ce5c00;font-weight:bold">]</span> 
-<span style="color:#ce5c00;font-weight:bold">[</span>OK<span style="color:#ce5c00;font-weight:bold">]</span>
-
-- <span style="color:#ce5c00;font-weight:bold">[</span>Build<span style="color:#ce5c00;font-weight:bold">]</span> &gt; <span style="color:#ce5c00;font-weight:bold">[</span>Execute shell<span style="color:#ce5c00;font-weight:bold">]</span> 수정
-  Command
-/usr/local/bin/kubectl apply -f ./database/deploy/kubectl/ns-qa.yaml
-/usr/local/bin/helm upgrade myapp-qa ./database/deploy/helm/tomcat --install -f ./database/deploy/helm/tomcat/values-qa.yaml -n qa
-
-
-- <span style="color:#ce5c00;font-weight:bold">[</span>Build<span style="color:#ce5c00;font-weight:bold">]</span> &gt; <span style="color:#ce5c00;font-weight:bold">[</span>Invoke Gradle script<span style="color:#ce5c00;font-weight:bold">]</span> 삭제
-
-</code></pre></div><h3 id="5-4-pod-접속-테스트">5-4) Pod 접속 테스트</h3>
+</code></pre></div><h3 id="5-3-pod-접속-테스트">5-3) Pod 접속 테스트</h3>
 <p>dev</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">-bash-4.2$ kubectl get ns            <span style="color:#8f5902;font-style:italic"># 콘솔 Namespace 확인</span>
 -bash-4.2$ kubectl get -n dev pods   <span style="color:#8f5902;font-style:italic"># Pod 확인</span>
@@ -1160,20 +1170,36 @@ http://192.168.56.30:30081/app/actuator/health/liveness
 kubectl get -n dev pods -o yaml
 
 <span style="color:#8f5902;font-style:italic"># Pod 접속</span>
-kubectl <span style="color:#204a87">exec</span> -n dev myapp-tomcat-&lt;random&gt;-&lt;random&gt; -it -- /bin/sh
+kubectl <span style="color:#204a87">exec</span> -n dev myapp-dev-tomcat-&lt;random&gt;-&lt;random&gt; -it -- /bin/sh
+
+<span style="color:#8f5902;font-style:italic"># Pod 내 env 확인</span>
+env
 
 <span style="color:#8f5902;font-style:italic"># 톰켓 기동로그</span>
 ps -ef <span style="color:#000;font-weight:bold">|</span> grep java
-</code></pre></div><br/>
-<p>qa</p>
+</code></pre></div><h3 id="5-4-qa-및-운영-project-추가-이후-prod-반복">5-4) QA 및 운영 Project 추가 (이후 Prod 반복)</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">Dashboard &gt; 새로운 Item <span style="color:#ce5c00;font-weight:bold">[</span>클릭<span style="color:#ce5c00;font-weight:bold">]</span>
+Enter an item name &gt; <span style="color:#ce5c00;font-weight:bold">[</span>database-qa<span style="color:#ce5c00;font-weight:bold">]</span>
+Copy form &gt; <span style="color:#ce5c00;font-weight:bold">[</span>database-dev<span style="color:#ce5c00;font-weight:bold">]</span> 
+<span style="color:#ce5c00;font-weight:bold">[</span>OK<span style="color:#ce5c00;font-weight:bold">]</span>
+
+- <span style="color:#ce5c00;font-weight:bold">[</span>Build<span style="color:#ce5c00;font-weight:bold">]</span> &gt; <span style="color:#ce5c00;font-weight:bold">[</span>Execute shell<span style="color:#ce5c00;font-weight:bold">]</span> 수정
+  Command
+/usr/local/bin/kubectl apply -f ./database/deploy/kubectl/ns-qa.yaml
+/usr/local/bin/helm upgrade myapp-qa ./database/deploy/helm/tomcat --install -f ./database/deploy/helm/tomcat/values-qa.yaml -n qa
+
+<span style="color:#8f5902;font-style:italic"># QA에서 별도로 War 빌드 및 Docker Push를 안할 경우. </span>
+- <span style="color:#ce5c00;font-weight:bold">[</span>Build<span style="color:#ce5c00;font-weight:bold">]</span> &gt; <span style="color:#ce5c00;font-weight:bold">[</span>Invoke Gradle script<span style="color:#ce5c00;font-weight:bold">]</span> 삭제
+
+</code></pre></div><p>qa</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">-bash-4.2$ kubectl get ns            <span style="color:#8f5902;font-style:italic"># 콘솔 Namespace 확인</span>
 -bash-4.2$ kubectl get -n qa pods    <span style="color:#8f5902;font-style:italic"># Pod 확인</span>
-http://192.168.56.30:30082/database  <span style="color:#8f5902;font-style:italic"># 브라우저 접속</span>
+http://192.168.56.30:30082/app/database  <span style="color:#8f5902;font-style:italic"># 브라우저 접속</span>
 </code></pre></div><br/>
 <p>prod</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">-bash-4.2$ kubectl get ns            <span style="color:#8f5902;font-style:italic"># 콘솔 Namespace 확인</span>
 -bash-4.2$ kubectl get -n prod pods  <span style="color:#8f5902;font-style:italic"># Pod 확인</span>
-http://192.168.56.30:30083/database  <span style="color:#8f5902;font-style:italic"># 브라우저 접속</span>
+http://192.168.56.30:30083/app/database  <span style="color:#8f5902;font-style:italic"># 브라우저 접속</span>
 </code></pre></div>
 	
 	

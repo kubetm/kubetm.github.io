@@ -1969,7 +1969,7 @@ mkdir -p /etc/systemd/system/docker.service.d
 <br/>
 `service-cidr` 를 설정하면 Service의 IP가 자동으로 생성될때 해당 대역으로 생성되요 `Default: 10.96.0.0/12`
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubeadm init --pod-network-cidr<span style="color:#ce5c00;font-weight:bold">=</span>20.96.0.0/12 --apiserver-advertise-address<span style="color:#ce5c00;font-weight:bold">=</span>30.0.2.30
-</code></pre></div><p>실행 후 <code>[Your Kubernetes master has initialized successfully!]</code> 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다. 
+</code></pre></div><p>실행 후 <code>[Your Kubernetes master has initialized successfully!]</code> 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다.
 <br/>
 kubeadm join 30.0.2.30:6443 &ndash;token ki4szr.t3wondaclij6d1a3<br>
 &ndash;discovery-token-ca-cert-hash sha256:2370f0451342c6e4bd0d38f6c2511bda5c50374c85e9c09da28e12dd666d5987</p>
