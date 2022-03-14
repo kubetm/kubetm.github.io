@@ -1697,9 +1697,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 <div class="tab-content" id="tabs-0-content"><div class="tab-pane fade show active"
-        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.5.0/components.yaml</code></pre></div></div>
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.5.0/components.yaml
+</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml</code></pre></div></div>
+        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
+</code></pre></div></div>
   
 </div>
 
@@ -1756,7 +1760,8 @@ Metrics Deployment 수정
 
 
 <div class="tab-content" id="tabs-1-content"><div class="tab-pane fade show active"
-        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># args 에 `kubelet-insecure-tls` 추가</span>
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># args 에 `kubelet-insecure-tls` 추가</span>
 kubectl edit deployment metrics-server -n kube-system
 
 <span style="color:#8f5902;font-style:italic">#spec:</span>
@@ -1767,9 +1772,11 @@ kubectl edit deployment metrics-server -n kube-system
 <span style="color:#8f5902;font-style:italic">#    - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname</span>
 <span style="color:#8f5902;font-style:italic">#    - --kubelet-use-node-status-port</span>
 <span style="color:#8f5902;font-style:italic">#    - --metric-resolution=15s</span>
-<span style="color:#8f5902;font-style:italic">#    - --kubelet-insecure-tls  &lt;-- 추가</span></code></pre></div></div>
+<span style="color:#8f5902;font-style:italic">#    - --kubelet-insecure-tls  &lt;-- 추가</span>
+</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># args 에 `kubelet-insecure-tls` 와 `kubelet-preferred-address-types=InternalIP` 추가</span>
+        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># args 에 `kubelet-insecure-tls` 와 `kubelet-preferred-address-types=InternalIP` 추가</span>
 kubectl edit deployment metrics-server -n kube-system
 
 <span style="color:#8f5902;font-style:italic">#spec:</span>
@@ -1778,7 +1785,8 @@ kubectl edit deployment metrics-server -n kube-system
 <span style="color:#8f5902;font-style:italic">#     - --cert-dir=/tmp</span>
 <span style="color:#8f5902;font-style:italic">#     - --secure-port=4443</span>
 <span style="color:#8f5902;font-style:italic">#     - --kubelet-insecure-tls                       &lt;-- 추가</span>
-<span style="color:#8f5902;font-style:italic">#     - --kubelet-preferred-address-types=InternalIP &lt;-- 추가</span></code></pre></div></div>
+<span style="color:#8f5902;font-style:italic">#     - --kubelet-preferred-address-types=InternalIP &lt;-- 추가</span>
+</code></pre></div></div>
   
 </div>
 
@@ -1914,9 +1922,13 @@ k8s-node2        554m         11%    4672Mi          31%
 
 
 <div class="tab-content" id="tabs-2-content"><div class="tab-pane fade show active"
-        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87;font-weight:bold">while</span> true<span style="color:#000;font-weight:bold">;</span><span style="color:#204a87;font-weight:bold">do</span> curl 192.168.56.30:30001/hostname<span style="color:#000;font-weight:bold">;</span> sleep 0.01<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span></code></pre></div></div>
+        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#204a87;font-weight:bold">while</span> true<span style="color:#000;font-weight:bold">;</span><span style="color:#204a87;font-weight:bold">do</span> curl 192.168.56.30:30001/hostname<span style="color:#000;font-weight:bold">;</span> sleep 0.01<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span>
+</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87;font-weight:bold">while</span> true<span style="color:#000;font-weight:bold">;</span><span style="color:#204a87;font-weight:bold">do</span> curl 192.168.0.30:30001/hostname<span style="color:#000;font-weight:bold">;</span> sleep 0.01<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span></code></pre></div></div>
+        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#204a87;font-weight:bold">while</span> true<span style="color:#000;font-weight:bold">;</span><span style="color:#204a87;font-weight:bold">do</span> curl 192.168.0.30:30001/hostname<span style="color:#000;font-weight:bold">;</span> sleep 0.01<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span>
+</code></pre></div></div>
   
 </div>
 
@@ -2035,9 +2047,13 @@ k8s-node2        554m         11%    4672Mi          31%
 
 
 <div class="tab-content" id="tabs-3-content"><div class="tab-pane fade show active"
-        id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87;font-weight:bold">while</span> true<span style="color:#000;font-weight:bold">;</span><span style="color:#204a87;font-weight:bold">do</span> curl 192.168.56.30:30002/hostname<span style="color:#000;font-weight:bold">;</span> sleep 0.01<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span></code></pre></div></div>
+        id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#204a87;font-weight:bold">while</span> true<span style="color:#000;font-weight:bold">;</span><span style="color:#204a87;font-weight:bold">do</span> curl 192.168.56.30:30002/hostname<span style="color:#000;font-weight:bold">;</span> sleep 0.01<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span>
+</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87;font-weight:bold">while</span> true<span style="color:#000;font-weight:bold">;</span><span style="color:#204a87;font-weight:bold">do</span> curl 192.168.0.30:30002/hostname<span style="color:#000;font-weight:bold">;</span> sleep 0.01<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span></code></pre></div></div>
+        id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#204a87;font-weight:bold">while</span> true<span style="color:#000;font-weight:bold">;</span><span style="color:#204a87;font-weight:bold">do</span> curl 192.168.0.30:30002/hostname<span style="color:#000;font-weight:bold">;</span> sleep 0.01<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span>
+</code></pre></div></div>
   
 </div>
 

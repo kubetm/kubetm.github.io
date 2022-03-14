@@ -1714,7 +1714,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p><a href="http://isoredirect.centos.org/centos/7/isos/x86_64/">http://isoredirect.centos.org/centos/7/isos/x86_64/</a></p>
 </blockquote>
 <h3 id="1-1-2-booting-usb-만들기">1-1-2) Booting USB 만들기</h3>
-<p>아래 경로로 들어가면 중간 정도에 다운로드 버튼 있어요.
+<p>아래 경로로 들어가면 중간 정도에 다운로드 버튼 있어요. 
 <br/></p>
 <blockquote>
 <p><a href="https://rufus.ie/ko_KR.html">https://rufus.ie/ko_KR.html</a>
@@ -1783,7 +1783,7 @@ USB를 설치할 서버에 꼽고 부팅하면 CentOS 설치단계로 가져요
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">systemctl start libvirtd <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> systemctl <span style="color:#204a87">enable</span> libvirtd
 </code></pre></div><p>virt-manager UI를 띄우기 위해 X Window System 및 폰트 설치</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yum groupinstall <span style="color:#4e9a06">&#34;X Window System&#34;</span> <span style="color:#4e9a06">&#34;Fonts&#34;</span>
-</code></pre></div><p>virt-manager 실행
+</code></pre></div><p>virt-manager 실행 
 <br/>
 만약 UI가 뜨지 않으면 재접속 후 다시 실행</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">virt-manager
@@ -1799,7 +1799,7 @@ USB를 설치할 서버에 꼽고 부팅하면 CentOS 설치단계로 가져요
 <h3 id="2-1-1-centos-최신버전-다운로드">2-1-1) CentOS 최신버전 다운로드</h3>
 <p>Virt-Manager의 Image 파일 기본 경로로 이동</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87">cd</span> /var/lib/libvirt/images
-</code></pre></div><p>Minimal ISO 버전 다운로드
+</code></pre></div><p>Minimal ISO 버전 다운로드 
 <br/>
 만약 다운로드 받은 파일 크기가 매우 작다면 해당 경로에 파일이 없는 것이니, 아래 URL에서 [Minimal ISO]를 선택하고 원하는 경로로 변경하세요.
 <br/></p>
@@ -2002,7 +2002,7 @@ Host의 Ip Address를 변경하기 위해 아래 명령어로 설정을 열고</
 <br/>
 `service-cidr` 를 설정하면 Service의 IP가 자동으로 생성될때 해당 대역으로 생성되요 `Default: 10.96.0.0/12`
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubeadm init --pod-network-cidr<span style="color:#ce5c00;font-weight:bold">=</span>20.96.0.0/12 --apiserver-advertise-address<span style="color:#ce5c00;font-weight:bold">=</span>192.168.0.30
-</code></pre></div><p>실행 후 <code>[Your Kubernetes master has initialized successfully!]</code> 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다.
+</code></pre></div><p>실행 후 <code>[Your Kubernetes master has initialized successfully!]</code> 문구를 확인하고 아래 내용 복사해서 별도로 저장해 둡니다. 
 <br/>
 kubeadm join 192.168.0.30:6443 &ndash;token ki4szr.t3wondaclij6d1a3<br>
 &ndash;discovery-token-ca-cert-hash sha256:2370f0451342c6e4bd0d38f6c2511bda5c50374c85e9c09da28e12dd666d5987</p>

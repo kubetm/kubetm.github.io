@@ -1718,9 +1718,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 <div class="tab-content" id="tabs-0-content"><div class="tab-pane fade show active"
-        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.0/deploy/static/provider/baremetal/deploy.yaml</code></pre></div></div>
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.0/deploy/static/provider/baremetal/deploy.yaml
+</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/mandatory.yaml</code></pre></div></div>
+        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/mandatory.yaml
+</code></pre></div></div>
   
 </div>
 
@@ -1776,9 +1780,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 <div class="tab-content" id="tabs-1-content"><div class="tab-pane fade show active"
-        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">위 Nginx 설치에 포함되어 있음, v1.22에서는 NodePort Service 별도로 생성 안함</code></pre></div></div>
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+위 Nginx 설치에 포함되어 있음, v1.22에서는 NodePort Service 별도로 생성 안함
+</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/provider/baremetal/service-nodeport.yaml</code></pre></div></div>
+        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/provider/baremetal/service-nodeport.yaml
+</code></pre></div></div>
   
 </div>
 
@@ -1905,7 +1913,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 <div class="tab-content" id="tabs-2-content"><div class="tab-pane fade show active"
-        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1</span><span style="color:#f8f8f8;text-decoration:underline">
+        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Ingress</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">service-loadbalancing</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1934,9 +1943,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">service</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">svc-order</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">number</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span></code></pre></div></div>
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">number</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Ingress</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">service-loadbalancing</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1956,7 +1967,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/order</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">backend</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">serviceName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">svc-order</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">servicePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span></code></pre></div></div>
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">servicePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></div>
   
 </div>
 
@@ -2011,13 +2023,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 <div class="tab-content" id="tabs-3-content"><div class="tab-pane fade show active"
-        id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl 192.168.56.30:30431/
+        id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+curl 192.168.56.30:30431/
 curl 192.168.56.30:30431/order
-curl 192.168.56.30:30431/customer</code></pre></div></div>
+curl 192.168.56.30:30431/customer
+</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl 192.168.0.30:30431/
+        id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+curl 192.168.0.30:30431/
 curl 192.168.0.30:30431/order
-curl 192.168.0.30:30431/customer</code></pre></div></div>
+curl 192.168.0.30:30431/customer
+</code></pre></div></div>
   
 </div>
 
@@ -2124,7 +2140,8 @@ curl 192.168.0.30:30431/customer</code></pre></div></div>
 
 
 <div class="tab-content" id="tabs-4-content"><div class="tab-pane fade show active"
-        id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">apiVersion: networking.k8s.io/v1
+        id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app
@@ -2140,9 +2157,11 @@ spec:
           service:
             name: svc-v1
             port:
-              number: <span style="color:#0000cf;font-weight:bold">8080</span></code></pre></div></div>
+              number: <span style="color:#0000cf;font-weight:bold">8080</span>
+</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-4-1" role="tabpanel" aria-labelled-by="tabs-4-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">apiVersion: networking.k8s.io/v1beta1
+        id="tabs-4-1" role="tabpanel" aria-labelled-by="tabs-4-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: app
@@ -2153,7 +2172,8 @@ spec:
       paths:
       - backend:
           serviceName: svc-v1
-          servicePort: <span style="color:#0000cf;font-weight:bold">8080</span></code></pre></div></div>
+          servicePort: <span style="color:#0000cf;font-weight:bold">8080</span>
+</code></pre></div></div>
   
 </div>
 
@@ -2208,19 +2228,23 @@ spec:
 
 
 <div class="tab-content" id="tabs-5-content"><div class="tab-pane fade show active"
-        id="tabs-5-0" role="tabpanel" aria-labelled-by="tabs-5-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#8f5902;font-style:italic"># Centos HostName 등록</span><span style="color:#f8f8f8;text-decoration:underline">
+        id="tabs-5-0" role="tabpanel" aria-labelled-by="tabs-5-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic"># Centos HostName 등록</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">cat &lt;&lt; EOF &gt;&gt; /etc/hosts</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#0000cf;font-weight:bold">192.168.56.30</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">www.app.com</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">EOF</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">curl www.app.com:30431/version</span></code></pre></div></div>
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">curl www.app.com:30431/version</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-5-1" role="tabpanel" aria-labelled-by="tabs-5-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># Centos HostName 등록</span>
+        id="tabs-5-1" role="tabpanel" aria-labelled-by="tabs-5-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># Centos HostName 등록</span>
 cat <span style="color:#4e9a06">&lt;&lt; EOF &gt;&gt; /etc/hosts
 </span><span style="color:#4e9a06">192.168.0.30 www.app.com
 </span><span style="color:#4e9a06">EOF</span>
 
-curl www.app.com:30431/version</code></pre></div></div>
+curl www.app.com:30431/version
+</code></pre></div></div>
   
 </div>
 
@@ -2276,7 +2300,8 @@ curl www.app.com:30431/version</code></pre></div></div>
 
 
 <div class="tab-content" id="tabs-6-content"><div class="tab-pane fade show active"
-        id="tabs-6-0" role="tabpanel" aria-labelled-by="tabs-6-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1</span><span style="color:#f8f8f8;text-decoration:underline">
+        id="tabs-6-0" role="tabpanel" aria-labelled-by="tabs-6-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Ingress</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">canary-v2</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -2295,9 +2320,11 @@ curl www.app.com:30431/version</code></pre></div></div>
 </span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">service</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">svc-v2</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">number</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span></code></pre></div></div>
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">number</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-6-1" role="tabpanel" aria-labelled-by="tabs-6-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+        id="tabs-6-1" role="tabpanel" aria-labelled-by="tabs-6-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Ingress</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">canary-v2</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -2311,7 +2338,8 @@ curl www.app.com:30431/version</code></pre></div></div>
 </span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">paths</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">backend</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">serviceName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">svc-v2</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">servicePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span></code></pre></div></div>
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">servicePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></div>
   
 </div>
 
@@ -2368,7 +2396,8 @@ curl www.app.com:30431/version</code></pre></div></div>
 
 
 <div class="tab-content" id="tabs-7-content"><div class="tab-pane fade show active"
-        id="tabs-7-0" role="tabpanel" aria-labelled-by="tabs-7-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1</span><span style="color:#f8f8f8;text-decoration:underline">
+        id="tabs-7-0" role="tabpanel" aria-labelled-by="tabs-7-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Ingress</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">canary-kr</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -2388,9 +2417,11 @@ curl www.app.com:30431/version</code></pre></div></div>
 </span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">service</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">svc-v2</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">number</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span></code></pre></div></div>
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">number</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-7-1" role="tabpanel" aria-labelled-by="tabs-7-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+        id="tabs-7-1" role="tabpanel" aria-labelled-by="tabs-7-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Ingress</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">canary-kr</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -2405,7 +2436,8 @@ curl www.app.com:30431/version</code></pre></div></div>
 </span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">paths</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">backend</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">serviceName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">svc-v2</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">servicePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span></code></pre></div></div>
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">servicePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></div>
   
 </div>
 
@@ -2492,7 +2524,8 @@ curl www.app.com:30431/version</code></pre></div></div>
 
 
 <div class="tab-content" id="tabs-8-content"><div class="tab-pane fade show active"
-        id="tabs-8-0" role="tabpanel" aria-labelled-by="tabs-8-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1</span><span style="color:#f8f8f8;text-decoration:underline">
+        id="tabs-8-0" role="tabpanel" aria-labelled-by="tabs-8-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Ingress</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -2512,9 +2545,11 @@ curl www.app.com:30431/version</code></pre></div></div>
 </span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">service</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">svc-https</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">number</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span></code></pre></div></div>
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">number</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-8-1" role="tabpanel" aria-labelled-by="tabs-8-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+        id="tabs-8-1" role="tabpanel" aria-labelled-by="tabs-8-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">networking.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Ingress</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -2529,7 +2564,8 @@ curl www.app.com:30431/version</code></pre></div></div>
 </span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">paths</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">backend</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">serviceName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">svc-https</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">servicePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span></code></pre></div></div>
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">servicePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></div>
   
 </div>
 
@@ -2585,7 +2621,8 @@ curl www.app.com:30431/version</code></pre></div></div>
 
 
 <div class="tab-content" id="tabs-9-content"><div class="tab-pane fade show active"
-        id="tabs-9-0" role="tabpanel" aria-labelled-by="tabs-9-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># 인증서 생성</span>
+        id="tabs-9-0" role="tabpanel" aria-labelled-by="tabs-9-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># 인증서 생성</span>
 openssl req -x509 -nodes -days <span style="color:#0000cf;font-weight:bold">365</span> -newkey rsa:2048 -keyout tls.key -out tls.crt -subj <span style="color:#4e9a06">&#34;/CN=www.https.com/O=www.https.com&#34;</span>
 
 <span style="color:#8f5902;font-style:italic"># Secret 생성</span>
@@ -2596,9 +2633,11 @@ kubectl create secret tls secret-https --key tls.key --cert tls.crt
 192.168.56.30 www.https.com
 
 <span style="color:#8f5902;font-style:italic"># 브라우저에서 접속</span>
-https://www.https.com:30798/hostname</code></pre></div></div>
+https://www.https.com:30798/hostname
+</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-9-1" role="tabpanel" aria-labelled-by="tabs-9-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># 인증서 생성</span>
+        id="tabs-9-1" role="tabpanel" aria-labelled-by="tabs-9-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#8f5902;font-style:italic"># 인증서 생성</span>
 openssl req -x509 -nodes -days <span style="color:#0000cf;font-weight:bold">365</span> -newkey rsa:2048 -keyout tls.key -out tls.crt -subj <span style="color:#4e9a06">&#34;/CN=www.https.com/O=www.https.com&#34;</span>
 
 <span style="color:#8f5902;font-style:italic"># Secret 생성</span>
@@ -2609,7 +2648,8 @@ kubectl create secret tls secret-https --key tls.key --cert tls.crt
 192.168.0.30 www.https.com
 
 <span style="color:#8f5902;font-style:italic"># 브라우저에서 접속</span>
-https://www.https.com:30798/hostname</code></pre></div></div>
+https://www.https.com:30798/hostname
+</code></pre></div></div>
   
 </div>
 

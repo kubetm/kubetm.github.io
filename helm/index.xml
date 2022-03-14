@@ -24,7 +24,7 @@
         
         
         &lt;div class=&#34;mx-auto&#34;&gt;
-	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/deploy/concept/Setting.pdf&#34; download&gt;
+	&lt;a class=&#34;btn btn-lg btn-secondary mr-3 mb-4&#34; href=&#34;https://kubetm.github.io/documents/deploy/concept/Deploy_Step1.pdf&#34; download&gt;
 		강의자료 PDF &lt;i class=&#34;fas fa-download ml-2&#34;&gt;&lt;/i&gt;
 	&lt;/a&gt;
 &lt;/div&gt;
@@ -1105,7 +1105,7 @@ http://&amp;lt;master-ip&amp;gt;:&amp;lt;nodePort&amp;gt;/
 &lt;/figure&gt;
 &lt;p&gt;[사전가입] 관련 URL&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Github: &lt;a href=&#34;https://github.com/&#34;&gt;https://github.com/&lt;/a&gt;
+&lt;p&gt;Github: &lt;a href=&#34;https://github.com/&#34;&gt;https://github.com/&lt;/a&gt; 
 &lt;br/&gt;
 DockerHub: &lt;a href=&#34;https://hub.docker.com/&#34;&gt;https://hub.docker.com/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
