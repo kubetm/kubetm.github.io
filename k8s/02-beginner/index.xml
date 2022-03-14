@@ -377,7 +377,7 @@ sysctl --system
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;enabled=1
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;gpgcheck=1
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;repo_gpgcheck=1
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;repo_gpgcheck=0
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;EOF&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-1-6-centos-update&#34;&gt;3-1-6) Centos Update&lt;/h3&gt;
