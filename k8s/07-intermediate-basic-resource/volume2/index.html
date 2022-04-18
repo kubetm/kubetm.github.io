@@ -19,21 +19,21 @@
 
 <title>Volume | KubeTM Blog</title>
 <meta name="description" content=""><meta property="og:title" content="Volume" />
-<meta property="og:description" content="Dynamic Provisioning, StorageClass, Status, ReclaimPolicy
+<meta property="og:description" content="Dynamic Provisioning, StorageClass, Status, ReclaimPolicy &lt;/br&gt; Version 1.22 에서는 스토리지 솔루션을 Longhorn으로 대체합니다.
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume/" /><meta property="article:section" content="k8s" />
+<meta property="og:url" content="https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume2/" /><meta property="article:section" content="k8s" />
 <meta property="article:published_time" content="2021-08-02T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-08-02T00:00:00+00:00" /><meta property="og:site_name" content="KubeTM Blog" />
 
 <meta itemprop="name" content="Volume">
-<meta itemprop="description" content="Dynamic Provisioning, StorageClass, Status, ReclaimPolicy
+<meta itemprop="description" content="Dynamic Provisioning, StorageClass, Status, ReclaimPolicy &lt;/br&gt; Version 1.22 에서는 스토리지 솔루션을 Longhorn으로 대체합니다.
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="387">
+<meta itemprop="wordCount" content="244">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Volume"/>
-<meta name="twitter:description" content="Dynamic Provisioning, StorageClass, Status, ReclaimPolicy
+<meta name="twitter:description" content="Dynamic Provisioning, StorageClass, Status, ReclaimPolicy &lt;/br&gt; Version 1.22 에서는 스토리지 솔루션을 Longhorn으로 대체합니다.
 "/>
 
 
@@ -142,13 +142,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script>
     $(function() {
     $("#td-section-nav a").removeClass("active");
-    $("#td-section-nav #m-k8s07-intermediate-basic-resourcevolume").addClass("active"); 
-    $("#td-section-nav #m-k8s07-intermediate-basic-resourcevolume-li span").addClass("td-sidebar-nav-active-item"); 
-    $("#td-section-nav #m-k8s07-intermediate-basic-resourcevolume").parents("li").addClass("active-path"); 
+    $("#td-section-nav #m-k8s07-intermediate-basic-resourcevolume2").addClass("active"); 
+    $("#td-section-nav #m-k8s07-intermediate-basic-resourcevolume2-li span").addClass("td-sidebar-nav-active-item"); 
+    $("#td-section-nav #m-k8s07-intermediate-basic-resourcevolume2").parents("li").addClass("active-path"); 
     $("#td-section-nav li.active-path").addClass("show"); 
     $("#td-section-nav li.active-path").children("input").prop('checked', true);
-    $("#td-section-nav #m-k8s07-intermediate-basic-resourcevolume-li").siblings("li").addClass("show");  
-    $("#td-section-nav #m-k8s07-intermediate-basic-resourcevolume-li").children("ul").children("li").addClass("show");  
+    $("#td-section-nav #m-k8s07-intermediate-basic-resourcevolume2-li").siblings("li").addClass("show");  
+    $("#td-section-nav #m-k8s07-intermediate-basic-resourcevolume2-li").children("ul").children("li").addClass("show");  
     $("#td-sidebar-menu").toggleClass("d-none"); 
     });
   </script>
@@ -1563,11 +1563,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#1-사전-구성---storageos-설치-및-storageclass-생성">1. 사전 구성 - StorageOS 설치 및 StorageClass 생성</a>
+    <li><a href="#1-longhorn-구축">1. Longhorn 구축</a>
       <ul>
-        <li><a href="#1-1-storageos-operator-설치">1-1) StorageOS Operator 설치</a></li>
-        <li><a href="#1-2-storageos-설치">1-2) StorageOS 설치</a></li>
-        <li><a href="#1-3-default-storageclass-추가">1-3) Default StorageClass 추가</a></li>
+        <li><a href="#1-1-모든-masterwork-node에-iscsi-설치">1-1) 모든 Master/Work Node에 iscsi 설치</a></li>
+        <li><a href="#1-2-longhorn-설치">1-2) Longhorn 설치</a></li>
+        <li><a href="#1-3-fast-storageclass-추가">1-3) Fast StorageClass 추가</a></li>
+        <li><a href="#1-4-storageclass-생성-확인">1-4) StorageClass 생성 확인</a></li>
+        <li><a href="#1-5-dashboard-접속을-위한-service-수정">1-5) Dashboard 접속을 위한 Service 수정</a></li>
+        <li><a href="#1-6-longhorn-dashboard-접속">1-6) Longhorn Dashboard 접속</a></li>
       </ul>
     </li>
     <li><a href="#2-dynamic-provisioning">2. Dynamic Provisioning</a>
@@ -1658,7 +1661,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume/">Volume</a>
+	<a href="https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume2/">Volume (1.22)</a>
 </li>
 
 	</ol>
@@ -1667,7 +1670,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             
 <div class="td-content">
 	<h1>Volume</h1>
-	<div class="lead">Dynamic Provisioning, StorageClass, Status, ReclaimPolicy</div>
+	<div class="lead">Dynamic Provisioning, StorageClass, Status, ReclaimPolicy </br> Version 1.22 에서는 스토리지 솔루션을 Longhorn으로 대체합니다.</div>
 	<header class="article-meta">
 		
 		
@@ -1691,130 +1694,53 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </figure>
 <br/>
 <br/>
-
-
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">1.22 버전 StorageOS 설치 안내</h4>
-
-    1.22 버전에서는 Longhorn 솔루션 설치로 실습을 진행하며, 아래 자료실 참고 바랍니다. <br/>
-<a href="https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume2/">https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume2/</a>
-
-</div>
-
-<h2 id="1-사전-구성---storageos-설치-및-storageclass-생성">1. 사전 구성 - StorageOS 설치 및 StorageClass 생성</h2>
+<h2 id="1-longhorn-구축">1. Longhorn 구축</h2>
 <hr>
-<figure>
-  <img src="/img/practice/intermediate/Volume with StorageOS Installation for Kubernetes.jpg"
-       alt="Volume with StorageOS Installation for Kubernetes."
-       class="mt-3 mb-3 border border-info rounded" />
-</figure>
-<h3 id="1-1-storageos-operator-설치">1-1) StorageOS Operator 설치</h3>
-<p>설치</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/1.5.0/storageos-operator.yaml
-</code></pre></div><p>설치 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get all -n storageos-operator
-</code></pre></div><p>Depolyment 수정</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl edit deployments.apps storageos-cluster-operator -n storageos-operator
-</code></pre></div><p>spec.containers.env의 <code>DISABLE_SCHEDULER_WEBHOOK</code>의 Value를 <code>true</code>로 설정</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">containers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">command</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#000">cluster-operator</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">env</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">DISABLE_SCHEDULER_WEBHOOK</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">value</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;false&#34;</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># true 로 변경</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storageos/cluster-operator:1.5.0</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">imagePullPolicy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IfNotPresent</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>관리 계정을 위한 Secret 생성 (username 및 password를 Base64문자로 만들기)</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87">echo</span> -n <span style="color:#4e9a06">&#34;admin&#34;</span> <span style="color:#000;font-weight:bold">|</span> base64
-<span style="color:#204a87">echo</span> -n <span style="color:#4e9a06">&#34;1234&#34;</span> <span style="color:#000;font-weight:bold">|</span> base64
-</code></pre></div><p><code>apiUsername</code> 및 <code>apiPassword</code> 부분에 위 결과로 나온 문자 넣기</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#000">kubectl create -f - &lt;&lt;END</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Secret</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-api&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-operator&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;kubernetes.io/storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">data</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">apiUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">YWRtaW4= </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># admin</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">apiPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MTIzNA== </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># 1234</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">END</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><br/>
-<h3 id="1-2-storageos-설치">1-2) StorageOS 설치</h3>
-<p>StorageOS 설치 트리거 생성</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f - <span style="color:#4e9a06">&lt;&lt;END
-</span><span style="color:#4e9a06">apiVersion: &#34;storageos.com/v1&#34;
-</span><span style="color:#4e9a06">kind: StorageOSCluster
-</span><span style="color:#4e9a06">metadata:
-</span><span style="color:#4e9a06">  name: &#34;example-storageos&#34;
-</span><span style="color:#4e9a06">  namespace: &#34;storageos-operator&#34;
-</span><span style="color:#4e9a06">spec:
-</span><span style="color:#4e9a06">  secretRefName: &#34;storageos-api&#34; # Reference the Secret created in the previous step
-</span><span style="color:#4e9a06">  secretRefNamespace: &#34;storageos-operator&#34;  # Namespace of the Secret
-</span><span style="color:#4e9a06">  k8sDistro: &#34;kubernetes&#34;
-</span><span style="color:#4e9a06">  images:
-</span><span style="color:#4e9a06">    nodeContainer: &#34;storageos/node:1.5.0&#34; # StorageOS version
-</span><span style="color:#4e9a06">  resources:
-</span><span style="color:#4e9a06">    requests:
-</span><span style="color:#4e9a06">    memory: &#34;512Mi&#34;
-</span><span style="color:#4e9a06">END</span>
-</code></pre></div><p>설치 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get all -n storageos
-</code></pre></div><p>Dashboard 접속을 위한 Service 수정 (방법 1)</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl edit service storageos -n storageos
-</code></pre></div><p>spec에  <code>externalIPs</code>와 Master IP 추가</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">clusterIP</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">10.109.77.121</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">externalIPs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">     </span><span style="color:#8f5902;font-style:italic"># 추가</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#0000cf;font-weight:bold">192.168.0.30</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#8f5902;font-style:italic"># Master IP 추가</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>접속</p>
-<pre><code>http://192.168.0.30:5705/
-</code></pre><br/>
-<p>Dashboard 접속을 위한 Service 수정 (방법 2)</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl edit service storageos -n storageos
-</code></pre></div><p>type을  <code>NodePort</code>로 변경</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storageos</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">5705</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">protocol</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">TCP</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">targetPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">5705</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">nodePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">30705</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># port 번호 추가</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">NodePort    </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># type 변경</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>접속</p>
-<pre><code>http://192.168.0.30:30705/
-</code></pre><br/>
-<h3 id="1-3-default-storageclass-추가">1-3) Default StorageClass 추가</h3>
+<h3 id="1-1-모든-masterwork-node에-iscsi-설치">1-1) 모든 Master/Work Node에 iscsi 설치</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yum install -y iscsi-initiator-utils
+</code></pre></div><h3 id="1-2-longhorn-설치">1-2) Longhorn 설치</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://kubetm.github.io/yamls/longhorn/longhorn.yaml
+</code></pre></div><p>확인</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get pods -n longhorn-system
+</code></pre></div><h3 id="1-3-fast-storageclass-추가">1-3) Fast StorageClass 추가</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f - <span style="color:#4e9a06">&lt;&lt;END
 </span><span style="color:#4e9a06">apiVersion: storage.k8s.io/v1
 </span><span style="color:#4e9a06">kind: StorageClass
 </span><span style="color:#4e9a06">metadata:
-</span><span style="color:#4e9a06">  name: default
-</span><span style="color:#4e9a06">  annotations: 
-</span><span style="color:#4e9a06">    storageclass.kubernetes.io/is-default-class: &#34;true&#34;
-</span><span style="color:#4e9a06">provisioner: kubernetes.io/storageos
+</span><span style="color:#4e9a06">  name: fast
+</span><span style="color:#4e9a06">provisioner: driver.longhorn.io
 </span><span style="color:#4e9a06">parameters:
-</span><span style="color:#4e9a06">  adminSecretName: storageos-api
-</span><span style="color:#4e9a06">  adminSecretNamespace: storageos-operator
+</span><span style="color:#4e9a06">  dataLocality: disabled
+</span><span style="color:#4e9a06">  fromBackup: &#34;&#34;
 </span><span style="color:#4e9a06">  fsType: ext4
-</span><span style="color:#4e9a06">  pool: default
+</span><span style="color:#4e9a06">  numberOfReplicas: &#34;3&#34;
+</span><span style="color:#4e9a06">  staleReplicaTimeout: &#34;30&#34;
 </span><span style="color:#4e9a06">END</span>
-</code></pre></div><p>StorageClass 확인</p>
+</code></pre></div><h3 id="1-4-storageclass-생성-확인">1-4) StorageClass 생성 확인</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get storageclasses.storage.k8s.io
-</code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">NAME                PROVISIONER               AGE
-default <span style="color:#ce5c00;font-weight:bold">(</span>default<span style="color:#ce5c00;font-weight:bold">)</span>   kubernetes.io/storageos   3s
-fast                kubernetes.io/storageos   59s
+</code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">NAME                 PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+fast                 driver.longhorn.io      Delete          Immediate              <span style="color:#204a87">false</span>                  16s
+longhorn <span style="color:#ce5c00;font-weight:bold">(</span>default<span style="color:#ce5c00;font-weight:bold">)</span>   driver.longhorn.io      Delete          Immediate              <span style="color:#204a87">true</span>                   85m
+</code></pre></div><h3 id="1-5-dashboard-접속을-위한-service-수정">1-5) Dashboard 접속을 위한 Service 수정</h3>
+<p>Service Type 변경 [ClusterIP -&gt; NodePort]</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl edit svc -n longhorn-system longhorn-frontend
+</code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">http</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">80</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">protocol</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">TCP</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">targetPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">http</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">nodePort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">30705</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># port 번호 추가</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">NodePort     </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># type 변경</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><h3 id="1-6-longhorn-dashboard-접속">1-6) Longhorn Dashboard 접속</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">http://192.168.56.30:30705
 </code></pre></div><br/>
+<br/>
 <br/>
 <h2 id="2-dynamic-provisioning">2. Dynamic Provisioning</h2>
 <hr>
 <figure>
-  <img src="/img/practice/intermediate/Volume with Dynamic Provisioning Practice for Kubernetes.jpg"
-       alt="Volume with Dynamic Provisioning Practice for Kubernetes."
+  <img src="/img/practice/intermediate/Volume with Dynamic Provisioning Practice for Kubernetes - Longhorn.jpg"
+       alt="Volume with Dynamic Provisioning Practice for Kubernetes - Longhorn."
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
 <h3 id="2-1-persistentvolume">2-1) PersistentVolume</h3>
@@ -1895,8 +1821,8 @@ fast                kubernetes.io/storageos   59s
 </span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">claimName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pvc-hostpath1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87">cd</span> /mount1
 touch file.txt
-</code></pre></div><p>StorageOS Dashboard</p>
-<pre><code>http://192.168.0.30:5705/
+</code></pre></div><p>Longhorn Dashboard</p>
+<pre><code>http://192.168.56.30:30705
 </code></pre><br/>
 <figure>
   <img src="/img/practice/intermediate/Volume with ReclaimPolicy Recycle Practice for Kubernetes.jpg"
@@ -1996,7 +1922,7 @@ kubectl delete persistentvolume pvc-b53fd802-3919-4fb0-8c1f-02221a3e4bc0 --grace
 </ul>
 <h3 id="__others__"><strong>Others</strong></h3>
 <ul>
-<li><strong>StorageOS</strong> : <a href="https://docs.storageos.com/docs/platforms/kubernetes/install/1.15">https://docs.storageos.com/docs/platforms/kubernetes/install/1.15</a></li>
+<li><strong>Longhorn</strong> : <a href="https://longhorn.io/docs/0.8.1/deploy/install/install-with-kubectl/">https://longhorn.io/docs/0.8.1/deploy/install/install-with-kubectl/</a></li>
 <li><strong>Ceph</strong> : <a href="https://docs.ceph.com/docs/master/">https://docs.ceph.com/docs/master/</a></li>
 <li><strong>Glusterfs</strong> : <a href="https://github.com/gluster/gluster-kubernetes">https://github.com/gluster/gluster-kubernetes</a></li>
 <li><strong>Persistent Storage Strategies</strong> : <a href="https://www.xenonstack.com/blog/persistent-storage">https://www.xenonstack.com/blog/persistent-storage</a></li>

@@ -148,11 +148,6 @@
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/authentication/</loc>
-    <lastmod>2021-08-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://kubetm.github.io/k8s/91-cka/exam2/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
@@ -173,6 +168,11 @@
   </url>
   
   <url>
+    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume2/</loc>
+    <lastmod>2021-08-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kubetm.github.io/k8s/03-beginner-basic-resource/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
@@ -188,7 +188,7 @@
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/authorization/</loc>
+    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/authentication/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -223,7 +223,7 @@
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/dashboard/</loc>
+    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/authorization/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -239,6 +239,11 @@
   
   <url>
     <loc>https://kubetm.github.io/helm/10-deploy-index/</loc>
+    <lastmod>2021-08-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/dashboard/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
