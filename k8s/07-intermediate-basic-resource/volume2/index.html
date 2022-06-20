@@ -1699,7 +1699,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h3 id="1-1-모든-masterwork-node에-iscsi-설치">1-1) 모든 Master/Work Node에 iscsi 설치</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yum install -y iscsi-initiator-utils
 </code></pre></div><h3 id="1-2-longhorn-설치">1-2) Longhorn 설치</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://kubetm.github.io/yamls/longhorn/longhorn.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/yamls/longhorn/longhorn.yaml
 </code></pre></div><p>확인</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get pods -n longhorn-system
 </code></pre></div><h3 id="1-3-fast-storageclass-추가">1-3) Fast StorageClass 추가</h3>
