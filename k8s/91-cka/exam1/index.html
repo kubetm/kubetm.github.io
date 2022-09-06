@@ -1843,7 +1843,7 @@ kubectl get pods nginx -o wide
 </span><span style="color:#4e9a06">    image: nginx
 </span><span style="color:#4e9a06">EOF</span>
 </code></pre></div><p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/">https://v1-18.docs.kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/</a></p>
+<p><a href="https://kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/">https://kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl expose pod exist-pod --name<span style="color:#ce5c00;font-weight:bold">=</span>cluster-service --type<span style="color:#ce5c00;font-weight:bold">=</span>ClusterIP --port<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8080</span>
 </code></pre></div><br/>
 <br/>
@@ -1853,7 +1853,7 @@ kubectl get pods nginx -o wide
 </ul>
 <hr>
 <p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates">https://v1-18.docs.kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates</a></p>
+<p><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates">https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl create ns ns-01
 </code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Pod</span><span style="color:#f8f8f8;text-decoration:underline">
