@@ -1683,7 +1683,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>CA : /tls/ca.crt, Client Cert : /tls/client.crt, Client Key : /tls/client.key</li>
 </ul>
 <p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#built-in-snapshot">https://v1-18.docs.kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#built-in-snapshot</a></p>
+<p><a href="https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#built-in-snapshot">https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#built-in-snapshot</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#000">ETCDCTL_API</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3</span> etcdctl --endpoints https://127.0.0.1:2379 --cacert /tls/ca.crt --cert /tls/client.crt --key /tls/client.key snapshot save /snapshot/etcd.db
 <span style="color:#000">ETCDCTL_API</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3</span> etcdctl --write-out<span style="color:#ce5c00;font-weight:bold">=</span>table snapshot status /snapshot/etcd.db
 </code></pre></div><p>내 Cluster에서 해볼려면..</p>
@@ -1715,7 +1715,7 @@ kubectl <span style="color:#204a87">exec</span> -n kube-system etcd-k8s-master -
 <h3 id="nameek8s-node-0로-라벨이-달린-노드를-사용불가하게-만들고-해당-노드위에-있는-pod들은-모두-reschedule함">name=ek8s-node-0로 라벨이 달린 노드를 사용불가하게 만들고, 해당 노드위에 있는 Pod들은 모두 reschedule함</h3>
 <hr>
 <p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/">https://v1-18.docs.kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/</a></p>
+<p><a href="https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/">https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get node --show-labels <span style="color:#000;font-weight:bold">|</span>grep <span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">=</span>ek8s-node-0
 kubectl drain ek8s-node-0 --ignore-daemonsets --force
 </code></pre></div><p>내 Cluster에서 해볼려면..</p>
@@ -1772,7 +1772,7 @@ systemctl <span style="color:#204a87">enable</span> kubelet
 <li>file path : /etc/kubernetes/manifests</li>
 </ul>
 <p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/static-pod/">https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/static-pod/</a></p>
+<p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/">https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">해당 node에 접근해서 root권한으로 작업
 ssh wk8s-node-1
 sudo -i
@@ -1827,7 +1827,7 @@ systemctl restart kubelet
 <li>sudo -i</li>
 </ul>
 <p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/static-pod/">https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/static-pod/</a></p>
+<p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/">https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">문제의 원인은 Master Pod의 Static Pod들이 실행되지 않고 있었음.
 
 해당 Master에 접근해서 root권한으로 작업
@@ -1868,7 +1868,7 @@ kubectl get cs
 <li>Path : /mnt/data</li>
 </ul>
 <p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume">https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume</a></p>
+<p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume">https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PersistentVolume</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1901,11 +1901,11 @@ kubectl get cs
 </ul>
 <p><code>문제풀이</code>
 <br/>
-<a href="https://v1-18.docs.kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/">https://v1-18.docs.kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/</a>
+<a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/">https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/</a>
 <br/>
-<a href="https://v1-18.docs.kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm">https://v1-18.docs.kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm</a>
+<a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm">https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm</a>
 <br/>
-<a href="https://v1-18.docs.kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/#init-workflow">https://v1-18.docs.kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/#init-workflow</a></p>
+<a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/#init-workflow">https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/#init-workflow</a></p>
 <p>위에 링크들을 참고해서 설치</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubeadm init --ignore-preflight-errors<span style="color:#ce5c00;font-weight:bold">=</span>all --config /etc/kubeadm.conf
 </code></pre></div><p>node join시  아래 명령 참고

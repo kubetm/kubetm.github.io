@@ -1666,7 +1666,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="사전-작업">사전 작업</h2>
 <hr>
 <p>node-1에 kubectl 명령 자동완성 설정</p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete">https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete</a></p>
+<p><a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete">https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87">source</span> &lt;<span style="color:#ce5c00;font-weight:bold">(</span>kubectl completion bash<span style="color:#ce5c00;font-weight:bold">)</span>
 <span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#34;source &lt;(kubectl completion bash)&#34;</span> &gt;&gt; ~/.bashrc
 </code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87">alias</span> <span style="color:#000">k</span><span style="color:#ce5c00;font-weight:bold">=</span>kubectl
@@ -1694,7 +1694,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span><span style="color:#4e9a06">    command: [&#39;sh&#39;, &#39;-c&#39;, &#39;echo Hello Kubernetes ; echo error-message; echo end; sleep 1000&#39;]
 </span><span style="color:#4e9a06">EOF</span>
 </code></pre></div><p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/">https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/</a></p>
+<p><a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet">https://kubernetes.io/docs/reference/kubectl/cheatsheet</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl logs poo <span style="color:#000;font-weight:bold">|</span> grep error-message &gt; ./poo 
 </code></pre></div><br/>
 <br/>
@@ -1742,14 +1742,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span><span style="color:#4e9a06">    type: DirectoryOrCreate
 </span><span style="color:#4e9a06">EOF</span>
 </code></pre></div><p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/">https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/</a></p>
+<p><a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet">https://kubernetes.io/docs/reference/kubectl/cheatsheet</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get pv --all-namespaces --sort-by<span style="color:#ce5c00;font-weight:bold">=</span>.metadata.name &gt; ./pvname
 </code></pre></div><br/>
 <br/>
 <h3 id="멀티-컨테이너-pod만들기-nginx-busybox-redis-등-제시됨">멀티 컨테이너 Pod만들기 (nginx, busybox, redis 등 제시됨)</h3>
 <hr>
 <p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates">https://v1-18.docs.kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates</a></p>
+<p><a href="https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates">https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Pod</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1775,7 +1775,7 @@ kubectl describe pods myapp-pod
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#000">kubectl label nodes k8s-node1 disktype=ssd</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">kubectl get nodes -l disktype=ssd</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/configuration/assign-pod-node/#step-two-add-a-nodeselector-field-to-your-pod-configuration">https://v1-18.docs.kubernetes.io/docs/concepts/configuration/assign-pod-node/#step-two-add-a-nodeselector-field-to-your-pod-configuration</a></p>
+<p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/#create-a-pod-that-gets-scheduled-to-your-chosen-node">https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/#create-a-pod-that-gets-scheduled-to-your-chosen-node</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Pod</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1816,7 +1816,7 @@ kubectl get pods nginx -o wide
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">workdir</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">mountPath</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/workdir</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/configure-pod-initialization/">https://v1-18.docs.kubernetes.io/docs/tasks/configure-pod-container/configure-pod-initialization/</a></p>
+<p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-initialization/">https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-initialization/</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">initContainers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">install</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">busybox</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1936,7 +1936,7 @@ vi pod-namelist.txt
 </ul>
 <hr>
 <p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/storage/volumes/#example-pod">https://v1-18.docs.kubernetes.io/docs/concepts/storage/volumes/#example-pod</a></p>
+<p><a href="https://kubernetes.io/docs/concepts/storage/volumes/#emptydir-configuration-example">https://kubernetes.io/docs/concepts/storage/volumes/#emptydir-configuration-example</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl create ns volume-1
 </code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Pod</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1964,9 +1964,9 @@ vi pod-namelist.txt
 <hr>
 <p><code>문제풀이</code></p>
 <p>secret 만들기</p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/configuration/secret/#use-case-pods-with-prod-test-credentials">https://v1-18.docs.kubernetes.io/docs/concepts/configuration/secret/#use-case-pods-with-prod-test-credentials</a></p>
+<p><a href="https://kubernetes.io/docs/concepts/configuration/secret/#use-case-pods-with-prod-test-credentials">https://kubernetes.io/docs/concepts/configuration/secret/#use-case-pods-with-prod-test-credentials</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl create secret generic mysecret --from-literal<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">username</span><span style="color:#ce5c00;font-weight:bold">=</span>sec1
-</code></pre></div><p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod">https://v1-18.docs.kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod</a></p>
+</code></pre></div><p><a href="https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod">https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Pod</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1983,7 +1983,7 @@ vi pod-namelist.txt
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">foo</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">secret</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">secretName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">mysecret</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables">https://v1-18.docs.kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables</a></p>
+</span></code></pre></div><p><a href="https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables">https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Pod</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -2013,7 +2013,7 @@ kubectl <span style="color:#204a87">exec</span> secret-env-pod -it -- env <span 
 <p>1.18 버전부터 kubectl run으로 Deployment을 만드는건 Deprecated 됐습니다</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl run deploy-2 --image<span style="color:#ce5c00;font-weight:bold">=</span>redis --replicas<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">5</span> --labels<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">test</span><span style="color:#ce5c00;font-weight:bold">=</span>deploy2
 </code></pre></div><p>아래 URL을 참조해서 vi로 yaml 파일을 만드는 방식으로 교체합니다.</p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment">https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment</a></p>
+<p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment">https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">vi deploy-2.yaml
 ---------------------------- 
 apiVersion: apps/v1
@@ -2073,7 +2073,7 @@ kubectl delete deployments.apps deploy-2
 </span><span style="color:#4e9a06">        - containerPort: 80
 </span><span style="color:#4e9a06">EOF</span>
 </code></pre></div><p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#scaling-resources">https://v1-18.docs.kubernetes.io/docs/reference/kubectl/cheatsheet/#scaling-resources</a></p>
+<p><a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/#scaling-resources">https://kubernetes.io/docs/reference/kubectl/cheatsheet/#scaling-resources</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl scale deployment/scale-deployment --replicas<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">5</span>
 </code></pre></div><br/>
 <br/>
@@ -2089,7 +2089,7 @@ kubectl delete deployments.apps deploy-2
 <p>1.18 버전부터 kubectl run으로 Deployment을 만드는건 Deprecated 됐습니다.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl run deploy-01 --image<span style="color:#ce5c00;font-weight:bold">=</span>nginx:1.14.2 --replicas<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3</span>
 </code></pre></div><p>아래 URL을 참조해서 vi로 yaml 파일을 만드는 방식으로 교체합니다.</p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment">https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment</a></p>
+<p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment">https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">vi deploy-01.yaml
 ---------------------------- 
 apiVersion: apps/v1
@@ -2128,7 +2128,7 @@ kubectl rollout <span style="color:#204a87">history</span> deployment deploy-01
 <p>1.18 버전부터 kubectl run으로 Deployment을 만드는건 Deprecated 됐습니다.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl run dns-deploy --image<span style="color:#ce5c00;font-weight:bold">=</span>nginx --replicas<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span>
 </code></pre></div><p>아래 URL을 참조해서 vi로 yaml 파일을 만드는 방식으로 교체합니다.</p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment">https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment</a></p>
+<p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment">https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">vi dns-deploy.yaml
 ---------------------------- 
 apiVersion: apps/v1
@@ -2155,7 +2155,7 @@ spec:
 ----------------------------
 kubectl create dns-deploy.yaml
 </code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl expose deployment dns-deploy --port<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8080</span> --name<span style="color:#ce5c00;font-weight:bold">=</span>dns-svc
-</code></pre></div><p><a href="https://v1-18.docs.kubernetes.io/ko/docs/concepts/services-networking/connect-applications-service/#dns">https://v1-18.docs.kubernetes.io/ko/docs/concepts/services-networking/connect-applications-service/#dns</a></p>
+</code></pre></div><p><a href="https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#dns">https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#dns</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get pods dns-deploy-5d6bd489d5-n4sx4 -o wide
  
 kubectl run curl1 --image<span style="color:#ce5c00;font-weight:bold">=</span>radial/busyboxplus:curl -i --tty
@@ -2168,7 +2168,7 @@ kubectl delete deployments.apps curl
 <h3 id="daemonset을-이용해서-모든-노드에-nginx-pod-생성-taints-오버라이트-하지-말것">DaemonSet을 이용해서 모든 노드에 nginx pod 생성, Taints 오버라이트 하지 말것</h3>
 <hr>
 <p><code>문제풀이</code></p>
-<p><a href="https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/daemonset/">https://v1-18.docs.kubernetes.io/docs/concepts/workloads/controllers/daemonset/</a></p>
+<p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/">https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/</a></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">apps/v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">DaemonSet</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
