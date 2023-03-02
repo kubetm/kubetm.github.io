@@ -920,7 +920,7 @@ helm repo update
 helm repo remove bitnami
 </code></pre></div><h3 id="2-2-tomcat-배포">2-2) Tomcat 배포</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#ce5c00;font-weight:bold">[</span>Tomcat 배포<span style="color:#ce5c00;font-weight:bold">]</span>
-helm install my-tomcat bitnami/tomcat --version 7.1.2 --set persistence.enabled<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
+helm install my-tomcat bitnami/tomcat --version 10.5.17 --set persistence.enabled<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
 
 <span style="color:#ce5c00;font-weight:bold">[</span>NodePort 확인 및 접속<span style="color:#ce5c00;font-weight:bold">]</span>
 kubectl get svc my-tomcat
@@ -941,7 +941,7 @@ kubectl get pods
 <h3 id="2-4-관리자-페이지에-접속이-되도록-다시-재설치">2-4) 관리자 페이지에 접속이 되도록 다시 재설치</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
 <span style="color:#ce5c00;font-weight:bold">[</span>Tomcat 배포<span style="color:#ce5c00;font-weight:bold">]</span>
-helm install my-tomcat bitnami/tomcat --version 7.1.2 --set persistence.enabled<span style="color:#ce5c00;font-weight:bold">=</span>false,tomcatAllowRemoteManagement<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span>
+helm install my-tomcat bitnami/tomcat --version 10.5.17 --set persistence.enabled<span style="color:#ce5c00;font-weight:bold">=</span>false,tomcatAllowRemoteManagement<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span>
 
 <span style="color:#ce5c00;font-weight:bold">[</span>NodePort 확인 및 접속<span style="color:#ce5c00;font-weight:bold">]</span>
 kubectl get svc my-tomcat
@@ -955,13 +955,13 @@ helm uninstall my-tomcat
 <hr>
 <h3 id="3-1-chart-다운로드">3-1) Chart 다운로드</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#ce5c00;font-weight:bold">[</span>다운로드<span style="color:#ce5c00;font-weight:bold">]</span>
-helm pull bitnami/tomcat --version 7.1.2
+helm pull bitnami/tomcat --version 10.5.17
 
 <span style="color:#ce5c00;font-weight:bold">[</span>압축풀기<span style="color:#ce5c00;font-weight:bold">]</span>
-tar -xf ./tomcat-7.1.2.tgz
+tar -xf ./tomcat-10.5.17.tgz
 
 <span style="color:#ce5c00;font-weight:bold">[</span>Tomcat 배포<span style="color:#ce5c00;font-weight:bold">]</span>
-helm install my-tomcat . -f values.yaml
+helm install my-tomcat . -f values.yaml --set persistence.enabled=false
 
 <span style="color:#ce5c00;font-weight:bold">[</span>NodePort 확인 및 접속<span style="color:#ce5c00;font-weight:bold">]</span>
 kubectl get svc my-tomcat
