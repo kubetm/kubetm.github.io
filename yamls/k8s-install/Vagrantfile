@@ -134,8 +134,11 @@ source <(kubectl completion bash)
 echo "source <(kubectl completion bash)" >> ~/.bashrc
 
 # Calico 설치
-kubectl apply -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/yamls/k8s-install/calico.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/yamls/k8s-install/calico-custom.yaml
+kubectl create -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/yamls/k8s-install/calico.yaml
+kubectl create -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/yamls/k8s-install/calico-custom.yaml
+
+curl https://docs.projectcalico.org/manifests/calico.yaml -O
+kubectl apply -f calico.yaml
 
 # Dashboard 설치
 kubectl apply -f https://kubetm.github.io/yamls/k8s-install/dashboard-2.3.0.yaml
