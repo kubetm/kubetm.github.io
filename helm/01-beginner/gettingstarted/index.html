@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Helm으로 Tomcat 배포
 "><meta itemprop="datePublished" content="2018-08-03T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2018-08-03T00:00:00+00:00" />
-<meta itemprop="wordCount" content="261">
+<meta itemprop="wordCount" content="263">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Helm 기초 다지기"/>
 <meta name="twitter:description" content="Helm으로 Tomcat 배포
@@ -961,7 +961,7 @@ helm pull bitnami/tomcat --version 10.5.17
 tar -xf ./tomcat-10.5.17.tgz
 
 <span style="color:#ce5c00;font-weight:bold">[</span>Tomcat 배포<span style="color:#ce5c00;font-weight:bold">]</span>
-helm install my-tomcat . -f values.yaml --set persistence.enabled=false
+helm install my-tomcat . -f values.yaml --set persistence.enabled<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
 
 <span style="color:#ce5c00;font-weight:bold">[</span>NodePort 확인 및 접속<span style="color:#ce5c00;font-weight:bold">]</span>
 kubectl get svc my-tomcat
@@ -1045,7 +1045,7 @@ http://&lt;master-ip&gt;:&lt;nodePort&gt;/
         
       </div>
       <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-        <small class="text-white">&copy; 2022 Kim Taemin All Rights Reserved</small>
+        <small class="text-white">&copy; 2023 Kim Taemin All Rights Reserved</small>
         <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">개인정보 보호 정책</a></small>
 	
 		<p class="mt-2"><a href="/about/">About</a></p>

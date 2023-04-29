@@ -19,7 +19,7 @@
 
 <title>Getting-Started Kubernetes! | KubeTM Blog</title>
 <meta name="description" content=""><meta property="og:title" content="Getting-Started Kubernetes!" />
-<meta property="og:description" content="강의자료 PDF 실습 참고사항이 실습 강의의 목적은 일반 서버와 도커, 그리고 쿠버네티스 환경의 차이점에 대해 대략적인 흐름을 이해하기 위함입니다. 그렇기 때문에 강의를 위한 별도의 사전 구축 내용들은 설명되지 않았고, 이후 쿠버네티스를 설치하고 [기초편]부터 실습을 진행하시면 되세요. 하지만 기존에 도커를 잘 아시는 분께서는 자신의 환경에 마춰 실습해 보셔도 무관합니다.1. Linux   CentOS에 nodejs 설치 :
+<meta property="og:description" content="강의자료 PDF      실습 참고사항 이 실습 강의의 목적은 일반 서버와 도커, 그리고 쿠버네티스 환경의 차이점에 대해 대략적인 흐름을 이해하기 위함입니다. 그렇기 때문에 강의를 위한 별도의 사전 구축 내용들은 설명되지 않았고, 이후 쿠버네티스를 설치하고 [기초편]부터 실습을 진행하시면 되세요. 하지만 기존에 도커를 잘 아시는 분께서는 자신의 환경에 마춰 실습해 보셔도 무관합니다.    1. Linux     CentOS에 nodejs 설치 :
  yum install epel-release yum -y install nodejs 1-1) hello." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kubetm.github.io/k8s/02-beginner/gettingstarted/" /><meta property="article:section" content="k8s" />
@@ -27,13 +27,13 @@
 <meta property="article:modified_time" content="2021-08-02T00:00:00+00:00" /><meta property="og:site_name" content="KubeTM Blog" />
 
 <meta itemprop="name" content="Getting-Started Kubernetes!">
-<meta itemprop="description" content="강의자료 PDF 실습 참고사항이 실습 강의의 목적은 일반 서버와 도커, 그리고 쿠버네티스 환경의 차이점에 대해 대략적인 흐름을 이해하기 위함입니다. 그렇기 때문에 강의를 위한 별도의 사전 구축 내용들은 설명되지 않았고, 이후 쿠버네티스를 설치하고 [기초편]부터 실습을 진행하시면 되세요. 하지만 기존에 도커를 잘 아시는 분께서는 자신의 환경에 마춰 실습해 보셔도 무관합니다.1. Linux   CentOS에 nodejs 설치 :
+<meta itemprop="description" content="강의자료 PDF      실습 참고사항 이 실습 강의의 목적은 일반 서버와 도커, 그리고 쿠버네티스 환경의 차이점에 대해 대략적인 흐름을 이해하기 위함입니다. 그렇기 때문에 강의를 위한 별도의 사전 구축 내용들은 설명되지 않았고, 이후 쿠버네티스를 설치하고 [기초편]부터 실습을 진행하시면 되세요. 하지만 기존에 도커를 잘 아시는 분께서는 자신의 환경에 마춰 실습해 보셔도 무관합니다.    1. Linux     CentOS에 nodejs 설치 :
  yum install epel-release yum -y install nodejs 1-1) hello."><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="wordCount" content="215">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Getting-Started Kubernetes!"/>
-<meta name="twitter:description" content="강의자료 PDF 실습 참고사항이 실습 강의의 목적은 일반 서버와 도커, 그리고 쿠버네티스 환경의 차이점에 대해 대략적인 흐름을 이해하기 위함입니다. 그렇기 때문에 강의를 위한 별도의 사전 구축 내용들은 설명되지 않았고, 이후 쿠버네티스를 설치하고 [기초편]부터 실습을 진행하시면 되세요. 하지만 기존에 도커를 잘 아시는 분께서는 자신의 환경에 마춰 실습해 보셔도 무관합니다.1. Linux   CentOS에 nodejs 설치 :
+<meta name="twitter:description" content="강의자료 PDF      실습 참고사항 이 실습 강의의 목적은 일반 서버와 도커, 그리고 쿠버네티스 환경의 차이점에 대해 대략적인 흐름을 이해하기 위함입니다. 그렇기 때문에 강의를 위한 별도의 사전 구축 내용들은 설명되지 않았고, 이후 쿠버네티스를 설치하고 [기초편]부터 실습을 진행하시면 되세요. 하지만 기존에 도커를 잘 아시는 분께서는 자신의 환경에 마춰 실습해 보셔도 무관합니다.    1. Linux     CentOS에 nodejs 설치 :
  yum install epel-release yum -y install nodejs 1-1) hello."/>
 
 
@@ -1810,8 +1810,7 @@ docker push kubetm/hello
 
 
 <div class="tab-content" id="tabs-2-content"><div class="tab-pane fade show active"
-        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
-apiVersion: v1
+        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">apiVersion: v1
 kind: Service
 metadata:
   name: hello-svc
@@ -1822,11 +1821,9 @@ spec:
     - port: <span style="color:#0000cf;font-weight:bold">8200</span>
       targetPort: <span style="color:#0000cf;font-weight:bold">8000</span>
   externalIPs:
-  - 192.168.56.30
-</code></pre></div></div>
+  - 192.168.56.30</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
-apiVersion: v1
+        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">apiVersion: v1
 kind: Service
 metadata:
   name: hello-svc
@@ -1837,8 +1834,7 @@ spec:
     - port: <span style="color:#0000cf;font-weight:bold">8200</span>
       targetPort: <span style="color:#0000cf;font-weight:bold">8000</span>
   externalIPs:
-  - 192.168.0.30
-</code></pre></div></div>
+  - 192.168.0.30</code></pre></div></div>
   
 </div>
 
@@ -1912,7 +1908,7 @@ spec:
         
       </div>
       <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-        <small class="text-white">&copy; 2022 Kim Taemin All Rights Reserved</small>
+        <small class="text-white">&copy; 2023 Kim Taemin All Rights Reserved</small>
         <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">개인정보 보호 정책</a></small>
 	
 		<p class="mt-2"><a href="/about/">About</a></p>

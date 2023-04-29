@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Container, Label, NodeSchedule
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="333">
+<meta itemprop="wordCount" content="360">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Pod"/>
 <meta name="twitter:description" content="Container, Label, NodeSchedule
@@ -1696,6 +1696,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
        alt="Pod with Container Port for Kubernetes."
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">필독! Pod 생성시 확인 사항</h4>
+
+    Kubernetes Dashboard 상단 콤보박스에서 꼭 Namespace를 [default]로 해서 작업해주세요.
+만약 [모든 네임스페이스]로 되어 있다면 Pod 생성시 [Deploying file has failed] 에러가 발생합니다.
+
+</div>
+
 <h3 id="1-1-pod">1-1) Pod</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Pod</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1981,7 +1991,7 @@ kubectl <span style="color:#204a87">exec</span> pod1 -c con1 -it /bin/bash
         
       </div>
       <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-        <small class="text-white">&copy; 2022 Kim Taemin All Rights Reserved</small>
+        <small class="text-white">&copy; 2023 Kim Taemin All Rights Reserved</small>
         <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">개인정보 보호 정책</a></small>
 	
 		<p class="mt-2"><a href="/about/">About</a></p>

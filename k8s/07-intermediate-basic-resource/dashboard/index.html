@@ -1715,21 +1715,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 <div class="tab-content" id="tabs-0-content"><div class="tab-pane fade show active"
-        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
-<span style="color:#8f5902;font-style:italic"># kubetm 가이드로 Dashboard대로 설치했을 경우 아래 명령으로 삭제</span>
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># kubetm 가이드로 Dashboard대로 설치했을 경우 아래 명령으로 삭제</span>
 kubectl delete -f https://kubetm.github.io/yamls/k8s-install/dashboard-2.3.0.yaml
 
 <span style="color:#8f5902;font-style:italic"># 다시 Dashboard (2.3.0) 설치 - &lt;https://github.com/kubernetes/dashboard/releases/tag/v2.3.0&gt;</span>
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.0/aio/deploy/recommended.yaml
-</code></pre></div></div>
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.0/aio/deploy/recommended.yaml</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
-<span style="color:#8f5902;font-style:italic"># kubetm 가이드로 Dashboard대로 설치했을 경우 아래 명령으로 삭제</span>
+        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># kubetm 가이드로 Dashboard대로 설치했을 경우 아래 명령으로 삭제</span>
 kubectl delete -f https://kubetm.github.io/documents/appendix/kubetm-dashboard-v1.10.1.yaml
 
 <span style="color:#8f5902;font-style:italic"># 새 Dashboard (2.0.0) 설치 - &lt;https://github.com/kubernetes/dashboard/releases/tag/v2.0.0&gt;</span>
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
-</code></pre></div></div>
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml</code></pre></div></div>
   
 </div>
 
@@ -1786,9 +1782,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/a
 
 
 <div class="tab-content" id="tabs-1-content"><div class="tab-pane fade show active"
-        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
-
-cat <span style="color:#4e9a06">&lt;&lt;EOF | kubectl create -f -
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat <span style="color:#4e9a06">&lt;&lt;EOF | kubectl create -f -
 </span><span style="color:#4e9a06">apiVersion: rbac.authorization.k8s.io/v1
 </span><span style="color:#4e9a06">kind: ClusterRoleBinding
 </span><span style="color:#4e9a06">metadata:
@@ -1803,13 +1797,9 @@ cat <span style="color:#4e9a06">&lt;&lt;EOF | kubectl create -f -
 </span><span style="color:#4e9a06">- kind: ServiceAccount
 </span><span style="color:#4e9a06">  name: kubernetes-dashboard
 </span><span style="color:#4e9a06">  namespace: kubernetes-dashboard
-</span><span style="color:#4e9a06">EOF</span>
-
-</code></pre></div></div>
+</span><span style="color:#4e9a06">EOF</span></code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
-
-cat <span style="color:#4e9a06">&lt;&lt;EOF | kubectl create -f -
+        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat <span style="color:#4e9a06">&lt;&lt;EOF | kubectl create -f -
 </span><span style="color:#4e9a06">apiVersion: rbac.authorization.k8s.io/v1beta1
 </span><span style="color:#4e9a06">kind: ClusterRoleBinding
 </span><span style="color:#4e9a06">metadata:
@@ -1824,9 +1814,7 @@ cat <span style="color:#4e9a06">&lt;&lt;EOF | kubectl create -f -
 </span><span style="color:#4e9a06">- kind: ServiceAccount
 </span><span style="color:#4e9a06">  name: kubernetes-dashboard
 </span><span style="color:#4e9a06">  namespace: kubernetes-dashboard
-</span><span style="color:#4e9a06">EOF</span>
-
-</code></pre></div></div>
+</span><span style="color:#4e9a06">EOF</span></code></pre></div></div>
   
 </div>
 
@@ -1892,13 +1880,9 @@ openssl pkcs12 -export -clcerts -inkey client.key -in client.crt -out client.p12
 
 
 <div class="tab-content" id="tabs-2-content"><div class="tab-pane fade show active"
-        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
-https://192.168.56.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
-</code></pre></div></div>
+        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">https://192.168.56.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
-https://192.168.0.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
-</code></pre></div></div>
+        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">https://192.168.0.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login</code></pre></div></div>
   
 </div>
 
@@ -1972,7 +1956,7 @@ https://192.168.0.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:
         
       </div>
       <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-        <small class="text-white">&copy; 2022 Kim Taemin All Rights Reserved</small>
+        <small class="text-white">&copy; 2023 Kim Taemin All Rights Reserved</small>
         <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">개인정보 보호 정책</a></small>
 	
 		<p class="mt-2"><a href="/about/">About</a></p>
