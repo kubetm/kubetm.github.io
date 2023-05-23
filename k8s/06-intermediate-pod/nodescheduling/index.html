@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Node Affinity, Pod Affinity/Anti-Affinity, Toleration/Taint
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="205">
+<meta itemprop="wordCount" content="221">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Node Scheduling"/>
 <meta name="twitter:description" content="Node Affinity, Pod Affinity/Anti-Affinity, Toleration/Taint
@@ -1936,7 +1936,17 @@ kubectl label nodes k8s-node2 a-team<span style="color:#ce5c00;font-weight:bold"
 </span></code></pre></div><h3 id="3-7-node2---taint">3-7) Node2 - Taint</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#000">kubectl taint nodes k8s-node1 hw=gpu:NoSchedule-</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">kubectl taint nodes k8s-node2 out-of-disk=True:NoExecute</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><br/>
+</span></code></pre></div>
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">필독! 작업 후 Taint 꼭 삭제해주세요</h4>
+
+    kubectl taint nodes k8s-node1 hw=gpu:NoSchedule-
+kubectl taint nodes k8s-node2 out-of-disk=True:NoExecute-
+
+</div>
+
+<br/>
 <br/>
 <h2 id="sample-yaml">Sample Yaml</h2>
 <hr>

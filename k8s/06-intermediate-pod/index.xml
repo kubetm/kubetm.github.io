@@ -476,7 +476,17 @@ kubectl label nodes k8s-node2 a-team&lt;span style=&#34;color:#ce5c00;font-weigh
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-7-node2---taint&#34;&gt;3-7) Node2 - Taint&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;kubectl taint nodes k8s-node1 hw=gpu:NoSchedule-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;kubectl taint nodes k8s-node2 out-of-disk=True:NoExecute&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;필독! 작업 후 Taint 꼭 삭제해주세요&lt;/h4&gt;
+
+    kubectl taint nodes k8s-node1 hw=gpu:NoSchedule-
+kubectl taint nodes k8s-node2 out-of-disk=True:NoExecute-
+
+&lt;/div&gt;
+
+&lt;br/&gt;
 &lt;br/&gt;
 &lt;h2 id=&#34;sample-yaml&#34;&gt;Sample Yaml&lt;/h2&gt;
 &lt;hr&gt;
