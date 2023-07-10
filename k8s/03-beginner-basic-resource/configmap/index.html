@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Env(Literal, File), Mount(File)
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="159">
+<meta itemprop="wordCount" content="242">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ConfigMap, Secret"/>
 <meta name="twitter:description" content="Env(Literal, File), Mount(File)
@@ -1732,7 +1732,26 @@ kubectl create configmap cm-file --from-file<span style="color:#ce5c00;font-weig
 </code></pre></div><h3 id="2-2-secret">2-2) Secret</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#34;Content&#34;</span> &gt;&gt; file-s.txt
 kubectl create secret generic sec-file --from-file<span style="color:#ce5c00;font-weight:bold">=</span>./file-s.txt
-</code></pre></div><h3 id="2-3-pod">2-3) Pod</h3>
+</code></pre></div>
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">필독! 강의중 Pod Secret의 보안적요소 설명정정</h4>
+
+    <p>secret은 쿠버네티스의 Memory에 저장되기 떄문에 보안에 좋고, secret를 많이 사용하면 쿠버네티스 클러스터 메모리가 부족해진다고 한부분을 수정합니다</p>
+<p>[내용 수정]
+secret은 평문으로 쿠버네티스 DB(etcd)에 저장됩니다.
+secret의 보안적 요소는 secret를 pod에 파일로 마운팅해서 사용할 때
+Pod 내부에서는 파일이 보이지만
+이런 기능을 구현하기 위해서 쿠버네티스 입장에서는
+workernode에 secret 파일을 만들어 놓고, Pod에 이 파일을 마운팅 합니다
+이때 workernode에 secret 파일을 인메모리 파일시스템(tmpfs)영역에 올려놓고 있다가
+Pod가 삭제되면 지우는데요.
+이렇게 민감한 데이터를 디스크에 저장해 놓지 않기 때문에 configmap보다 보안에 유리 할 수 있습니다</p>
+
+
+</div>
+
+<h3 id="2-3-pod">2-3) Pod</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Pod</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">

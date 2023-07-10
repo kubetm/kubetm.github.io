@@ -689,7 +689,26 @@ kubectl create configmap cm-file --from-file&lt;span style=&#34;color:#ce5c00;fo
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-2-secret&#34;&gt;2-2) Secret&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Content&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; file-s.txt
 kubectl create secret generic sec-file --from-file&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;./file-s.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-3-pod&#34;&gt;2-3) Pod&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;필독! 강의중 Pod Secret의 보안적요소 설명정정&lt;/h4&gt;
+
+    &lt;p&gt;secret은 쿠버네티스의 Memory에 저장되기 떄문에 보안에 좋고, secret를 많이 사용하면 쿠버네티스 클러스터 메모리가 부족해진다고 한부분을 수정합니다&lt;/p&gt;
+&lt;p&gt;[내용 수정]
+secret은 평문으로 쿠버네티스 DB(etcd)에 저장됩니다.
+secret의 보안적 요소는 secret를 pod에 파일로 마운팅해서 사용할 때
+Pod 내부에서는 파일이 보이지만
+이런 기능을 구현하기 위해서 쿠버네티스 입장에서는
+workernode에 secret 파일을 만들어 놓고, Pod에 이 파일을 마운팅 합니다
+이때 workernode에 secret 파일을 인메모리 파일시스템(tmpfs)영역에 올려놓고 있다가
+Pod가 삭제되면 지우는데요.
+이렇게 민감한 데이터를 디스크에 저장해 놓지 않기 때문에 configmap보다 보안에 유리 할 수 있습니다&lt;/p&gt;
+
+
+&lt;/div&gt;
+
+&lt;h3 id=&#34;2-3-pod&#34;&gt;2-3) Pod&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;v1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Pod&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
