@@ -815,7 +815,7 @@ kubectl label nodes k8s-node1 &lt;span style=&#34;color:#000&#34;&gt;key1&lt;/sp
        alt=&#34;Service with Headless Concept for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
-&lt;h2 id=&#34;exteranl&#34;&gt;Exteranl&lt;/h2&gt;
+&lt;h2 id=&#34;external&#34;&gt;External&lt;/h2&gt;
 &lt;figure&gt;
   &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Service with ExternalName Concept for Kubernetes.jpg&#34;
        alt=&#34;Service with ExternalName Concept for Kubernetes.&#34;
