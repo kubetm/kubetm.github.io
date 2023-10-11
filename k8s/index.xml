@@ -4677,6 +4677,7 @@ kubectl apply -f calico.yaml
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt;mkdir k8s&lt;/span&gt;
 C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt;cd k8s &lt;/span&gt;
 C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://kubetm.github.io/yamls/k8s-install/Vagrantfile&lt;/span&gt;
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; vagrant plugin install vagrant-vbguest&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;Vagrant 실행 (5~10분 소요)&lt;/li&gt;
 &lt;/ul&gt;
