@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Service Loadbalancing, Canary Upgrade
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="342">
+<meta itemprop="wordCount" content="359">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ingress"/>
 <meta name="twitter:description" content="Service Loadbalancing, Canary Upgrade
@@ -1730,6 +1730,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
       <a class="nav-link active"
         id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab"
@@ -1740,19 +1757,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a class="nav-link"
         id="tabs-0-1-tab" data-toggle="tab" href="#tabs-0-1" role="tab"
         aria-controls="tabs-0-1" aria-selected="false">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-0-2-tab" data-toggle="tab" href="#tabs-0-2" role="tab"
+        aria-controls="tabs-0-2" aria-selected="false">
         v1.15
       </a>
     </li></ul>
 
 
 <div class="tab-content" id="tabs-0-content"><div class="tab-pane fade show active"
-        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.0/deploy/static/provider/baremetal/deploy.yaml</code></pre></div></div>
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/baremetal/deploy.yaml</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/mandatory.yaml</code></pre></div></div>
+        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.0/deploy/static/provider/baremetal/deploy.yaml</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-0-2" role="tabpanel" aria-labelled-by="tabs-0-2-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/mandatory.yaml</code></pre></div></div>
   
 </div>
 
 <h3 id="1-2-nodeport-service-생성">1-2) NodePort Service 생성</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1798,15 +1840,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a class="nav-link"
         id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab"
         aria-controls="tabs-1-1" aria-selected="false">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-1-2-tab" data-toggle="tab" href="#tabs-1-2" role="tab"
+        aria-controls="tabs-1-2" aria-selected="false">
         v1.15
       </a>
     </li></ul>
 
 
 <div class="tab-content" id="tabs-1-content"><div class="tab-pane fade show active"
-        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">위 Nginx 설치에 포함되어 있음, v1.27에서는 NodePort Service 별도로 생성 안함</code></pre></div></div>
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">위 Nginx 설치에 포함되어 있음, v1.22에서는 NodePort Service 별도로 생성 안함</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/provider/baremetal/service-nodeport.yaml</code></pre></div></div>
+        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">위 Nginx 설치에 포함되어 있음, v1.22에서는 NodePort Service 별도로 생성 안함</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/provider/baremetal/service-nodeport.yaml</code></pre></div></div>
   
 </div>
 

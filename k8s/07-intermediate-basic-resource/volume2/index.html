@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Dynamic Provisioning, StorageClass, Status, ReclaimPolicy &lt;/br&gt; Version 1.27 에서는 스토리지 솔루션을 Longhorn으로 대체합니다.
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="253">
+<meta itemprop="wordCount" content="270">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Volume"/>
 <meta name="twitter:description" content="Dynamic Provisioning, StorageClass, Status, ReclaimPolicy &lt;/br&gt; Version 1.27 에서는 스토리지 솔루션을 Longhorn으로 대체합니다.
@@ -1566,7 +1566,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#1-longhorn-구축">1. Longhorn 구축</a>
       <ul>
         <li><a href="#1-1-모든-masterwork-node에-iscsi-설치">1-1) 모든 Master/Work Node에 iscsi 설치</a></li>
-        <li><a href="#1-2-longhorn-설치-kubernetes-version-122">1-2) Longhorn 설치 (kubernetes version 1.22)</a></li>
+        <li><a href="#1-2-longhorn-설치">1-2) Longhorn 설치</a></li>
         <li><a href="#1-3-fast-storageclass-추가">1-3) Fast StorageClass 추가</a></li>
         <li><a href="#1-4-storageclass-생성-확인">1-4) StorageClass 생성 확인</a></li>
         <li><a href="#1-5-dashboard-접속을-위한-service-수정">1-5) Dashboard 접속을 위한 Service 수정</a></li>
@@ -1587,6 +1587,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#3-2-persistentvolume">3-2) PersistentVolume</a></li>
         <li><a href="#3-3-persistentvolumeclaim">3-3) PersistentVolumeClaim</a></li>
         <li><a href="#3-4-pod">3-4) Pod</a></li>
+        <li><a href="#4-longhorn-삭제">4) Longhorn 삭제</a></li>
       </ul>
     </li>
     <li><a href="#yaml">yaml</a>
@@ -1698,7 +1699,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <hr>
 <h3 id="1-1-모든-masterwork-node에-iscsi-설치">1-1) 모든 Master/Work Node에 iscsi 설치</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yum install -y iscsi-initiator-utils
-</code></pre></div><h3 id="1-2-longhorn-설치-kubernetes-version-122">1-2) Longhorn 설치 (kubernetes version 1.22)</h3>
+</code></pre></div><h3 id="1-2-longhorn-설치">1-2) Longhorn 설치</h3>
 
 
 
@@ -1934,6 +1935,65 @@ touch file.txt
 touch file.txt
 </code></pre></div><br/>
 <br/>
+<h3 id="4-longhorn-삭제">4) Longhorn 삭제</h3>
+<p>자원을 많이 먹으니 실습 후 꼭 삭제해주세요</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab"
+        aria-controls="tabs-1-0" aria-selected="true">
+        v1.27
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab"
+        aria-controls="tabs-1-1" aria-selected="false">
+        v1.22
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-1-content"><div class="tab-pane fade show active"
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/yamls/longhorn/longhorn-1.5.0.yaml</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/yamls/longhorn/longhorn-1.3.3.yaml</code></pre></div></div>
+  
+</div>
+
 <h2 id="yaml">yaml</h2>
 <hr>
 <h3 id="__storageclass__"><strong>StorageClass</strong></h3>

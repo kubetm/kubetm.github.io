@@ -30,7 +30,7 @@
 <meta itemprop="description" content="HPA, VPA, CA
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="285">
+<meta itemprop="wordCount" content="290">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="AutoScaler - HPA"/>
 <meta name="twitter:description" content="HPA, VPA, CA
@@ -1768,6 +1768,23 @@ Metrics Deployment 수정
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
       <a class="nav-link active"
         id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab"
@@ -1778,13 +1795,21 @@ Metrics Deployment 수정
       <a class="nav-link"
         id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab"
         aria-controls="tabs-1-1" aria-selected="false">
+        v1.22
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-1-2-tab" data-toggle="tab" href="#tabs-1-2" role="tab"
+        aria-controls="tabs-1-2" aria-selected="false">
         v1.15
       </a>
     </li></ul>
 
 
 <div class="tab-content" id="tabs-1-content"><div class="tab-pane fade show active"
-        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># args 에 `kubelet-insecure-tls` 추가</span>
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># 추가 작업 없음</span></code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># args 에 `kubelet-insecure-tls` 추가</span>
 kubectl edit deployment metrics-server -n kube-system
 
 <span style="color:#8f5902;font-style:italic">#spec:</span>
@@ -1797,7 +1822,7 @@ kubectl edit deployment metrics-server -n kube-system
 <span style="color:#8f5902;font-style:italic">#    - --metric-resolution=15s</span>
 <span style="color:#8f5902;font-style:italic">#    - --kubelet-insecure-tls  &lt;-- 추가</span></code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># args 에 `kubelet-insecure-tls` 와 `kubelet-preferred-address-types=InternalIP` 추가</span>
+        id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># args 에 `kubelet-insecure-tls` 와 `kubelet-preferred-address-types=InternalIP` 추가</span>
 kubectl edit deployment metrics-server -n kube-system
 
 <span style="color:#8f5902;font-style:italic">#spec:</span>
