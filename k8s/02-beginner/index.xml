@@ -556,7 +556,7 @@ kubectl apply -f calico.yaml
     </item>
     
     <item>
-      <title>K8s: k8s v1.27 버전 설치 (1.22에서 변경됨) (최신, 쉬운설치 버전)</title>
+      <title>K8s: k8s v1.27 버전 설치 (최신, 쉬운설치 버전) - 1.22에서 변경됨</title>
       <link>https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/</link>
       <pubDate>Wed, 01 Nov 2023 00:00:00 +0000</pubDate>
       
