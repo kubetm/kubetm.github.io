@@ -355,9 +355,9 @@ kubectl describe endpoints endpoint1
 
 
 &lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
-&lt;h4 class=&#34;alert-heading&#34;&gt;1.22 버전 StorageOS 설치 안내&lt;/h4&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;1.27 버전 StorageOS 설치 안내&lt;/h4&gt;
 
-    1.22 버전에서는 Longhorn 솔루션 설치로 실습을 진행하며, 아래 자료실 참고 바랍니다. &lt;br/&gt;
+    1.27 버전에서는 Longhorn 솔루션 설치로 실습을 진행하며, 아래 자료실 참고 바랍니다. &lt;br/&gt;
 &lt;a href=&#34;https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume2/&#34;&gt;https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume2/&lt;/a&gt;
 
 &lt;/div&gt;
@@ -1000,7 +1000,7 @@ grep &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;client-key-data&amp;#39;
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-0-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-0-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -1072,7 +1072,7 @@ curl -k --key ./Client.key --cert ./Client.crt https://192.168.0.30:6443/api/v1/
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-1-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-1-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -1085,7 +1085,7 @@ curl -k --key ./Client.key --cert ./Client.crt https://192.168.0.30:6443/api/v1/
 
 &lt;div class=&#34;tab-content&#34; id=&#34;tabs-1-content&#34;&gt;&lt;div class=&#34;tab-pane fade show active&#34;
         id=&#34;tabs-1-0&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-1-0-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubeadm / kubectl / kubelet 설치&lt;/span&gt;
-yum install -y --disableexcludes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;kubernetes kubelet-1.22.0-0.x86_64 kubeadm-1.22.0-0.x86_64 kubectl-1.22.0-0.x86_64
+yum install -y --disableexcludes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;kubernetes kubelet-1.27.2-0.x86_64 kubeadm-1.27.2-0.x86_64 kubectl-1.27.2-0.x86_64
 
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# admin.conf 인증서 복사&lt;/span&gt;
 mkdir -p &lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;/.kube
@@ -1148,7 +1148,7 @@ nohup kubectl proxy --port&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-2-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-2-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-2-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -1295,7 +1295,7 @@ kubectl describe -n nm-01 secrets
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-3-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-3-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-3-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -1449,7 +1449,7 @@ curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bea
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-0-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-0-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -1561,7 +1561,7 @@ metadata:
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-1-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-1-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -1673,7 +1673,7 @@ curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bea
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-0-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-0-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -1740,7 +1740,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/a
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-1-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-1-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -1838,7 +1838,7 @@ openssl pkcs12 -export -clcerts -inkey client.key -in client.crt -out client.p12
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-2-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-2-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-2-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;

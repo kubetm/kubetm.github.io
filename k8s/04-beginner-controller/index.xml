@@ -440,7 +440,7 @@ kubectl rollout &lt;span style=&#34;color:#204a87&#34;&gt;history&lt;/span&gt; d
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-0-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-0-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -577,7 +577,7 @@ kubectl label nodes k8s-node2 &lt;span style=&#34;color:#000&#34;&gt;os&lt;/span
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-1-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-1-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;

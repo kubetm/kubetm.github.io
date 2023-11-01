@@ -208,7 +208,7 @@ docker push kubetm/hello
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-2-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-2-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-2-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -2461,7 +2461,7 @@ kubectl get pods
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-0-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-0-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -2519,7 +2519,7 @@ kubectl get pods
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-1-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-1-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -2531,7 +2531,7 @@ kubectl get pods
 
 
 &lt;div class=&#34;tab-content&#34; id=&#34;tabs-1-content&#34;&gt;&lt;div class=&#34;tab-pane fade show active&#34;
-        id=&#34;tabs-1-0&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-1-0-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;위 Nginx 설치에 포함되어 있음, v1.22에서는 NodePort Service 별도로 생성 안함&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+        id=&#34;tabs-1-0&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-1-0-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;위 Nginx 설치에 포함되어 있음, v1.27에서는 NodePort Service 별도로 생성 안함&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
   &lt;div class=&#34;tab-pane fade&#34;
         id=&#34;tabs-1-1&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-1-1-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.27.1/deploy/static/provider/baremetal/service-nodeport.yaml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
   
@@ -2648,7 +2648,7 @@ kubectl get pods
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-2-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-2-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-2-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -2754,7 +2754,7 @@ kubectl get pods
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-3-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-3-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-3-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -2867,7 +2867,7 @@ curl 192.168.0.30:30431/customer&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-4-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-4-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-4-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -2951,7 +2951,7 @@ spec:
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-5-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-5-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-5-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -3019,7 +3019,7 @@ curl www.app.com:30431/version&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-6-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-6-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-6-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -3111,7 +3111,7 @@ curl www.app.com:30431/version&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-7-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-7-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-7-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -3235,7 +3235,7 @@ curl www.app.com:30431/version&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-8-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-8-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-8-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -3328,7 +3328,7 @@ curl www.app.com:30431/version&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-9-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-9-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-9-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -3601,9 +3601,9 @@ tcpdump -i &amp;lt;interface-name&amp;gt;
 
 
 &lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
-&lt;h4 class=&#34;alert-heading&#34;&gt;1.22 버전 StorageOS 설치 안내&lt;/h4&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;1.27 버전 StorageOS 설치 안내&lt;/h4&gt;
 
-    1.22 버전에서는 Longhorn 솔루션 설치로 실습을 진행하며, 아래 자료실 참고 바랍니다. &lt;br/&gt;
+    1.27 버전에서는 Longhorn 솔루션 설치로 실습을 진행하며, 아래 자료실 참고 바랍니다. &lt;br/&gt;
 &lt;a href=&#34;https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume2/&#34;&gt;https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume2/&lt;/a&gt;
 
 &lt;/div&gt;
@@ -4733,7 +4733,7 @@ kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-toke
 &lt;h2 id=&#34;참고&#34;&gt;참고&lt;/h2&gt;
 &lt;h3 id=&#34;version-정보&#34;&gt;Version 정보&lt;/h3&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation Version Case6 for Kubernetes Update.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation Step Case6 for Kubernetes Update.jpg&#34;
        alt=&#34;Installation Version Case6 for Kubernetes Update&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
@@ -5094,7 +5094,7 @@ master 설치 후 나오는 token URL에 &amp;ndash;ignore-preflight-errors=all 
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-0-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-0-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -5106,7 +5106,7 @@ master 설치 후 나오는 token URL에 &amp;ndash;ignore-preflight-errors=all 
 
 
 &lt;div class=&#34;tab-content&#34; id=&#34;tabs-0-content&#34;&gt;&lt;div class=&#34;tab-pane fade show active&#34;
-        id=&#34;tabs-0-0&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-0-0-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.5.0/components.yaml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+        id=&#34;tabs-0-0&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-0-0-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl apply -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/metrics-server-0.6.3/metrics-server.yaml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
   &lt;div class=&#34;tab-pane fade&#34;
         id=&#34;tabs-0-1&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-0-1-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
   
@@ -5153,7 +5153,7 @@ Metrics Deployment 수정
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-1-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-1-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -5311,7 +5311,7 @@ k8s-node2        554m         11%    4672Mi          31%
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-2-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-2-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-2-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -5432,7 +5432,7 @@ k8s-node2        554m         11%    4672Mi          31%
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-3-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-3-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-3-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -6179,7 +6179,7 @@ grep &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;client-key-data&amp;#39;
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-0-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-0-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -6251,7 +6251,7 @@ curl -k --key ./Client.key --cert ./Client.crt https://192.168.0.30:6443/api/v1/
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-1-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-1-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -6264,7 +6264,7 @@ curl -k --key ./Client.key --cert ./Client.crt https://192.168.0.30:6443/api/v1/
 
 &lt;div class=&#34;tab-content&#34; id=&#34;tabs-1-content&#34;&gt;&lt;div class=&#34;tab-pane fade show active&#34;
         id=&#34;tabs-1-0&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-1-0-tab&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubeadm / kubectl / kubelet 설치&lt;/span&gt;
-yum install -y --disableexcludes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;kubernetes kubelet-1.22.0-0.x86_64 kubeadm-1.22.0-0.x86_64 kubectl-1.22.0-0.x86_64
+yum install -y --disableexcludes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;kubernetes kubelet-1.27.2-0.x86_64 kubeadm-1.27.2-0.x86_64 kubectl-1.27.2-0.x86_64
 
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# admin.conf 인증서 복사&lt;/span&gt;
 mkdir -p &lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;/.kube
@@ -6327,7 +6327,7 @@ nohup kubectl proxy --port&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-2-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-2-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-2-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -6474,7 +6474,7 @@ kubectl describe -n nm-01 secrets
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-3-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-3-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-3-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -7360,7 +7360,7 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-0-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-0-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -7472,7 +7472,7 @@ metadata:
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-1-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-1-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -8108,7 +8108,7 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-0-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-0-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -8175,7 +8175,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/a
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-1-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-1-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -8273,7 +8273,7 @@ openssl pkcs12 -export -clcerts -inkey client.key -in client.crt -out client.p12
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-2-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-2-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-2-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -9398,7 +9398,7 @@ kubectl rollout &lt;span style=&#34;color:#204a87&#34;&gt;history&lt;/span&gt; d
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-0-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-0-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-0-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;
@@ -9535,7 +9535,7 @@ kubectl label nodes k8s-node2 &lt;span style=&#34;color:#000&#34;&gt;os&lt;/span
       &lt;a class=&#34;nav-link active&#34;
         id=&#34;tabs-1-0-tab&#34; data-toggle=&#34;tab&#34; href=&#34;#tabs-1-0&#34; role=&#34;tab&#34;
         aria-controls=&#34;tabs-1-0&#34; aria-selected=&#34;true&#34;&gt;
-        v1.22
+        v1.27
       &lt;/a&gt;
     &lt;/li&gt;&lt;li class=&#34;nav-item&#34;&gt;
       &lt;a class=&#34;nav-link&#34;

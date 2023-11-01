@@ -19,7 +19,7 @@
 
 <title>DaemonSet, Job, CronJob | KubeTM Blog</title>
 <meta name="description" content=""><meta property="og:title" content="DaemonSet, Job, CronJob" />
-<meta property="og:description" content="강의자료 PDF        1. DaemonSet    1-1) DaemonSet - HostPort apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-1spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:containers:- name:containerimage:kubetm/appports:- containerPort:8080hostPort:18080Command v1.22  v1.15   curl 192.168.56.31:18080/hostname curl 192.168.0.31:18080/hostname   1-2) DaemonSet - NodeSelector apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-2spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:nodeSelector:os:centoscontainers:- name:containerimage:kubetm/appports:- containerPort:8080Label Add
+<meta property="og:description" content="강의자료 PDF        1. DaemonSet    1-1) DaemonSet - HostPort apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-1spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:containers:- name:containerimage:kubetm/appports:- containerPort:8080hostPort:18080Command v1.27  v1.15   curl 192.168.56.31:18080/hostname curl 192.168.0.31:18080/hostname   1-2) DaemonSet - NodeSelector apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-2spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:nodeSelector:os:centoscontainers:- name:containerimage:kubetm/appports:- containerPort:8080Label Add
 kubectl label nodes k8s-node1 os=centos kubectl label nodes k8s-node2 os=ubuntu Label Remove
 kubectl label nodes k8s-node2 os-   2. Job  2-1) Job1 apiVersion:batch/v1kind:Jobmetadata:name:job-1spec:template:spec:restartPolicy:Nevercontainers:- name:containerimage:kubetm/initcommand:[&#34;sh&#34;,&#34;-c&#34;,&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;]terminationGracePeriodSeconds:0    2-2) Job2 apiVersion:batch/v1kind:Jobmetadata:name:job-2spec:completions:6parallelism:2activeDeadlineSeconds:30template:spec:restartPolicy:Nevercontainers:- name:containerimage:kubetm/initcommand:[&#34;sh&#34;,&#34;-c&#34;,&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;]terminationGracePeriodSeconds:0  3." />
 <meta property="og:type" content="article" />
@@ -28,14 +28,14 @@ kubectl label nodes k8s-node2 os-   2. Job  2-1) Job1 apiVersion:batch/v1kind:Jo
 <meta property="og:site_name" content="KubeTM Blog" />
 
 <meta itemprop="name" content="DaemonSet, Job, CronJob">
-<meta itemprop="description" content="강의자료 PDF        1. DaemonSet    1-1) DaemonSet - HostPort apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-1spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:containers:- name:containerimage:kubetm/appports:- containerPort:8080hostPort:18080Command v1.22  v1.15   curl 192.168.56.31:18080/hostname curl 192.168.0.31:18080/hostname   1-2) DaemonSet - NodeSelector apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-2spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:nodeSelector:os:centoscontainers:- name:containerimage:kubetm/appports:- containerPort:8080Label Add
+<meta itemprop="description" content="강의자료 PDF        1. DaemonSet    1-1) DaemonSet - HostPort apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-1spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:containers:- name:containerimage:kubetm/appports:- containerPort:8080hostPort:18080Command v1.27  v1.15   curl 192.168.56.31:18080/hostname curl 192.168.0.31:18080/hostname   1-2) DaemonSet - NodeSelector apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-2spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:nodeSelector:os:centoscontainers:- name:containerimage:kubetm/appports:- containerPort:8080Label Add
 kubectl label nodes k8s-node1 os=centos kubectl label nodes k8s-node2 os=ubuntu Label Remove
 kubectl label nodes k8s-node2 os-   2. Job  2-1) Job1 apiVersion:batch/v1kind:Jobmetadata:name:job-1spec:template:spec:restartPolicy:Nevercontainers:- name:containerimage:kubetm/initcommand:[&#34;sh&#34;,&#34;-c&#34;,&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;]terminationGracePeriodSeconds:0    2-2) Job2 apiVersion:batch/v1kind:Jobmetadata:name:job-2spec:completions:6parallelism:2activeDeadlineSeconds:30template:spec:restartPolicy:Nevercontainers:- name:containerimage:kubetm/initcommand:[&#34;sh&#34;,&#34;-c&#34;,&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;]terminationGracePeriodSeconds:0  3.">
 
 <meta itemprop="wordCount" content="176">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="DaemonSet, Job, CronJob"/>
-<meta name="twitter:description" content="강의자료 PDF        1. DaemonSet    1-1) DaemonSet - HostPort apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-1spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:containers:- name:containerimage:kubetm/appports:- containerPort:8080hostPort:18080Command v1.22  v1.15   curl 192.168.56.31:18080/hostname curl 192.168.0.31:18080/hostname   1-2) DaemonSet - NodeSelector apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-2spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:nodeSelector:os:centoscontainers:- name:containerimage:kubetm/appports:- containerPort:8080Label Add
+<meta name="twitter:description" content="강의자료 PDF        1. DaemonSet    1-1) DaemonSet - HostPort apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-1spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:containers:- name:containerimage:kubetm/appports:- containerPort:8080hostPort:18080Command v1.27  v1.15   curl 192.168.56.31:18080/hostname curl 192.168.0.31:18080/hostname   1-2) DaemonSet - NodeSelector apiVersion:apps/v1kind:DaemonSetmetadata:name:daemonset-2spec:selector:matchLabels:type:apptemplate:metadata:labels:type:appspec:nodeSelector:os:centoscontainers:- name:containerimage:kubetm/appports:- containerPort:8080Label Add
 kubectl label nodes k8s-node1 os=centos kubectl label nodes k8s-node2 os=ubuntu Label Remove
 kubectl label nodes k8s-node2 os-   2. Job  2-1) Job1 apiVersion:batch/v1kind:Jobmetadata:name:job-1spec:template:spec:restartPolicy:Nevercontainers:- name:containerimage:kubetm/initcommand:[&#34;sh&#34;,&#34;-c&#34;,&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;]terminationGracePeriodSeconds:0    2-2) Job2 apiVersion:batch/v1kind:Jobmetadata:name:job-2spec:completions:6parallelism:2activeDeadlineSeconds:30template:spec:restartPolicy:Nevercontainers:- name:containerimage:kubetm/initcommand:[&#34;sh&#34;,&#34;-c&#34;,&#34;echo &#39;job start&#39;;sleep 20; echo &#39;job end&#39;&#34;]terminationGracePeriodSeconds:0  3."/>
 
@@ -858,7 +858,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-k8s07-intermediate-basic-resourcevolume2-li">
     
       <input type="checkbox" id="m-k8s07-intermediate-basic-resourcevolume2-check"/>
-      <label for="m-k8s07-intermediate-basic-resourcevolume2-check"><a href="/k8s/07-intermediate-basic-resource/volume2/" title="Volume" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s07-intermediate-basic-resourcevolume2"><span class="">Volume (1.22)</span></a></label>
+      <label for="m-k8s07-intermediate-basic-resourcevolume2-check"><a href="/k8s/07-intermediate-basic-resource/volume2/" title="Volume" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s07-intermediate-basic-resourcevolume2"><span class="">Volume (1.27)</span></a></label>
     
     
   </li>
@@ -1740,7 +1740,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a class="nav-link active"
         id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab"
         aria-controls="tabs-0-0" aria-selected="true">
-        v1.22
+        v1.27
       </a>
     </li><li class="nav-item">
       <a class="nav-link"
@@ -1877,7 +1877,7 @@ kubectl label nodes k8s-node2 <span style="color:#000">os</span><span style="col
       <a class="nav-link active"
         id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab"
         aria-controls="tabs-1-0" aria-selected="true">
-        v1.22
+        v1.27
       </a>
     </li><li class="nav-item">
       <a class="nav-link"
