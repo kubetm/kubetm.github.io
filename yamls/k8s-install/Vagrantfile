@@ -3,9 +3,10 @@ NodeCnt = 2
 
 Vagrant.configure("2") do |config|
   
-  config.vm.box = "centos/7"
-  config.vm.synced_folder "./", "/vagrant", disabled: true
-  
+  config.vm.box = "rockylinux/8"  
+  config.disksize.size = "30GB"  
+  config.vbguest.auto_update = false
+  config.vm.synced_folder "./", "/vagrant", disabled: true  
   config.vm.provision :shell, privileged: true, inline: $install_common_tools
 
   config.vm.define "k8s-master" do |master|
@@ -13,7 +14,8 @@ Vagrant.configure("2") do |config|
     master.vm.network "private_network", ip: "192.168.56.30"
     master.vm.provider :virtualbox do |vb|
       vb.memory = 4096
-      vb.cpus = 4	  
+      vb.cpus = 4
+      vb.customize ["modifyvm", :id, "--firmware", "efi"]
 	end
     master.vm.provision :shell, privileged: true, inline: $provision_master_node
   end
@@ -23,8 +25,9 @@ Vagrant.configure("2") do |config|
       node.vm.hostname = "k8s-node#{i}"
       node.vm.network "private_network", ip: "192.168.56.#{i + 30}"
       node.vm.provider :virtualbox do |vb|
-        vb.memory = 3072
-        vb.cpus = 3
+        vb.memory = 2048
+        vb.cpus = 2
+        vb.customize ["modifyvm", :id, "--firmware", "efi"]
 	  end
     end
   end
@@ -32,85 +35,93 @@ end
 
 $install_common_tools = <<-SHELL
 
-# ssh password 접속 활성화
-sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
-sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config;
-systemctl restart sshd.service
-
-# 방화벽 해제
-systemctl stop firewalld && systemctl disable firewalld
-systemctl stop NetworkManager && systemctl disable NetworkManager
-
-# Swap 비활성화
-swapoff -a && sed -i '/ swap / s/^/#/' /etc/fstab
-
-# br_netfilter 모듈 로드
-cat <<EOF | tee /etc/modules-load.d/k8s.conf
-br_netfilter
-EOF
-
-# Iptables 커널 옵션 활성화
-cat <<EOF >  /etc/sysctl.d/k8s.conf
-net.bridge.bridge-nf-call-ip6tables = 1
-net.bridge.bridge-nf-call-iptables = 1
-EOF
-sysctl --system
-
-# permissive 모드로 SELinux 설정(효과적으로 비활성화)
-setenforce 0
-sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
-
-# 쿠버네티스 YUM Repository 설정
-cat <<EOF | tee /etc/yum.repos.d/kubernetes.repo
-[kubernetes]
-name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
-enabled=1
-gpgcheck=1
-repo_gpgcheck=0
-gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-exclude=kubelet kubeadm kubectl
-EOF
-
-# Centos Update
+echo '======== [4] Rocky Linux 기본 설정 ========'
+echo '======== [4-1] 패키지 업데이트 ========'
 yum -y update
 
-# Hosts 등록
+echo '======== [4-2] 타임존 설정 ========'
+timedatectl set-timezone Asia/Seoul
+
+echo '======== [4-3] Disk 확장 / Bug: soft lockup 설정 추가========'
+# https://cafe.naver.com/kubeops/25
+yum install -y cloud-utils-growpart
+growpart /dev/sda 4
+xfs_growfs /dev/sda4
+echo 0 > /proc/sys/kernel/hung_task_timeout_secs
+echo "kernel.watchdog_thresh = 20" >> /etc/sysctl.conf
+
+echo '======== [4-4] [WARNING FileExisting-tc]: tc not found in system path 로그 관련 업데이트 ========'
+yum install -y yum-utils iproute-tc
+
+echo '======== [4-5] Hosts 등록 ========'
 cat << EOF >> /etc/hosts
 192.168.56.30 k8s-master
 192.168.56.31 k8s-node1
 192.168.56.32 k8s-node2
 EOF
 
-# 도커 설치
-yum install -y yum-utils device-mapper-persistent-data lvm2 
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum install -y containerd.io-1.4.9-3.1.el7 docker-ce-3:20.10.8-3.el7.x86_64 docker-ce-cli-1:20.10.8-3.el7.x86_64
+echo '======== [5] kubeadm 설치 전 사전작업 ========'
+echo '======== [5] 방화벽 해제 ========'
+systemctl stop firewalld && systemctl disable firewalld
+
+echo '======== [5] Swap 비활성화 ========'
+swapoff -a && sed -i '/ swap / s/^/#/' /etc/fstab
 
 
-mkdir /etc/docker
-cat > /etc/docker/daemon.json <<EOF
-{
-  "exec-opts": ["native.cgroupdriver=systemd"],
-  "log-driver": "json-file",
-  "log-opts": {
-    "max-size": "100m"
-  },
-  "storage-driver": "overlay2",
-  "storage-opts": [
-    "overlay2.override_kernel_check=true"
-  ]
-}
+echo '======== [6] 컨테이너 런타임 설치 ========'
+echo '======== [6-1] 컨테이너 런타임 설치 전 사전작업 ========'
+echo '======== [6-1] iptable 세팅 ========'
+cat <<EOF |tee /etc/modules-load.d/k8s.conf
+overlay
+br_netfilter
 EOF
-mkdir -p /etc/systemd/system/docker.service.d
 
-# 도커 재시작
+modprobe overlay
+modprobe br_netfilter
+
+cat <<EOF |tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-iptables  = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward                 = 1
+EOF
+
+sysctl --system
+
+echo '======== [6-2] 컨테이너 런타임 (containerd 설치) ========'
+echo '======== [6-2-1] containerd 패키지 설치 (option2) ========'
+echo '======== [6-2-1-1] docker engine 설치 ========'
+echo '======== [6-2-1-1] repo 설정 ========'
+yum install -y yum-utils
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+echo '======== [6-2-1-1] containerd 설치 ========'
+yum install -y containerd.io-1.6.21-3.1.el8
 systemctl daemon-reload
-systemctl enable --now docker
+systemctl enable --now containerd
+
+echo '======== [6-3] 컨테이너 런타임 : cri 활성화 ========'
+sed -i 's/^disabled_plugins/#disabled_plugins/' /etc/containerd/config.toml
+systemctl restart containerd
 
 
-# 쿠버네티스 설치
-yum install -y kubelet-1.22.0-0.x86_64 kubeadm-1.22.0-0.x86_64 kubectl-1.22.0-0.x86_64 --disableexcludes=kubernetes
+echo '======== [7] kubeadm 설치 ========'
+echo '======== [7] repo 설정 ========'
+cat <<EOF |tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kubelet kubeadm kubectl
+EOF
+
+echo '======== [7] SELinux 설정 ========'
+setenforce 0
+sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+
+echo '======== [7] kubelet, kubeadm, kubectl 패키지 설치 ========'
+yum install -y kubelet-1.27.2-0.x86_64 kubeadm-1.27.2-0.x86_64 kubectl-1.27.2-0.x86_64 --disableexcludes=kubernetes
 systemctl enable --now kubelet
 
 SHELL
@@ -119,29 +130,27 @@ SHELL
 
 $provision_master_node = <<-SHELL
 
-# 쿠버네티스 초기화 명령 실행
-kubeadm init --apiserver-advertise-address 192.168.56.30 --pod-network-cidr=20.96.0.0/12
-kubeadm token create --print-join-command > ~/join.sh
+echo '======== [8] kubeadm으로 클러스터 생성  ========'
+echo '======== [8-1] 클러스터 초기화 (Pod Network 세팅) ========'
+kubeadm init --pod-network-cidr=20.96.0.0/12 --apiserver-advertise-address 192.168.56.30
 
-# 환경변수 설정
+echo '======== [8-2] kubectl 사용 설정 ========'
 mkdir -p $HOME/.kube
 cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 chown $(id -u):$(id -g) $HOME/.kube/config
 
-# Kubectl 자동완성 기능 설치
-yum install bash-completion -y
-source <(kubectl completion bash)
+echo '======== [8-3] Pod Network 설치 (calico) ========'
+kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/calico-3.25.1/calico.yaml
+kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/calico-3.25.1/calico-custom.yaml
+
+
+echo '======== [9] 쿠버네티스 편의기능 설치 ========'
+echo '======== [9-1] kubectl 자동완성 기능 ========'
 echo "source <(kubectl completion bash)" >> ~/.bashrc
+echo 'alias k=kubectl' >>~/.bashrc
+echo 'complete -o default -F __start_kubectl k' >>~/.bashrc
 
-# Calico 설치
-kubectl create -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/yamls/k8s-install/calico.yaml
-kubectl create -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/yamls/k8s-install/calico-custom.yaml
-
-curl https://docs.projectcalico.org/manifests/calico.yaml -O
-kubectl apply -f calico.yaml
-
-# Dashboard 설치
-kubectl apply -f https://kubetm.github.io/yamls/k8s-install/dashboard-2.3.0.yaml
-nohup kubectl proxy --port=8001 --address=192.168.56.30 --accept-hosts='^*$' >/dev/null 2>&1 &
+echo '======== [9-2] Dashboard 설치 ========'
+kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/dashboard-2.7.0/dashboard.yaml
 
 SHELL

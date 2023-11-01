@@ -556,9 +556,9 @@ kubectl apply -f calico.yaml
     </item>
     
     <item>
-      <title>K8s: k8s v1.22버전 설치 (최신, 쉬운설치 버전)</title>
+      <title>K8s: k8s v1.27 버전 설치 (1.22에서 변경됨) (최신, 쉬운설치 버전)</title>
       <link>https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/</link>
-      <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Nov 2023 00:00:00 +0000</pubDate>
       
       <guid>https://kubetm.github.io/k8s/02-beginner/cluster-install-case6/</guid>
       <description>
@@ -577,6 +577,9 @@ kubectl apply -f calico.yaml
     &lt;ul&gt;
 &lt;li&gt;Dashboard 버전 변경 : v2.2.0 -&amp;gt; v2.3.0 &lt;br/&gt;&lt;/li&gt;
 &lt;li&gt;Worker Node명 변경 : k8s-worker1 -&amp;gt; k8s-node1, k8s-worker2 -&amp;gt; k8s-node2&lt;/li&gt;
+&lt;li&gt;Kubernetes 버전 변경 : v1.22 -&amp;gt; v1.27&lt;/li&gt;
+&lt;li&gt;Virtualbox 버전 변경 : 6.1.26 -&amp;gt; 7.0.8&lt;/li&gt;
+&lt;li&gt;Vagrant 버전 변경 : 2.2.18 -&amp;gt; 2.3.4&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -608,17 +611,20 @@ kubectl apply -f calico.yaml
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
-&lt;h3 id=&#34;2-virtualbox-설치&#34;&gt;2. VirtualBox 설치&lt;/h3&gt;
+&lt;h3 id=&#34;2-virtualbox-설치-708-버전&#34;&gt;2. VirtualBox 설치 (7.0.8 버전)&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;6.1.26 버전 다운로드 : &lt;a href=&#34;https://download.virtualbox.org/virtualbox/6.1.26/VirtualBox-6.1.26-145957-Win.exe&#34;&gt;https://download.virtualbox.org/virtualbox/6.1.26/VirtualBox-6.1.26-145957-Win.exe&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;다운로드 사이트 : &lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;https://www.virtualbox.org/wiki/Downloads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Win 버전 : &lt;a href=&#34;https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-Win.exe&#34;&gt;https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-Win.exe&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Mac 버전 : &lt;a href=&#34;https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-OSX.dmg&#34;&gt;https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-OSX.dmg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Download site : &lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;https://www.virtualbox.org/wiki/Downloads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;FAQ : microsoft visual 관련 에러 해결방법 &lt;a href=&#34;https://cafe.naver.com/kubeops/25&#34;&gt;https://cafe.naver.com/kubeops/25&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
 &lt;h3 id=&#34;3-vagrant-설치-및-k8s-설치-스크립트-실행&#34;&gt;3. Vagrant 설치 및 k8s 설치 스크립트 실행&lt;/h3&gt;
-&lt;p&gt;3-1) 설치&lt;/p&gt;
+&lt;p&gt;3-1) Vagrant 설치 (2.3.4 버전)&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;2.2.18 버전 다운로드 : &lt;a href=&#34;https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_x86_64.msi&#34;&gt;https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_x86_64.msi&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;다운로드 사이트 : &lt;a href=&#34;https://www.vagrantup.com/downloads&#34;&gt;https://www.vagrantup.com/downloads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Win 버전 : &lt;a href=&#34;https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_windows_amd64.msi&#34;&gt;https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_windows_amd64.msi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Mac 버전 : &lt;a href=&#34;https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_darwin_amd64.dmg&#34;&gt;https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_darwin_amd64.dmg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Download site : &lt;a href=&#34;https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant&#34;&gt;https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;3-2) Vagrant 명령 실행&lt;/p&gt;
 &lt;ul&gt;
@@ -630,10 +636,17 @@ kubectl apply -f calico.yaml
 C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt;cd k8s &lt;/span&gt;
 C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://kubetm.github.io/yamls/k8s-install/Vagrantfile&lt;/span&gt;
 C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; vagrant plugin install vagrant-vbguest --plugin-version 0.21&lt;/span&gt;
+
+// Rocky Linux Repo 세팅
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/vagrant-2.3.4/rockylinux-repo.json&lt;/span&gt;
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; vagrant box add rockylinux-repo.json&lt;/span&gt;
+
+// Vagrant Disk 설정 Plugin 설치 
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; vagrant plugin install vagrant-vbguest vagrant-disksize&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;Vagrant 실행 (5~10분 소요)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; vagrant up&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; vagrant up&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
@@ -664,13 +677,13 @@ kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-toke
 [root@k8s-master ~]# kubectl get nodes
 &lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
 &lt;h3 id=&#34;6-대시보드-접근&#34;&gt;6. 대시보드 접근&lt;/h3&gt;
-&lt;p&gt;http://192.168.56.30:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/workloads?namespace=default&lt;/p&gt;
+&lt;p&gt;https://192.168.56.30:30000/#/login&lt;/p&gt;
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;h2 id=&#34;참고&#34;&gt;참고&lt;/h2&gt;
 &lt;h3 id=&#34;version-정보&#34;&gt;Version 정보&lt;/h3&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation Version Case6 for Kubernetes.jpg&#34;
+  &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation Version Case6 for Kubernetes Update.jpg&#34;
        alt=&#34;Installation Version Case6 for Kubernetes&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
