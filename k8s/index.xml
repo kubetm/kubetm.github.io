@@ -4680,10 +4680,12 @@ kubectl apply -f calico.yaml
 &lt;li&gt;k8s 폴더 생성 및 이동 &lt;br/&gt;&lt;/li&gt;
 &lt;li&gt;Vagrantfile 파일 다운로드&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt;mkdir k8s&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;// 폴더 생성
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt;mkdir k8s&lt;/span&gt;
 C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt;cd k8s &lt;/span&gt;
+
+// Vagrant 스크립트 다운로드
 C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://kubetm.github.io/yamls/k8s-install/Vagrantfile&lt;/span&gt;
-C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; vagrant plugin install vagrant-vbguest --plugin-version 0.21&lt;/span&gt;
 
 // Rocky Linux Repo 세팅
 C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/vagrant-2.3.4/rockylinux-repo.json&lt;/span&gt;
@@ -4725,14 +4727,14 @@ kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-toke
 [root@k8s-master ~]# kubectl get nodes
 &lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
 &lt;h3 id=&#34;6-대시보드-접근&#34;&gt;6. 대시보드 접근&lt;/h3&gt;
-&lt;p&gt;https://192.168.56.30:30000/#/login&lt;/p&gt;
-&lt;br/&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ssh&#34; data-lang=&#34;ssh&#34;&gt;https://192.168.56.30:30000/#/login
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;h2 id=&#34;참고&#34;&gt;참고&lt;/h2&gt;
 &lt;h3 id=&#34;version-정보&#34;&gt;Version 정보&lt;/h3&gt;
 &lt;figure&gt;
   &lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation Version Case6 for Kubernetes Update.jpg&#34;
-       alt=&#34;Installation Version Case6 for Kubernetes&#34;
+       alt=&#34;Installation Version Case6 for Kubernetes Update&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;h3 id=&#34;network-구성도&#34;&gt;Network 구성도&lt;/h3&gt;
@@ -4757,7 +4759,7 @@ VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component SessionMachi
 &lt;li&gt;해결방법 : 작업관리자에 들어가서 VirtualBox 관련 프로세스 모두 죽이고 다시 실행 (VirtualBox Headless Frontend, VirtualBox Interface)&lt;/li&gt;
 &lt;li&gt;추가 커맨트 : 생각보다 자주 이런 현상이 발생하는것 같아요. 설치만 vagrant로하고 이후부터는 vagrant up으로 기동하지 않고, 그냥 virtualbox만 실행해서 UI를 통해 기동시키고 내리는것도 괜찮을것 같습니다. 이때 주의할 점은, virtualbox를 통해 core수나 memory를 직접 변경 했을때 나중에 vagrant up으로 기동할일이 있을 경우 Vagrantfile에 있는 core, memory 스펙으로 다시 업데이트 된다는 점 주의하시기 바랍니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;dashboard-관련&#34;&gt;Dashboard 관련&lt;/h3&gt;
+&lt;h3 id=&#34;dashboard-관련--127-버전에서는-불필요한-내용입니다&#34;&gt;Dashboard 관련  (1.27 버전에서는 불필요한 내용입니다.)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Master Node 재기동시 Dashboard에 접속하기 위해선 아래 명령어를 실행해서 Proxy 오픈하기&lt;/li&gt;
 &lt;/ul&gt;

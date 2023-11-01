@@ -32,7 +32,7 @@
  Windows10, Cpu 6core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "><meta itemprop="datePublished" content="2023-11-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-11-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="539">
+<meta itemprop="wordCount" content="543">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s v1.27 버전 설치 (1.22에서 변경됨) (최신, 쉬운설치 버전)"/>
 <meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
@@ -1585,7 +1585,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#qna">QnA</a>
       <ul>
         <li><a href="#vagrnat-up-시-vm기동이-안될경우">vagrnat up 시 VM기동이 안될경우</a></li>
-        <li><a href="#dashboard-관련">Dashboard 관련</a></li>
+        <li><a href="#dashboard-관련--127-버전에서는-불필요한-내용입니다">Dashboard 관련  (1.27 버전에서는 불필요한 내용입니다.)</a></li>
       </ul>
     </li>
   </ul>
@@ -1728,10 +1728,12 @@ Windows10, Cpu 6core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경<
 <li>k8s 폴더 생성 및 이동 <br/></li>
 <li>Vagrantfile 파일 다운로드</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\Users\사용자</span><span style="color:#8f5902;font-style:italic">&gt;mkdir k8s</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">// 폴더 생성
+C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\Users\사용자</span><span style="color:#8f5902;font-style:italic">&gt;mkdir k8s</span>
 C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\Users\사용자</span><span style="color:#8f5902;font-style:italic">&gt;cd k8s </span>
+
+// Vagrant 스크립트 다운로드
 C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\Users\사용자\k8s</span><span style="color:#8f5902;font-style:italic">&gt; curl -O https://kubetm.github.io/yamls/k8s-install/Vagrantfile</span>
-C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\Users\사용자\k8s</span><span style="color:#8f5902;font-style:italic">&gt; vagrant plugin install vagrant-vbguest --plugin-version 0.21</span>
 
 // Rocky Linux Repo 세팅
 C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\Users\사용자\k8s</span><span style="color:#8f5902;font-style:italic">&gt; curl -O https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/vagrant-2.3.4/rockylinux-repo.json</span>
@@ -1773,14 +1775,14 @@ kubeadm join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-toke
 [root@k8s-master ~]# kubectl get nodes
 </code></pre><br/>
 <h3 id="6-대시보드-접근">6. 대시보드 접근</h3>
-<p>https://192.168.56.30:30000/#/login</p>
-<br/>
+<pre><code class="language-ssh" data-lang="ssh">https://192.168.56.30:30000/#/login
+</code></pre><br/>
 <br/>
 <h2 id="참고">참고</h2>
 <h3 id="version-정보">Version 정보</h3>
 <figure>
   <img src="/img/practice/install/Installation Version Case6 for Kubernetes Update.jpg"
-       alt="Installation Version Case6 for Kubernetes"
+       alt="Installation Version Case6 for Kubernetes Update"
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
 <h3 id="network-구성도">Network 구성도</h3>
@@ -1805,7 +1807,7 @@ VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component SessionMachi
 <li>해결방법 : 작업관리자에 들어가서 VirtualBox 관련 프로세스 모두 죽이고 다시 실행 (VirtualBox Headless Frontend, VirtualBox Interface)</li>
 <li>추가 커맨트 : 생각보다 자주 이런 현상이 발생하는것 같아요. 설치만 vagrant로하고 이후부터는 vagrant up으로 기동하지 않고, 그냥 virtualbox만 실행해서 UI를 통해 기동시키고 내리는것도 괜찮을것 같습니다. 이때 주의할 점은, virtualbox를 통해 core수나 memory를 직접 변경 했을때 나중에 vagrant up으로 기동할일이 있을 경우 Vagrantfile에 있는 core, memory 스펙으로 다시 업데이트 된다는 점 주의하시기 바랍니다.</li>
 </ul>
-<h3 id="dashboard-관련">Dashboard 관련</h3>
+<h3 id="dashboard-관련--127-버전에서는-불필요한-내용입니다">Dashboard 관련  (1.27 버전에서는 불필요한 내용입니다.)</h3>
 <ul>
 <li>Master Node 재기동시 Dashboard에 접속하기 위해선 아래 명령어를 실행해서 Proxy 오픈하기</li>
 </ul>
