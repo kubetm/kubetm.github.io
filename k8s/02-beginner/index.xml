@@ -654,10 +654,10 @@ C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span 
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;vagrant 명령어 참고&lt;/h4&gt;
 
-    vagrant up : 가상머신 기동 &lt;br/&gt;
-vagrant halt : 가상머신 Shutdown &lt;br/&gt;
-vagrant ssh : 가상머신 접속 (vagrant ssh k8s-master) &lt;br/&gt;
-vagrant destroy : 가상머신 삭제
+    vagrant up : VM 생성 및 스크립트 설치 &lt;br/&gt;
+(최초 VM생성 할때만 사용 합니다. 생성 이후 부터 VM 기동/중지는 Virtualbox UI를 사용하는걸 권해 드려요.) &lt;br/&gt;
+vagrant destroy : 가상머신 삭제 &lt;br/&gt;
+(vagrant up으로 VM 생성 중 에러가 났을 때 이 명령으로 삭제 합니다.)
 
 &lt;/div&gt;
 

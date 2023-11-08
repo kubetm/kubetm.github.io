@@ -32,7 +32,7 @@
  Windows10, Cpu 6core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "><meta itemprop="datePublished" content="2023-11-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-11-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="543">
+<meta itemprop="wordCount" content="560">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s v1.27 버전 설치 (최신, 쉬운설치 버전) - 1.22에서 변경됨"/>
 <meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
@@ -1750,10 +1750,10 @@ C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">vagrant 명령어 참고</h4>
 
-    vagrant up : 가상머신 기동 <br/>
-vagrant halt : 가상머신 Shutdown <br/>
-vagrant ssh : 가상머신 접속 (vagrant ssh k8s-master) <br/>
-vagrant destroy : 가상머신 삭제
+    vagrant up : VM 생성 및 스크립트 설치 <br/>
+(최초 VM생성 할때만 사용 합니다. 생성 이후 부터 VM 기동/중지는 Virtualbox UI를 사용하는걸 권해 드려요.) <br/>
+vagrant destroy : 가상머신 삭제 <br/>
+(vagrant up으로 VM 생성 중 에러가 났을 때 이 명령으로 삭제 합니다.)
 
 </div>
 
