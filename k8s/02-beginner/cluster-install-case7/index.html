@@ -32,7 +32,7 @@
  Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "><meta itemprop="datePublished" content="2023-11-25T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-11-25T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1093">
+<meta itemprop="wordCount" content="1095">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s v1.27 버전 설치 (최신, 쉬운설치 버전)"/>
 <meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
@@ -1602,8 +1602,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#4-원격-접속-mac-터미널-사용">4. 원격 접속 (Mac 터미널 사용)</a></li>
         <li><a href="#5-master에-클러스터-기본-구성-설치-arm64-버전">5. master에 클러스터 기본 구성 설치 (arm64 버전)</a></li>
         <li><a href="#6-master-vm을-복사해서-node1과-node2-생성">6. master VM을 복사해서 node1과 node2 생성</a></li>
-        <li><a href="#7-maste에-클러스터-초기화-구성">7. maste에 클러스터 초기화 구성</a></li>
-        <li><a href="#8-worker-ndoe-연결">8. Worker Ndoe 연결</a></li>
+        <li><a href="#7-master에-클러스터-초기화-구성">7. master에 클러스터 초기화 구성</a></li>
+        <li><a href="#8-worker-node-연결">8. Worker Node 연결</a></li>
         <li><a href="#9-대시보드-접근">9. 대시보드 접근</a></li>
       </ul>
     </li>
@@ -1925,7 +1925,7 @@ shutdown now
 <li>재시작 후 UTM에서 제공하는 창은 내리기</li>
 </ul>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">reboot
-</code></pre></div><h3 id="7-maste에-클러스터-초기화-구성">7. maste에 클러스터 초기화 구성</h3>
+</code></pre></div><h3 id="7-master에-클러스터-초기화-구성">7. master에 클러스터 초기화 구성</h3>
 <ul>
 <li>UTM에서 k8s-master 실행(▶) 하고 Mac Terminal을 통해서 접속</li>
 </ul>
@@ -1959,16 +1959,21 @@ kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [10-1] Pod 상태 확인 ========&#39;
 kubectl get pod -A
-</code></pre></div><h3 id="8-worker-ndoe-연결">8. Worker Ndoe 연결</h3>
+</code></pre></div><h3 id="8-worker-node-연결">8. Worker Node 연결</h3>
 <p>8-1) master에서 cat 명령으로 자신에 토큰 확인 및 복사</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[root@k8s-master ~]# cat ~/join.sh
 
 join 192.168.64.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
-</code></pre></div><p>8-2) node1에서 토큰 붙여놓기
-8-3) node2에서 토큰 붙여놓기 반복</p>
-<p>8-4) master 에서 노드 상태 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">kubectl get nodes
 </code></pre></div><br/>
+8-2) node1에서 토큰 붙여놓기
+<br/>
+8-3) node2에서 토큰 붙여놓기 반복
+<br/>
+8-4) master 에서 노드 상태 확인
+```cmd
+kubectl get nodes
+```
+<br/>
 <h3 id="9-대시보드-접근">9. 대시보드 접근</h3>
 <pre><code class="language-ssh" data-lang="ssh">https://192.168.64.30:30000/#/login
 </code></pre><br/>
