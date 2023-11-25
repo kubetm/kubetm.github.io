@@ -6517,13 +6517,11 @@ shutdown now
 &lt;li&gt;재시작 후 UTM에서 제공하는 창은 내리기&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;reboot
-
-
-### 7. maste에 클러스터 초기화 구성
-- UTM에서 k8s-master 실행(▶) 하고 Mac Terminal을 통해서 접속
-
-```cmd
-&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [8] kubeadm으로 클러스터 생성  ========&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;7-maste에-클러스터-초기화-구성&#34;&gt;7. maste에 클러스터 초기화 구성&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;UTM에서 k8s-master 실행(▶) 하고 Mac Terminal을 통해서 접속&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [8] kubeadm으로 클러스터 생성  ========&amp;#39;
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [8-1] 클러스터 초기화 (Pod Network 세팅) ========&amp;#39;
 kubeadm init --pod-network-cidr=20.96.0.0/12 --apiserver-advertise-address 192.168.64.30
 kubeadm token create --print-join-command &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; ~/join.sh
@@ -6537,11 +6535,9 @@ chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/calico-3.25.1/calico.yaml
 kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/calico-3.25.1/calico-custom.yaml
 
-&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [8-4] Master에 Pod를 생성 할수 있도록 설정 ========&amp;#39;
-kubectl taint nodes k8s-master node-role.kubernetes.io/control-plane-
-
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [9] 쿠버네티스 편의기능 설치 ========&amp;#39;
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [9-1] kubectl 자동완성 기능 ========&amp;#39;
+yum -y install bash-completion
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;source &amp;lt;(kubectl completion bash)&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.bashrc
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;alias k=kubectl&amp;#39; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;~/.bashrc
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;complete -o default -F __start_kubectl k&amp;#39; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;~/.bashrc

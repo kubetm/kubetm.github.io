@@ -32,7 +32,7 @@
  Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "><meta itemprop="datePublished" content="2023-11-25T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-11-25T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1107">
+<meta itemprop="wordCount" content="1093">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s v1.27 버전 설치 (최신, 쉬운설치 버전)"/>
 <meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
@@ -1602,6 +1602,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#4-원격-접속-mac-터미널-사용">4. 원격 접속 (Mac 터미널 사용)</a></li>
         <li><a href="#5-master에-클러스터-기본-구성-설치-arm64-버전">5. master에 클러스터 기본 구성 설치 (arm64 버전)</a></li>
         <li><a href="#6-master-vm을-복사해서-node1과-node2-생성">6. master VM을 복사해서 node1과 node2 생성</a></li>
+        <li><a href="#7-maste에-클러스터-초기화-구성">7. maste에 클러스터 초기화 구성</a></li>
         <li><a href="#8-worker-ndoe-연결">8. Worker Ndoe 연결</a></li>
         <li><a href="#9-대시보드-접근">9. 대시보드 접근</a></li>
       </ul>
@@ -1924,13 +1925,11 @@ shutdown now
 <li>재시작 후 UTM에서 제공하는 창은 내리기</li>
 </ul>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">reboot
-
-
-### 7. maste에 클러스터 초기화 구성
-- UTM에서 k8s-master 실행(▶) 하고 Mac Terminal을 통해서 접속
-
-```cmd
-<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8] kubeadm으로 클러스터 생성  ========&#39;
+</code></pre></div><h3 id="7-maste에-클러스터-초기화-구성">7. maste에 클러스터 초기화 구성</h3>
+<ul>
+<li>UTM에서 k8s-master 실행(▶) 하고 Mac Terminal을 통해서 접속</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8] kubeadm으로 클러스터 생성  ========&#39;
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8-1] 클러스터 초기화 (Pod Network 세팅) ========&#39;
 kubeadm init --pod-network-cidr=20.96.0.0/12 --apiserver-advertise-address 192.168.64.30
 kubeadm token create --print-join-command <span style="color:#000;font-weight:bold">&gt;</span> ~/join.sh
@@ -1944,11 +1943,9 @@ chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/calico-3.25.1/calico.yaml
 kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/calico-3.25.1/calico-custom.yaml
 
-<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8-4] Master에 Pod를 생성 할수 있도록 설정 ========&#39;
-kubectl taint nodes k8s-master node-role.kubernetes.io/control-plane-
-
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [9] 쿠버네티스 편의기능 설치 ========&#39;
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [9-1] kubectl 자동완성 기능 ========&#39;
+yum -y install bash-completion
 <span style="color:#204a87;font-weight:bold">echo</span> <span style="color:#4e9a06">&#34;source &lt;(kubectl completion bash)&#34;</span> <span style="color:#000;font-weight:bold">&gt;&gt;</span> ~/.bashrc
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;alias k=kubectl&#39; <span style="color:#000;font-weight:bold">&gt;&gt;</span>~/.bashrc
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;complete -o default -F __start_kubectl k&#39; <span style="color:#000;font-weight:bold">&gt;&gt;</span>~/.bashrc
