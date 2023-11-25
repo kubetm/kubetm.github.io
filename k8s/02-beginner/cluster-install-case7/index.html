@@ -17,8 +17,8 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>k8s v1.27 버전 설치 (Mac m시리즈) | KubeTM Blog</title>
-<meta name="description" content=""><meta property="og:title" content="k8s v1.27 버전 설치 (Mac m시리즈)" />
+<title>k8s v1.27 버전 설치 (최신, 쉬운설치 버전) | KubeTM Blog</title>
+<meta name="description" content=""><meta property="og:title" content="k8s v1.27 버전 설치 (최신, 쉬운설치 버전)" />
 <meta property="og:description" content="설치스펙 : &lt;br/&gt; 
  Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 " />
@@ -27,14 +27,14 @@
 <meta property="article:published_time" content="2023-11-25T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-11-25T00:00:00+00:00" /><meta property="og:site_name" content="KubeTM Blog" />
 
-<meta itemprop="name" content="k8s v1.27 버전 설치 (Mac m시리즈)">
+<meta itemprop="name" content="k8s v1.27 버전 설치 (최신, 쉬운설치 버전)">
 <meta itemprop="description" content="설치스펙 : &lt;br/&gt; 
  Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "><meta itemprop="datePublished" content="2023-11-25T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-11-25T00:00:00+00:00" />
-<meta itemprop="wordCount" content="856">
+<meta itemprop="wordCount" content="1107">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="k8s v1.27 버전 설치 (Mac m시리즈)"/>
+<meta name="twitter:title" content="k8s v1.27 버전 설치 (최신, 쉬운설치 버전)"/>
 <meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
  Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "/>
@@ -334,7 +334,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-k8s02-beginnercluster-install-case6-li">
     
       <input type="checkbox" id="m-k8s02-beginnercluster-install-case6-check"/>
-      <label for="m-k8s02-beginnercluster-install-case6-check"><a href="/k8s/02-beginner/cluster-install-case6/" title="k8s v1.27 버전 설치 (최신, 쉬운설치 버전) - 1.22에서 변경됨" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s02-beginnercluster-install-case6"><span class="">설치 v1.27</span></a></label>
+      <label for="m-k8s02-beginnercluster-install-case6-check"><a href="/k8s/02-beginner/cluster-install-case6/" title="k8s v1.27 버전 설치 (최신, 쉬운설치 버전) - 1.22에서 변경됨" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s02-beginnercluster-install-case6"><span class="">설치 v1.27 (win/mac intel)</span></a></label>
     
     
   </li>
@@ -362,7 +362,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-k8s02-beginnercluster-install-case7-li">
     
       <input type="checkbox" id="m-k8s02-beginnercluster-install-case7-check"/>
-      <label for="m-k8s02-beginnercluster-install-case7-check"><a href="/k8s/02-beginner/cluster-install-case7/" title="k8s v1.27 버전 설치 (Mac m시리즈)" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s02-beginnercluster-install-case7"><span class="">설치 v1.27 (Mac m시리즈)</span></a></label>
+      <label for="m-k8s02-beginnercluster-install-case7-check"><a href="/k8s/02-beginner/cluster-install-case7/" title="k8s v1.27 버전 설치 (최신, 쉬운설치 버전)" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s02-beginnercluster-install-case7"><span class="">설치 v1.27 (mac m series)</span></a></label>
     
     
   </li>
@@ -1602,7 +1602,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#4-원격-접속-mac-터미널-사용">4. 원격 접속 (Mac 터미널 사용)</a></li>
         <li><a href="#5-master에-클러스터-기본-구성-설치-arm64-버전">5. master에 클러스터 기본 구성 설치 (arm64 버전)</a></li>
         <li><a href="#6-master-vm을-복사해서-node1과-node2-생성">6. master VM을 복사해서 node1과 node2 생성</a></li>
-        <li><a href="#7-maste에-클러스터-초기화-구성">7. maste에 클러스터 초기화 구성</a></li>
         <li><a href="#8-worker-ndoe-연결">8. Worker Ndoe 연결</a></li>
         <li><a href="#9-대시보드-접근">9. 대시보드 접근</a></li>
       </ul>
@@ -1663,7 +1662,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://kubetm.github.io/k8s/02-beginner/cluster-install-case7/">설치 v1.27 (Mac m시리즈)</a>
+	<a href="https://kubetm.github.io/k8s/02-beginner/cluster-install-case7/">설치 v1.27 (mac m series)</a>
 </li>
 
 	</ol>
@@ -1671,7 +1670,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             
 <div class="td-content">
-	<h1>k8s v1.27 버전 설치 (Mac m시리즈)</h1>
+	<h1>k8s v1.27 버전 설치 (최신, 쉬운설치 버전)</h1>
 	<div class="lead">설치스펙 : <br/>
 Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경</div>
 	<header class="article-meta">
@@ -1729,8 +1728,16 @@ Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 �
 <h3 id="3-vm-세팅">3. VM 세팅</h3>
 <p>3-1) UTM에서 VM 생성</p>
 <ul>
-<li>Create a New Virtual Machine 선택
-
+<li>Create a New Virtual Machine 선택</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">- Start : Virtualize
+- Operating System : Linux
+- Linux : Boot ISO Image [Browse..] -<span style="color:#000;font-weight:bold">&gt;</span> Rocky ISO 파일 선택
+- Hardware : Memory : 4096 MB, CPU Cores : 4
+- Size : 24 GB
+- Shared Directory : 설정 안함
+- Summary : Name : k8s-master
+</code></pre></div>
 
 <div class="alert alert-warning" role="alert">
 <h4 class="alert-heading">Virtualize와 Emulate의 차이</h4>
@@ -1738,16 +1745,8 @@ Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 �
     Virtualize으로 설치시 M1이 arm 기반이기 때문에, OS와 쿠버네티스도 arm 기반으로 설치를 해야 합니다. 그래도 이렇게 설치해야 속도가 빠르고요. Emulate 방식으로 설치할 경우 amd기반으로도 설치가 가능합니다. (단, 속도가 느립니다)
 
 </div>
-</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">- Start : Virtualize
-- Operating System : Linux
-- Linux : Boot ISO Image [Browse..] -<span style="color:#000;font-weight:bold">&gt;</span> Rocky ISO 파일 선택
-- Hardware : Memory : 4096 MB, CPU Cores : 4
-- Size : 32 GB
-- Shared Directory : 설정 안함
-- Summary : Name : k8s-master
-</code></pre></div><p>3-2) 생성된 VM 실행 후 Rocky Linux 초기 세팅</p>
+
+<p>3-2) 생성된 VM 실행 후 Rocky Linux 초기 세팅</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">1. 언어 : 한국어(대한민국)
 2. 사용자 설정 
    - root 비밀번호(R) : 개인별 root 비밀번호 입력
@@ -1759,12 +1758,13 @@ Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 �
     - 호스트 이름(H) : k8s-master  입력 후 [적용(A)] 클릭
     - 이더넷(enp0s1) : [설정(C)..] 클릭
        1) [IPv4 설정] 탭 클릭
-       2) 주소 : [Add] 클릭 후 -<span style="color:#000;font-weight:bold">&gt;</span> 주소(192.168.64.30), 넷마스크(255.255.255.0), 게이트웨이(192.168.64.1)
+       2) Method : 수동
+       3) 주소 : [Add] 클릭 후 -<span style="color:#000;font-weight:bold">&gt;</span> 주소(192.168.64.30), 넷마스크(255.255.255.0), 게이트웨이(192.168.64.1)
     - [완료(D)] 클릭
 5. [설치 시작(B)] 클릭
 6. 설치 완료 메세지 확인 후 [재시작] 누르지 말고 창 상단에 [shutdown] 클릭 후 창닫기
 </code></pre></div><p>3-3) Rocky Linux 실행</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">1. 화면 가장 하단에 CD/DVD를 클릭해서 Clear 클릭 (선택되어 있는 ISO이미지가 제거됨)
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">1. UTM 화면 가장 하단에 CD/DVD를 클릭해서 Clear 클릭 (선택되어 있는 ISO이미지가 제거됨)
 2. 실행▶ 버튼 클릭
 3. UTM에서 제공되는 콘솔창은 내리기 (copy<span style="color:#000;font-weight:bold">&amp;</span>paste 가 잘안됨)
 </code></pre></div><h3 id="4-원격-접속-mac-터미널-사용">4. 원격 접속 (Mac 터미널 사용)</h3>
@@ -1857,9 +1857,80 @@ sed -i &#39;s/<span style="color:#4e9a06">^S</span>ELINUX=enforcing$/SELINUX=per
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [7] kubelet, kubeadm, kubectl 패키지 설치 ========&#39;
 yum install -y kubelet-1.27.2-150500.1.1.aarch64 kubeadm-1.27.2-150500.1.1.aarch64 kubectl-1.27.2-150500.1.1.aarch64 --disableexcludes=kubernetes
 systemctl enable --now kubelet
+
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8] 종료시키기 ========&#39;
+shutdown now
 </code></pre></div><h3 id="6-master-vm을-복사해서-node1과-node2-생성">6. master VM을 복사해서 node1과 node2 생성</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"></code></pre></div><h3 id="7-maste에-클러스터-초기화-구성">7. maste에 클러스터 초기화 구성</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8] kubeadm으로 클러스터 생성  ========&#39;
+<p>6-1) node1 VM 만들기</p>
+<ul>
+<li>
+<p>UTM 화면 왼쪽 master VM에서 마우스 우클릭 후 [Clone] 클릭</p>
+</li>
+<li>
+<p>k8s-master2가 생성되면 마우스 우클릭 해서 Edit 클릭</p>
+</li>
+<li>
+<p>Information &gt; Name : k8s-node1로 변경</p>
+</li>
+<li>
+<p>Network &gt; MAC Address 에서 [Random] 클릭 후 [save]</p>
+</li>
+<li>
+<p>k8s-node1 VM 실행(▶)하고 UTM에서 제공해주는 UI에서 로그인 하기</p>
+</li>
+<li>
+<p>nmtui로 네트워크 IP 변경하기</p>
+</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[root@k8s-node1 ~]# nmtui
+</code></pre></div><ul>
+<li>NetworkManager TUI &gt; [Edit a connection] 엔터 &gt; [enp0s1] 엔터 &gt; Addresses : 192.168.64.31 로 변경 [OK] 엔터</li>
+<li>[ESC] 눌러서 첫 화면까지 뒤로 이동</li>
+<li>NetworkManager TUI &gt; [Activate a connection] &gt; [enp0s1] 에서 엔터 두번 눌러서 재활성화 시키기</li>
+<li>[ESC] 눌러서 첫 화면까지 뒤로 이동</li>
+<li>NetworkManager TUI &gt; [Set system hostname] &gt; k8s-node1 수정 후 엔터</li>
+<li>재시작 후 UTM에서 제공하는 창은 내리기</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">reboot
+</code></pre></div><p>6-2) node2 VM 만들기</p>
+<ul>
+<li>
+<p>UTM 화면 왼쪽 master VM에서 마우스 우클릭 후 [Clone] 클릭</p>
+</li>
+<li>
+<p>k8s-master2가 생성되면 마우스 우클릭 해서 Edit 클릭</p>
+</li>
+<li>
+<p>Information &gt; Name : k8s-node2로 변경</p>
+</li>
+<li>
+<p>Network &gt; MAC Address 에서 [Random] 클릭 후 [save]</p>
+</li>
+<li>
+<p>k8s-node2 VM 실행(▶)하고 UTM에서 제공해주는 UI에서 로그인 하기</p>
+</li>
+<li>
+<p>nmtui로 네트워크 IP 변경하기</p>
+</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[root@k8s-node2 ~]# nmtui
+</code></pre></div><ul>
+<li>NetworkManager TUI &gt; [Edit a connection] 엔터 &gt; [enp0s1] 엔터 &gt; Addresses : 192.168.64.32 로 변경 [OK] 엔터</li>
+<li>[ESC] 눌러서 첫 화면까지 뒤로 이동</li>
+<li>NetworkManager TUI &gt; [Activate a connection] &gt; [enp0s1] 에서 엔터 두번 눌러서 재활성화 시키기</li>
+<li>[ESC] 눌러서 첫 화면까지 뒤로 이동</li>
+<li>NetworkManager TUI &gt; [Set system hostname] &gt; k8s-node2 수정 후 엔터</li>
+<li>재시작 후 UTM에서 제공하는 창은 내리기</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">reboot
+
+
+### 7. maste에 클러스터 초기화 구성
+- UTM에서 k8s-master 실행(▶) 하고 Mac Terminal을 통해서 접속
+
+```cmd
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8] kubeadm으로 클러스터 생성  ========&#39;
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8-1] 클러스터 초기화 (Pod Network 세팅) ========&#39;
 kubeadm init --pod-network-cidr=20.96.0.0/12 --apiserver-advertise-address 192.168.64.30
 kubeadm token create --print-join-command <span style="color:#000;font-weight:bold">&gt;</span> ~/join.sh
@@ -1893,7 +1964,7 @@ kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground
 kubectl get pod -A
 </code></pre></div><h3 id="8-worker-ndoe-연결">8. Worker Ndoe 연결</h3>
 <p>8-1) master에서 cat 명령으로 자신에 토큰 확인 및 복사</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">cat ~/join.sh
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[root@k8s-master ~]# cat ~/join.sh
 
 join 192.168.64.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
 </code></pre></div><p>8-2) node1에서 토큰 붙여놓기
