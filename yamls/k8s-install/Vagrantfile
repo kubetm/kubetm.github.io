@@ -96,6 +96,10 @@ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce
 
 echo '======== [6-2-1-1] containerd 설치 ========'
 yum install -y containerd.io-1.6.21-3.1.el8
+# defualt cgroupfs에서 systemd로 변경 (kubernetes default는 systemd)
+containerd config default > /etc/containerd/config.toml
+sed -i 's/ SystemdCgroup = false/ SystemdCgroup = true/' /etc/containerd/config.toml
+systemctl restart containerd
 systemctl daemon-reload
 systemctl enable --now containerd
 
@@ -106,14 +110,14 @@ systemctl restart containerd
 
 echo '======== [7] kubeadm 설치 ========'
 echo '======== [7] repo 설정 ========'
-cat <<EOF |tee /etc/yum.repos.d/kubernetes.repo
+cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.27/rpm/
 enabled=1
 gpgcheck=1
-gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-exclude=kubelet kubeadm kubectl
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.27/rpm/repodata/repomd.xml.key
+exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
 EOF
 
 echo '======== [7] SELinux 설정 ========'
@@ -121,7 +125,7 @@ setenforce 0
 sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 
 echo '======== [7] kubelet, kubeadm, kubectl 패키지 설치 ========'
-yum install -y kubelet-1.27.2-0.x86_64 kubeadm-1.27.2-0.x86_64 kubectl-1.27.2-0.x86_64 --disableexcludes=kubernetes
+yum install -y kubelet-1.27.2-150500.1.1.x86_64 kubeadm-1.27.2-150500.1.1.x86_64 kubectl-1.27.2-150500.1.1.x86_64 --disableexcludes=kubernetes
 systemctl enable --now kubelet
 
 SHELL

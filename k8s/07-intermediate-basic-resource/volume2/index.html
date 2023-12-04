@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Dynamic Provisioning, StorageClass, Status, ReclaimPolicy &lt;/br&gt; Version 1.27 에서는 스토리지 솔루션을 Longhorn으로 대체합니다.
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="270">
+<meta itemprop="wordCount" content="218">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Volume"/>
 <meta name="twitter:description" content="Dynamic Provisioning, StorageClass, Status, ReclaimPolicy &lt;/br&gt; Version 1.27 에서는 스토리지 솔루션을 Longhorn으로 대체합니다.
@@ -1615,17 +1615,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#3-2-persistentvolume">3-2) PersistentVolume</a></li>
         <li><a href="#3-3-persistentvolumeclaim">3-3) PersistentVolumeClaim</a></li>
         <li><a href="#3-4-pod">3-4) Pod</a></li>
-        <li><a href="#4-longhorn-삭제">4) Longhorn 삭제</a></li>
-      </ul>
-    </li>
-    <li><a href="#yaml">yaml</a>
-      <ul>
-        <li><a href="#__storageclass__"><strong>StorageClass</strong></a></li>
       </ul>
     </li>
     <li><a href="#kubectl">kubectl</a>
       <ul>
-        <li><a href="#__get-all-objects-in-namespaces__"><strong>Get All Objects in Namespaces</strong></a></li>
         <li><a href="#__force-deletion__"><strong>Force Deletion</strong></a></li>
       </ul>
     </li>
@@ -1963,88 +1956,11 @@ touch file.txt
 touch file.txt
 </code></pre></div><br/>
 <br/>
-<h3 id="4-longhorn-삭제">4) Longhorn 삭제</h3>
-<p>자원을 많이 먹으니 실습 후 꼭 삭제해주세요</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
-      <a class="nav-link active"
-        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab"
-        aria-controls="tabs-1-0" aria-selected="true">
-        v1.27
-      </a>
-    </li><li class="nav-item">
-      <a class="nav-link"
-        id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab"
-        aria-controls="tabs-1-1" aria-selected="false">
-        v1.22
-      </a>
-    </li></ul>
-
-
-<div class="tab-content" id="tabs-1-content"><div class="tab-pane fade show active"
-        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/yamls/longhorn/longhorn-1.5.0.yaml</code></pre></div></div>
-  <div class="tab-pane fade"
-        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete -f https://raw.githubusercontent.com/kubetm/kubetm.github.io/master/yamls/longhorn/longhorn-1.3.3.yaml</code></pre></div></div>
-  
-</div>
-
-<h2 id="yaml">yaml</h2>
-<hr>
-<h3 id="__storageclass__"><strong>StorageClass</strong></h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storage.k8s.io/v1</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">StorageClass</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">default</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">annotations</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># Default StorageClass로 선택 </span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">storageclass.kubernetes.io/is-default-class</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;true&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> 
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic"># 동적으로 PV생성시 PersistentVolumeReclaimPolicy 선택 (Default:Delete)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">reclaimPolicy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Retain, Delete, Recycle</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">provisioner</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubernetes.io/storageos</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic"># provisioner 종류에 따라 parameters의 하위 내용 다름 </span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">parameters</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">                                             
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><br/>
+<br/>
 <br/>
 <h2 id="kubectl">kubectl</h2>
 <hr>
-<h3 id="__get-all-objects-in-namespaces__"><strong>Get All Objects in Namespaces</strong></h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get all -n storageos-operator
-</code></pre></div><h3 id="__force-deletion__"><strong>Force Deletion</strong></h3>
+<h3 id="__force-deletion__"><strong>Force Deletion</strong></h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl delete persistentvolumeclaims pvc-fast1 --namespace<span style="color:#ce5c00;font-weight:bold">=</span>default --grace-period <span style="color:#0000cf;font-weight:bold">0</span> --force
 kubectl delete persistentvolume pvc-b53fd802-3919-4fb0-8c1f-02221a3e4bc0 --grace-period <span style="color:#0000cf;font-weight:bold">0</span> --force
 </code></pre></div><br/>
