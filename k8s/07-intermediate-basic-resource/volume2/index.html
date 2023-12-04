@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Dynamic Provisioning, StorageClass, Status, ReclaimPolicy &lt;/br&gt; Version 1.27 에서는 스토리지 솔루션을 Longhorn으로 대체합니다.
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="218">
+<meta itemprop="wordCount" content="270">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Volume"/>
 <meta name="twitter:description" content="Dynamic Provisioning, StorageClass, Status, ReclaimPolicy &lt;/br&gt; Version 1.27 에서는 스토리지 솔루션을 Longhorn으로 대체합니다.
@@ -1719,7 +1719,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="1-longhorn-구축">1. Longhorn 구축</h2>
 <hr>
 <h3 id="1-1-모든-masterwork-node에-iscsi-설치">1-1) 모든 Master/Work Node에 iscsi 설치</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yum install -y iscsi-initiator-utils
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yum --setopt<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">tsflags</span><span style="color:#ce5c00;font-weight:bold">=</span>noscripts install -y iscsi-initiator-utils
+<span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#34;InitiatorName=</span><span style="color:#204a87;font-weight:bold">$(</span>/sbin/iscsi-iname<span style="color:#204a87;font-weight:bold">)</span><span style="color:#4e9a06">&#34;</span> &gt; /etc/iscsi/initiatorname.iscsi
+systemctl <span style="color:#204a87">enable</span> iscsid
+systemctl start iscsid
 </code></pre></div><h3 id="1-2-longhorn-설치">1-2) Longhorn 설치</h3>
 
 
@@ -1780,6 +1783,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>확인</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get pods -n longhorn-system
+</code></pre></div><p>Longhorn Replica가 너무 많이 생성되니 줄여봅니다.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl scale deploy -n longhorn-system csi-attacher --replicas<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span>
+kubectl scale deploy -n longhorn-system csi-provisioner --replicas<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span>
+kubectl scale deploy -n longhorn-system csi-resizer --replicas<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span>
+kubectl scale deploy -n longhorn-system csi-snapshotter --replicas<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span>
+kubectl scale deploy -n longhorn-system longhorn-ui --replicas<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span>
 </code></pre></div><h3 id="1-3-fast-storageclass-추가">1-3) Fast StorageClass 추가</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f - <span style="color:#4e9a06">&lt;&lt;END
 </span><span style="color:#4e9a06">apiVersion: storage.k8s.io/v1
