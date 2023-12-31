@@ -6300,7 +6300,7 @@ GCP &gt; Kubernetes Engine &gt; Clusters &gt; k8s-cluster 리스트에 [Connect]
 &lt;br/&gt;
 &lt;h3 id=&#34;1-rocky-linux-iso-다운로드-92-arm64-버전&#34;&gt;1. Rocky Linux ISO 다운로드 (9.2 arm64 버전)&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Download : &lt;a href=&#34;https://download.rockylinux.org/pub/rocky/9/isos/aarch64/Rocky-9.2-aarch64-minimal.iso&#34;&gt;https://download.rockylinux.org/pub/rocky/9/isos/aarch64/Rocky-9.2-aarch64-minimal.iso&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Download : &lt;a href=&#34;https://dl.rockylinux.org/vault/rocky/9.2/isos/aarch64/Rocky-9.2-aarch64-minimal.iso&#34;&gt;https://dl.rockylinux.org/vault/rocky/9.2/isos/aarch64/Rocky-9.2-aarch64-minimal.iso&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Site : &lt;a href=&#34;https://rockylinux.org&#34;&gt;https://rockylinux.org&lt;/a&gt;
 &lt;br/&gt;&lt;/li&gt;
 &lt;/ul&gt;
