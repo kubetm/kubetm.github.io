@@ -32,7 +32,7 @@
  Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "><meta itemprop="datePublished" content="2023-11-25T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-11-25T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1095">
+<meta itemprop="wordCount" content="1088">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s v1.27 버전 설치 (최신, 쉬운설치 버전)"/>
 <meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
@@ -1829,14 +1829,12 @@ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-2-1-1] containerd 설치 ========&#39;
 yum install -y containerd.io-1.6.21-3.1.el9.aarch64
-containerd config default <span style="color:#000;font-weight:bold">&gt;</span> /etc/containerd/config.toml
-sed -i &#39;s/ SystemdCgroup = false/ SystemdCgroup = true/&#39; /etc/containerd/config.toml
-systemctl restart containerd
 systemctl daemon-reload
 systemctl enable --now containerd
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-3] 컨테이너 런타임 : cri 활성화 ========&#39;
-sed -i &#39;s/<span style="color:#4e9a06">^d</span>isabled_plugins/#disabled_plugins/&#39; /etc/containerd/config.toml
+containerd config default <span style="color:#000;font-weight:bold">&gt;</span> /etc/containerd/config.toml
+sed -i &#39;s/ SystemdCgroup = false/ SystemdCgroup = true/&#39; /etc/containerd/config.toml
 systemctl restart containerd
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [7] kubeadm 설치 ========&#39;
@@ -1940,8 +1938,8 @@ cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 chown $(id -u):$(id -g) $HOME/.kube/config
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8-3] Pod Network 설치 (calico) ========&#39;
-kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/calico-3.25.1/calico.yaml
-kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/calico-3.25.1/calico-custom.yaml
+kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/calico-3.26.4/calico.yaml
+kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/calico-3.26.4/calico-custom.yaml
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [9] 쿠버네티스 편의기능 설치 ========&#39;
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [9-1] kubectl 자동완성 기능 ========&#39;
@@ -2061,7 +2059,7 @@ kubectl get nodes
         
       </div>
       <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-        <small class="text-white">&copy; 2023 Kim Taemin All Rights Reserved</small>
+        <small class="text-white">&copy; 2024 Kim Taemin All Rights Reserved</small>
         <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">개인정보 보호 정책</a></small>
 	
 		<p class="mt-2"><a href="/about/">About</a></p>

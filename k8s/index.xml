@@ -6412,14 +6412,12 @@ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce
 
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [6-2-1-1] containerd 설치 ========&amp;#39;
 yum install -y containerd.io-1.6.21-3.1.el9.aarch64
-containerd config default &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; /etc/containerd/config.toml
-sed -i &amp;#39;s/ SystemdCgroup = false/ SystemdCgroup = true/&amp;#39; /etc/containerd/config.toml
-systemctl restart containerd
 systemctl daemon-reload
 systemctl enable --now containerd
 
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [6-3] 컨테이너 런타임 : cri 활성화 ========&amp;#39;
-sed -i &amp;#39;s/&lt;span style=&#34;color:#4e9a06&#34;&gt;^d&lt;/span&gt;isabled_plugins/#disabled_plugins/&amp;#39; /etc/containerd/config.toml
+containerd config default &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; /etc/containerd/config.toml
+sed -i &amp;#39;s/ SystemdCgroup = false/ SystemdCgroup = true/&amp;#39; /etc/containerd/config.toml
 systemctl restart containerd
 
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [7] kubeadm 설치 ========&amp;#39;
@@ -6523,8 +6521,8 @@ cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 chown $(id -u):$(id -g) $HOME/.kube/config
 
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [8-3] Pod Network 설치 (calico) ========&amp;#39;
-kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/calico-3.25.1/calico.yaml
-kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/calico-3.25.1/calico-custom.yaml
+kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/calico-3.26.4/calico.yaml
+kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/calico-3.26.4/calico-custom.yaml
 
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [9] 쿠버네티스 편의기능 설치 ========&amp;#39;
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [9-1] kubectl 자동완성 기능 ========&amp;#39;
