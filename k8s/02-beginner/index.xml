@@ -812,10 +812,10 @@ VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component SessionMachi
        4) DNS servers: 192.168.64.1
     - [완료(D)] 클릭
 5. [설치 시작(B)] 클릭
-6. 설치 완료 메세지 확인 후 [재시작] 누르지 말고 창 상단에 [shutdown] 클릭 후 창닫기
+6. 설치 완료 메세지 확인 후 [재시작]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;3-3) Rocky Linux 실행&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;1. UTM 화면 가장 하단에 CD/DVD를 클릭해서 Clear 클릭 (선택되어 있는 ISO이미지가 제거됨)
-2. 실행▶ 버튼 클릭
+2. Install Rokcy Linux 9.2 대기중인 화면 상단에서 [전원버튼] 눌러서 Shutdown 하고, [▶] 버튼 눌러서 VM 기동하기
 3. UTM에서 제공되는 콘솔창은 내리기 (copy&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;paste 가 잘안됨)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-원격-접속-mac-터미널-사용&#34;&gt;4. 원격 접속 (Mac 터미널 사용)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;$ ssh root@192.168.64.30
