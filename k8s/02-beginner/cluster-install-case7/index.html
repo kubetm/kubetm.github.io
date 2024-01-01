@@ -32,7 +32,7 @@
  Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "><meta itemprop="datePublished" content="2023-11-25T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-11-25T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1093">
+<meta itemprop="wordCount" content="1949">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s v1.27 버전 설치 (최신, 쉬운설치 버전)"/>
 <meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
@@ -1598,13 +1598,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul>
         <li><a href="#1-rocky-linux-iso-다운로드-92-arm64-버전">1. Rocky Linux ISO 다운로드 (9.2 arm64 버전)</a></li>
         <li><a href="#2-utm-다운로드-및-설치-444-버전">2. UTM 다운로드 및 설치 (4.4.4 버전)</a></li>
-        <li><a href="#3-vm-세팅">3. VM 세팅</a></li>
+        <li><a href="#3-master-vm-세팅">3. Master VM 세팅</a></li>
         <li><a href="#4-원격-접속-mac-터미널-사용">4. 원격 접속 (Mac 터미널 사용)</a></li>
         <li><a href="#5-master에-클러스터-기본-구성-설치-arm64-버전">5. master에 클러스터 기본 구성 설치 (arm64 버전)</a></li>
-        <li><a href="#6-master-vm을-복사해서-node1과-node2-생성">6. master VM을 복사해서 node1과 node2 생성</a></li>
-        <li><a href="#7-master에-클러스터-초기화-구성">7. master에 클러스터 초기화 구성</a></li>
-        <li><a href="#8-worker-node-연결">8. Worker Node 연결</a></li>
-        <li><a href="#9-대시보드-접근">9. 대시보드 접근</a></li>
+        <li><a href="#3-node1-vm-세팅">3. Node1 VM 세팅</a></li>
+        <li><a href="#4-원격-접속-mac-터미널-사용-1">4. 원격 접속 (Mac 터미널 사용)</a></li>
+        <li><a href="#5-node1에-기본-구성-설치-arm64-버전">5. Node1에 기본 구성 설치 (arm64 버전)</a></li>
+        <li><a href="#3-node2-vm-세팅">3. Node2 VM 세팅</a></li>
+        <li><a href="#4-원격-접속-mac-터미널-사용-2">4. 원격 접속 (Mac 터미널 사용)</a></li>
+        <li><a href="#5-node1에-기본-구성-설치-arm64-버전-1">5. Node1에 기본 구성 설치 (arm64 버전)</a></li>
+        <li><a href="#6-worker-node-연결-및-master-상태-확인">6. Worker Node 연결 및 Master 상태 확인</a></li>
+        <li><a href="#7-대시보드-접근">7. 대시보드 접근</a></li>
       </ul>
     </li>
     <li><a href="#참고">참고</a>
@@ -1726,7 +1730,7 @@ Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 �
 <li>Download : <a href="https://github.com/utmapp/UTM/releases/download/v4.4.4/UTM.dmg">https://github.com/utmapp/UTM/releases/download/v4.4.4/UTM.dmg</a></li>
 <li>Site : <a href="https://mac.getutm.app">https://mac.getutm.app</a></li>
 </ul>
-<h3 id="3-vm-세팅">3. VM 세팅</h3>
+<h3 id="3-master-vm-세팅">3. Master VM 세팅</h3>
 <p>3-1) UTM에서 VM 생성</p>
 <ul>
 <li>Create a New Virtual Machine 선택</li>
@@ -1858,76 +1862,7 @@ yum install -y kubelet-1.27.2-150500.1.1.aarch64 kubeadm-1.27.2-150500.1.1.aarch
 systemctl enable --now kubelet
 
 
-<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8] 종료시키기 ========&#39;
-shutdown now
-</code></pre></div><h3 id="6-master-vm을-복사해서-node1과-node2-생성">6. master VM을 복사해서 node1과 node2 생성</h3>
-<p>6-1) node1 VM 만들기</p>
-<ul>
-<li>
-<p>UTM 화면 왼쪽 master VM에서 마우스 우클릭 후 [Clone] 클릭</p>
-</li>
-<li>
-<p>k8s-master2가 생성되면 마우스 우클릭 해서 Edit 클릭</p>
-</li>
-<li>
-<p>Information &gt; Name : k8s-node1로 변경</p>
-</li>
-<li>
-<p>Network &gt; MAC Address 에서 [Random] 클릭 후 [save]</p>
-</li>
-<li>
-<p>k8s-node1 VM 실행(▶)하고 UTM에서 제공해주는 UI에서 로그인 하기</p>
-</li>
-<li>
-<p>nmtui로 네트워크 IP 변경하기</p>
-</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[root@k8s-node1 ~]# nmtui
-</code></pre></div><ul>
-<li>NetworkManager TUI &gt; [Edit a connection] 엔터 &gt; [enp0s1] 엔터 &gt; Addresses : 192.168.64.31 로 변경 [OK] 엔터</li>
-<li>[ESC] 눌러서 첫 화면까지 뒤로 이동</li>
-<li>NetworkManager TUI &gt; [Activate a connection] &gt; [enp0s1] 에서 엔터 두번 눌러서 재활성화 시키기</li>
-<li>[ESC] 눌러서 첫 화면까지 뒤로 이동</li>
-<li>NetworkManager TUI &gt; [Set system hostname] &gt; k8s-node1 수정 후 엔터</li>
-<li>재시작 후 UTM에서 제공하는 창은 내리기</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">reboot
-</code></pre></div><p>6-2) node2 VM 만들기</p>
-<ul>
-<li>
-<p>UTM 화면 왼쪽 master VM에서 마우스 우클릭 후 [Clone] 클릭</p>
-</li>
-<li>
-<p>k8s-master2가 생성되면 마우스 우클릭 해서 Edit 클릭</p>
-</li>
-<li>
-<p>Information &gt; Name : k8s-node2로 변경</p>
-</li>
-<li>
-<p>Network &gt; MAC Address 에서 [Random] 클릭 후 [save]</p>
-</li>
-<li>
-<p>k8s-node2 VM 실행(▶)하고 UTM에서 제공해주는 UI에서 로그인 하기</p>
-</li>
-<li>
-<p>nmtui로 네트워크 IP 변경하기</p>
-</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[root@k8s-node2 ~]# nmtui
-</code></pre></div><ul>
-<li>NetworkManager TUI &gt; [Edit a connection] 엔터 &gt; [enp0s1] 엔터 &gt; Addresses : 192.168.64.32 로 변경 [OK] 엔터</li>
-<li>[ESC] 눌러서 첫 화면까지 뒤로 이동</li>
-<li>NetworkManager TUI &gt; [Activate a connection] &gt; [enp0s1] 에서 엔터 두번 눌러서 재활성화 시키기</li>
-<li>[ESC] 눌러서 첫 화면까지 뒤로 이동</li>
-<li>NetworkManager TUI &gt; [Set system hostname] &gt; k8s-node2 수정 후 엔터</li>
-<li>재시작 후 UTM에서 제공하는 창은 내리기</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">reboot
-</code></pre></div><h3 id="7-master에-클러스터-초기화-구성">7. master에 클러스터 초기화 구성</h3>
-<ul>
-<li>UTM에서 k8s-master 실행(▶) 하고 Mac Terminal을 통해서 접속</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8] kubeadm으로 클러스터 생성  ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8] kubeadm으로 클러스터 생성  ========&#39;
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8-1] 클러스터 초기화 (Pod Network 세팅) ========&#39;
 kubeadm init --pod-network-cidr=20.96.0.0/12 --apiserver-advertise-address 192.168.64.30
 kubeadm token create --print-join-command <span style="color:#000;font-weight:bold">&gt;</span> ~/join.sh
@@ -1957,8 +1892,250 @@ kubectl create -f https://raw.githubusercontent.com/k8s-1pro/install/main/ground
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [10-1] Pod 상태 확인 ========&#39;
 kubectl get pod -A
-</code></pre></div><h3 id="8-worker-node-연결">8. Worker Node 연결</h3>
-<p>8-1) master에서 cat 명령으로 자신에 토큰 확인 및 복사</p>
+</code></pre></div><h3 id="3-node1-vm-세팅">3. Node1 VM 세팅</h3>
+<p>3-1) UTM에서 VM 생성</p>
+<ul>
+<li>Create a New Virtual Machine 선택</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">- Start : Virtualize
+- Operating System : Linux
+- Linux : Boot ISO Image [Browse..] -<span style="color:#000;font-weight:bold">&gt;</span> Rocky ISO 파일 선택
+- Hardware : Memory : 2048 MB, CPU Cores : 2
+- Size : 24 GB
+- Shared Directory : 설정 안함
+- Summary : Name : k8s-node1
+</code></pre></div><p>3-2) 생성된 VM 실행 후 Rocky Linux 초기 세팅</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">1. 언어 : 한국어(대한민국)
+2. 사용자 설정 
+   - root 비밀번호(R) : 개인별 root 비밀번호 입력
+   - root 계정을 잠금 - 체크해제
+   - root가 비밀번호로 SSH 로그인하도록 허용 - 체크 
+3. 설치 목적지 (D)
+   - 저장소 구성 : 자동 설정(A) [체크] 확인 후 완료(D) 클릭
+4. 네트워크 및 호스트 이름
+    - 호스트 이름(H) : k8s-node1  입력 후 [적용(A)] 클릭
+    - 이더넷(enp0s1) : [설정(C)..] 클릭
+       1) [IPv4 설정] 탭 클릭
+       2) Method : 수동
+       3) 주소 : [Add] 클릭 후 -<span style="color:#000;font-weight:bold">&gt;</span> 주소(192.168.64.31), 넷마스크(255.255.255.0), 게이트웨이(192.168.64.1)
+       4) DNS servers: 192.168.64.1
+    - [완료(D)] 클릭
+5. [설치 시작(B)] 클릭
+6. 설치 완료 메세지 확인 후 [재시작]
+</code></pre></div><p>3-3) Rocky Linux 실행</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">1. UTM 화면 가장 하단에 CD/DVD를 클릭해서 Clear 클릭 (선택되어 있는 ISO이미지가 제거됨)
+2. Install Rokcy Linux 9.2 대기중인 화면 상단에서 [전원버튼] 눌러서 Shutdown 하고, [▶] 버튼 눌러서 VM 기동하기
+3. UTM에서 제공되는 콘솔창은 내리기 (copy<span style="color:#000;font-weight:bold">&amp;</span>paste 가 잘안됨)
+</code></pre></div><h3 id="4-원격-접속-mac-터미널-사용-1">4. 원격 접속 (Mac 터미널 사용)</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">$ ssh root@192.168.64.31
+
+The authenticity of host &#39;192.168.64.31 (192.168.64.31)&#39; can&#39;t be established.
+ED25519 key fingerprint is SHA256:+grKMOsgQHDF0lTTZTD65khFhnk5Q56wvNSFV4+NsnA.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+[root@192.168.64.31&#39;s password: (비번입력)
+</code></pre></div><h3 id="5-node1에-기본-구성-설치-arm64-버전">5. Node1에 기본 구성 설치 (arm64 버전)</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4] Rocky Linux 기본 설정 ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-1] 패키지 업데이트 ========&#39;
+yum -y update
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-2] 타임존 설정 ========&#39;
+timedatectl set-timezone Asia/Seoul
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-3] [WARNING FileExisting-tc]: tc not found in system path 로그 관련 업데이트 ========&#39;
+yum install -y yum-utils iproute-tc
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======= [4-4] hosts 설정 ==========&#39;
+cat <span style="color:#000;font-weight:bold">&lt;</span>&lt; EOF <span style="color:#000;font-weight:bold">&gt;&gt;</span> /etc/hosts
+192.168.64.30 k8s-master
+192.168.64.31 k8s-node1
+192.168.64.32 k8s-node2
+EOF
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [5] kubeadm 설치 전 사전작업 ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [5] 방화벽 해제 ========&#39;
+systemctl stop firewalld <span style="color:#000;font-weight:bold">&amp;&amp;</span> systemctl disable firewalld
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [5] Swap 비활성화 ========&#39;
+swapoff -a <span style="color:#000;font-weight:bold">&amp;&amp;</span> sed -i &#39;/ swap / s/<span style="color:#4e9a06">^/</span>#/&#39; /etc/fstab
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6] 컨테이너 런타임 설치 ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-1] 컨테이너 런타임 설치 전 사전작업 ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-1] iptable 세팅 ========&#39;
+cat <span style="color:#000;font-weight:bold">&lt;</span>&lt;EOF <span style="color:#000;font-weight:bold">|</span>tee /etc/modules-load.d/k8s.conf
+overlay
+br_netfilter
+EOF
+
+modprobe overlay
+modprobe br_netfilter
+
+cat <span style="color:#000;font-weight:bold">&lt;</span>&lt;EOF <span style="color:#000;font-weight:bold">|</span>tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-iptables  = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward                 = 1
+EOF
+
+sysctl --system
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-2] 컨테이너 런타임 (containerd 설치) ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-2-1] containerd 패키지 설치 (option2) ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-2-1-1] docker engine 설치 ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-2-1-1] repo 설정 ========&#39;
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-2-1-1] containerd 설치 ========&#39;
+yum install -y containerd.io-1.6.21-3.1.el9.aarch64
+systemctl daemon-reload
+systemctl enable --now containerd
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-3] 컨테이너 런타임 : cri 활성화 ========&#39;
+containerd config default <span style="color:#000;font-weight:bold">&gt;</span> /etc/containerd/config.toml
+sed -i &#39;s/ SystemdCgroup = false/ SystemdCgroup = true/&#39; /etc/containerd/config.toml
+systemctl restart containerd
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [7] kubeadm 설치 ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [7] repo 설정 ========&#39;
+cat <span style="color:#000;font-weight:bold">&lt;</span>&lt;EOF <span style="color:#000;font-weight:bold">|</span> sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.27/rpm/
+enabled=1
+gpgcheck=1
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.27/rpm/repodata/repomd.xml.key
+exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
+EOF
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [7] SELinux 설정 ========&#39;
+setenforce 0
+sed -i &#39;s/<span style="color:#4e9a06">^S</span>ELINUX=enforcing$/SELINUX=permissive/&#39; /etc/selinux/config
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [7] kubelet, kubeadm, kubectl 패키지 설치 ========&#39;
+yum install -y kubelet-1.27.2-150500.1.1.aarch64 kubeadm-1.27.2-150500.1.1.aarch64 --disableexcludes=kubernetes
+systemctl enable --now kubelet
+</code></pre></div><h3 id="3-node2-vm-세팅">3. Node2 VM 세팅</h3>
+<p>3-1) UTM에서 VM 생성</p>
+<ul>
+<li>Create a New Virtual Machine 선택</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">- Start : Virtualize
+- Operating System : Linux
+- Linux : Boot ISO Image [Browse..] -<span style="color:#000;font-weight:bold">&gt;</span> Rocky ISO 파일 선택
+- Hardware : Memory : 2048 MB, CPU Cores : 2
+- Size : 24 GB
+- Shared Directory : 설정 안함
+- Summary : Name : k8s-node2
+</code></pre></div><p>3-2) 생성된 VM 실행 후 Rocky Linux 초기 세팅</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">1. 언어 : 한국어(대한민국)
+2. 사용자 설정 
+   - root 비밀번호(R) : 개인별 root 비밀번호 입력
+   - root 계정을 잠금 - 체크해제
+   - root가 비밀번호로 SSH 로그인하도록 허용 - 체크 
+3. 설치 목적지 (D)
+   - 저장소 구성 : 자동 설정(A) [체크] 확인 후 완료(D) 클릭
+4. 네트워크 및 호스트 이름
+    - 호스트 이름(H) : k8s-node2  입력 후 [적용(A)] 클릭
+    - 이더넷(enp0s1) : [설정(C)..] 클릭
+       1) [IPv4 설정] 탭 클릭
+       2) Method : 수동
+       3) 주소 : [Add] 클릭 후 -<span style="color:#000;font-weight:bold">&gt;</span> 주소(192.168.64.32), 넷마스크(255.255.255.0), 게이트웨이(192.168.64.1)
+       4) DNS servers: 192.168.64.1
+    - [완료(D)] 클릭
+5. [설치 시작(B)] 클릭
+6. 설치 완료 메세지 확인 후 [재시작]
+</code></pre></div><p>3-3) Rocky Linux 실행</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">1. UTM 화면 가장 하단에 CD/DVD를 클릭해서 Clear 클릭 (선택되어 있는 ISO이미지가 제거됨)
+2. Install Rokcy Linux 9.2 대기중인 화면 상단에서 [전원버튼] 눌러서 Shutdown 하고, [▶] 버튼 눌러서 VM 기동하기
+3. UTM에서 제공되는 콘솔창은 내리기 (copy<span style="color:#000;font-weight:bold">&amp;</span>paste 가 잘안됨)
+</code></pre></div><h3 id="4-원격-접속-mac-터미널-사용-2">4. 원격 접속 (Mac 터미널 사용)</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">$ ssh root@192.168.64.32
+
+The authenticity of host &#39;192.168.64.32 (192.168.64.32)&#39; can&#39;t be established.
+ED25519 key fingerprint is SHA256:+grKMOsgQHDF0lTTZTD65khFhnk5Q56wvNSFV4+NsnA.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+[root@192.168.64.32&#39;s password: (비번입력)
+</code></pre></div><h3 id="5-node1에-기본-구성-설치-arm64-버전-1">5. Node1에 기본 구성 설치 (arm64 버전)</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4] Rocky Linux 기본 설정 ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-1] 패키지 업데이트 ========&#39;
+yum -y update
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-2] 타임존 설정 ========&#39;
+timedatectl set-timezone Asia/Seoul
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-3] [WARNING FileExisting-tc]: tc not found in system path 로그 관련 업데이트 ========&#39;
+yum install -y yum-utils iproute-tc
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======= [4-4] hosts 설정 ==========&#39;
+cat <span style="color:#000;font-weight:bold">&lt;</span>&lt; EOF <span style="color:#000;font-weight:bold">&gt;&gt;</span> /etc/hosts
+192.168.64.30 k8s-master
+192.168.64.31 k8s-node1
+192.168.64.32 k8s-node2
+EOF
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [5] kubeadm 설치 전 사전작업 ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [5] 방화벽 해제 ========&#39;
+systemctl stop firewalld <span style="color:#000;font-weight:bold">&amp;&amp;</span> systemctl disable firewalld
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [5] Swap 비활성화 ========&#39;
+swapoff -a <span style="color:#000;font-weight:bold">&amp;&amp;</span> sed -i &#39;/ swap / s/<span style="color:#4e9a06">^/</span>#/&#39; /etc/fstab
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6] 컨테이너 런타임 설치 ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-1] 컨테이너 런타임 설치 전 사전작업 ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-1] iptable 세팅 ========&#39;
+cat <span style="color:#000;font-weight:bold">&lt;</span>&lt;EOF <span style="color:#000;font-weight:bold">|</span>tee /etc/modules-load.d/k8s.conf
+overlay
+br_netfilter
+EOF
+
+modprobe overlay
+modprobe br_netfilter
+
+cat <span style="color:#000;font-weight:bold">&lt;</span>&lt;EOF <span style="color:#000;font-weight:bold">|</span>tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-iptables  = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward                 = 1
+EOF
+
+sysctl --system
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-2] 컨테이너 런타임 (containerd 설치) ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-2-1] containerd 패키지 설치 (option2) ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-2-1-1] docker engine 설치 ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-2-1-1] repo 설정 ========&#39;
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-2-1-1] containerd 설치 ========&#39;
+yum install -y containerd.io-1.6.21-3.1.el9.aarch64
+systemctl daemon-reload
+systemctl enable --now containerd
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [6-3] 컨테이너 런타임 : cri 활성화 ========&#39;
+containerd config default <span style="color:#000;font-weight:bold">&gt;</span> /etc/containerd/config.toml
+sed -i &#39;s/ SystemdCgroup = false/ SystemdCgroup = true/&#39; /etc/containerd/config.toml
+systemctl restart containerd
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [7] kubeadm 설치 ========&#39;
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [7] repo 설정 ========&#39;
+cat <span style="color:#000;font-weight:bold">&lt;</span>&lt;EOF <span style="color:#000;font-weight:bold">|</span> sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.27/rpm/
+enabled=1
+gpgcheck=1
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.27/rpm/repodata/repomd.xml.key
+exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
+EOF
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [7] SELinux 설정 ========&#39;
+setenforce 0
+sed -i &#39;s/<span style="color:#4e9a06">^S</span>ELINUX=enforcing$/SELINUX=permissive/&#39; /etc/selinux/config
+
+<span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [7] kubelet, kubeadm, kubectl 패키지 설치 ========&#39;
+yum install -y kubelet-1.27.2-150500.1.1.aarch64 kubeadm-1.27.2-150500.1.1.aarch64 --disableexcludes=kubernetes
+systemctl enable --now kubelet
+</code></pre></div><h3 id="6-worker-node-연결-및-master-상태-확인">6. Worker Node 연결 및 Master 상태 확인</h3>
+<p>6-1) master에서 cat 명령으로 자신에 토큰 확인 및 복사</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[root@k8s-master ~]# cat ~/join.sh
 
 join 192.168.64.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
@@ -1972,7 +2149,7 @@ join 192.168.64.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cer
 kubectl get nodes
 ```
 <br/>
-<h3 id="9-대시보드-접근">9. 대시보드 접근</h3>
+<h3 id="7-대시보드-접근">7. 대시보드 접근</h3>
 <pre><code class="language-ssh" data-lang="ssh">https://192.168.64.30:30000/#/login
 </code></pre><br/>
 <br/>
