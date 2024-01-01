@@ -32,7 +32,7 @@
  Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "><meta itemprop="datePublished" content="2023-11-25T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-11-25T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1949">
+<meta itemprop="wordCount" content="1977">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s v1.27 버전 설치 (최신, 쉬운설치 버전)"/>
 <meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
@@ -1770,8 +1770,11 @@ Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 �
 5. [설치 시작(B)] 클릭
 6. 설치 완료 메세지 확인 후 [재시작]
 </code></pre></div><p>3-3) Rocky Linux 실행</p>
+<ul>
+<li>CD/DVD에 ISO 이미지가 있기 때문에 LINUX 설치를 하라고 나옴</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">1. UTM 화면 가장 하단에 CD/DVD를 클릭해서 Clear 클릭 (선택되어 있는 ISO이미지가 제거됨)
-2. Install Rokcy Linux 9.2 대기중인 화면 상단에서 [전원버튼] 눌러서 Shutdown 하고, [▶] 버튼 눌러서 VM 기동하기
+2. Install Rokcy Linux 9.2 대기중인 화면 상단에서 [전원버튼] 눌러서 Shutdown 하고, [▶] 버튼 눌러서 다시 VM 기동하기
 3. UTM에서 제공되는 콘솔창은 내리기 (copy<span style="color:#000;font-weight:bold">&amp;</span>paste 가 잘안됨)
 </code></pre></div><h3 id="4-원격-접속-mac-터미널-사용">4. 원격 접속 (Mac 터미널 사용)</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">$ ssh root@192.168.64.30
@@ -1923,6 +1926,9 @@ kubectl get pod -A
 5. [설치 시작(B)] 클릭
 6. 설치 완료 메세지 확인 후 [재시작]
 </code></pre></div><p>3-3) Rocky Linux 실행</p>
+<ul>
+<li>CD/DVD에 ISO 이미지가 있기 때문에 LINUX 설치를 하라고 나옴</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">1. UTM 화면 가장 하단에 CD/DVD를 클릭해서 Clear 클릭 (선택되어 있는 ISO이미지가 제거됨)
 2. Install Rokcy Linux 9.2 대기중인 화면 상단에서 [전원버튼] 눌러서 Shutdown 하고, [▶] 버튼 눌러서 VM 기동하기
 3. UTM에서 제공되는 콘솔창은 내리기 (copy<span style="color:#000;font-weight:bold">&amp;</span>paste 가 잘안됨)
@@ -2044,6 +2050,9 @@ systemctl enable --now kubelet
 5. [설치 시작(B)] 클릭
 6. 설치 완료 메세지 확인 후 [재시작]
 </code></pre></div><p>3-3) Rocky Linux 실행</p>
+<ul>
+<li>CD/DVD에 ISO 이미지가 있기 때문에 LINUX 설치를 하라고 나옴</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">1. UTM 화면 가장 하단에 CD/DVD를 클릭해서 Clear 클릭 (선택되어 있는 ISO이미지가 제거됨)
 2. Install Rokcy Linux 9.2 대기중인 화면 상단에서 [전원버튼] 눌러서 Shutdown 하고, [▶] 버튼 눌러서 VM 기동하기
 3. UTM에서 제공되는 콘솔창은 내리기 (copy<span style="color:#000;font-weight:bold">&amp;</span>paste 가 잘안됨)
