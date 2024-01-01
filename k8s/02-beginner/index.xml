@@ -873,7 +873,6 @@ sysctl --system
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [6-2-1] containerd 패키지 설치 (option2) ========&amp;#39;
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [6-2-1-1] docker engine 설치 ========&amp;#39;
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [6-2-1-1] repo 설정 ========&amp;#39;
-yum install -y yum-utils
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [6-2-1-1] containerd 설치 ========&amp;#39;
