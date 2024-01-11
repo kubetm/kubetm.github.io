@@ -766,7 +766,11 @@ VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component SessionMachi
 &lt;h3 id=&#34;1-rocky-linux-iso-다운로드-92-arm64-버전&#34;&gt;1. Rocky Linux ISO 다운로드 (9.2 arm64 버전)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Download : &lt;a href=&#34;https://dl.rockylinux.org/vault/rocky/9.2/isos/aarch64/Rocky-9.2-aarch64-minimal.iso&#34;&gt;https://dl.rockylinux.org/vault/rocky/9.2/isos/aarch64/Rocky-9.2-aarch64-minimal.iso&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Site : &lt;a href=&#34;https://rockylinux.org&#34;&gt;https://rockylinux.org&lt;/a&gt;
+&lt;li&gt;Site : &lt;a href=&#34;https://rockylinux.org&#34;&gt;https://rockylinux.org&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;위 minimal 이미지가 안되시는 분은 아래 dvd 이미지로 해보세요.
+&lt;a href=&#34;https://dl.rockylinux.org/vault/rocky/9.2/isos/aarch64/Rocky-9-latest-aarch64-dvd.iso&#34;&gt;https://dl.rockylinux.org/vault/rocky/9.2/isos/aarch64/Rocky-9-latest-aarch64-dvd.iso&lt;/a&gt;
 &lt;br/&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;2-utm-다운로드-및-설치-444-버전&#34;&gt;2. UTM 다운로드 및 설치 (4.4.4 버전)&lt;/h3&gt;
