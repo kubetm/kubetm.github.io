@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Promtail, Loki, Grafana
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="209">
+<meta itemprop="wordCount" content="222">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Logging/Monitoring Architecture"/>
 <meta name="twitter:description" content="Promtail, Loki, Grafana
@@ -1795,8 +1795,9 @@ helm uninstall loki-stack -n loki-stack
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl edit -n loki-stack svc loki-stack-grafana
 ----
 type: NodePort
-nodePort : <span style="color:#0000cf;font-weight:bold">30000</span>
+nodePort : <span style="color:#0000cf;font-weight:bold">30001</span>
 ----
+- kubernetes dahsboard UI Port가 30000으로 변경되어 해당 실습 port는 30001로 하시면 됩니다
 
 kubectl get secret --namespace loki-stack loki-stack-grafana -o <span style="color:#000">jsonpath</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;{.data.admin-password}&#34;</span> <span style="color:#000;font-weight:bold">|</span> base64 --decode <span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87">echo</span>
 </code></pre></div><br/>
