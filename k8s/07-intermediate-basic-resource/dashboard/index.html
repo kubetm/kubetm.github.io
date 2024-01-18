@@ -1910,7 +1910,7 @@ cat <span style="color:#4e9a06">&lt;&lt;EOF | kubectl create -f -
 </span><span style="color:#4e9a06">EOF</span>
 
 // Token 확인
-kubectl -n kubernetes-dashboard get secret kubernetes-dashboard-token- <span style="color:#4e9a06">\-</span>o <span style="color:#000">jsonpath</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;{.data.token}&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64 --decode</code></pre></div></div>
+kubectl -n kubernetes-dashboard get secret kubernetes-dashboard-token -o <span style="color:#000">jsonpath</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;{.data.token}&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64 --decode</code></pre></div></div>
   <div class="tab-pane fade"
         id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl -n kubernetes-dashboard get secret kubernetes-dashboard-token- <span style="color:#4e9a06">\-</span>o <span style="color:#000">jsonpath</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;{.data.token}&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64 --decode</code></pre></div></div>
   
