@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Kubeconfig, Token
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="250">
+<meta itemprop="wordCount" content="272">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dashboard"/>
 <meta name="twitter:description" content="Kubeconfig, Token
@@ -1591,7 +1591,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#1-dashboard-270-설치">1. Dashboard 2.7.0 설치</a>
+    <li><a href="#1-dashboard-설치">1. Dashboard 설치</a>
       <ul>
         <li><a href="#1-1--dashboard-설치">1-1)  Dashboard 설치</a></li>
         <li><a href="#1-2-clusterrolebinding-생성">1-2) ClusterRoleBinding 생성</a></li>
@@ -1683,7 +1683,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </figure>
 <br/>
 <br/>
-<h2 id="1-dashboard-270-설치">1. Dashboard 2.7.0 설치</h2>
+<h2 id="1-dashboard-설치">1. Dashboard 설치</h2>
 <hr>
 <figure>
   <img src="/img/practice/intermediate/Access API with Dashaboard 2.0.0 for Kubernetes.jpg"
@@ -1922,7 +1922,11 @@ kubectl -n kubernetes-dashboard get secret kubernetes-dashboard-token -o <span s
 grep <span style="color:#4e9a06">&#39;client-key-data&#39;</span> ~/.kube/config <span style="color:#000;font-weight:bold">|</span> head -n <span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{print $2}&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64 -d &gt;&gt; client.key
 openssl pkcs12 -export -clcerts -inkey client.key -in client.crt -out client.p12 -name <span style="color:#4e9a06">&#34;k8s-master-30&#34;</span>
 </code></pre></div><p>kubecfg.p12 파일을 내 PC에서 인증서 등록</p>
-<br/>
+<ul>
+<li>Mac에서는 p12 파일을 cer파일로 한번 더 변환해 준 후 client.cer 파일을 PC에 등록해 주면 됩니다.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">openssl pkcs12 -in client.p12 -clcerts -nokeys -out client.cer
+</code></pre></div><br/>
 <h3 id="1-5-https-로-dashboard-접근-후-token-으로-로그인">1-5) Https 로 Dashboard 접근 후 Token 으로 로그인</h3>
 
 

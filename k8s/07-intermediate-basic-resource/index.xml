@@ -1672,7 +1672,7 @@ curl -k -H &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Authorization: Bea
 &lt;/figure&gt;
 &lt;br/&gt;
 &lt;br/&gt;
-&lt;h2 id=&#34;1-dashboard-270-설치&#34;&gt;1. Dashboard 2.7.0 설치&lt;/h2&gt;
+&lt;h2 id=&#34;1-dashboard-설치&#34;&gt;1. Dashboard 설치&lt;/h2&gt;
 &lt;hr&gt;
 &lt;figure&gt;
   &lt;img src=&#34;https://kubetm.github.io/img/practice/intermediate/Access API with Dashaboard 2.0.0 for Kubernetes.jpg&#34;
@@ -1911,7 +1911,11 @@ kubectl -n kubernetes-dashboard get secret kubernetes-dashboard-token -o &lt;spa
 grep &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;client-key-data&amp;#39;&lt;/span&gt; ~/.kube/config &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; head -n &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; awk &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;{print $2}&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; base64 -d &amp;gt;&amp;gt; client.key
 openssl pkcs12 -export -clcerts -inkey client.key -in client.crt -out client.p12 -name &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;k8s-master-30&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;kubecfg.p12 파일을 내 PC에서 인증서 등록&lt;/p&gt;
-&lt;br/&gt;
+&lt;ul&gt;
+&lt;li&gt;Mac에서는 p12 파일을 cer파일로 한번 더 변환해 준 후 client.cer 파일을 PC에 등록해 주면 됩니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;openssl pkcs12 -in client.p12 -clcerts -nokeys -out client.cer
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;h3 id=&#34;1-5-https-로-dashboard-접근-후-token-으로-로그인&#34;&gt;1-5) Https 로 Dashboard 접근 후 Token 으로 로그인&lt;/h3&gt;
 
 
