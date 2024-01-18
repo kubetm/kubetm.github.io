@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Kubeconfig, Token
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="209">
+<meta itemprop="wordCount" content="217">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dashboard"/>
 <meta name="twitter:description" content="Kubeconfig, Token
@@ -1846,15 +1846,6 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/a
 
 <br/>
 <h3 id="1-3-token-확인">1-3) Token 확인</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl -n kubernetes-dashboard get secret kubernetes-dashboard-token- <span style="color:#4e9a06">\-</span>o <span style="color:#000">jsonpath</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;{.data.token}&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64 --decode
-</code></pre></div><br/>
-<h3 id="1-4-내-pc에-인증서-설치">1-4) 내 PC에 인증서 설치</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">grep <span style="color:#4e9a06">&#39;client-certificate-data&#39;</span> ~/.kube/config <span style="color:#000;font-weight:bold">|</span> head -n <span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{print $2}&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64 -d &gt;&gt; client.crt
-grep <span style="color:#4e9a06">&#39;client-key-data&#39;</span> ~/.kube/config <span style="color:#000;font-weight:bold">|</span> head -n <span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{print $2}&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64 -d &gt;&gt; client.key
-openssl pkcs12 -export -clcerts -inkey client.key -in client.crt -out client.p12 -name <span style="color:#4e9a06">&#34;k8s-master-30&#34;</span>
-</code></pre></div><p>kubecfg.p12 파일을 내 PC에서 인증서 등록</p>
-<br/>
-<h3 id="1-5-https-로-dashboard-접근-후-token-으로-로그인">1-5) Https 로 Dashboard 접근 후 Token 으로 로그인</h3>
 
 
 
@@ -1906,9 +1897,74 @@ openssl pkcs12 -export -clcerts -inkey client.key -in client.crt -out client.p12
 
 
 <div class="tab-content" id="tabs-2-content"><div class="tab-pane fade show active"
-        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">https://192.168.56.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login</code></pre></div></div>
+        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl -n kubernetes-dashboard create token kubernetes-dashboard</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">https://192.168.0.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login</code></pre></div></div>
+        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl -n kubernetes-dashboard get secret kubernetes-dashboard-token- <span style="color:#4e9a06">\-</span>o <span style="color:#000">jsonpath</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;{.data.token}&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64 --decode</code></pre></div></div>
+  
+</div>
+
+<br/>
+<h3 id="1-4-내-pc에-인증서-설치">1-4) 내 PC에 인증서 설치</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">grep <span style="color:#4e9a06">&#39;client-certificate-data&#39;</span> ~/.kube/config <span style="color:#000;font-weight:bold">|</span> head -n <span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{print $2}&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64 -d &gt;&gt; client.crt
+grep <span style="color:#4e9a06">&#39;client-key-data&#39;</span> ~/.kube/config <span style="color:#000;font-weight:bold">|</span> head -n <span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{print $2}&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64 -d &gt;&gt; client.key
+openssl pkcs12 -export -clcerts -inkey client.key -in client.crt -out client.p12 -name <span style="color:#4e9a06">&#34;k8s-master-30&#34;</span>
+</code></pre></div><p>kubecfg.p12 파일을 내 PC에서 인증서 등록</p>
+<br/>
+<h3 id="1-5-https-로-dashboard-접근-후-token-으로-로그인">1-5) Https 로 Dashboard 접근 후 Token 으로 로그인</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-3" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-3-0-tab" data-toggle="tab" href="#tabs-3-0" role="tab"
+        aria-controls="tabs-3-0" aria-selected="true">
+        v1.27
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-3-1-tab" data-toggle="tab" href="#tabs-3-1" role="tab"
+        aria-controls="tabs-3-1" aria-selected="false">
+        v1.15
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-3-content"><div class="tab-pane fade show active"
+        id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">https://192.168.56.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">https://192.168.0.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login</code></pre></div></div>
   
 </div>
 
