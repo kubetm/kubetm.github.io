@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Kubeconfig, Token
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="272">
+<meta itemprop="wordCount" content="372">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dashboard"/>
 <meta name="twitter:description" content="Kubeconfig, Token
@@ -1902,7 +1902,7 @@ cat <span style="color:#4e9a06">&lt;&lt;EOF | kubectl create -f -
 </span><span style="color:#4e9a06">apiVersion: v1
 </span><span style="color:#4e9a06">kind: Secret
 </span><span style="color:#4e9a06">metadata:
-</span><span style="color:#4e9a06">  name: kubernetes-dashboard
+</span><span style="color:#4e9a06">  name: kubernetes-dashboard-token
 </span><span style="color:#4e9a06">  namespace: kubernetes-dashboard
 </span><span style="color:#4e9a06">  annotations:
 </span><span style="color:#4e9a06">    kubernetes.io/service-account.name: &#34;kubernetes-dashboard&#34;   
@@ -1926,6 +1926,37 @@ openssl pkcs12 -export -clcerts -inkey client.key -in client.crt -out client.p12
 <li>Mac에서는 p12 파일을 cer파일로 한번 더 변환해 준 후 client.cer 파일을 PC에 등록해 주면 됩니다.</li>
 </ul>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">openssl pkcs12 -in client.p12 -clcerts -nokeys -out client.cer
+</code></pre></div><ul>
+<li>또한 아래와 같은 에러가 나올 시에는
+&ldquo;services &quot;https:kubernetes-dashboard:&quot; is forbidden: User &quot;system:anonymous&quot; cannot get resource &quot;services/proxy&quot; in API group &quot;&quot; in the namespace &quot;kubernetes-dashboard&quot;</li>
+</ul>
+<p>아래 두 리소스를 추가해보세요.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat <span style="color:#4e9a06">&lt;&lt;EOF | kubectl apply -f -
+</span><span style="color:#4e9a06">kind: ClusterRole
+</span><span style="color:#4e9a06">apiVersion: rbac.authorization.k8s.io/v1
+</span><span style="color:#4e9a06">metadata:
+</span><span style="color:#4e9a06">  name: kubernetes-dashboard-anonymous
+</span><span style="color:#4e9a06">rules:
+</span><span style="color:#4e9a06">- apiGroups: [&#34;&#34;]
+</span><span style="color:#4e9a06">  resources: [&#34;services/proxy&#34;]
+</span><span style="color:#4e9a06">  resourceNames: [&#34;https:kubernetes-dashboard:&#34;]
+</span><span style="color:#4e9a06">  verbs: [&#34;get&#34;, &#34;list&#34;, &#34;watch&#34;, &#34;create&#34;, &#34;update&#34;, &#34;patch&#34;, &#34;delete&#34;]
+</span><span style="color:#4e9a06">- nonResourceURLs: [&#34;/ui&#34;, &#34;/ui/*&#34;, &#34;/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/*&#34;]
+</span><span style="color:#4e9a06">  verbs: [&#34;get&#34;, &#34;list&#34;, &#34;watch&#34;, &#34;create&#34;, &#34;update&#34;, &#34;patch&#34;, &#34;delete&#34;]
+</span><span style="color:#4e9a06">EOF</span>
+</code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat <span style="color:#4e9a06">&lt;&lt;EOF | kubectl apply -f -
+</span><span style="color:#4e9a06">apiVersion: rbac.authorization.k8s.io/v1
+</span><span style="color:#4e9a06">kind: ClusterRoleBinding
+</span><span style="color:#4e9a06">metadata:
+</span><span style="color:#4e9a06">  name: kubernetes-dashboard-anonymous
+</span><span style="color:#4e9a06">roleRef:
+</span><span style="color:#4e9a06">  apiGroup: rbac.authorization.k8s.io
+</span><span style="color:#4e9a06">  kind: ClusterRole
+</span><span style="color:#4e9a06">  name: kubernetes-dashboard-anonymous
+</span><span style="color:#4e9a06">subjects:
+</span><span style="color:#4e9a06">- kind: User
+</span><span style="color:#4e9a06">  name: system:anonymous
+</span><span style="color:#4e9a06">EOF</span>
 </code></pre></div><br/>
 <h3 id="1-5-https-로-dashboard-접근-후-token-으로-로그인">1-5) Https 로 Dashboard 접근 후 Token 으로 로그인</h3>
 

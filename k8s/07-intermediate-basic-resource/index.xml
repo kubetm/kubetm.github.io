@@ -1891,7 +1891,7 @@ cat &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;lt;&amp;lt;EOF | kubectl crea
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;apiVersion: v1
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;kind: Secret
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;metadata:
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: kubernetes-dashboard
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: kubernetes-dashboard-token
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  namespace: kubernetes-dashboard
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  annotations:
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    kubernetes.io/service-account.name: &amp;#34;kubernetes-dashboard&amp;#34;   
@@ -1915,6 +1915,37 @@ openssl pkcs12 -export -clcerts -inkey client.key -in client.crt -out client.p12
 &lt;li&gt;Mac에서는 p12 파일을 cer파일로 한번 더 변환해 준 후 client.cer 파일을 PC에 등록해 주면 됩니다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;openssl pkcs12 -in client.p12 -clcerts -nokeys -out client.cer
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;또한 아래와 같은 에러가 나올 시에는
+&amp;ldquo;services &amp;quot;https:kubernetes-dashboard:&amp;quot; is forbidden: User &amp;quot;system:anonymous&amp;quot; cannot get resource &amp;quot;services/proxy&amp;quot; in API group &amp;quot;&amp;quot; in the namespace &amp;quot;kubernetes-dashboard&amp;quot;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;아래 두 리소스를 추가해보세요.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cat &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;lt;&amp;lt;EOF | kubectl apply -f -
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;kind: ClusterRole
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;apiVersion: rbac.authorization.k8s.io/v1
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;metadata:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: kubernetes-dashboard-anonymous
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;rules:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;- apiGroups: [&amp;#34;&amp;#34;]
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  resources: [&amp;#34;services/proxy&amp;#34;]
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  resourceNames: [&amp;#34;https:kubernetes-dashboard:&amp;#34;]
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  verbs: [&amp;#34;get&amp;#34;, &amp;#34;list&amp;#34;, &amp;#34;watch&amp;#34;, &amp;#34;create&amp;#34;, &amp;#34;update&amp;#34;, &amp;#34;patch&amp;#34;, &amp;#34;delete&amp;#34;]
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;- nonResourceURLs: [&amp;#34;/ui&amp;#34;, &amp;#34;/ui/*&amp;#34;, &amp;#34;/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/*&amp;#34;]
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  verbs: [&amp;#34;get&amp;#34;, &amp;#34;list&amp;#34;, &amp;#34;watch&amp;#34;, &amp;#34;create&amp;#34;, &amp;#34;update&amp;#34;, &amp;#34;patch&amp;#34;, &amp;#34;delete&amp;#34;]
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;EOF&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cat &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;lt;&amp;lt;EOF | kubectl apply -f -
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;apiVersion: rbac.authorization.k8s.io/v1
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;kind: ClusterRoleBinding
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;metadata:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: kubernetes-dashboard-anonymous
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;roleRef:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  apiGroup: rbac.authorization.k8s.io
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  kind: ClusterRole
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: kubernetes-dashboard-anonymous
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;subjects:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;- kind: User
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: system:anonymous
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;EOF&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;h3 id=&#34;1-5-https-로-dashboard-접근-후-token-으로-로그인&#34;&gt;1-5) Https 로 Dashboard 접근 후 Token 으로 로그인&lt;/h3&gt;
 
