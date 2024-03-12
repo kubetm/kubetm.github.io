@@ -32,7 +32,7 @@
  Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "><meta itemprop="datePublished" content="2023-11-25T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-11-25T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1987">
+<meta itemprop="wordCount" content="2020">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s v1.27 버전 설치 (최신, 쉬운설치 버전)"/>
 <meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
@@ -1944,7 +1944,16 @@ ED25519 key fingerprint is SHA256:+grKMOsgQHDF0lTTZTD65khFhnk5Q56wvNSFV4+NsnA.
 This key is not known by any other names.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 [root@192.168.64.31&#39;s password: (비번입력)
-</code></pre></div><h3 id="5-node1에-기본-구성-설치-arm64-버전">5. Node1에 기본 구성 설치 (arm64 버전)</h3>
+</code></pre></div><ul>
+<li>VM 생성 후 접속이 안될 경우</li>
+</ul>
+<p>▶ UTM &gt; k8s-master &gt; vm 중지하기 &gt; 마우스 우클릭 &gt; Edit &gt; Network &gt; Show Advanced Settings 클릭
+▶ Guest Network : 192.168.64.1 로 변경</p>
+<p><img src="/img/practice/install/Installation Step Case7 for Kubernetes - mac issue.jpg"
+alt="Installation Step Case7 for Kubernetes - mac issue"
+class="mt-3 mb-3 border border-info rounded" />
+​</p>
+<h3 id="5-node1에-기본-구성-설치-arm64-버전">5. Node1에 기본 구성 설치 (arm64 버전)</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4] Rocky Linux 기본 설정 ========&#39;
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-1] 패키지 업데이트 ========&#39;
 yum -y update

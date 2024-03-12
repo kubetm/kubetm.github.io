@@ -6523,7 +6523,16 @@ ED25519 key fingerprint is SHA256:+grKMOsgQHDF0lTTZTD65khFhnk5Q56wvNSFV4+NsnA.
 This key is not known by any other names.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 [root@192.168.64.31&amp;#39;s password: (비번입력)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-node1에-기본-구성-설치-arm64-버전&#34;&gt;5. Node1에 기본 구성 설치 (arm64 버전)&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;VM 생성 후 접속이 안될 경우&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;▶ UTM &amp;gt; k8s-master &amp;gt; vm 중지하기 &amp;gt; 마우스 우클릭 &amp;gt; Edit &amp;gt; Network &amp;gt; Show Advanced Settings 클릭
+▶ Guest Network : 192.168.64.1 로 변경&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubetm.github.io/img/practice/install/Installation Step Case7 for Kubernetes - mac issue.jpg&#34;
+alt=&#34;Installation Step Case7 for Kubernetes - mac issue&#34;
+class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
+​&lt;/p&gt;
+&lt;h3 id=&#34;5-node1에-기본-구성-설치-arm64-버전&#34;&gt;5. Node1에 기본 구성 설치 (arm64 버전)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [4] Rocky Linux 기본 설정 ========&amp;#39;
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [4-1] 패키지 업데이트 ========&amp;#39;
 yum -y update
