@@ -32,7 +32,7 @@
  Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "><meta itemprop="datePublished" content="2023-11-25T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-11-25T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2020">
+<meta itemprop="wordCount" content="2026">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s v1.27 버전 설치 (최신, 쉬운설치 버전)"/>
 <meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
@@ -1746,7 +1746,12 @@ Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 �
 - Size : 24 GB
 - Shared Directory : 설정 안함
 - Summary : Name : k8s-master
-</code></pre></div>
+</code></pre></div><p>3-2) VM위에 마우스 우클릭 후 [Edit] &gt; Network &gt; Show Advanced Settings에서 아래 내용변경</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">Guest Network : 192.168.56.0/24
+</code></pre></div><p><img src="/img/practice/install/Installation Step Case7 for Kubernetes - mac issue.jpg"
+alt="Installation Step Case7 for Kubernetes - mac issue"
+class="mt-3 mb-3 border border-info rounded" /></p>
+
 
 <div class="alert alert-warning" role="alert">
 <h4 class="alert-heading">Virtualize와 Emulate의 차이</h4>
@@ -1755,7 +1760,7 @@ Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 �
 
 </div>
 
-<p>3-2) 생성된 VM 실행 후 Rocky Linux 초기 세팅</p>
+<p>3-3) 생성된 VM 실행 후 Rocky Linux 초기 세팅</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">1. 언어 : 한국어(대한민국)
 2. 사용자 설정 
    - root 비밀번호(R) : 개인별 root 비밀번호 입력
@@ -1768,12 +1773,11 @@ Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 �
     - 이더넷(enp0s1) : [설정(C)..] 클릭
        1) [IPv4 설정] 탭 클릭
        2) Method : 수동
-       3) 주소 : [Add] 클릭 후 -<span style="color:#000;font-weight:bold">&gt;</span> 주소(192.168.64.30), 넷마스크(255.255.255.0), 게이트웨이(192.168.64.1)
-       4) DNS servers: 192.168.64.1
+       3) 주소 : [Add] 클릭 후 -<span style="color:#000;font-weight:bold">&gt;</span> 주소(192.168.56.30), 넷마스크(255.255.255.0), 게이트웨이(192.168.56.1)
     - [완료(D)] 클릭
 5. [설치 시작(B)] 클릭
 6. 설치 완료 메세지 확인 후 [재시작]
-</code></pre></div><p>3-3) Rocky Linux 실행</p>
+</code></pre></div><p>3-4) Rocky Linux 실행</p>
 <ul>
 <li>CD/DVD에 ISO 이미지가 있기 때문에 LINUX 설치를 하라고 나옴</li>
 </ul>
@@ -1781,13 +1785,13 @@ Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 �
 2. Install Rokcy Linux 9.2 대기중인 화면 상단에서 [전원버튼] 눌러서 Shutdown 하고, [▶] 버튼 눌러서 다시 VM 기동하기
 3. UTM에서 제공되는 콘솔창은 내리기 (copy<span style="color:#000;font-weight:bold">&amp;</span>paste 가 잘안됨)
 </code></pre></div><h3 id="4-원격-접속-mac-터미널-사용">4. 원격 접속 (Mac 터미널 사용)</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">$ ssh root@192.168.64.30
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">$ ssh root@192.168.56.30
 
-The authenticity of host &#39;192.168.64.30 (192.168.64.30)&#39; can&#39;t be established.
+The authenticity of host &#39;192.168.56.30 (192.168.56.30)&#39; can&#39;t be established.
 ED25519 key fingerprint is SHA256:+grKMOsgQHDF0lTTZTD65khFhnk5Q56wvNSFV4+NsnA.
 This key is not known by any other names.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-[root@192.168.64.30&#39;s password: (비번입력)
+[root@192.168.56.30&#39;s password: (비번입력)
 </code></pre></div><h3 id="5-master에-클러스터-기본-구성-설치-arm64-버전">5. master에 클러스터 기본 구성 설치 (arm64 버전)</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4] Rocky Linux 기본 설정 ========&#39;
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-1] 패키지 업데이트 ========&#39;
@@ -1801,9 +1805,9 @@ yum install -y yum-utils iproute-tc
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======= [4-4] hosts 설정 ==========&#39;
 cat <span style="color:#000;font-weight:bold">&lt;</span>&lt; EOF <span style="color:#000;font-weight:bold">&gt;&gt;</span> /etc/hosts
-192.168.64.30 k8s-master
-192.168.64.31 k8s-node1
-192.168.64.32 k8s-node2
+192.168.56.30 k8s-master
+192.168.56.31 k8s-node1
+192.168.56.32 k8s-node2
 EOF
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [5] kubeadm 설치 전 사전작업 ========&#39;
@@ -1871,7 +1875,7 @@ systemctl enable --now kubelet
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8] kubeadm으로 클러스터 생성  ========&#39;
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8-1] 클러스터 초기화 (Pod Network 세팅) ========&#39;
-kubeadm init --pod-network-cidr=20.96.0.0/12 --apiserver-advertise-address 192.168.64.30
+kubeadm init --pod-network-cidr=20.96.0.0/12 --apiserver-advertise-address 192.168.56.30
 kubeadm token create --print-join-command <span style="color:#000;font-weight:bold">&gt;</span> ~/join.sh
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8-2] kubectl 사용 설정 ========&#39;
@@ -1924,8 +1928,7 @@ kubectl get pod -A
     - 이더넷(enp0s1) : [설정(C)..] 클릭
        1) [IPv4 설정] 탭 클릭
        2) Method : 수동
-       3) 주소 : [Add] 클릭 후 -<span style="color:#000;font-weight:bold">&gt;</span> 주소(192.168.64.31), 넷마스크(255.255.255.0), 게이트웨이(192.168.64.1)
-       4) DNS servers: 192.168.64.1
+       3) 주소 : [Add] 클릭 후 -<span style="color:#000;font-weight:bold">&gt;</span> 주소(192.168.56.31), 넷마스크(255.255.255.0), 게이트웨이(192.168.64.1)
     - [완료(D)] 클릭
 5. [설치 시작(B)] 클릭
 6. 설치 완료 메세지 확인 후 [재시작]
@@ -1937,22 +1940,19 @@ kubectl get pod -A
 2. Install Rokcy Linux 9.2 대기중인 화면 상단에서 [전원버튼] 눌러서 Shutdown 하고, [▶] 버튼 눌러서 VM 기동하기
 3. UTM에서 제공되는 콘솔창은 내리기 (copy<span style="color:#000;font-weight:bold">&amp;</span>paste 가 잘안됨)
 </code></pre></div><h3 id="4-원격-접속-mac-터미널-사용-1">4. 원격 접속 (Mac 터미널 사용)</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">$ ssh root@192.168.64.31
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">$ ssh root@192.168.56.31
 
-The authenticity of host &#39;192.168.64.31 (192.168.64.31)&#39; can&#39;t be established.
+The authenticity of host &#39;192.168.56.31 (192.168.56.31)&#39; can&#39;t be established.
 ED25519 key fingerprint is SHA256:+grKMOsgQHDF0lTTZTD65khFhnk5Q56wvNSFV4+NsnA.
 This key is not known by any other names.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-[root@192.168.64.31&#39;s password: (비번입력)
+[root@192.168.56.31&#39;s password: (비번입력)
 </code></pre></div><ul>
 <li>VM 생성 후 접속이 안될 경우</li>
 </ul>
 <p>▶ UTM &gt; k8s-master &gt; vm 중지하기 &gt; 마우스 우클릭 &gt; Edit &gt; Network &gt; Show Advanced Settings 클릭
 ▶ Guest Network : 192.168.64.1 로 변경</p>
-<p><img src="/img/practice/install/Installation Step Case7 for Kubernetes - mac issue.jpg"
-alt="Installation Step Case7 for Kubernetes - mac issue"
-class="mt-3 mb-3 border border-info rounded" />
-​</p>
+<p>​</p>
 <h3 id="5-node1에-기본-구성-설치-arm64-버전">5. Node1에 기본 구성 설치 (arm64 버전)</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4] Rocky Linux 기본 설정 ========&#39;
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-1] 패키지 업데이트 ========&#39;
@@ -1966,9 +1966,9 @@ yum install -y yum-utils iproute-tc
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======= [4-4] hosts 설정 ==========&#39;
 cat <span style="color:#000;font-weight:bold">&lt;</span>&lt; EOF <span style="color:#000;font-weight:bold">&gt;&gt;</span> /etc/hosts
-192.168.64.30 k8s-master
-192.168.64.31 k8s-node1
-192.168.64.32 k8s-node2
+192.168.56.30 k8s-master
+192.168.56.31 k8s-node1
+192.168.56.32 k8s-node2
 EOF
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [5] kubeadm 설치 전 사전작업 ========&#39;
@@ -2057,8 +2057,7 @@ systemctl enable --now kubelet
     - 이더넷(enp0s1) : [설정(C)..] 클릭
        1) [IPv4 설정] 탭 클릭
        2) Method : 수동
-       3) 주소 : [Add] 클릭 후 -<span style="color:#000;font-weight:bold">&gt;</span> 주소(192.168.64.32), 넷마스크(255.255.255.0), 게이트웨이(192.168.64.1)
-       4) DNS servers: 192.168.64.1
+       3) 주소 : [Add] 클릭 후 -<span style="color:#000;font-weight:bold">&gt;</span> 주소(192.168.56.32), 넷마스크(255.255.255.0), 게이트웨이(192.168.64.1)
     - [완료(D)] 클릭
 5. [설치 시작(B)] 클릭
 6. 설치 완료 메세지 확인 후 [재시작]
@@ -2070,13 +2069,13 @@ systemctl enable --now kubelet
 2. Install Rokcy Linux 9.2 대기중인 화면 상단에서 [전원버튼] 눌러서 Shutdown 하고, [▶] 버튼 눌러서 VM 기동하기
 3. UTM에서 제공되는 콘솔창은 내리기 (copy<span style="color:#000;font-weight:bold">&amp;</span>paste 가 잘안됨)
 </code></pre></div><h3 id="4-원격-접속-mac-터미널-사용-2">4. 원격 접속 (Mac 터미널 사용)</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">$ ssh root@192.168.64.32
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">$ ssh root@192.168.56.32
 
-The authenticity of host &#39;192.168.64.32 (192.168.64.32)&#39; can&#39;t be established.
+The authenticity of host &#39;192.168.56.32 (192.168.56.32)&#39; can&#39;t be established.
 ED25519 key fingerprint is SHA256:+grKMOsgQHDF0lTTZTD65khFhnk5Q56wvNSFV4+NsnA.
 This key is not known by any other names.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-[root@192.168.64.32&#39;s password: (비번입력)
+[root@192.168.56.32&#39;s password: (비번입력)
 </code></pre></div><h3 id="5-node1에-기본-구성-설치-arm64-버전-1">5. Node1에 기본 구성 설치 (arm64 버전)</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4] Rocky Linux 기본 설정 ========&#39;
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-1] 패키지 업데이트 ========&#39;
@@ -2090,9 +2089,9 @@ yum install -y yum-utils iproute-tc
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======= [4-4] hosts 설정 ==========&#39;
 cat <span style="color:#000;font-weight:bold">&lt;</span>&lt; EOF <span style="color:#000;font-weight:bold">&gt;&gt;</span> /etc/hosts
-192.168.64.30 k8s-master
-192.168.64.31 k8s-node1
-192.168.64.32 k8s-node2
+192.168.56.30 k8s-master
+192.168.56.31 k8s-node1
+192.168.56.32 k8s-node2
 EOF
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [5] kubeadm 설치 전 사전작업 ========&#39;
@@ -2160,7 +2159,7 @@ systemctl enable --now kubelet
 <p>6-1) master에서 cat 명령으로 자신에 토큰 확인 및 복사</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">[root@k8s-master ~]# cat ~/join.sh
 
-join 192.168.64.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
+join 192.168.56.30:6443 --token bver73.wda72kx4afiuhspo --discovery-token-ca-cert-hash sha256:7205b3fd6030e47b74aa11451221ff3c77daa0305aad0bc4a2d3196e69eb42b7
 </code></pre></div><br/>
 8-2) node1에서 토큰 붙여놓기
 <br/>
@@ -2172,7 +2171,7 @@ kubectl get nodes
 ```
 <br/>
 <h3 id="7-대시보드-접근">7. 대시보드 접근</h3>
-<pre><code class="language-ssh" data-lang="ssh">https://192.168.64.30:30000/#/login
+<pre><code class="language-ssh" data-lang="ssh">https://192.168.56.30:30000/#/login
 </code></pre><br/>
 <br/>
 <h2 id="참고">참고</h2>
