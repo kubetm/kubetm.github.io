@@ -7994,8 +7994,8 @@ sudo chown &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/spa
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;필독! Secret를 꼭 만들어 주세요&lt;/h4&gt;
 
-    1.24 버전 이후 부터 serviceAccount에 대해서 자동으로 Secret가 만들어 지지 않습니다.
-그래서 직접 만들어야 되요.
+    1.24 버전 이후 부터 보안 강화로 serviceAccount에 대해서 자동으로 Secret이 만들어 지지 않습니다.
+그래서 필요시 수동으로 만들어야 되요.
 
 &lt;/div&gt;
 
@@ -8103,8 +8103,8 @@ metadata:
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;필독! Secret를 꼭 만들어 주세요&lt;/h4&gt;
 
-    1.24 버전 이후 부터 serviceAccount에 대해서 자동으로 Secret가 만들어 지지 않습니다.
-그래서 직접 만들어야 되요.
+    1.24 버전 이후 부터 보안 강화로 serviceAccount에 대해서 자동으로 Secret이 만들어 지지 않습니다.
+그래서 필요시 수동으로 만들어야 되요.
 
 &lt;/div&gt;
 
