@@ -1875,7 +1875,7 @@ systemctl enable --now kubelet
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8] kubeadm으로 클러스터 생성  ========&#39;
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8-1] 클러스터 초기화 (Pod Network 세팅) ========&#39;
-kubeadm init --pod-network-cidr=20.96.0.0/12 --apiserver-advertise-address 192.168.56.30
+kubeadm init --pod-network-cidr=20.96.0.0/16 --apiserver-advertise-address 192.168.56.30
 kubeadm token create --print-join-command <span style="color:#000;font-weight:bold">&gt;</span> ~/join.sh
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [8-2] kubectl 사용 설정 ========&#39;
