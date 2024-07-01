@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Pod Network(Pause Container, Network Plugin), Service Network(iptables, IPVS)
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="397">
+<meta itemprop="wordCount" content="367">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Networking Architecture"/>
 <meta name="twitter:description" content="Pod Network(Pause Container, Network Plugin), Service Network(iptables, IPVS)
@@ -1784,14 +1784,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 <div class="tab-content" id="tabs-0-content"><div class="tab-pane fade show active"
-        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ctr -n k8s.io containers list <span style="color:#000;font-weight:bold">|</span> grep pod-pause</code></pre></div></div>
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ctr -n k8s.io containers list --quiet <span style="color:#000;font-weight:bold">|</span> xargs -I <span style="color:#ce5c00;font-weight:bold">{}</span> ctr -n k8s.io containers info <span style="color:#ce5c00;font-weight:bold">{}</span> <span style="color:#000;font-weight:bold">|</span> jq -r <span style="color:#4e9a06">&#39;&#34;Container ID: \(.ID) | Name: \(.Labels.&#34;io.kubernetes.pod.name&#34;) | Image: \(.Image)&#34;&#39;</span> <span style="color:#000;font-weight:bold">|</span> grep pod-pause</code></pre></div></div>
   <div class="tab-pane fade"
         id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker ps <span style="color:#000;font-weight:bold">|</span> grep pod-pause</code></pre></div></div>
   
 </div>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker ps <span style="color:#000;font-weight:bold">|</span> grep pod-pause
-</code></pre></div><p>Pause Container 인터페이스 확인
+<p>Pause Container 인터페이스 확인
 
 
 
@@ -1843,14 +1842,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 <div class="tab-content" id="tabs-1-content"><div class="tab-pane fade show active"
-        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ctr -n k8s.io containers list --quiet <span style="color:#000;font-weight:bold">|</span> xargs -I <span style="color:#ce5c00;font-weight:bold">{}</span> ctr -n k8s.io containers info <span style="color:#ce5c00;font-weight:bold">{}</span> <span style="color:#000;font-weight:bold">|</span> jq -r <span style="color:#4e9a06">&#39;&#34;Container ID: \(.ID) | Name: \(.Labels.&#34;io.kubernetes.pod.name&#34;) | Image: \(.Image)&#34;&#39;</span> <span style="color:#000;font-weight:bold">|</span> grep pod-pause
-ctr -n k8s.io containers info &lt;container-id&gt; <span style="color:#000;font-weight:bold">|</span> jq -r <span style="color:#4e9a06">&#39;.Spec.linux.namespaces[] | select(.type == &#34;network&#34;) | .path&#39;</span>
-//ctr -n k8s.io containers info df24e759c6f454dbae6d6a1ff289f31d4bd5a46d1d998d22fac2bf02a852b17e <span style="color:#000;font-weight:bold">|</span> jq -r <span style="color:#4e9a06">&#39;.Spec.linux.namespaces[] | select(.type == &#34;network&#34;) | .path&#39;</span>
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ctr -n k8s.io containers info &lt;container-id&gt; <span style="color:#000;font-weight:bold">|</span> jq -r <span style="color:#4e9a06">&#39;.Spec.linux.namespaces[] | select(.type == &#34;network&#34;) | .path&#39;</span>
+//ex. ctr -n k8s.io containers info df24e759c6f454dbae6d6a1ff289f31d4bd5a46d1d998d22fac2bf02a852b17e <span style="color:#000;font-weight:bold">|</span> jq -r <span style="color:#4e9a06">&#39;.Spec.linux.namespaces[] | select(.type == &#34;network&#34;) | .path&#39;</span>
+
 ip netns <span style="color:#204a87">exec</span> &lt;SandboxKey&gt; ip a
-// ip netns <span style="color:#204a87">exec</span> <span style="color:#4e9a06">&#34;cni-fd1c8ebf-df33-53cc-54a2-a50b78c43490&#34;</span> ip a</code></pre></div></div>
+//ex. ip netns <span style="color:#204a87">exec</span> <span style="color:#4e9a06">&#34;cni-fd1c8ebf-df33-53cc-54a2-a50b78c43490&#34;</span> ip a</code></pre></div></div>
   <div class="tab-pane fade"
-        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker ps <span style="color:#000;font-weight:bold">|</span> grep pod-pause
-docker inspect &lt;container-id&gt; -f <span style="color:#4e9a06">&#34;{{json .NetworkSettings}}&#34;</span>
+        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker inspect &lt;container-id&gt; -f <span style="color:#4e9a06">&#34;{{json .NetworkSettings}}&#34;</span>
 sudo ln -s /var/run/docker/netns /var/run/netns
 ip netns <span style="color:#204a87">exec</span> &lt;SandboxKey&gt; ip a</code></pre></div></div>
   
@@ -1867,12 +1865,6 @@ ip netns <span style="color:#204a87">exec</span> &lt;SandboxKey&gt; ip a</code><
 </code></pre></div><br/>
 <h3 id="1-3-pause-container-network-namespaces-확인">1-3) Pause Container Network Namespaces 확인</h3>
 <p>Pause Container와 타 Container간에 연결 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker inspect &lt;container-id&gt; -f <span style="color:#4e9a06">&#34;{{json .HostConfig.NetworkMode}}&#34;</span>
-//ctr -n k8s.io containers info 5d958917edfee74f3dc51ab0b1d9d16becf1797e9fad578e3e1e8023a7efb8e3 <span style="color:#000;font-weight:bold">|</span> jq <span style="color:#4e9a06">&#39;.Spec.annotations.&#34;io.kubernetes.cri.sandbox-id&#34;&#39;</span>
-
-
-
-</code></pre></div><p>container-type, sandbox-id 확인</p>
 
 
 
@@ -1924,8 +1916,9 @@ ip netns <span style="color:#204a87">exec</span> &lt;SandboxKey&gt; ip a</code><
 
 
 <div class="tab-content" id="tabs-2-content"><div class="tab-pane fade show active"
-        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ctr -n k8s.io containers info &lt;container-id&gt; <span style="color:#000;font-weight:bold">|</span> jq <span style="color:#4e9a06">&#39;.Spec.annotations&#39;</span>
-//ctr -n k8s.io containers info 5d958917edfee74f3dc51ab0b1d9d16becf1797e9fad578e3e1e8023a7efb8e3 <span style="color:#000;font-weight:bold">|</span> jq <span style="color:#4e9a06">&#39;.Spec.annotations&#39;</span></code></pre></div></div>
+        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">// container-type, sandbox-id 확인
+ctr -n k8s.io containers info &lt;container-id&gt; <span style="color:#000;font-weight:bold">|</span> jq <span style="color:#4e9a06">&#39;.Spec.annotations&#39;</span>
+//ex. ctr -n k8s.io containers info 5d958917edfee74f3dc51ab0b1d9d16becf1797e9fad578e3e1e8023a7efb8e3 <span style="color:#000;font-weight:bold">|</span> jq <span style="color:#4e9a06">&#39;.Spec.annotations&#39;</span></code></pre></div></div>
   <div class="tab-pane fade"
         id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker inspect &lt;container-id&gt; -f <span style="color:#4e9a06">&#34;{{json .HostConfig.NetworkMode}}&#34;</span></code></pre></div></div>
   
