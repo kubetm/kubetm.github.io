@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Pod Network(Pause Container, Network Plugin), Service Network(iptables, IPVS)
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="266">
+<meta itemprop="wordCount" content="397">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Networking Architecture"/>
 <meta name="twitter:description" content="Pod Network(Pause Container, Network Plugin), Service Network(iptables, IPVS)
@@ -1733,13 +1733,130 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p>Pause Container 확인</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab"
+        aria-controls="tabs-0-0" aria-selected="true">
+        v1.27-Containerd
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-0-1-tab" data-toggle="tab" href="#tabs-0-1" role="tab"
+        aria-controls="tabs-0-1" aria-selected="false">
+        v1.15-Docker
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-0-content"><div class="tab-pane fade show active"
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ctr -n k8s.io containers list <span style="color:#000;font-weight:bold">|</span> grep pod-pause</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker ps <span style="color:#000;font-weight:bold">|</span> grep pod-pause</code></pre></div></div>
+  
+</div>
+
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker ps <span style="color:#000;font-weight:bold">|</span> grep pod-pause
-</code></pre></div><p>Pause Container 인터페이스 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker ps <span style="color:#000;font-weight:bold">|</span> grep pod-pause
+</code></pre></div><p>Pause Container 인터페이스 확인
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab"
+        aria-controls="tabs-1-0" aria-selected="true">
+        v1.27-Containerd
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab"
+        aria-controls="tabs-1-1" aria-selected="false">
+        v1.15-Docker
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-1-content"><div class="tab-pane fade show active"
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ctr -n k8s.io containers list --quiet <span style="color:#000;font-weight:bold">|</span> xargs -I <span style="color:#ce5c00;font-weight:bold">{}</span> ctr -n k8s.io containers info <span style="color:#ce5c00;font-weight:bold">{}</span> <span style="color:#000;font-weight:bold">|</span> jq -r <span style="color:#4e9a06">&#39;&#34;Container ID: \(.ID) | Name: \(.Labels.&#34;io.kubernetes.pod.name&#34;) | Image: \(.Image)&#34;&#39;</span> <span style="color:#000;font-weight:bold">|</span> grep pod-pause
+ctr -n k8s.io containers info &lt;container-id&gt; <span style="color:#000;font-weight:bold">|</span> jq -r <span style="color:#4e9a06">&#39;.Spec.linux.namespaces[] | select(.type == &#34;network&#34;) | .path&#39;</span>
+//ctr -n k8s.io containers info df24e759c6f454dbae6d6a1ff289f31d4bd5a46d1d998d22fac2bf02a852b17e <span style="color:#000;font-weight:bold">|</span> jq -r <span style="color:#4e9a06">&#39;.Spec.linux.namespaces[] | select(.type == &#34;network&#34;) | .path&#39;</span>
+ip netns <span style="color:#204a87">exec</span> &lt;SandboxKey&gt; ip a
+// ip netns <span style="color:#204a87">exec</span> <span style="color:#4e9a06">&#34;cni-fd1c8ebf-df33-53cc-54a2-a50b78c43490&#34;</span> ip a</code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker ps <span style="color:#000;font-weight:bold">|</span> grep pod-pause
 docker inspect &lt;container-id&gt; -f <span style="color:#4e9a06">&#34;{{json .NetworkSettings}}&#34;</span>
 sudo ln -s /var/run/docker/netns /var/run/netns
-ip netns <span style="color:#204a87">exec</span> &lt;SandboxKey&gt; ip a
-</code></pre></div><br/>
+ip netns <span style="color:#204a87">exec</span> &lt;SandboxKey&gt; ip a</code></pre></div></div>
+  
+</div>
+</p>
+<br/>
 <h3 id="1-2-calico-interface-확인">1-2) Calico Interface 확인</h3>
 <p>route 명령 설치</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yum -y install net-tools
@@ -1751,7 +1868,70 @@ ip netns <span style="color:#204a87">exec</span> &lt;SandboxKey&gt; ip a
 <h3 id="1-3-pause-container-network-namespaces-확인">1-3) Pause Container Network Namespaces 확인</h3>
 <p>Pause Container와 타 Container간에 연결 확인</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker inspect &lt;container-id&gt; -f <span style="color:#4e9a06">&#34;{{json .HostConfig.NetworkMode}}&#34;</span>
-</code></pre></div><p>Docker Container NetworkMode</p>
+//ctr -n k8s.io containers info 5d958917edfee74f3dc51ab0b1d9d16becf1797e9fad578e3e1e8023a7efb8e3 <span style="color:#000;font-weight:bold">|</span> jq <span style="color:#4e9a06">&#39;.Spec.annotations.&#34;io.kubernetes.cri.sandbox-id&#34;&#39;</span>
+
+
+
+</code></pre></div><p>container-type, sandbox-id 확인</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-2" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab"
+        aria-controls="tabs-2-0" aria-selected="true">
+        v1.27-Containerd
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab"
+        aria-controls="tabs-2-1" aria-selected="false">
+        v1.15-Docker
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-2-content"><div class="tab-pane fade show active"
+        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ctr -n k8s.io containers info &lt;container-id&gt; <span style="color:#000;font-weight:bold">|</span> jq <span style="color:#4e9a06">&#39;.Spec.annotations&#39;</span>
+//ctr -n k8s.io containers info 5d958917edfee74f3dc51ab0b1d9d16becf1797e9fad578e3e1e8023a7efb8e3 <span style="color:#000;font-weight:bold">|</span> jq <span style="color:#4e9a06">&#39;.Spec.annotations&#39;</span></code></pre></div></div>
+  <div class="tab-pane fade"
+        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker inspect &lt;container-id&gt; -f <span style="color:#4e9a06">&#34;{{json .HostConfig.NetworkMode}}&#34;</span></code></pre></div></div>
+  
+</div>
+
+<p>Docker Container NetworkMode</p>
 <pre><code>NetworkMode - Sets the networking mode for the container. 
 Supported standard values are: bridge, host, none, and container:&lt;name|id&gt;. 
 Any other value is taken as a custom network’s name to which this container should connect to.
