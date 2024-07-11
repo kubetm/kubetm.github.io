@@ -32,7 +32,7 @@
  Mac M시리즈, Cpu 8core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "><meta itemprop="datePublished" content="2023-11-25T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-11-25T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1994">
+<meta itemprop="wordCount" content="2039">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s v1.27 버전 설치 (최신, 쉬운설치 버전)"/>
 <meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
@@ -1795,7 +1795,8 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 </code></pre></div><h3 id="5-master에-클러스터-기본-구성-설치-arm64-버전">5. master에 클러스터 기본 구성 설치 (arm64 버전)</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4] Rocky Linux 기본 설정 ========&#39;
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-1] 패키지 업데이트 ========&#39;
-yum -y update
+# yum -y update
+# 현재 업데이트시 VM 기동이 안되는 이슈가 있어, 업데이트는 하지 않습니다. (설치에는 지장 없어요)
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-2] 타임존 설정 ========&#39;
 timedatectl set-timezone Asia/Seoul
@@ -1951,7 +1952,8 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 <h3 id="5-node1에-기본-구성-설치-arm64-버전">5. Node1에 기본 구성 설치 (arm64 버전)</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4] Rocky Linux 기본 설정 ========&#39;
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-1] 패키지 업데이트 ========&#39;
-yum -y update
+# yum -y update
+# 현재 업데이트시 VM 기동이 안되는 이슈가 있어, 업데이트는 하지 않습니다. (설치에는 지장 없어요)
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-2] 타임존 설정 ========&#39;
 timedatectl set-timezone Asia/Seoul
@@ -2074,7 +2076,8 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 </code></pre></div><h3 id="5-node1에-기본-구성-설치-arm64-버전-1">5. Node1에 기본 구성 설치 (arm64 버전)</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4] Rocky Linux 기본 설정 ========&#39;
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-1] 패키지 업데이트 ========&#39;
-yum -y update
+# yum -y update
+# 현재 업데이트시 VM 기동이 안되는 이슈가 있어, 업데이트는 하지 않습니다. (설치에는 지장 없어요)
 
 <span style="color:#204a87;font-weight:bold">echo</span> &#39;======== [4-2] 타임존 설정 ========&#39;
 timedatectl set-timezone Asia/Seoul
