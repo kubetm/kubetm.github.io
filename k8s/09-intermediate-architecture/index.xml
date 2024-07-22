@@ -711,38 +711,18 @@ kubectl get events &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;
        alt=&#34;Loki Stack for Kubernetes.&#34;
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
-&lt;h3 id=&#34;2-1-helm-설치&#34;&gt;2-1) Helm 설치&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://helm.sh/docs/intro/install/&#34;&gt;https://helm.sh/docs/intro/install/&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;curl -O https://get.helm.sh/helm-v3.3.4-linux-amd64.tar.gz&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;tar -xf helm-v3.3.4-linux-amd64.tar.gz&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;cd linux-amd64&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;cp ./helm /usr/local/bin/&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
-&lt;h3 id=&#34;2-2-loki-stack-설치&#34;&gt;2-2) loki-stack 설치&lt;/h3&gt;
-&lt;p&gt;패키지 다운로드
-&lt;a href=&#34;https://artifacthub.io/packages/helm/loki/loki-stack&#34;&gt;https://artifacthub.io/packages/helm/loki/loki-stack&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;helm repo add loki https://grafana.github.io/loki/charts
-helm fetch loki/loki-stack --version 0.41.2
 
-tar -xf loki-stack-0.41.2.tgz
-&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; loki-stack/
-vi values.yaml
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;Grafana Enable 설정&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;helm 배포 / 삭제&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl create ns loki-stack
-helm install loki-stack -f values.yaml . -n loki-stack
-helm uninstall loki-stack -n loki-stack
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
-&lt;h3 id=&#34;2-3-grafana-service&#34;&gt;2-3) Grafana Service&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl edit -n loki-stack svc loki-stack-grafana
-----
-type: NodePort
-nodePort : &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;30001&lt;/span&gt;
-----
-- kubernetes dahsboard UI Port가 30000으로 변경되어 해당 실습 port는 30001로 하시면 됩니다
 
-kubectl get secret --namespace loki-stack loki-stack-grafana -o &lt;span style=&#34;color:#000&#34;&gt;jsonpath&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;{.data.admin-password}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; base64 --decode &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;안내사항&lt;/h4&gt;
+
+    쿠버네티스 버전 업데이트로 인해 Loki-Stack 및 Grafana 설치 가이드가 변경되었습니다.
+
+&lt;/div&gt;
+
+&lt;h3 id=&#34;설치-가이드-바로가기&#34;&gt;설치 가이드 바로가기&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://cafe.naver.com/kubeops/30&#34;&gt;https://cafe.naver.com/kubeops/30&lt;/a&gt;&lt;/p&gt;
+&lt;br/&gt;
 &lt;br/&gt;
 &lt;h2 id=&#34;referenece&#34;&gt;Referenece&lt;/h2&gt;
 &lt;hr&gt;

@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Promtail, Loki, Grafana
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="222">
+<meta itemprop="wordCount" content="136">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Logging/Monitoring Architecture"/>
 <meta name="twitter:description" content="Promtail, Loki, Grafana
@@ -1602,9 +1602,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </li>
     <li><a href="#2-loki-stack-설치">2. Loki Stack 설치</a>
       <ul>
-        <li><a href="#2-1-helm-설치">2-1) Helm 설치</a></li>
-        <li><a href="#2-2-loki-stack-설치">2-2) loki-stack 설치</a></li>
-        <li><a href="#2-3-grafana-service">2-3) Grafana Service</a></li>
+        <li><a href="#설치-가이드-바로가기">설치 가이드 바로가기</a></li>
       </ul>
     </li>
     <li><a href="#referenece">Referenece</a>
@@ -1769,38 +1767,18 @@ kubectl get events <span style="color:#000;font-weight:bold">|</span> grep app-l
        alt="Loki Stack for Kubernetes."
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
-<h3 id="2-1-helm-설치">2-1) Helm 설치</h3>
-<p><a href="https://helm.sh/docs/intro/install/">https://helm.sh/docs/intro/install/</a></p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#000">curl -O https://get.helm.sh/helm-v3.3.4-linux-amd64.tar.gz</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">tar -xf helm-v3.3.4-linux-amd64.tar.gz</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">cd linux-amd64</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">cp ./helm /usr/local/bin/</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><br/>
-<h3 id="2-2-loki-stack-설치">2-2) loki-stack 설치</h3>
-<p>패키지 다운로드
-<a href="https://artifacthub.io/packages/helm/loki/loki-stack">https://artifacthub.io/packages/helm/loki/loki-stack</a></p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">helm repo add loki https://grafana.github.io/loki/charts
-helm fetch loki/loki-stack --version 0.41.2
 
-tar -xf loki-stack-0.41.2.tgz
-<span style="color:#204a87">cd</span> loki-stack/
-vi values.yaml
-<span style="color:#ce5c00;font-weight:bold">(</span>Grafana Enable 설정<span style="color:#ce5c00;font-weight:bold">)</span>
-</code></pre></div><p>helm 배포 / 삭제</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl create ns loki-stack
-helm install loki-stack -f values.yaml . -n loki-stack
-helm uninstall loki-stack -n loki-stack
-</code></pre></div><br/>
-<h3 id="2-3-grafana-service">2-3) Grafana Service</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl edit -n loki-stack svc loki-stack-grafana
-----
-type: NodePort
-nodePort : <span style="color:#0000cf;font-weight:bold">30001</span>
-----
-- kubernetes dahsboard UI Port가 30000으로 변경되어 해당 실습 port는 30001로 하시면 됩니다
 
-kubectl get secret --namespace loki-stack loki-stack-grafana -o <span style="color:#000">jsonpath</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;{.data.admin-password}&#34;</span> <span style="color:#000;font-weight:bold">|</span> base64 --decode <span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87">echo</span>
-</code></pre></div><br/>
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">안내사항</h4>
+
+    쿠버네티스 버전 업데이트로 인해 Loki-Stack 및 Grafana 설치 가이드가 변경되었습니다.
+
+</div>
+
+<h3 id="설치-가이드-바로가기">설치 가이드 바로가기</h3>
+<p><a href="https://cafe.naver.com/kubeops/30">https://cafe.naver.com/kubeops/30</a></p>
+<br/>
 <br/>
 <h2 id="referenece">Referenece</h2>
 <hr>
