@@ -6547,8 +6547,8 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-master에-클러스터-기본-구성-설치-arm64-버전&#34;&gt;5. master에 클러스터 기본 구성 설치 (arm64 버전)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [4] Rocky Linux 기본 설정 ========&amp;#39;
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [4-1] 패키지 업데이트 ========&amp;#39;
+# 실습 자료실과 동일한 실습 환경을 유지하기 위해 Linux Update 주석 처리
 # yum -y update
-# 현재 업데이트시 VM 기동이 안되는 이슈가 있어, 업데이트는 하지 않습니다. (설치에는 지장 없어요)
 
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [4-2] 타임존 설정 ========&amp;#39;
 timedatectl set-timezone Asia/Seoul
