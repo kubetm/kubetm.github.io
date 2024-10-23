@@ -636,6 +636,16 @@ kubectl delete storageclasses.storage.k8s.io -n longhorn-system longhorn
        class=&#34;mt-3 mb-3 border border-info rounded&#34; /&gt;
 &lt;/figure&gt;
 &lt;br/&gt;
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;안내사항&lt;/h4&gt;
+
+    쿠버네티스 설치가 1.27로 변경되면서 Runtime도 Docker에서 Containerd로 변경이 되었어요
+그렇기 때문에 강의 내용과는 달리 실습 내용은 Containerd 기준으로 수정 되었습니다.
+
+&lt;/div&gt;
+
 &lt;br/&gt;
 &lt;h2 id=&#34;1-basic-logging-construction&#34;&gt;1. Basic Logging Construction&lt;/h2&gt;
 &lt;hr&gt;
@@ -677,15 +687,10 @@ curl &amp;lt;pod-ip&amp;gt;:8080/version
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;kubectl logs &amp;lt;pod-name&amp;gt;
 kubectl logs &amp;lt;pod-name&amp;gt; --tail &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;10&lt;/span&gt; --follow
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
-&lt;p&gt;Docker Log Driver 설정 확인&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cat /etc/docker/daemon.json
+&lt;p&gt;Containerd Log 설정 확인&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cat /etc/containerd/config.toml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
-&lt;p&gt;Docker Container 로그 파일 확인&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt;  /var/lib/docker/containers
-docker ps
-&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; &amp;lt;container-id&amp;gt;
-ls
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;br/&gt;
 &lt;h3 id=&#34;1-3-node1에서-log-link-확인&#34;&gt;1-3) Node1에서 Log Link 확인&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; /var/log/pods
 &lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; &amp;lt;Namespace&amp;gt;_&amp;lt;pod-name&amp;gt;_&amp;lt;pod-id&amp;gt;

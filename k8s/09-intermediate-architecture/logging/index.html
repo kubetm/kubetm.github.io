@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Promtail, Loki, Grafana
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="136">
+<meta itemprop="wordCount" content="144">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Logging/Monitoring Architecture"/>
 <meta name="twitter:description" content="Promtail, Loki, Grafana
@@ -1692,6 +1692,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
        class="mt-3 mb-3 border border-info rounded" />
 </figure>
 <br/>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">안내사항</h4>
+
+    쿠버네티스 설치가 1.27로 변경되면서 Runtime도 Docker에서 Containerd로 변경이 되었어요
+그렇기 때문에 강의 내용과는 달리 실습 내용은 Containerd 기준으로 수정 되었습니다.
+
+</div>
+
 <br/>
 <h2 id="1-basic-logging-construction">1. Basic Logging Construction</h2>
 <hr>
@@ -1733,15 +1743,10 @@ curl &lt;pod-ip&gt;:8080/version
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl logs &lt;pod-name&gt;
 kubectl logs &lt;pod-name&gt; --tail <span style="color:#0000cf;font-weight:bold">10</span> --follow
 </code></pre></div><br/>
-<p>Docker Log Driver 설정 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat /etc/docker/daemon.json
+<p>Containerd Log 설정 확인</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat /etc/containerd/config.toml
 </code></pre></div><br/>
-<p>Docker Container 로그 파일 확인</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87">cd</span>  /var/lib/docker/containers
-docker ps
-<span style="color:#204a87">cd</span> &lt;container-id&gt;
-ls
-</code></pre></div><br/>
+<br/>
 <h3 id="1-3-node1에서-log-link-확인">1-3) Node1에서 Log Link 확인</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87">cd</span> /var/log/pods
 <span style="color:#204a87">cd</span> &lt;Namespace&gt;_&lt;pod-name&gt;_&lt;pod-id&gt;
