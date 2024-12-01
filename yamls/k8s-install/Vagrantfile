@@ -16,6 +16,7 @@ Vagrant.configure("2") do |config|
       vb.memory = 5120
       vb.cpus = 4
       vb.customize ["modifyvm", :id, "--firmware", "efi"]
+      vb.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
 	end
     master.vm.provision :shell, privileged: true, inline: $provision_master_node
   end
