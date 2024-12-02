@@ -156,12 +156,12 @@
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;CPU와 Memory의 (request, limits)에 대한 강의 내용 보충&lt;/h4&gt;
 
-    &lt;p&gt;CPU가 limits 수치까지 올라갔다고 해서 무조건 core 사용량이 낮아지는 것은 아닙니다.
-실제로는 클러스터에 사용하지 않는 여유 CPU가 있다면, limit을 넘어 사용하는 것도 가능합니다.
-다만, Node의 전체 부하 상태가 OverCommit된 상태가 되면, Kubernetes는 limits 수치까지 CPU를 사용 중인 Pod들의 CPU 사용량을 조정합니다.
-이때 Request 수치까지 core 사용량을 낮춘다기보다는, 최소한 Request 수치는 보장된다는 표현이 더 적합합니다.&lt;/p&gt;
-&lt;p&gt;Memory는 Limit까지 올라가면 Request 수치와는 상관없이 OOM(Out of Memory) 에러를 발생시키며, Pod는 강제로 종료(OOMKilled)됩니다.
-그 후, Kubernetes의 재시작 정책에 따라 Pod는 재기동됩니다.&lt;/p&gt;
+    &lt;p&gt;CPU가 limits까지 올라갔을 때 reqeusts 수치까지 core 사용량을 낮춘다고 한 부분을 정정합니다.
+기본적으로 쿠버네티스가 CPU를 limits까지 제한시키나 노드에 여유 CPU가 있다면, limit을 넘어 사용할 때도 있습니다.
+하지만 Node가 부하상태(OverCommit)가 되면, 각 Pod들의 limits 수치를 기준으로 Pod들간에 CPU를 상대적으로 하향 조정합니다.
+그렇기 때문에 requests 수치까지 core 사용량을 낮춘다는 표현은 잘못됐고, request는 어떤 어떤 상황에서도 최소한으로 보장되는 수치입니다.&lt;/p&gt;
+&lt;p&gt;Memory는 limits까지 올라가면 OOM(Out of Memory) 에러를 발생시키며, Contianer를 강제로 종료시키니다.
+그래서 Pod의 restart 수는 1로 증가하며, Container를 재기동 시킵니다.&lt;/p&gt;
 
 
 &lt;/div&gt;
