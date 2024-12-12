@@ -616,7 +616,7 @@ kubectl apply -f calico.yaml
 &lt;li&gt;Win 버전 : &lt;a href=&#34;https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-Win.exe&#34;&gt;https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-Win.exe&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Mac 버전 : &lt;a href=&#34;https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-OSX.dmg&#34;&gt;https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-OSX.dmg&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Download site : &lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;https://www.virtualbox.org/wiki/Downloads&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;FAQ : microsoft visual 관련 에러 해결방법 &lt;a href=&#34;https://cafe.naver.com/kubeops/25&#34;&gt;https://cafe.naver.com/kubeops/25&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;FAQ : VirtualBox 관련 에러 해결방법 &lt;a href=&#34;https://cafe.naver.com/kubeops/25&#34;&gt;https://cafe.naver.com/kubeops/25&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
 &lt;h3 id=&#34;3-vagrant-설치-및-k8s-설치-스크립트-실행&#34;&gt;3. Vagrant 설치 및 k8s 설치 스크립트 실행&lt;/h3&gt;
@@ -625,7 +625,9 @@ kubectl apply -f calico.yaml
 &lt;li&gt;Win 버전 : &lt;a href=&#34;https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_windows_amd64.msi&#34;&gt;https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_windows_amd64.msi&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Mac 버전 : &lt;a href=&#34;https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_darwin_amd64.dmg&#34;&gt;https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_darwin_amd64.dmg&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Download site : &lt;a href=&#34;https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant&#34;&gt;https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;FAQ : Vagrant 관련 에러 해결방법 &lt;a href=&#34;https://cafe.naver.com/kubeops/26&#34;&gt;https://cafe.naver.com/kubeops/26&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;br/&gt;
 &lt;p&gt;3-2) Vagrant 명령 실행&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;윈도우에서 cmd 실행 &lt;br/&gt;&lt;/li&gt;
