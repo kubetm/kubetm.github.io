@@ -611,19 +611,17 @@ kubectl apply -f calico.yaml
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
-&lt;h3 id=&#34;2-virtualbox-설치-708-버전&#34;&gt;2. VirtualBox 설치 (7.0.8 버전)&lt;/h3&gt;
+&lt;h3 id=&#34;2-virtualbox-설치-716-버전&#34;&gt;2. VirtualBox 설치 (7.1.6 버전)&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Win 버전 : &lt;a href=&#34;https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-Win.exe&#34;&gt;https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-Win.exe&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Mac 버전 : &lt;a href=&#34;https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-OSX.dmg&#34;&gt;https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-OSX.dmg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Win 버전 : &lt;a href=&#34;https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-Win.exe&#34;&gt;https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-Win.exe&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Download site : &lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;https://www.virtualbox.org/wiki/Downloads&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;FAQ : VirtualBox 관련 에러 해결방법 &lt;a href=&#34;https://cafe.naver.com/kubeops/25&#34;&gt;https://cafe.naver.com/kubeops/25&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
 &lt;h3 id=&#34;3-vagrant-설치-및-k8s-설치-스크립트-실행&#34;&gt;3. Vagrant 설치 및 k8s 설치 스크립트 실행&lt;/h3&gt;
-&lt;p&gt;3-1) Vagrant 설치 (2.3.4 버전)&lt;/p&gt;
+&lt;p&gt;3-1) Vagrant 설치 (2.4.3 버전)&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Win 버전 : &lt;a href=&#34;https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_windows_amd64.msi&#34;&gt;https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_windows_amd64.msi&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Mac 버전 : &lt;a href=&#34;https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_darwin_amd64.dmg&#34;&gt;https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_darwin_amd64.dmg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Win 버전 : &lt;a href=&#34;https://releases.hashicorp.com/vagrant/2.4.3/vagrant_2.4.3_windows_amd64.msi&#34;&gt;https://releases.hashicorp.com/vagrant/2.4.3/vagrant_2.4.3_windows_amd64.msi&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Download site : &lt;a href=&#34;https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant&#34;&gt;https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;FAQ : Vagrant 관련 에러 해결방법 &lt;a href=&#34;https://cafe.naver.com/kubeops/26&#34;&gt;https://cafe.naver.com/kubeops/26&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -642,7 +640,7 @@ C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span 
 C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://kubetm.github.io/yamls/k8s-install/Vagrantfile&lt;/span&gt;
 
 // Rocky Linux Repo 세팅
-C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/vagrant-2.3.4/rockylinux-repo.json&lt;/span&gt;
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/vagrant-2.4.3/rockylinux-repo.json&lt;/span&gt;
 C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; vagrant box add rockylinux-repo.json&lt;/span&gt;
 
 // Vagrant Disk 설정 Plugin 설치 

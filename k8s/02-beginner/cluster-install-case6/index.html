@@ -32,7 +32,7 @@
  Windows10, Cpu 6core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경
 "><meta itemprop="datePublished" content="2023-11-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-11-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="566">
+<meta itemprop="wordCount" content="558">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s v1.27 버전 설치 (최신, 쉬운설치 버전) - 1.22에서 변경됨"/>
 <meta name="twitter:description" content="설치스펙 : &lt;br/&gt; 
@@ -1597,7 +1597,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#설치-가이드">설치 가이드</a>
       <ul>
         <li><a href="#1-xshell-설치">1. XShell 설치</a></li>
-        <li><a href="#2-virtualbox-설치-708-버전">2. VirtualBox 설치 (7.0.8 버전)</a></li>
+        <li><a href="#2-virtualbox-설치-716-버전">2. VirtualBox 설치 (7.1.6 버전)</a></li>
         <li><a href="#3-vagrant-설치-및-k8s-설치-스크립트-실행">3. Vagrant 설치 및 k8s 설치 스크립트 실행</a></li>
         <li><a href="#4-worker-node-연결">4. Worker Node 연결</a></li>
         <li><a href="#5-설치-확인">5. 설치 확인</a></li>
@@ -1735,19 +1735,17 @@ Windows10, Cpu 6core 이상, Memory 16GB 이상, 인터넷 사용 가능 환경<
 </li>
 </ul>
 <br/>
-<h3 id="2-virtualbox-설치-708-버전">2. VirtualBox 설치 (7.0.8 버전)</h3>
+<h3 id="2-virtualbox-설치-716-버전">2. VirtualBox 설치 (7.1.6 버전)</h3>
 <ul>
-<li>Win 버전 : <a href="https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-Win.exe">https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-Win.exe</a></li>
-<li>Mac 버전 : <a href="https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-OSX.dmg">https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-OSX.dmg</a></li>
+<li>Win 버전 : <a href="https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-Win.exe">https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-Win.exe</a></li>
 <li>Download site : <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></li>
 <li>FAQ : VirtualBox 관련 에러 해결방법 <a href="https://cafe.naver.com/kubeops/25">https://cafe.naver.com/kubeops/25</a></li>
 </ul>
 <br/>
 <h3 id="3-vagrant-설치-및-k8s-설치-스크립트-실행">3. Vagrant 설치 및 k8s 설치 스크립트 실행</h3>
-<p>3-1) Vagrant 설치 (2.3.4 버전)</p>
+<p>3-1) Vagrant 설치 (2.4.3 버전)</p>
 <ul>
-<li>Win 버전 : <a href="https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_windows_amd64.msi">https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_windows_amd64.msi</a></li>
-<li>Mac 버전 : <a href="https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_darwin_amd64.dmg">https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_darwin_amd64.dmg</a></li>
+<li>Win 버전 : <a href="https://releases.hashicorp.com/vagrant/2.4.3/vagrant_2.4.3_windows_amd64.msi">https://releases.hashicorp.com/vagrant/2.4.3/vagrant_2.4.3_windows_amd64.msi</a></li>
 <li>Download site : <a href="https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant">https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant</a></li>
 <li>FAQ : Vagrant 관련 에러 해결방법 <a href="https://cafe.naver.com/kubeops/26">https://cafe.naver.com/kubeops/26</a></li>
 </ul>
@@ -1766,7 +1764,7 @@ C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\
 C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\Users\사용자\k8s</span><span style="color:#8f5902;font-style:italic">&gt; curl -O https://kubetm.github.io/yamls/k8s-install/Vagrantfile</span>
 
 // Rocky Linux Repo 세팅
-C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\Users\사용자\k8s</span><span style="color:#8f5902;font-style:italic">&gt; curl -O https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/vagrant-2.3.4/rockylinux-repo.json</span>
+C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\Users\사용자\k8s</span><span style="color:#8f5902;font-style:italic">&gt; curl -O https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/vagrant-2.4.3/rockylinux-repo.json</span>
 C<span style="color:#000;font-weight:bold">:</span><span style="color:#f57900">\Users\사용자\k8s</span><span style="color:#8f5902;font-style:italic">&gt; vagrant box add rockylinux-repo.json</span>
 
 // Vagrant Disk 설정 Plugin 설치 
