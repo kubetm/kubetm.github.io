@@ -1236,39 +1236,21 @@ curl http://192.168.0.30:8001/api/v1/nodes&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&
 &lt;h4 class=&#34;alert-heading&#34;&gt;필수 확인사항!&lt;/h4&gt;
 
     해당 실습을 해보기 위해선 새로운 클러스터를 추가로 설치해야 합니다.
-최초 클러스터 구축 가이드를 가지고 IP만 변경해서 다른 클러스터를 하나 더 구축하면 되고요.
-설치 시 자원이 부족하게 될 수 있으니 Master만 설치해서 실습해도 무방합니다.
-기존 클러스터 = cluster-a
-새 클러스터 = cluster-b
+최초 클러스터 구축 가이드를 가지고 IP만 변경해서 다른 클러스터를 하나를 더 설치하고
+이때 자원이 부족하게 될 수 있으니 Master만 설치 됩니다.
+&lt;br&gt;
+(기존 클러스터 = cluster-a, 새 클러스터 = cluster-b)
 
 &lt;/div&gt;
 
 &lt;h3 id=&#34;새-클러스터cluster-b-구축&#34;&gt;새 클러스터(cluster-b) 구축&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;스크립트 다운로드&lt;/li&gt;
-&lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;// 폴더 생성
 C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt;mkdir k8s2&lt;/span&gt;
 C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt;cd k8s2&lt;/span&gt;
 
 // Vagrant 스크립트 다운로드
-C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s2&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://raw.githubusercontent.com/k8s-1pro/install/main/ground/k8s-1.27/vagrant-2.4.3/rockylinux-repo.json&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;스크립트 수정&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;  config.vm.define &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;k8s-master&amp;#34;&lt;/span&gt; do &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;master&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;
-    master.vm.hostname = &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;k8s-master&amp;#34;&lt;/span&gt;
-    master.vm.network &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;private_network&amp;#34;&lt;/span&gt;, ip: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;192.168.56.50&amp;#34;&lt;/span&gt;  # ip 변경
-
-&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [4-5] Hosts 등록 ========&amp;#39;
-cat &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&amp;lt; EOF &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; /etc/hosts
-192.168.56.50 k8s-master  # ip 변경
-192.168.56.31 k8s-node1  # 삭제
-192.168.56.32 k8s-node2  # 삭제
-EOF
-
-&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;echo&lt;/span&gt; &amp;#39;======== [8-1] 클러스터 초기화 (Pod Network 세팅) ========&amp;#39;
-kubeadm init --pod-network-cidr=20.96.0.0/16 --apiserver-advertise-address 192.168.56.50   # ip 변경
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자\k8s2&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt; curl -O https://kubetm.github.io/yamls/k8s-install/auth/Vagrantfile&lt;/span&gt;
+C&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;\Users\사용자&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;gt;vagrant up&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-1-cluster-a-kubeconfig&#34;&gt;2-1) Cluster A kubeconfig&lt;/h3&gt;
 &lt;p&gt;path : /etc/kubernetes/admin.conf&lt;/p&gt;
 &lt;h3 id=&#34;2-2-cluster-b-kubeconfig&#34;&gt;2-2) Cluster B kubeconfig&lt;/h3&gt;
