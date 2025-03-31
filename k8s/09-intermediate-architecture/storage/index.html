@@ -30,7 +30,7 @@
 <meta itemprop="description" content="FileStorage(NFS), BlockStorage(Longhorn)
 "><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="243">
+<meta itemprop="wordCount" content="193">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Storage Architecture"/>
 <meta name="twitter:description" content="FileStorage(NFS), BlockStorage(Longhorn)
@@ -852,34 +852,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   
   
   
-  <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-k8s07-intermediate-basic-resourcevolume-li">
-    
-      <input type="checkbox" id="m-k8s07-intermediate-basic-resourcevolume-check"/>
-      <label for="m-k8s07-intermediate-basic-resourcevolume-check"><a href="/k8s/07-intermediate-basic-resource/volume/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s07-intermediate-basic-resourcevolume"><span class="">Volume</span></a></label>
-    
-    
-  </li>
-
-          
-        
-          
-            
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-k8s07-intermediate-basic-resourcevolume2-li">
     
       <input type="checkbox" id="m-k8s07-intermediate-basic-resourcevolume2-check"/>
@@ -1554,6 +1526,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
           
         
+          
+            
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-k8s92-installationvolume-li">
+    
+      <input type="checkbox" id="m-k8s92-installationvolume-check"/>
+      <label for="m-k8s92-installationvolume-check"><a href="/k8s/92-installation/volume/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-k8s92-installationvolume"><span class="">Volume</span></a></label>
+    
+    
+  </li>
+
+          
+        
       </ul>
     
   </li>
@@ -1606,11 +1606,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </li>
     <li><a href="#3-longhorn-구축">3. Longhorn 구축</a>
       <ul>
-        <li><a href="#3-1-모든-masterwork-node에-iscsi-설치">3-1) 모든 Master/Work Node에 iscsi 설치</a></li>
-        <li><a href="#3-2-longhorn-설치">3-2) Longhorn 설치</a></li>
-        <li><a href="#3-3-확인">3-3) 확인</a></li>
-        <li><a href="#3-4-기존-longhorn-storageclass-삭제-및-재생성">3-4) 기존 Longhorn StorageClass 삭제 및 재생성</a></li>
-        <li><a href="#3-5-longhorn-dashboard-접속을-위한-port-type변경">3-5) Longhorn Dashboard 접속을 위한 Port Type변경</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#4-longhorn-volume에-pod-연결">4. Longhorn Volume에 POD 연결</a>
@@ -1798,35 +1794,11 @@ systemctl restart nfs-server
 <br/>
 <h2 id="3-longhorn-구축">3. Longhorn 구축</h2>
 <hr>
-<h3 id="3-1-모든-masterwork-node에-iscsi-설치">3-1) 모든 Master/Work Node에 iscsi 설치</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yum install -y iscsi-initiator-utils
-</code></pre></div><br/>
-<h3 id="3-2-longhorn-설치">3-2) Longhorn 설치</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/master/deploy/longhorn.yaml
-</code></pre></div><br/>
-<h3 id="3-3-확인">3-3) 확인</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get pods -n longhorn-system
-</code></pre></div><br/>
-<h3 id="3-4-기존-longhorn-storageclass-삭제-및-재생성">3-4) 기존 Longhorn StorageClass 삭제 및 재생성</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get storageclasses.storage.k8s.io -n longhorn-system longhorn
-kubectl delete storageclasses.storage.k8s.io -n longhorn-system longhorn
-</code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#000">cat &lt;&lt;EOF | kubectl create -f -</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">StorageClass</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storage.k8s.io/v1</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">longhorn</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">provisioner</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">driver.longhorn.io</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">allowVolumeExpansion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">parameters</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">numberOfReplicas</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;2&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">staleReplicaTimeout</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;2880&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">fromBackup</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">EOF</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><br/>
-<h3 id="3-5-longhorn-dashboard-접속을-위한-port-type변경">3-5) Longhorn Dashboard 접속을 위한 Port Type변경</h3>
-<p>Service Type 변경 [ClusterIP -&gt; NodePort]</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl edit svc -n longhorn-system longhorn-frontend
-</code></pre></div><br/>
+<h5 id="해당-솔루션-설치는-중급편--기본-오브젝트--volume-127를-통해서-이미-하셨으면-skip-하세요">해당 솔루션 설치는 [중급편] &gt; 기본 오브젝트 &gt; Volume (1.27)를 통해서 이미 하셨으면 Skip 하세요!</h5>
+<ul>
+<li>설치 링크 : <a href="https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume2/#1-longhorn-%EA%B5%AC%EC%B6%95">https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume2/#1-longhorn-%EA%B5%AC%EC%B6%95</a></li>
+</ul>
+<br/>
 <br/>
 <h2 id="4-longhorn-volume에-pod-연결">4. Longhorn Volume에 POD 연결</h2>
 <hr>
@@ -1849,7 +1821,7 @@ kubectl delete storageclasses.storage.k8s.io -n longhorn-system longhorn
 </span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">storage</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1Gi</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><br/>
 <h3 id="4-2-longhorn-dashboard-접속">4-2) Longhorn Dashboard 접속</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">http://localhost:30001
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">http://192.168.56.30:30705
 </code></pre></div><br/>
 <h3 id="4-3-pod">4-3) Pod</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">

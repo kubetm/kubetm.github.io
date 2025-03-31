@@ -113,7 +113,7 @@
   </url>
   
   <url>
-    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume/</loc>
+    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume2/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -164,11 +164,6 @@
   
   <url>
     <loc>https://kubetm.github.io/k8s/09-intermediate-architecture/storage/</loc>
-    <lastmod>2021-08-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kubetm.github.io/k8s/07-intermediate-basic-resource/volume2/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -254,6 +249,11 @@
   
   <url>
     <loc>https://kubetm.github.io/k8s/03-beginner-basic-resource/volume/</loc>
+    <lastmod>2021-08-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubetm.github.io/k8s/92-installation/volume/</loc>
     <lastmod>2021-08-02T00:00:00+00:00</lastmod>
   </url>
   
